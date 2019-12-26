@@ -1,31 +1,31 @@
-# nextjs-typescript-scss-example
+<img src="https://www.polarishare.com/logo.png" alt="react boilerplate banner" align="center" />
 
-This is a sample of `Next.js` `React` `Typescript` `CSS Modules`.
 
-## Features
+# Polaris Share Front-End
+> Development URL : https://share.decompany.io
 
-* yarn v1.3
-* next.js v16
-* React v16
-* typescript v2.8
-* tslint
-* prettier
-* scss
+<br>
 
-## Requirement
+> Production URL : https://www.polarishare.com
 
-yarn or npm
+## Local
+- npm start (port 3000)
 
-## Usage
+## Directory
+- common : common script files
+- components : component files with Next js (*.tsx)
+- doc : project description files
+- pages : page files with Next js (*.tsx)
+- public : public files
+- redux : redux files (reducer, store ...)
+- typings : type configuration files for importing files in Next js project
+- utils : third-party APIs
 
-```bash
-# git clone
-git clone https://github.com/treetips/nextjs-typescript-scss-example.git
-cd nextjs-typescript-scss-example
-# install node_modules
-yarn install
-# start
-yarn dev
-# browse
-http://localhost:3000/
-```
+## Guide
+English
+> https://github.com/decompanyio/decompanyio-frontend/blob/master/doc/GUIDE.md
+
+한국어
+> https://github.com/decompanyio/decompanyio-frontend/blob/master/doc/GUIDE_KR.md
+
+
