@@ -86,7 +86,7 @@ export default function(props) {
   // 내 정보 REDUX SET
   const setMyInfo = () => {
     if (AUTH_APIS.isAuthenticated() && myInfo.email.length === 0) {
-      return repos.Account.getAccountInfo(myInfo.sub)
+      return repos.Account.getAccountInfo()
         .then(result => {
           let res = result.user;
 

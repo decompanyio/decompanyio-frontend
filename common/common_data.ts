@@ -46,7 +46,7 @@ export default {
     "world"
   ],
 
-  // 메타 데이터
+  // 메타 데이터 기본값
   metaData: {
     title: "Polaris Share",
     seoTitle: "Polaris Share",
@@ -80,5 +80,8 @@ export default {
   trackingDelayTime: 3000,
 
   // 자리비움 체크 시간: 1분
-  awayCheckTime: 60000
+  awayCheckTime: 60000,
+
+  // Alert 창 종료 시간: 7초
+  alertRemainTime: 7000
 };

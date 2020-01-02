@@ -3,17 +3,23 @@ import LinesEllipsis from "react-lines-ellipsis";
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
 import common_view from "../../../common/common_view";
 import Link from "next/link";
-import UserAvatar from "../../common/avatar/UserAvatar";
 import common from "../../../common/common";
 import { APP_CONFIG } from "../../../app.config";
 import RewardCard from "components/common/card/RewardCard";
 import React, { useState } from "react";
 import ContentsBookmark from "./ContentsBookmark";
+import dynamic from "next/dynamic";
 
 type Type = {
   documentData: any;
   mylist: any;
 };
+
+// UserAvatar - No SSR
+const UserAvatarWithoutSSR = dynamic(
+  () => import("components/common/avatar/UserAvatar"),
+  { ssr: false }
+);
 
 // ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
@@ -125,7 +131,7 @@ export default function({ documentData, mylist }: Type) {
             as={"/@" + identification}
           >
             <div className={styles.cl_avatar}>
-              <UserAvatar
+              <UserAvatarWithoutSSR
                 picture={profileUrl}
                 croppedArea={croppedArea}
                 size={26}

@@ -11,6 +11,7 @@ export default function() {
   const alertCodeFromRedux = useSelector(state => state.main.alertCode);
   const alertDataFromRedux = useSelector(state => state.main.alertData);
   const [container, setContainer] = useState(arr);
+  const [deleteFlag, setDeleteFlag] = useState(false);
 
   // Alert 렌더 여부 체크
   const checkRender = () =>
@@ -74,6 +75,7 @@ export default function() {
         tempContainer.splice(i, 1);
 
         setContainer(tempContainer.length === 0 ? arr : tempContainer);
+        setDeleteFlag(true);
       }
     }
   };
@@ -84,13 +86,16 @@ export default function() {
       .then((_container: any) => handleContainer(_container))
       .then(() => dispatch(setActionMain.alertCode(null, {})))
       .catch(() => false);
-  });
 
-  // console.log(container);
+    if (deleteFlag) setDeleteFlag(false);
+  });
 
   return (
     <div className={styles.al_container}>
-      <span className="d-none">{alertCodeFromRedux}</span>
+      <span className="d-none">
+        {alertCodeFromRedux}
+        {deleteFlag}
+      </span>
       {container.map((arr: any, idx: number) => (
         <span key={idx}>{arr.html}</span>
       ))}

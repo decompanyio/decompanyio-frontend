@@ -3,15 +3,21 @@ import { useSelector } from "react-redux";
 import { APP_CONFIG } from "../../../app.config";
 import common from "common/common";
 import Link from "next/link";
-import UserAvatar from "../../common/avatar/UserAvatar";
 import RewardCard from "components/common/card/RewardCard";
 import { AUTH_APIS } from "../../../utils/auth";
 import React from "react";
 import ViewOption from "./ViewOption";
+import dynamic from "next/dynamic";
 
 type Type = {
   documentData: any;
 };
+
+// UserAvatar - No SSR
+const UserAvatarWithoutSSR = dynamic(
+  () => import("components/common/avatar/UserAvatar"),
+  { ssr: false }
+);
 
 // 리워드 정보 표시
 const showRewardInfo = id => {
@@ -85,7 +91,7 @@ export default function({ documentData }: Type) {
             as={"/@" + identification}
           >
             <div>
-              <UserAvatar
+              <UserAvatarWithoutSSR
                 picture={profileUrl}
                 croppedArea={croppedArea}
                 size={43}

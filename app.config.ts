@@ -13,7 +13,7 @@ export const APP_CONFIG = {
   },
   local: {
     domain: {
-      mainHost: "http://localhost:3000",
+      mainHost: "http://localhost",
       image: "https://res.share.decompany.io/thumb",
       profile: "https://res.share.decompany.io/profile/",
       static: "https://res.share.decompany.io/static",

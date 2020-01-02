@@ -7,7 +7,13 @@ import common from "../../../common/common";
 import { psString } from "../../../utils/localization";
 import { APP_CONFIG } from "../../../app.config";
 import React, { useState } from "react";
-import UserAvatar from "../avatar/UserAvatar";
+import dynamic from "next/dynamic";
+
+// UserAvatar - No SSR
+const UserAvatarWithoutSSR = dynamic(
+  () => import("components/common/avatar/UserAvatar"),
+  { ssr: false }
+);
 
 // 이미지 정보 GET
 const getImgInfo = documentData => {
@@ -112,7 +118,7 @@ export default function({ documentData }: Type) {
           as={"/@" + identification}
         >
           <div className={styles.dc_avatarWrapper}>
-            <UserAvatar
+            <UserAvatarWithoutSSR
               picture={profileUrl}
               croppedArea={croppedArea}
               size={30}
@@ -136,8 +142,7 @@ export default function({ documentData }: Type) {
             <img
               className={styles.dc_rewardArrow}
               src={
-                APP_CONFIG.domain().static +
-                "/image/icon/i_arrow_down_blue.svg"
+                APP_CONFIG.domain().static + "/image/icon/i_arrow_down_blue.svg"
               }
               alt="arrow button"
             />

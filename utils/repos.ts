@@ -61,14 +61,13 @@ export const repos = {
         .then((result: any) => new UserInfo(result.user))
         .catch(err => err);
     },
-    async getAccountInfo(id) {
+    async getAccountInfo() {
       const data = {
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
             (res: any) => res.idToken
           )}`
-        },
-        params: { id: id }
+        }
       };
 
       return AuthService.GET.accountInfo(data)

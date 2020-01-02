@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { psString } from "../../../utils/localization";
 import * as styles from "public/static/styles/main.scss";
+import common_data from "../../../common/common_data";
 
 type Type = {
   code: number;
@@ -179,10 +180,10 @@ export default function({ code, alertData, close }: Type) {
   const [data] = useState(getStatus(code, alertData, myInfoFromRedux));
 
   useEffect(() => {
-    let _setInterval = setInterval(() => {
-      // close();
-      clearInterval(_setInterval);
-    }, 7000);
+    let _setTimeout = setTimeout(() => {
+      close();
+      clearInterval(_setTimeout);
+    }, common_data.alertRemainTime);
   }, []);
 
   let alertStatus = "a_" + data.status;

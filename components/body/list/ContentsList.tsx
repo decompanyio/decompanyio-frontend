@@ -32,7 +32,7 @@ const setResultList = (listData: any, resultList: any) =>
     const data = {
       listData:
         listData.length > 0 ? listData.concat(_resultList) : _resultList,
-      isEndPage: resultList.length <= 0
+      isEndPage: resultList.length < 10
     };
     resolve(data);
   });
@@ -40,7 +40,7 @@ const setResultList = (listData: any, resultList: any) =>
 export default function({ documentList, tag, path }: Type) {
   const myInfoFromRedux = useSelector(state => state.main.myInfo);
   const [listLength, setListLength] = useState(2);
-  const [mylist, setMylist] = useState(null);
+  const [bookmarkList, setBookmarkList] = useState(null);
   const [state, setState] = useState({
     list: documentList.resultList || [],
     endPage: false
@@ -52,25 +52,24 @@ export default function({ documentList, tag, path }: Type) {
       .then(() => setParams(listLength, tag, path))
       .then(res => repos.Document.getDocumentList(res))
       .then(res => setResultList(state.list, res.resultList || []))
-      .then(res => {
-        const resData: any = res;
-        setState({ list: resData.listData, endPage: resData.isEndPage });
-      })
+      .then((res: any) =>
+        setState({ list: res.listData, endPage: res.isEndPage })
+      )
       .catch(err => {
         log.ContentList.fetchDocuments(err);
         return err;
       });
 
-  // 찜 목록 GET
-  const getMylist = () => {
+  // 북마크 목록 GET
+  const getBookmarkList = () => {
     repos.Query.getMyListFindMany({ userId: myInfoFromRedux._id }).then(res =>
-      setMylist(res)
+      setBookmarkList(res)
     );
   };
 
   useEffect(() => {
-    if (AUTH_APIS.isAuthenticated()) {
-      getMylist();
+    if (AUTH_APIS.isAuthenticated() && path === "mylist") {
+      getBookmarkList();
     }
   }, []);
 
@@ -105,14 +104,21 @@ export default function({ documentList, tag, path }: Type) {
               <ContentsListItem
                 key={result.documentId + result.accountId}
                 documentData={result}
-                mylist={mylist}
+                mylist={bookmarkList}
               />
             </div>
           ))}
         </InfiniteScroll>
       )}
 
-      {((state.list && state.list.length === 0) || !state.list) && (
+      {state.list && state.list.length === 0 && !state.endPage && (
+        <div className={styles.cl_spinner}>
+          <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
+        </div>
+      )}
+
+      {((state.list && state.list.length === 0 && state.endPage) ||
+        !state.list) && (
         <div className={styles.cl_noIconWrapper}>
           <NoDataIcon />
         </div>

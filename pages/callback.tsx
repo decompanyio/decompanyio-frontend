@@ -18,8 +18,8 @@ function index(props) {
       common_view.setBodyStyleLock();
 
       AUTH_APIS.handleAuthentication(window.location)
-        .then(sub =>
-          repos.Account.getAccountInfo(sub).then(result => {
+        .then(() =>
+          repos.Account.getAccountInfo().then(result => {
             let res = result.user;
             res.privateDocumentCount = result.privateDocumentCount; // alert data에 쓰임
             if (!res.username || res.username === "") res.username = res.email;
