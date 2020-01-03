@@ -1,7 +1,7 @@
 {
   "name": "decompanyio-frontend",
   "description": "www.polarishare.com",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "private": true,
   "keywords": [],
   "author": "Decompany.io",
@@ -11,7 +11,9 @@
     "dev": "next start",
     "build": "next build",
     "export": "next export",
-    "start": "set NODE_ENV_SUB=local&&node server.js",
+    "start:local": "set NODE_ENV_SUB=local&&node server.js",
+    "start": "set NODE_ENV=production&&set NODE_ENV_SUB=development&&node server.js",
+    "start:production": "set NODE_ENV=production&&set NODE_ENV_SUB=production&&node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

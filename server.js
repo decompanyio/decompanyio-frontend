@@ -1,6 +1,8 @@
 const express = require('express');
 const next = require('next');
 
+process.env.NODE_ENV = (process.env.NODE_ENV && (process.env.NODE_ENV).trim().toLowerCase() === 'production') ? 'production' : 'development';
+
 const port = 80;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
