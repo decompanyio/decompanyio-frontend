@@ -1,10 +1,11 @@
 const express = require('express');
 const next = require('next');
 
-process.env.NODE_ENV = (process.env.NODE_ENV && (process.env.NODE_ENV).trim().toLowerCase() === 'production') ? 'production' : 'development';
+console.log(process.env.NODE_ENV);
 
+const env = (process.env.NODE_ENV && (process.env.NODE_ENV).trim().toLowerCase() === 'production') ? 'production' : 'development';
 const port = 80;
-const dev = process.env.NODE_ENV !== 'production';
+const dev = env !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 const profileRegEx = '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})';
