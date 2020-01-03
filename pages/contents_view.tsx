@@ -16,6 +16,8 @@ import ViewSeeAlso from "components/body/view/ViewSeeAlso";
 import ViewPortrait from "../components/body/view/ViewPortrait";
 import common_data from "../common/common_data";
 import { setActionMain } from "../redux/reducer/main";
+import DocumentInfo from "../service/model/DocumentInfo";
+import UserInfo from "../service/model/UserInfo";
 
 export default function index(
   { documentData, text, ratio, readPage, metaData },
@@ -194,54 +196,60 @@ index.getInitialProps = async props => {
     totalViewCountInfo
   } = await repos.Document.getDocument(seoTitle);
 
+  const documentData = new DocumentInfo(document);
+  const authorData = new UserInfo(documentData.author);
+  const textData = text || [];
+
   const metaData = {
-    title: document.title,
-    seoTitle: document.seoTitle,
-    description: document.desc,
+    title: documentData.title,
+    seoTitle: documentData.seoTitle,
+    description: documentData.desc,
     twitter: {
       card: "summary_large_image",
       site: "@Polarishre",
-      title: document.title,
-      description: document.desc || "Sharing knowledge in new ways",
-      image: APP_CONFIG.domain().image + "/" + document.documentId + "/1024/1",
-      url: document.shortUrl
-        ? document.shortUrl
+      title: documentData.title,
+      description: documentData.desc || "Sharing knowledge in new ways",
+      image:
+        APP_CONFIG.domain().image + "/" + documentData.documentId + "/1024/1",
+      url: documentData.shortUrl
+        ? documentData.shortUrl
         : APP_CONFIG.domain().mainHost +
           "/@" +
-          (document.username || document.email) +
+          (authorData.username || authorData.email) +
           "/" +
-          document.seoTitle
+          documentData.seoTitle
     },
     og: {
       site_name: "Polaris Share",
       type: "website",
-      title: document.title,
-      description: document.desc || "Sharing knowledge in new ways",
+      title: documentData.title,
+      description: documentData.desc || "Sharing knowledge in new ways",
       image_width: "720",
-      image_height: document.dimensions
+      image_height: documentData.dimensions
         ? Math.floor(
             Number(
-              (document.dimensions.height * 720) / document.dimensions.width
+              (documentData.dimensions.height * 720) /
+                documentData.dimensions.width
             )
           )
         : "498",
-      url: document.shortUrl
-        ? document.shortUrl
+      url: documentData.shortUrl
+        ? documentData.shortUrl
         : APP_CONFIG.domain().mainHost +
           "/@" +
-          (document.username || document.email) +
+          (authorData.username || authorData.email) +
           "/" +
-          document.seoTitle
+          documentData.seoTitle
     }
   };
 
   return {
-    documentData: document,
-    ratio: document.dimensions
-      ? document.dimensions.width / document.dimensions.height
+    documentData: documentData,
+    ratio: documentData.dimensions
+      ? documentData.dimensions.width / documentData.dimensions.height
       : 1,
     featuredList,
-    text,
+    text: textData,
     totalViewCountInfo,
     readPage: 0,
     metaData

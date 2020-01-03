@@ -8,12 +8,15 @@ import { psString } from "../../../utils/localization";
 import { APP_CONFIG } from "../../../app.config";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
   () => import("components/common/avatar/UserAvatar"),
   { ssr: false }
 );
+
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
 // 이미지 정보 GET
 const getImgInfo = documentData => {
@@ -96,7 +99,7 @@ export default function({ documentData }: Type) {
             }}
             as={"/@" + identification + "/" + documentData.seoTitle}
           >
-            <LinesEllipsis
+            <ResponsiveEllipsis
               text={
                 documentData.title
                   ? documentData.title

@@ -7,7 +7,7 @@ export default class DocumentInfo {
   cc: any;
   created: number;
   desc: string;
-  dimension: any;
+  dimensions: any;
   documentId: string;
   documentName: string;
   documentSize: number;
@@ -21,6 +21,7 @@ export default class DocumentInfo {
   pdf: boolean;
   pdfBase64: boolean;
   seoTitle: string;
+  shortUrl: string;
   state: string;
   tags: any;
   title: string;
@@ -38,7 +39,7 @@ export default class DocumentInfo {
     this.cc = data && data.cc ? data.cc : [];
     this.created = data && data.created ? data.created : 0;
     this.desc = data && data.desc ? data.desc : "";
-    this.dimension = data && data.dimension ? data.dimension : {};
+    this.dimensions = data && data.dimensions ? data.dimensions : {};
     this.documentId = data && data.documentId ? data.documentId : "";
     this.documentName = data && data.documentName ? data.documentName : "";
     this.documentSize = data && data.documentSize ? data.documentSize : 0;
@@ -52,7 +53,8 @@ export default class DocumentInfo {
     this.isRegistry = data && data.isRegistry ? data.isRegistry : false;
     this.pdf = data && data.pdf ? data.pdf : false;
     this.pdfBase64 = data && data.pdfBase64 ? data.pdfBase64 : false;
-    this.seoTitle = data && data.seoTitle ? data.seoTitle : null;
+    this.seoTitle = data && data.seoTitle ? data.seoTitle : "";
+    this.shortUrl = data && data.shortUrl ? data.shortUrl : "";
     this.state = data && data.state ? data.state : "";
     this.tags = data && data.tags ? data.tags : [];
     this.title = data && data.title ? data.title : "";

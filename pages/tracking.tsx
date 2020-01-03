@@ -6,6 +6,7 @@ import common_data from "../common/common_data";
 import React from "react";
 import { AUTH_APIS } from "../utils/auth";
 import Router from "next/router";
+import DocumentInfo from "../service/model/DocumentInfo";
 
 export default function index({ documentData, ratio }, ...rest) {
   if (typeof window !== "undefined" && !AUTH_APIS.isAuthenticated()) {
@@ -33,9 +34,11 @@ index.getInitialProps = async props => {
     totalViewCountInfo
   } = await repos.Document.getDocument(seoTitle);
 
+  const documentData = new DocumentInfo(document);
+
   return {
-    documentData: document,
-    ratio: document.dimensions.width / document.dimensions.height,
+    documentData: documentData,
+    ratio: documentData.dimensions.width / documentData.dimensions.height,
     featuredList,
     totalViewCountInfo
   };

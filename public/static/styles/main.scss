@@ -3794,6 +3794,10 @@ input[type="radio"]:checked + label span i {
   border: 1px solid #f5f5f5;
   position: relative;
   cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
 }
 
 .cl_image {
@@ -3839,6 +3843,10 @@ input[type="radio"]:checked + label span i {
 
   &:hover {
     color: #3d5afe !important;
+
+    div {
+      border-color: $second-color;
+    }
   }
 
   @media all and (max-width: $sm-max-width) {
@@ -3886,9 +3894,9 @@ input[type="radio"]:checked + label span i {
 }
 
 .cl_infoDetailWrapper {
-  @include mt(2);
   position: absolute;
-  width: 100%
+  bottom: -3px;
+  width: 100%;
 }
 
 .cl_infoDetailReward {
@@ -5014,6 +5022,8 @@ input[type="radio"]:checked + label span i {
 .ta_optionBtn {
   @extend .common_optionBtn;
   top: 15px;
+  position: absolute;
+  right: 0;
 }
 
 .ta_optionTable {
@@ -5286,6 +5296,10 @@ input[type="radio"]:checked + label span i {
 .tl_td_1 {
   @extend .tl_td;
   @include col(4);
+
+  span {
+    @include ml(3);
+  }
 }
 
 .tl_td_2 {
@@ -5378,6 +5392,9 @@ input[type="radio"]:checked + label span i {
   @include col(12);
 }
 
+.tl_noDataIconWrapper {
+  @include mt(3);
+}
 
 //======================================
 //         AUTO SUGGEST INPUT CSS
@@ -6240,6 +6257,10 @@ input[type="radio"]:checked + label span i {
   border: 1px solid #f5f5f5;
   position: relative;
   cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
 }
 
 .puti_thumb {

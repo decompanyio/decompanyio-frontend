@@ -244,7 +244,9 @@ export default function({ documentData }: Type) {
 
       <div className={styles.tl_table}>
         <div className={styles.tl_tr_0}>
-          <div className={styles.tl_td_1}>{psString("tracking-list-name")}</div>
+          <div className={styles.tl_td_1}>
+            <span>{psString("tracking-list-name")}</span>
+          </div>
           <div className={styles.tl_td_2}>
             {psString("tracking-list-views")}
           </div>
@@ -269,9 +271,11 @@ export default function({ documentData }: Type) {
                 className={styles.tl_tr_2}
               >
                 <div className={styles.tl_td_1}>
-                  {result.user
-                    ? result.user.e
-                    : psString("tracking-list-anonymous")}
+                  <span>
+                    {result.user
+                      ? result.user.e
+                      : psString("tracking-list-anonymous")}
+                  </span>
                 </div>
 
                 <div className={styles.tl_td_2}>
@@ -404,7 +408,11 @@ export default function({ documentData }: Type) {
             <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
           </div>
         )}
-        {!loading && trackingList.length === 0 && <NoDataIcon />}
+        {!loading && trackingList.length === 0 && (
+          <div className={styles.tl_noDataIconWrapper}>
+            <NoDataIcon />
+          </div>
+        )}
       </div>
     </div>
   );

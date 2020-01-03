@@ -23,13 +23,13 @@ app.prepare().then(() => {
     });
 
     // 뷰어 페이지
-    server.get('/' + profileRegEx +'/:seoTitle', (req, res) => {
+    server.get('/' + profileRegEx + '/:seoTitle', (req, res) => {
         const params = {identifier: req.url.split('/')[1], seoTitle: req.url.split('/')[2]};
         return app.render(req, res, '/contents_view', params)
     });
 
     // 뷰어 페이지 + 페이지 넘버
-    server.get('/' + profileRegEx +'/:seoTitle/:pageNum', (req, res) => {
+    server.get('/' + profileRegEx + '/:seoTitle/:pageNum', (req, res) => {
         const params = {identifier: req.url.split('/')[1], seoTitle: req.url.split('/')[2]};
         return app.render(req, res, '/contents_view', params)
     });
@@ -41,7 +41,7 @@ app.prepare().then(() => {
 
         let pathname = req.url.split('/');
 
-        if(!pathname[2] || !pathname[3]) {
+        if (!pathname[2] || !pathname[3]) {
             return app.render(req, res, '/not_found_page', req.query);
         }
 
@@ -56,7 +56,7 @@ app.prepare().then(() => {
 
         let pathname = req.url.split('/');
 
-        if(!pathname[2] || !pathname[3]) {
+        if (!pathname[2] || !pathname[3]) {
             return app.render(req, res, '/not_found_page', req.query);
         }
 
@@ -66,7 +66,7 @@ app.prepare().then(() => {
 
     // 태그 문서 목록 페이지
     server.get('/tag/:tag', (req, res) => {
-        if(!req.params.tag) return app.render(req, res, '/not_found_page', req.query);
+        if (!req.params.tag) return app.render(req, res, '/not_found_page', req.query);
 
         const params = {tag: req.params.tag};
         return app.render(req, res, '/contents_list', params)
@@ -150,17 +150,17 @@ app.prepare().then(() => {
     });
 
     server.listen(port, err => {
-        console.log('\n\n\n\n\n' +
-            '######  ####### #          #    ######  ###  #####      #####  #     #    #    ######  ####### \n'.blue +
-            '#     # #     # #         # #   #     #  #  #     #    #     # #     #   # #   #     # #       \n'.blue +
-            '#     # #     # #        #   #  #     #  #  #          #       #     #  #   #  #     # #       \n'.blue +
-            '######  #     # #       #     # ######   #   #####      #####  ####### #     # ######  #####   \n'.blue +
-            '#       #     # #       ####### #   #    #        #          # #     # ####### #   #   #       \n'.blue +
-            '#       #     # #       #     # #    #   #  #     #    #     # #     # #     # #    #  #       \n'.blue +
-            '#       ####### ####### #     # #     # ###  #####      #####  #     # #     # #     # ####### \n\n\n\n\n'.blue);
-        console.log('Server Start'.bold.bgGreen);
+        console.log('\n\n\n' +
+            '    ____  ____  __    ___    ____  _________    _____ __  _____    ____  ______ \n'.blue +
+            '   / __ \\/ __ \\/ /   /   |  / __ \\/  _/ ___/   / ___// / / /   |  / __ \\/ ____/ \n'.blue +
+            '  / /_/ / / / / /   / /| | / /_/ // / \\__ \\    \\__ \\/ /_/ / /| | / /_/ / __/    \n'.blue +
+            ' / ____/ /_/ / /___/ ___ |/ _, _// / ___/ /   ___/ / __  / ___ |/ _, _/ /___    \n'.blue +
+            '/_/    \\____/_____/_/  |_/_/ |_/___//____/   /____/_/ /_/_/  |_/_/ |_/_____/    \n\n\n'.blue);
+        console.log('Server Start'.bold.bgBlue);
         console.log('Date Time : '.bold + datetime);
         console.log('Listening Port : '.bold + port);
+        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
+        console.log('\n\n');
 
         if (err) throw err;
         console.log(`> Ready on http://localhost:${port}`)
