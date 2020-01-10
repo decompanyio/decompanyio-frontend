@@ -500,7 +500,7 @@ export const repos = {
     }
   },
   Wallet: {
-    async getWalletBalance(data) {
+    async getWalletBalance(data: any) {
       return WalletService.POST.walletBalance(data)
         .then(result => new WalletBalance(result))
         .catch(err => err);
@@ -520,7 +520,7 @@ export const repos = {
         })
         .catch(err => err);
     },
-    async walletWithdraw(data) {
+    async walletWithdraw(data: any) {
       const params = {
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -536,7 +536,7 @@ export const repos = {
         })
         .catch(err => err);
     },
-    async voteDocument(data) {
+    async voteDocument(data: any) {
       const params = {
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -550,7 +550,7 @@ export const repos = {
         .then(result => result)
         .catch(err => err);
     },
-    async claimCreator(data) {
+    async claimCreator(data: any) {
       const params = {
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -564,7 +564,7 @@ export const repos = {
         .then(result => result)
         .catch(err => err);
     },
-    async claimCurator(data) {
+    async claimCurator(data: any) {
       const params = {
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -578,14 +578,14 @@ export const repos = {
         .then(result => result)
         .catch(err => err);
     },
-    async getProfileRewards(data) {
+    async getProfileRewards(data: any) {
       return instance.Query.getProfileRewards(data).then(
         res => new ProfileRewards(res.ProfileSummary)
       );
     }
   },
   Mutation: {
-    addMyList: async data =>
+    addMyList: async (data: any) =>
       graphql({
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -594,7 +594,7 @@ export const repos = {
         },
         mutation: mutations.addMyList(data)
       }).then(res => res),
-    removeMyList: async data =>
+    removeMyList: async (data: any) =>
       graphql({
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -603,7 +603,7 @@ export const repos = {
         },
         mutation: mutations.removeMyList(data)
       }).then(res => res),
-    addHistory: async data =>
+    addHistory: async (data: any) =>
       graphql({
         header: {
           Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
@@ -614,19 +614,19 @@ export const repos = {
       }).then(res => res)
   },
   Query: {
-    getMyListFindMany: async data =>
+    getMyListFindMany: async (data: any) =>
       graphql({
         query: queries.getMyListFindMany(data)
       }).then((res: any) => res.UserDocumentFavorite.findMany),
-    getHistoryFindById: async data =>
+    getHistoryFindById: async (data: any) =>
       graphql({
         query: queries.getHistoryFindById(data)
       }).then((res: any) => res.UserDocumentHistory.findMany),
-    getDocumentListByIds: async data =>
+    getDocumentListByIds: async (data: any) =>
       graphql({
         query: queries.getDocumentListByIds(data)
       }).then(res => res),
-    getDocumentListByIdsMultiple: async data =>
+    getDocumentListByIdsMultiple: async (data: any) =>
       graphql({
         query: data.map(
           (v, i) =>
@@ -644,11 +644,11 @@ export const repos = {
             queries.getDocumentPopularByFindOne(v)
         )
       }).then(res => res),
-    getUserByIds: async data =>
+    getUserByIds: async (data: any) =>
       graphql({
         query: queries.getUserByIds(data)
       }).then((res: any) => res.User.findByIds),
-    getProfileRewards: async data =>
+    getProfileRewards: async (data: any) =>
       graphql({
         query: queries.getProfileRewards(data)
       }).then(res => res)

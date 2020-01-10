@@ -18,9 +18,8 @@ const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 export default function({ documentData }: Type) {
   const isMobile = useSelector(state => state.main.isMobile);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
-
   const reward = common.toEther(0);
-  const vote = common.toEther(documentData.latestVoteAmount) || 0;
+  const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0;
   const view = documentData.latestPageview || 0;
   const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
@@ -48,6 +47,12 @@ export default function({ documentData }: Type) {
               )}
               alt={document.title ? document.title : documentData.documentName}
               className={styles.pcti_cardImg}
+              onError={e => {
+                let element = e.target as HTMLImageElement;
+                element.onerror = null;
+                element.src =
+                  APP_CONFIG.domain().static + "/image/logo-cut.png";
+              }}
             />
           </div>
         </Link>

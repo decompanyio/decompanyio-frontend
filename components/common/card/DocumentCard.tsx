@@ -121,19 +121,22 @@ export default function({ documentData }: Type) {
           as={"/@" + identification}
         >
           <div className={styles.dc_avatarWrapper}>
-            <UserAvatarWithoutSSR
-              picture={profileUrl}
-              croppedArea={croppedArea}
-              size={30}
-            />
-            <span className={styles.dc_name}>{identification}</span>
-            {!isMobileFromRedux && (
-              <span className={styles.dc_date}>
-                {common_view.dateTimeAgo(documentData.created, false)}
-              </span>
-            )}
+            <div>
+              <UserAvatarWithoutSSR
+                picture={profileUrl}
+                croppedArea={croppedArea}
+                size={30}
+              />
+              <span className={styles.dc_name}>{identification}</span>
+            </div>
           </div>
         </Link>
+
+        {!isMobileFromRedux && (
+          <span className={styles.dc_date}>
+            {common_view.dateTimeAgo(documentData.created, false)}
+          </span>
+        )}
 
         <div className={styles.dc_count}>
           <div

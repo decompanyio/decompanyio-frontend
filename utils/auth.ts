@@ -98,6 +98,7 @@ export const AUTH_APIS = {
   handleAuthentication(location) {
     return new Promise((resolve, reject) => {
       if (!/access_token|id_token|error/.test(location.hash)) reject();
+
       authData.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setMyInfo(authResult)

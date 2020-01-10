@@ -1,5 +1,4 @@
 import * as styles from "public/static/styles/main.scss";
-import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeBounce } from "better-react-spinkit";
 import NoDataIcon from "../../common/NoDataIcon";
@@ -38,16 +37,17 @@ const setResultList = (listData: any, resultList: any) =>
   });
 
 export default function({ documentList, tag, path }: Type) {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
   const [listLength, setListLength] = useState(2);
   const [bookmarkList, setBookmarkList] = useState(null);
   const [state, setState] = useState({
     list: documentList.resultList || [],
-    endPage: false
+    endPage: documentList.resultList
+      ? documentList.resultList.length < 10
+      : path !== "history" && path !== "mylist"
   });
 
   // 무한 스크롤 추가 데이터 GET
-  const fetchMoreData = async () =>
+  const fetchData = async () =>
     Promise.resolve(await setListLength(listLength + 1))
       .then(() => setParams(listLength, tag, path))
       .then(res => repos.Document.getDocumentList(res))
@@ -62,13 +62,13 @@ export default function({ documentList, tag, path }: Type) {
 
   // 북마크 목록 GET
   const getBookmarkList = () => {
-    repos.Query.getMyListFindMany({ userId: myInfoFromRedux._id }).then(res =>
-      setBookmarkList(res)
+    repos.Query.getMyListFindMany({ userId: AUTH_APIS.getMyInfo().sub }).then(
+      res => setBookmarkList(res)
     );
   };
 
   useEffect(() => {
-    if (AUTH_APIS.isAuthenticated() && path === "mylist") {
+    if (AUTH_APIS.isAuthenticated()) {
       getBookmarkList();
     }
   }, []);
@@ -88,7 +88,7 @@ export default function({ documentList, tag, path }: Type) {
       {state.list && state.list.length > 0 && (
         <InfiniteScroll
           dataLength={state.list.length}
-          next={fetchMoreData}
+          next={fetchData}
           hasMore={!state.endPage}
           loader={
             <div className={styles.cl_spinner}>
@@ -104,7 +104,8 @@ export default function({ documentList, tag, path }: Type) {
               <ContentsListItem
                 key={result.documentId + result.accountId}
                 documentData={result}
-                mylist={bookmarkList}
+                bookmarkList={bookmarkList}
+                path={path}
               />
             </div>
           ))}

@@ -60,7 +60,7 @@ const getStatus = (code: number, alertData: any, myInfoFromRedux: any) => {
       msg = getMsg(code); // 복사 실패
       break;
 
-    // 이메일 메세지 2031~
+    // 이메일 메세지 2021~
     case 2021:
       status = "success";
       msg = getMsg(code); // 이메일 검증 성공
@@ -82,6 +82,20 @@ const getStatus = (code: number, alertData: any, myInfoFromRedux: any) => {
       break;
 
     // 지갑 메세지 2051~
+    case 2031:
+      status = "warning";
+      msg = getMsg(code); // 클레임 금액 부족
+      break;
+
+    case 2032:
+      status = "error";
+      msg = getMsg(code); // 클레임 실패
+      break;
+
+    case 2033:
+      status = "success";
+      msg = getMsg(code); // 클레임 성공
+      break;
 
     // 업로드 메세지 2071~
     case 2071:
@@ -162,6 +176,10 @@ const getStatus = (code: number, alertData: any, myInfoFromRedux: any) => {
     case 2144:
       status = "error";
       msg = getMsg(code); // 프로필 이미지 수정 실패
+      break;
+    case 2145:
+      status = "error";
+      msg = getMsg(code); // 프로필 이미지 수정 파일 타입 에러
       break;
 
     // =============================================

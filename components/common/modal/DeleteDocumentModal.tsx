@@ -32,7 +32,7 @@ export default function() {
       documentId: documentData.documentId
     })
       .then(() => dispatch(setActionMain.modal(null)))
-      .then(() => handleDeleteAfter())
+      .then(() => void handleDeleteAfter())
       .catch(() => {
         setLoading(false);
         dispatch(setActionMain.alertCode(2003, {}));
@@ -46,9 +46,9 @@ export default function() {
       decodeURI(common_view.getPaths()[2]) === documentData.seoTitle
     ) {
       dispatch(setActionMain.alertCode(2076, {}));
-      Router.push("/");
+      return Router.push("/");
     } else {
-      document.location.reload();
+      return document.location.reload();
     }
   };
 

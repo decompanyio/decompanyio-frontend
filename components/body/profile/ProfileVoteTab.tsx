@@ -1,76 +1,72 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ThreeBounce } from "better-react-spinkit";
+import { setActionMain } from "../../../redux/reducer/main";
 import repos from "../../../utils/repos";
 import { psString } from "../../../utils/localization";
-import React, { useEffect, useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import NoDataIcon from "../../common/NoDataIcon";
-import ProfileCuratorTabItem from "./ProfileCuratorTabItem";
+import ProfileVoteTabItem from "./ProfileVoteTabItem";
 import * as styles from "../../../public/static/styles/main.scss";
+import NoDataIcon from "../../common/NoDataIcon";
+import Pagination from "../../common/Pagination";
+import common_data from "../../../common/common_data";
 
 type Type = {
   profileInfo: any;
 };
 
-export default function({ profileInfo }: Type) {
-  const [loading, setLoading] = useState(false);
-  const [dataSet, setDataSet] = useState({
-    resultList: [],
-    pageNo: 0,
-    isEndPage: false,
-    moreDataFlag: false
-  });
+const resultListModel = {
+  resultList: [],
+  pageNo: 1,
+  totalCount: 0
+};
 
-  // 무한 스크롤 다음 문서 DATA fetch
-  const fetchMoreData = () => {
-    if (dataSet.moreDataFlag) {
-      fetchDocuments({
-        pageNo: dataSet.pageNo + 1
-      });
-    }
-  };
+const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+
+export default function({ profileInfo }: Type) {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [dataSet, setDataSet] = useState(resultListModel);
+  const [page, setPage] = useState(1);
 
   // 문서 정보 fetch
-  const fetchDocuments = params => {
-    let pageNo = !params || isNaN(params.pageNo) ? 1 : Number(params.pageNo);
-    let _params = {};
-    if (profileInfo.ethAccount && profileInfo.ethAccount.length > 0) {
-      _params = {
-        pageNo: pageNo,
-        userId: profileInfo._id
-      };
-    } else return false;
+  const fetchDocuments = (page: number) => {
+    let params = {
+      pageNo: page,
+      userId: profileInfo._id
+    };
 
-    setLoading(true);
-
-    return repos.Document.getCuratorDocuments(_params)
-      .then((res: any) => {
-        setLoading(false);
-
-        if (res.resultList.length > 0) {
-          return setDataSet({
-            resultList:
-              dataSet.resultList.length > 0
-                ? dataSet.resultList.concat(res.resultList)
-                : res.resultList,
-            pageNo: res.pageNo,
-            isEndPage: res.count === 0 || res.resultList.length < 10,
-            moreDataFlag: true
-          });
-        } else {
-          return;
-        }
-      })
+    return Promise.resolve()
+      .then(() => setDataSet(resultListModel))
+      .then(() => setLoading(true))
+      .then(() => repos.Document.getCuratorDocuments(params))
+      .then(res => handleData(res))
       .catch(err => {
-        console.error("Error CuratorDocumentList", err);
-        let timeout = setTimeout(() => {
-          fetchDocuments(params);
-          clearTimeout(timeout);
-        }, 8000);
+        console.error(err);
+        dispatch(setActionMain.alertCode(2001, {}));
       });
+  };
+
+  // GET 데이터 관리
+  const handleData = res => {
+    if (!res || !res.resultList) return Promise.reject();
+    setLoading(false);
+
+    setDataSet({
+      resultList: res.resultList,
+      pageNo: res.pageNo,
+      totalCount: res.count
+    });
+  };
+
+  // handle pageNation click
+  const handlePageClick = (page: number) => {
+    return Promise.resolve()
+      .then(() => setPage(page))
+      .then(() => void fetchDocuments(page));
   };
 
   useEffect(() => {
-    fetchDocuments(null);
+    void fetchDocuments(1);
   }, []);
 
   return (
@@ -81,24 +77,24 @@ export default function({ profileInfo }: Type) {
       </div>
 
       {dataSet.resultList.length > 0 ? (
-        <InfiniteScroll
-          className={styles.pvt_infiniteScroll}
-          dataLength={dataSet.resultList.length}
-          next={fetchMoreData}
-          hasMore={!dataSet.isEndPage}
-          loader={
-            <div className={styles.pvt_spinner}>
-              <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
-            </div>
-          }
-        >
-          {dataSet.resultList.length > 0 &&
-            dataSet.resultList.map((result, idx) => (
-              <ProfileCuratorTabItem documentData={result} key={idx} />
-            ))}
-        </InfiniteScroll>
+        dataSet.resultList.map((result, idx) => (
+          <ProfileVoteTabItem documentData={result} key={idx} />
+        ))
+      ) : loading ? (
+        <div className={styles.put_spinner}>
+          <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
+        </div>
       ) : (
-        !loading && <NoDataIcon />
+        <NoDataIcon />
+      )}
+
+      {dataSet.resultList.length > 0 && (
+        <Pagination
+          totalCount={dataSet.totalCount}
+          pageCount={pageSize}
+          click={handlePageClick}
+          selectedPage={page}
+        />
       )}
     </div>
   );

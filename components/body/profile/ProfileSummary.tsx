@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as styles from "public/static/styles/main.scss";
 import { psString } from "../../../utils/localization";
 import MyAvatar from "../../common/avatar/MyAvatar";
@@ -11,9 +11,13 @@ import WalletBalance from "../../../service/model/WalletBalance";
 import common from "common/common";
 import { setActionMain } from "../../../redux/reducer/main";
 
-export default function({ profileInfo }) {
+type Type = {
+  profileInfo: any;
+  owner: boolean;
+};
+
+export default function({ profileInfo, owner }: Type) {
   const dispatch = useDispatch();
-  const myInfo = useSelector(state => state.main.myInfo);
   const [balance, setBalance] = useState(new WalletBalance(null));
   const [reward, setReward] = useState({
     last7Creator: 0,
@@ -24,10 +28,6 @@ export default function({ profileInfo }) {
   const [userNameEdit, setUserNameEdit] = useState(false);
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
-  );
-  const [owner] = useState(
-    profileInfo.username === myInfo.username ||
-      profileInfo.email === myInfo.email
   );
 
   // 리워드 조회
@@ -82,7 +82,8 @@ export default function({ profileInfo }) {
   const handleDepositBtnClick = () => dispatch(setActionMain.modal("deposit"));
 
   // 출금 버튼 클릭 관리
-  const handleWithdrawBtnClick = () => dispatch(setActionMain.modal("withdraw"));
+  const handleWithdrawBtnClick = () =>
+    dispatch(setActionMain.modal("withdraw"));
 
   useEffect(() => {
     void getBalance();
@@ -152,22 +153,24 @@ export default function({ profileInfo }) {
             </span>
           </div>
 
-          <div className={styles.ps_depositBtnWrapper}>
-            <p
-              data-tip={psString("deposit-modal-title")}
-              className={styles.ps_depositBtn}
-              onClick={() => handleDepositBtnClick()}
-            >
-              {psString("common-modal-deposit")}
-            </p>
-            <p
-              data-tip={psString("withdraw-modal-title")}
-              className={styles.ps_withdrawBtn}
-              onClick={() => handleWithdrawBtnClick()}
-            >
-              {psString("common-modal-withdraw")}
-            </p>
-          </div>
+          {owner && (
+            <div className={styles.ps_depositBtnWrapper}>
+              <p
+                data-tip={psString("deposit-modal-title")}
+                className={styles.ps_depositBtn}
+                onClick={() => handleDepositBtnClick()}
+              >
+                {psString("common-modal-deposit")}
+              </p>
+              <p
+                data-tip={psString("withdraw-modal-title")}
+                className={styles.ps_withdrawBtn}
+                onClick={() => handleWithdrawBtnClick()}
+              >
+                {psString("common-modal-withdraw")}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 

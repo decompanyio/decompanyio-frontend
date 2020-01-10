@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "components/Layout";
 import repos from "../utils/repos";
 import common from "../common/common";
 import ProfileSummary from "../components/body/profile/ProfileSummary";
 import ProfileTab from "../components/body/profile/ProfileTab";
 import common_data from "../common/common_data";
+import { AUTH_APIS } from "../utils/auth";
 
 const getParams = (identification: string) => {
   let params: any;
@@ -14,14 +15,35 @@ const getParams = (identification: string) => {
 };
 
 export default function Index({ profileInfo }, ...rest) {
+  const [owner, setOwner] = useState(-1);
+
+  useEffect(() => {
+    if (owner === -1) {
+      if (
+        AUTH_APIS.isAuthenticated() &&
+        (profileInfo.email && profileInfo.email === AUTH_APIS.getMyInfo().email)
+      ) {
+        setOwner(1);
+      } else {
+        setOwner(0);
+      }
+    }
+  });
+
   return (
     <Layout
-      title={profileInfo.username + common_data.commonTitle}
+      title={
+        (profileInfo.username || profileInfo.email) + common_data.commonTitle
+      }
       path="my_page"
       {...rest}
     >
-      <ProfileSummary profileInfo={profileInfo} />
-      <ProfileTab profileInfo={profileInfo} />
+      {owner !== -1 && (
+        <ProfileSummary profileInfo={profileInfo} owner={owner === 1} />
+      )}
+      {owner !== -1 && (
+        <ProfileTab profileInfo={profileInfo} owner={owner === 1} />
+      )}
     </Layout>
   );
 }

@@ -43,7 +43,7 @@ export default function() {
     return new Promise(resolve => {
       let errMsg = "";
       if (value <= 0) errMsg = psString("withdraw-modal-err-1");
-      else if (value > Number(common.toDeck(balance).toFixed(2))) {
+      else if (value > balance.deck) {
         errMsg = psString("withdraw-modal-err-2");
       }
 

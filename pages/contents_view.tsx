@@ -18,9 +18,10 @@ import common_data from "../common/common_data";
 import { setActionMain } from "../redux/reducer/main";
 import DocumentInfo from "../service/model/DocumentInfo";
 import UserInfo from "../service/model/UserInfo";
+import Router from "next/router";
 
 export default function index(
-  { documentData, text, ratio, readPage, metaData },
+  { documentData, text, ratio, readPage, metaData, message },
   ...rest
 ) {
   const dispatch = useDispatch();
@@ -118,6 +119,8 @@ export default function index(
   };
 
   useEffect(() => {
+    if (message) Router.push("/not_found_page");
+
     let page =
       common_view.getPageNum() > documentData.totalPages
         ? 0
@@ -188,14 +191,13 @@ export default function index(
 
 index.getInitialProps = async props => {
   let seoTitle = common_view.getPathFromPathname(props.asPath);
-
   const {
     document,
     featuredList,
     text,
-    totalViewCountInfo
+    totalViewCountInfo,
+    message
   } = await repos.Document.getDocument(seoTitle);
-
   const documentData = new DocumentInfo(document);
   const authorData = new UserInfo(documentData.author);
   const textData = text || [];
@@ -252,6 +254,7 @@ index.getInitialProps = async props => {
     text: textData,
     totalViewCountInfo,
     readPage: 0,
-    metaData
+    metaData,
+    message
   };
 };

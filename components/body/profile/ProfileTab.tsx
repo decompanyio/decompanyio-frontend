@@ -1,23 +1,17 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import * as styles from "../../../public/static/styles/main.scss";
-import { useSelector } from "react-redux";
 import { psString } from "../../../utils/localization";
-import { useState } from "react";
 import ProfileUploadTab from "./ProfileUploadTab";
 import ProfileVoteTab from "./ProfileVoteTab";
 import ProfileAnalyticsTab from "./ProfileAnalyticsTab";
+import React from "react";
 
 type Type = {
   profileInfo: any;
+  owner: boolean;
 };
 
-export default function({ profileInfo }: Type) {
-  const myInfo = useSelector(state => state.main.myInfo);
-  const [owner] = useState(
-    profileInfo.username === myInfo.username ||
-      profileInfo.email === myInfo.email
-  );
-
+export default function({ profileInfo, owner }: Type) {
   return (
     <div className={styles.pt_container}>
       <Tabs forceRenderTabPanel={true}>

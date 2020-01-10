@@ -5,7 +5,11 @@ import NotFoundPage from "../components/common/page/NotFoundPage";
 
 export default function index(...rest) {
   return (
-    <Layout title={"404" + common_data.commonTitle} path="404" {...rest}>
+    <Layout
+      title={"Deleted document" + common_data.commonTitle}
+      path="deleted"
+      {...rest}
+    >
       <NotFoundPage />
     </Layout>
   );

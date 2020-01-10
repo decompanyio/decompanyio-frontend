@@ -14,6 +14,7 @@ import { AUTH_APIS } from "../../../utils/auth";
 import RewardCard from "../../common/card/RewardCard";
 import { setActionMain } from "../../../redux/reducer/main";
 import DocumentInfo from "../../../service/model/DocumentInfo";
+import ProfileCreatorClaim from "./ProfileCreatorClaim";
 
 type Type = {
   documentData: any;
@@ -36,7 +37,7 @@ export default function({
   const myInfo = useSelector(state => state.main.myInfo);
   const isMobile = useSelector(state => state.main.isMobile);
   const [tmpDocumentData, setTmpDocumentData] = useState(
-    new DocumentInfo(null)
+    new DocumentInfo(documentData)
   );
   const [rewardInfoOpen, setRewardInfo] = useState(false);
 
@@ -56,17 +57,6 @@ export default function({
         document.body.removeChild(a);
       })
       .catch(err => console.error(err));
-
-  // 문서 정보 state 저장
-  const setDocumentToState = () => {
-    return new Promise(resolve => {
-      if (!tmpDocumentData.seoTitle) {
-        resolve(setTmpDocumentData(documentData));
-      } else {
-        resolve();
-      }
-    });
-  };
 
   // document state 관리
   const setDocumentState = state => {
@@ -131,7 +121,7 @@ export default function({
     dispatch(setActionMain.modal("publish", { documentData }));
 
   useEffect(() => {
-    setDocumentToState().then(() => handleState());
+    handleState();
   }, []);
 
   let reward = common.toEther(0);
@@ -147,24 +137,24 @@ export default function({
   return (
     <div className={styles.puti_container}>
       <div className={styles.puti_thumbWrapper}>
-        <div className={styles.puti_thumb}>
-          {tmpDocumentData.state &&
-          tmpDocumentData.state !== "CONVERT_COMPLETE" ? (
-            <p data-tip="Converting document...">
-              <div className={styles.puti_notConvertContainer}>
-                <div className={styles.puti_notConvert}>
-                  <FadingCircle size={40} color={"#3d5afe"} />
-                </div>
+        {tmpDocumentData.state &&
+        tmpDocumentData.state !== "CONVERT_COMPLETE" ? (
+          <div className={styles.puti_thumbLoading}>
+            <div className={styles.puti_notConvertContainer}>
+              <div className={styles.puti_notConvert}>
+                <FadingCircle size={40} color="#3d5afe" />
               </div>
-            </p>
-          ) : (
-            <Link
-              href={{
-                pathname: "/contents_view",
-                query: { seoTitle: documentData.seoTitle }
-              }}
-              as={"/@" + identification + "/" + documentData.seoTitle}
-            >
+            </div>
+          </div>
+        ) : (
+          <Link
+            href={{
+              pathname: "/contents_view",
+              query: { seoTitle: tmpDocumentData.seoTitle }
+            }}
+            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+          >
+            <div className={styles.puti_thumb}>
               <img
                 src={common.getThumbnail(
                   tmpDocumentData.documentId,
@@ -185,10 +175,16 @@ export default function({
                     ? styles.puti_notConvertBackground
                     : "")
                 }
+                onError={e => {
+                  let element = e.target as HTMLImageElement;
+                  element.onerror = null;
+                  element.src =
+                    APP_CONFIG.domain().static + "/image/logo-cut.png";
+                }}
               />
-            </Link>
-          )}
-        </div>
+            </div>
+          </Link>
+        )}
       </div>
 
       <div className={styles.puti_optionBtnWrapper}>
@@ -213,13 +209,15 @@ export default function({
               }
               id={"optionTable" + idx}
             >
-              <div
-                className={styles.puti_optionTableBtn}
-                onClick={() => handleClickShareBtn()}
-              >
-                <i className="material-icons">share</i>
-                {psString("share-modal-btn")}
-              </div>
+              {tmpDocumentData.state === "CONVERT_COMPLETE" && (
+                <div
+                  className={styles.puti_optionTableBtn}
+                  onClick={() => handleClickShareBtn()}
+                >
+                  <i className="material-icons">share</i>
+                  {psString("share-modal-btn")}
+                </div>
+              )}
               {tmpDocumentData.state === "CONVERT_COMPLETE" && (
                 <div
                   className={styles.puti_optionTableBtn}
@@ -245,53 +243,60 @@ export default function({
             </div>
           </div>
         )}
-        <Link
-          href={{
-            pathname: "/contents_view",
-            query: { seoTitle: documentData.seoTitle }
-          }}
-          as={"/@" + identification + "/" + documentData.seoTitle}
-        >
-          <div
-            className={
-              tmpDocumentData.state &&
-              tmpDocumentData.state !== "CONVERT_COMPLETE"
-                ? " not-convert-wrapper"
-                : ""
-            }
+        {tmpDocumentData.desc &&
+        tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+          <Link
+            href={{
+              pathname: "/contents_view",
+              query: { seoTitle: tmpDocumentData.seoTitle }
+            }}
+            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
           >
-            <div
-              className={styles.puti_title}
-              onClick={() => common_view.scrollTop()}
-            >
+            <div className={styles.puti_title}>
               {tmpDocumentData.title
                 ? tmpDocumentData.title
                 : tmpDocumentData.documentName}
             </div>
+          </Link>
+        ) : (
+          <div className={styles.puti_title}>
+            {tmpDocumentData.title
+              ? tmpDocumentData.title
+              : tmpDocumentData.documentName}
           </div>
-        </Link>
+        )}
 
         <div className={styles.puti_descWrapper}>
           {tmpDocumentData.desc &&
-            tmpDocumentData.state === "CONVERT_COMPLETE" && (
-              <Link
-                href={{
-                  pathname: "/contents_view",
-                  query: { seoTitle: documentData.seoTitle }
-                }}
-                as={"/@" + identification + "/" + documentData.seoTitle}
-              >
-                <div className={styles.puti_desc}>
-                  <ResponsiveEllipsis
-                    text={tmpDocumentData.desc}
-                    maxLine={2}
-                    ellipsis="..."
-                    trimRight
-                    basedOn="words"
-                  />
-                </div>
-              </Link>
-            )}
+          tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+            <Link
+              href={{
+                pathname: "/contents_view",
+                query: { seoTitle: tmpDocumentData.seoTitle }
+              }}
+              as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+            >
+              <div className={styles.puti_desc}>
+                <ResponsiveEllipsis
+                  text={tmpDocumentData.desc}
+                  maxLine={2}
+                  ellipsis="..."
+                  trimRight
+                  basedOn="words"
+                />
+              </div>
+            </Link>
+          ) : (
+            <div className={styles.puti_desc}>
+              <ResponsiveEllipsis
+                text={tmpDocumentData.desc}
+                maxLine={2}
+                ellipsis="..."
+                trimRight
+                basedOn="words"
+              />
+            </div>
+          )}
         </div>
 
         <div className={styles.puti_infoWrapper}>
@@ -319,13 +324,9 @@ export default function({
             {common_view.dateTimeAgo(tmpDocumentData.created, isMobile)}
           </div>
 
-          {/*          <div
-            className={
-              "claim-btn-wrapper " + (isMobile ? "mt-2" : "float-right")
-            }
-          >
-            <CreatorClaimContainer {...props} document={tmpDocumentData} />
-          </div>*/}
+          <div className={styles.puti_claimWrapper}>
+            <ProfileCreatorClaim documentData={tmpDocumentData} />
+          </div>
 
           {!tmpDocumentData.isPublic &&
             tmpDocumentData.state === "CONVERT_COMPLETE" && (

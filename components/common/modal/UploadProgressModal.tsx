@@ -9,10 +9,10 @@ type Type = {
 export default function({ percentage }: Type) {
   return (
     <div>
-      <div className={styles.pm_progressWrapper} id="progressWrapper" />
-      <div className={styles.pm_progress} id="progressModal">
-        <div className={styles.pm_progressSecond}>
-          <div className={styles.pm_percent}>{percentage}%</div>
+      <div className={styles.upm_progressWrapper} id="progressWrapper" />
+      <div className={styles.upm_progress} id="progressModal">
+        <div className={styles.upm_progressSecond}>
+          <div className={styles.upm_percent}>{percentage}%</div>
           <Circle size={100} color={"#ffffff"} />
         </div>
       </div>

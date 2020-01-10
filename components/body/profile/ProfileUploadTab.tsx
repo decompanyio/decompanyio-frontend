@@ -1,63 +1,58 @@
-import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeBounce } from "better-react-spinkit";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import log from "utils/log";
 import { psString } from "utils/localization";
 import * as styles from "../../../public/static/styles/main.scss";
 import NoDataIcon from "components/common/NoDataIcon";
 import repos from "../../../utils/repos";
 import ProfileUploadTabItem from "./ProfileUploadTabItem";
+import Pagination from "../../common/Pagination";
+import { setActionMain } from "../../../redux/reducer/main";
+import common_data from "../../../common/common_data";
 
 type Type = {
   profileInfo: any;
   owner: boolean;
 };
 
+const resultListModel = {
+  resultList: [],
+  totalCount: 0,
+  pageNo: 1,
+  totalViewCountInfo: null
+};
+
+const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+
 export default function({ profileInfo, owner }: Type) {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [viewerOptionOpenedIdx, setViewerOptionOpenedIdx] = useState(null);
-  const [resultList, setResultList] = useState({
-    resultList: [],
-    pageNo: null,
-    isEndPage: false,
-    moreDataFlag: false,
-    totalViewCountInfo: null
-  });
-
-  // 타임아웃 설정
-  const setTimeOut = () => {
-    let timeout = setTimeout(() => {
-      void fetchDocuments();
-      clearTimeout(timeout);
-    }, 8000);
-  };
-
-  // 무한 스크롤 데이터 추가 GET (임시 주석처리)
-  const fetchMoreData = () => {
-    /*const { pageNo, moreDataFlag } = state;
-    if (moreDataFlag) fetchDocuments({ pageNo: pageNo + 1 });*/
-  };
+  const [dataSet, setDataSet] = useState(resultListModel);
+  const [page, setPage] = useState(1);
 
   // 데이터 GET
-  const fetchDocuments = () => {
-    let _params = {
-      pageNo: 1,
+  const fetchDocuments = (page: number) => {
+    let params = {
+      pageNo: page,
       username: profileInfo.username || "",
       email: profileInfo.email,
-      pageSize: 10000 // 임시 사용
+      pageSize: pageSize
     };
 
     return Promise.resolve()
+      .then(() => setDataSet(resultListModel))
       .then(() => setLoading(true))
       .then(() =>
         owner
-          ? repos.Document.getDocuments(_params)
-          : repos.Document.getDocumentList(_params)
+          ? repos.Document.getDocuments(params)
+          : repos.Document.getDocumentList(params)
       )
       .then(res => handleData(res))
       .catch(err => {
         console.error(err);
-        setTimeOut();
+        dispatch(setActionMain.alertCode(2001, {}));
       });
   };
 
@@ -66,16 +61,12 @@ export default function({ profileInfo, owner }: Type) {
     if (!res || !res.resultList) return Promise.reject();
     setLoading(false);
 
-    setResultList({
-      resultList:
-        resultList.resultList.length > 0
-          ? resultList.resultList.concat(res.resultList)
-          : res.resultList,
+    setDataSet({
+      resultList: res.resultList,
+      totalCount: res.count,
       pageNo: res.pageNo,
-      moreDataFlag: true,
-      isEndPage: res.count === 0 || res.resultList.length < 10,
       totalViewCountInfo:
-        res && res.totalViewCountInfo && !resultList.totalViewCountInfo
+        res && res.totalViewCountInfo && !dataSet.totalViewCountInfo
           ? res.totalViewCountInfo
           : null
     });
@@ -99,10 +90,17 @@ export default function({ profileInfo, owner }: Type) {
     }
   };
 
+  // handle pageNation click
+  const handlePageClick = (page: number) => {
+    return Promise.resolve()
+      .then(() => setPage(page))
+      .then(() => fetchDocuments(page));
+  };
+
   useEffect(() => {
     log.CreatorUploadTab.init(false);
     // url 위변조 방지 위하여, 첫 로드시 set state 진행
-    void fetchDocuments();
+    void fetchDocuments(1);
 
     window.addEventListener("click", handleOption);
     return () => {
@@ -114,39 +112,35 @@ export default function({ profileInfo, owner }: Type) {
     <div className={styles.put_container}>
       <div className={styles.put_totalNum}>
         {psString("profile-total-documents")}
-        <span>{resultList.resultList.length}</span>
+        <span>{dataSet.totalCount}</span>
       </div>
 
-      {resultList.resultList.length > 0 ? (
-        <InfiniteScroll
-          className={styles.put_infiniteScroll}
-          dataLength={resultList.resultList.length}
-          next={fetchMoreData}
-          hasMore={!resultList.isEndPage}
-          loader={
-            <div className={styles.put_spinner}>
-              <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
-            </div>
-          }
-        >
-          {resultList.resultList.length > 0 &&
-            resultList.resultList.map((result, idx) => (
-              <ProfileUploadTabItem
-                documentData={result}
-                idx={idx}
-                key={idx}
-                owner={owner}
-                handleUploadSettings={() => handleUploadSettings(idx)}
-                viewerOptionOpenedIdx={viewerOptionOpenedIdx}
-              />
-            ))}
-        </InfiniteScroll>
+      {dataSet.resultList.length > 0 ? (
+        dataSet.resultList.map((result, idx) => (
+          <ProfileUploadTabItem
+            documentData={result}
+            idx={idx}
+            key={idx}
+            owner={owner}
+            handleUploadSettings={() => handleUploadSettings(idx)}
+            viewerOptionOpenedIdx={viewerOptionOpenedIdx}
+          />
+        ))
       ) : loading ? (
         <div className={styles.put_spinner}>
           <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
         </div>
       ) : (
         <NoDataIcon />
+      )}
+
+      {dataSet.resultList.length > 0 && (
+        <Pagination
+          totalCount={dataSet.totalCount}
+          pageCount={pageSize}
+          click={handlePageClick}
+          selectedPage={page}
+        />
       )}
     </div>
   );

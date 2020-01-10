@@ -105,12 +105,11 @@ export default function(props) {
   };
 
   // SET 태그 리스트
-  const setTagList = () => {
+  const setTagList = () =>
     repos.Document.getTagList("latest")
       .then(result => dispatch(setActionMain.tagList(result.tagList)))
       .catch(err => log.Main.setTagList(err))
       .then(() => log.Main.setTagList(false));
-  };
 
   // SET 이벤트 리스너
   const setEventListener = () => {
@@ -157,7 +156,7 @@ export default function(props) {
 
     repos.init().then(() => {
       // SET 모바일 유무
-      setTagList();
+      void setTagList();
 
       // SET 이벤트 리스너
       setEventListener();

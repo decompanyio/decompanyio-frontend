@@ -15,7 +15,7 @@ export default {
     `
     UserDocumentHistory {
     findMany(
-    filter: { userId: "${data.userId}" },
+    filter: { userId: "${data.userId}"},
     skip: ${data.skip || 0},
     limit: 10,
     sort: USERID__UPDATED_ASC
@@ -122,36 +122,38 @@ export default {
   getProfileRewards: data =>
     `
   ProfileSummary {
-    getLast7CreatorReward(userId: "${data}") {
+    getLast6CreatorReward(userId: "${data}") {
       documentId
-      blockchainTimestamp
-      blockchainDate
+      activeDate
       pageview
       totalPageview
       reward
     }
     getTodayEstimatedCreatorReward(userId: "${data}") {
       documentId
-      blockchainTimestamp
-      blockchainDate
+      activeDate
       pageview
       totalPageview
       reward
     }
-    getLast7CuratorReward(userId: "${data}") {
+    getLast6CuratorReward(userId: "${data}") {
+      activeDate
+      voteDate
       documentId
-      blockchainTimestamp
-      blockchainDate
       pageview
-      totalPageview
+      totalPageviewSquare
+      voteAmount
+      totalVoteAmount
       reward
     }
     getTodayEstimatedCuratorReward(userId: "${data}") {
+      activeDate
+      voteDate
       documentId
-      blockchainTimestamp
-      blockchainDate
       pageview
-      totalPageview
+      totalPageviewSquare
+      voteAmount
+      totalVoteAmount
       reward
     }
   }

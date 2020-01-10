@@ -1,87 +1,75 @@
 import React, { useEffect, useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { ThreeBounce } from "better-react-spinkit";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
+import { ThreeBounce } from "better-react-spinkit";
 import repos from "utils/repos";
 import { psString } from "utils/localization";
-import common_view from "common/common_view";
-import common from "common/common";
 import NoDataIcon from "components/common/NoDataIcon";
-import CustomChart from "components/common/chart/CustomChart";
 import { APP_CONFIG } from "../../../app.config";
 import AnalyticsList from "../../../service/model/AnalyticsList";
 import * as styles from "../../../public/static/styles/main.scss";
+import ProfileAnalyticsChart from "./ProfileAnalyticsChart";
+import { setActionMain } from "../../../redux/reducer/main";
+import common_view from "common/common_view";
+import common from "common/common";
+import Pagination from "../../common/Pagination";
+import common_data from "../../../common/common_data";
 
 type Type = {
   profileInfo: any;
 };
 
+const resultListModel = {
+  resultList: [],
+  pageNo: 1,
+  totalCount: 0
+};
+
+const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+
 export default function({ profileInfo }: Type) {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [chartFlag, setChartFlag] = useState(false);
   const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null));
   const [spreadItem, setSpreadItem] = useState(-1);
+  const [page, setPage] = useState(1);
   const [documentId, setDocumentId] = useState(null);
-  const [dataSet, setDataSet] = useState({
-    resultList: [],
-    pageNo: 0,
-    isEndPage: false,
-    moreDataFlag: false
-  });
+  const [dataSet, setDataSet] = useState(resultListModel);
   const [dateSet, setDateSet] = useState({
     year: -1,
     week: 1
   });
 
-  // 무한 스크롤 다음 문서 DATA fetch
-  const fetchMoreData = () => {
-    if (dataSet.moreDataFlag) {
-      fetchDocuments({
-        pageNo: dataSet.pageNo + 1
+  // 문서 리스트 GET
+  const fetchDocuments = (page: number) => {
+    let params = {
+      pageNo: page,
+      username: profileInfo.username,
+      email: profileInfo.email
+    };
+
+    return Promise.resolve()
+      .then(() => setDataSet(resultListModel))
+      .then(() => setLoading(true))
+      .then(() => repos.Document.getDocumentList(params))
+      .then(res => handleData(res))
+      .catch(err => {
+        console.error(err);
+        dispatch(setActionMain.alertCode(2001, {}));
       });
-    }
   };
 
-  // 문서 리스트 GET
-  const fetchDocuments = params => {
-    const pageNo = !params || isNaN(params.pageNo) ? 1 : Number(params.pageNo);
-    let _params: any;
+  // GET 데이터 관리
+  const handleData = res => {
+    if (!res || !res.resultList) return Promise.reject();
+    setLoading(false);
 
-    if (profileInfo.username && profileInfo.username.length > 0) {
-      _params = {
-        pageNo: pageNo,
-        username: profileInfo.username
-      };
-    } else _params = { pageNo: pageNo, email: profileInfo.email };
-
-    // 로딩 on
-    setLoading(true);
-
-    repos.Document.getDocumentList(_params)
-      .then((res: any) => {
-        setLoading(false);
-
-        if (res.resultList.length > 0) {
-          return setDataSet({
-            resultList:
-              dataSet.resultList.length > 0
-                ? dataSet.resultList.concat(res.resultList)
-                : res.resultList,
-            pageNo: res.pageNo,
-            isEndPage: res.count === 0 || res.resultList.length < 10,
-            moreDataFlag: true
-          });
-        } else {
-          return;
-        }
-      })
-      .catch(err => {
-        console.error("Creator analytics info GET ERROR", err);
-        let timeout = setTimeout(() => {
-          fetchDocuments(params);
-          clearTimeout(timeout);
-        }, 8000);
-      });
+    setDataSet({
+      resultList: res.resultList,
+      pageNo: res.pageNo,
+      totalCount: res.count
+    });
   };
 
   // 차트 정보 GET
@@ -170,8 +158,15 @@ export default function({ profileInfo }: Type) {
     getAnalytics(documentId, spreadItem);
   };
 
+  // handle pageNation click
+  const handlePageClick = (page: number) => {
+    return Promise.resolve()
+      .then(() => setPage(page))
+      .then(() => void fetchDocuments(page));
+  };
+
   useEffect(() => {
-    fetchDocuments(null);
+    void fetchDocuments(1);
   }, []);
 
   let identification =
@@ -183,168 +178,112 @@ export default function({ profileInfo }: Type) {
     <div className={styles.pat_container}>
       <div className={styles.pat_totalNum}>
         {psString("profile-total-documents")}
-        <span>{dataSet.resultList.length}</span>
+        <span>{dataSet.totalCount}</span>
       </div>
 
       {dataSet.resultList.length > 0 ? (
-        <InfiniteScroll
-          className={styles.pat_infiniteScroll}
-          dataLength={dataSet.resultList.length}
-          next={fetchMoreData}
-          hasMore={!dataSet.isEndPage}
-          loader={
-            <div className={styles.pat_spinner}>
-              <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
-            </div>
-          }
-        >
-          {dataSet.resultList.length > 0 &&
-            dataSet.resultList.map((result: any, idx: number) => (
-              <div className={styles.pat_inner} key={idx}>
-                <div className={styles.pat_thumbWrapper}>
-                  <Link
-                    href={{
-                      pathname: "/contents_view",
-                      query: { seoTitle: result.seoTitle }
-                    }}
-                    as={"/@" + identification + "/" + result.seoTitle}
-                  >
-                    <div
-                      className={styles.pat_thumb}
-                      onClick={() => common_view.scrollTop()}
-                    >
-                      <img
-                        src={common.getThumbnail(
-                          result.documentId,
-                          320,
-                          1,
-                          result.documentName
-                        )}
-                        alt={result.title ? result.title : result.documentName}
-                      />
-                    </div>
-                  </Link>
-                </div>
-
-                <div className={styles.pat_titleWrapper}>
-                  <Link
-                    href={{
-                      pathname: "/contents_view",
-                      query: { seoTitle: result.seoTitle }
-                    }}
-                    as={"/@" + identification + "/" + result.seoTitle}
-                  >
-                    <div
-                      className={styles.pat_title}
-                      onClick={() => common_view.scrollTop()}
-                    >
-                      {" "}
-                      {result.title ? result.title : result.documentName}{" "}
-                    </div>
-                  </Link>
-                </div>
-
-                <div className={styles.pat_date}>
-                  {common_view.dateTimeAgo(result.created, false)}
-                </div>
-
+        dataSet.resultList.map((result: any, idx: number) => (
+          <div className={styles.pat_inner} key={idx}>
+            <div className={styles.pat_thumbWrapper}>
+              <Link
+                href={{
+                  pathname: "/contents_view",
+                  query: { seoTitle: result.seoTitle }
+                }}
+                as={"/@" + identification + "/" + result.seoTitle}
+              >
                 <div
-                  className={
-                    styles[
-                      "pat_btn" + (idx === spreadItem && chartFlag ? "On" : "")
-                    ]
-                  }
-                  onClick={e => handleClick(e)}
-                  title="See analytics of this document"
-                  data-key={idx}
-                  data-id={result.documentId}
+                  className={styles.pat_thumb}
+                  onClick={() => common_view.scrollTop()}
                 >
-                  <i>
-                    <img
-                      src={
-                        APP_CONFIG.domain().static +
-                        "/image/icon/i_faq_reverse.png"
-                      }
-                      alt="dropdown icon"
-                    />
-                  </i>
-                </div>
-
-                <div className={styles.pat_chartWrapper}>
-                  {idx === spreadItem && (
-                    <div
-                      className={styles.pat_dateBtn}
-                      onClick={e => handleWeekBtnClick(e)}
-                    >
-                      <div
-                        data-value="1w"
-                        className={dateSet.week === 1 ? styles.pat_clicked : ""}
-                      >
-                        1w
-                      </div>
-                      <div
-                        data-value="1m"
-                        className={dateSet.week === 4 ? styles.pat_clicked : ""}
-                      >
-                        1m
-                      </div>
-                      <div
-                        data-value="3m"
-                        className={
-                          dateSet.week === 12 ? styles.pat_clicked : ""
-                        }
-                      >
-                        3m
-                      </div>
-                      <div
-                        data-value="6m"
-                        className={
-                          dateSet.week === 24 ? styles.pat_clicked : ""
-                        }
-                      >
-                        6m
-                      </div>
-                      <div
-                        data-value="1y"
-                        className={dateSet.year === 1 ? styles.pat_clicked : ""}
-                      >
-                        1y
-                      </div>
-                    </div>
-                  )}
-                  {idx === spreadItem &&
-                    analyticsList &&
-                    analyticsList.resultList.length > 0 && (
-                      <span>
-                        <p
-                          data-tip="Export tracking data as Excel file."
-                          className={styles.pat_exportBtn}
-                          onClick={() => handleExport(result.seoTitle)}
-                        >
-                          <span>
-                            <i className="material-icons">save</i>
-                            Export
-                          </span>
-                        </p>
-                        {chartFlag && (
-                          <CustomChart
-                            chartData={analyticsList}
-                            week={dateSet.week}
-                            year={dateSet.year}
-                            subject="analytics"
-                          />
-                        )}
-                      </span>
+                  <img
+                    src={common.getThumbnail(
+                      result.documentId,
+                      320,
+                      1,
+                      result.documentName
                     )}
-                  {idx === spreadItem &&
-                    analyticsList &&
-                    analyticsList.resultList.length === 0 && <NoDataIcon />}
+                    alt={result.title ? result.title : result.documentName}
+                    onError={e => {
+                      let element = e.target as HTMLImageElement;
+                      element.onerror = null;
+                      element.src =
+                        APP_CONFIG.domain().static + "/image/logo-cut.png";
+                    }}
+                  />
                 </div>
-              </div>
-            ))}
-        </InfiniteScroll>
+              </Link>
+            </div>
+
+            <div className={styles.pat_titleWrapper}>
+              <Link
+                href={{
+                  pathname: "/contents_view",
+                  query: { seoTitle: result.seoTitle }
+                }}
+                as={"/@" + identification + "/" + result.seoTitle}
+              >
+                <div
+                  className={styles.pat_title}
+                  onClick={() => common_view.scrollTop()}
+                >
+                  {result.title ? result.title : result.documentName}
+                </div>
+              </Link>
+            </div>
+
+            <div className={styles.pat_date}>
+              {common_view.dateTimeAgo(result.created, false)}
+            </div>
+
+            <div
+              className={
+                styles[
+                  "pat_btn" + (idx === spreadItem && chartFlag ? "On" : "")
+                ]
+              }
+              onClick={e => handleClick(e)}
+              title="See analytics of this document"
+              data-key={idx}
+              data-id={result.documentId}
+            >
+              <i>
+                <img
+                  src={
+                    APP_CONFIG.domain().static + "/image/icon/i_faq_reverse.png"
+                  }
+                  alt="dropdown icon"
+                />
+              </i>
+            </div>
+
+            <ProfileAnalyticsChart
+              idx={idx}
+              spreadItem={spreadItem}
+              weekBtnClick={handleWeekBtnClick}
+              exportBtnClick={handleExport}
+              dateSet={dateSet}
+              analyticsList={analyticsList}
+              chartFlag={chartFlag}
+              result={result}
+            />
+          </div>
+        ))
+      ) : loading ? (
+        <div className={styles.put_spinner}>
+          <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
+        </div>
       ) : (
-        !loading && <NoDataIcon />
+        <NoDataIcon />
+      )}
+
+      {dataSet.resultList.length > 0 && (
+        <Pagination
+          totalCount={dataSet.totalCount}
+          pageCount={pageSize}
+          click={handlePageClick}
+          selectedPage={page}
+        />
       )}
     </div>
   );

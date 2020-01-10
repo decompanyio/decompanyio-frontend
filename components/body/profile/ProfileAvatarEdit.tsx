@@ -1,5 +1,6 @@
-import { setActionMain } from "../../../redux/reducer/main";
+import React from "react";
 import { useDispatch } from "react-redux";
+import { setActionMain } from "../../../redux/reducer/main";
 import * as styles from "public/static/styles/main.scss";
 
 type Type = {
@@ -15,7 +16,13 @@ export default function({ owner }: Type) {
   // file input 등록/변경 시, url get
   const handleFileChange = async e => {
     if (e && e.length > 0) {
-      dispatch(setActionMain.modal("imageCrop", { file: e[0] }));
+      const type = e[0].type.split("/")[0];
+
+      if (type === "image") {
+        return dispatch(setActionMain.modal("imageCrop", { file: e[0] }));
+      } else {
+        return dispatch(setActionMain.alertCode(2145, {}));
+      }
     }
   };
 

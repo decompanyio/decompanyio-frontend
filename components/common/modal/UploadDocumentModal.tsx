@@ -7,9 +7,8 @@ import { AUTH_APIS } from "../../../utils/auth";
 import { psString } from "../../../utils/localization";
 import common from "../../../common/common";
 import { setActionMain } from "../../../redux/reducer/main";
-import Router from "next/router";
 import DropZone from "../DropZone";
-import ProgressModal from "./ProgressModal";
+import UploadProgressModal from "./UploadProgressModal";
 
 export default function() {
   const dispatch = useDispatch();
@@ -118,14 +117,13 @@ export default function() {
       });
   };
 
+  // TODO 포스팅 페이지 만들면 연동!
   // 포스트 버튼 관리
-  const handleAddPostBtn = () => {
+  /*  const handleAddPostBtn = () => {
     dispatch(setActionMain.modal(null));
     //    history.push("/ca");
-
-    // TODO 포스팅 페이지 만들면 연동!
     return Router.push("/");
-  };
+  };*/
 
   // 업로드 버튼 관리, input 값 유효성 검사
   const handleUploadBtn = () => {
@@ -234,13 +232,13 @@ export default function() {
         </div>
 
         <div className={styles.modal_footer}>
-          <p
+          {/* <p
             data-tip={psString("content-add-post-add")}
             onClick={() => handleAddPostBtn()}
             className={styles.modal_postAddBtn}
           >
             <i className="material-icons">post_add</i>
-          </p>
+          </p>*/}
           <div
             onClick={() => handleClickClose()}
             className={styles.modal_cancelBtn}
@@ -252,7 +250,7 @@ export default function() {
           </div>
         </div>
 
-        <ProgressModal percentage={percentage} />
+        <UploadProgressModal percentage={percentage} />
       </div>
     </div>
   );

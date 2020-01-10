@@ -83,6 +83,11 @@ $gutter-5: 3rem;
 //              SCSS COMMON MIXIN
 // =====================================
 
+@mixin monotone-grey {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 @mixin d-flex {
   display: flex;
   display: -webkit-flexbox;
@@ -2683,7 +2688,7 @@ input[type="radio"]:checked + label span i {
 
 .mc_wrapper {
   width: 100%;
-  height: 370px;
+  height: 378px;
   position: absolute;
   left: 0;
 }
@@ -2697,9 +2702,13 @@ input[type="radio"]:checked + label span i {
 }
 
 .mc_dummy {
-  height: 370px;
+  height: 400px;
   width: 100%;
   margin-bottom: 60px;
+
+  @media (max-width: $sm-max-width) {
+    height: 370px;
+  }
 }
 
 .mc_text {
@@ -2968,35 +2977,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.dc_profile {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #666666;
-  width: 100%;
-  border-bottom: 1px solid #dadada;
-  position: relative;
-
-  &:hover {
-    color: $primary-color;
-  }
-
-  &:hover > div,
-  &:hover .dc_name {
-    border-color: $second-color !important;
-    color: $second-color;
-  }
-
-  i {
-    display: inline-block;
-    margin-right: .4rem;
-    font-weight: 500;
-    font-size: 24px;
-    text-transform: none;
-    color: #666666 !important;
-  }
-}
-
 .dc_name {
   font-size: 14px;
   margin-left: 6px;
@@ -3014,12 +2994,10 @@ input[type="radio"]:checked + label span i {
 }
 
 .dc_avatarWrapper {
-  @include d-flex;
   @include mb(1);
   @include pb(2);
   @include mt(1);
   @include pt(1);
-  align-items: center;
   border-bottom: 1px solid #dadada;
   position: relative;
 
@@ -3027,14 +3005,30 @@ input[type="radio"]:checked + label span i {
     @include mb(0);
     border: none;
   }
+
+  div {
+    @include d-flex;
+    align-items: center;
+    width: max-content;
+
+    &:hover {
+      div {
+        border-color: $primary-color;
+      }
+
+      span {
+        color: $primary-color;
+      }
+    }
+  }
 }
 
 .dc_date {
   font-size: 13px;
   color: #b3b3b3;
-  right: 5px;
+  right: 15px;
   position: absolute;
-  top: 10px;
+  bottom: 10px;
 
   @media (max-width: $sm-max-width) {
     top: 3px;
@@ -3054,10 +3048,10 @@ input[type="radio"]:checked + label span i {
 }
 
 .dc_view {
+  @include mr(3);
   display: inline-block;
   font-size: 14px;
   color: #666666;
-  margin-right: 25px;
 
   &:before {
     content: '';
@@ -3129,6 +3123,10 @@ input[type="radio"]:checked + label span i {
 .dc_rewardArrow {
   margin-left: 5px;
   margin-bottom: 3px;
+}
+
+.dc_deletedImg {
+  @include monotone-grey;
 }
 
 
@@ -3809,7 +3807,6 @@ input[type="radio"]:checked + label span i {
   line-height: 1.38;
   letter-spacing: -0.2px;
   color: #4d4d4d;
-  cursor: pointer;
   font: {
     size: 17px;
     weight: bold;
@@ -3817,12 +3814,17 @@ input[type="radio"]:checked + label span i {
     stretch: normal;
   }
 
-  &:hover {
-    color: #3d5afe !important;
-  }
-
   @media all and (max-width: $sm-max-width) {
     font-size: 14px;
+  }
+
+  div {
+    width: max-content;
+    cursor: pointer;
+
+    &:hover {
+      color: #3d5afe !important;
+    }
   }
 }
 
@@ -3837,6 +3839,7 @@ input[type="radio"]:checked + label span i {
 
 .cl_avatar {
   @include d-flex;
+  width: max-content;
   cursor: pointer;
   align-items: center;
   font-size: 14px;
@@ -4146,7 +4149,7 @@ input[type="radio"]:checked + label span i {
 
 .ndi_container {
   color: #a2a2a2;
-  font-size: 16px;
+  font-size: 15px;
   display: inline-block;
   height: 100%;
   text-align: center;
@@ -5036,8 +5039,6 @@ input[type="radio"]:checked + label span i {
 
 .ta_item {
   @include d-flex;
-  @include mb(1);
-  @include mt(1);
   @include mr(4);
   position: relative;
   font-weight: bold;
@@ -5133,8 +5134,10 @@ input[type="radio"]:checked + label span i {
 }
 
 .ta_exportBtn {
-  @include mb(1);
+  @include mb(0);
   @extend .common_toolBtn;
+  position: absolute !important;
+  bottom: 0;
 }
 
 
@@ -5393,7 +5396,7 @@ input[type="radio"]:checked + label span i {
 }
 
 .tl_noDataIconWrapper {
-  @include mt(3);
+  @include mt(4);
 }
 
 //======================================
@@ -5802,10 +5805,10 @@ input[type="radio"]:checked + label span i {
 
 
 //======================================
-//        PROGRESS MODAL CSS
+//      UPLOAD PROGRESS MODAL CSS
 // =====================================
 
-.pm_progressWrapper {
+.upm_progressWrapper {
   width: 100%;
   position: fixed;
   height: 100%;
@@ -5816,7 +5819,7 @@ input[type="radio"]:checked + label span i {
   display: none;
 }
 
-.pm_progress {
+.upm_progress {
   position: fixed;
   left: calc(50% - 50px);
   top: calc(50% - 50px);
@@ -5827,7 +5830,7 @@ input[type="radio"]:checked + label span i {
 }
 
 
-.pm_progressSecond {
+.upm_progressSecond {
   border-radius: 100px;
   display: block;
   position: relative;
@@ -5842,7 +5845,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.pm_percent {
+.upm_percent {
   color: white;
   font-size: 20px;
   position: absolute;
@@ -5997,6 +6000,10 @@ input[type="radio"]:checked + label span i {
 
   div {
     @include col(12);
+
+    &:first-child {
+      padding-left: 15px !important;
+    }
   }
 }
 
@@ -6006,6 +6013,10 @@ input[type="radio"]:checked + label span i {
   div {
     @include col(12);
     @include col-sm(6);
+
+    &:first-child {
+      padding-left: 15px !important;
+    }
   }
 }
 
@@ -6207,13 +6218,10 @@ input[type="radio"]:checked + label span i {
   }
 
   span {
+    @include ml(1);
     color: $primary-color;
     font-weight: bold;
   }
-}
-
-.put_infiniteScroll {
-  overflow: hidden !important;
 }
 
 .put_spinner {
@@ -6266,9 +6274,13 @@ input[type="radio"]:checked + label span i {
 .puti_thumb {
   cursor: pointer;
   overflow: hidden;
-  text-align: center;
-  background: #fdfdfd;
   position: relative;
+}
+
+.puti_thumbLoading {
+  @extend .puti_thumb;
+  width: 100%;
+  height: 100%;
 }
 
 .puti_notConvertContainer {
@@ -6475,18 +6487,28 @@ input[type="radio"]:checked + label span i {
   }
 }
 
+.puti_claimWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  @media all and (max-width: $sm-max-width) {
+    @include mt(2);
+    position: relative;
+  }
+}
+
 
 //======================================
-//     PROFILE UPLOAD TAB ITEM CSS
+//         PUBLISH MODAL CSS
 // =====================================
 
-.p_moreBtnWrapper {
+.pm_moreBtnWrapper {
   margin: 30px 0 0 0;
   position: relative;
   height: 20px;
 }
 
-.p_moreBtnLine {
+.pm_moreBtnLine {
   height: 1px;
   position: absolute;
   background: #d0d0d0;
@@ -6495,7 +6517,7 @@ input[type="radio"]:checked + label span i {
   width: 100%;
 }
 
-.p_moreBtn {
+.pm_moreBtn {
   position: absolute;
   letter-spacing: 1px;
   cursor: pointer;
@@ -6510,12 +6532,12 @@ input[type="radio"]:checked + label span i {
   color: #888888;
 }
 
-.p_rewardArrow {
+.pm_rewardArrow {
   margin-left: 5px;
   margin-bottom: 3px;
 }
 
-.p_moreContainer_1 {
+.pm_moreContainer_1 {
   @include row;
 
   div {
@@ -6527,7 +6549,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.p_moreContainer_2 {
+.pm_moreContainer_2 {
   @include row;
 
   div {
@@ -6540,7 +6562,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.p_loadingWrapper {
+.pm_loadingWrapper {
   position: absolute;
   background: white;
   width: 100%;
@@ -6552,9 +6574,9 @@ input[type="radio"]:checked + label span i {
   top: 0;
 }
 
-.p_tagInputWarning,
-.p_tagInputWarning:hover,
-.p_tagInputWarning:focus-within {
+.pm_tagInputWarning,
+.pm_tagInputWarning:hover,
+.pm_tagInputWarning:focus-within {
   border: 1px solid red !important;
   box-shadow: 0 0 0 1px red;
 
@@ -6564,7 +6586,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.p_desc {
+.pm_desc {
   font-size: 13px;
 }
 
@@ -6641,17 +6663,13 @@ input[type="radio"]:checked + label span i {
   @extend .put_totalNum;
 }
 
-.pvt_infiniteScroll {
-  @extend .put_infiniteScroll;
-}
-
 .pvt_spinner {
   @extend .put_spinner;
 }
 
 
 //======================================
-//         PROFILE ANALYTICS TAB CSS
+//      PROFILE ANALYTICS TAB CSS
 // =====================================
 
 .pat_container {
@@ -6660,10 +6678,6 @@ input[type="radio"]:checked + label span i {
 
 .pat_totalNum {
   @extend .put_totalNum;
-}
-
-.pat_infiniteScroll {
-  @extend .put_infiniteScroll;
 }
 
 .pat_spinner {
@@ -6708,16 +6722,10 @@ input[type="radio"]:checked + label span i {
   position: relative;
   top: 13px;
   font-size: 15px;
-  -webkit-transition-duration: .6s;
-  -o-transition-duration: .6s;
-  transition-duration: .6s;
   cursor: pointer;
 
   &:hover {
-    font-weight: bold;
-    -webkit-transition-duration: .6s;
-    -o-transition-duration: .6s;
-    transition-duration: .6s;
+    color: $primary-color;
   }
 }
 
@@ -7097,10 +7105,24 @@ input[type="radio"]:checked + label span i {
 
 .nfpw_container {
   @include container;
-  margin-top: 0;
+  color: #a2a2a2;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
 
   @media all and (max-width: $sm-max-width) {
     margin-top: 45% !important;
+  }
+
+  i {
+    font-size: 70px;
+    color: #cccccc
+  }
+
+  span {
+    color: $primary-color;
+    margin: 0 10px;
+    font-weight: bold;
   }
 }
 
@@ -7239,4 +7261,55 @@ input[type="radio"]:checked + label span i {
       font-size: 14px;
     }
   }
+}
+
+
+//======================================
+//           PAGINATION CSS
+// =====================================
+
+.p_container {
+  @include d-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 40px;
+  color: #4d4d4d;
+
+  div {
+    @include d-flex;
+    @include m(2);
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      @extend .p_selectedPage;
+    }
+  }
+}
+
+.p_selectedPage {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.p_arrow {
+  margin-top: 5px !important;
+  color: darkgrey;
+}
+
+
+//======================================
+//      PROFILE CREATOR CLAIM CSS
+// =====================================
+
+.pcc_btn {
+  @extend .common_claimBtn;
+
+  @media all and (max-width: $sm-max-width) {
+    width: 100%;
+  }
+}
+
+.pcc_btnDisabled {
+  @extend .common_disabledBtn;
 }

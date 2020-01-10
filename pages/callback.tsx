@@ -1,27 +1,26 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Router from "next/router";
 import { AUTH_APIS } from "../utils/auth";
-import { useDispatch } from "react-redux";
 import repos from "utils/repos";
 import { setActionMain } from "../redux/reducer/main";
 import LoadingModal from "components/common/modal/LoadingModal";
 import Layout from "../components/Layout";
-import { useEffect } from "react";
 import common_view from "../common/common_view";
 
 function index(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (AUTH_APIS.isAuthenticated()) Router.push("/");
+      if (AUTH_APIS.isAuthenticated()) void Router.push("/");
 
       // 스크롤 숨김
       common_view.setBodyStyleLock();
-
       AUTH_APIS.handleAuthentication(window.location)
         .then(() =>
           repos.Account.getAccountInfo().then(result => {
             let res = result.user;
-            res.privateDocumentCount = result.privateDocumentCount; // alert data에 쓰임
+            res.privateDocumentCount = result.privateDocumentCount; // alert data 에 쓰임
             if (!res.username || res.username === "") res.username = res.email;
             if (!res.picture) res.picture = localStorage.getItem("user_info");
 

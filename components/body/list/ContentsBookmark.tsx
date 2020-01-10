@@ -1,4 +1,3 @@
-import { AUTH_APIS } from "../../../utils/auth";
 import { psString } from "../../../utils/localization";
 import * as styles from "public/static/styles/main.scss";
 import { useDispatch } from "react-redux";
@@ -8,10 +7,11 @@ import { setActionMain } from "../../../redux/reducer/main";
 
 type Type = {
   documentData: any;
-  mylist: any;
+  bookmarkList: any;
+  path: string;
 };
 
-export default function({ mylist, documentData }: Type) {
+export default function({ bookmarkList, documentData, path }: Type) {
   const dispatch = useDispatch();
   const [bookmarkFlag, setBookmarkFlag] = useState(false);
 
@@ -19,8 +19,9 @@ export default function({ mylist, documentData }: Type) {
   const checkBookmark = () => {
     let flag;
 
-    if (mylist.length > 0) {
-      flag = mylist.filter(v => v.documentId === documentData._id).length > 0;
+    if (bookmarkList.length > 0) {
+      flag =
+        bookmarkList.filter(v => v.documentId === documentData._id).length > 0;
     } else {
       flag = false;
     }
@@ -43,6 +44,7 @@ export default function({ mylist, documentData }: Type) {
 
     return repos.Mutation.removeMyList(documentData.documentId)
       .then(() => dispatch(setActionMain.alertCode(2123, {})))
+      .then(() => (path === "mylist" ? window.location.reload() : true))
       .catch(() => dispatch(setActionMain.alertCode(2124, {})));
   };
 
@@ -50,7 +52,6 @@ export default function({ mylist, documentData }: Type) {
     checkBookmark();
   }, []);
 
-  if (!AUTH_APIS.isAuthenticated()) return <div />;
   if (bookmarkFlag) {
     return (
       <p

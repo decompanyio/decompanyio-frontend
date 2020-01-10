@@ -827,6 +827,27 @@ const strings = new Map([
     }
   ],
   [
+    "alert-2031",
+    {
+      KOR: "클레임 가능한 보상액이 0 원입니다.",
+      ENG: "Not enough rewards to Claim."
+    }
+  ],
+  [
+    "alert-2032",
+    {
+      KOR: "인출 요청 실패",
+      ENG: "Failed to claim."
+    }
+  ],
+  [
+    "alert-2033",
+    {
+      KOR: "인출 성공",
+      ENG: "Successfully claim."
+    }
+  ],
+  [
     "alert-2071",
     {
       KOR: "업로드 실패",
@@ -950,6 +971,13 @@ const strings = new Map([
     {
       KOR: "프로필 이미지 수정을 실패하였습니다.",
       ENG: "Failed to edit profile image."
+    }
+  ],
+  [
+    "alert-2145",
+    {
+      KOR: "이미지 파일로 업로드 부탁드립니다.",
+      ENG: "Please upload image file."
     }
   ],
 
@@ -2680,11 +2708,19 @@ const strings = new Map([
     }
   ],
 
+  // Pagenation
   [
-    "",
+    "page-nation-title-prev",
     {
-      KOR: "",
-      ENG: ""
+      KOR: "이전 목록으로",
+      ENG: "Go to previous list"
+    }
+  ],
+  [
+    "page-nation-title-next",
+    {
+      KOR: "다음 목록으로",
+      ENG: "Go to next list"
     }
   ],
   [

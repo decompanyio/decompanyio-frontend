@@ -12,7 +12,8 @@ import dynamic from "next/dynamic";
 
 type Type = {
   documentData: any;
-  mylist: any;
+  bookmarkList: any;
+  path: string;
 };
 
 // UserAvatar - No SSR
@@ -62,7 +63,7 @@ const setData = (documentData: any) => {
   };
 };
 
-export default function({ documentData, mylist }: Type) {
+export default function({ documentData, bookmarkList, path }: Type) {
   const {
     vote,
     reward,
@@ -136,7 +137,7 @@ export default function({ documentData, mylist }: Type) {
                 croppedArea={croppedArea}
                 size={26}
               />
-              {identification}
+              <div>{identification}</div>
             </div>
           </Link>
           <div className={styles.cl_date}>
@@ -183,8 +184,12 @@ export default function({ documentData, mylist }: Type) {
           </span>
           <span className={styles.cl_view}>{view}</span>
           <span className={styles.cl_vote}>{common.deckStr(vote)}</span>
-          {mylist && (
-            <ContentsBookmark mylist={mylist} documentData={documentData} />
+          {bookmarkList && (
+            <ContentsBookmark
+              bookmarkList={bookmarkList}
+              documentData={documentData}
+              path={path}
+            />
           )}
         </div>
 

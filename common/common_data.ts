@@ -83,5 +83,8 @@ export default {
   awayCheckTime: 60000,
 
   // Alert 창 종료 시간: 7초
-  alertRemainTime: 7000
+  alertRemainTime: 7000,
+
+  // My page 리스트 개수
+  myPageListSize: 10
 };

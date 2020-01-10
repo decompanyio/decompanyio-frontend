@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import Layout from "components/Layout";
 import ContentsList from "../components/body/list/ContentsList";
 import repos from "../utils/repos";
 import common_data from "../common/common_data";
+import { AUTH_APIS } from "../utils/auth";
 
 // get Tag
 const getTag = path => {
@@ -19,18 +19,17 @@ const getPath = path => {
 };
 
 export default function index({ documentList, tag, path }, ...rest) {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
   const [list, setList] = useState(documentList);
 
-  const params = {
-    userId: myInfoFromRedux._id
-  };
-
   useEffect(() => {
+    const params = {
+      userId: AUTH_APIS.getMyInfo().sub
+    };
+
     if (
       (path === "mylist" || path === "history") &&
       list.length === 0 &&
-      myInfoFromRedux._id !== ""
+      params.userId !== ""
     ) {
       (async function() {
         let resultList = [];
