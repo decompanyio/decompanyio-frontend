@@ -137,26 +137,15 @@ export default {
       reward
     }
     getLast6CuratorReward(userId: "${data}") {
-      activeDate
       voteDate
       documentId
-      pageview
-      totalPageviewSquare
-      voteAmount
-      totalVoteAmount
       reward
     }
     getTodayEstimatedCuratorReward(userId: "${data}") {
-      activeDate
       voteDate
       documentId
-      pageview
-      totalPageviewSquare
-      voteAmount
-      totalVoteAmount
       reward
     }
   }
-
 `
 };

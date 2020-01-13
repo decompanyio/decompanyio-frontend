@@ -3,11 +3,12 @@ require('dotenv').config();
 const withPlugins = require("next-compose-plugins");
 const withSass = require("@zeit/next-sass");
 const withCss = require("@zeit/next-css");
+const withOffline = require('next-offline');
 const path = require("path");
 const dot_env = require("dotenv-webpack");
 
 
-module.exports = withPlugins([withSass, withCss], {
+module.exports = withPlugins([withSass, withCss, withOffline], {
         webpack(config, options) {
 
             // use css file
@@ -44,6 +45,10 @@ module.exports = withPlugins([withSass, withCss], {
         devIndicators: {
             autoPrerender: true,
         },
+        withOffline: {
+            dontAutoRegisterSw: false,
+            generateInDevMode: true
+        }
     }
 );
 

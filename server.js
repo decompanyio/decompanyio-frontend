@@ -14,7 +14,13 @@ const datetime = new Date();
 app.prepare().then(() => {
     const server = express();
 
-    // dynamic page
+    // Service Worker
+    server.get("/service-worker.js", (req, res) => {
+        res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+        res.set("Content-Type", "application/javascript");
+
+        return app.serveStatic(req, res, path.resolve("./.next/service-worker.js"));
+    });
 
     // 프로필 페이지
     server.get('/' + profileRegEx, (req, res) => {
