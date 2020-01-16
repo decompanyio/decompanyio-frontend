@@ -10,10 +10,10 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login --no-include-email --region us-west-1)
-      - REPOSITORY_URI=197966029048.dkr.ecr.us-west-1.amazonaws.com/decompany/frontend-dev
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - $(aws ecr get-login --region us-west-1 --no-include-email)
+      - REPOSITORY_URI=197966029048.dkr.ecr.us-west-1.amazonaws.com/decompany/frontend-dev  # REPOSITORY_URI 설정
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7) # COMMIT_HASH 설정
+      - IMAGE_TAG=${COMMIT_HASH:=latest}  # IMAGE_TAG 설정
   build:
     commands:
       - echo Build started on `date`
