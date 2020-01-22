@@ -5,9 +5,10 @@ import common from "common/common";
 import Link from "next/link";
 import RewardCard from "components/common/card/RewardCard";
 import { AUTH_APIS } from "../../../utils/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ViewOption from "./ViewOption";
 import dynamic from "next/dynamic";
+import { repos } from "../../../utils/repos";
 
 type Type = {
   documentData: any;
@@ -68,14 +69,17 @@ const setData = (documentData: any) => {
 
 export default function({ documentData }: Type) {
   const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  const {
-    vote,
-    reward,
-    view,
-    profileUrl,
-    croppedArea,
-    identification
-  } = setData(documentData);
+  const { vote, view, profileUrl, croppedArea, identification } = setData(
+    documentData
+  );
+  const [reward, setReward] = useState(0);
+
+  useEffect(() => {
+    repos.Document.getCreatorRewards(
+      documentData.documentId,
+      documentData.author._id
+    ).then(res => setReward(common.toEther(res)));
+  }, []);
 
   return (
     <div className={styles.vib_container}>

@@ -40,6 +40,7 @@ export default function({
     new DocumentInfo(documentData)
   );
   const [rewardInfoOpen, setRewardInfo] = useState(false);
+  const [validClaimAmount, setValidClaimAmount] = useState(0);
 
   // 문서 다운로드
   const getContentDownload = (documentId: string, documentName: string) =>
@@ -57,6 +58,13 @@ export default function({
         document.body.removeChild(a);
       })
       .catch(err => console.error(err));
+
+  // 저자 리워드
+  const getCreatorRewards = () => {
+    repos.Document.getCreatorRewards(documentData.documentId, myInfo.sub).then(
+      res => setValidClaimAmount(common.toDollar(res))
+    );
+  };
 
   // document state 관리
   const setDocumentState = state => {
@@ -122,6 +130,7 @@ export default function({
 
   useEffect(() => {
     handleState();
+    getCreatorRewards();
   }, []);
 
   let reward = common.toEther(0);
@@ -325,7 +334,10 @@ export default function({
           </div>
 
           <div className={styles.puti_claimWrapper}>
-            <ProfileCreatorClaim documentData={tmpDocumentData} />
+            <ProfileCreatorClaim
+              documentData={tmpDocumentData}
+              validClaimAmount={validClaimAmount}
+            />
           </div>
 
           {!tmpDocumentData.isPublic &&

@@ -4,7 +4,7 @@ import { psString } from "utils/localization";
 import { APP_CONFIG } from "../../../app.config";
 import RewardCard from "components/common/card/RewardCard";
 import common from "../../../common/common";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import repos from "../../../utils/repos";
 
 type Type = {
@@ -17,10 +17,10 @@ export default function({ documentData, ratio }: Type) {
   const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false);
   const [optionTable, setOptionTable] = useState(false);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
+  const [reward, setReward] = useState(0);
 
   let addr: string;
   let identification: string;
-  let reward: number;
   let vote: number;
   let view: number;
 
@@ -30,7 +30,6 @@ export default function({ documentData, ratio }: Type) {
       ? documentData.author.username
       : documentData.author.email
     : documentData.accountId;
-  reward = common.toEther(Number(0));
   vote = common.toEther(documentData.latestVoteAmount);
   view = documentData.latestPageview || 0;
 
@@ -60,6 +59,13 @@ export default function({ documentData, ratio }: Type) {
       document.body.removeChild(a);
     });
   };
+
+  useEffect(() => {
+    repos.Document.getCreatorRewards(
+      documentData.documentId,
+      documentData.author._id
+    ).then(res => setReward(common.toEther(res)));
+  }, []);
 
   return (
     <div className={styles.ta_container}>

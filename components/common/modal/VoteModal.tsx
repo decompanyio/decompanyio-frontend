@@ -16,6 +16,10 @@ export default function() {
   const [closeFlag, setCloseFlag] = useState(false);
   const [balance, setBalance] = useState(-1);
   const [deposit, setDeposit] = useState(0);
+  const [voteAmount, setVoteAmount] = useState({
+    myVoteAmount: 0,
+    totalVoteAmount: 0
+  });
   const [deckError, setDeckError] = useState("");
   // Deck 예금 값 입력 캐치
   const onChangeDeposit = e => {
@@ -58,6 +62,19 @@ export default function() {
     });
   };
 
+  // 문서 투표액 GET
+  const getDocumentVoteAmount = () => {
+    repos.Document.getDocumentVoteAmount({
+      userId: myInfo.sub,
+      documentId: documentData.documentId
+    }).then(res =>
+      setVoteAmount({
+        myVoteAmount: common.toDeck(res.myVoteAmount),
+        totalVoteAmount: common.toDeck(res.totalVoteAmount)
+      })
+    );
+  };
+
   // 모달 숨기기 클래스 추가
   const handleCloseFlag = () =>
     new Promise(resolve => resolve(setCloseFlag(true)));
@@ -84,6 +101,7 @@ export default function() {
 
   useEffect(() => {
     handleBalance();
+    getDocumentVoteAmount();
 
     common_view.setBodyStyleLock();
 
@@ -116,10 +134,12 @@ export default function() {
           </div>
           <ul className={styles.vm_list}>
             <li>
-              <strong>{psString("vote-modal-you")} : </strong>0
+              <strong>{psString("vote-modal-you")} : </strong>
+              {voteAmount.myVoteAmount} DECK
             </li>
             <li>
-              <strong>{psString("vote-modal-total")} : </strong>0
+              <strong>{psString("vote-modal-total")} : </strong>
+              {voteAmount.totalVoteAmount} DECK
             </li>
           </ul>
 

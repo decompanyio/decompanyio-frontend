@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 import { useSelector } from "react-redux";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import { APP_CONFIG } from "../../../app.config";
 import RewardCard from "../../common/card/RewardCard";
 import * as styles from "../../../public/static/styles/main.scss";
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
+import repos from "../../../utils/repos";
+import ProfileCuratorClaim from "./ProfileCuratorClaim";
 
 type Type = {
   documentData: any;
@@ -17,7 +19,17 @@ const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
 export default function({ documentData }: Type) {
   const isMobile = useSelector(state => state.main.isMobile);
+  const myInfo = useSelector(state => state.main.myInfo);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
+  const [validClaimAmount, setValidClaimAmount] = useState(0);
+
+  // 저자 리워드
+  const getCuratorRewards = () => {
+    repos.Document.getCuratorRewards(documentData.documentId, myInfo.sub).then(
+      res => setValidClaimAmount(common.toDollar(res))
+    );
+  };
+
   const reward = common.toEther(0);
   const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0;
   const view = documentData.latestPageview || 0;
@@ -26,6 +38,10 @@ export default function({ documentData }: Type) {
       ? documentData.author.username
       : documentData.author.email
     : documentData.accountId;
+
+  useEffect(() => {
+    getCuratorRewards();
+  }, []);
 
   return (
     <div className={styles.pcti_container}>
@@ -121,9 +137,12 @@ export default function({ documentData }: Type) {
             {common_view.dateTimeAgo(documentData.created, false)}
           </div>
 
-          {/*   <div className={isMobile ? "mt-2" : "float-right"}>
-              <CuratorClaimContainer {...props} document={document} />
-            </div>*/}
+          <div className={isMobile ? "mt-2" : "float-right"}>
+            <ProfileCuratorClaim
+              documentData={documentData}
+              validClaimAmount={validClaimAmount}
+            />
+          </div>
         </div>
       </div>
     </div>

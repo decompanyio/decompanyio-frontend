@@ -20,7 +20,7 @@ const DocumentCardWithoutSSR = dynamic(
 // 문서 목록 GET
 const getDocuments = path =>
   repos.Document.getDocumentList({ path: path })
-    .then(res => (res.resultList.length > 0 ? res.resultList : null))
+    .then(res => res.resultList)
     .catch(err => err);
 
 // 찜 목록 GET
@@ -40,15 +40,19 @@ export default function({ path }: Type) {
 
   useEffect(() => {
     (async function() {
+      let _documentData = [];
+
       if (AUTH_APIS.isAuthenticated() && path === "mylist") {
-        setDocumentData((await getMylist(AUTH_APIS.getMyInfo().sub)) || null);
+        _documentData = await getMylist(AUTH_APIS.getMyInfo().sub);
       } else if (AUTH_APIS.isAuthenticated() && path === "history") {
-        setDocumentData((await getHistory(AUTH_APIS.getMyInfo().sub)) || null);
+        _documentData = await getHistory(AUTH_APIS.getMyInfo().sub);
       } else if (path !== "mylist" && path !== "history") {
-        setDocumentData((await getDocuments(path)) || null);
+        _documentData = await getDocuments(path);
       } else {
-        setDocumentData(null!);
+        return setDocumentData(null!);
       }
+
+      return setDocumentData(_documentData.length > 0 ? _documentData : null!);
     })();
   }, []);
 

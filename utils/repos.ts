@@ -248,6 +248,20 @@ export const repos = {
         .then(result => new DocumentList(result))
         .catch(err => err);
     },
+    async getDocumentVoteAmount(data: any) {
+      return instance.Query.getDocumentVoteAmount(data).then(res => {
+        let totalVoteAmount = res.getTodayActiveVoteAmount.reduce(
+          (a, b) => Number(a.voteAmount || 0 + b.voteAmount || 0),
+          0
+        );
+        let myVoteAmount = res.getTodayUserActiveVoteAmount.reduce(
+          (a, b) => Number(a.voteAmount || 0 + b.voteAmount || 0),
+          0
+        );
+
+        return { totalVoteAmount, myVoteAmount };
+      });
+    },
     getDocumentDownloadUrl(params: any) {
       return DocService.GET.documentDownload(params)
         .then(result => new DocumentDownload(result))
@@ -344,13 +358,15 @@ export const repos = {
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"');
           let userData = await instance.Query.getUserByIds(ids);
-          return res.filter(v => {
-            let idx = -1;
-            userData.map((u, i) =>
-              idx === -1 && u._id === v.accountId ? (idx = i) : -1
-            );
-            return idx !== -1 ? (v.author = userData[idx]) : v;
-          });
+          return {
+            resultList: res.filter(v => {
+              let idx = -1;
+              userData.map((u, i) =>
+                idx === -1 && u._id === v.accountId ? (idx = i) : -1
+              );
+              return idx !== -1 ? (v.author = userData[idx]) : v;
+            })
+          };
         }),
     getHistory: async data =>
       instance.Query.getHistoryFindById(data)
@@ -402,14 +418,26 @@ export const repos = {
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"');
           let userData = await instance.Query.getUserByIds(ids);
-          return res.filter(v => {
-            let idx = -1;
-            userData.map((u, i) =>
-              idx === -1 && u._id === v.accountId ? (idx = i) : -1
-            );
-            return idx !== -1 ? (v.author = userData[idx]) : v;
-          });
-        })
+          return {
+            resultList: res.filter(v => {
+              let idx = -1;
+              userData.map((u, i) =>
+                idx === -1 && u._id === v.accountId ? (idx = i) : -1
+              );
+              return idx !== -1 ? (v.author = userData[idx]) : v;
+            })
+          };
+        }),
+    async getCreatorRewards(documentId: string, userId: string) {
+      return instance.Query.getCreatorRewards({ documentId, userId }).then(
+        res => Number(res.determineCreatorRoyalty || 0)
+      );
+    },
+    async getCuratorRewards(documentId: string, userId: string) {
+      return instance.Query.getCuratorRewards({ documentId, userId }).then(
+        res => Number(res.determineCreatorRoyalty || 0)
+      );
+    }
   },
   Tracking: {
     async getTrackingList(data: any) {
@@ -614,6 +642,10 @@ export const repos = {
       }).then(res => res)
   },
   Query: {
+    getDocumentVoteAmount: async (data: any) =>
+      graphql({
+        query: queries.getDocumentVoteAmount(data)
+      }).then((res: any) => res.Curator),
     getMyListFindMany: async (data: any) =>
       graphql({
         query: queries.getMyListFindMany(data)
@@ -651,7 +683,15 @@ export const repos = {
     getProfileRewards: async (data: any) =>
       graphql({
         query: queries.getProfileRewards(data)
-      }).then(res => res)
+      }).then(res => res),
+    getCreatorRewards: async (data: any) =>
+      graphql({
+        query: queries.getCreatorRewards(data)
+      }).then((res: any) => res.Creator),
+    getCuratorRewards: async (data: any) =>
+      graphql({
+        query: queries.getCuratorRewards(data)
+      }).then((res: any) => res.Curator)
   }
 };
 

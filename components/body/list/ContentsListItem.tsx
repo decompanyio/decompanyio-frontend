@@ -6,9 +6,10 @@ import Link from "next/link";
 import common from "../../../common/common";
 import { APP_CONFIG } from "../../../app.config";
 import RewardCard from "components/common/card/RewardCard";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContentsBookmark from "./ContentsBookmark";
 import dynamic from "next/dynamic";
+import { repos } from "../../../utils/repos";
 
 type Type = {
   documentData: any;
@@ -66,7 +67,6 @@ const setData = (documentData: any) => {
 export default function({ documentData, bookmarkList, path }: Type) {
   const {
     vote,
-    reward,
     view,
     imageUrl,
     profileUrl,
@@ -74,6 +74,14 @@ export default function({ documentData, bookmarkList, path }: Type) {
     identification
   } = setData(documentData);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
+  const [reward, setReward] = useState(0);
+
+  useEffect(() => {
+    repos.Document.getCreatorRewards(
+      documentData.documentId,
+      documentData.author._id
+    ).then(res => setReward(common.toEther(res)));
+  }, []);
 
   return (
     <div className={styles.cli_container} key={documentData.seoTitle}>

@@ -147,5 +147,50 @@ export default {
       reward
     }
   }
-`
+`,
+  getDocumentVoteAmount: data =>
+    `Curator {
+    getTodayUserActiveVoteAmount(
+      userId: "${data.userId}"
+      documentId: "${data.documentId}"
+    ) {
+      activeDate
+      documentId
+      userId
+      voteAmount
+    }
+    getTodayActiveVoteAmount(documentId: "${data.documentId}") {
+      activeDate
+      documentId
+      voteAmount
+    }
+  }
+      `,
+  getCreatorRewards: data =>
+    `Creator {
+    determineCreatorRoyalty(
+      userId: "${data.userId}"
+      documentId: "${data.documentId}"
+    ) {
+      activeDate
+      userId
+      documentId
+      pageview
+      totalPageview
+      royalty
+    }
+  }`,
+  getCuratorRewards: data =>
+    `Curator  {
+    determineCuratorReward(
+      userId: "${data.userId}"
+      documentId: "${data.documentId}"
+    ) {
+      voteDate
+      activeDate
+      userId
+      documentId
+      reward
+    }
+  }`
 };

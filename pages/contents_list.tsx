@@ -32,13 +32,13 @@ export default function index({ documentList, tag, path }, ...rest) {
       params.userId !== ""
     ) {
       (async function() {
-        let resultList = [];
+        let _dataSet = { resultList: [] };
         if (path === "mylist") {
-          resultList = await repos.Document.getMyList(params);
+          _dataSet = await repos.Document.getMyList(params);
         } else if (path === "history") {
-          resultList = await repos.Document.getHistory(params);
+          _dataSet = await repos.Document.getHistory(params);
         }
-        setList(resultList);
+        setList(_dataSet.resultList);
       })();
     }
   }, []);

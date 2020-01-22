@@ -172,7 +172,9 @@ export default function(props) {
     let interval = setInterval(() => {
       awayTime = awayTime + t;
       if (awayTime >= t * 15) {
-        if (modalCode !== "away") dispatch(setActionMain.modal("away"));
+        if (modalCode !== "away") {
+          dispatch(setActionMain.modal("away"));
+        }
       }
     }, t);
 

@@ -16,8 +16,8 @@ export default function({ documentData, validClaimAmount }: Type) {
   const [btnText, setBtnText] = useState(psString("claim-text"));
 
   // 클레임
-  const claimCreatorReward = () => {
-    repos.Wallet.claimCreator({ documentId: documentData.documentId })
+  const claimCuratorReward = () => {
+    repos.Wallet.claimCurator({ documentId: documentData.documentId })
       .then((res: any) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
@@ -39,7 +39,7 @@ export default function({ documentData, validClaimAmount }: Type) {
   const handelClickClaim = () => {
     if (documentData) {
       setBtnText(psString("claim-btn-text-2"));
-      claimCreatorReward();
+      claimCuratorReward();
     }
   };
 

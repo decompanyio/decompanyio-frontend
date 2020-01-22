@@ -6,9 +6,10 @@ import common_view from "../../../common/common_view";
 import common from "../../../common/common";
 import { psString } from "../../../utils/localization";
 import { APP_CONFIG } from "../../../app.config";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
+import { repos } from "../../../utils/repos";
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -42,12 +43,12 @@ type Type = {
 export default function({ documentData }: Type) {
   const isMobileFromRedux = useSelector(state => state.main.isMobile);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
+  const [reward, setReward] = useState(0);
 
   let identification: string;
   let imgUrl: string;
   let profileUrl: string;
   let vote: number;
-  let reward: number;
   let view: number;
   let ratio: number;
   let croppedArea: any;
@@ -66,9 +67,15 @@ export default function({ documentData }: Type) {
   profileUrl = documentData.author ? documentData.author.picture : null;
   croppedArea = documentData.author ? documentData.author.croppedArea : null;
   vote = common.toEther(documentData.latestVoteAmount) || 0;
-  reward = common.toEther(0);
   view = documentData.latestPageview || 0;
   ratio = Number(getImgInfo(documentData));
+
+  useEffect(() => {
+    repos.Document.getCreatorRewards(
+      documentData.documentId,
+      documentData.author._id
+    ).then(res => setReward(common.toEther(res)));
+  }, []);
 
   return (
     <div className={styles.dc_container}>
