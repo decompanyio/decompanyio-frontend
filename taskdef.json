@@ -1,5 +1,5 @@
 {
-  "family": "frontendTackDev",
+  "family": "frontendTaskDev",
   "taskRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
   "executionRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
   "containerDefinitions": [
