@@ -2,7 +2,6 @@
   "family": "frontendTackDev",
   "taskRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
   "executionRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
-  "networkMode": "none",
   "containerDefinitions": [
     {
       "name": "frontendContainerDev",
@@ -18,7 +17,6 @@
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",
-        "secretOptions": null,
         "options": {
           "awslogs-group": "/ecs/frontendTackDev",
           "awslogs-region": "us-west-1",
@@ -36,8 +34,6 @@
       }
     }
   ],
-  "volumes": [],
-  "placementConstraints": [],
   "requiresCompatibilities": [
     "EC2"
   ],

@@ -32,5 +32,8 @@ phases:
       - echo Writing image imageDetail file...
       - printf '[{"name":"frontend-dev","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
 artifacts:
-  files: imageDetail.json
+  files:
+    - imageDetail.json
+    - appspec.yaml
+    - taskdef.json
   discard-paths: yes
