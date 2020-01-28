@@ -5,7 +5,7 @@
   "containerDefinitions": [
     {
       "name": "frontendContainerDev",
-      "image": "<IMAGE1_NAME>",
+      "image": "197966029048.dkr.ecr.us-west-1.amazonaws.com/decompany/frontend-dev:latest",
       "cpu": 0,
       "portMappings": [
         {
