@@ -18,7 +18,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/frontendTackDev",
+          "awslogs-group": "/ecs/frontendTaskDev",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
