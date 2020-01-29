@@ -37,8 +37,6 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "cpu": "2048",
-  "memory": "8192",
   "tags": [
     {
       "key": "name",
