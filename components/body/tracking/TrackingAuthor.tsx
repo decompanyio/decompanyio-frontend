@@ -19,19 +19,14 @@ export default function({ documentData, ratio }: Type) {
   const [rewardInfoOpen, setRewardInfo] = useState(false);
   const [reward, setReward] = useState(0);
 
-  let addr: string;
-  let identification: string;
-  let vote: number;
-  let view: number;
-
-  addr = common.getThumbnail(documentData.documentId, 320, 1, "");
-  identification = documentData.author
+  const addr = common.getThumbnail(documentData.documentId, 320, 1, "");
+  const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
     : documentData.accountId;
-  vote = common.toEther(documentData.latestVoteAmount);
-  view = documentData.latestPageview || 0;
+  const vote = common.toEther(documentData.latestVoteAmount);
+  const view = documentData.latestPageview || 0;
 
   // Anonymous 보기/숨김 옵션 관리
   const handleAnonymousOption = () => {

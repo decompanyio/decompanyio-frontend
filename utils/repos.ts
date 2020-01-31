@@ -430,12 +430,22 @@ export const repos = {
         }),
     async getCreatorRewards(documentId: string, userId: string) {
       return instance.Query.getCreatorRewards({ documentId, userId }).then(
-        res => Number(res.determineCreatorRoyalty || 0)
+        (res: any) => Number(res.determineCreatorRoyalty || 0)
       );
     },
     async getCuratorRewards(documentId: string, userId: string) {
       return instance.Query.getCuratorRewards({ documentId, userId }).then(
-        res => Number(res.determineCreatorRoyalty || 0)
+        (res: any) => Number(res.determineCreatorRoyalty || 0)
+      );
+    },
+    async getClaimableRoyalty(documentId: string, userId: string) {
+      return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
+        (res: any) => Number(res.determineCreatorRoyalty || 0)
+      );
+    },
+    async getClaimableReward(documentId: string, userId: string) {
+      return instance.Query.getClaimableReward({ documentId, userId }).then(
+        (res: any) => Number(res.determineCreatorRoyalty || 0)
       );
     }
   },
@@ -691,6 +701,14 @@ export const repos = {
     getCuratorRewards: async (data: any) =>
       graphql({
         query: queries.getCuratorRewards(data)
+      }).then((res: any) => res.Curator),
+    getClaimableRoyalty: async (data: any) =>
+      graphql({
+        query: queries.getClaimableRoyalty(data)
+      }).then((res: any) => res.Curator),
+    getClaimableReward: async (data: any) =>
+      graphql({
+        query: queries.getClaimableReward(data)
       }).then((res: any) => res.Curator)
   }
 };

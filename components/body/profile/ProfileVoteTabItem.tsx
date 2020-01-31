@@ -25,7 +25,7 @@ export default function({ documentData }: Type) {
 
   // 저자 리워드
   const getCuratorRewards = () => {
-    repos.Document.getCuratorRewards(documentData.documentId, myInfo.sub).then(
+    repos.Document.getClaimableReward(documentData.documentId, myInfo.sub).then(
       res => setValidClaimAmount(common.toDollar(res))
     );
   };

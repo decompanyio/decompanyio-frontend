@@ -192,5 +192,33 @@ export default {
       documentId
       reward
     }
+  }`,
+  getClaimableRoyalty: data =>
+    `Creator  {
+    getClaimableRoyalty(
+      userId: "${data.userId}"
+      documentId: "${data.documentId}"
+    ) {
+      activeDate
+      userId
+      documentId
+      pageview
+      totalPageview
+      royalty
+    }
+  }`,
+  getClaimableReward: data =>
+    `Curator {
+    getClaimableReward(
+      userId: "${data.userId}"
+      documentId: "${data.documentId}"
+    ) {
+      voteDate
+      activeDate
+      documentId
+      userId
+      voteAmount
+      reward
+    }
   }`
 };

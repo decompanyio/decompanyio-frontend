@@ -28,26 +28,20 @@ const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
 // 기본 data set
 const setData = (documentData: any) => {
-  let vote: number;
-  let reward: number;
-  let view: number;
-  let imageUrl: string;
-  let profileUrl: string;
-  let croppedArea: any;
-  let identification: string;
-
-  vote = common.toEther(documentData.latestVoteAmount) || 0;
-  reward = common.toEther(Number(0));
-  view = documentData.latestPageview || 0;
-  imageUrl = common.getThumbnail(
+  const vote = common.toEther(documentData.latestVoteAmount) || 0;
+  const reward = common.toEther(Number(0));
+  const view = documentData.latestPageview || 0;
+  const profileUrl = documentData.author ? documentData.author.picture : null;
+  const imageUrl = common.getThumbnail(
     documentData.documentId,
     common_view.getIsMobile ? 640 : 320,
     1,
     documentData.documentName
   );
-  profileUrl = documentData.author ? documentData.author.picture : null;
-  croppedArea = documentData.author ? documentData.author.croppedArea : null;
-  identification = documentData.author
+  const croppedArea = documentData.author
+    ? documentData.author.croppedArea
+    : null;
+  const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email

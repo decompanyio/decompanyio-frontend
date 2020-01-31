@@ -61,9 +61,10 @@ export default function({
 
   // 저자 리워드
   const getCreatorRewards = () => {
-    repos.Document.getCreatorRewards(documentData.documentId, myInfo.sub).then(
-      res => setValidClaimAmount(common.toDollar(res))
-    );
+    repos.Document.getClaimableRoyalty(
+      documentData.documentId,
+      myInfo.sub
+    ).then(res => setValidClaimAmount(common.toDollar(res)));
   };
 
   // document state 관리
