@@ -23,7 +23,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker --build-arg NODE_ENV=$NODE_ENV NODE_ENV_SUB=$NODE_ENV_SUB build -t $REPOSITORY_URI:latest .
+      - docker build \-t $REPOSITORY_URI:latest --build-arg NODE_ENV=$NODE_ENV --build-arg NODE_ENV_SUB=$NODE_ENV_SUB  .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
