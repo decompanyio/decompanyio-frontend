@@ -17,9 +17,6 @@ COPY . .
 # Building app
 RUN echo NODE_ENV = $NODE_ENV
 RUN echo NODE_ENV_SUB = $NODE_ENV_SUB
-RUN NODE_ENV=$NODE_ENV
-RUN export NODE_ENV_SUB=$NODE_ENV_SUB
-RUN set NODE_ENV_SUB=$NODE_ENV_SUB
 RUN npm run build
 
 # Running the app
