@@ -15,9 +15,9 @@ ARG NODE_ENV_SUB
 COPY . .
 
 # Building app
-RUN echo $NODE_ENV
-RUN echo $NODE_ENV_SUB
-RUN npm run build
+RUN echo NODE_ENV = $NODE_ENV
+RUN echo NODE_ENV_SUB = $NODE_ENV_SUB
+RUN export NODE_ENV=$NODE_ENV && export NODE_ENV_SUB=$NODE_ENV_SUB && npm run build
 
 # Running the app
 CMD [ "npm", "start" ]

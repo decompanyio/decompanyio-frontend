@@ -11,8 +11,6 @@ phases:
       - npm i npm@latest -g # npm 버전 업데이트
   pre_build:
     commands:
-      - echo $NODE_ENV
-      - echo $NODE_ENV_SUB
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)  # AWS ECR 로그인
