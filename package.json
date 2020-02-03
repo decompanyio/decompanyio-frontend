@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "next start",
-    "build": "export NODE_ENV=$NODE_ENV&&export NODE_ENV_SUB=$NODE_ENV_SUB&&next build",
+    "build": "set NODE_ENV=production&&set NODE_ENV_SUB=development&&next build",
+    "build:production": "set NODE_ENV=production&&set NODE_ENV_SUB=production&&next build",
     "export": "next export",
     "start": "node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",

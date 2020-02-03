@@ -15,9 +15,7 @@ ARG NODE_ENV_SUB
 COPY . .
 
 # Building app
-RUN echo NODE_ENV = $NODE_ENV
-RUN echo NODE_ENV_SUB = $NODE_ENV_SUB
-RUN npm run build
+RUN if [ "$NODE_ENV_SUB" = "production" ] ; then npm run build:production ; else npm run build ; fi
 
 # Running the app
 CMD [ "npm", "start" ]
