@@ -135,7 +135,7 @@ export default function({ documentData, ratio }: Type) {
               onMouseOver={() => setRewardInfo(true)}
               onMouseOut={() => setRewardInfo(false)}
             >
-              $ {common.deckToDollar(reward)}
+              $ {common.deckToDollarWithComma(reward)}
               <img
                 className={styles.ta_rewardArrow}
                 src={

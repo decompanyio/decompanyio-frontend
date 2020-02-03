@@ -28,6 +28,8 @@ import WalletService from "service/rest/WalletService";
 import WalletBalance from "../service/model/WalletBalance";
 import WalletCreate from "../service/model/WalletCreate";
 import ProfileRewards from "service/model/ProfileRewards";
+import ClaimableRoyalty from "../service/model/ClaimableRoyalty";
+import ClaimableReward from "../service/model/ClaimableReward";
 
 let instance: any;
 
@@ -440,12 +442,14 @@ export const repos = {
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
-        (res: any) => Number(res.determineCreatorRoyalty || 0)
+        (res: any) =>
+          new ClaimableRoyalty(res ? res.getClaimableRoyalty[0] : null)
       );
     },
     async getClaimableReward(documentId: string, userId: string) {
       return instance.Query.getClaimableReward({ documentId, userId }).then(
-        (res: any) => Number(res.determineCreatorRoyalty || 0)
+        (res: any) =>
+          new ClaimableReward(res ? res.getClaimableReward[0] : null)
       );
     }
   },
@@ -705,7 +709,7 @@ export const repos = {
     getClaimableRoyalty: async (data: any) =>
       graphql({
         query: queries.getClaimableRoyalty(data)
-      }).then((res: any) => res.Curator),
+      }).then((res: any) => res.Creator),
     getClaimableReward: async (data: any) =>
       graphql({
         query: queries.getClaimableReward(data)

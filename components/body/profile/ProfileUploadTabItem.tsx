@@ -60,12 +60,13 @@ export default function({
       .catch(err => console.error(err));
 
   // 저자 리워드
-  const getCreatorRewards = () => {
+  const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(
       documentData.documentId,
       myInfo.sub
-    ).then(res => setValidClaimAmount(common.toDollar(res)));
-  };
+    ).then(res =>
+      setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
+    );
 
   // document state 관리
   const setDocumentState = state => {
@@ -131,7 +132,7 @@ export default function({
 
   useEffect(() => {
     handleState();
-    getCreatorRewards();
+    if (owner) void getCreatorRewards();
   }, []);
 
   let reward = common.toEther(0);
@@ -315,7 +316,7 @@ export default function({
             onMouseOver={() => setRewardInfo(true)}
             onMouseOut={() => setRewardInfo(false)}
           >
-            $ {common.deckToDollar(reward)}
+            $ {common.deckToDollarWithComma(reward)}
             <img
               className={styles.puti_arrow}
               src={
@@ -334,12 +335,14 @@ export default function({
             {common_view.dateTimeAgo(tmpDocumentData.created, isMobile)}
           </div>
 
-          <div className={styles.puti_claimWrapper}>
-            <ProfileCreatorClaim
-              documentData={tmpDocumentData}
-              validClaimAmount={validClaimAmount}
-            />
-          </div>
+          {owner && validClaimAmount > 0 && (
+            <div className={styles.puti_claimWrapper}>
+              <ProfileCreatorClaim
+                documentData={tmpDocumentData}
+                validClaimAmount={validClaimAmount}
+              />
+            </div>
+          )}
 
           {!tmpDocumentData.isPublic &&
             tmpDocumentData.state === "CONVERT_COMPLETE" && (

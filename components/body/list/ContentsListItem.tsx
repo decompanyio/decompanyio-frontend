@@ -175,7 +175,7 @@ export default function({ documentData, bookmarkList, path }: Type) {
             onMouseOver={() => setRewardInfo(true)}
             onMouseOut={() => setRewardInfo(false)}
           >
-            $ {common.deckToDollar(reward)}
+            $ {common.deckToDollarWithComma(reward)}
             <img
               className={styles.cl_rewardArrow}
               src={

@@ -125,7 +125,7 @@ export default function({ documentData }: Type) {
             onMouseOver={() => showRewardInfo(documentData.seoTitle + "reward")}
             onMouseOut={() => hideRewardInfo(documentData.seoTitle + "reward")}
           >
-            $ {common.deckToDollar(reward)}
+            $ {common.deckToDollarWithComma(reward)}
             <img
               className={styles.vib_rewardArrow}
               src={

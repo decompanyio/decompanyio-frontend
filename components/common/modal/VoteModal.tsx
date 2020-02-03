@@ -154,7 +154,7 @@ export default function() {
               DECK ($
               <span className={styles.vm_dollarAmount}>
                 {common
-                  .toDollar(balance)
+                  .weiToDollar(balance)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </span>

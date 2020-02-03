@@ -4,7 +4,6 @@ import { psString } from "utils/localization";
 import { repos } from "../../../utils/repos";
 import { setActionMain } from "../../../redux/reducer/main";
 import * as styles from "../../../public/static/styles/main.scss";
-import { AUTH_APIS } from "../../../utils/auth";
 
 type Type = {
   documentData: any;
@@ -43,7 +42,7 @@ export default function({ documentData, validClaimAmount }: Type) {
     }
   };
 
-  if (validClaimAmount <= 0 || !AUTH_APIS.isAuthenticated() || btnText === "") {
+  if (btnText === "") {
     return <div />;
   }
 
@@ -60,7 +59,7 @@ export default function({ documentData, validClaimAmount }: Type) {
       onClick={() => handelClickClaim()}
     >
       {btnText}{" "}
-      {btnText === psString("claim-btn-text-2") ? "" : validClaimAmount}
+      {btnText === psString("claim-btn-text-2") ? "" : "$ " + validClaimAmount}
     </div>
   );
 }

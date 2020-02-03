@@ -12,6 +12,7 @@ import common_data from "../../../common/common_data";
 
 type Type = {
   profileInfo: any;
+  owner: boolean;
 };
 
 const resultListModel = {
@@ -22,7 +23,7 @@ const resultListModel = {
 
 const pageSize = common_data.myPageListSize; // 화면상 리스트 수
 
-export default function({ profileInfo }: Type) {
+export default function({ profileInfo, owner }: Type) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [dataSet, setDataSet] = useState(resultListModel);
@@ -78,7 +79,7 @@ export default function({ profileInfo }: Type) {
 
       {dataSet.resultList.length > 0 ? (
         dataSet.resultList.map((result, idx) => (
-          <ProfileVoteTabItem documentData={result} key={idx} />
+          <ProfileVoteTabItem documentData={result} key={idx} owner={owner} />
         ))
       ) : loading ? (
         <div className={styles.put_spinner}>

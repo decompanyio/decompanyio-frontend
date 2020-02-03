@@ -16,7 +16,7 @@ export default function({ documentData }: Type) {
   const [btnText, setBtnText] = useState(psString("claim-text"));
   const [determineReward, setDetermineReward] = useState(100);
 
-  let claimReward = common.deckToDollar(
+  let claimReward = common.deckToDollarWithComma(
     determineReward > 0 ? determineReward : 0
   );
 

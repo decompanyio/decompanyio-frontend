@@ -13,22 +13,22 @@ import ProfileCuratorClaim from "./ProfileCuratorClaim";
 
 type Type = {
   documentData: any;
+  owner: boolean;
 };
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
-export default function({ documentData }: Type) {
+export default function({ documentData, owner }: Type) {
   const isMobile = useSelector(state => state.main.isMobile);
   const myInfo = useSelector(state => state.main.myInfo);
   const [rewardInfoOpen, setRewardInfo] = useState(false);
   const [validClaimAmount, setValidClaimAmount] = useState(0);
 
   // 저자 리워드
-  const getCuratorRewards = () => {
+  const getCuratorRewards = () =>
     repos.Document.getClaimableReward(documentData.documentId, myInfo.sub).then(
-      res => setValidClaimAmount(common.toDollar(res))
+      res => setValidClaimAmount(common.deckToDollar(res))
     );
-  };
 
   const reward = common.toEther(0);
   const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0;
@@ -40,7 +40,7 @@ export default function({ documentData }: Type) {
     : documentData.accountId;
 
   useEffect(() => {
-    getCuratorRewards();
+    if (owner) void getCuratorRewards();
   }, []);
 
   return (
@@ -137,12 +137,14 @@ export default function({ documentData }: Type) {
             {common_view.dateTimeAgo(documentData.created, false)}
           </div>
 
-          <div className={isMobile ? "mt-2" : "float-right"}>
-            <ProfileCuratorClaim
-              documentData={documentData}
-              validClaimAmount={validClaimAmount}
-            />
-          </div>
+          {owner && validClaimAmount > 0 && (
+            <div className={isMobile ? "mt-2" : "float-right"}>
+              <ProfileCuratorClaim
+                documentData={documentData}
+                validClaimAmount={validClaimAmount}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -226,12 +226,20 @@ export default {
 
     return name.match(regExp);
   },
-  toDollar: (deck: any) => {
-    if (isNaN(deck) || !deck) return 0;
+  weiToDollar: (wei: any) => {
+    if (isNaN(wei) || !wei) return 0;
     let c = 0.005;
     let d = new BigNumber("1e+18");
-    let bn = new BigNumber(deck);
+    let bn = new BigNumber(wei);
     let dollar = bn.dividedBy(d).multipliedBy(c);
+    // 120,000,000,000,000,000,000
+    return Math.round(dollar.toNumber() * 100) / 100;
+  },
+  deckToDollar: (deck: number) => {
+    if (isNaN(deck) || !deck) return 0;
+    let c = 0.005;
+    let bn = new BigNumber(deck);
+    let dollar = bn.multipliedBy(c);
     // 120,000,000,000,000,000,000
     return Math.round(dollar.toNumber() * 100) / 100;
   },
@@ -261,10 +269,10 @@ export default {
     let ether = bn.dividedBy(d);
     return Math.round(ether.toNumber() * 100) / 100;
   },
-  deckToDollar: (str: number) => {
-    if (isNaN(str) || !str) return 0;
+  deckToDollarWithComma: (deck: number) => {
+    if (isNaN(deck) || !deck) return 0;
     let c = 0.005;
-    let bn = new BigNumber(str);
+    let bn = new BigNumber(deck);
     let dollar = bn.multipliedBy(c);
     return (Math.round(dollar.toNumber() * 100) / 100)
       .toString()

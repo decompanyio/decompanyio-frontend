@@ -26,7 +26,7 @@ export default function({ profileInfo, owner }: Type) {
         </TabPanel>
 
         <TabPanel>
-          <ProfileVoteTab profileInfo={profileInfo} />
+          <ProfileVoteTab profileInfo={profileInfo} owner={owner} />
         </TabPanel>
 
         {owner && (

@@ -7,7 +7,7 @@ export default class WalletBalance {
 
   constructor(data) {
     this.deck = data && data.balance ? common.toDeck(data.balance) : 0;
-    this.dollar = data && data.balance ? common.toDollar(data.balance) : 0;
+    this.dollar = data && data.balance ? common.weiToDollar(data.balance) : 0;
     this.wei = data && data.balance ? data.balance : 0;
   }
 }

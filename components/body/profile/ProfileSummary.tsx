@@ -140,7 +140,7 @@ export default function({ profileInfo, owner }: Type) {
             <span>
               {"$ " +
                 common.withComma(
-                  common.deckToDollar(
+                  common.deckToDollarWithComma(
                     reward.todayEstimatedCreator + reward.todayEstimatedCurator
                   )
                 )}
@@ -149,7 +149,9 @@ export default function({ profileInfo, owner }: Type) {
             {psString("profile-revenue-7-days")}
             <span>
               {"$ " +
-                common.deckToDollar(reward.last7Creator + reward.last7Curator)}
+                common.deckToDollarWithComma(
+                  reward.last7Creator + reward.last7Curator
+                )}
             </span>
           </div>
 
@@ -180,11 +182,14 @@ export default function({ profileInfo, owner }: Type) {
           <div className={styles.ps_info}>
             {psString("profile-estimated-earnings")}
             <span>
-              {"$ " + common.deckToDollar(reward.todayEstimatedCreator)}
+              {"$ " +
+                common.deckToDollarWithComma(reward.todayEstimatedCreator)}
             </span>
             <br />
             {psString("profile-revenue-7-days")}
-            <span>{"$ " + common.deckToDollar(reward.last7Creator)}</span>
+            <span>
+              {"$ " + common.deckToDollarWithComma(reward.last7Creator)}
+            </span>
           </div>
         </div>
 
@@ -193,11 +198,14 @@ export default function({ profileInfo, owner }: Type) {
           <div className={styles.ps_info}>
             {psString("profile-estimated-earnings")}
             <span>
-              {"$ " + common.deckToDollar(reward.todayEstimatedCurator)}
+              {"$ " +
+                common.deckToDollarWithComma(reward.todayEstimatedCurator)}
             </span>
             <br />
             {psString("profile-revenue-7-days")}
-            <span>{"$ " + common.deckToDollar(reward.last7Curator)}</span>
+            <span>
+              {"$ " + common.deckToDollarWithComma(reward.last7Curator)}
+            </span>
           </div>
         </div>
       </div>

@@ -151,7 +151,7 @@ export default function({ documentData }: Type) {
             onMouseOver={() => setRewardInfo(true)}
             onMouseOut={() => setRewardInfo(false)}
           >
-            $ {common.deckToDollar(reward)}
+            $ {common.deckToDollarWithComma(reward)}
             <img
               className={styles.dc_rewardArrow}
               src={
