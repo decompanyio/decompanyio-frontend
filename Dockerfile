@@ -9,7 +9,7 @@ RUN npm install
 
 # Set Arguments from buildspec.yml
 ARG NODE_ENV
-# ARG NODE_ENV_SUB
+ARG NODE_ENV_SUB
 
 # Copying source files
 COPY . .
