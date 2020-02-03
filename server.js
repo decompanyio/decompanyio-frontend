@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const next = require('next');
-
+console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
+console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
 const env = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
 const port = 80;
 const dev = env !== 'production';
