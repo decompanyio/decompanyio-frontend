@@ -169,7 +169,7 @@ app.prepare().then(() => {
         console.log('Server Start'.bold.bgBlue);
         console.log('Date Time : '.bold + datetime);
         console.log('Listening Port : '.bold + port);
-        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
+        console.log('NODE_ENV 1: '.bold + process.env.NODE_ENV);
         console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
         console.log('\n\n');
 

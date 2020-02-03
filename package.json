@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next start",
-    "build": "export NODE_ENV=production&& export NODE_ENV_SUB=development&& next build",
+    "build": "export NODE_ENV=production && export NODE_ENV_SUB=development && echo $NODE_ENV && next build",
     "build:production": "export NODE_ENV=production&& export NODE_ENV_SUB=production&& next build",
     "export": "next export",
     "start": "node server.js",
