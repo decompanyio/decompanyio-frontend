@@ -9,13 +9,13 @@ RUN npm install
 
 # Set Arguments from buildspec.yml
 ARG NODE_ENV
-ARG NODE_ENV_SUB
+# ARG NODE_ENV_SUB
 
 # Copying source files
 COPY . .
 
 # Building app
-RUN if [ "$NODE_ENV_SUB" = "production" ] ; then npm run build:production ; else npm run build ; fi
+RUN npm run build
 
 # Running the app
 CMD [ "npm", "start" ]
