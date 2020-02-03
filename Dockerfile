@@ -11,6 +11,8 @@ RUN npm install
 COPY . .
 
 # Building app
+RUN echo $NODE_ENV
+RUN echo $NODE_ENV_SUB
 RUN npm run build
 
 # Running the app
