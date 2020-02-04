@@ -163,16 +163,17 @@ app.prepare().then(() => {
 
     server.listen(port, err => {
         console.log('\n\n\n' +
-            '    ____  ____  __    ___    ____  _________    _____ __  _____    ____  ______ \n'.blue +
-            '   / __ \\/ __ \\/ /   /   |  / __ \\/  _/ ___/   / ___// / / /   |  / __ \\/ ____/ \n'.blue +
-            '  / /_/ / / / / /   / /| | / /_/ // / \\__ \\    \\__ \\/ /_/ / /| | / /_/ / __/    \n'.blue +
-            ' / ____/ /_/ / /___/ ___ |/ _, _// / ___/ /   ___/ / __  / ___ |/ _, _/ /___    \n'.blue +
-            '/_/    \\____/_____/_/  |_/_/ |_/___//____/   /____/_/ /_/_/  |_/_/ |_/_____/    \n\n\n'.blue);
+        ' ____   ___   _       ____  ____   ____ _____      _____ __ __   ____  ____     ___ \n'.blue +
+        '|    \\ /   \\ | |     /    ||    \\ |    / ___/     / ___/|  |  | /    ||    \\   /  _]\n'.blue +
+        '|  o  )     || |    |  o  ||  D  ) |  (   \\_     (   \\_ |  |  ||  o  ||  D  ) /  [_ \n'.blue +
+        '|   _/|  O  || |___ |     ||    /  |  |\\__  |     \\__  ||  _  ||     ||    / |    _]\n'.blue +
+        '|  |  |     ||     ||  _  ||    \\  |  |/  \\ |     /  \\ ||  |  ||  _  ||    \\ |   [_ \n'.blue +
+        '|  |  |     ||     ||  |  ||  .  \\ |  |\\    |     \\    ||  |  ||  |  ||  .  \\|     |\n'.blue +
+        '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'.blue)
         console.log('Server Start'.bold.bgBlue);
         console.log('Date Time : '.bold + datetime);
         console.log('Listening Port : '.bold + port);
-        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
-        console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
+        console.log('NODE_ENV : '.bold + __ENV__);
         console.log('NODE_ENV_SUB2 : '.bold + __ENV_SUB__);
         console.log('NODE_ENV_SUB3 : '.bold + APP_CONFIG.env);
         console.log('\n\n');
