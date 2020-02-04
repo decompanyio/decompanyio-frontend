@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const next = require('next');
-const {APP_CONFIG} = require('./app.config');
+const {APP_CONFIG} = require('./app.config.ts');
 
 const __ENV__ = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
 const __ENV_SUB__ = (process.env.NODE_ENV_SUB && process.env.NODE_ENV_SUB.trim().toLowerCase() === 'production') ? 'production' : 'development';
