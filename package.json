@@ -12,7 +12,7 @@
     "build": "echo $NODE_ENV && echo $NODE_ENV_SUB && next build",
     "build:production": "export NODE_ENV=production&& export NODE_ENV_SUB=production&& next build",
     "export": "next export",
-    "start": "echo $NODE_ENV && export NODE_ENV=production&& export NODE_ENV_SUB=development&& node server.js",
+    "start": "node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -2,12 +2,11 @@ require('dotenv').config();
 
 const express = require('express');
 const next = require('next');
-console.log('NODE ENV : '.bold + process.env.NODE_ENV);
-console.log(${NODE_ENV});
-console.log('NODE ENV SUB : '.bold + process.env.NODE_ENV_SUB);
-const env = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
+
+const __ENV__ = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
+const __ENV_SUB__ = (process.env.NODE_ENV_SUB && process.env.NODE_ENV_SUB.trim().toLowerCase() === 'production') ? 'production' : 'development';
 const port = 80;
-const dev = env !== 'production';
+const dev = __ENV__ !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 const profileRegEx = '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})';
@@ -170,8 +169,9 @@ app.prepare().then(() => {
         console.log('Server Start'.bold.bgBlue);
         console.log('Date Time : '.bold + datetime);
         console.log('Listening Port : '.bold + port);
-        console.log('NODE_ENV 1: '.bold + process.env.NODE_ENV);
+        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
         console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
+        console.log('NODE_ENV_SUB2 : '.bold + __ENV_SUB__);
         console.log('\n\n');
 
         if (err) throw err;
