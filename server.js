@@ -3,10 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const next = require('next');
 
-const __ENV__ = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
-const __ENV_SUB__ = (process.env.NODE_ENV_SUB && process.env.NODE_ENV_SUB.trim().toLowerCase() === 'production') ? 'production' : 'development';
+const env = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
 const port = 80;
-const dev = __ENV__ !== 'production';
+const dev = env !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 const profileRegEx = '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})';
@@ -171,18 +170,6 @@ app.prepare().then(() => {
 
         console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
         console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
-
-        console.log('__ENV__ : '.bold + __ENV__);
-        console.log('__ENV_SUB__ : '.bold + __ENV_SUB__);
-
-        process.env.NODE_ENV = __ENV__;
-        process.env.NODE_ENV_SUB = __ENV_SUB__;
-
-        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
-        console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
-
-
-
         console.log('\n\n');
 
         if (err) throw err;
