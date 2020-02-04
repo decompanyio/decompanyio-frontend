@@ -11,6 +11,10 @@ RUN npm install
 ARG NODE_ENV
 ARG NODE_ENV_SUB
 
+# Set Environment Valuables
+ENV NODE_ENV=$NODE_ENV
+ENV NODE_ENV_SUB=$NODE_ENV_SUB
+
 # Copying source files
 COPY . .
 

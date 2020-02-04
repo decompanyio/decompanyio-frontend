@@ -1,7 +1,7 @@
 {
   "name": "decompanyio-frontend",
   "description": "www.polarishare.com",
-  "version": "1.9.7",
+  "version": "1.9.8",
   "private": true,
   "keywords": [],
   "author": "Decompany.io",
@@ -9,8 +9,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next start",
-    "build": "echo $NODE_ENV && echo $NODE_ENV_SUB && next build",
-    "build:production": "export NODE_ENV=production&& export NODE_ENV_SUB=production&& next build",
+    "build": "next build",
     "export": "next export",
     "start": "node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",

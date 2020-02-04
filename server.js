@@ -168,15 +168,21 @@ app.prepare().then(() => {
         '|  |  |     ||     ||  _  ||    \\  |  |/  \\ |     /  \\ ||  |  ||  _  ||    \\ |   [_ \n'.blue +
         '|  |  |     ||     ||  |  ||  .  \\ |  |\\    |     \\    ||  |  ||  |  ||  .  \\|     |\n'.blue +
         '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'.blue)
-        console.log('Server Start'.bold.bgBlue);
-        console.log('Date Time : '.bold + datetime);
-        console.log('Listening Port : '.bold + port);
-        console.log('NODE_ENV : '.bold + __ENV__);
-        console.log('NODE_ENV_SUB : '.bold + __ENV_SUB__);
+
+        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
+        console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
+
+        console.log('__ENV__ : '.bold + __ENV__);
+        console.log('__ENV_SUB__ : '.bold + __ENV_SUB__);
+
         process.env.NODE_ENV = __ENV__;
         process.env.NODE_ENV_SUB = __ENV_SUB__;
-        console.log('NODE_ENV2 : '.bold + process.env.NODE_ENV);
-        console.log('NODE_ENV_SUB2 : '.bold + process.env.NODE_ENV_SUB);
+
+        console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
+        console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
+
+
+
         console.log('\n\n');
 
         if (err) throw err;
