@@ -54,10 +54,7 @@ export const setTrackingInfo = () => {
 };
 
 export const tracking = async (params, sidClear) => {
-  if (
-    process.env.NODE_ENV_SUB !== "production" &&
-    process.env.NODE_ENV_SUB !== "development"
-  ) {
+  if (APP_CONFIG.env !== "production" && APP_CONFIG.env !== "development") {
     return false;
   }
 

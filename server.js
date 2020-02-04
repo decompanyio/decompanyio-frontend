@@ -1,3 +1,5 @@
+import {APP_CONFIG} from "./app.config";
+
 require('dotenv').config();
 
 const express = require('express');
@@ -172,6 +174,7 @@ app.prepare().then(() => {
         console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
         console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);
         console.log('NODE_ENV_SUB2 : '.bold + __ENV_SUB__);
+        console.log('NODE_ENV_SUB3 : '.bold + APP_CONFIG.env);
         console.log('\n\n');
 
         if (err) throw err;
