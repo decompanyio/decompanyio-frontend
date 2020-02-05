@@ -5,6 +5,7 @@ import { psString } from "../utils/localization";
 import common_view from "../common/common_view";
 import { APP_CONFIG } from "../app.config";
 import common_data from "../common/common_data";
+import React from "react";
 
 export default function() {
   return (
