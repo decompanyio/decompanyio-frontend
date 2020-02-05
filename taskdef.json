@@ -1,11 +1,11 @@
 {
-  "family": "frontendTaskDev",
-  "taskRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
-  "executionRoleArn": "arn:aws:iam::197966029048:role/frontend-dev",
+  "family": "frontendTask",
+  "taskRoleArn": "arn:aws:iam::197966029048:role/frontend",
+  "executionRoleArn": "arn:aws:iam::197966029048:role/frontend",
   "containerDefinitions": [
     {
-      "name": "frontendContainerDev",
-      "image": "197966029048.dkr.ecr.us-west-1.amazonaws.com/decompany/frontend-dev:latest",
+      "name": "frontendContainer",
+      "image": "197966029048.dkr.ecr.ap-northeast-2.amazonaws.com/decompany/frontend:latest",
       "cpu": 0,
       "portMappings": [
         {
@@ -18,8 +18,8 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/frontendTaskDev",
-          "awslogs-region": "us-west-1",
+          "awslogs-group": "/ecs/frontendTask",
+          "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
       },
