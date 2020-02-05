@@ -17,7 +17,7 @@ export default function({ documentData, text, ratio, pageChange }: Type) {
   const arr = [documentData.totalPages];
 
   // 스크롤 관리
-  const handleOnScroll = e => {
+  const handleOnScroll = (e: any) => {
     let calcNum = e.target.scrollTop / e.target.offsetHeight;
     let page = parseInt(String(calcNum), 10);
     if (readPage !== page) {

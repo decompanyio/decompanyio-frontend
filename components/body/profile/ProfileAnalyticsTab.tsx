@@ -61,7 +61,7 @@ export default function({ profileInfo }: Type) {
   };
 
   // GET 데이터 관리
-  const handleData = res => {
+  const handleData = (res: any) => {
     if (!res || !res.resultList) return Promise.reject();
     setLoading(false);
 
@@ -73,7 +73,7 @@ export default function({ profileInfo }: Type) {
   };
 
   // 차트 정보 GET
-  const getAnalytics = (documentId, dataKey) => {
+  const getAnalytics = (documentId: any, dataKey) => {
     repos.Analytics.getAnalyticsList({
       week: dateSet.week,
       year: dateSet.year > 0 ? dateSet.year : null,
@@ -87,7 +87,7 @@ export default function({ profileInfo }: Type) {
   };
 
   // 스크롤 아웃 관리 메소드
-  const handleClick = e => {
+  const handleClick = (e: any) => {
     const dataKey = e.currentTarget.getAttribute("data-key");
     const dataId = e.currentTarget.getAttribute("data-id");
 
@@ -104,7 +104,7 @@ export default function({ profileInfo }: Type) {
   };
 
   // 엑셀 추출 버튼
-  const handleExport = seoTitle => {
+  const handleExport = (seoTitle: string) => {
     const data = {
       documentId: documentId,
       year: dateSet.week,
@@ -126,7 +126,7 @@ export default function({ profileInfo }: Type) {
   };
 
   // 날짜 선택 버튼
-  const handleWeekBtnClick = e => {
+  const handleWeekBtnClick = (e: any) => {
     let weekValue = e.target.dataset.value;
     let weekValueNum = -1;
 

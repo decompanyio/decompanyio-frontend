@@ -3,7 +3,6 @@ env:
   variables:
     AWS_ACCOUNT_ID: "197966029048"
     AWS_DEFAULT_REGION: "ap-northeast-2"
-    AWS_REPOSITORY: "ap-northeast-2"
 phases:
   install:
     runtime-versions:
@@ -15,7 +14,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)  # AWS ECR 로그인
-      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_REPOSITORY  # REPOSITORY_URI 설정
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/decompany/frontend  # REPOSITORY_URI 설정
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7) # COMMIT_HASH 설정
       - IMAGE_TAG=${COMMIT_HASH:=latest}  # IMAGE_TAG 설정
   build:
@@ -23,14 +22,15 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build \-t $REPOSITORY_URI:latest --build-arg NODE_ENV=$NODE_ENV --build-arg NODE_ENV_SUB=$NODE_ENV_SUB .
-      - docker tag $AWS_REPOSITORY:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image imageDetail file...
-      - printf '[{"name":"frontend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - printf '[{"name":"frontend-dev","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
 artifacts:
   files:
     - imageDetail.json

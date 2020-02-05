@@ -2,7 +2,7 @@ import { psString } from "utils/localization";
 
 export default {
   // Get Date Time Ago on Number
-  dateTimeAgo: (timestamp, isMobile) => {
+  dateTimeAgo: (timestamp: number, isMobile: boolean) => {
     if (typeof window === "undefined") return 0;
 
     let currentDate = Number(new Date());
@@ -59,7 +59,7 @@ export default {
     }
   },
 
-  setCookie(cname, cvalue, exdays) {
+  setCookie(cname: any, cvalue: any, exdays: number) {
     if (typeof window === "undefined") return false;
 
     let d = new Date();
@@ -68,7 +68,7 @@ export default {
     document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/;";
   },
 
-  getCookie(cname) {
+  getCookie(cname: any) {
     if (typeof window === "undefined") return false;
 
     let name = cname + "=";
@@ -86,7 +86,7 @@ export default {
     return "";
   },
 
-  deleteCookie(name) {
+  deleteCookie(name: string) {
     if (typeof window === "undefined") return false;
 
     if (this.getCookie(name)) {
@@ -139,7 +139,7 @@ export default {
   },
 
   // Clip board copy
-  clipboardCopy: id => {
+  clipboardCopy: (id: string) => {
     return new Promise((resolve, reject) => {
       if (typeof window === "undefined") return reject();
 

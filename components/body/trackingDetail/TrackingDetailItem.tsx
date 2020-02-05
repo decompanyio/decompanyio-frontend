@@ -12,13 +12,13 @@ type Type = {
 };
 
 // 정렬 시간 GET
-const getSortedTime = result => {
+const getSortedTime = (result: any) => {
   result.viewTracking.sort((a, b) => a.t - b.t);
   return common.timestampToTime(result.viewTracking[0].t);
 };
 
 // 머문 시간 GET
-const getStayingTime = result => {
+const getStayingTime = (result: any) => {
   result.viewTracking.sort((a, b) => a.t - b.t);
   let nextDt = result.viewTracking[result.viewTracking.length - 1].t;
   let prevDt = result.viewTracking[0].t;
@@ -30,7 +30,7 @@ export default function({ mapData, documentData, text }: Type) {
   const [folded, setFolded] = useState(-1);
 
   // 이미지 URL GET
-  const getImgUrl = page =>
+  const getImgUrl = (page: number) =>
     common.getThumbnail(documentData.documentId, 320, page, "");
 
   let identification = documentData.author

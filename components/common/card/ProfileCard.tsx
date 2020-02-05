@@ -42,7 +42,7 @@ function ProfileCard({ click }: Type) {
 
   useEffect(() => {
     window.addEventListener("click", handleClick);
-    getBalance(); // 잔액 조회
+    void getBalance(); // 잔액 조회
 
     return () => {
       window.removeEventListener("click", handleClick);

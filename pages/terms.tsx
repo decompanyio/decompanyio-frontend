@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import * as styles from "public/static/styles/main.scss";
 import common_data from "../common/common_data";
+import React from "react";
 
 function Terms() {
   return (

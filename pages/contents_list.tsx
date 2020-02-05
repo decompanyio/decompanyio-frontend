@@ -6,13 +6,13 @@ import common_data from "../common/common_data";
 import { AUTH_APIS } from "../utils/auth";
 
 // get Tag
-const getTag = path => {
+const getTag = (path: any) => {
   if (path[1] && path[1] === "tag") return path[2] || null;
   else return null;
 };
 
 // get Path
-const getPath = path => {
+const getPath = (path: any) => {
   if (path[1] && common_data.pathArr.includes(path[1])) {
     return path[1] || "latest";
   } else return "latest";

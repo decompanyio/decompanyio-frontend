@@ -2,10 +2,14 @@ import Layout from "../components/Layout";
 import { psString } from "../utils/localization";
 import * as styles from "public/static/styles/main.scss";
 import common_data from "../common/common_data";
+import React from "react";
 
 function Privacy() {
   return (
-    <Layout title={psString("helmet-title-privacy") + common_data.commonTitle} path="privacy_policy">
+    <Layout
+      title={psString("helmet-title-privacy") + common_data.commonTitle}
+      path="privacy_policy"
+    >
       <div className={styles.pp_container}>
         <div className={styles.pp_subject}>PRIVACY</div>
 

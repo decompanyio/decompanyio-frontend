@@ -18,7 +18,7 @@ export default function({ documentData }: Type) {
   const [mylist, setMylist] = useState(null);
 
   // 문서 다운로드
-  const getContentDownload = (documentId, documentName) => {
+  const getContentDownload = (documentId: string, documentName: string) => {
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
     }).then(result => {
@@ -62,7 +62,7 @@ export default function({ documentData }: Type) {
     dispatch(setActionMain.modal("delete", { documentData }));
 
   useEffect(() => {
-    getMyList();
+    void getMyList();
   }, []);
 
   return (

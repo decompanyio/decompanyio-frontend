@@ -9,7 +9,6 @@ const dev = env !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 const profileRegEx = '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})';
-const datetime = new Date();
 
 app.prepare().then(() => {
     const server = express();
@@ -166,7 +165,7 @@ app.prepare().then(() => {
         '|   _/|  O  || |___ |     ||    /  |  |\\__  |     \\__  ||  _  ||     ||    / |    _]\n'.blue +
         '|  |  |     ||     ||  _  ||    \\  |  |/  \\ |     /  \\ ||  |  ||  _  ||    \\ |   [_ \n'.blue +
         '|  |  |     ||     ||  |  ||  .  \\ |  |\\    |     \\    ||  |  ||  |  ||  .  \\|     |\n'.blue +
-        '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'.blue)
+        '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'.blue);
 
         console.log('NODE_ENV : '.bold + process.env.NODE_ENV);
         console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB);

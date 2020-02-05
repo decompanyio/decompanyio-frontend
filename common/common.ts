@@ -11,7 +11,7 @@ export default {
     return Math.floor(date / (60 * 60 * 24 * 1000)) * (60 * 60 * 24 * 1000);
   },
   // change timestamp to duration
-  timestampToDuration: timestamp => {
+  timestampToDuration: (timestamp: number) => {
     let date = new Date(timestamp);
 
     let h: number = date.getHours() - 9;
@@ -27,7 +27,7 @@ export default {
     else return "Duration: " + hStr + mStr + sStr;
   },
   // change timestamp to duration
-  timestampToDurationJustTime: timestamp => {
+  timestampToDurationJustTime: (timestamp: number) => {
     let date = new Date(timestamp);
 
     let h: number = date.getHours() - 9;
@@ -43,7 +43,7 @@ export default {
     else return hStr + mStr + sStr;
   },
   // change Timestamp to Datetime
-  timestampToDateTime: timestamp => {
+  timestampToDateTime: (timestamp: number) => {
     let date = new Date(timestamp);
     const months = [
       "Jan",
@@ -83,7 +83,7 @@ export default {
     );
   },
   // change Timestamp to Date
-  timestampToDate: timestamp => {
+  timestampToDate: (timestamp: number) => {
     let date = new Date(timestamp);
     const months = [
       "Jan",
@@ -105,7 +105,7 @@ export default {
     return month + " " + day + ", " + year;
   },
   // change Timestamp to Time
-  timestampToTime: timestamp => {
+  timestampToTime: (timestamp: number) => {
     let date = new Date(timestamp);
     let hour = date.getHours();
     let min = date.getMinutes();
@@ -123,7 +123,7 @@ export default {
     );
   },
   // change Timestamp to Time
-  timestampToTimeNotGmt: timestamp => {
+  timestampToTimeNotGmt: (timestamp: number) => {
     let date = new Date(timestamp);
     let hour = date.getHours() - 9;
     let min = date.getMinutes();
@@ -140,13 +140,13 @@ export default {
     );
   },
   // Get Date String
-  dateString: date => {
+  dateString: (date: Date) => {
     return new Date(date.getTime() - date.getTimezoneOffset() * 60000)
       .toISOString()
       .split("T")[0];
   },
   // Get Month String
-  monthToString: month => {
+  monthToString: (month: number) => {
     const months = [
       "Jan",
       "Feb",
@@ -164,14 +164,14 @@ export default {
     return months[month - 1];
   },
   // Get  A particular week Monday
-  getMonday: date => {
+  getMonday: (date: Date) => {
     date = new Date(date);
     let day = date.getDay();
     let diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
     return new Date(date.setDate(diff));
   },
   // Get The number of weeks in a particular month
-  getWeeksCount: (year, month) => {
+  getWeeksCount: (year: number, month: number) => {
     const dayThreshold = [5, 1, 5, 6, 5, 6, 5, 5, 6, 5, 6, 5];
     let firstDay = new Date(year, month, 1).getDay();
     let baseWeeks = month === 1 ? 4 : 5;
@@ -179,7 +179,7 @@ export default {
     return baseWeeks + (firstDay >= dayThreshold[month] ? 1 : 0);
   },
   // Set Date Type
-  setDateType: (year, month, date) => {
+  setDateType: (year: number, month: number, date: number) => {
     return (
       year +
       "-" +
@@ -191,12 +191,12 @@ export default {
     );
   },
   // Get Date Ago on Number
-  dateAgo: timestamp => {
+  dateAgo: (timestamp: number) => {
     let currentDate = Number(new Date());
     let lastDate = Number(new Date(timestamp));
     return Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 1000));
   },
-  convertTimestampToString: timestamp => {
+  convertTimestampToString: (timestamp: number) => {
     const options = {
       weekday: "long",
       year: "numeric",
@@ -207,7 +207,7 @@ export default {
     };
     return new Date(timestamp).toLocaleString("en-US", options);
   },
-  escapeRegexCharacters: str => {
+  escapeRegexCharacters: (str: string) => {
     return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   },
 
@@ -295,7 +295,7 @@ export default {
 
     return deckStr;
   },
-  jsonToQueryString: json => {
+  jsonToQueryString: (json: any) => {
     return (
       "?" +
       Object.keys(json)
@@ -305,7 +305,7 @@ export default {
         .join("&")
     );
   },
-  shuffleArray: array => {
+  shuffleArray: (array: any) => {
     let currentIndex = array.length;
     let temporaryValue;
     let randomIndex;
@@ -342,18 +342,14 @@ export default {
     }
     return imgDomain + "/" + documentId + "/" + _size + "/" + pageNo;
   },
-  getText: (documentId, pageNo, callback, error) => {
+  getText: (documentId: string, pageNo: number, callback, error) => {
     let textUrl = imgDomain + "/THUMBNAIL/" + documentId + "/text/" + pageNo;
 
     fetch(textUrl).then(result => {
       if (result.status === 404) return error(result.statusText);
-      result.text().then(_result => {
-        callback(_result);
-      });
+      result.text().then(_result => callback(_result));
     });
   },
-  getVersion: () => {
-    return "v " + process.env.npm_package_version;
-  },
-  delay: ms => new Promise(resolve => setTimeout(resolve, ms))
+  getVersion: () => "v " + process.env.npm_package_version,
+  delay: (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 };

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 picture, croppedArea, size 지정하여 사용*/
 
 // 이미지 정보 GET
-const getImgInfo = picture =>
+const getImgInfo = (picture: string) =>
   new Promise(resolve => {
     let img = new Image();
     img.src = picture;

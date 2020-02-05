@@ -2,6 +2,7 @@ import Layout from "components/Layout";
 import More from "../components/body/more/More";
 import TagList from "../service/model/TagList";
 import common_data from "../common/common_data";
+import React from "react";
 
 function index({ tagList }) {
   return (

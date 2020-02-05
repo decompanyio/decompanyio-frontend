@@ -18,7 +18,7 @@ const DocumentCardWithoutSSR = dynamic(
 );
 
 // 문서 목록 GET
-const getDocuments = path =>
+const getDocuments = (path: string) =>
   repos.Document.getDocumentList({ path: path })
     .then(res => res.resultList)
     .catch(err => err);

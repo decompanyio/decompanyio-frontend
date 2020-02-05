@@ -48,7 +48,7 @@ export default function({ profileInfo, owner }: Type) {
   };
 
   // GET 데이터 관리
-  const handleData = res => {
+  const handleData = (res: any) => {
     if (!res || !res.resultList) return Promise.reject();
     setLoading(false);
 

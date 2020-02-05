@@ -22,7 +22,7 @@ export default function({ done, cancel, username }: Type) {
   const [editLoading, setEditLoading] = useState(false);
 
   // 유저 네임 유효성 체크
-  const validateUsername = value => {
+  const validateUsername = (value: any) => {
     if (!value || value.length < 1) {
       return setErrMsg(psString("profile-error-1"));
     }
@@ -48,7 +48,7 @@ export default function({ done, cancel, username }: Type) {
   };
 
   // 유져네임 수정 상태 핸들
-  const handleChangeUsername = value => validateUsername(value);
+  const handleChangeUsername = (value: any) => validateUsername(value);
 
   // 수정 버튼 핸들
   const handleEditBtn = () => {

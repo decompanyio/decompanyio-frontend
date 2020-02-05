@@ -20,7 +20,7 @@ const UserAvatarWithoutSSR = dynamic(
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
 // 이미지 정보 GET
-const getImgInfo = documentData => {
+const getImgInfo = (documentData: any) => {
   let img = new Image();
 
   img.src = common.getThumbnail(

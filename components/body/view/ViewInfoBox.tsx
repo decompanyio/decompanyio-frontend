@@ -21,14 +21,14 @@ const UserAvatarWithoutSSR = dynamic(
 );
 
 // 리워드 정보 표시
-const showRewardInfo = id => {
+const showRewardInfo = (id: string) => {
   if (document.getElementById(id)) {
     document.getElementById(id)!.style.display = "block";
   }
 };
 
 // 리워드 정보 숨김
-const hideRewardInfo = id => {
+const hideRewardInfo = (id: string) => {
   if (document.getElementById(id)) {
     document.getElementById(id)!.style.display = "none";
   }

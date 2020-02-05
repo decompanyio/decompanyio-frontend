@@ -27,7 +27,7 @@ export default function({ documentData, owner }: Type) {
   // 저자 리워드
   const getCuratorRewards = () =>
     repos.Document.getClaimableReward(documentData.documentId, myInfo.sub).then(
-      res => setValidClaimAmount(common.deckToDollar(res))
+      (res: any) => setValidClaimAmount(common.deckToDollar(res))
     );
 
   const reward = common.toEther(0);
@@ -40,7 +40,9 @@ export default function({ documentData, owner }: Type) {
     : documentData.accountId;
 
   useEffect(() => {
-    if (owner) void getCuratorRewards();
+    if (owner) {
+      void getCuratorRewards();
+    }
   }, []);
 
   return (

@@ -1,15 +1,10 @@
-<img src="https://www.polarishare.com/logo.png" alt="react boilerplate banner" align="center" />
-
-
 # Polaris Share Front-End
 > Development URL : https://share.decompany.io
-
-<br>
 
 > Production URL : https://www.polarishare.com
 
 ## Local
-- npm start (port 3000)
+- npm start (port 80)
 
 ## Directory
 - common : common script files

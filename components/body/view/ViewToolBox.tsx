@@ -36,7 +36,7 @@ export default function({ documentData }: Type) {
   };
 
   // 문서 다운로드
-  const getContentDownload = (documentId, documentName) => {
+  const getContentDownload = (documentId: string, documentName: string) => {
     setDownloadLoading(true);
 
     repos.Document.getDocumentDownloadUrl({

@@ -14,7 +14,7 @@ export default function({ owner }: Type) {
   const handleFileUpload = () => document.getElementById("imgFile")!.click();
 
   // file input 등록/변경 시, url get
-  const handleFileChange = async e => {
+  const handleFileChange = async (e: any) => {
     if (e && e.length > 0) {
       const type = e[0].type.split("/")[0];
 
