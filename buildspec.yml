@@ -14,7 +14,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)  # AWS ECR 로그인
-      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/decompany/frontend-dev  # REPOSITORY_URI 설정
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/decompany/frontend  # REPOSITORY_URI 설정
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7) # COMMIT_HASH 설정
       - IMAGE_TAG=${COMMIT_HASH:=latest}  # IMAGE_TAG 설정
   build:
