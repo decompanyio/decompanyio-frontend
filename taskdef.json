@@ -1,7 +1,7 @@
 {
   "family": "frontendTask",
-  "taskRoleArn": "arn:aws:iam::197966029048:role/frontend",
-  "executionRoleArn": "arn:aws:iam::197966029048:role/frontend",
+  "taskRoleArn": "arn:aws:iam::197966029048:role/frontendEcsRole",
+  "executionRoleArn": "arn:aws:iam::197966029048:role/frontendEcsRole",
   "containerDefinitions": [
     {
       "name": "frontendContainer",
