@@ -60,7 +60,7 @@ export default class DocumentInfo {
     this.title = data && data.title ? data.title : "";
     this.totalPages = data && data.totalPages ? data.totalPages : 0;
     this.updated =
-      data && data.updated ? data.updated : common.timestampToDateTime(null);
+      data && data.updated ? data.updated : common.timestampToDateTime(0);
     this.viewCount = data && data.viewCount ? data.viewCount : 0;
     this.useTracking = data && data.useTracking ? data.useTracking : false;
     this._id = data && data._id ? data._id : "";
