@@ -1,8 +1,8 @@
-import * as styles from "public/static/styles/main.scss";
-import MainBanner from "./MainBanner";
-import MainList from "./MainList";
-import common_data from "../../../common/common_data";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import MainBanner from './MainBanner'
+import MainList from './MainList'
+import common_data from '../../../common/common_data'
+import React from 'react'
 
 export default function() {
   return (
@@ -15,5 +15,5 @@ export default function() {
         ))}
       </div>
     </div>
-  );
+  )
 }

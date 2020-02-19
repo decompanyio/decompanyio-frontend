@@ -1,9 +1,9 @@
-import AxiosService from "./AxiosService";
+import AxiosService from './AxiosService'
 
-let trackingInfoUrl = "tracking/info";
-let trackingListUrl = "tracking/list";
-let trackingConfirmUrl = "tracking/confirm";
-let getTrackingExportUrl = "tracking/export";
+let trackingInfoUrl = 'tracking/info'
+let trackingListUrl = 'tracking/list'
+let trackingConfirmUrl = 'tracking/confirm'
+let getTrackingExportUrl = 'tracking/export'
 
 export default {
   GET: {
@@ -11,34 +11,34 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           trackingInfoUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     trackingList: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           trackingListUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     trackingExport: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getTrackingExportUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   },
   POST: {
@@ -46,12 +46,12 @@ export default {
       return new Promise((resolve, reject) =>
         AxiosService._requestWithBody(
           trackingConfirmUrl,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
         )
-      );
+      )
     }
   }
-};
+}

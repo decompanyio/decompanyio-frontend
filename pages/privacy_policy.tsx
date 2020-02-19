@@ -1,14 +1,14 @@
-import Layout from "../components/Layout";
-import { psString } from "../utils/localization";
-import * as styles from "public/static/styles/main.scss";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from '../components/Layout'
+import { psString } from '../utils/localization'
+import * as styles from 'public/static/styles/main.scss'
+import common_data from '../common/common_data'
+import React from 'react'
 
 function Privacy() {
   return (
     <Layout
-      title={psString("helmet-title-privacy") + common_data.commonTitle}
-      path="privacy_policy"
+      title={psString('helmet-title-privacy') + common_data.commonTitle}
+      path='privacy_policy'
     >
       <div className={styles.pp_container}>
         <div className={styles.pp_subject}>PRIVACY</div>
@@ -17,7 +17,7 @@ function Privacy() {
           DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts
           to protect the personal information of its users as it considers the
           protection of personal information saved under Polaris Share Service
-          (hereinafter "Service") is significant. This Privacy Policy, effective
+          (hereinafter 'Service') is significant. This Privacy Policy, effective
           from May 31, 2019 explains why this service collects information as
           well as what measures are taken to handle the collection and contents
           of user data.
@@ -182,8 +182,8 @@ function Privacy() {
           <br />
           ② A user can use the membership withdrawal menu in 『account setting』
           to withdraw their membership. Once the membership is withdrawn, the
-          personal information is processed according to ". Retention and Use
-          Period of Personal Information."
+          personal information is processed according to '. Retention and Use
+          Period of Personal Information.'
           <br />
           <br />
           <div>D. Rights to transfer data</div>
@@ -246,7 +246,7 @@ function Privacy() {
             9. Installation/Employment of Automated Personal Information
             Collection Equipment and Refusal
           </div>
-          The company uses "Cookie" which saves and brings out user information
+          The company uses 'Cookie' which saves and brings out user information
           in order to provide personalized and customized services.
           <br />
           If the company finds out that the personal information of a child
@@ -348,8 +348,8 @@ function Privacy() {
           the information below.
           <br />
           ▶ Data Protection Officer (DPO):
-          <br />- Email address:{" "}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <br />- Email address:{' '}
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           <br />
           Please do not hesitate to contact us should you have any concerns or
           questions regarding privacy issues. The Company will endeavor to
@@ -386,17 +386,17 @@ function Privacy() {
         <div className={styles.pp_subject}>PRIVACY POLICY</div>
 
         <div className={styles.pp_content}>
-          At DECOMPANY Corporation, doing business as Polaris Share ("Polaris
-          Share"), we strive to protect the privacy of your information. This
+          At DECOMPANY Corporation, doing business as Polaris Share ('Polaris
+          Share'), we strive to protect the privacy of your information. This
           privacy statement covers the information management practices of
           Polaris Share controlled public web sites or permission-based services
           that link to this privacy statement. These include the following
           websites:
           <br />
           <br />
-          <a href="https://www.decompany.io">https://www.decompany.io</a>
+          <a href='https://www.decompany.io'>https://www.decompany.io</a>
           <br />
-          <a href="https://www.polarishare.com">https://www.polarishare.com</a>
+          <a href='https://www.polarishare.com'>https://www.polarishare.com</a>
           <br />
           <br />
           Polaris Share provides a link to this privacy statement on all pages
@@ -431,7 +431,7 @@ function Privacy() {
           <div>Cookies</div>
           In order to collect the anonymous data described above, or to provide
           a better user experience for repeat users of our permission-based
-          services, we may use "cookies" that remain in the cookies file of your
+          services, we may use 'cookies' that remain in the cookies file of your
           browser at your option. Cookies are a widely utilized mechanism for
           storing small pieces of text which modern browsers use to interact
           with web sites. Your IP address will not be linked to any personal
@@ -457,7 +457,7 @@ function Privacy() {
           product customers and prospective customers about our solutions, to
           provide services requested by our customers, and to support our
           customers as they utilize our services. For example, Polaris Share may
-          respond to you, if you fill out a "Contact" form on our website, with
+          respond to you, if you fill out a 'Contact' form on our website, with
           information about our services. Polaris Share may also use data about
           Polaris Share customers for its own marketing purposes, in order to
           provide information about product upgrades, user best practices,
@@ -499,22 +499,22 @@ function Privacy() {
           <div>Correcting and Updating Your Information</div>
           Users of Polaris Share permission-based services may update or change
           their profile information by logging into the service, selecting the
-          "Preferences: Profile" page, and updating information using the online
+          'Preferences: Profile' page, and updating information using the online
           interface. Organizations seeking to update information, to discontinue
           their Polaris Share account, to have their private information
           returned to them please email, have questions, or need help should
           contact Polaris Share by sending an email to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>,
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>,
           Should you decline to receive mail or email from Polaris Share that
           does not relate directly to your access to or use of Polaris Share
           permission-based services, please visit our
-          <a href="privacy_policy">unsubscribe page</a> and fill out the form.
+          <a href='privacy_policy'>unsubscribe page</a> and fill out the form.
           <br />
           <div>Your Acceptance</div>
           By using our websites and/or services, you signify your agreement to
           the privacy polices described above. If you have any questions about
           this privacy statement, please email us at
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           .
           <br />
           <div>For California Residents</div>
@@ -523,7 +523,7 @@ function Privacy() {
           information during the preceding calendar year for the third parties'
           direct marketing purposes. If you are a California resident and want
           such a list, please contact us by email to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           .
           <br />
           <div>Notice to Users Outside the U.S.</div>
@@ -574,7 +574,7 @@ function Privacy() {
           administrator in order to exercise the right to erasure. In the event
           that the Polaris Share owner / administrator cannot be reached, users
           can send an email to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           .
           <br />
           <div>5. The Right to Data Portability</div>
@@ -587,8 +587,8 @@ function Privacy() {
           Users may object to the collection and use of personal information by
           first contacting the Polaris Share owner / administrator. In the event
           that the Polaris Share owner / administrator cannot be reached, users
-          can send an email to{" "}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
+          can send an email to{' '}
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>.
           <br />
           <div>
             7. Rights in Relation to Automated Decision Making and Profiling
@@ -598,10 +598,10 @@ function Privacy() {
           <br />
           <div>8. Right to Independent Arbitration</div>
           Users whose objections are not resolved by any other means, may
-          contact{" "}
-          <a href="https://www.icdr.org">
+          contact{' '}
+          <a href='https://www.icdr.org'>
             the International Centre For Dispute Resolution
-          </a>{" "}
+          </a>{' '}
           to invoke binding arbitration to determine whether Polaris Share has
           violated its obligations to an individual and whether any such
           violation remains fully or partially un-remedied.
@@ -609,14 +609,14 @@ function Privacy() {
           <br /> <br />
           <div>Exercising Rights</div>
           Users may exercise rights related to the collection and use of
-          personal information per the statements above or by email at{" "}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
+          personal information per the statements above or by email at{' '}
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>.
           <br />
           <div>Changing / Withdrawing Consent</div>
           After granting consent, users can subsequently change / withdraw their
           consent to the collection, use and storage of personal information by
-          emailing{" "}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
+          emailing{' '}
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>.
           <br />
           <div>Legal Basis</div>
           Legal basis for the collection and use of personal information is
@@ -657,7 +657,7 @@ function Privacy() {
           administrators can request help from Polaris Share for complying with
           GDPR compliance, including support for users who wish to exercise any
           of their rights under the GDPR, by sending an email to
-          <a href="mailto: connect@decompany.io"> connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'> connect@decompany.io</a>
           .
           <br />
           <div>Changes to This Privacy Statement</div>
@@ -678,7 +678,7 @@ function Privacy() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Privacy;
+export default Privacy

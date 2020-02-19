@@ -1,14 +1,14 @@
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import React from 'react'
 
 type Type = {
-  click?: any;
-};
+  click?: any
+}
 
 export default function({ click }: Type) {
   const handleSearchBtnClick = () => {
-    click();
-  };
+    click()
+  }
 
   return (
     <div className={styles.sb_wrapper}>
@@ -17,5 +17,5 @@ export default function({ click }: Type) {
         onClick={() => handleSearchBtnClick()}
       />
     </div>
-  );
+  )
 }

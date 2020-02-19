@@ -1,36 +1,36 @@
-import * as styles from "public/static/styles/main.scss";
-import { useSelector } from "react-redux";
-import { psString } from "utils/localization";
-import { APP_CONFIG } from "../../../app.config";
-import React, { useEffect, useState } from "react";
-import TrackingDetailItem from "./TrackingDetailItem";
-import repos from "../../../utils/repos";
-import TrackingInfo from "../../../service/model/TrackingInfo";
-import common from "../../../common/common";
+import * as styles from 'public/static/styles/main.scss'
+import { useSelector } from 'react-redux'
+import { psString } from 'utils/localization'
+import { APP_CONFIG } from '../../../app.config'
+import React, { useEffect, useState } from 'react'
+import TrackingDetailItem from './TrackingDetailItem'
+import repos from '../../../utils/repos'
+import TrackingInfo from '../../../service/model/TrackingInfo'
+import common from '../../../common/common'
 
 type Type = {
-  cid: string;
-  documentData: any;
-  text: any;
-};
+  cid: string
+  documentData: any
+  text: any
+}
 
 // TODO SSR 미동작
 export default function({ documentData, text, cid }: Type) {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  const [trackingInfo, setTrackingInfo] = useState(new TrackingInfo(null));
-  const [email, setEmail] = useState("");
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const [trackingInfo, setTrackingInfo] = useState(new TrackingInfo(null))
+  const [email, setEmail] = useState('')
 
   useEffect(() => {
-    setEmail(myInfoFromRedux.email);
+    setEmail(myInfoFromRedux.email)
 
-    (async function() {
+    ;(async function() {
       let trackingInfoResult = await repos.Tracking.getTrackingInfo({
         cid: cid,
         documentId: documentData.documentId
-      }).then((res: any) => res);
-      setTrackingInfo(trackingInfoResult);
-    })();
-  }, []);
+      }).then((res: any) => res)
+      setTrackingInfo(trackingInfoResult)
+    })()
+  }, [])
 
   return (
     <section className={styles.tdl_container}>
@@ -41,17 +41,17 @@ export default function({ documentData, text, cid }: Type) {
             ? common.timestampToDate(
                 trackingInfo.resultList[0].viewTimestampMin
               )
-            : ""}
+            : ''}
         </span>
         <div
           className={styles.tdl_backBtnWrapper}
           onClick={() => window.history.back()}
         >
           <img
-            src={APP_CONFIG.domain().static + "/image/icon/i_arrow_back.png"}
-            alt="back"
+            src={APP_CONFIG.domain().static + '/image/icon/i_arrow_back.png'}
+            alt='back'
           />
-          {psString("tracking-detail-back")}
+          {psString('tracking-detail-back')}
         </div>
       </div>
 
@@ -68,5 +68,5 @@ export default function({ documentData, text, cid }: Type) {
           ))}
       </div>
     </section>
-  );
+  )
 }

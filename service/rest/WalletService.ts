@@ -1,11 +1,11 @@
-import AxiosService from "./AxiosService";
+import AxiosService from './AxiosService'
 
-let walletBalance = "account/balance";
-let walletCreate = "account/create";
-let walletWithdraw = "account/withdraw";
-let voteDocument = "document/vote";
-let claimCreator = "claim/royalty";
-let claimCurator = "claim/reward";
+let walletBalance = 'account/balance'
+let walletCreate = 'account/create'
+let walletWithdraw = 'account/withdraw'
+let voteDocument = 'document/vote'
+let claimCreator = 'claim/royalty'
+let claimCurator = 'claim/reward'
 
 export default {
   POST: {
@@ -13,67 +13,67 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithBodyForWallet(
           walletBalance,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     walletCreate: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           walletCreate,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     walletWithdraw: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           walletWithdraw,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     voteDocument: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           voteDocument,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     claimCreator: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           claimCreator,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     claimCurator: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           claimCurator,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   }
-};
+}

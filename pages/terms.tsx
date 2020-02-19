@@ -1,19 +1,19 @@
-import Layout from "../components/Layout";
-import * as styles from "public/static/styles/main.scss";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from '../components/Layout'
+import * as styles from 'public/static/styles/main.scss'
+import common_data from '../common/common_data'
+import React from 'react'
 
 function Terms() {
   return (
-    <Layout title={"Terms of Service" + common_data.commonTitle} path="terms">
+    <Layout title={'Terms of Service' + common_data.commonTitle} path='terms'>
       <div className={styles.tos_container}>
         <div className={styles.tos_subject}>Terms of Service</div>
 
         <div className={styles.tos_content}>
           Welcome to Polaris Share! This agreement (the “Agreement”) between you
           and DECOMPANY GLOBAL, Inc.(“we”, “us”, “our”) sets out your rights to
-          access and use of{" "}
-          <a href="https://www.polarishare.com">polarishare.com</a> and any
+          access and use of{' '}
+          <a href='https://www.polarishare.com'>polarishare.com</a> and any
           other products or services provided by us (the “Service”). If you are
           accepting this Agreement and using the Services on behalf of a
           company, organization, government, or other legal entity, you
@@ -24,7 +24,7 @@ function Terms() {
           <br />
           If we decide to make changes to this Agreement, we will provide notice
           of those changes by updating the “Last Updated” date above or posting
-          notice on <a href="https://www.polarishare.com">polarishare.com</a>,
+          notice on <a href='https://www.polarishare.com'>polarishare.com</a>,
           Your continued use of the Service will confirm your acceptance of the
           changes.
           <br />
@@ -51,7 +51,7 @@ function Terms() {
           You are granted a limited, non-exclusive, non-transferable, and
           non-sublicensable license to access and use the Service and Polaris
           Share Content for your personal use. You retain ownership of and
-          responsibility for Content you create or own ("Your Content"). If
+          responsibility for Content you create or own ('Your Content'). If
           you're posting anything you did not create yourself or do not own the
           rights to, you agree that you are responsible for any Content you
           post; that you will only submit Content that you have the right to
@@ -64,7 +64,7 @@ function Terms() {
           trademarks of Polaris Share, Inc., and, may not be copied, imitated,
           or used, in whole or in part, unless explicitly permitted or without
           first receiving written permission from us to do so. The look and feel
-          of <a href="https://www.polarishare.com">polarishare.com</a> and the
+          of <a href='https://www.polarishare.com'>polarishare.com</a> and the
           Service is protected by copyright © Polaris Share, Inc. All rights
           reserved. You may not duplicate, copy, or reuse any portion of the
           HTML/CSS, Javascript, or visual design elements or concepts without
@@ -255,8 +255,8 @@ function Terms() {
           <div>10. Suspension or Termination of Service.</div>
           10.1. We may suspend or terminate your access to the Services in our
           sole discretion, immediately and without prior notice, and delete or
-          deactivate your{" "}
-          <a href="https://www.polarishare.com">polarishare.com</a> account and
+          deactivate your{' '}
+          <a href='https://www.polarishare.com'>polarishare.com</a> account and
           all related information and files in such without cost to you,
           including, for instance, if you breach any term of this Agreement. In
           the event of termination, your access to the funds in your account
@@ -300,7 +300,7 @@ function Terms() {
           <br />
           <div>12. Copyright Complaints, the DMCA, and Takedowns</div>
           12.1 We will respond to legitimate requests under the Digital
-          Millennium Copyright Act ("DMCA"), and we retain the right to remove
+          Millennium Copyright Act ('DMCA'), and we retain the right to remove
           access to user content provided via the Service that we deem to be
           infringing the copyright of others. If you become aware of user
           content on the Service that infringes your copyright rights, you may
@@ -445,7 +445,7 @@ function Terms() {
           Dispute within thirty (30) days of when it arises so that the parties
           can attempt, in good faith, to resolve the Dispute informally. Notice
           to the us shall be provided by sending an email to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           . Your notice must include: (1) your name, postal address, and email
           address; (2) a description of the nature or basis of the Dispute; and
           (3) the specific relief that you are seeking. If we cannot agree how
@@ -480,7 +480,7 @@ function Terms() {
           <br />
           17.6. Rules of JAMS. The rules of, and additional information about,
           JAMS are available on the JAMS website at
-          <a href="https://jamsadr.com">http://www.jamsadr.com/</a>
+          <a href='https://jamsadr.com'>http://www.jamsadr.com/</a>
           , as may be updated from time to time. By agreeing to be bound by this
           Agreement, you either: (a) acknowledge and agree that you have read
           and understand the rules of JAMS; or (b) waive your opportunity to
@@ -512,9 +512,9 @@ function Terms() {
           <div>19. Termination</div>
           We reserve the right, without notice and in our sole discretion, to
           terminate your license to access and use of the Service, which
-          includes, <a href="https://www.polarishare.com">
+          includes, <a href='https://www.polarishare.com'>
             polarishare.com
-          </a>{" "}
+          </a>{' '}
           and to block or prevent your future access to, and use of, the Service
           that we provide.
           <br />
@@ -531,26 +531,26 @@ function Terms() {
           between you and us. We may modify this user agreement at any time. If
           we make changes to this agreement that materially affect your rights,
           we will provide notice and keep this edition available as an archive
-          on <a href="https://www.polarishare.com">polarishare.com</a>. By
+          on <a href='https://www.polarishare.com'>polarishare.com</a>. By
           continuing to use the Services after a change to this agreement, you
           agree to those changes.
           <br />
           <div>22. Contact Information</div>
           Notices to DECOMPANY GLOBAL, Inc. should be directed to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href='mailto: connect@decompany.io'>connect@decompany.io</a>
           <br />
           <br />
           <br />
           <div>
             Addendum <br />
             <span>
-              These Terms of Service shall become effective on June 17, 2019.{" "}
+              These Terms of Service shall become effective on June 17, 2019.{' '}
             </span>
           </div>
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Terms;
+export default Terms

@@ -1,5 +1,5 @@
-import ReduxTypes from "../reduxTypes";
-import UserInfo from "../../service/model/UserInfo";
+import ReduxTypes from '../reduxTypes'
+import UserInfo from '../../service/model/UserInfo'
 
 // 액션 생성자
 export const setActionMain = {
@@ -32,7 +32,7 @@ export const setActionMain = {
     documentList
   })
   */
-};
+}
 
 // 초기 상태
 const initState = {
@@ -46,7 +46,7 @@ const initState = {
   isMobile: false
   /*uploadTagList: [],
   documentList: {}*/
-};
+}
 
 // 리듀서
 export default (state = initState, action: any) => {
@@ -55,45 +55,45 @@ export default (state = initState, action: any) => {
       return {
         ...state,
         initComplete: action.initComplete
-      };
+      }
     case ReduxTypes.SET_MY_INFO:
       return {
         ...state,
         myInfo: action.myInfo
-      };
+      }
     case ReduxTypes.SET_TAG_LIST:
       return {
         ...state,
         tagList: action.tagList
-      };
+      }
     case ReduxTypes.SET_UPLOAD_TAG_LIST:
       return {
         ...state,
         uploadTagList: action.uploadTagList
-      };
+      }
     case ReduxTypes.SET_IS_MOBILE:
       return {
         ...state,
         isMobile: action.isMobile
-      };
+      }
     case ReduxTypes.SET_ALERT_CODE:
       return {
         ...state,
         alertCode: action.alertCode,
         alertData: action.alertData
-      };
+      }
     case ReduxTypes.SET_MODAL:
       return {
         ...state,
         modalCode: action.modalCode,
         modalData: action.modalData
-      };
+      }
     case ReduxTypes.SET_DOCUMENT_LIST:
       return {
         ...state,
         documentList: action.documentList
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

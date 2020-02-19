@@ -1,59 +1,59 @@
-import React, { useEffect, useState } from "react";
-import LinesEllipsis from "react-lines-ellipsis";
-import { useSelector } from "react-redux";
-import Link from "next/link";
-import common from "../../../common/common";
-import common_view from "../../../common/common_view";
-import { APP_CONFIG } from "../../../app.config";
-import RewardCard from "../../common/card/RewardCard";
-import * as styles from "../../../public/static/styles/main.scss";
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
-import repos from "../../../utils/repos";
-import ProfileCuratorClaim from "./ProfileCuratorClaim";
+import React, { useEffect, useState } from 'react'
+import LinesEllipsis from 'react-lines-ellipsis'
+import { useSelector } from 'react-redux'
+import Link from 'next/link'
+import common from '../../../common/common'
+import common_view from '../../../common/common_view'
+import { APP_CONFIG } from '../../../app.config'
+import RewardCard from '../../common/card/RewardCard'
+import * as styles from '../../../public/static/styles/main.scss'
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import repos from '../../../utils/repos'
+import ProfileCuratorClaim from './ProfileCuratorClaim'
 
 type Type = {
-  documentData: any;
-  owner: boolean;
-};
+  documentData: any
+  owner: boolean
+}
 
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({ documentData, owner }: Type) {
-  const isMobile = useSelector(state => state.main.isMobile);
-  const myInfo = useSelector(state => state.main.myInfo);
-  const [rewardInfoOpen, setRewardInfo] = useState(false);
-  const [validClaimAmount, setValidClaimAmount] = useState(0);
+  const isMobile = useSelector(state => state.main.isMobile)
+  const myInfo = useSelector(state => state.main.myInfo)
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   // 저자 리워드
   const getCuratorRewards = () =>
     repos.Document.getClaimableReward(documentData.documentId, myInfo.sub).then(
       (res: any) => setValidClaimAmount(common.deckToDollar(res))
-    );
+    )
 
-  const reward = common.toEther(0);
-  const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0;
-  const view = documentData.latestPageview || 0;
+  const reward = common.toEther(0)
+  const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0
+  const view = documentData.latestPageview || 0
   const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
+    : documentData.accountId
 
   useEffect(() => {
     if (owner) {
-      void getCuratorRewards();
+      void getCuratorRewards()
     }
-  }, []);
+  }, [])
 
   return (
     <div className={styles.pcti_container}>
       <div className={styles.pcti_thumbWrapper}>
         <Link
           href={{
-            pathname: "/contents_view",
+            pathname: '/contents_view',
             query: { seoTitle: documentData.seoTitle }
           }}
-          as={"/@" + identification + "/" + documentData.seoTitle}
+          as={'/@' + identification + '/' + documentData.seoTitle}
         >
           <div className={styles.pcti_thumb}>
             <img
@@ -66,10 +66,9 @@ export default function({ documentData, owner }: Type) {
               alt={document.title ? document.title : documentData.documentName}
               className={styles.pcti_cardImg}
               onError={e => {
-                let element = e.target as HTMLImageElement;
-                element.onerror = null;
-                element.src =
-                  APP_CONFIG.domain().static + "/image/logo-cut.png";
+                let element = e.target as HTMLImageElement
+                element.onerror = null
+                element.src = APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
             />
           </div>
@@ -78,10 +77,10 @@ export default function({ documentData, owner }: Type) {
       <div className={styles.pcti_contentWrapper}>
         <Link
           href={{
-            pathname: "/contents_view",
+            pathname: '/contents_view',
             query: { seoTitle: documentData.seoTitle }
           }}
-          as={"/@" + identification + "/" + documentData.seoTitle}
+          as={'/@' + identification + '/' + documentData.seoTitle}
         >
           <div
             className={styles.pcti_title}
@@ -96,10 +95,10 @@ export default function({ documentData, owner }: Type) {
         <div className={styles.pcti_descWrapper}>
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: documentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + documentData.seoTitle}
+            as={'/@' + identification + '/' + documentData.seoTitle}
           >
             {documentData.desc && (
               <ResponsiveEllipsis
@@ -123,7 +122,7 @@ export default function({ documentData, owner }: Type) {
             <img
               className={styles.pcti_arrow}
               src={
-                APP_CONFIG.domain().static + "/image/icon/i_arrow_down_blue.svg"
+                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
               }
               alt="arrow button"
             />
@@ -140,7 +139,7 @@ export default function({ documentData, owner }: Type) {
           </div>
 
           {owner && validClaimAmount > 0 && (
-            <div className={isMobile ? "mt-2" : "float-right"}>
+            <div className={isMobile ? 'mt-2' : 'float-right'}>
               <ProfileCuratorClaim
                 documentData={documentData}
                 validClaimAmount={validClaimAmount}
@@ -150,5 +149,5 @@ export default function({ documentData, owner }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }

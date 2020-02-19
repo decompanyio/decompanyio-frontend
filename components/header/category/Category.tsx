@@ -1,23 +1,23 @@
-import * as styles from "public/static/styles/main.scss";
-import Link from "next/link";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import Link from 'next/link'
+import React from 'react'
 
 const categoryRanked = [
-  "marketing",
-  "business",
-  "technology",
-  "health",
-  "food",
-  "education",
-  "design"
-];
+  'marketing',
+  'business',
+  'technology',
+  'health',
+  'food',
+  'education',
+  'design'
+]
 
 export default function() {
   return (
-    <nav className={styles.c_wrapper} id="headerCategoryWrapper">
+    <nav className={styles.c_wrapper} id='headerCategoryWrapper'>
       <ul className={styles.c_tagsMenu}>
         <li>
-          <Link href="/">
+          <Link href='/'>
             <a>home</a>
           </Link>
         </li>
@@ -25,8 +25,8 @@ export default function() {
         {categoryRanked.map((arr, idx) => (
           <li key={idx}>
             <Link
-              href={{ pathname: "/contents_list", query: { tag: arr } }}
-              as={"tag/" + arr}
+              href={{ pathname: '/contents_list', query: { tag: arr } }}
+              as={'tag/' + arr}
             >
               <a>{arr}</a>
             </Link>
@@ -34,11 +34,11 @@ export default function() {
         ))}
 
         <li>
-          <Link href="/more" as="m">
+          <Link href='/more' as='m'>
             <a>more</a>
           </Link>
         </li>
       </ul>
     </nav>
-  );
+  )
 }

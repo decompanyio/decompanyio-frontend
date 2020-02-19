@@ -21,8 +21,8 @@
 
 ## 빠른 시작
 1. Node.js v8.10,  npm v5 이상 버전으로 설치
-2. 터미널에 <b>"npm install"</b> 입력하여 의존 라이브러리 설치
-3. <b>"npm start"</b> 또는 <b>"npm run start"</b> 입력하여 로컬환경 앱 실행 (http://localhost:3000)
+2. 터미널에 `npm install` 입력하여 의존 라이브러리 설치
+3. `npm start` 또는 `npm run start` 입력하여 로컬환경 앱 실행 (http://localhost:3000)
 
 ## 주요 라이브러리
 - react (https://reactjs.org/)

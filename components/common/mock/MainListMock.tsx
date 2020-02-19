@@ -1,6 +1,6 @@
-import * as styles from "public/static/styles/main.scss";
-import DocumentCardMock from "./DocumentCardMock";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import DocumentCardMock from './DocumentCardMock'
+import React from 'react'
 
 export default function() {
   return (
@@ -16,5 +16,5 @@ export default function() {
         <DocumentCardMock order={4} />
       </div>
     </div>
-  );
+  )
 }

@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { FadingCircle } from "better-react-spinkit";
-import * as styles from "../../../public/static/styles/main.scss";
-import { useSelector, useDispatch } from "react-redux";
-import LinesEllipsis from "react-lines-ellipsis";
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
-import common_view from "common/common_view";
-import { psString } from "utils/localization";
-import common from "common/common";
-import { APP_CONFIG } from "../../../app.config";
-import Link from "next/link";
-import repos from "../../../utils/repos";
-import { AUTH_APIS } from "../../../utils/auth";
-import RewardCard from "../../common/card/RewardCard";
-import { setActionMain } from "../../../redux/reducer/main";
-import DocumentInfo from "../../../service/model/DocumentInfo";
-import ProfileCreatorClaim from "./ProfileCreatorClaim";
+import React, { useEffect, useState } from 'react'
+import { FadingCircle } from 'better-react-spinkit'
+import * as styles from '../../../public/static/styles/main.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import LinesEllipsis from 'react-lines-ellipsis'
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import common_view from 'common/common_view'
+import { psString } from 'utils/localization'
+import common from 'common/common'
+import { APP_CONFIG } from '../../../app.config'
+import Link from 'next/link'
+import repos from '../../../utils/repos'
+import { AUTH_APIS } from '../../../utils/auth'
+import RewardCard from '../../common/card/RewardCard'
+import { setActionMain } from '../../../redux/reducer/main'
+import DocumentInfo from '../../../service/model/DocumentInfo'
+import ProfileCreatorClaim from './ProfileCreatorClaim'
 
 type Type = {
-  documentData: any;
-  idx: number;
-  handleUploadSettings: any;
-  viewerOptionOpenedIdx: any;
-  owner: boolean;
-};
+  documentData: any
+  idx: number
+  handleUploadSettings: any
+  viewerOptionOpenedIdx: any
+  owner: boolean
+}
 
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
   documentData,
@@ -33,137 +33,135 @@ export default function({
   viewerOptionOpenedIdx,
   owner
 }: Type) {
-  const dispatch = useDispatch();
-  const myInfo = useSelector(state => state.main.myInfo);
-  const isMobile = useSelector(state => state.main.isMobile);
+  const dispatch = useDispatch()
+  const myInfo = useSelector(state => state.main.myInfo)
+  const isMobile = useSelector(state => state.main.isMobile)
   const [tmpDocumentData, setTmpDocumentData] = useState(
     new DocumentInfo(documentData)
-  );
-  const [rewardInfoOpen, setRewardInfo] = useState(false);
-  const [validClaimAmount, setValidClaimAmount] = useState(0);
+  )
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   // 문서 다운로드
   const getContentDownload = (documentId: string, documentName: string) =>
     repos.Document.getDocumentDownloadUrl({ documentId: documentId })
       .then(result => {
-        const a = document.createElement("a");
+        const a = document.createElement('a')
 
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.href = result.downloadUrl;
-        a.setAttribute("download", documentName);
-        a.click();
+        a.style.display = 'none'
+        document.body.appendChild(a)
+        a.href = result.downloadUrl
+        a.setAttribute('download', documentName)
+        a.click()
 
-        window.URL.revokeObjectURL(a.href);
-        document.body.removeChild(a);
+        window.URL.revokeObjectURL(a.href)
+        document.body.removeChild(a)
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err))
 
   // 저자 리워드
   const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(
       documentData.documentId,
       myInfo.sub
-    ).then(res =>
-      setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
-    );
+    ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
 
   // document state 관리
   const setDocumentState = state => {
-    let _tmpDocumentData = state.tmpDocumentData;
-    _tmpDocumentData.state = state;
-    setTmpDocumentData(_tmpDocumentData);
-  };
+    let _tmpDocumentData = state.tmpDocumentData
+    _tmpDocumentData.state = state
+    setTmpDocumentData(_tmpDocumentData)
+  }
 
   // 문서 다운로드 전 데이터 SET
   const handleDownloadContent = () => {
     if (!tmpDocumentData) {
-      return dispatch(setActionMain.alertCode(2091, {}));
+      return dispatch(setActionMain.alertCode(2091, {}))
     }
     if (!AUTH_APIS.isAuthenticated() && !myInfo.email) {
-      return dispatch(setActionMain.alertCode(2003, {}));
+      return dispatch(setActionMain.alertCode(2003, {}))
     }
 
-    const documentId = tmpDocumentData.documentId;
-    const documentName = tmpDocumentData.documentName;
+    const documentId = tmpDocumentData.documentId
+    const documentName = tmpDocumentData.documentName
 
-    return getContentDownload(documentId, documentName);
-  };
+    return getContentDownload(documentId, documentName)
+  }
 
   // 문서 상태관리
   const handleState = () => {
     if (
       !owner ||
       !tmpDocumentData.state ||
-      tmpDocumentData.state === "CONVERT_COMPLETE"
+      tmpDocumentData.state === 'CONVERT_COMPLETE'
     ) {
-      return false;
+      return false
     }
 
     let interval = setInterval(() => {
       repos.Document.getDocument(tmpDocumentData.seoTitle)
         .then(res => {
-          if (res && res.document.state === "CONVERT_COMPLETE") {
-            clearInterval(interval);
-            setDocumentState(res.document.state);
+          if (res && res.document.state === 'CONVERT_COMPLETE') {
+            clearInterval(interval)
+            setDocumentState(res.document.state)
             dispatch(
               setActionMain.alertCode(2075, { title: tmpDocumentData.title })
-            );
+            )
           }
         })
         .catch(() => {
-          clearInterval(interval);
-          dispatch(setActionMain.alertCode(2001, {}));
-        });
-    }, 5000);
-  };
+          clearInterval(interval)
+          dispatch(setActionMain.alertCode(2001, {}))
+        })
+    }, 5000)
+  }
 
   // 공유 버튼 클릭
   const handleClickShareBtn = () =>
-    dispatch(setActionMain.modal("share", { documentData }));
+    dispatch(setActionMain.modal('share', { documentData }))
 
   // 삭제 버튼 클릭
   const handleClickDeleteBtn = () =>
-    dispatch(setActionMain.modal("delete", { documentData }));
+    dispatch(setActionMain.modal('delete', { documentData }))
 
   // 출판 버튼 클릭
   const handleClickPublishBtn = () =>
-    dispatch(setActionMain.modal("publish", { documentData }));
+    dispatch(setActionMain.modal('publish', { documentData }))
 
   useEffect(() => {
-    handleState();
-    if (owner) void getCreatorRewards();
-  }, []);
+    handleState()
+    if (owner) void getCreatorRewards()
+  }, [])
 
-  let reward = common.toEther(0);
-  const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0;
-  let view = tmpDocumentData.latestPageview || 0;
+  let reward = common.toEther(0)
+  const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0
+  let view = tmpDocumentData.latestPageview || 0
   let identification = tmpDocumentData.author
     ? tmpDocumentData.author.username &&
       tmpDocumentData.author.username.length > 0
       ? tmpDocumentData.author.username
       : tmpDocumentData.author.email
-    : tmpDocumentData.accountId;
+    : tmpDocumentData.accountId
 
   return (
     <div className={styles.puti_container}>
       <div className={styles.puti_thumbWrapper}>
         {tmpDocumentData.state &&
-        tmpDocumentData.state !== "CONVERT_COMPLETE" ? (
+        tmpDocumentData.state !== 'CONVERT_COMPLETE' ? (
           <div className={styles.puti_thumbLoading}>
             <div className={styles.puti_notConvertContainer}>
               <div className={styles.puti_notConvert}>
-                <FadingCircle size={40} color="#3d5afe" />
+                <FadingCircle size={40} color='#3d5afe' />
               </div>
             </div>
           </div>
         ) : (
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: tmpDocumentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+            as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
           >
             <div className={styles.puti_thumb}>
               <img
@@ -180,17 +178,17 @@ export default function({
                 }
                 className={
                   styles.puti_cardImg +
-                  " " +
+                  ' ' +
                   (tmpDocumentData.state &&
-                  tmpDocumentData.state !== "CONVERT_COMPLETE"
+                  tmpDocumentData.state !== 'CONVERT_COMPLETE'
                     ? styles.puti_notConvertBackground
-                    : "")
+                    : '')
                 }
                 onError={e => {
-                  let element = e.target as HTMLImageElement;
-                  element.onerror = null;
+                  let element = e.target as HTMLImageElement
+                  element.onerror = null
                   element.src =
-                    APP_CONFIG.domain().static + "/image/logo-cut.png";
+                    APP_CONFIG.domain().static + '/image/logo-cut.png'
                 }}
               />
             </div>
@@ -203,8 +201,8 @@ export default function({
           <div className={styles.puti_optionBtn}>
             <i
               className={
-                "material-icons " +
-                (viewerOptionOpenedIdx === idx ? styles.puti_optionShow : "")
+                'material-icons ' +
+                (viewerOptionOpenedIdx === idx ? styles.puti_optionShow : '')
               }
               onClick={() => handleUploadSettings()}
             >
@@ -214,54 +212,54 @@ export default function({
             <div
               className={
                 styles[
-                  "puti_optionTable" +
-                    (viewerOptionOpenedIdx === idx ? "" : "Hide")
+                  'puti_optionTable' +
+                    (viewerOptionOpenedIdx === idx ? '' : 'Hide')
                 ]
               }
-              id={"optionTable" + idx}
+              id={'optionTable' + idx}
             >
-              {tmpDocumentData.state === "CONVERT_COMPLETE" && (
+              {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleClickShareBtn()}
                 >
-                  <i className="material-icons">share</i>
-                  {psString("share-modal-btn")}
+                  <i className='material-icons'>share</i>
+                  {psString('share-modal-btn')}
                 </div>
               )}
-              {tmpDocumentData.state === "CONVERT_COMPLETE" && (
+              {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleDownloadContent()}
                 >
-                  <i className="material-icons">save_alt</i>
-                  {psString("download-btn")}
+                  <i className='material-icons'>save_alt</i>
+                  {psString('download-btn')}
                 </div>
               )}
 
               {((common.dateAgo(tmpDocumentData.created) > 0 &&
                 tmpDocumentData.state &&
-                tmpDocumentData.state !== "CONVERT_COMPLETE") ||
+                tmpDocumentData.state !== 'CONVERT_COMPLETE') ||
                 !tmpDocumentData.isPublic) && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleClickDeleteBtn()}
                 >
-                  <i className="material-icons">delete</i>
-                  {psString("common-modal-delete")}
+                  <i className='material-icons'>delete</i>
+                  {psString('common-modal-delete')}
                 </div>
               )}
             </div>
           </div>
         )}
         {tmpDocumentData.desc &&
-        tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+        tmpDocumentData.state === 'CONVERT_COMPLETE' ? (
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: tmpDocumentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+            as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
           >
             <div className={styles.puti_title}>
               {tmpDocumentData.title
@@ -279,21 +277,21 @@ export default function({
 
         <div className={styles.puti_descWrapper}>
           {tmpDocumentData.desc &&
-          tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+          tmpDocumentData.state === 'CONVERT_COMPLETE' ? (
             <Link
               href={{
-                pathname: "/contents_view",
+                pathname: '/contents_view',
                 query: { seoTitle: tmpDocumentData.seoTitle }
               }}
-              as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+              as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
             >
               <div className={styles.puti_desc}>
                 <ResponsiveEllipsis
                   text={tmpDocumentData.desc}
                   maxLine={2}
-                  ellipsis="..."
+                  ellipsis='...'
                   trimRight
-                  basedOn="words"
+                  basedOn='words'
                 />
               </div>
             </Link>
@@ -302,9 +300,9 @@ export default function({
               <ResponsiveEllipsis
                 text={tmpDocumentData.desc}
                 maxLine={2}
-                ellipsis="..."
+                ellipsis='...'
                 trimRight
-                basedOn="words"
+                basedOn='words'
               />
             </div>
           )}
@@ -320,9 +318,9 @@ export default function({
             <img
               className={styles.puti_arrow}
               src={
-                APP_CONFIG.domain().static + "/image/icon/i_arrow_down_blue.svg"
+                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
               }
-              alt="arrow button"
+              alt='arrow button'
             />
           </span>
 
@@ -345,19 +343,19 @@ export default function({
           )}
 
           {!tmpDocumentData.isPublic &&
-            tmpDocumentData.state === "CONVERT_COMPLETE" && (
+            tmpDocumentData.state === 'CONVERT_COMPLETE' && (
               <div className={styles.puti_publishBtnWrapper}>
                 <p
-                  data-tip={psString("tooltip-publish")}
+                  data-tip={psString('tooltip-publish')}
                   className={styles.puti_publishBtn}
                   onClick={() => handleClickPublishBtn()}
                 >
-                  {psString("common-modal-publish")}
+                  {psString('common-modal-publish')}
                 </p>
               </div>
             )}
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,23 +1,23 @@
-import ReduxTypes from "redux/reduxTypes";
+import ReduxTypes from 'redux/reduxTypes'
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 // 액션 생성자
 export const setAction = {
   tempEmail: (tempEmail: boolean) => {
     return dispatch => {
-      dispatch({ type: ReduxTypes.SET_TEMP_EMAIL, tempEmail });
+      dispatch({ type: ReduxTypes.SET_TEMP_EMAIL, tempEmail })
       return delay(100).then(() => {
         // callback();
-      });
-    };
+      })
+    }
   }
-};
+}
 
 // 초기 상태
 const initState = {
   tempEmail: null
-};
+}
 
 // 리듀서
 export default (state = initState, action: any) => {
@@ -26,8 +26,8 @@ export default (state = initState, action: any) => {
       return {
         ...state,
         tempEmail: action.tempEmail
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
