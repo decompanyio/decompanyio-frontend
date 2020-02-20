@@ -449,7 +449,9 @@ export const repos = {
     async getClaimableReward(documentId: string, userId: string) {
       return instance.Query.getClaimableReward({ documentId, userId }).then(
         (res: any) =>
-          new ClaimableReward(res ? res.getClaimableReward[0] : null)
+          new ClaimableReward(
+            res && res.length > 0 ? res.getClaimableReward[0] : null
+          )
       );
     }
   },

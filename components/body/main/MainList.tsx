@@ -44,8 +44,10 @@ export default function({ path }: Type) {
 
       if (AUTH_APIS.isAuthenticated() && path === "mylist") {
         _documentData = await getMylist(AUTH_APIS.getMyInfo().sub);
+        _documentData = _documentData["resultList"];
       } else if (AUTH_APIS.isAuthenticated() && path === "history") {
         _documentData = await getHistory(AUTH_APIS.getMyInfo().sub);
+        _documentData = _documentData["resultList"];
       } else if (path !== "mylist" && path !== "history") {
         _documentData = await getDocuments(path);
       } else {
