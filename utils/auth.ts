@@ -23,20 +23,16 @@ export const AUTH_APIS = {
     }
     AuthService.POST.sync(data, result => callback(result), err => error(err))
   },
-  login: () => {
-    let provider = 'google'
-    window.location.href = `${APP_CONFIG.domain().auth}/authentication/signin/${provider}`
+  testLogin: (provider: string) => {
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signin/${provider}`
   },
-  logout() {
+  testLogout() {
     this.clearSession()
     window.location.href = '/'
   },
-  /*
-  login: (isSilentAuthentication: boolean) => {
-    if (isSilentAuthentication) {
-      authData.authorize({ prompt: 'none' })
-    } else authData.authorize()
-  },
+  login: () => authData.authorize(),
   logout() {
     this.clearSession()
 
@@ -45,7 +41,7 @@ export const AUTH_APIS = {
       clientID: AUTH_CONFIG.clientID
     })
     window.location.href = '/'
-  },*/
+  },
   clearSession() {
     // Auth0 API
     localStorage.removeItem('access_token')

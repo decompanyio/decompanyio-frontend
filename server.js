@@ -8,7 +8,7 @@ const env =
   process.env.NODE_ENV.trim().toLowerCase() === 'production'
     ? 'production'
     : 'development'
-const port = 80
+const port = 3000
 const dev = env !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
