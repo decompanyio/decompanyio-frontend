@@ -15,8 +15,8 @@ let trackingUrl = "/api/tracking/collect";
 
 const makeId = () => shortid.generate();
 
-export const setTrackingInfo = () => {
-  return new Promise(resolve => {
+export const setTrackingInfo = () =>
+  new Promise(resolve => {
     let timestamp = Date.now();
     let trackingInfo: Type = { sid: null, cid: null, touchAt: null };
 
@@ -51,7 +51,6 @@ export const setTrackingInfo = () => {
     localStorage.setItem("tracking_info", JSON.stringify(trackingInfo));
     resolve(trackingInfo);
   });
-};
 
 export const tracking = async (params, sidClear) => {
   if (APP_CONFIG.env !== "production" && APP_CONFIG.env !== "development") {

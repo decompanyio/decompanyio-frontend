@@ -1,5 +1,6 @@
 import { AUTH_APIS } from "./auth";
 import axios from "axios";
+import ReactGA from "react-ga";
 
 import AuthService from "service/rest/AuthService";
 import DocService from "service/rest/DocService";
@@ -44,6 +45,20 @@ export const repos = {
     instance = this;
   },
   init() {
+    // Google Analytics 초기화
+    let gaId =
+      process.env.NODE_ENV_SUB === "production"
+        ? "UA-140503497-1"
+        : "UA-129300994-1";
+    if (
+      process.env.NODE_ENV_SUB === "production" ||
+      process.env.NODE_ENV_SUB === "development"
+    ) {
+      ReactGA.initialize(gaId, {
+        debug: false
+      });
+    }
+
     // 로그인 체크
     if (AUTH_APIS.isAuthenticated()) AUTH_APIS.scheduleRenewal();
     else AUTH_APIS.clearSession();
