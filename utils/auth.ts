@@ -29,8 +29,12 @@ export const AUTH_APIS = {
     }/authentication/signin/${provider}`
   },
   testLogout() {
-    this.clearSession()
-    window.location.href = '/'
+    this.testClearSession()
+    window.location.href = '/callback'
+  },
+  testClearSession() {
+    localStorage.removeItem('authorization_token')
+    localStorage.removeItem('refresh_token')
   },
   login: () => authData.authorize(),
   logout() {
