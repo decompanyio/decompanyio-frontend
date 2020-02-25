@@ -7313,3 +7313,12 @@ input[type="radio"]:checked + label span i {
 .pcc_btnDisabled {
   @extend .common_disabledBtn;
 }
+
+
+//======================================
+//         VIEW PDF VIWER CSS
+// =====================================
+
+.vpv_wrapper {
+  position: relative;
+}

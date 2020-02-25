@@ -153,6 +153,13 @@ app.prepare().then(() => {
         return app.render(req, res, '/user_guide', req.query)
     });
 
+    // pdf 테스트 페이지
+    server.get('/pdf_test', (req, res) => {
+        res.header("X-Robots-Tag", "noindex");
+        res.status(404);
+        return app.render(req, res, '/pdf_test', req.query)
+    });
+
     server.all('*', (req, res) => {
         return handle(req, res)
     });

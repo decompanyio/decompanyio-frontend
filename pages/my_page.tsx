@@ -14,7 +14,7 @@ const getParams = (identification: string) => {
   return params;
 };
 
-export default function Index({ profileInfo }, ...rest) {
+export default function index({ profileInfo }, ...rest) {
   const [owner, setOwner] = useState(-1);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Index({ profileInfo }, ...rest) {
   );
 }
 
-Index.getInitialProps = async props => {
+index.getInitialProps = async props => {
   let identifier = getParams(props.asPath.substr(2, props.asPath.length));
   const profileInfo = await repos.Account.getProfileInfo(identifier);
 

@@ -6,6 +6,7 @@ let voteDocumentUrl = "document/vote";
 let documentDownloadUrl = "document/download";
 let registerDocumentInfoUrl = "document/regist";
 let updateDocumentUrl = "document/update";
+let documentPdfUrl = "document/pdf";
 let getDocumentsUrl = "account/documents";
 let getCuratorDocumentsUrl = "curator/document/list";
 
@@ -59,6 +60,17 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           getCuratorDocumentsUrl,
+          "GET",
+          data,
+          data => resolve(data),
+          err => reject(err)
+        );
+      });
+    },
+    documentPdfUrl: data => {
+      return new Promise((resolve, reject) => {
+        AxiosService._requestWithUrlPram(
+          documentPdfUrl,
           "GET",
           data,
           data => resolve(data),

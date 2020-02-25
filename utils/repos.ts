@@ -31,6 +31,7 @@ import WalletCreate from "../service/model/WalletCreate";
 import ProfileRewards from "service/model/ProfileRewards";
 import ClaimableRoyalty from "../service/model/ClaimableRoyalty";
 import ClaimableReward from "../service/model/ClaimableReward";
+import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
 
 let instance: any;
 
@@ -467,6 +468,11 @@ export const repos = {
           new ClaimableReward(
             res && res.length > 0 ? res.getClaimableReward[0] : null
           )
+      );
+    },
+    async getDocumentPdfUrl(data: any) {
+      return DocService.GET.documentPdfUrl({ documentId: data }).then(
+        (result: any) => new DocumentPdfUrl(result)
       );
     }
   },
