@@ -1,94 +1,91 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import MyAvatar from "../../common/avatar/MyAvatar";
-import ProfileUsernameEdit from "./ProfileUsernameEdit";
-import ProfileAvatarEdit from "./ProfileAvatarEdit";
-import repos from "../../../utils/repos";
-import log from "utils/log";
-import WalletBalance from "../../../service/model/WalletBalance";
-import common from "common/common";
-import { setActionMain } from "../../../redux/reducer/main";
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import * as styles from "public/static/styles/main.scss"
+import { psString } from "../../../utils/localization"
+import MyAvatar from "../../common/avatar/MyAvatar"
+import ProfileUsernameEdit from "./ProfileUsernameEdit"
+import ProfileAvatarEdit from "./ProfileAvatarEdit"
+import repos from "../../../utils/repos"
+import log from "utils/log"
+import WalletBalance from "../../../service/model/WalletBalance"
+import common from "common/common"
+import { setActionMain } from "../../../redux/reducer/main"
 
 type Type = {
-  profileInfo: any;
-  owner: boolean;
-};
+  profileInfo: any
+  owner: boolean
+}
 
 export default function({ profileInfo, owner }: Type) {
-  const dispatch = useDispatch();
-  const [balance, setBalance] = useState(new WalletBalance(null));
+  const dispatch = useDispatch()
+  const [balance, setBalance] = useState(new WalletBalance(null))
   const [reward, setReward] = useState({
     last7Creator: 0,
     last7Curator: 0,
     todayEstimatedCreator: 0,
     todayEstimatedCurator: 0
-  });
-  const [userNameEdit, setUserNameEdit] = useState(false);
+  })
+  const [userNameEdit, setUserNameEdit] = useState(false)
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
-  );
+  )
 
   // 리워드 조회
   const getRewards = () => {
     repos.Wallet.getProfileRewards(profileInfo._id).then(res => {
-      let creatorReward = getCalculatedReward(res.last7CreatorReward);
-      let curatorReward = getCalculatedReward(res.last7CuratorReward);
+      let creatorReward = getCalculatedReward(res.last7CreatorReward)
+      let curatorReward = getCalculatedReward(res.last7CuratorReward)
 
       setReward({
         last7Creator: creatorReward,
         last7Curator: curatorReward,
         todayEstimatedCreator: res.todayEstimatedCreatorReward.reward || 0,
         todayEstimatedCurator: res.todayEstimatedCuratorReward.reward || 0
-      });
-    });
-  };
+      })
+    })
+  }
 
   // 잔액 조회
   const getBalance = () =>
     repos.Wallet.getWalletBalance({ userId: profileInfo._id }).then(
       (res: any) => {
-        setBalance(res);
-        log.CreatorSummary.getBalance(false);
+        setBalance(res)
+        log.CreatorSummary.getBalance(false)
       }
-    );
+    )
 
   // 계산된 리워드 GET
   const getCalculatedReward = value => {
     if (value && value.length > 0) {
-      let { reward } = value.reduce(
-        (prev, value) => prev.reward + value.reward
-      );
-      return reward;
+      let { reward } = value.reduce((prev, value) => prev.reward + value.reward)
+      return reward
     } else {
-      return 0;
+      return 0
     }
-  };
+  }
 
   // username 수정 시
-  const handleClickEvent = () => setUserNameEdit(true);
+  const handleClickEvent = () => setUserNameEdit(true)
 
   // 수정 취소
-  const handleUsernameEditCancel = () => setUserNameEdit(false);
+  const handleUsernameEditCancel = () => setUserNameEdit(false)
 
   // 수정 완료
   const handleUsernameEditDone = (value: string) => {
-    setUserNameEdit(false);
-    setUsername(value);
-  };
+    setUserNameEdit(false)
+    setUsername(value)
+  }
 
   // 입금 버튼 클릭 관리
-  const handleDepositBtnClick = () => dispatch(setActionMain.modal("deposit"));
+  const handleDepositBtnClick = () => dispatch(setActionMain.modal("deposit"))
 
   // 출금 버튼 클릭 관리
-  const handleWithdrawBtnClick = () =>
-    dispatch(setActionMain.modal("withdraw"));
+  const handleWithdrawBtnClick = () => dispatch(setActionMain.modal("withdraw"))
 
   useEffect(() => {
-    void getBalance();
-    getRewards();
-  }, []);
+    void getBalance()
+    getRewards()
+  }, [])
 
   return (
     <div className={styles.ps_container}>
@@ -210,5 +207,5 @@ export default function({ profileInfo, owner }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }

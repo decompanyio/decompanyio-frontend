@@ -1,7 +1,7 @@
 export default class DocumentPdfUrl {
-  pdfUrl: string;
+  pdfUrl: string
 
   constructor(data: any) {
-    this.pdfUrl = data && data.pdf ? data.pdf : "";
+    this.pdfUrl = data && data.pdf ? data.pdf : ""
   }
 }

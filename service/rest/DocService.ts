@@ -1,14 +1,14 @@
-import AxiosService from "./AxiosService";
+import AxiosService from "./AxiosService"
 
-let getDocumentUrl = "document/info";
-let getDocumentListUrl = "document/list";
-let voteDocumentUrl = "document/vote";
-let documentDownloadUrl = "document/download";
-let registerDocumentInfoUrl = "document/regist";
-let updateDocumentUrl = "document/update";
-let documentPdfUrl = "document/pdf";
-let getDocumentsUrl = "account/documents";
-let getCuratorDocumentsUrl = "curator/document/list";
+let getDocumentUrl = "document/info"
+let getDocumentListUrl = "document/list"
+let voteDocumentUrl = "document/vote"
+let documentDownloadUrl = "document/download"
+let registerDocumentInfoUrl = "document/regist"
+let updateDocumentUrl = "document/update"
+let documentPdfUrl = "document/pdf"
+let getDocumentsUrl = "account/documents"
+let getCuratorDocumentsUrl = "curator/document/list"
 
 export default {
   GET: {
@@ -20,8 +20,8 @@ export default {
           null,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     documents: data => {
       return new Promise((resolve, reject) => {
@@ -31,8 +31,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     documentList: data => {
       return new Promise((resolve, reject) => {
@@ -42,8 +42,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     documentDownload: data => {
       return new Promise((resolve, reject) => {
@@ -53,8 +53,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     curatorDocuments: data => {
       return new Promise((resolve, reject) => {
@@ -64,8 +64,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     documentPdfUrl: data => {
       return new Promise((resolve, reject) => {
@@ -75,8 +75,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   },
   POST: {
@@ -87,7 +87,7 @@ export default {
         data,
         data => callback(data),
         err => error(err)
-      );
+      )
     },
     registerDocument: (data, callback, error) => {
       AxiosService._requestWithHeaderBody(
@@ -96,7 +96,7 @@ export default {
         data,
         data => callback(data),
         err => error(err)
-      );
+      )
     },
     updateDocument: data => {
       return new Promise((resolve, reject) => {
@@ -106,8 +106,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   }
-};
+}

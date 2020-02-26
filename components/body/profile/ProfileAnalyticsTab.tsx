@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import Link from "next/link";
-import { ThreeBounce } from "better-react-spinkit";
-import repos from "utils/repos";
-import { psString } from "utils/localization";
-import NoDataIcon from "components/common/NoDataIcon";
-import { APP_CONFIG } from "../../../app.config";
-import AnalyticsList from "../../../service/model/AnalyticsList";
-import * as styles from "../../../public/static/styles/main.scss";
-import ProfileAnalyticsChart from "./ProfileAnalyticsChart";
-import { setActionMain } from "../../../redux/reducer/main";
-import common_view from "common/common_view";
-import common from "common/common";
-import Pagination from "../../common/Pagination";
-import common_data from "../../../common/common_data";
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import Link from "next/link"
+import { ThreeBounce } from "better-react-spinkit"
+import repos from "utils/repos"
+import { psString } from "utils/localization"
+import NoDataIcon from "components/common/NoDataIcon"
+import { APP_CONFIG } from "../../../app.config"
+import AnalyticsList from "../../../service/model/AnalyticsList"
+import * as styles from "../../../public/static/styles/main.scss"
+import ProfileAnalyticsChart from "./ProfileAnalyticsChart"
+import { setActionMain } from "../../../redux/reducer/main"
+import common_view from "common/common_view"
+import common from "common/common"
+import Pagination from "../../common/Pagination"
+import common_data from "../../../common/common_data"
 
 type Type = {
-  profileInfo: any;
-};
+  profileInfo: any
+}
 
 const resultListModel = {
   resultList: [],
   pageNo: 1,
   totalCount: 0
-};
+}
 
-const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+const pageSize = common_data.myPageListSize // 화면상 리스트 수
 
 export default function({ profileInfo }: Type) {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [chartFlag, setChartFlag] = useState(false);
-  const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null));
-  const [spreadItem, setSpreadItem] = useState(-1);
-  const [page, setPage] = useState(1);
-  const [documentId, setDocumentId] = useState(null);
-  const [dataSet, setDataSet] = useState(resultListModel);
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+  const [chartFlag, setChartFlag] = useState(false)
+  const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null))
+  const [spreadItem, setSpreadItem] = useState(-1)
+  const [page, setPage] = useState(1)
+  const [documentId, setDocumentId] = useState(null)
+  const [dataSet, setDataSet] = useState(resultListModel)
   const [dateSet, setDateSet] = useState({
     year: -1,
     week: 1
-  });
+  })
 
   // 문서 리스트 GET
   const fetchDocuments = (page: number) => {
@@ -47,7 +47,7 @@ export default function({ profileInfo }: Type) {
       pageNo: page,
       username: profileInfo.username,
       email: profileInfo.email
-    };
+    }
 
     return Promise.resolve()
       .then(() => setDataSet(resultListModel))
@@ -55,22 +55,22 @@ export default function({ profileInfo }: Type) {
       .then(() => repos.Document.getDocumentList(params))
       .then(res => handleData(res))
       .catch(err => {
-        console.error(err);
-        dispatch(setActionMain.alertCode(2001, {}));
-      });
-  };
+        console.error(err)
+        dispatch(setActionMain.alertCode(2001, {}))
+      })
+  }
 
   // GET 데이터 관리
   const handleData = (res: any) => {
-    if (!res || !res.resultList) return Promise.reject();
-    setLoading(false);
+    if (!res || !res.resultList) return Promise.reject()
+    setLoading(false)
 
     setDataSet({
       resultList: res.resultList,
       pageNo: res.pageNo,
       totalCount: res.count
-    });
-  };
+    })
+  }
 
   // 차트 정보 GET
   const getAnalytics = (documentId: any, dataKey) => {
@@ -79,29 +79,29 @@ export default function({ profileInfo }: Type) {
       year: dateSet.year > 0 ? dateSet.year : null,
       documentId: documentId
     }).then(result => {
-      setSpreadItem(Number(dataKey));
-      setAnalyticsList(result);
-      setDocumentId(documentId);
-      setChartFlag(true); // 차트 데이터 props 타이밍 동기화
-    });
-  };
+      setSpreadItem(Number(dataKey))
+      setAnalyticsList(result)
+      setDocumentId(documentId)
+      setChartFlag(true) // 차트 데이터 props 타이밍 동기화
+    })
+  }
 
   // 스크롤 아웃 관리 메소드
   const handleClick = (e: any) => {
-    const dataKey = e.currentTarget.getAttribute("data-key");
-    const dataId = e.currentTarget.getAttribute("data-id");
+    const dataKey = e.currentTarget.getAttribute("data-key")
+    const dataId = e.currentTarget.getAttribute("data-id")
 
     setDateSet({
       week: 1,
       year: -1
-    });
+    })
 
-    setSpreadItem(-1);
-    if (!chartFlag) getAnalytics(dataId, dataKey);
+    setSpreadItem(-1)
+    if (!chartFlag) getAnalytics(dataId, dataKey)
     // 차트 데이터 GET
-    else setChartFlag(false);
+    else setChartFlag(false)
     // 차트 데이터 props 타이밍 동기화
-  };
+  }
 
   // 엑셀 추출 버튼
   const handleExport = (seoTitle: string) => {
@@ -109,70 +109,70 @@ export default function({ profileInfo }: Type) {
       documentId: documentId,
       year: dateSet.week,
       week: dateSet.year
-    };
+    }
     repos.Analytics.getAnalyticsExport(data).then(rst => {
-      const a = document.createElement("a");
-      a.style.display = "none";
-      document.body.appendChild(a);
+      const a = document.createElement("a")
+      a.style.display = "none"
+      document.body.appendChild(a)
 
-      a.href = rst.csvDownloadUrl;
+      a.href = rst.csvDownloadUrl
 
-      a.setAttribute("download", "analystics_" + seoTitle + ".xls");
-      a.click();
+      a.setAttribute("download", "analystics_" + seoTitle + ".xls")
+      a.click()
 
-      window.URL.revokeObjectURL(a.href);
-      document.body.removeChild(a);
-    });
-  };
+      window.URL.revokeObjectURL(a.href)
+      document.body.removeChild(a)
+    })
+  }
 
   // 날짜 선택 버튼
   const handleWeekBtnClick = (e: any) => {
-    let weekValue = e.target.dataset.value;
-    let weekValueNum = -1;
+    let weekValue = e.target.dataset.value
+    let weekValueNum = -1
 
     switch (weekValue) {
       case "1w":
-        return (weekValueNum = 1);
+        return (weekValueNum = 1)
 
       case "1m":
-        return (weekValueNum = 4);
+        return (weekValueNum = 4)
 
       case "3m":
-        return (weekValueNum = 12);
+        return (weekValueNum = 12)
 
       case "6m":
-        return (weekValueNum = 24);
+        return (weekValueNum = 24)
 
       case "1y":
-        return (weekValueNum = 1);
+        return (weekValueNum = 1)
 
       default:
-        break;
+        break
     }
 
     setDateSet({
       week: weekValue !== "1y" ? weekValueNum : -1,
       year: weekValue !== "1y" ? -1 : weekValueNum
-    });
-    setChartFlag(false); // 차트 데이터 props 타이밍 동기화
-    getAnalytics(documentId, spreadItem);
-  };
+    })
+    setChartFlag(false) // 차트 데이터 props 타이밍 동기화
+    getAnalytics(documentId, spreadItem)
+  }
 
   // handle pageNation click
   const handlePageClick = (page: number) => {
     return Promise.resolve()
       .then(() => setPage(page))
-      .then(() => void fetchDocuments(page));
-  };
+      .then(() => void fetchDocuments(page))
+  }
 
   useEffect(() => {
-    void fetchDocuments(1);
-  }, []);
+    void fetchDocuments(1)
+  }, [])
 
   let identification =
     profileInfo.username && profileInfo.username.length > 0
       ? profileInfo.username
-      : profileInfo.email;
+      : profileInfo.email
 
   return (
     <div className={styles.pat_container}>
@@ -205,10 +205,10 @@ export default function({ profileInfo }: Type) {
                     )}
                     alt={result.title ? result.title : result.documentName}
                     onError={e => {
-                      let element = e.target as HTMLImageElement;
-                      element.onerror = null;
+                      let element = e.target as HTMLImageElement
+                      element.onerror = null
                       element.src =
-                        APP_CONFIG.domain().static + "/image/logo-cut.png";
+                        APP_CONFIG.domain().static + "/image/logo-cut.png"
                     }}
                   />
                 </div>
@@ -286,5 +286,5 @@ export default function({ profileInfo }: Type) {
         />
       )}
     </div>
-  );
+  )
 }

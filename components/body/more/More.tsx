@@ -1,10 +1,10 @@
-import * as styles from "public/static/styles/main.scss";
-import Link from "next/link";
-import React from "react";
+import * as styles from "public/static/styles/main.scss"
+import Link from "next/link"
+import React from "react"
 
 type Type = {
-  tagList: [];
-};
+  tagList: []
+}
 
 export default function({ tagList }: Type) {
   return (
@@ -20,5 +20,5 @@ export default function({ tagList }: Type) {
           ))}
       </div>
     </div>
-  );
+  )
 }

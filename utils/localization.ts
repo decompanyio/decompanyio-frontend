@@ -2737,7 +2737,7 @@ const strings = new Map([
       ENG: ""
     }
   ]
-]);
+])
 
 export enum Lang {
   EN = "EN",
@@ -2747,98 +2747,98 @@ export enum Lang {
 }
 
 function getCookie(cname) {
-  let name = cname + "=";
+  let name = cname + "="
   if (typeof document !== "undefined") {
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
+    let decodedCookie = decodeURIComponent(document.cookie)
+    let ca = decodedCookie.split(";")
     for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
+      let c = ca[i]
       while (c.charAt(0) === " ") {
-        c = c.substring(1);
+        c = c.substring(1)
       }
       if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
+        return c.substring(name.length, c.length)
       }
     }
   }
-  return "";
+  return ""
 }
 
 function setCookie(cname, cvalue, exdays) {
-  let d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  let expires = "expires=" + d.toUTCString();
+  let d = new Date()
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000)
+  let expires = "expires=" + d.toUTCString()
   if (typeof document !== "undefined") {
-    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/;";
+    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/;"
   }
 }
 
 function deleteCookie(name) {
   if (typeof document !== "undefined") {
     if (getCookie(name)) {
-      document.cookie = name + "=;expires=Thu, 01-Jan-70 00:00:01 GMT";
+      document.cookie = name + "=;expires=Thu, 01-Jan-70 00:00:01 GMT"
     }
   }
 }
 
 function checkLocale(): Lang {
-  let cookieLang = getCookie("language");
+  let cookieLang = getCookie("language")
 
   // 쿠키 값이 있을 때
   if (cookieLang !== "") {
     switch (cookieLang) {
       case "en":
-        return Lang.EN;
+        return Lang.EN
 
       case "ko":
       default:
-        return Lang.KO;
+        return Lang.KO
     }
   }
 
   // 없을 때
-  return Lang.EN;
+  return Lang.EN
 }
 
 // let currentLang: Lang = Lang.EN;
-let currentLang: Lang = checkLocale();
+let currentLang: Lang = checkLocale()
 
 export function psGetLang(): Lang {
-  return currentLang;
+  return currentLang
 }
 
 export function psSetLang(lang: Lang) {
-  currentLang = lang;
+  currentLang = lang
 
-  deleteCookie("language");
+  deleteCookie("language")
 
   switch (lang) {
     case Lang.EN:
-      setCookie("language", "en", 30);
-      window.location.reload();
-      break;
+      setCookie("language", "en", 30)
+      window.location.reload()
+      break
 
     case Lang.KO:
     default:
-      setCookie("language", "ko", 30);
-      window.location.reload();
-      break;
+      setCookie("language", "ko", 30)
+      window.location.reload()
+      break
   }
 }
 
 export function psString(key: string): string {
-  const _string = strings.get(key);
+  const _string = strings.get(key)
   if (_string !== undefined && _string !== null) {
     switch (currentLang) {
       case Lang.EN:
-        if (_string.ENG === "") return _string.KOR;
-        return _string.ENG;
+        if (_string.ENG === "") return _string.KOR
+        return _string.ENG
 
       case Lang.KO:
       default:
-        return _string.KOR;
+        return _string.KOR
     }
   } else {
-    return "." + key;
+    return "." + key
   }
 }

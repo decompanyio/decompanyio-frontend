@@ -1,8 +1,8 @@
-import * as styles from "public/static/styles/main.scss";
-import Link from "next/link";
-import { psString } from "utils/localization";
-import { APP_CONFIG } from "app.config";
-import React from "react";
+import * as styles from "public/static/styles/main.scss"
+import Link from "next/link"
+import { psString } from "utils/localization"
+import { APP_CONFIG } from "app.config"
+import React from "react"
 
 export default function() {
   return (
@@ -97,5 +97,5 @@ export default function() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

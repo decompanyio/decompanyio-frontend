@@ -7320,5 +7320,12 @@ input[type="radio"]:checked + label span i {
 // =====================================
 
 .vpv_wrapper {
-  position: relative;
+  @include containerEnabledFull;
+  @include mt(0);
+  @include mt-sm(4);
+
+  @media all and (max-width: $md-max-width) {
+    margin: 0 -15px !important;
+    max-width: calc(100% + 30px) !important;
+  }
 }

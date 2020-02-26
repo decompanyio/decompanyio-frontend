@@ -1,10 +1,10 @@
-import * as styles from "../../../public/static/styles/main.scss";
-import React from "react";
-import { Circle } from "better-react-spinkit";
+import * as styles from "../../../public/static/styles/main.scss"
+import React from "react"
+import { Circle } from "better-react-spinkit"
 
 type Type = {
-  percentage: number;
-};
+  percentage: number
+}
 
 export default function({ percentage }: Type) {
   return (
@@ -17,5 +17,5 @@ export default function({ percentage }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }

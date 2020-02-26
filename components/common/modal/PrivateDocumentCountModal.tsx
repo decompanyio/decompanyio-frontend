@@ -1,46 +1,46 @@
-import { psString } from "../../../utils/localization";
-import { useSelector, useDispatch } from "react-redux";
-import common_view from "common/common_view";
-import common from "common/common";
-import React, { useEffect, useState } from "react";
-import Router from "next/router";
-import * as styles from "../../../public/static/styles/main.scss";
-import { setActionMain } from "../../../redux/reducer/main";
+import { psString } from "../../../utils/localization"
+import { useSelector, useDispatch } from "react-redux"
+import common_view from "common/common_view"
+import common from "common/common"
+import React, { useEffect, useState } from "react"
+import Router from "next/router"
+import * as styles from "../../../public/static/styles/main.scss"
+import { setActionMain } from "../../../redux/reducer/main"
 
 export default function() {
-  const dispatch = useDispatch();
-  const myInfo = useSelector(state => state.main.myInfo);
-  const [closeFlag, setCloseFlag] = useState(false);
-  const [username] = useState(myInfo.username ? myInfo.username : myInfo.email);
+  const dispatch = useDispatch()
+  const myInfo = useSelector(state => state.main.myInfo)
+  const [closeFlag, setCloseFlag] = useState(false)
+  const [username] = useState(myInfo.username ? myInfo.username : myInfo.email)
 
   // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true));
+  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true))
 
   // 모달 취소버튼 클릭 관리
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)));
+      .then(() => dispatch(setActionMain.modal(null)))
 
   // 링크 이동 관리
   const handleLinkBtn = () => {
-    void handleClickClose();
+    void handleClickClose()
 
     return Router.push(
       {
         pathname: "/my_page"
       },
       "/@" + username
-    );
-  };
+    )
+  }
 
   useEffect(() => {
-    common_view.setBodyStyleLock();
+    common_view.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock();
-    };
-  }, []);
+      common_view.setBodyStyleUnlock()
+    }
+  }, [])
 
   return (
     <div className={styles.modal_container}>
@@ -79,5 +79,5 @@ export default function() {
         </div>
       </div>
     </div>
-  );
+  )
 }

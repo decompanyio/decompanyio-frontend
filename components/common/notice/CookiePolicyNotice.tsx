@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
-import common_view from "common/common_view";
-import { psString } from "utils/localization";
-import * as styles from "public/static/styles/main.scss";
+import React, { useEffect, useState } from "react"
+import common_view from "common/common_view"
+import { psString } from "utils/localization"
+import * as styles from "public/static/styles/main.scss"
 
 export default function() {
-  const [cookiePolicyValue, setCookiePolicyValue] = useState(false);
+  const [cookiePolicyValue, setCookiePolicyValue] = useState(false)
 
   // 모달 실행 시
   const getStarted = () => {
-    common_view.setCookie("cpv", true, 1000);
-    setCookiePolicyValue(true);
-  };
+    common_view.setCookie("cpv", true, 1000)
+    setCookiePolicyValue(true)
+  }
 
   useEffect(() => {
-    let _cookiePolicyValue = common_view.getCookie("cpv");
+    let _cookiePolicyValue = common_view.getCookie("cpv")
     if (!_cookiePolicyValue) {
-      common_view.setCookie("cpv", false, 1000);
-      setCookiePolicyValue(false);
+      common_view.setCookie("cpv", false, 1000)
+      setCookiePolicyValue(false)
     } else if (_cookiePolicyValue === "true") {
-      setCookiePolicyValue(true);
+      setCookiePolicyValue(true)
     }
-  });
+  })
 
-  if (cookiePolicyValue) return <div />;
+  if (cookiePolicyValue) return <div />
   else {
     return (
       <div className={styles.cpn_wrapper}>
@@ -37,6 +37,6 @@ export default function() {
         </div>
         <div className={styles.cpn_dummy} />
       </div>
-    );
+    )
   }
 }

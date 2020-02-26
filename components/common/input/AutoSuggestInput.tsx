@@ -1,32 +1,32 @@
-import * as styles from "public/static/styles/main.scss";
-import common from "../../../common/common";
-import Autosuggest from "react-autosuggest";
-import { useSelector } from "react-redux";
-import { psString } from "utils/localization";
-import React, { useState } from "react";
+import * as styles from "public/static/styles/main.scss"
+import common from "../../../common/common"
+import Autosuggest from "react-autosuggest"
+import { useSelector } from "react-redux"
+import { psString } from "utils/localization"
+import React, { useState } from "react"
 
 type Type = {
-  search: any;
-  type: string;
-  getNameList?: any;
-};
+  search: any
+  type: string
+  getNameList?: any
+}
 
 function AutoSuggestInput({ search, type, getNameList }: Type) {
-  const tagListFromRedux = useSelector(state => state.main.tagList);
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const tagListFromRedux = useSelector(state => state.main.tagList)
+  const [value, setValue] = useState("")
+  const [suggestions, setSuggestions] = useState([])
 
   // 자동 완성 리스트 설정
   const getSuggestions = (value: string) => {
-    const escapedValue = common.escapeRegexCharacters(value.trim());
+    const escapedValue = common.escapeRegexCharacters(value.trim())
 
-    if (escapedValue === "") return [];
+    if (escapedValue === "") return []
 
-    const regex = new RegExp("^" + escapedValue, "i");
+    const regex = new RegExp("^" + escapedValue, "i")
 
     switch (type) {
       case "tag":
-        return tagListFromRedux.filter(data => regex.test(data._id));
+        return tagListFromRedux.filter(data => regex.test(data._id))
 
       case "name":
         let tempArr = getNameList.filter(
@@ -36,91 +36,91 @@ function AutoSuggestInput({ search, type, getNameList }: Type) {
                 (data.user ? data.user.e : "Anonymous") ===
                 (data2.user ? data2.user.e : "Anonymous")
             ) === i
-        );
+        )
         return tempArr.filter(data =>
           regex.test(data.user ? data.user.e : "Anonymous")
-        );
+        )
 
       default:
-        break;
+        break
     }
-  };
+  }
 
   // 보여줄 값 GET
   const getSuggestionValue = suggestion => {
     switch (type) {
       case "tag":
-        return suggestion._id;
+        return suggestion._id
 
       case "name":
-        return suggestion.user ? suggestion.user.e : "Anonymous";
+        return suggestion.user ? suggestion.user.e : "Anonymous"
 
       default:
-        break;
+        break
     }
-  };
+  }
 
   const getSectionSuggestions = section => {
-    let arr = new Array(0);
-    arr.push(section);
-    return arr;
-  };
+    let arr = new Array(0)
+    arr.push(section)
+    return arr
+  }
 
   // placeholder 설정
   const getPlaceholder = () => {
-    let _placeholder: string = "";
+    let _placeholder: string = ""
 
     switch (type) {
       case "tag":
-        return (_placeholder = psString("auto-placeholder-1"));
+        return (_placeholder = psString("auto-placeholder-1"))
 
       case "name":
-        return (_placeholder = psString("auto-placeholder-2"));
+        return (_placeholder = psString("auto-placeholder-2"))
 
       default:
-        break;
+        break
     }
 
-    return _placeholder;
-  };
+    return _placeholder
+  }
 
   // @ts-ignore
-  const onChange = (event, { newValue }) => setValue(newValue);
+  const onChange = (event, { newValue }) => setValue(newValue)
 
   // @ts-ignore
   const onSuggestionSelected = (event, { suggestion }) => {
-    search(suggestion);
-    setValue("");
-  };
+    search(suggestion)
+    setValue("")
+  }
 
   const onSuggestionsFetchRequested = ({ value }) =>
-    setSuggestions(getSuggestions(value));
+    setSuggestions(getSuggestions(value))
 
-  const onSuggestionsClearRequested = () => setSuggestions([]);
+  const onSuggestionsClearRequested = () => setSuggestions([])
 
   const renderSectionTitle = section => (
     <strong className={styles.asi_count}>{section.value}</strong>
-  );
+  )
 
   // 표시할 값 SET
   const renderSuggestion = suggestion => {
     switch (type) {
       case "tag":
-        return suggestion._id;
+        return suggestion._id
 
       case "name":
-        return suggestion.user ? suggestion.user.e : "Anonymous";
+        return suggestion.user ? suggestion.user.e : "Anonymous"
 
       default:
-        break;
+        break
     }
-  };
+  }
 
   const inputProps = {
     placeholder: getPlaceholder(),
     value,
     onChange: onChange
-  };
+  }
 
   return (
     <Autosuggest
@@ -136,7 +136,7 @@ function AutoSuggestInput({ search, type, getNameList }: Type) {
       getSectionSuggestions={getSectionSuggestions}
       inputProps={inputProps}
     />
-  );
+  )
 }
 
-export default AutoSuggestInput;
+export default AutoSuggestInput

@@ -1,9 +1,9 @@
-import AxiosService from "./AxiosService";
+import AxiosService from "./AxiosService"
 
-let trackingInfoUrl = "tracking/info";
-let trackingListUrl = "tracking/list";
-let trackingConfirmUrl = "tracking/confirm";
-let getTrackingExportUrl = "tracking/export";
+let trackingInfoUrl = "tracking/info"
+let trackingListUrl = "tracking/list"
+let trackingConfirmUrl = "tracking/confirm"
+let getTrackingExportUrl = "tracking/export"
 
 export default {
   GET: {
@@ -15,8 +15,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     trackingList: data => {
       return new Promise((resolve, reject) => {
@@ -26,8 +26,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     trackingExport: data => {
       return new Promise((resolve, reject) => {
@@ -37,8 +37,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   },
   POST: {
@@ -51,7 +51,7 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      );
+      )
     }
   }
-};
+}

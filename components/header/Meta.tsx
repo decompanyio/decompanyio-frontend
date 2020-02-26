@@ -1,10 +1,10 @@
-import Head from "next/head";
-import React from "react";
+import Head from "next/head"
+import React from "react"
 
 type Type = {
-  title: string;
-  metaData: any;
-};
+  title: string
+  metaData: any
+}
 
 export default function({ title, metaData }: Type) {
   return (
@@ -120,5 +120,5 @@ export default function({ title, metaData }: Type) {
         href="/static/styles/thirdparty.css"
       />
     </Head>
-  );
+  )
 }

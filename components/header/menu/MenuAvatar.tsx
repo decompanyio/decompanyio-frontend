@@ -1,14 +1,14 @@
-import Link from "next/link";
-import React from "react";
-import { useSelector } from "react-redux";
-import * as styles from "../../../public/static/styles/main.scss";
+import Link from "next/link"
+import React from "react"
+import { useSelector } from "react-redux"
+import * as styles from "../../../public/static/styles/main.scss"
 
 type Type = {
-  identification: string;
-};
+  identification: string
+}
 
 export default function({ identification }: Type) {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
 
   return (
     <Link
@@ -25,9 +25,9 @@ export default function({ identification }: Type) {
             className={styles.ma_avatar}
             alt="Link to my profile"
             onError={e => {
-              let element = e.target as HTMLImageElement;
-              element.onerror = null;
-              element.src = require("public/static/image/icon/i_profile-default.png");
+              let element = e.target as HTMLImageElement
+              element.onerror = null
+              element.src = require("public/static/image/icon/i_profile-default.png")
             }}
           />
         ) : (
@@ -40,5 +40,5 @@ export default function({ identification }: Type) {
         <span className={styles.ma_avatarName}>{identification}</span>
       </a>
     </Link>
-  );
+  )
 }

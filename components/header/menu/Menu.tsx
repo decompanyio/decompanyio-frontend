@@ -1,44 +1,44 @@
-import * as styles from "public/static/styles/main.scss";
-import { useSelector } from "react-redux";
+import * as styles from "public/static/styles/main.scss"
+import { useSelector } from "react-redux"
 import {
   Lang,
   psGetLang,
   psSetLang,
   psString
-} from "../../../utils/localization";
-import Link from "next/link";
-import common_view from "../../../common/common_view";
-import common from "../../../common/common";
-import React, { useEffect } from "react";
-import { APP_CONFIG } from "../../../app.config";
-import { AUTH_APIS } from "../../../utils/auth";
-import MenuAvatar from "./MenuAvatar";
+} from "../../../utils/localization"
+import Link from "next/link"
+import common_view from "../../../common/common_view"
+import common from "../../../common/common"
+import React, { useEffect } from "react"
+import { APP_CONFIG } from "../../../app.config"
+import { AUTH_APIS } from "../../../utils/auth"
+import MenuAvatar from "./MenuAvatar"
 
 type Type = {
-  setMenuClose: any;
-};
+  setMenuClose: any
+}
 
 // 언어 설정 관리
 const handleLang = () =>
-  psGetLang() === "EN" ? psSetLang(Lang.KO) : psSetLang(Lang.EN);
+  psGetLang() === "EN" ? psSetLang(Lang.KO) : psSetLang(Lang.EN)
 
 export default function({ setMenuClose }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile);
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
+  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
   const identification =
     myInfoFromRedux.username.length && myInfoFromRedux.username.length > 0
       ? myInfoFromRedux.username
-      : myInfoFromRedux.email;
+      : myInfoFromRedux.email
 
   useEffect(() => {
     // 스크롤 숨김
-    common_view.setBodyStyleLock();
+    common_view.setBodyStyleLock()
 
     return () => {
       // 스크롤 표시
-      common_view.setBodyStyleUnlock();
-    };
-  }, []);
+      common_view.setBodyStyleUnlock()
+    }
+  }, [])
 
   return (
     <div className={styles.mn_wrapper}>
@@ -109,10 +109,7 @@ export default function({ setMenuClose }: Type) {
 
       {isMobileFromRedux &&
         (!AUTH_APIS.isAuthenticated() ? (
-          <div
-            className={styles.mn_loginBtn}
-            onClick={() => AUTH_APIS.login(false)}
-          >
+          <div className={styles.mn_loginBtn} onClick={() => AUTH_APIS.login()}>
             {psString("menu-login")}
           </div>
         ) : (
@@ -135,5 +132,5 @@ export default function({ setMenuClose }: Type) {
 
       <div className={styles.mn_version}>{common.getVersion()}</div>
     </div>
-  );
+  )
 }

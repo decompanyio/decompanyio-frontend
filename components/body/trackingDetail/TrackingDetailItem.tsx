@@ -1,43 +1,43 @@
-import * as styles from "../../../public/static/styles/main.scss";
-import LinesEllipsis from "react-lines-ellipsis";
-import { APP_CONFIG } from "../../../app.config";
-import common from "../../../common/common";
-import Link from "next/link";
-import React, { useState } from "react";
+import * as styles from "../../../public/static/styles/main.scss"
+import LinesEllipsis from "react-lines-ellipsis"
+import { APP_CONFIG } from "../../../app.config"
+import common from "../../../common/common"
+import Link from "next/link"
+import React, { useState } from "react"
 
 type Type = {
-  mapData: any;
-  documentData: any;
-  text: any;
-};
+  mapData: any
+  documentData: any
+  text: any
+}
 
 // 정렬 시간 GET
 const getSortedTime = (result: any) => {
-  result.viewTracking.sort((a, b) => a.t - b.t);
-  return common.timestampToTime(result.viewTracking[0].t);
-};
+  result.viewTracking.sort((a, b) => a.t - b.t)
+  return common.timestampToTime(result.viewTracking[0].t)
+}
 
 // 머문 시간 GET
 const getStayingTime = (result: any) => {
-  result.viewTracking.sort((a, b) => a.t - b.t);
-  let nextDt = result.viewTracking[result.viewTracking.length - 1].t;
-  let prevDt = result.viewTracking[0].t;
-  let rstTime = common.timestampToDurationJustTime(nextDt - prevDt);
-  return rstTime === "0s " ? "" : "( " + rstTime + ")";
-};
+  result.viewTracking.sort((a, b) => a.t - b.t)
+  let nextDt = result.viewTracking[result.viewTracking.length - 1].t
+  let prevDt = result.viewTracking[0].t
+  let rstTime = common.timestampToDurationJustTime(nextDt - prevDt)
+  return rstTime === "0s " ? "" : "( " + rstTime + ")"
+}
 
 export default function({ mapData, documentData, text }: Type) {
-  const [folded, setFolded] = useState(-1);
+  const [folded, setFolded] = useState(-1)
 
   // 이미지 URL GET
   const getImgUrl = (page: number) =>
-    common.getThumbnail(documentData.documentId, 320, page, "");
+    common.getThumbnail(documentData.documentId, 320, page, "")
 
   let identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
+    : documentData.accountId
 
   return (
     <li>
@@ -136,5 +136,5 @@ export default function({ mapData, documentData, text }: Type) {
         </dl>
       </div>
     </li>
-  );
+  )
 }

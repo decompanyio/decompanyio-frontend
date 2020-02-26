@@ -1,11 +1,11 @@
-import { ThreeBounce } from "better-react-spinkit";
-import { psString } from "utils/localization";
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import { ThreeBounce } from "better-react-spinkit"
+import { psString } from "utils/localization"
+import * as styles from "public/static/styles/main.scss"
+import React from "react"
 
 type Type = {
-  documentData: any;
-};
+  documentData: any
+}
 
 export default function({ documentData }: Type) {
   if (!documentData) {
@@ -13,7 +13,7 @@ export default function({ documentData }: Type) {
       <div className="spinner">
         <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
       </div>
-    );
+    )
   } else {
     return (
       <aside className={styles.vsa_container}>
@@ -22,6 +22,6 @@ export default function({ documentData }: Type) {
           <FeaturedListItemContainer resultItem={result} key={idx} />
         ))}*/}
       </aside>
-    );
+    )
   }
 }

@@ -1,15 +1,15 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import * as styles from "../../../public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import ProfileUploadTab from "./ProfileUploadTab";
-import ProfileVoteTab from "./ProfileVoteTab";
-import ProfileAnalyticsTab from "./ProfileAnalyticsTab";
-import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import * as styles from "../../../public/static/styles/main.scss"
+import { psString } from "../../../utils/localization"
+import ProfileUploadTab from "./ProfileUploadTab"
+import ProfileVoteTab from "./ProfileVoteTab"
+import ProfileAnalyticsTab from "./ProfileAnalyticsTab"
+import React from "react"
 
 type Type = {
-  profileInfo: any;
-  owner: boolean;
-};
+  profileInfo: any
+  owner: boolean
+}
 
 export default function({ profileInfo, owner }: Type) {
   return (
@@ -36,5 +36,5 @@ export default function({ profileInfo, owner }: Type) {
         )}
       </Tabs>
     </div>
-  );
+  )
 }

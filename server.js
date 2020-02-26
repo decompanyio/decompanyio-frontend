@@ -4,7 +4,7 @@ const express = require('express');
 const next = require('next');
 
 const env = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
-const port = 80;
+const port = 3000;
 const dev = env !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
@@ -151,13 +151,6 @@ app.prepare().then(() => {
         res.header("X-Robots-Tag", "noindex");
         res.status(404);
         return app.render(req, res, '/user_guide', req.query)
-    });
-
-    // pdf 테스트 페이지
-    server.get('/pdf_test', (req, res) => {
-        res.header("X-Robots-Tag", "noindex");
-        res.status(404);
-        return app.render(req, res, '/pdf_test', req.query)
     });
 
     server.all('*', (req, res) => {

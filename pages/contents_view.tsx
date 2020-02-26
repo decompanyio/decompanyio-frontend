@@ -1,32 +1,39 @@
-import * as styles from "public/static/styles/main.scss";
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import common_view from "../common/common_view";
-import { APP_CONFIG } from "../app.config";
-import repos from "../utils/repos";
-import { AUTH_APIS } from "../utils/auth";
-import { tracking, setTrackingInfo } from "utils/tracking";
+import * as styles from "public/static/styles/main.scss"
+import React, { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import common_view from "../common/common_view"
+import { APP_CONFIG } from "../app.config"
+import repos from "../utils/repos"
+import { AUTH_APIS } from "../utils/auth"
+import { tracking, setTrackingInfo } from "utils/tracking"
 
-import Layout from "components/Layout";
-import ViewLandscape from "../components/body/view/ViewLandscape";
-import ViewInfoBox from "../components/body/view/ViewInfoBox";
-import ViewToolBox from "../components/body/view/ViewToolBox";
-import ViewDescBox from "components/body/view/ViewDescBox";
-import ViewSeeAlso from "components/body/view/ViewSeeAlso";
-import ViewPortrait from "../components/body/view/ViewPortrait";
-import common_data from "../common/common_data";
-import { setActionMain } from "../redux/reducer/main";
-import DocumentInfo from "../service/model/DocumentInfo";
-import UserInfo from "../service/model/UserInfo";
-import Router from "next/router";
+import Layout from "components/Layout"
+import ViewLandscape from "../components/body/view/ViewLandscape"
+import ViewInfoBox from "../components/body/view/ViewInfoBox"
+import ViewToolBox from "../components/body/view/ViewToolBox"
+import ViewDescBox from "components/body/view/ViewDescBox"
+import ViewSeeAlso from "components/body/view/ViewSeeAlso"
+import ViewPortrait from "../components/body/view/ViewPortrait"
+import common_data from "../common/common_data"
+import { setActionMain } from "../redux/reducer/main"
+import DocumentInfo from "../service/model/DocumentInfo"
+import UserInfo from "../service/model/UserInfo"
+import Router from "next/router"
+import dynamic from "next/dist/next-server/lib/dynamic"
+
+// DocumentCard - No SSR
+const ViewPdfWithoutSSR = dynamic(
+  () => import("../components/body/view/ViewPdfViewer"),
+  { ssr: false }
+)
 
 export default function index(
   { documentData, text, ratio, readPage, metaData, message },
   ...rest
 ) {
-  const dispatch = useDispatch();
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  let stayTime = 0;
+  const dispatch = useDispatch()
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  let stayTime = 0
 
   // 1. 로그인 유무 체크
   // 2-A. 로그인 시, '6번' 진행
@@ -45,27 +52,27 @@ export default function index(
     new Promise(resolve => {
       if (documentData.useTracking) {
         if (AUTH_APIS.isAuthenticated()) {
-          resolve("view");
+          resolve("view")
         } else {
           if (page === 2) {
-            let localStorageData = localStorage.getItem("refuse_tracking");
+            let localStorageData = localStorage.getItem("refuse_tracking")
 
             if (
               localStorageData &&
               localStorageData === documentData.seoTitle
             ) {
-              resolve("view");
+              resolve("view")
             } else {
-              dispatch(setActionMain.modal("email", { documentData }));
+              dispatch(setActionMain.modal("email", { documentData }))
             }
           } else {
-            resolve("view");
+            resolve("view")
           }
         }
       } else {
-        resolve("none");
+        resolve("none")
       }
-    });
+    })
 
   // Tracking API POST
   const postTracking = (page: number, type: string) =>
@@ -76,31 +83,31 @@ export default function index(
         ev: type
       },
       true
-    ).then(res => res);
+    ).then(res => res)
 
   // 로그인 시, cid ~ email 싱크 작업
   const postTrackingConfirm = async () => {
-    let trackingInfo = await setTrackingInfo().then((res: any) => res);
+    let trackingInfo = await setTrackingInfo().then((res: any) => res)
 
     let data = {
       cid: trackingInfo.cid,
       sid: trackingInfo.sid,
       email: myInfoFromRedux.email,
       documentId: documentData.documentId
-    };
+    }
 
-    return repos.Tracking.postTrackingConfirm(data);
-  };
+    return repos.Tracking.postTrackingConfirm(data)
+  }
 
   // 특정 시간 동안 머문 후 트랙킹 시작
   const handleTrackingDelay = (page: number, type: string) => {
-    let st = common_data.trackingDelayTime;
-    let tmpTime = Date.now();
+    let st = common_data.trackingDelayTime
+    let tmpTime = Date.now()
 
     if (stayTime === 0 || (stayTime > 0 && tmpTime >= stayTime + st)) {
-      return postTracking(page, type);
+      return postTracking(page, type)
     }
-  };
+  }
 
   // 떠남 상태 관리
   const handleTrackingLeave = () => {
@@ -112,22 +119,22 @@ export default function index(
           ev: "leave"
         },
         false
-      );
+      )
     } catch (e) {
-      return console.error(e);
+      return console.error(e)
     }
-  };
+  }
 
   useEffect(() => {
-    if (message) Router.push("/not_found_page");
+    if (message) Router.push("/not_found_page")
 
     let page =
       common_view.getPageNum() > documentData.totalPages
         ? 0
-        : common_view.getPageNum();
+        : common_view.getPageNum()
 
     if (AUTH_APIS.isAuthenticated()) {
-      void repos.Mutation.addHistory(documentData.documentId);
+      void repos.Mutation.addHistory(documentData.documentId)
 
       postTrackingConfirm()
         .then(() =>
@@ -139,23 +146,21 @@ export default function index(
                 postTracking(page, type)
               )
             : false
-        );
+        )
     } else {
-      checkQualified(page).then((type: string) => postTracking(page, type));
+      checkQualified(page).then((type: string) => postTracking(page, type))
     }
     return () => {
-      handleTrackingLeave();
-      localStorage.removeItem("refuse_tracking");
-    };
-  }, []);
+      handleTrackingLeave()
+      localStorage.removeItem("refuse_tracking")
+    }
+  }, [])
 
   // 뷰어 페이지 이동 관리
   const handlePageChange = (page: number) => {
-    common_view.handleUrl(page, text[page]);
-    checkQualified(page).then((type: string) =>
-      handleTrackingDelay(page, type)
-    );
-  };
+    common_view.handleUrl(page, text[page])
+    checkQualified(page).then((type: string) => handleTrackingDelay(page, type))
+  }
 
   return (
     <Layout
@@ -180,27 +185,31 @@ export default function index(
             pageChange={handlePageChange}
           />
         )}
+        <ViewPdfWithoutSSR
+          documentData={documentData}
+          pageChange={handlePageChange}
+        />
         <ViewInfoBox documentData={documentData} />
         <ViewToolBox documentData={documentData} />
         <ViewDescBox documentData={documentData} />
         <ViewSeeAlso documentData={documentData} />
       </div>
     </Layout>
-  );
+  )
 }
 
 index.getInitialProps = async props => {
-  let seoTitle = common_view.getPathFromPathname(props.asPath);
+  let seoTitle = common_view.getPathFromPathname(props.asPath)
   const {
     document,
     featuredList,
     text,
     totalViewCountInfo,
     message
-  } = await repos.Document.getDocument(seoTitle);
-  const documentData = new DocumentInfo(document);
-  const authorData = new UserInfo(documentData.author);
-  const textData = text || [];
+  } = await repos.Document.getDocument(seoTitle)
+  const documentData = new DocumentInfo(document)
+  const authorData = new UserInfo(documentData.author)
+  const textData = text || []
 
   const metaData = {
     title: documentData.title,
@@ -243,7 +252,7 @@ index.getInitialProps = async props => {
           "/" +
           documentData.seoTitle
     }
-  };
+  }
 
   return {
     documentData: documentData,
@@ -256,5 +265,5 @@ index.getInitialProps = async props => {
     readPage: 0,
     metaData,
     message
-  };
-};
+  }
+}

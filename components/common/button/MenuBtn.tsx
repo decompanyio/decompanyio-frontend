@@ -1,9 +1,9 @@
-import * as styles from "public/static/styles/main.scss";
-import Menu from "../../header/menu/Menu";
-import React, { useState } from "react";
+import * as styles from "public/static/styles/main.scss"
+import Menu from "../../header/menu/Menu"
+import React, { useState } from "react"
 
 export default function() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <div className={styles.mn_btnWrapper}>
@@ -13,5 +13,5 @@ export default function() {
       />
       {menuOpen && <Menu setMenuClose={() => setMenuOpen(false)} />}
     </div>
-  );
+  )
 }

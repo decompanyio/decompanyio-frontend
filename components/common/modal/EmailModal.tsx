@@ -1,54 +1,54 @@
-import { useSelector, useDispatch } from "react-redux";
-import { FadingCircle } from "better-react-spinkit";
-import { psString } from "utils/localization";
-import repos from "../../../utils/repos";
-import common from "common/common";
-import common_view from "../../../common/common_view";
-import React, { useEffect, useState } from "react";
-import { setActionMain } from "../../../redux/reducer/main";
-import { setTrackingInfo } from "../../../utils/tracking";
-import * as styles from "../../../public/static/styles/main.scss";
-import Router from "next/router";
+import { useSelector, useDispatch } from "react-redux"
+import { FadingCircle } from "better-react-spinkit"
+import { psString } from "utils/localization"
+import repos from "../../../utils/repos"
+import common from "common/common"
+import common_view from "../../../common/common_view"
+import React, { useEffect, useState } from "react"
+import { setActionMain } from "../../../redux/reducer/main"
+import { setTrackingInfo } from "../../../utils/tracking"
+import * as styles from "../../../public/static/styles/main.scss"
+import Router from "next/router"
 
 export default function() {
-  const dispatch = useDispatch();
-  const { documentData } = useSelector(state => state.main.modalData);
-  const [closeFlag, setCloseFlag] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [policyChecked, setPolicyChecked] = useState(false);
-  const [policyError, setPolicyError] = useState(false);
+  const dispatch = useDispatch()
+  const { documentData } = useSelector(state => state.main.modalData)
+  const [closeFlag, setCloseFlag] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+  const [emailError, setEmailError] = useState("")
+  const [policyChecked, setPolicyChecked] = useState(false)
+  const [policyError, setPolicyError] = useState(false)
 
   const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
+    : documentData.accountId
 
   // 이메일 유효성 체크
   const validateEmail = (value: string) => {
-    let checkEmail = common.checkEmailForm(value);
-    setEmailError(checkEmail ? "" : psString("email-modal-error-1"));
-    return checkEmail;
-  };
+    let checkEmail = common.checkEmailForm(value)
+    setEmailError(checkEmail ? "" : psString("email-modal-error-1"))
+    return checkEmail
+  }
 
   // 체크박스 유효성 체크
   const validateCheckBox = (value: boolean) => {
     if (value) {
-      setPolicyError(false);
-      return true;
+      setPolicyError(false)
+      return true
     } else {
-      setPolicyError(true);
-      return false;
+      setPolicyError(true)
+      return false
     }
-  };
+  }
 
   // usetracking: true, forcetracking: false 로컬스토리지 데이터 셋
   const setLocalstorage = () =>
     Promise.resolve(
       localStorage.setItem("refuse_tracking", documentData.seoTitle)
-    );
+    )
 
   // 라우팅 관리
   const handleRouter = (page: number) =>
@@ -58,10 +58,10 @@ export default function() {
         query: { seoTitle: documentData.seoTitle }
       },
       "/@" + identification + "/" + documentData.seoTitle + "/" + page
-    );
+    )
 
   // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true));
+  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true))
 
   // 모달 취소버튼 클릭 관리
   const handleClickClose = () =>
@@ -69,59 +69,59 @@ export default function() {
       .then(() => common.delay(200))
       .then(() => dispatch(setActionMain.modal(null)))
       .then(() => setLocalstorage())
-      .then(() => handleRouter(3));
+      .then(() => handleRouter(3))
 
   // 메일 입력 성공 후 관리
   const handleSuccessClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
       .then(() => dispatch(setActionMain.modal(null)))
-      .then(() => handleRouter(3));
+      .then(() => handleRouter(3))
 
   // 강제입력 시 모달 종료 관리
   const handleBack = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
       .then(() => dispatch(setActionMain.modal(null)))
-      .then(() => handleRouter(1));
+      .then(() => handleRouter(1))
 
   // 메일 입력 체크
   const handleEmailChange = e => {
-    if (validateEmail(e.target.value)) setEmail(e.target.value);
-  };
+    if (validateEmail(e.target.value)) setEmail(e.target.value)
+  }
 
   // 보내기 버튼 클릭 시
   const handleSendBtn = async () => {
     if (validateEmail(email) && validateCheckBox(policyChecked)) {
-      setLoading(true);
-      const trackingInfo = await setTrackingInfo().then((res: any) => res);
+      setLoading(true)
+      const trackingInfo = await setTrackingInfo().then((res: any) => res)
       let data = {
         cid: trackingInfo.cid,
         sid: trackingInfo.sid,
         email: email,
         documentId: documentData.documentId
-      };
+      }
 
       await repos.Tracking.postTrackingConfirm(data).then(() => {
-        setLoading(false);
-        handleSuccessClose();
-      });
+        setLoading(false)
+        handleSuccessClose()
+      })
     }
-  };
+  }
 
   // 체크박스 관리
   const handleCheckbox = e => {
-    setPolicyChecked(e.target.checked);
-    validateCheckBox(e.target.checked);
-  };
+    setPolicyChecked(e.target.checked)
+    validateCheckBox(e.target.checked)
+  }
 
   useEffect(() => {
-    common_view.setBodyStyleLock();
+    common_view.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock();
-    };
-  }, []);
+      common_view.setBodyStyleUnlock()
+    }
+  }, [])
 
   return (
     <div className={styles.modal_container}>
@@ -212,5 +212,5 @@ export default function() {
         </div>
       </div>
     </div>
-  );
+  )
 }

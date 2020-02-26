@@ -1,6 +1,6 @@
-import { psString } from "../../../utils/localization";
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import { psString } from "../../../utils/localization"
+import * as styles from "public/static/styles/main.scss"
+import React from "react"
 
 export default function({ reward, documentData }) {
   return (
@@ -11,5 +11,5 @@ export default function({ reward, documentData }) {
         {psString("profile-payout-txt-2")}
       </div>
     </div>
-  );
+  )
 }

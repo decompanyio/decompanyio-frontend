@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
-import Router from "next/router";
-import * as styles from "public/static/styles/main.scss";
+import { useEffect, useState } from "react"
+import Router from "next/router"
+import * as styles from "public/static/styles/main.scss"
 
 type Type = {
-  errMessage?: string;
-};
+  errMessage?: string
+}
 
 export default function({ errMessage }: Type) {
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(5)
 
   useEffect(() => {
     // 시간 5초 후 메인페이지 이동
     const interval = setInterval(() => {
       setTime(time => {
         if (time <= 0) {
-          clearInterval(interval);
-          Router.push("/");
+          clearInterval(interval)
+          Router.push("/")
         }
-        return time - 1;
-      });
-    }, 1000);
-  }, []);
+        return time - 1
+      })
+    }, 1000)
+  }, [])
 
   return (
     <div className={styles.nfpw_wrapper}>
@@ -34,5 +34,5 @@ export default function({ errMessage }: Type) {
         seconds.
       </div>
     </div>
-  );
+  )
 }

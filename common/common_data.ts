@@ -1,4 +1,7 @@
 export default {
+  // 기본 로그인 플랫폼
+  defaultLoginPlatform: "google",
+
   // 공통 타이틀
   commonTitle: " | Polaris Share",
 
@@ -86,5 +89,22 @@ export default {
   alertRemainTime: 7000,
 
   // My page 리스트 개수
-  myPageListSize: 10
-};
+  myPageListSize: 10,
+
+  style: {
+    md: {
+      max: {
+        width: 767
+      },
+      min: {
+        width: 768
+      }
+    },
+    common: {
+      margin: 15 // common margin
+    },
+    container: {
+      width: 1280 // common container width
+    }
+  }
+}

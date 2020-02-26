@@ -1,11 +1,11 @@
-import Layout from "components/Layout";
-import Link from "next/link";
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "../utils/localization";
-import common_view from "../common/common_view";
-import { APP_CONFIG } from "../app.config";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from "components/Layout"
+import Link from "next/link"
+import * as styles from "public/static/styles/main.scss"
+import { psString } from "../utils/localization"
+import common_view from "../common/common_view"
+import { APP_CONFIG } from "../app.config"
+import common_data from "../common/common_data"
+import React from "react"
 
 export default function() {
   return (
@@ -279,5 +279,5 @@ export default function() {
         </section>
       </div>
     </Layout>
-  );
+  )
 }

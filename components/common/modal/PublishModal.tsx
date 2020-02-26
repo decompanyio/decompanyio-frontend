@@ -1,104 +1,102 @@
-import React, { useEffect, useState } from "react";
-import { FadingCircle } from "better-react-spinkit";
-import TagsInput from "react-tagsinput";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react"
+import { FadingCircle } from "better-react-spinkit"
+import TagsInput from "react-tagsinput"
+import { useSelector, useDispatch } from "react-redux"
 
-import repos from "utils/repos";
-import { psString } from "utils/localization";
-import common from "common/common";
-import common_view from "common/common_view";
-import { setActionMain } from "../../../redux/reducer/main";
-import { APP_CONFIG } from "../../../app.config";
-import * as styles from "../../../public/static/styles/main.scss";
-import AutoCompleteRenderInput from "../input/AutoCompleteRenderInput";
+import repos from "utils/repos"
+import { psString } from "utils/localization"
+import common from "common/common"
+import common_view from "common/common_view"
+import { setActionMain } from "../../../redux/reducer/main"
+import { APP_CONFIG } from "../../../app.config"
+import * as styles from "../../../public/static/styles/main.scss"
+import AutoCompleteRenderInput from "../input/AutoCompleteRenderInput"
 
 export default function() {
-  const dispatch = useDispatch();
-  const { documentData } = useSelector(state => state.main.modalData);
-  const tagList = useSelector(state => state.main.tagList);
-  const [by, setBy] = useState(false);
-  const [nc, setNc] = useState(false);
-  const [nd, setNd] = useState(false);
-  const [sa, setSa] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [moreOptions, setMoreOptions] = useState(false);
-  const [closeFlag, setCloseFlag] = useState(false);
-  const [tags, setTags] = useState(documentData.tags || []);
-  const [tagError, setTagError] = useState("");
+  const dispatch = useDispatch()
+  const { documentData } = useSelector(state => state.main.modalData)
+  const tagList = useSelector(state => state.main.tagList)
+  const [by, setBy] = useState(false)
+  const [nc, setNc] = useState(false)
+  const [nd, setNd] = useState(false)
+  const [sa, setSa] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [moreOptions, setMoreOptions] = useState(false)
+  const [closeFlag, setCloseFlag] = useState(false)
+  const [tags, setTags] = useState(documentData.tags || [])
+  const [tagError, setTagError] = useState("")
   const [useTracking, setUseTracking] = useState(
     documentData.useTracking || false
-  );
+  )
   const [forceTracking, setForceTracking] = useState(
     documentData.forceTracking || false
-  );
-  const [isDownload, setIsDownload] = useState(
-    documentData.isDownload || false
-  );
+  )
+  const [isDownload, setIsDownload] = useState(documentData.isDownload || false)
 
   // 자동 완성 태그 GET
   const getAutoCompleteRenderInput = ({ addTag, ...props }) => {
     return (
       <AutoCompleteRenderInput addTag={addTag} tagList={tagList} {...props} />
-    );
-  };
+    )
+  }
 
   // CC 값 GET
   const getCcValue = () => {
-    if (!by) return "none";
+    if (!by) return "none"
 
-    if (!nc && !nd && !sa) return "by";
-    else if (nc && !nd && !sa) return "by-nc";
-    else if (!nc && nd && !sa) return "by-nd";
-    else if (!nc && !nd && sa) return "by-sa";
-    else if (nc && !nd && sa) return "by-nc-sa";
-    else if (nc && nd && !sa) return "by-nc-nd";
-  };
+    if (!nc && !nd && !sa) return "by"
+    else if (nc && !nd && !sa) return "by-nc"
+    else if (!nc && nd && !sa) return "by-nd"
+    else if (!nc && !nd && sa) return "by-sa"
+    else if (nc && !nd && sa) return "by-nc-sa"
+    else if (nc && nd && !sa) return "by-nc-nd"
+  }
 
   // CC 상세값 GET
   const getCcDetailValue = cc => {
-    if (!cc || cc === "" || cc === "none") return "none";
+    if (!cc || cc === "" || cc === "none") return "none"
 
     // by, by-nc, by-nd, by-sa, by-nc-sa, by-nc-nd
     return new Promise(resolve => {
-      setBy(true);
-      setNc(cc === "by-nc" || cc === "by-nc-sa" || cc === "by-nc-nd");
-      setNd(cc === "by-nd" || cc === "by-nc-nd");
-      setSa(cc === "by-sa" || cc === "by-nc-sa");
-      resolve();
-    });
-  };
+      setBy(true)
+      setNc(cc === "by-nc" || cc === "by-nc-sa" || cc === "by-nc-nd")
+      setNd(cc === "by-nd" || cc === "by-nc-nd")
+      setSa(cc === "by-sa" || cc === "by-nc-sa")
+      resolve()
+    })
+  }
 
   // 모달 숨기기 클래스 추가
   const handleCloseFlag = () =>
-    new Promise(resolve => resolve(setCloseFlag(true)));
+    new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 모달 취소버튼 클릭 관리
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)));
+      .then(() => dispatch(setActionMain.modal(null)))
 
   // 태그 변경 관리
   const handleTagChange = tags => {
-    setTags(tags);
-    validateTag(tags);
-  };
+    setTags(tags)
+    validateTag(tags)
+  }
 
   // 출판 버튼 클릭 관리
   const handleClickPublish = () => {
-    if (!validateTag(tags)) return false;
-    setLoading(true);
+    if (!validateTag(tags)) return false
+    setLoading(true)
     handlePublish()
       // 퍼블리시 완료 모달 오픈
       .then(() =>
         dispatch(setActionMain.modal("publishComplete", { documentData }))
       )
       .catch(err => {
-        console.error(err);
-        dispatch(setActionMain.alertCode(2071, {}));
-        dispatch(setActionMain.modal(null));
-      });
-  };
+        console.error(err)
+        dispatch(setActionMain.alertCode(2071, {}))
+        dispatch(setActionMain.modal(null))
+      })
+  }
 
   // publish 관리
   const handlePublish = () =>
@@ -110,57 +108,57 @@ export default function() {
       forceTracking: !useTracking ? false : forceTracking,
       isDownload: isDownload,
       cc: getCcValue()
-    });
+    })
 
   // 유저 트래킹 체크박스
   const handleTrackingCheckbox = () => {
-    let newValue = !useTracking;
-    setUseTracking(newValue);
-    if (!newValue) return setForceTracking(false);
-    return;
-  };
+    let newValue = !useTracking
+    setUseTracking(newValue)
+    if (!newValue) return setForceTracking(false)
+    return
+  }
 
   // 강제 트래킹 체크박스
   const handleForceTrackingCheckbox = () => {
-    let newValue = !forceTracking;
-    setForceTracking(newValue);
-  };
+    let newValue = !forceTracking
+    setForceTracking(newValue)
+  }
 
   // 다운로드 허용 체크박스
   const handleAIsDownloadCheckbox = () => {
-    let newValue = !isDownload;
-    setIsDownload(newValue);
-  };
+    let newValue = !isDownload
+    setIsDownload(newValue)
+  }
 
   // CC License by 체크박스
-  const handleCcByCheckbox = () => setBy(!by);
+  const handleCcByCheckbox = () => setBy(!by)
 
   // CC License nc 체크박스
-  const handleCcNcCheckbox = () => setNc(!nc);
+  const handleCcNcCheckbox = () => setNc(!nc)
 
   // CC License nd 체크박스
-  const handleCcNdCheckbox = () => setNd(!nd);
+  const handleCcNdCheckbox = () => setNd(!nd)
 
   // CC License sa 체크박스
-  const handleCcSaCheckbox = () => setSa(!sa);
+  const handleCcSaCheckbox = () => setSa(!sa)
 
   // more 옵션 관리 버튼
-  const handleMoreOptions = () => setMoreOptions(!moreOptions);
+  const handleMoreOptions = () => setMoreOptions(!moreOptions)
 
   // 태그 유효성 체크
   const validateTag = tags => {
-    setTagError(tags.length > 0 ? "" : psString("edit-doc-error-2"));
-    return tags.length > 0;
-  };
+    setTagError(tags.length > 0 ? "" : psString("edit-doc-error-2"))
+    return tags.length > 0
+  }
 
   useEffect(() => {
-    getCcDetailValue(documentData.cc);
-    common_view.setBodyStyleLock();
+    getCcDetailValue(documentData.cc)
+    common_view.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock();
-    };
-  }, []);
+      common_view.setBodyStyleUnlock()
+    }
+  }, [])
 
   return (
     <div className={styles.modal_container}>
@@ -365,5 +363,5 @@ export default function() {
         </div>
       </div>
     </div>
-  );
+  )
 }

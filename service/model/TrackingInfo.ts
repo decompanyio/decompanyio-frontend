@@ -1,7 +1,7 @@
 export default class TrackingInfo {
-  resultList: any;
+  resultList: any
 
   constructor(data) {
-    this.resultList = data && data.resultList ? data.resultList : "";
+    this.resultList = data && data.resultList ? data.resultList : ""
   }
 }

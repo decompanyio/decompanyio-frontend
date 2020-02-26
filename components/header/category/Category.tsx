@@ -1,6 +1,6 @@
-import * as styles from "public/static/styles/main.scss";
-import Link from "next/link";
-import React from "react";
+import * as styles from "public/static/styles/main.scss"
+import Link from "next/link"
+import React from "react"
 
 const categoryRanked = [
   "marketing",
@@ -10,7 +10,7 @@ const categoryRanked = [
   "food",
   "education",
   "design"
-];
+]
 
 export default function() {
   return (
@@ -40,5 +40,5 @@ export default function() {
         </li>
       </ul>
     </nav>
-  );
+  )
 }

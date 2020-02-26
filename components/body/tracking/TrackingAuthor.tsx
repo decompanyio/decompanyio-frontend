@@ -1,66 +1,66 @@
-import * as styles from "public/static/styles/main.scss";
-import Link from "next/link";
-import { psString } from "utils/localization";
-import { APP_CONFIG } from "../../../app.config";
-import RewardCard from "components/common/card/RewardCard";
-import common from "../../../common/common";
-import React, { useEffect, useState } from "react";
-import repos from "../../../utils/repos";
+import * as styles from "public/static/styles/main.scss"
+import Link from "next/link"
+import { psString } from "utils/localization"
+import { APP_CONFIG } from "../../../app.config"
+import RewardCard from "components/common/card/RewardCard"
+import common from "../../../common/common"
+import React, { useEffect, useState } from "react"
+import repos from "../../../utils/repos"
 
 type Type = {
-  documentData: any;
-  ratio: number;
-};
+  documentData: any
+  ratio: number
+}
 
 export default function({ documentData, ratio }: Type) {
-  const [showAnonymous, setShowAnonymous] = useState(false);
-  const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false);
-  const [optionTable, setOptionTable] = useState(false);
-  const [rewardInfoOpen, setRewardInfo] = useState(false);
-  const [reward, setReward] = useState(0);
+  const [showAnonymous, setShowAnonymous] = useState(false)
+  const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false)
+  const [optionTable, setOptionTable] = useState(false)
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [reward, setReward] = useState(0)
 
-  const addr = common.getThumbnail(documentData.documentId, 320, 1, "");
+  const addr = common.getThumbnail(documentData.documentId, 320, 1, "")
   const identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
-  const vote = common.toEther(documentData.latestVoteAmount);
-  const view = documentData.latestPageview || 0;
+    : documentData.accountId
+  const vote = common.toEther(documentData.latestVoteAmount)
+  const view = documentData.latestPageview || 0
 
   // Anonymous 보기/숨김 옵션 관리
   const handleAnonymousOption = () => {
-    setShowAnonymous(!showAnonymous);
-  };
+    setShowAnonymous(!showAnonymous)
+  }
 
   // 1 페이지 보기/숨김 옵션 관리
   const handleOnePageOption = () => {
-    setIncludeOnlyOnePage(includeOnlyOnePage);
-  };
+    setIncludeOnlyOnePage(includeOnlyOnePage)
+  }
 
   // 파일 export
   const handleExport = () => {
     repos.Tracking.getTrackingExport(documentData.documentId).then(rst => {
-      const a = document.createElement("a");
-      a.style.display = "none";
-      document.body.appendChild(a);
+      const a = document.createElement("a")
+      a.style.display = "none"
+      document.body.appendChild(a)
 
-      a.href = rst.downloadUrl;
+      a.href = rst.downloadUrl
 
-      a.setAttribute("download", "tracking_" + documentData.seoTitle + ".xls");
-      a.click();
+      a.setAttribute("download", "tracking_" + documentData.seoTitle + ".xls")
+      a.click()
 
-      window.URL.revokeObjectURL(a.href);
-      document.body.removeChild(a);
-    });
-  };
+      window.URL.revokeObjectURL(a.href)
+      document.body.removeChild(a)
+    })
+  }
 
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
       documentData.author._id
-    ).then(res => setReward(common.toEther(res)));
-  }, []);
+    ).then(res => setReward(common.toEther(res)))
+  }, [])
 
   return (
     <div className={styles.ta_container}>
@@ -169,5 +169,5 @@ export default function({ documentData, ratio }: Type) {
         </dl>
       </div>
     </div>
-  );
+  )
 }

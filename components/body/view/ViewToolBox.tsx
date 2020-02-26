@@ -1,76 +1,76 @@
-import { FadingCircle } from "better-react-spinkit";
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import { AUTH_APIS } from "../../../utils/auth";
-import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
-import repos from "../../../utils/repos";
-import { setActionMain } from "../../../redux/reducer/main";
-import Link from "next/link";
+import { FadingCircle } from "better-react-spinkit"
+import * as styles from "public/static/styles/main.scss"
+import { psString } from "../../../utils/localization"
+import { AUTH_APIS } from "../../../utils/auth"
+import { useSelector, useDispatch } from "react-redux"
+import React, { useState } from "react"
+import repos from "../../../utils/repos"
+import { setActionMain } from "../../../redux/reducer/main"
+import Link from "next/link"
 
 type Type = {
-  documentData: any;
-};
+  documentData: any
+}
 
 export default function({ documentData }: Type) {
-  const dispatch = useDispatch();
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  const [downloadLoading, setDownloadLoading] = useState(false);
+  const dispatch = useDispatch()
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const [downloadLoading, setDownloadLoading] = useState(false)
 
   let identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
+    : documentData.accountId
 
   // 문서 다운로드 전 데이터 SET
   const handleDownloadContent = () => {
     if (!documentData) {
-      return dispatch(setActionMain.alertCode(2091, {}));
+      return dispatch(setActionMain.alertCode(2091, {}))
     }
     if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email) {
-      return dispatch(setActionMain.alertCode(2003, {}));
+      return dispatch(setActionMain.alertCode(2003, {}))
     }
 
-    getContentDownload(documentData.documentId, documentData.documentName);
-  };
+    getContentDownload(documentData.documentId, documentData.documentName)
+  }
 
   // 문서 다운로드
   const getContentDownload = (documentId: string, documentName: string) => {
-    setDownloadLoading(true);
+    setDownloadLoading(true)
 
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
     }).then(
       result => {
-        const a = document.createElement("a");
+        const a = document.createElement("a")
 
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.href = result.downloadUrl;
-        a.setAttribute("download", documentName);
-        a.click();
+        a.style.display = "none"
+        document.body.appendChild(a)
+        a.href = result.downloadUrl
+        a.setAttribute("download", documentName)
+        a.click()
 
-        window.URL.revokeObjectURL(a.href);
-        document.body.removeChild(a);
+        window.URL.revokeObjectURL(a.href)
+        document.body.removeChild(a)
 
-        setDownloadLoading(false);
+        setDownloadLoading(false)
       },
       () => setDownloadLoading(false)
-    );
-  };
+    )
+  }
 
   // 공유 버튼 클릭 관리
   const handleShareBtnClick = () =>
-    dispatch(setActionMain.modal("share", { documentData }));
+    dispatch(setActionMain.modal("share", { documentData }))
 
   // 투표 버튼 클릭 관리
   const handleVoteBtn = () =>
-    dispatch(setActionMain.modal("vote", { documentData }));
+    dispatch(setActionMain.modal("vote", { documentData }))
 
   // 출판 버튼 클릭 관리
   const handlePublishBtn = () =>
-    dispatch(setActionMain.modal("publish", { documentData }));
+    dispatch(setActionMain.modal("publish", { documentData }))
 
   return (
     <div className={styles.vtb_container}>
@@ -149,5 +149,5 @@ export default function({ documentData }: Type) {
         )}
       <div className={styles.common_hr} />
     </div>
-  );
+  )
 }

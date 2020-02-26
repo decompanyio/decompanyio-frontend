@@ -2,6 +2,7 @@ import auth0 from "auth0-js"
 import { APP_CONFIG } from "app.config"
 import AuthService from "../service/rest/AuthService"
 import UserInfo from "service/model/UserInfo"
+import common_data from "../common/common_data"
 
 const AUTH_CONFIG = {
   domain: "decompany.auth0.com",
@@ -14,6 +15,86 @@ const AUTH_CONFIG = {
 let authData = new auth0.WebAuth(AUTH_CONFIG)
 
 export const AUTH_APIS = {
+  login: (provider?: string) => {
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signin/${provider || common_data.defaultLoginPlatform}`
+  },
+  logout: () => {
+    this.clearSession()
+    window.location.href = "/"
+  },
+  getQueryParams: qs => {
+    const _qs = qs.split("+").join(" ")
+    const re = /[?&]?([^=]+)=([^&]*)/g
+    let params = {
+      error: "",
+      authorization_token: "",
+      refresh_token: ""
+    }
+    let tokens
+
+    while (tokens === re.exec(_qs)) {
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])
+    }
+    return params
+  },
+  // Save token to local storage for later use
+  setTokens: (at, rt) => {
+    if (at) {
+      localStorage.setItem("authorization_token", at)
+    }
+    if (rt) {
+      localStorage.setItem("refresh_token", rt)
+    }
+  },
+  clearSession() {
+    localStorage.removeItem("authorization_token")
+    localStorage.removeItem("refresh_token")
+
+    // Tracking API
+    localStorage.removeItem("tracking_info")
+
+    // Content Editor
+    localStorage.removeItem("content")
+  },
+  handleAuthentication(location) {
+    return new Promise((_resolve, reject) => {
+      const query = this.getQueryParams(location.search)
+
+      if (query.error) {
+        this.clearSession()
+        reject()
+      } else {
+        const aToken = query.authorization_token || ""
+        const rToken = query.refresh_token || ""
+
+        this.setTokens(aToken, rToken)
+      }
+
+      /*this.setMyInfo(authResult)
+        .then(user => {
+          this.setSession(authResult, user)
+          this.scheduleRenewal()
+          this.syncUser()
+          resolve(user.sub)
+        })
+        .catch(err => reject(err))*/
+    })
+  },
+  //
+  //
+  // 로그인 유무 확인은 무조건 백엔드 통해서
+  // 토큰 클라에 보여줄 필요 없다
+  // 클라이언트 자체 판단으로 로그인 유무 확인 하기에 관련 기능이 너무 중요하다 (지갑, 문서 관련)
+  //
+  // 기존 jwt 필요할때마다 새로 요청해서 expired 추가 하는 식으로 진행
+  // 현재는 어떻게??
+  // renewSession 대체 필요한가?
+  //
+  //
+  //
+
   sync(callback, error) {
     const token = localStorage.getItem("id_token")
     const userInfo = localStorage.getItem("user_info")
@@ -22,20 +103,6 @@ export const AUTH_APIS = {
       data: userInfo
     }
     AuthService.POST.sync(data, result => callback(result), err => error(err))
-  },
-  login: (isSilentAuthentication?: boolean) => {
-    if (isSilentAuthentication) {
-      authData.authorize({ prompt: "none" })
-    } else authData.authorize()
-  },
-  logout() {
-    this.clearSession()
-
-    authData.logout({
-      returnTo: APP_CONFIG.domain().mainHost,
-      clientID: AUTH_CONFIG.clientID
-    })
-    window.location.href = "/"
   },
   syncUser() {
     const session = this.getSession()
@@ -95,27 +162,6 @@ export const AUTH_APIS = {
       })
     })
   },
-  handleAuthentication(location) {
-    return new Promise((resolve, reject) => {
-      if (!/access_token|id_token|error/.test(location.hash)) reject()
-
-      authData.parseHash((err, authResult) => {
-        if (authResult && authResult.accessToken && authResult.idToken) {
-          this.setMyInfo(authResult)
-            .then(user => {
-              this.setSession(authResult, user)
-              this.scheduleRenewal()
-              this.syncUser()
-              resolve(user.sub)
-            })
-            .catch(err => reject(err))
-        } else if (err) {
-          this.clearSession()
-          reject(err)
-        }
-      })
-    })
-  },
   setSession(authResult, userInfo) {
     let expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
@@ -133,19 +179,6 @@ export const AUTH_APIS = {
       userInfo: JSON.parse(localStorage.getItem("user_info") || "{}"),
       expiresAt: JSON.parse(localStorage.getItem("expires_at") || "{}")
     }
-  },
-  clearSession() {
-    // Auth0 API
-    localStorage.removeItem("access_token")
-    localStorage.removeItem("id_token")
-    localStorage.removeItem("expires_at")
-    localStorage.removeItem("user_info")
-
-    // Tracking API
-    localStorage.removeItem("tracking_info")
-
-    // Content Editor
-    localStorage.removeItem("content")
   },
   setMyInfo(authResult) {
     return new Promise((resolve, reject) => {

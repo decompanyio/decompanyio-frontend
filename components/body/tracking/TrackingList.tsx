@@ -1,52 +1,52 @@
-import React, { useEffect, useState } from "react";
-import ReactTooltip from "react-tooltip";
-import * as styles from "public/static/styles/main.scss";
-import { ThreeBounce } from "better-react-spinkit";
-import { useSelector } from "react-redux";
-import { psString } from "utils/localization";
-import common_view from "common/common_view";
-import common from "../../../common/common";
-import SearchBtn from "components/common/button/SearchBtn";
-import repos from "utils/repos";
-import AutoSuggestInput from "components/common/input/AutoSuggestInput";
-import CustomChart from "../../common/chart/CustomChart";
-import Router from "next/router";
-import NoDataIcon from "../../common/NoDataIcon";
+import React, { useEffect, useState } from "react"
+import ReactTooltip from "react-tooltip"
+import * as styles from "public/static/styles/main.scss"
+import { ThreeBounce } from "better-react-spinkit"
+import { useSelector } from "react-redux"
+import { psString } from "utils/localization"
+import common_view from "common/common_view"
+import common from "../../../common/common"
+import SearchBtn from "components/common/button/SearchBtn"
+import repos from "utils/repos"
+import AutoSuggestInput from "components/common/input/AutoSuggestInput"
+import CustomChart from "../../common/chart/CustomChart"
+import Router from "next/router"
+import NoDataIcon from "../../common/NoDataIcon"
 
 type Type = {
-  documentData: any;
-};
+  documentData: any
+}
 
 export default function({ documentData }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile);
-  const [showAnonymous, setShowAnonymous] = useState(false);
-  const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false);
-  const [optionTable, setOptionTable] = useState(false);
-  const [selectedSearch, setSelectedSearch] = useState(false);
-  const [filterList, setFilterList] = useState([]);
-  const [trackingList, setTrackingList] = useState([]);
-  const [selectedTr, setSelectedTr] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [chartResultList, setChartResultList] = useState({});
+  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const [showAnonymous, setShowAnonymous] = useState(false)
+  const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false)
+  const [optionTable, setOptionTable] = useState(false)
+  const [selectedSearch, setSelectedSearch] = useState(false)
+  const [filterList, setFilterList] = useState([])
+  const [trackingList, setTrackingList] = useState([])
+  const [selectedTr, setSelectedTr] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [chartResultList, setChartResultList] = useState({})
 
   // 트랙킹 정보 GET
   const getTrackingInfo = async (cid: any) => {
     const params = {
       cid: cid,
       documentId: documentData.documentId
-    };
+    }
 
     return repos.Tracking.getTrackingInfo(params).then(
       (res: any) => setChartData(res.resultList), // 페이지 별 머문 시간 계산
       err => {
-        console.error(err);
+        console.error(err)
         let _setTimeout = setTimeout(() => {
-          clearTimeout(_setTimeout);
-          return getTrackingInfo(cid);
-        }, 8000);
+          clearTimeout(_setTimeout)
+          return getTrackingInfo(cid)
+        }, 8000)
       }
-    );
-  };
+    )
+  }
 
   // 트랙킹 리스트 GET
   const getTrackingList = () => {
@@ -54,100 +54,100 @@ export default function({ documentData }: Type) {
       documentId: documentData.documentId,
       anonymous: includeOnlyOnePage ? "true" : "false",
       include: showAnonymous ? "true" : "false"
-    };
+    }
 
-    setLoading(true);
+    setLoading(true)
     repos.Tracking.getTrackingList(params).then(
       (res: any) => {
-        setLoading(false);
-        setTrackingList(res.resultList ? res.resultList : []);
+        setLoading(false)
+        setTrackingList(res.resultList ? res.resultList : [])
       },
       err => {
-        console.error(err);
+        console.error(err)
         let _setTimeout = setTimeout(() => {
-          clearTimeout(_setTimeout);
-          return getTrackingList();
-        }, 8000);
+          clearTimeout(_setTimeout)
+          return getTrackingList()
+        }, 8000)
       }
-    );
-  };
+    )
+  }
 
   // 페이지별 머문 시간 계산 및 차트 데이터 SET
   const setChartData = (res: any) => {
-    let dataObj = {};
+    let dataObj = {}
     for (let i = 0; i < res.length; ++i) {
-      let vrArr = res[i].viewTracking;
+      let vrArr = res[i].viewTracking
       vrArr.sort((a, b) => {
-        return a.t - b.t;
-      });
+        return a.t - b.t
+      })
 
       for (let j = 0; j < res[i].viewTrackingCount; ++j) {
-        let tmpArr = vrArr;
+        let tmpArr = vrArr
 
         if (tmpArr[j].n !== -1 && tmpArr[j + 1]) {
-          if (!dataObj[tmpArr[j].n]) dataObj[tmpArr[j].n] = 0;
-          dataObj[tmpArr[j].n] += tmpArr[j + 1].t - tmpArr[j].t;
+          if (!dataObj[tmpArr[j].n]) dataObj[tmpArr[j].n] = 0
+          dataObj[tmpArr[j].n] += tmpArr[j + 1].t - tmpArr[j].t
         }
       }
     }
-    setChartResultList(dataObj);
-  };
+    setChartResultList(dataObj)
+  }
 
   // 검색 초기화
   const handleClearSearch = () => {
-    setFilterList([]);
-    setSelectedSearch(false);
-  };
+    setFilterList([])
+    setSelectedSearch(false)
+  }
 
   // 1 페이지 보기/숨김 옵션 관리
   const handleOnePageOption = () => {
-    setIncludeOnlyOnePage(includeOnlyOnePage);
-    getTrackingList();
-  };
+    setIncludeOnlyOnePage(includeOnlyOnePage)
+    getTrackingList()
+  }
 
   // Anonymous 보기/숨김 옵션 관리
   const handleAnonymousOption = () => {
-    setShowAnonymous(!showAnonymous);
-    getTrackingList();
-  };
+    setShowAnonymous(!showAnonymous)
+    getTrackingList()
+  }
 
   // 스크롤 아웃 관리 메소드
   const handleScrollExpand = e => {
-    e.stopPropagation(); // 버블링 방지
+    e.stopPropagation() // 버블링 방지
 
-    let idx: any;
-    let cid: any;
-    let target = e.target.parentElement;
+    let idx: any
+    let cid: any
+    let target = e.target.parentElement
 
     if (target.dataset.idx) {
-      idx = target.dataset.idx;
-      cid = target.dataset.cid;
+      idx = target.dataset.idx
+      cid = target.dataset.cid
     } else {
-      idx = target.parentElement.dataset.idx;
-      cid = target.parentElement.dataset.cid;
+      idx = target.parentElement.dataset.idx
+      cid = target.parentElement.dataset.cid
     }
 
     if (selectedTr !== idx) {
-      setSelectedTr(idx);
-      setChartResultList({});
-      return getTrackingInfo(cid);
+      setSelectedTr(idx)
+      setChartResultList({})
+      return getTrackingInfo(cid)
     } else {
-      setSelectedTr(null);
+      setSelectedTr(null)
     }
-  };
+  }
 
   // 검색 박스 관리
   const handleSelectedSearch = value => {
     let filteredResult = trackingList.filter((el: any) => {
       if (value.user) {
-        if (el.user) return el.user.e.indexOf(value.user.e) !== -1;
-        return false;
-      } else return !el.user;
-    });
+        if (el.user) return el.user.e.indexOf(value.user.e) !== -1
+        return false
+      } else return !el.user
+    })
 
-    setFilterList(filteredResult);
-    setSelectedSearch(value.user ? value.user.e : null);
-  };
+    setFilterList(filteredResult)
+    setSelectedSearch(value.user ? value.user.e : null)
+  }
 
   // 특정 링크 클릭 이벤트 관리
   const handleLinkClickEvent = (_cid: any, _email: string, _time: any) => {
@@ -155,7 +155,7 @@ export default function({ documentData }: Type) {
       ? documentData.author.username && documentData.author.username.length > 0
         ? documentData.author.username
         : documentData.author.email
-      : documentData.accountId;
+      : documentData.accountId
 
     return Router.push(
       {
@@ -166,12 +166,12 @@ export default function({ documentData }: Type) {
         }
       },
       "/td/@" + identification + "/" + documentData.seoTitle + "?cid=" + _cid
-    );
-  };
+    )
+  }
 
   useEffect(() => {
-    getTrackingList();
-  }, []);
+    getTrackingList()
+  }, [])
 
   return (
     <div className={styles.tl_container}>
@@ -232,7 +232,7 @@ export default function({ documentData }: Type) {
               <i
                 className="material-icons"
                 onClick={() => {
-                  handleClearSearch();
+                  handleClearSearch()
                 }}
               >
                 close
@@ -415,5 +415,5 @@ export default function({ documentData }: Type) {
         )}
       </div>
     </div>
-  );
+  )
 }

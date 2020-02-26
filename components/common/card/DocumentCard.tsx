@@ -1,81 +1,81 @@
-import Link from "next/link";
-import { useSelector } from "react-redux";
-import * as styles from "public/static/styles/main.scss";
-import LinesEllipsis from "react-lines-ellipsis";
-import common_view from "../../../common/common_view";
-import common from "../../../common/common";
-import { psString } from "../../../utils/localization";
-import { APP_CONFIG } from "../../../app.config";
-import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
-import { repos } from "../../../utils/repos";
+import Link from "next/link"
+import { useSelector } from "react-redux"
+import * as styles from "public/static/styles/main.scss"
+import LinesEllipsis from "react-lines-ellipsis"
+import common_view from "../../../common/common_view"
+import common from "../../../common/common"
+import { psString } from "../../../utils/localization"
+import { APP_CONFIG } from "../../../app.config"
+import React, { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
+import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"
+import { repos } from "../../../utils/repos"
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
   () => import("components/common/avatar/UserAvatar"),
   { ssr: false }
-);
+)
 
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 // 이미지 정보 GET
 const getImgInfo = (documentData: any) => {
-  let img = new Image();
+  let img = new Image()
 
   img.src = common.getThumbnail(
     documentData.documentId,
     640,
     1,
     documentData.documentName
-  );
+  )
   img.onload = () => {
-    let height = img.height;
-    let width = img.width;
-    return width / height;
-  };
-};
+    let height = img.height
+    let width = img.width
+    return width / height
+  }
+}
 
 type Type = {
-  documentData: any;
-};
+  documentData: any
+}
 
 export default function({ documentData }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile);
-  const [rewardInfoOpen, setRewardInfo] = useState(false);
-  const [reward, setReward] = useState(0);
+  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [reward, setReward] = useState(0)
 
-  let identification: string;
-  let imgUrl: string;
-  let profileUrl: string;
-  let vote: number;
-  let view: number;
-  let ratio: number;
-  let croppedArea: any;
+  let identification: string
+  let imgUrl: string
+  let profileUrl: string
+  let vote: number
+  let view: number
+  let ratio: number
+  let croppedArea: any
 
   identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
       ? documentData.author.username
       : documentData.author.email
-    : documentData.accountId;
+    : documentData.accountId
   imgUrl = common.getThumbnail(
     documentData.documentId,
     640,
     1,
     documentData.documentName
-  );
-  profileUrl = documentData.author ? documentData.author.picture : null;
-  croppedArea = documentData.author ? documentData.author.croppedArea : null;
-  vote = common.toEther(documentData.latestVoteAmount) || 0;
-  view = documentData.latestPageview || 0;
-  ratio = Number(getImgInfo(documentData));
+  )
+  profileUrl = documentData.author ? documentData.author.picture : null
+  croppedArea = documentData.author ? documentData.author.croppedArea : null
+  vote = common.toEther(documentData.latestVoteAmount) || 0
+  view = documentData.latestPageview || 0
+  ratio = Number(getImgInfo(documentData))
 
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
       documentData.author._id
-    ).then(res => setReward(common.toEther(res)));
-  }, []);
+    ).then(res => setReward(common.toEther(res)))
+  }, [])
 
   return (
     <div className={styles.dc_container}>
@@ -178,5 +178,5 @@ export default function({ documentData }: Type) {
         </div>
       )}
     </div>
-  );
+  )
 }

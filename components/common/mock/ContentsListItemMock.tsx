@@ -1,9 +1,9 @@
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import * as styles from "public/static/styles/main.scss"
+import React from "react"
 
 type Type = {
-  order: number;
-};
+  order: number
+}
 
 export default function({ order }: Type) {
   return (
@@ -29,5 +29,5 @@ export default function({ order }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }

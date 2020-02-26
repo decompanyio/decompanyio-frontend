@@ -2,7 +2,6 @@
   "rulesDirectory": ["tslint-plugin-prettier"],
   "extends": ["tslint-config-standard", "tslint-config-prettier"],
   "rules": {
-    "semicolon": [true, "never"],
-    "quotemark": [true, "single"]
+    "prettier": true
   }
 }

@@ -1,8 +1,8 @@
-import Layout from "../components/Layout";
-import { psString } from "../utils/localization";
-import * as styles from "public/static/styles/main.scss";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from "../components/Layout"
+import { psString } from "../utils/localization"
+import * as styles from "public/static/styles/main.scss"
+import common_data from "../common/common_data"
+import React from "react"
 
 function Privacy() {
   return (
@@ -678,7 +678,7 @@ function Privacy() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Privacy;
+export default Privacy

@@ -1,7 +1,7 @@
-import common_data from "../common/common_data";
-import Layout from "../components/Layout";
-import React from "react";
-import NotFoundPage from "../components/common/page/NotFoundPage";
+import common_data from "../common/common_data"
+import Layout from "../components/Layout"
+import React from "react"
+import NotFoundPage from "../components/common/page/NotFoundPage"
 
 export default function index(...rest) {
   return (
@@ -12,5 +12,5 @@ export default function index(...rest) {
     >
       <NotFoundPage />
     </Layout>
-  );
+  )
 }

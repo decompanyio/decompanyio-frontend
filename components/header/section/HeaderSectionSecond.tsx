@@ -1,40 +1,40 @@
-import * as styles from "public/static/styles/main.scss";
-import { useSelector } from "react-redux";
-import AddBtn from "components/common/button/AddBtn";
-import LoginBtn from "../../common/button/LoginBtn";
-import SearchBtn from "components/common/button/SearchBtn";
-import MenuBtn from "components/common/button/MenuBtn";
-import MyAvatar from "components/common/avatar/MyAvatar";
-import React, { useState } from "react";
-import AutoSuggestInput from "../../common/input/AutoSuggestInput";
-import Router from "next/router";
-import ProfileCard from "../../common/card/ProfileCard";
+import * as styles from "public/static/styles/main.scss"
+import { useSelector } from "react-redux"
+import AddBtn from "components/common/button/AddBtn"
+import LoginBtn from "../../common/button/LoginBtn"
+import SearchBtn from "components/common/button/SearchBtn"
+import MenuBtn from "components/common/button/MenuBtn"
+import MyAvatar from "components/common/avatar/MyAvatar"
+import React, { useState } from "react"
+import AutoSuggestInput from "../../common/input/AutoSuggestInput"
+import Router from "next/router"
+import ProfileCard from "../../common/card/ProfileCard"
 
 export default function() {
-  const myInfo = useSelector(state => state.main.myInfo);
-  const isMobile = useSelector(state => state.main.isMobile);
-  const [showSearchBar, setShowSearchBar] = useState(-1);
-  const [profileCardShow, setProfileCardShow] = useState(false);
+  const myInfo = useSelector(state => state.main.myInfo)
+  const isMobile = useSelector(state => state.main.isMobile)
+  const [showSearchBar, setShowSearchBar] = useState(-1)
+  const [profileCardShow, setProfileCardShow] = useState(false)
 
   // 자동완성 선택 시, 페이지 이동
   const onSuggestionSelected = tag => {
-    setShowSearchBar(0);
+    setShowSearchBar(0)
     return Router.push(
       {
         pathname: "/contents_list"
       },
       "tag/" + tag._id
-    );
-  };
+    )
+  }
 
   // 프로필 카드 클릭 관리
   const handleProfileCardClick = () => {
-    if (profileCardShow) setProfileCardShow(false);
-  };
+    if (profileCardShow) setProfileCardShow(false)
+  }
 
   const handleSearchBtnClick = () =>
-    setShowSearchBar(showSearchBar === 1 ? 0 : 1);
-  const handleAvatarClick = () => setProfileCardShow(true);
+    setShowSearchBar(showSearchBar === 1 ? 0 : 1)
+  const handleAvatarClick = () => setProfileCardShow(true)
 
   return (
     <div className={styles.hss_section_2}>
@@ -79,5 +79,5 @@ export default function() {
         <MenuBtn />
       </div>
     </div>
-  );
+  )
 }

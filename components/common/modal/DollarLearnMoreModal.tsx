@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import common from "common/common";
-import common_view from "common/common_view";
-import { psString } from "utils/localization";
-import { setActionMain } from "../../../redux/reducer/main";
-import * as styles from "../../../public/static/styles/main.scss";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import common from "common/common"
+import common_view from "common/common_view"
+import { psString } from "utils/localization"
+import { setActionMain } from "../../../redux/reducer/main"
+import * as styles from "../../../public/static/styles/main.scss"
 
 export default function() {
-  const dispatch = useDispatch();
-  const [closeFlag, setCloseFlag] = useState(false);
+  const dispatch = useDispatch()
+  const [closeFlag, setCloseFlag] = useState(false)
 
   // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true));
+  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true))
 
   // 모달 취소버튼 클릭 관리
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
       .then(() => common_view.setBodyStyleUnlock())
-      .then(() => dispatch(setActionMain.modal(null)));
+      .then(() => dispatch(setActionMain.modal(null)))
 
   return (
     <span>
@@ -54,5 +54,5 @@ export default function() {
         </div>
       </div>
     </span>
-  );
+  )
 }

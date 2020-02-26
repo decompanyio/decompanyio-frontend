@@ -1,23 +1,23 @@
-import Linkify from "react-linkify";
-import { useSelector } from "react-redux";
-import Link from "next/link";
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import { APP_CONFIG } from "../../../app.config";
+import Linkify from "react-linkify"
+import { useSelector } from "react-redux"
+import Link from "next/link"
+import * as styles from "public/static/styles/main.scss"
+import { psString } from "../../../utils/localization"
+import { APP_CONFIG } from "../../../app.config"
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton
-} from "react-share";
-import React from "react";
+} from "react-share"
+import React from "react"
 
 type Type = {
-  documentData: any;
-};
+  documentData: any
+}
 
 export default function({ documentData }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile);
-  const ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle;
+  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle
 
   return (
     <div className={styles.vdb_container}>
@@ -125,5 +125,5 @@ export default function({ documentData }: Type) {
 
       <div className={styles.common_hr} />
     </div>
-  );
+  )
 }

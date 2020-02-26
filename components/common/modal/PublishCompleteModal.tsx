@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton
-} from "react-share";
-import common_view from "../../../common/common_view";
-import { APP_CONFIG } from "../../../app.config";
-import { psString } from "utils/localization";
-import common from "common/common";
-import { setActionMain } from "../../../redux/reducer/main";
-import * as styles from "../../../public/static/styles/main.scss";
+} from "react-share"
+import common_view from "../../../common/common_view"
+import { APP_CONFIG } from "../../../app.config"
+import { psString } from "utils/localization"
+import common from "common/common"
+import { setActionMain } from "../../../redux/reducer/main"
+import * as styles from "../../../public/static/styles/main.scss"
 
 export default function() {
-  const dispatch = useDispatch();
-  const { documentData } = useSelector(state => state.main.modalData);
-  const [closeFlag, setCloseFlag] = useState(false);
+  const dispatch = useDispatch()
+  const { documentData } = useSelector(state => state.main.modalData)
+  const [closeFlag, setCloseFlag] = useState(false)
   const [copyBtnText, setCopyBtnText] = useState(
     psString("publish-modal-complete-copy-url")
-  );
+  )
 
   // 종료 버튼 관리
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)));
+      .then(() => dispatch(setActionMain.modal(null)))
 
   // 복사 버튼 관리
   const handleCopyBtnClick = id =>
@@ -32,26 +32,26 @@ export default function() {
       .clipboardCopy(id)
       .then(() => dispatch(setActionMain.alertCode(2005, {})))
       .then(() => handleCopyBtnText())
-      .catch(() => dispatch(setActionMain.alertCode(2007, {})));
+      .catch(() => dispatch(setActionMain.alertCode(2007, {})))
 
   // 복사 버튼 텍스트 SET
   const handleCopyBtnText = () =>
-    setCopyBtnText(psString("publish-modal-complete-copied"));
+    setCopyBtnText(psString("publish-modal-complete-copied"))
 
   // 모달 숨기기 클래스 추가
   const handleCloseFlag = () =>
-    new Promise(resolve => resolve(setCloseFlag(true)));
+    new Promise(resolve => resolve(setCloseFlag(true)))
 
   useEffect(() => {
-    common_view.setBodyStyleLock();
+    common_view.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock();
-      document.location.reload();
-    };
-  }, []);
+      common_view.setBodyStyleUnlock()
+      document.location.reload()
+    }
+  }, [])
 
-  let ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle;
+  let ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle
 
   return (
     <div className={styles.modal_container}>
@@ -140,5 +140,5 @@ export default function() {
         </div>
       </div>
     </div>
-  );
+  )
 }

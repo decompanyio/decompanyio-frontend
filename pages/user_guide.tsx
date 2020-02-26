@@ -1,8 +1,8 @@
-import { psString } from "../utils/localization";
-import Layout from "../components/Layout";
-import * as styles from "public/static/styles/main.scss";
-import common_data from "../common/common_data";
-import React from "react";
+import { psString } from "../utils/localization"
+import Layout from "../components/Layout"
+import * as styles from "public/static/styles/main.scss"
+import common_data from "../common/common_data"
+import React from "react"
 
 function Guide() {
   return (
@@ -73,7 +73,7 @@ function Guide() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Guide;
+export default Guide

@@ -1,29 +1,29 @@
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "utils/localization";
-import Link from "next/link";
-import { Carousel } from "react-responsive-carousel";
-import React from "react";
+import * as styles from "public/static/styles/main.scss"
+import { psString } from "utils/localization"
+import Link from "next/link"
+import { Carousel } from "react-responsive-carousel"
+import React from "react"
 
 // 배너 제목
 const subject = [
   psString("main-banner-subj-1"),
   psString("main-banner-subj-2"),
   psString("main-banner-subj-3")
-];
+]
 
 // 배너 버튼 텍스트
 const buttonText = [
   psString("main-banner-btn-1"),
   psString("main-banner-btn-2"),
   psString("main-banner-btn-3")
-];
+]
 
 // 배너 내용
 const content = [
   psString("main-banner-explain-1"),
   psString("main-banner-explain-2"),
   psString("main-banner-explain-3")
-];
+]
 
 export default function() {
   return (
@@ -86,5 +86,5 @@ export default function() {
 
       <div className={styles.mc_dummy} />
     </div>
-  );
+  )
 }

@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { FadingCircle } from "better-react-spinkit";
-import * as styles from "../../../public/static/styles/main.scss";
-import { useSelector, useDispatch } from "react-redux";
-import LinesEllipsis from "react-lines-ellipsis";
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
-import common_view from "common/common_view";
-import { psString } from "utils/localization";
-import common from "common/common";
-import { APP_CONFIG } from "../../../app.config";
-import Link from "next/link";
-import repos from "../../../utils/repos";
-import { AUTH_APIS } from "../../../utils/auth";
-import RewardCard from "../../common/card/RewardCard";
-import { setActionMain } from "../../../redux/reducer/main";
-import DocumentInfo from "../../../service/model/DocumentInfo";
-import ProfileCreatorClaim from "./ProfileCreatorClaim";
+import React, { useEffect, useState } from "react"
+import { FadingCircle } from "better-react-spinkit"
+import * as styles from "../../../public/static/styles/main.scss"
+import { useSelector, useDispatch } from "react-redux"
+import LinesEllipsis from "react-lines-ellipsis"
+import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"
+import common_view from "common/common_view"
+import { psString } from "utils/localization"
+import common from "common/common"
+import { APP_CONFIG } from "../../../app.config"
+import Link from "next/link"
+import repos from "../../../utils/repos"
+import { AUTH_APIS } from "../../../utils/auth"
+import RewardCard from "../../common/card/RewardCard"
+import { setActionMain } from "../../../redux/reducer/main"
+import DocumentInfo from "../../../service/model/DocumentInfo"
+import ProfileCreatorClaim from "./ProfileCreatorClaim"
 
 type Type = {
-  documentData: any;
-  idx: number;
-  handleUploadSettings: any;
-  viewerOptionOpenedIdx: any;
-  owner: boolean;
-};
+  documentData: any
+  idx: number
+  handleUploadSettings: any
+  viewerOptionOpenedIdx: any
+  owner: boolean
+}
 
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
   documentData,
@@ -33,62 +33,60 @@ export default function({
   viewerOptionOpenedIdx,
   owner
 }: Type) {
-  const dispatch = useDispatch();
-  const myInfo = useSelector(state => state.main.myInfo);
-  const isMobile = useSelector(state => state.main.isMobile);
+  const dispatch = useDispatch()
+  const myInfo = useSelector(state => state.main.myInfo)
+  const isMobile = useSelector(state => state.main.isMobile)
   const [tmpDocumentData, setTmpDocumentData] = useState(
     new DocumentInfo(documentData)
-  );
-  const [rewardInfoOpen, setRewardInfo] = useState(false);
-  const [validClaimAmount, setValidClaimAmount] = useState(0);
+  )
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   // 문서 다운로드
   const getContentDownload = (documentId: string, documentName: string) =>
     repos.Document.getDocumentDownloadUrl({ documentId: documentId })
       .then(result => {
-        const a = document.createElement("a");
+        const a = document.createElement("a")
 
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.href = result.downloadUrl;
-        a.setAttribute("download", documentName);
-        a.click();
+        a.style.display = "none"
+        document.body.appendChild(a)
+        a.href = result.downloadUrl
+        a.setAttribute("download", documentName)
+        a.click()
 
-        window.URL.revokeObjectURL(a.href);
-        document.body.removeChild(a);
+        window.URL.revokeObjectURL(a.href)
+        document.body.removeChild(a)
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err))
 
   // 저자 리워드
   const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(
       documentData.documentId,
       myInfo.sub
-    ).then(res =>
-      setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
-    );
+    ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
 
   // document state 관리
   const setDocumentState = state => {
-    let _tmpDocumentData = state.tmpDocumentData;
-    _tmpDocumentData.state = state;
-    setTmpDocumentData(_tmpDocumentData);
-  };
+    let _tmpDocumentData = state.tmpDocumentData
+    _tmpDocumentData.state = state
+    setTmpDocumentData(_tmpDocumentData)
+  }
 
   // 문서 다운로드 전 데이터 SET
   const handleDownloadContent = () => {
     if (!tmpDocumentData) {
-      return dispatch(setActionMain.alertCode(2091, {}));
+      return dispatch(setActionMain.alertCode(2091, {}))
     }
     if (!AUTH_APIS.isAuthenticated() && !myInfo.email) {
-      return dispatch(setActionMain.alertCode(2003, {}));
+      return dispatch(setActionMain.alertCode(2003, {}))
     }
 
-    const documentId = tmpDocumentData.documentId;
-    const documentName = tmpDocumentData.documentName;
+    const documentId = tmpDocumentData.documentId
+    const documentName = tmpDocumentData.documentName
 
-    return getContentDownload(documentId, documentName);
-  };
+    return getContentDownload(documentId, documentName)
+  }
 
   // 문서 상태관리
   const handleState = () => {
@@ -97,53 +95,53 @@ export default function({
       !tmpDocumentData.state ||
       tmpDocumentData.state === "CONVERT_COMPLETE"
     ) {
-      return false;
+      return false
     }
 
     let interval = setInterval(() => {
       repos.Document.getDocument(tmpDocumentData.seoTitle)
         .then(res => {
           if (res && res.document.state === "CONVERT_COMPLETE") {
-            clearInterval(interval);
-            setDocumentState(res.document.state);
+            clearInterval(interval)
+            setDocumentState(res.document.state)
             dispatch(
               setActionMain.alertCode(2075, { title: tmpDocumentData.title })
-            );
+            )
           }
         })
         .catch(() => {
-          clearInterval(interval);
-          dispatch(setActionMain.alertCode(2001, {}));
-        });
-    }, 5000);
-  };
+          clearInterval(interval)
+          dispatch(setActionMain.alertCode(2001, {}))
+        })
+    }, 5000)
+  }
 
   // 공유 버튼 클릭
   const handleClickShareBtn = () =>
-    dispatch(setActionMain.modal("share", { documentData }));
+    dispatch(setActionMain.modal("share", { documentData }))
 
   // 삭제 버튼 클릭
   const handleClickDeleteBtn = () =>
-    dispatch(setActionMain.modal("delete", { documentData }));
+    dispatch(setActionMain.modal("delete", { documentData }))
 
   // 출판 버튼 클릭
   const handleClickPublishBtn = () =>
-    dispatch(setActionMain.modal("publish", { documentData }));
+    dispatch(setActionMain.modal("publish", { documentData }))
 
   useEffect(() => {
-    handleState();
-    if (owner) void getCreatorRewards();
-  }, []);
+    handleState()
+    if (owner) void getCreatorRewards()
+  }, [])
 
-  let reward = common.toEther(0);
-  const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0;
-  let view = tmpDocumentData.latestPageview || 0;
+  let reward = common.toEther(0)
+  const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0
+  let view = tmpDocumentData.latestPageview || 0
   let identification = tmpDocumentData.author
     ? tmpDocumentData.author.username &&
       tmpDocumentData.author.username.length > 0
       ? tmpDocumentData.author.username
       : tmpDocumentData.author.email
-    : tmpDocumentData.accountId;
+    : tmpDocumentData.accountId
 
   return (
     <div className={styles.puti_container}>
@@ -187,10 +185,10 @@ export default function({
                     : "")
                 }
                 onError={e => {
-                  let element = e.target as HTMLImageElement;
-                  element.onerror = null;
+                  let element = e.target as HTMLImageElement
+                  element.onerror = null
                   element.src =
-                    APP_CONFIG.domain().static + "/image/logo-cut.png";
+                    APP_CONFIG.domain().static + "/image/logo-cut.png"
                 }}
               />
             </div>
@@ -359,5 +357,5 @@ export default function({
         </div>
       </div>
     </div>
-  );
+  )
 }

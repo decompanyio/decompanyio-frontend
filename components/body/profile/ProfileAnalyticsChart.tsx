@@ -1,7 +1,7 @@
-import * as styles from "../../../public/static/styles/main.scss";
-import CustomChart from "../../common/chart/CustomChart";
-import NoDataIcon from "../../common/NoDataIcon";
-import React from "react";
+import * as styles from "../../../public/static/styles/main.scss"
+import CustomChart from "../../common/chart/CustomChart"
+import NoDataIcon from "../../common/NoDataIcon"
+import React from "react"
 
 export default function({
   idx,
@@ -13,8 +13,8 @@ export default function({
   chartFlag,
   result
 }) {
-  const handleWeekBtnClick = e => weekBtnClick(e);
-  const handleExport = value => exportBtnClick(value);
+  const handleWeekBtnClick = e => weekBtnClick(e)
+  const handleExport = value => exportBtnClick(value)
 
   return (
     <div className={styles.pat_chartWrapper}>
@@ -83,5 +83,5 @@ export default function({
         analyticsList &&
         analyticsList.resultList.length === 0 && <NoDataIcon />}
     </div>
-  );
+  )
 }

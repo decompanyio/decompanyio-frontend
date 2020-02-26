@@ -1,61 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { AUTH_APIS } from "../../../utils/auth";
-import * as styles from "../../../public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import repos from "../../../utils/repos";
-import { setActionMain } from "../../../redux/reducer/main";
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { AUTH_APIS } from "../../../utils/auth"
+import * as styles from "../../../public/static/styles/main.scss"
+import { psString } from "../../../utils/localization"
+import repos from "../../../utils/repos"
+import { setActionMain } from "../../../redux/reducer/main"
 
 type Type = {
-  documentData: any;
-  mylist: any;
-  click: any;
-};
+  documentData: any
+  mylist: any
+  click: any
+}
 
 export default function({ documentData, mylist, click }: Type) {
-  const dispatch = useDispatch();
-  const [bookmarkFlag, setBookmarkFlag] = useState(false);
+  const dispatch = useDispatch()
+  const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
   // 찜하기
   const checkBookmark = () => {
-    let flag;
+    let flag
 
     if (mylist.length > 0) {
-      flag = mylist.filter(v => v.documentId === documentData._id).length > 0;
+      flag = mylist.filter(v => v.documentId === documentData._id).length > 0
     } else {
-      flag = false;
+      flag = false
     }
 
-    setBookmarkFlag(flag);
-  };
+    setBookmarkFlag(flag)
+  }
 
   // 북마크 버튼 클릭 관리
   const handleBookmark = () => {
-    setBookmarkFlag(true);
+    setBookmarkFlag(true)
     return repos.Mutation.addMyList(documentData.documentId)
       .then(() => {
-        dispatch(setActionMain.alertCode(2121, {}));
-        return click();
+        dispatch(setActionMain.alertCode(2121, {}))
+        return click()
       })
-      .catch(() => dispatch(setActionMain.alertCode(2122, {})));
-  };
+      .catch(() => dispatch(setActionMain.alertCode(2122, {})))
+  }
 
   // 북마크 삭제 버튼 클릭 관리
   const handleBookmarkRemove = () => {
-    setBookmarkFlag(false);
+    setBookmarkFlag(false)
     return repos.Mutation.removeMyList(documentData.documentId)
       .then(() => {
-        dispatch(setActionMain.alertCode(2123, {}));
-        return click();
+        dispatch(setActionMain.alertCode(2123, {}))
+        return click()
       })
-      .catch(() => dispatch(setActionMain.alertCode(2124, {})));
-  };
+      .catch(() => dispatch(setActionMain.alertCode(2124, {})))
+  }
 
   useEffect(() => {
-    checkBookmark();
-  }, []);
+    checkBookmark()
+  }, [])
 
-  if (!AUTH_APIS.isAuthenticated()) return <div />;
+  if (!AUTH_APIS.isAuthenticated()) return <div />
   if (bookmarkFlag) {
     return (
       <div
@@ -65,7 +65,7 @@ export default function({ documentData, mylist, click }: Type) {
         <i className="material-icons">bookmark_border</i>
         {psString("bookmark-remove")}
       </div>
-    );
+    )
   } else {
     return (
       <div
@@ -75,6 +75,6 @@ export default function({ documentData, mylist, click }: Type) {
         <i className="material-icons">bookmark</i>
         {psString("bookmark-add")}
       </div>
-    );
+    )
   }
 }

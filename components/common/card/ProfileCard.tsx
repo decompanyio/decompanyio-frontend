@@ -1,58 +1,58 @@
-import * as styles from "public/static/styles/main.scss";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { FadingCircle } from "better-react-spinkit";
-import { psString } from "../../../utils/localization";
-import { AUTH_APIS } from "../../../utils/auth";
-import MyAvatar from "../avatar/MyAvatar";
-import Link from "next/link";
-import repos from "../../../utils/repos";
-import log from "../../../utils/log";
-import WalletBalance from "../../../service/model/WalletBalance";
-import common from "../../../common/common";
+import * as styles from "public/static/styles/main.scss"
+import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { FadingCircle } from "better-react-spinkit"
+import { psString } from "../../../utils/localization"
+import { AUTH_APIS } from "../../../utils/auth"
+import MyAvatar from "../avatar/MyAvatar"
+import Link from "next/link"
+import repos from "../../../utils/repos"
+import log from "../../../utils/log"
+import WalletBalance from "../../../service/model/WalletBalance"
+import common from "../../../common/common"
 
 type Type = {
-  click: any;
-};
+  click: any
+}
 
 function ProfileCard({ click }: Type) {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  const [loading, setLoading] = useState(true);
-  const [balance, setBalance] = useState(new WalletBalance(null));
+  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const [loading, setLoading] = useState(true)
+  const [balance, setBalance] = useState(new WalletBalance(null))
 
   // 잔액 조회
   const getBalance = () =>
     repos.Wallet.getWalletBalance({ userId: myInfoFromRedux._id }).then(
       (res: any) => {
-        setLoading(false);
-        setBalance(res);
-        log.CreatorSummary.getBalance(false);
+        setLoading(false)
+        setBalance(res)
+        log.CreatorSummary.getBalance(false)
       }
-    );
+    )
 
   // 클릭 관리
   const handleClick = e => {
-    const targetElement = e.target;
-    const profileCard = document.getElementById("profileCard");
+    const targetElement = e.target
+    const profileCard = document.getElementById("profileCard")
 
     if (profileCard) {
-      if (!profileCard.contains(targetElement)) click();
+      if (!profileCard.contains(targetElement)) click()
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("click", handleClick);
-    void getBalance(); // 잔액 조회
+    window.addEventListener("click", handleClick)
+    void getBalance() // 잔액 조회
 
     return () => {
-      window.removeEventListener("click", handleClick);
-    };
-  }, []);
+      window.removeEventListener("click", handleClick)
+    }
+  }, [])
 
   let identification =
     myInfoFromRedux.username && myInfoFromRedux.username.length > 0
       ? myInfoFromRedux.username
-      : myInfoFromRedux.email;
+      : myInfoFromRedux.email
 
   return (
     <div className={styles.pc_container} id="profileCard">
@@ -99,7 +99,7 @@ function ProfileCard({ click }: Type) {
         ) : (
           <div
             className={styles.pc_accountBtn}
-            onClick={() => AUTH_APIS.login(false)}
+            onClick={() => AUTH_APIS.login()}
           >
             {psString("profile-card-login")}
           </div>
@@ -109,7 +109,7 @@ function ProfileCard({ click }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ProfileCard;
+export default ProfileCard

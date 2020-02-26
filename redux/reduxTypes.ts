@@ -31,4 +31,4 @@ export default {
   //            Content View
   // =====================================
   SET_DOCUMENT: "contentView/SET_DOCUMENT"
-};
+}

@@ -1,7 +1,7 @@
-import AxiosService from "./AxiosService";
+import AxiosService from "./AxiosService"
 
-let getAnalyticsExportUrl = "analytics/export";
-let getAnalyticsListUrl = "analytics/list";
+let getAnalyticsExportUrl = "analytics/export"
+let getAnalyticsListUrl = "analytics/list"
 
 export default {
   GET: {
@@ -13,8 +13,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     analyticsExport: data => {
       return new Promise((resolve, reject) => {
@@ -24,9 +24,9 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   },
   POST: {}
-};
+}

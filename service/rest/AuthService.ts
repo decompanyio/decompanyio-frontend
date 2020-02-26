@@ -1,10 +1,10 @@
-import AxiosService from "./AxiosService";
+import AxiosService from "./AxiosService"
 
-let accountSyncUrl = "account/sync";
-let accountGetUrl = "account/get";
-let accountUpdateUrl = "account/update";
-let profileImageUpdateUrl = "account/picture";
-let profileGetUrl = "profile/get";
+let accountSyncUrl = "account/sync"
+let accountGetUrl = "account/get"
+let accountUpdateUrl = "account/update"
+let profileImageUpdateUrl = "account/picture"
+let profileGetUrl = "profile/get"
 
 export default {
   POST: {
@@ -15,7 +15,7 @@ export default {
         data,
         data => callback(data),
         err => error(err)
-      );
+      )
     },
     accountUpdate: data => {
       return new Promise((resolve, reject) => {
@@ -25,8 +25,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     profileImageUpdate: data => {
       return new Promise((resolve, reject) => {
@@ -36,8 +36,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   },
   GET: {
@@ -49,8 +49,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     },
     accountInfo: data => {
       return new Promise((resolve, reject) => {
@@ -60,8 +60,8 @@ export default {
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
+        )
+      })
     }
   }
-};
+}
