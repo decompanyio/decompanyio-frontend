@@ -24,21 +24,15 @@ const getSubTitle = () => {
 }
 
 export default function({ path }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const isMobile = useSelector(state => state.main.isMobile)
   let subTitle = getSubTitle()
 
   return (
     <div className={styles.hst_section_1}>
       <Link href="/">
-        <div
-          className={
-            styles["hst_logo" + (path || isMobileFromRedux ? "Cut" : "")]
-          }
-        />
+        <div className={styles["hst_logo" + (path || isMobile ? "Cut" : "")]} />
       </Link>
-      {!isMobileFromRedux && (
-        <div className={styles.hst_subTitle}>{subTitle}</div>
-      )}
+      {!isMobile && <div className={styles.hst_subTitle}>{subTitle}</div>}
     </div>
   )
 }

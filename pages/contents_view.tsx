@@ -187,7 +187,9 @@ export default function index(
         )}
         <ViewPdfWithoutSSR
           documentData={documentData}
+          text={text}
           pageChange={handlePageChange}
+          ratio={ratio}
         />
         <ViewInfoBox documentData={documentData} />
         <ViewToolBox documentData={documentData} />

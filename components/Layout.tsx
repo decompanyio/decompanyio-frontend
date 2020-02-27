@@ -21,7 +21,6 @@ import Meta from "../service/model/Meta"
 export default function(props) {
   const dispatch = useDispatch()
   const myInfo = useSelector(state => state.main.myInfo)
-  const isMobile = useSelector(state => state.main.isMobile)
   const modalCode = useSelector(state => state.main.modalCode)
 
   const [init, setInit] = useState(false)
@@ -31,8 +30,9 @@ export default function(props) {
   let _prevScrollPos = 0
   let awayTime: number // 자리비움 시간
   let t: number // 1 min
+  let isMobileChecker = false
 
-  // 스크롤 관리
+  // 스크롤 이벤트 시 element 관리
   const manageElement = (path: string) => {
     return new Promise(resolve => {
       let currentScrollPos = window.pageYOffset
@@ -125,11 +125,10 @@ export default function(props) {
     if (modalCode === "away") dispatch(setActionMain.modal(null))
   }
 
-  // 모바일 유무 SET
+  // 모바일 유무 REDUX SET
   const setIsMobile = () => {
-    if (common_view.getIsMobile() !== isMobile) {
-      console.log(1, common_view.getIsMobile())
-      console.log(2, isMobile)
+    if (common_view.getIsMobile() !== isMobileChecker) {
+      isMobileChecker = !isMobileChecker
       dispatch(setActionMain.isMobile(common_view.getIsMobile()))
     }
   }
@@ -142,9 +141,7 @@ export default function(props) {
     })
 
   // 화면 리사이즈 이벤트 관리
-  const handleResize = () => {
-    setIsMobile()
-  }
+  const handleResize = () => setIsMobile()
 
   // 키다운 이벤트 관리
   const handleKeydown = () => setAwayTime()

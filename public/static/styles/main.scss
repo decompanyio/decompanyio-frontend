@@ -2060,8 +2060,8 @@ input[type="radio"]:checked + label span i {
 }
 
 .hst_section_1 {
-  @include col(4);
-  @include col-sm(3);
+  @include col(5);
+  @include col-sm(6);
   @include mt(1);
   align-items: center !important;
   display: flex !important;
@@ -2074,8 +2074,8 @@ input[type="radio"]:checked + label span i {
 
 
 .hss_section_2 {
-  @include col(8);
-  @include col-sm(9);
+  @include col(7);
+  @include col-sm(6);
   @include d-flex;
   justify-content: flex-end;
   -webkit-box-pack: end; /* justify-content */
@@ -2521,9 +2521,6 @@ input[type="radio"]:checked + label span i {
 .m_container {
   @include layout-main-container;
   padding-bottom: 140px;
-  @media (max-width: 850px) {
-    padding: 0;
-  }
 }
 
 
@@ -4261,6 +4258,40 @@ input[type="radio"]:checked + label span i {
   img {
     width: 100%;
   }
+}
+
+
+//======================================
+//         VIEW PDF VIEWER CSS
+// =====================================
+
+.vpv_container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  border: 1px solid #e8e8e8;
+}
+
+.vpv_wrapper {
+  @include containerEnabledFull;
+  @include mt(0);
+
+  @media all and (max-width: $md-max-width) {
+    margin: 0 -15px !important;
+    max-width: calc(100% + 30px) !important;
+  }
+}
+
+.vpv_thumbnailWrapper {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+#canvasLayer, #textLayer {
+  display: none;
 }
 
 
@@ -7312,20 +7343,4 @@ input[type="radio"]:checked + label span i {
 
 .pcc_btnDisabled {
   @extend .common_disabledBtn;
-}
-
-
-//======================================
-//         VIEW PDF VIWER CSS
-// =====================================
-
-.vpv_wrapper {
-  @include containerEnabledFull;
-  @include mt(0);
-  @include mt-sm(4);
-
-  @media all and (max-width: $md-max-width) {
-    margin: 0 -15px !important;
-    max-width: calc(100% + 30px) !important;
-  }
 }
