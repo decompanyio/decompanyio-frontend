@@ -11,6 +11,7 @@
     "dev": "next start",
     "build": "next build",
     "export": "next export",
+    "start:dev": "set NODE_ENV=production&& set NODE_ENV_SUB=development&& npm run build && nohup node server.js > output.log &",
     "start": "node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
