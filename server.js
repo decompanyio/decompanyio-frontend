@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const next = require('next');
+const { join } = require('path')
+const { parse } = require('url')
 
 const env = (process.env.NODE_ENV && process.env.NODE_ENV.trim().toLowerCase() === 'production') ? 'production' : 'development';
 const port = 80;
@@ -18,13 +20,16 @@ app.prepare().then(() => {
         res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
         res.set("Content-Type", "application/javascript");
 
-        return app.serveStatic(req, res, "./.next/service-worker.js");
+        const parsedUrl = parse(req.url, true)
+        const { pathname } = parsedUrl
+        const filePath = join(__dirname, '.next', pathname)
+
+        return app.serveStatic(req, res, filePath);
     });
 
     // 프로필 페이지
     server.get('/' + profileRegEx, (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
 
         const params = {identifier: req.url.split('/')[1]};
         return app.render(req, res, '/my_page', params)
@@ -45,7 +50,6 @@ app.prepare().then(() => {
     // 트랙킹 페이지
     server.get('/t/:identifier/:seoTitle', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
 
         let pathname = req.url.split('/');
 
@@ -60,7 +64,6 @@ app.prepare().then(() => {
     // 트랙킹 디테일 페이지
     server.get('/td/:identifier/:seoTitle', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
 
         let pathname = req.url.split('/');
 
@@ -88,42 +91,36 @@ app.prepare().then(() => {
     // 추천 문서 목록 페이지
     server.get('/featured', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/contents_list', req.query)
     });
 
     // 인기 문서 목록 페이지
     server.get('/popular', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/contents_list', req.query)
     });
 
     // 찜 문서 목록 페이지
     server.get('/mylist', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/contents_list', req.query)
     });
 
     // 내가 본 문서 목록 페이지
     server.get('/history', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/contents_list', req.query)
     });
 
     // 회사소개 페이지
     server.get('/au', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/about_us', req.query)
     });
 
     // FAQ 페이지
     server.get('/faq', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/faq', req.query)
     });
 
@@ -135,21 +132,18 @@ app.prepare().then(() => {
     // 개인정보정책 페이지
     server.get('/pp', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/privacy_policy', req.query)
     });
 
     // 이용약관 페이지
     server.get('/t', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/terms', req.query)
     });
 
     // 유저 가이드 페이지
     server.get('/u', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        res.status(404);
         return app.render(req, res, '/user_guide', req.query)
     });
 

@@ -13,7 +13,6 @@ type Type = {
 }
 
 export default function({ title, path, metaData }: Type) {
-  console.log(path)
   return (
     <header>
       <Meta title={title} metaData={metaData} />
