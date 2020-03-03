@@ -142,7 +142,7 @@ app.prepare().then(() => {
     });
 
     // 유저 가이드 페이지
-    server.get('/u', (req, res) => {
+    server.get('/ug', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
         return app.render(req, res, '/user_guide', req.query)
     });
