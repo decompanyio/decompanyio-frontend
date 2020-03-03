@@ -8,18 +8,17 @@ import { AUTH_APIS } from "../utils/auth"
 import { tracking, setTrackingInfo } from "utils/tracking"
 
 import Layout from "components/Layout"
-import ViewLandscape from "../components/body/view/ViewLandscape"
 import ViewInfoBox from "../components/body/view/ViewInfoBox"
 import ViewToolBox from "../components/body/view/ViewToolBox"
 import ViewDescBox from "components/body/view/ViewDescBox"
 import ViewSeeAlso from "components/body/view/ViewSeeAlso"
-import ViewPortrait from "../components/body/view/ViewPortrait"
 import common_data from "../common/common_data"
 import { setActionMain } from "../redux/reducer/main"
 import DocumentInfo from "../service/model/DocumentInfo"
 import UserInfo from "../service/model/UserInfo"
 import Router from "next/router"
 import dynamic from "next/dist/next-server/lib/dynamic"
+import ViewFullscreenBtn from "../components/body/view/ViewFullscreenBtn"
 
 // DocumentCard - No SSR
 const ViewPdfWithoutSSR = dynamic(
@@ -170,25 +169,16 @@ export default function index(
       metaData={metaData}
     >
       <div className={styles.common_container}>
-        {!ratio || (ratio && ratio >= 1) ? (
-          <ViewLandscape
-            documentData={documentData}
-            text={text}
-            pageChange={handlePageChange}
-            readPage={readPage}
-          />
-        ) : (
-          <ViewPortrait
-            documentData={documentData}
-            text={text}
-            ratio={ratio}
-            pageChange={handlePageChange}
-          />
-        )}
         <ViewPdfWithoutSSR
           documentData={documentData}
           text={text}
           pageChange={handlePageChange}
+          ratio={ratio}
+          readPage={readPage}
+        />
+        <ViewFullscreenBtn
+          documentData={documentData}
+          readPage={readPage}
           ratio={ratio}
         />
         <ViewInfoBox documentData={documentData} />

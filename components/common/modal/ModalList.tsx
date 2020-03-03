@@ -15,6 +15,7 @@ import DollarLearnMoreModal from "./DollarLearnMoreModal"
 import VoteModal from "./VoteModal"
 import DepositModal from "./DepositModal"
 import WithdrawModal from "./WithdrawModal"
+import FullscreenModal from "./FullscreenModal"
 
 export default function() {
   const modalCode = useSelector(state => state.main.modalCode)
@@ -64,7 +65,10 @@ export default function() {
       deposit: <DepositModal />,
 
       // 출금 모달
-      withdraw: <WithdrawModal />
+      withdraw: <WithdrawModal />,
+
+      // 전체화면 모달
+      fullscreen: <FullscreenModal />
     }[modalCode] || <div />
   )
 }

@@ -4,6 +4,7 @@ import HeaderSectionFirst from "./section/HeaderSectionFirst"
 import HeaderSectionSecond from "./section/HeaderSectionSecond"
 import Category from "./category/Category"
 import React from "react"
+import HeaderLoadingBar from "./HeaderLoadingBar"
 
 type Type = {
   title: string
@@ -12,6 +13,7 @@ type Type = {
 }
 
 export default function({ title, path, metaData }: Type) {
+  console.log(path)
   return (
     <header>
       <Meta title={title} metaData={metaData} />
@@ -25,6 +27,7 @@ export default function({ title, path, metaData }: Type) {
         </div>
       </nav>
       {!path && <Category />}
+      {path === "contents_view" && <HeaderLoadingBar />}
     </header>
   )
 }

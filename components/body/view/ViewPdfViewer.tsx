@@ -11,33 +11,33 @@ type Type = {
   documentData: any
   pageChange: any
   ratio: number
+  readPage: number
   text: any
 }
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
-export default function({ documentData, pageChange, ratio, text }: Type) {
+export default function({
+  documentData,
+  pageChange,
+  ratio,
+  readPage,
+  text
+}: Type) {
+  const isMobile = useSelector(state => state.main.isMobile)
   const myInfo = useSelector(state => state.main.myInfo)
-  const [readPage, setReadPage] = useState(-1)
-  const arr = [documentData.totalPages]
-
-  // ArrayBuffer to Base64
-  const _arrayBufferToBase64 = buffer => {
-    let binary = ""
-    let bytes = new Uint8Array(buffer)
-    let len = bytes.byteLength
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i])
-    }
-    return binary
-  }
+  const initArr: string[] = []
+  const [thumbArr, setThumbArr] = useState(initArr)
+  const [presentPage, setPresentPage] = useState(readPage)
+  let currentScroll = 0
+  let totalScroll = 0
 
   // pdf data get
-  const getPdfData = pdfUrl =>
+  const getPdfData = (pdfUrl: string) =>
     new Promise((resolve, reject) => {
       let url = pdfUrl.replace(/&amp;/g, "&")
       const xhtml = new XMLHttpRequest()
-      xhtml.onprogress = updateProgress
+      xhtml.onprogress = handleUpdateProgress
       xhtml.responseType = "arraybuffer"
       xhtml.open("GET", url, true)
       xhtml.onreadystatechange = () => {
@@ -55,46 +55,10 @@ export default function({ documentData, pageChange, ratio, text }: Type) {
       xhtml.send(null)
     })
 
-  // update progress
-  const updateProgress = () => {
-    /*let contentLength;
-    if (e.lengthComputable) {
-      contentLength = e.total;
-    } else {
-      contentLength = parseInt(
-        e.target.getResponseHeader("content-length"),
-        10
-      );
-    }
-
-    $("#toolbarProgress").css(
-      "width",
-      Math.floor((e.loaded / contentLength) * 100) + "%"
-    );*/
-    // console.log(Math.floor((e.loaded / contentLength) * 100) + " %");
-  }
-
-  // 스크롤 관리
-  const handleOnScroll = (e: any) => {
-    let calcNum = e.target.scrollTop / e.target.offsetHeight
-    let page = parseInt(String(calcNum), 10)
-    if (readPage !== page) {
-      setReadPage(page)
-      pageChange(page)
-    }
-  }
-
-  // pdf 렌더 관리
-  const handlePdfViewerRendering = () => {
-    document.getElementById("thumbnailWrapper")!.style.display = "none"
-    document.getElementById("canvasLayer")!.style.display = "block"
-    document.getElementById("textLayer")!.style.display = "block"
-  }
-
   // 캔버스 가로 길이 GET
   const getCanvasWidth = () => {
     let windowWidth = document.getElementById("canvasLayer")!.offsetWidth
-    let widthMargin = common_data.style.common.margin * 2
+    let widthMargin = isMobile ? 0 : common_data.style.common.margin * 2
 
     if (windowWidth + widthMargin >= common_data.style.container.width) {
       return common_data.style.container.width - widthMargin
@@ -108,6 +72,74 @@ export default function({ documentData, pageChange, ratio, text }: Type) {
     }
   }
 
+  // 썸네일 주소 배열 SET
+  const setThumbAddr = () => {
+    let arr = [documentData.totalPages]
+    for (let i = 0; i < documentData.totalPages; i++) {
+      arr[i] = common.getThumbnail(documentData.documentId, 1024, i + 1, "")
+    }
+    setThumbArr(arr)
+  }
+
+  // 뷰어 wrapper SET
+  const handleWrapperHeight = () => {
+    let ele = document.getElementById("pdfViewerWrapper")
+    if (ele) {
+      let height = Number(ele.offsetWidth / ratio)
+      let path = window.location.pathname.split("/")[3]
+      let page = Number(path ? path.split("-")[0] : 0)
+
+      ele.style.maxHeight = Math.floor(height) + "px"
+      ele.scrollTop = (page > 0 ? page - 1 : 0) * height
+    }
+  }
+
+  // update progress
+  const handleUpdateProgress = (e: any) => {
+    let contentLength
+    if (e.lengthComputable) {
+      contentLength = e.total
+    } else {
+      contentLength = parseInt(e.target.getResponseHeader("content-length"), 10)
+    }
+
+    let scrollPercentage = Math.floor((e.loaded / contentLength) * 100)
+
+    document.getElementById("totalLoadingBar")!.style.width =
+      (scrollPercentage > 100 ? 100 : scrollPercentage) + "%"
+  }
+
+  // 스크롤 관리
+  const handleOnScroll = (e: any) => {
+    let calcNum = e.target.scrollTop / e.target.offsetHeight
+    let page = parseInt(String(calcNum), 10)
+    if (presentPage !== page) {
+      pageChange(page)
+      setPresentPage(page)
+    }
+
+    handlePageBar(e)
+  }
+
+  // active 페이지 바 관리
+  const handlePageBar = (e: any) => {
+    currentScroll = e.target.scrollTop
+    totalScroll =
+      document.getElementById("canvasLayer")!.offsetHeight -
+      e.target.offsetHeight
+    let scrollPercentage = (currentScroll / totalScroll) * 100
+
+    document.getElementById("activeLoadingBar")!.style.width =
+      scrollPercentage + "%"
+  }
+
+  // pdf 렌더 관리
+  const handlePdfViewerRendering = () => {
+    document.getElementById("thumbnailWrapper")!.style.display = "none"
+    document.getElementById("canvasLayer")!.style.display = "block"
+    document.getElementById("textLayer")!.style.display = "block"
+  }
+
   // PDF 렌더링
   const renderPDF = async (pdfUrl: string) => {
     let canvasContainer = document.getElementById("canvasLayer")!
@@ -116,7 +148,9 @@ export default function({ documentData, pageChange, ratio, text }: Type) {
 
     // 텍스트 렌더링
     const textRender = async (page, viewport) =>
-      page.getTextContent().then(textContent => {
+      page.getTextContent().then((textContent: any) => {
+        if (!document.getElementById("textLayer")) return false
+
         const textLayerDiv = document.createElement("div")
         textLayerDiv.setAttribute("class", "textRender")
         textLayerDiv.style.zIndex = "2"
@@ -166,40 +200,40 @@ export default function({ documentData, pageChange, ratio, text }: Type) {
     pdfjs.getDocument({ data: _pdfData }).then(renderPages)
   }
 
+  // ArrayBuffer to Base64
+  const _arrayBufferToBase64 = (buffer: any) => {
+    let binary = ""
+    let bytes = new Uint8Array(buffer)
+    let len = bytes.byteLength
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i])
+    }
+    return binary
+  }
+
   useEffect(() => {
     ;(async function() {
       const { pdfUrl } = await repos.Document.getDocumentPdfUrl(
         documentData.documentId
       )
-      void (await renderPDF(pdfUrl))
+      let canvasEle = document.getElementById("canvasLayer")!
+
+      if (canvasEle && !canvasEle.hasChildNodes()) {
+        void (await renderPDF(pdfUrl))
+      }
     })()
 
-    let ele = document.getElementById("pdfViewerWrapper")
-    if (ele) {
-      let height = Number(ele.offsetWidth / ratio)
-      let path = window.location.pathname.split("/")[3]
-      let page = Number(path ? path.split("-")[0] : 0)
+    setThumbAddr()
 
-      ele.style.maxHeight = height + "px"
-      ele.scrollTop = (page > 0 ? page - 1 : 0) * height
-      setReadPage(page)
-    }
+    handleWrapperHeight()
   }, [])
 
-  for (let i = 0; i < documentData.totalPages; i++) {
-    arr[i] = common.getThumbnail(documentData.documentId, 2048, i + 1, "")
-  }
-
   return (
-    <div className={styles.vpv_container}>
-      <div
-        id={"pdfViewerWrapper"}
-        className={styles.vpv_wrapper}
-        onScroll={e => handleOnScroll(e)}
-      >
+    <div className={styles.vpv_container} onScroll={e => handleOnScroll(e)}>
+      <div id={"pdfViewerWrapper"} className={styles.vpv_wrapper}>
         <div id={"thumbnailWrapper"} className={styles.vpv_thumbnailWrapper}>
-          {arr.length > 0
-            ? arr.map((addr, idx) => (
+          {thumbArr.length > 0
+            ? thumbArr.map((addr, idx) => (
                 <img
                   key={idx}
                   title={documentData.title}

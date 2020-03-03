@@ -18,14 +18,12 @@ export default {
     if (type !== "GET") _header = { "Content-Type": "application/json" }
     if (header) _header = Object.assign(header, _header)
 
-    let tempUrl = url.split("/")[6].substr(0,8)
-
     axios({
       method: type,
       url: url,
       data: data,
       headers: _header,
-      withCredentials: tempUrl==="download"
+      withCredentials: true
     })
       .then(response => {
         if (this.DEBUG()) {

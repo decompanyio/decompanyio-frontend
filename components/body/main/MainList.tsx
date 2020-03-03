@@ -54,7 +54,9 @@ export default function({ path }: Type) {
         return setDocumentData(null!)
       }
 
-      return setDocumentData(_documentData.length > 0 ? _documentData : null!)
+      return setDocumentData(
+        _documentData && _documentData.length > 0 ? _documentData : null!
+      )
     })()
   }, [])
 

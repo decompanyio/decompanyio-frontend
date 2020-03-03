@@ -18,7 +18,7 @@ app.prepare().then(() => {
         res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
         res.set("Content-Type", "application/javascript");
 
-        return app.serveStatic(req, res, path.resolve("./.next/service-worker.js"));
+        return app.serveStatic(req, res, "./.next/service-worker.js");
     });
 
     // 프로필 페이지

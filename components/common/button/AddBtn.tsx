@@ -20,7 +20,7 @@ export default function() {
   }
 
   return (
-    <div className={styles.common_addBtn} onClick={() => handleClick()}>
+    <div className={styles.common_addBtn} id="commonAddBtn" onClick={() => handleClick()}>
       <p data-tip="Share your contents">
         <i className="material-icons">add</i>
       </p>

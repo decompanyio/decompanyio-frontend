@@ -37,6 +37,7 @@ export default function(props) {
     return new Promise(resolve => {
       let currentScrollPos = window.pageYOffset
       let headerMainNav = document.getElementById("headerMainNav")
+      let totalLoadingBar = document.getElementById("totalLoadingBar")
       let headerCategoryWrapper = document.getElementById(
         "headerCategoryWrapper"
       )
@@ -44,10 +45,19 @@ export default function(props) {
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && headerMainNav) {
         headerMainNav.style.marginBottom = "0px"
-        if (_prevScrollPos > currentScrollPos || currentScrollPos <= 0) {
+        if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
           headerMainNav.style.top = "0px"
         } else {
           headerMainNav.style.top = "-60px"
+        }
+      }
+
+      // main 이외 페이지에서 헤더 숨길/표시 처리
+      if (path && totalLoadingBar) {
+        if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
+          totalLoadingBar.style.top = "60px"
+        } else {
+          totalLoadingBar.style.top = "0px"
         }
       }
 

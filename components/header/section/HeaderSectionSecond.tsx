@@ -32,8 +32,11 @@ export default function() {
     if (profileCardShow) setProfileCardShow(false)
   }
 
+  // 검색버튼 관리
   const handleSearchBtnClick = () =>
     setShowSearchBar(showSearchBar === 1 ? 0 : 1)
+
+  // 아바타 클릭 관리
   const handleAvatarClick = () => setProfileCardShow(true)
 
   return (

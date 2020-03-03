@@ -13,6 +13,7 @@ export default function({ click }: Type) {
   return (
     <div className={styles.sb_wrapper}>
       <div
+        id="commonSearchBtn"
         className={styles.common_searchBtn}
         onClick={() => handleSearchBtnClick()}
       />

@@ -3,6 +3,7 @@ import { psString } from "utils/localization"
 import Link from "next/link"
 import { Carousel } from "react-responsive-carousel"
 import React from "react"
+import { AUTH_APIS } from "../../../utils/auth"
 
 // 배너 제목
 const subject = [
@@ -26,6 +27,19 @@ const content = [
 ]
 
 export default function() {
+  // 업로드 클릭 관리
+  const handleUploadClick = () => {
+    if (AUTH_APIS.isAuthenticated()) {
+      document.getElementById("commonAddBtn")!.click()
+    } else {
+      AUTH_APIS.login()
+    }
+  }
+
+  // 검색 클릭 관리
+  const handleSearchClick = () =>
+    document.getElementById("commonSearchBtn")!.click()
+
   return (
     <div className={styles.mc_container}>
       <div className={styles.mc_wrapper} id="mainBanner">
@@ -51,21 +65,24 @@ export default function() {
                     idx === 1 ? (
                       <div
                         className={styles.mc_uploadBtn}
-                        onClick={() => this.handleLogin()}
+                        onClick={() => AUTH_APIS.login()}
                       >
                         {buttonText[idx]}
                       </div>
                     ) : (
                       <div
                         className={styles.mc_uploadBtn}
-                        onClick={() => this.handleTagClick()}
+                        onClick={() => handleSearchClick()}
                       >
                         {buttonText[idx]}
                       </div>
                     )
                   ) : (
                     <Link href="/ca">
-                      <div className={styles.mc_uploadBtn}>
+                      <div
+                        className={styles.mc_uploadBtn}
+                        onClick={() => handleUploadClick()}
+                      >
                         {buttonText[idx]}
                       </div>
                     </Link>

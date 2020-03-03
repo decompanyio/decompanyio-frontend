@@ -1,7 +1,7 @@
 {
   "name": "decompanyio-frontend",
-  "description": "www.polarishare.com",
-  "version": "1.9.10",
+  "description": "www.poarishare.com",
+  "version": "1.9.11",
   "private": true,
   "keywords": [],
   "author": "Decompany.io",
@@ -11,6 +11,8 @@
     "dev": "next start",
     "build": "next build",
     "export": "next export",
+    "deploy:static": "aws s3 sync static/ s3://dev-ca-web-static/static --cache-control max-age=60 --acl public-read && npm run invaildate",
+    "deploy:static_production": "aws s3 sync static/ s3://asem-ko-web-static/static --cache-control max-age=60 --acl public-read && npm run invaildate:production",
     "start:dev": "set NODE_ENV=production&& set NODE_ENV_SUB=development&& npm run build && nohup node server.js > output.log &",
     "start": "node server.js",
     "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx",
