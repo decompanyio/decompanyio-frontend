@@ -200,7 +200,7 @@ makeTrackingCookieResponse = (req, res) => {
     const secure = env === 'production'?true:false;
     const domain = req.headers.host;
 
-    res.cookie("_tid", _did, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, secure: secure, path: "/", domain: domain }) // 24 hours
+    res.cookie("_tid", _tid, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, secure: secure, path: "/", domain: domain }) // 24 hours
     res.cookie("_cid", _cid, { maxAge: 30 * 60 * 1000, httpOnly: true, secure: secure, path: "/", domain: domain }) //30분 갱신
     res.cookie("_sid", _sid, { httpOnly: true, secure: secure, path: "/", domain: domain}) // session cookie
     
