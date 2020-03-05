@@ -53,9 +53,9 @@ export const setTrackingInfo = () =>
   })
 
 export const tracking = async (params, sidClear) => {
-  if (APP_CONFIG.env !== "production" && APP_CONFIG.env !== "development") {
+  /*if (APP_CONFIG.env !== "production" && APP_CONFIG.env !== "development") {
     return false
-  }
+  }*/
 
   let timestamp = Date.now()
   let trackingInfo: any = await setTrackingInfo()
@@ -70,7 +70,8 @@ export const tracking = async (params, sidClear) => {
 
     axios({
       method: "GET",
-      url: tracking
+      url: tracking,
+      withCredentials: true
     }).then(res => {
       if (sidClear) trackingInfo.sid = undefined
 

@@ -61,6 +61,8 @@ export const repos = {
       })
     }
 
+    ReactGA.pageview(window.location.pathname + window.location.search)
+
     // 로그인 체크
     if (AUTH_APIS.isAuthenticated()) AUTH_APIS.scheduleRenewal()
     else AUTH_APIS.clearSession()

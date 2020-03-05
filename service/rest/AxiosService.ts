@@ -25,7 +25,7 @@ export default {
       url: url,
       data: data,
       headers: _header,
-      withCredentials: tempUrl === "download" || tempUrl === "tracking"
+      withCredentials: tempUrl === "download"
     })
       .then(response => {
         if (this.DEBUG()) {
