@@ -11,10 +11,15 @@ const dev = env !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 const profileRegEx = '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})';
+const nanoidGen = require('nanoid/generate')
+var cookieParser = require('cookie-parser')
+
+
+
 
 app.prepare().then(() => {
     const server = express();
-
+    server.use(cookieParser())
     // Service Worker
     server.get("/service-worker.js", (req, res) => {
         res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
@@ -38,13 +43,13 @@ app.prepare().then(() => {
     // 뷰어 페이지
     server.get('/' + profileRegEx + '/:seoTitle', (req, res) => {
         const params = {identifier: req.url.split('/')[1], seoTitle: req.url.split('/')[2]};
-        return app.render(req, res, '/contents_view', params)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_view', params)
     });
 
     // 뷰어 페이지 + 페이지 넘버
     server.get('/' + profileRegEx + '/:seoTitle/:pageNum', (req, res) => {
         const params = {identifier: req.url.split('/')[1], seoTitle: req.url.split('/')[2]};
-        return app.render(req, res, '/contents_view', params)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_view', params)
     });
 
     // 트랙킹 페이지
@@ -85,19 +90,19 @@ app.prepare().then(() => {
 
     // 최신 문서 목록 페이지
     server.get('/latest', (req, res) => {
-        return app.render(req, res, '/contents_list', req.query)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_list', req.query)
     });
 
     // 추천 문서 목록 페이지
     server.get('/featured', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        return app.render(req, res, '/contents_list', req.query)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_list', req.query)
     });
 
     // 인기 문서 목록 페이지
     server.get('/popular', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        return app.render(req, res, '/contents_list', req.query)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_list', req.query)
     });
 
     // 찜 문서 목록 페이지
@@ -109,7 +114,7 @@ app.prepare().then(() => {
     // 내가 본 문서 목록 페이지
     server.get('/history', (req, res) => {
         res.header("X-Robots-Tag", "noindex");
-        return app.render(req, res, '/contents_list', req.query)
+        return app.render(req, makeTrackingCookieResponse(req, res), '/contents_list', req.query)
     });
 
     // 회사소개 페이지
@@ -148,7 +153,8 @@ app.prepare().then(() => {
     });
 
     server.all('*', (req, res) => {
-        return handle(req, res)
+        //모두?
+        return handle(req, makeTrackingCookieResponse(req, res))
     });
 
     server.listen(port, err => {
@@ -168,4 +174,36 @@ app.prepare().then(() => {
         if (err) throw err;
         console.log(`> Ready on http://localhost:${port}`)
     })
+    
 });
+
+makeTrackingCookieResponse = (req, res) => {
+    /*
+    console.log("headers", req.headers);
+    console.log("accepts", req.accepts);
+    console.log('Cookies: ', JSON.stringify(req.cookies))
+    console.log('Signed Cookies: ', JSON.stringify(req.signedCookies))
+    */
+   const getRandomId = ()=>{
+        const id = nanoidGen('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-', 21) //=> "4f90d13a42"
+        return `${id}.${Date.now()}`
+    }
+
+    let _cid = req.cookies['_cid'];
+    let _sid = req.cookies['_sid'];
+    let _tid = req.cookies['_tid'];
+    
+    if(!_cid) _cid = getRandomId()
+    if(!_sid) _sid = getRandomId()
+    if(!_tid) _tid = getRandomId()
+
+    const secure = env === 'production'?true:false;
+    const domain = req.headers.host;
+
+    res.cookie("_tid", _tid, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, secure: secure, path: "/", domain: domain }) // 24 hours
+    res.cookie("_cid", _cid, { maxAge: 30 * 60 * 1000, httpOnly: true, secure: secure, path: "/", domain: domain }) //30분 갱신
+    res.cookie("_sid", _sid, { httpOnly: true, secure: secure, path: "/", domain: domain}) // session cookie
+    
+    return res
+}
+
