@@ -1,25 +1,29 @@
-import React from "react"
-import { useDispatch } from "react-redux"
-import pdfjs from "pdfjs-dist"
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry"
-import * as styles from "public/static/styles/main.scss"
-import { setActionMain } from "../../../redux/reducer/main"
+import React, { ReactElement } from "react";
+import { useDispatch } from 'react-redux'
+import pdfjs from 'pdfjs-dist'
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
+import * as styles from 'public/static/styles/main.scss'
+import { setActionMain } from '../../../redux/reducer/main'
 
-type Type = {
-  documentData: any
+interface ViewFullscreenBtnProps {
+  documentData
   ratio: number
   readPage: number
 }
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
-export default function({ documentData, ratio, readPage }: Type) {
+export default function({
+  documentData,
+  ratio,
+  readPage
+}: ViewFullscreenBtnProps): ReactElement {
   const dispatch = useDispatch()
 
   // 전체화면 버튼 관리
   const handleFullscreenClick = () => {
     dispatch(
-      setActionMain.modal("fullscreen", { documentData, ratio, readPage })
+      setActionMain.modal('fullscreen', { documentData, ratio, readPage })
     )
   }
 

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { psString } from "utils/localization"
-import { useSelector, useDispatch } from "react-redux"
-import * as styles from "public/static/styles/main.scss"
-import common_view from "common/common_view"
-import common from "common/common"
-import { setActionMain } from "../../../redux/reducer/main"
-import Router from "next/router"
+import React, { ReactElement, useEffect, useState } from "react";
+import { psString } from 'utils/localization'
+import { useSelector, useDispatch } from 'react-redux'
+import * as styles from 'public/static/styles/main.scss'
+import commonView from 'common/commonView'
+import common from 'common/common'
+import { setActionMain } from '../../../redux/reducer/main'
+import Router from 'next/router'
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const modalData = useSelector(state => state.main.modalData)
   const [closeFlag, setCloseFlag] = useState(false)
@@ -33,18 +33,18 @@ export default function() {
     let identifier = modalData.identifier
     return Router.push(
       {
-        pathname: "/my_page",
+        pathname: '/my_page',
         query: { identification: identifier }
       },
-      "/@" + identifier
+      '/@' + identifier
     )
   }
 
   useEffect(() => {
-    common_view.setBodyStyleLock()
+    commonView.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock()
+      commonView.setBodyStyleUnlock()
     }
   }, [])
 
@@ -53,38 +53,38 @@ export default function() {
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("upload-doc-subj-2")}</h3>
+          <h3>{psString('upload-doc-subj-2')}</h3>
         </div>
 
         <div className={styles.modal_content}>
           {modalData.privateDocumentCount >= 5 ? (
-            <div>{psString("upload-doc-desc-3")}</div>
+            <div>{psString('upload-doc-desc-3')}</div>
           ) : (
             <div>
-              {psString("upload-doc-desc-2") +
-                psString("upload-doc-desc-4-a") +
+              {psString('upload-doc-desc-2') +
+                psString('upload-doc-desc-4-a') +
                 modalData.privateDocumentCount +
-                psString("upload-doc-desc-4-b")}
+                psString('upload-doc-desc-4-b')}
             </div>
           )}
         </div>
-        {modalData.identifier === common_view.getPath().substring(1) ? (
+        {modalData.identifier === commonView.getPath().substring(1) ? (
           <div className={styles.modal_footer}>
             <div
               onClick={() => handleCloseOnMyPage()}
               className={styles.modal_okBtn}
             >
-              {psString("common-modal-confirm")}
+              {psString('common-modal-confirm')}
             </div>
           </div>
         ) : (
@@ -93,10 +93,10 @@ export default function() {
               onClick={() => handleClickClose()}
               className={styles.modal_okBtn}
             >
-              {psString("common-modal-confirm")}
+              {psString('common-modal-confirm')}
             </div>
             <div onClick={() => handleLinkBtn()} className={styles.uc_okBtn_2}>
-              {psString("private-doc-modal-btn")}
+              {psString('private-doc-modal-btn')}
             </div>
           </div>
         )}

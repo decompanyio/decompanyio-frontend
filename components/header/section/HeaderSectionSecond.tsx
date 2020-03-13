@@ -1,16 +1,16 @@
-import * as styles from "public/static/styles/main.scss"
-import { useSelector } from "react-redux"
-import AddBtn from "components/common/button/AddBtn"
-import LoginBtn from "../../common/button/LoginBtn"
-import SearchBtn from "components/common/button/SearchBtn"
-import MenuBtn from "components/common/button/MenuBtn"
-import MyAvatar from "components/common/avatar/MyAvatar"
-import React, { useState } from "react"
-import AutoSuggestInput from "../../common/input/AutoSuggestInput"
-import Router from "next/router"
-import ProfileCard from "../../common/card/ProfileCard"
+import * as styles from 'public/static/styles/main.scss'
+import { useSelector } from 'react-redux'
+import AddBtn from 'components/common/button/AddBtn'
+import LoginBtn from '../../common/button/LoginBtn'
+import SearchBtn from 'components/common/button/SearchBtn'
+import MenuBtn from 'components/common/button/MenuBtn'
+import MyAvatar from 'components/common/avatar/MyAvatar'
+import React, { ReactElement, useState } from 'react'
+import AutoSuggestInput from '../../common/input/AutoSuggestInput'
+import Router from 'next/router'
+import ProfileCard from '../../common/card/ProfileCard'
 
-export default function() {
+export default function(): ReactElement {
   const myInfo = useSelector(state => state.main.myInfo)
   const isMobile = useSelector(state => state.main.isMobile)
   const [showSearchBar, setShowSearchBar] = useState(-1)
@@ -21,9 +21,9 @@ export default function() {
     setShowSearchBar(0)
     return Router.push(
       {
-        pathname: "/contents_list"
+        pathname: '/contents_list'
       },
-      "tag/" + tag._id
+      'tag/' + tag._id
     )
   }
 
@@ -45,7 +45,7 @@ export default function() {
         <div
           className={
             styles.hss_searchInput +
-            " " +
+            ' ' +
             (showSearchBar === -1
               ? styles.hss_searchInputNone
               : showSearchBar === 1

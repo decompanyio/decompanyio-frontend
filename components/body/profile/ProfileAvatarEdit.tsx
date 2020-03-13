@@ -1,25 +1,28 @@
-import React from "react"
-import { useDispatch } from "react-redux"
-import { setActionMain } from "../../../redux/reducer/main"
-import * as styles from "public/static/styles/main.scss"
+import React, { ReactElement } from 'react'
+import { useDispatch } from 'react-redux'
+import { setActionMain } from '../../../redux/reducer/main'
+import * as styles from 'public/static/styles/main.scss'
 
-type Type = {
+interface ProfileAvatarEdit {
   owner: boolean
 }
 
-export default function({ owner }: Type) {
+export default function({ owner }: ProfileAvatarEdit): ReactElement {
   const dispatch = useDispatch()
 
   // file upload
-  const handleFileUpload = () => document.getElementById("imgFile")!.click()
+  const handleFileUpload = (): void => {
+    const el = document.getElementById('imgFile') as HTMLElement
+    el.click()
+  }
 
   // file input 등록/변경 시, url get
   const handleFileChange = async (e: any) => {
     if (e && e.length > 0) {
-      const type = e[0].type.split("/")[0]
+      const type = e[0].type.split('/')[0]
 
-      if (type === "image") {
-        return dispatch(setActionMain.modal("imageCrop", { file: e[0] }))
+      if (type === 'image') {
+        return dispatch(setActionMain.modal('imageCrop', { file: e[0] }))
       } else {
         return dispatch(setActionMain.alertCode(2145, {}))
       }

@@ -1,47 +1,52 @@
-import React, { useEffect, useState } from "react"
-import * as styles from "public/static/styles/main.scss"
-import common from "common/common"
-import { psString } from "utils/localization"
-import { ThreeBounce } from "better-react-spinkit"
-import { Chart } from "react-google-charts"
+import React, { ReactElement, useEffect, useState } from 'react'
+import * as styles from 'public/static/styles/main.scss'
+import common from 'common/common'
+import { psString } from 'utils/localization'
+import { ThreeBounce } from 'better-react-spinkit'
+import { Chart } from 'react-google-charts'
 
 // https://www.npmjs.com/package/react-google-charts#quick-start
 // 구글 리액트 차트 라이브러리
 
-type Type = {
-  subject: any
-  chartData: any
-  week: any
-  year: any
+interface CustromChartProps {
+  subject
+  chartData
+  week
+  year
 }
 
-export default function({ subject, chartData, week, year }: Type) {
+export default function({
+  subject,
+  chartData,
+  week,
+  year
+}: CustromChartProps): ReactElement {
   const [dataArr, setDataArr] = useState(Array())
   const chartType = {
-    analyticsChartType: "AreaChart",
-    trackingChartType: "Bar"
+    analyticsChartType: 'AreaChart',
+    trackingChartType: 'Bar'
   }
   const options = {
     analyticsOption: {
-      title: "",
-      vAxis: { title: "" },
-      hAxis: { title: "" },
-      legend: { position: "top", maxLines: 3 }
+      title: '',
+      vAxis: { title: '' },
+      hAxis: { title: '' },
+      legend: { position: 'top', maxLines: 3 }
     },
     trackingOption: {
-      title: psString("chart-tracking-option-title"),
-      vAxis: { format: "number" },
-      hAxis: { format: "number" }
+      title: psString('chart-tracking-option-title'),
+      vAxis: { format: 'number' },
+      hAxis: { format: 'number' }
     }
   }
   const columns = {
     analyticsColumns: [
-      { type: "number", label: psString("chart-date") },
-      { type: "number", label: psString("chart-visit-count") }
+      { type: 'number', label: psString('chart-date') },
+      { type: 'number', label: psString('chart-visit-count') }
     ],
     trackingColumns: [
-      { type: "number", label: psString("chart-page") },
-      { type: "date", label: psString("chart-time-spend-min") }
+      { type: 'number', label: psString('chart-page') },
+      { type: 'date', label: psString('chart-time-spend-min') }
     ]
   }
 
@@ -61,7 +66,7 @@ export default function({ subject, chartData, week, year }: Type) {
 
     // 빈 배열 생성
     for (let i = 0; i < arrSize; ++i) {
-      let dummyValue: string = ""
+      let dummyValue: string
 
       if (year > 0) {
         let monthTmp = lastMonth - i > 0 ? lastMonth - i : lastMonth - i + 12
@@ -74,14 +79,14 @@ export default function({ subject, chartData, week, year }: Type) {
           if (i === 0) {
             dummyValue =
               common.dateString(mondayFromWeekStart) +
-              " ~ " +
+              ' ~ ' +
               common.dateString(new Date())
           } else {
             mondayFromWeekStart.setDate(mondayFromWeekStart.getDate() - 7)
             mondayFromWeekEnd.setDate(mondayFromWeekEnd.getDate() - 1)
             dummyValue =
               common.dateString(mondayFromWeekStart) +
-              " ~ " +
+              ' ~ ' +
               common.dateString(mondayFromWeekEnd)
           }
         }
@@ -89,7 +94,7 @@ export default function({ subject, chartData, week, year }: Type) {
       _dataArr[i] = [dummyValue, 0]
     }
 
-    _dataArr[arrSize] = [psString("chart-date"), psString("chart-visit-count")]
+    _dataArr[arrSize] = [psString('chart-date'), psString('chart-visit-count')]
 
     // 해당 빈 배열에 chart data 값 삽입
     if (year > 0) {
@@ -103,11 +108,11 @@ export default function({ subject, chartData, week, year }: Type) {
         chartData.resultList.map(rst => {
           let rstDate =
             rst.year +
-            "-" +
-            (rst.month < 10 ? "0" : "") +
+            '-' +
+            (rst.month < 10 ? '0' : '') +
             rst.month +
-            "-" +
-            (rst.dayOfMonth < 10 ? "0" : "") +
+            '-' +
+            (rst.dayOfMonth < 10 ? '0' : '') +
             rst.dayOfMonth
           for (let i = 0; i < _dataArr.length; ++i) {
             if (_dataArr[i][0] === rstDate) return (_dataArr[i][1] = rst.count)
@@ -126,7 +131,7 @@ export default function({ subject, chartData, week, year }: Type) {
 
   const getTrackingData = () => {
     let _dataArr = Array()
-    _dataArr.push([psString("chart-page"), psString("chart-time-spend-min")])
+    _dataArr.push([psString('chart-page'), psString('chart-time-spend-min')])
     for (let [key, value] of Object.entries(chartData)) {
       let tmpArr = [key, Number(value) / 1000 / 60]
       _dataArr.push(tmpArr)
@@ -142,20 +147,20 @@ export default function({ subject, chartData, week, year }: Type) {
 
   switch (subject) {
     // Profile - Analytics
-    case "analytics":
+    case 'analytics':
       _options = options.analyticsOption
       _columns = columns.analyticsColumns
       _chartType = chartType.analyticsChartType
       break
 
     // Tracking
-    case "tracking":
+    case 'tracking':
       _options = options.trackingOption
       _columns = columns.trackingColumns
       _chartType = chartType.trackingChartType
       break
 
-    case "etc": // 추후 차트 추가 시 작성
+    case 'etc': // 추후 차트 추가 시 작성
       break
 
     default:
@@ -165,14 +170,14 @@ export default function({ subject, chartData, week, year }: Type) {
   useEffect(() => {
     switch (subject) {
       // Profile - Analytics
-      case "analytics":
+      case 'analytics':
         return getAnalyticsData()
 
       // Tracking
-      case "tracking":
+      case 'tracking':
         return getTrackingData()
 
-      case "etc":
+      case 'etc':
         break
 
       default:
@@ -187,7 +192,7 @@ export default function({ subject, chartData, week, year }: Type) {
         data={dataArr}
         options={_options}
         columns={_columns}
-        width={"100%"}
+        width={'100%'}
         loader={<ThreeBounce name="ball-pulse-sync" color="#3681fe" />}
         legendToggle
       />

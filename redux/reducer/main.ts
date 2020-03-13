@@ -1,5 +1,5 @@
-import ReduxTypes from "../reduxTypes"
-import UserInfo from "../../service/model/UserInfo"
+import ReduxTypes from '../reduxTypes'
+import UserInfo from '../../service/model/UserInfo'
 
 // 액션 생성자
 export const setActionMain = {

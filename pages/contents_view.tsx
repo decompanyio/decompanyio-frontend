@@ -1,35 +1,35 @@
-import * as styles from "public/static/styles/main.scss"
-import React, { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import common_view from "../common/common_view"
-import { APP_CONFIG } from "../app.config"
-import repos from "../utils/repos"
-import { AUTH_APIS } from "../utils/auth"
-import { tracking, setTrackingInfo } from "utils/tracking"
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import commonView from '../common/commonView'
+import { APP_CONFIG } from '../app.config'
+import repos from '../utils/repos'
+import { AUTH_APIS } from '../utils/auth'
+import { tracking, setTrackingInfo } from 'utils/tracking'
 
-import Layout from "components/Layout"
-import ViewInfoBox from "../components/body/view/ViewInfoBox"
-import ViewToolBox from "../components/body/view/ViewToolBox"
-import ViewDescBox from "components/body/view/ViewDescBox"
-import ViewSeeAlso from "components/body/view/ViewSeeAlso"
-import common_data from "../common/common_data"
-import { setActionMain } from "../redux/reducer/main"
-import DocumentInfo from "../service/model/DocumentInfo"
-import UserInfo from "../service/model/UserInfo"
-import Router from "next/router"
-import dynamic from "next/dist/next-server/lib/dynamic"
-import ViewFullscreenBtn from "../components/body/view/ViewFullscreenBtn"
+import Layout from 'components/Layout'
+import ViewInfoBox from '../components/body/view/ViewInfoBox'
+import ViewToolBox from '../components/body/view/ViewToolBox'
+import ViewDescBox from 'components/body/view/ViewDescBox'
+import ViewSeeAlso from 'components/body/view/ViewSeeAlso'
+import commonData from '../common/commonData'
+import { setActionMain } from '../redux/reducer/main'
+import DocumentInfo from '../service/model/DocumentInfo'
+import UserInfo from '../service/model/UserInfo'
+import Router from 'next/router'
+import dynamic from 'next/dist/next-server/lib/dynamic'
+import ViewFullscreenBtn from '../components/body/view/ViewFullscreenBtn'
 
 // DocumentCard - No SSR
 const ViewPdfWithoutSSR = dynamic(
-  () => import("../components/body/view/ViewPdfViewer"),
+  () => import('../components/body/view/ViewPdfViewer'),
   { ssr: false }
 )
 
-export default function index(
+export default function Index(
   { documentData, text, ratio, readPage, metaData, message },
   ...rest
-) {
+): ReactElement {
   const dispatch = useDispatch()
   const myInfoFromRedux = useSelector(state => state.main.myInfo)
   let stayTime = 0
@@ -51,25 +51,25 @@ export default function index(
     new Promise(resolve => {
       if (documentData.useTracking) {
         if (AUTH_APIS.isAuthenticated()) {
-          resolve("view")
+          resolve('view')
         } else {
           if (page === 2) {
-            let localStorageData = localStorage.getItem("refuse_tracking")
+            let localStorageData = localStorage.getItem('refuse_tracking')
 
             if (
               localStorageData &&
               localStorageData === documentData.seoTitle
             ) {
-              resolve("view")
+              resolve('view')
             } else {
-              dispatch(setActionMain.modal("email", { documentData }))
+              dispatch(setActionMain.modal('email', { documentData }))
             }
           } else {
-            resolve("view")
+            resolve('view')
           }
         }
       } else {
-        resolve("none")
+        resolve('none')
       }
     })
 
@@ -100,7 +100,7 @@ export default function index(
 
   // 특정 시간 동안 머문 후 트랙킹 시작
   const handleTrackingDelay = (page: number, type: string) => {
-    let st = common_data.trackingDelayTime
+    let st = commonData.trackingDelayTime
     let tmpTime = Date.now()
 
     if (stayTime === 0 || (stayTime > 0 && tmpTime >= stayTime + st)) {
@@ -115,7 +115,7 @@ export default function index(
         {
           id: documentData.documentId,
           n: -1,
-          ev: "leave"
+          ev: 'leave'
         },
         false
       )
@@ -125,12 +125,12 @@ export default function index(
   }
 
   useEffect(() => {
-    if (message) Router.push("/not_found_page")
+    if (message) Router.push('/not_found_page')
 
     let page =
-      common_view.getPageNum() > documentData.totalPages
+      commonView.getPageNum() > documentData.totalPages
         ? 0
-        : common_view.getPageNum()
+        : commonView.getPageNum()
 
     if (AUTH_APIS.isAuthenticated()) {
       void repos.Mutation.addHistory(documentData.documentId)
@@ -140,7 +140,7 @@ export default function index(
           checkQualified(page).then((type: string) => postTracking(page, type))
         )
         .catch(() =>
-          APP_CONFIG.env === "local"
+          APP_CONFIG.env === 'local'
             ? checkQualified(page).then((type: string) =>
                 postTracking(page, type)
               )
@@ -151,13 +151,13 @@ export default function index(
     }
     return () => {
       handleTrackingLeave()
-      localStorage.removeItem("refuse_tracking")
+      localStorage.removeItem('refuse_tracking')
     }
   }, [])
 
   // 뷰어 페이지 이동 관리
   const handlePageChange = (page: number) => {
-    common_view.handleUrl(page, text[page])
+    commonView.handleUrl(page, text[page])
     checkQualified(page).then((type: string) => handleTrackingDelay(page, type))
   }
 
@@ -190,8 +190,8 @@ export default function index(
   )
 }
 
-index.getInitialProps = async props => {
-  let seoTitle = common_view.getPathFromPathname(props.asPath)
+Index.getInitialProps = async props => {
+  let seoTitle = commonView.getPathFromPathname(props.asPath)
   const {
     document,
     featuredList,
@@ -208,26 +208,27 @@ index.getInitialProps = async props => {
     seoTitle: documentData.seoTitle,
     description: documentData.desc,
     twitter: {
-      card: "summary_large_image",
-      site: "@Polarishre",
+      card: 'summary_large_image',
+      site: '@Polarishre',
       title: documentData.title,
-      description: documentData.desc || "Sharing knowledge in new ways",
+      description: documentData.desc || 'Sharing knowledge in new ways',
       image:
-        APP_CONFIG.domain().image + "/" + documentData.documentId + "/1024/1",
+        APP_CONFIG.domain().image + '/' + documentData.documentId + '/1024/1',
       url: documentData.shortUrl
         ? documentData.shortUrl
         : APP_CONFIG.domain().mainHost +
-          "/@" +
+          '/@' +
           (authorData.username || authorData.email) +
-          "/" +
+          '/' +
           documentData.seoTitle
     },
     og: {
-      site_name: "Polaris Share",
-      type: "website",
+      type: 'website',
       title: documentData.title,
-      description: documentData.desc || "Sharing knowledge in new ways",
-      image_width: "720",
+      description: documentData.desc || 'Sharing knowledge in new ways',
+      /*eslint-disable @typescript-eslint/camelcase*/
+      site_name: 'Polaris Share',
+      image_width: '720',
       image_height: documentData.dimensions
         ? Math.floor(
             Number(
@@ -235,13 +236,14 @@ index.getInitialProps = async props => {
                 documentData.dimensions.width
             )
           )
-        : "498",
+        : '498',
+      /*eslint-disable @typescript-eslint/camelcase*/
       url: documentData.shortUrl
         ? documentData.shortUrl
         : APP_CONFIG.domain().mainHost +
-          "/@" +
+          '/@' +
           (authorData.username || authorData.email) +
-          "/" +
+          '/' +
           documentData.seoTitle
     }
   }

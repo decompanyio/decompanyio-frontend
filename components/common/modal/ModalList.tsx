@@ -1,23 +1,23 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import UploadDocumentModal from "./UploadDocumentModal"
-import EditDocumentModal from "./EditDocumentModal"
-import AwayModal from "./AwayModal"
-import UploadCompleteModal from "./UploadCompleteModal"
-import EmailModal from "./EmailModal"
-import ShareModal from "./ShareModal"
-import PrivateDocumentCountModal from "./PrivateDocumentCountModal"
-import DeleteDocumentModal from "./DeleteDocumentModal"
-import PublishModal from "./PublishModal"
-import PublishCompleteModal from "./PublishCompleteModal"
-import ImageCropModal from "./ImageCropModal"
-import DollarLearnMoreModal from "./DollarLearnMoreModal"
-import VoteModal from "./VoteModal"
-import DepositModal from "./DepositModal"
-import WithdrawModal from "./WithdrawModal"
-import FullscreenModal from "./FullscreenModal"
+import React, { ReactElement } from "react";
+import { useSelector } from 'react-redux'
+import UploadDocumentModal from './UploadDocumentModal'
+import EditDocumentModal from './EditDocumentModal'
+import AwayModal from './AwayModal'
+import UploadCompleteModal from './UploadCompleteModal'
+import EmailModal from './EmailModal'
+import ShareModal from './ShareModal'
+import PrivateDocumentCountModal from './PrivateDocumentCountModal'
+import DeleteDocumentModal from './DeleteDocumentModal'
+import PublishModal from './PublishModal'
+import PublishCompleteModal from './PublishCompleteModal'
+import ImageCropModal from './ImageCropModal'
+import DollarLearnMoreModal from './DollarLearnMoreModal'
+import VoteModal from './VoteModal'
+import DepositModal from './DepositModal'
+import WithdrawModal from './WithdrawModal'
+import FullscreenModal from './FullscreenModal'
 
-export default function() {
+export default function(): ReactElement {
   const modalCode = useSelector(state => state.main.modalCode)
 
   return (

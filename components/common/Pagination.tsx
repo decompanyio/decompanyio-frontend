@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react"
-import * as styles from "../../public/static/styles/main.scss"
-import { psString } from "../../utils/localization"
+import React, { ReactElement, useEffect, useState } from 'react'
+import * as styles from '../../public/static/styles/main.scss'
+import { psString } from '../../utils/localization'
 
-type Type = {
+interface PaginationProps {
   totalCount: number
   pageCount: number
   selectedPage?: number // url parameter 에 page 추가 됐을시 사용
-  click: any
+  click: (page: number) => void
 }
 
-export default function({ totalCount, pageCount, click, selectedPage }: Type) {
+export default function({
+  totalCount,
+  pageCount,
+  click,
+  selectedPage
+}: PaginationProps): ReactElement {
   const [currentPage, setCurrentPage] = useState(selectedPage || 1)
   const [pageArray, setPageArray] = useState([1])
   const [lastNum, setLastNum] = useState(2) // 화면상 마지막 페이지
@@ -51,7 +56,7 @@ export default function({ totalCount, pageCount, click, selectedPage }: Type) {
       {firstNum > 10 && (
         <div
           className={styles.p_arrow}
-          title={psString("page-nation-title-prev")}
+          title={psString('page-nation-title-prev')}
         >
           <i className="material-icons">keyboard_arrow_left</i>
         </div>
@@ -61,7 +66,7 @@ export default function({ totalCount, pageCount, click, selectedPage }: Type) {
         <div
           key={idx}
           onClick={() => handleClick(page)}
-          className={page === currentPage ? styles.p_selectedPage : ""}
+          className={page === currentPage ? styles.p_selectedPage : ''}
         >
           {page}
         </div>
@@ -70,7 +75,7 @@ export default function({ totalCount, pageCount, click, selectedPage }: Type) {
       {lastNum < totalPage && (
         <div
           className={styles.p_arrow}
-          title={psString("page-nation-title-next")}
+          title={psString('page-nation-title-next')}
         >
           <i className="material-icons">keyboard_arrow_right</i>
         </div>

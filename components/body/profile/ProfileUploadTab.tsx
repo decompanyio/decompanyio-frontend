@@ -1,18 +1,18 @@
-import { ThreeBounce } from "better-react-spinkit"
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import log from "utils/log"
-import { psString } from "utils/localization"
-import * as styles from "../../../public/static/styles/main.scss"
-import NoDataIcon from "components/common/NoDataIcon"
-import repos from "../../../utils/repos"
-import ProfileUploadTabItem from "./ProfileUploadTabItem"
-import Pagination from "../../common/Pagination"
-import { setActionMain } from "../../../redux/reducer/main"
-import common_data from "../../../common/common_data"
+import { ThreeBounce } from 'better-react-spinkit'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import log from 'utils/log'
+import { psString } from 'utils/localization'
+import * as styles from '../../../public/static/styles/main.scss'
+import NoDataIcon from 'components/common/NoDataIcon'
+import repos from '../../../utils/repos'
+import ProfileUploadTabItem from './ProfileUploadTabItem'
+import Pagination from '../../common/Pagination'
+import { setActionMain } from '../../../redux/reducer/main'
+import commonData from '../../../common/commonData'
 
-type Type = {
-  profileInfo: any
+interface ProfileUploadProps {
+  profileInfo
   owner: boolean
 }
 
@@ -23,20 +23,39 @@ const resultListModel = {
   totalViewCountInfo: null
 }
 
-const pageSize = common_data.myPageListSize // 화면상 리스트 수
+const pageSize = commonData.myPageListSize // 화면상 리스트 수
 
-export default function({ profileInfo, owner }: Type) {
+export default function({
+  profileInfo,
+  owner
+}: ProfileUploadProps): ReactElement {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-  const [viewerOptionOpenedIdx, setViewerOptionOpenedIdx] = useState(null)
+  const [viewerOptionOpenedIdx, setViewerOptionOpenedIdx] = useState(-1)
   const [dataSet, setDataSet] = useState(resultListModel)
   const [page, setPage] = useState(1)
 
+  // GET 데이터 관리
+  const handleData = res => {
+    if (!res || !res.resultList) return Promise.reject()
+    setLoading(false)
+
+    setDataSet({
+      resultList: res.resultList,
+      totalCount: res.count,
+      pageNo: res.pageNo,
+      totalViewCountInfo:
+        res && res.totalViewCountInfo && !dataSet.totalViewCountInfo
+          ? res.totalViewCountInfo
+          : null
+    })
+  }
+
   // 데이터 GET
-  const fetchDocuments = (page: number) => {
+  const handleFetchDocuments = (page: number) => {
     let params = {
       pageNo: page,
-      username: profileInfo.username || "",
+      username: profileInfo.username || '',
       email: profileInfo.email,
       pageSize: pageSize
     }
@@ -56,36 +75,22 @@ export default function({ profileInfo, owner }: Type) {
       })
   }
 
-  // GET 데이터 관리
-  const handleData = res => {
-    if (!res || !res.resultList) return Promise.reject()
-    setLoading(false)
-
-    setDataSet({
-      resultList: res.resultList,
-      totalCount: res.count,
-      pageNo: res.pageNo,
-      totalViewCountInfo:
-        res && res.totalViewCountInfo && !dataSet.totalViewCountInfo
-          ? res.totalViewCountInfo
-          : null
-    })
-  }
-
   // 업로드 탭, 설정창 on/off 관리
-  const handleUploadSettings = idx =>
-    setViewerOptionOpenedIdx(viewerOptionOpenedIdx !== idx ? idx : null)
+  const handleUploadSettings = (idx: number): void => {
+    setViewerOptionOpenedIdx(viewerOptionOpenedIdx !== idx ? idx : -1)
+  }
 
   // 클릭 이벤트 리스너
   const handleOption = e => {
-    if (viewerOptionOpenedIdx !== null) {
+    if (viewerOptionOpenedIdx !== -1) {
       const targetElement = e.target
-      const profileCard = document.getElementById(
-        "optionTable" + viewerOptionOpenedIdx
-      )!.parentNode
+      const el = document.getElementById(
+        'optionTable' + viewerOptionOpenedIdx
+      ) as HTMLElement
+      const profileCard = el.parentNode
 
-      if (!profileCard!.contains(targetElement)) {
-        setViewerOptionOpenedIdx(null)
+      if (profileCard && !profileCard.contains(targetElement)) {
+        setViewerOptionOpenedIdx(-1)
       }
     }
   }
@@ -94,24 +99,24 @@ export default function({ profileInfo, owner }: Type) {
   const handlePageClick = (page: number) => {
     return Promise.resolve()
       .then(() => setPage(page))
-      .then(() => fetchDocuments(page))
+      .then(() => handleFetchDocuments(page))
   }
 
   useEffect(() => {
     log.CreatorUploadTab.init(false)
     // url 위변조 방지 위하여, 첫 로드시 set state 진행
-    void fetchDocuments(1)
+    void handleFetchDocuments(1)
 
-    window.addEventListener("click", handleOption)
+    window.addEventListener('click', handleOption)
     return () => {
-      window.removeEventListener("click", handleOption)
+      window.removeEventListener('click', handleOption)
     }
   }, [])
 
   return (
     <div className={styles.put_container}>
       <div className={styles.put_totalNum}>
-        {psString("profile-total-documents")}
+        {psString('profile-total-documents')}
         <span>{dataSet.totalCount}</span>
       </div>
 

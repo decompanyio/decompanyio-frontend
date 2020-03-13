@@ -1,18 +1,18 @@
-import Layout from "../components/Layout"
-import * as styles from "public/static/styles/main.scss"
-import common_data from "../common/common_data"
-import React from "react"
+import Layout from '../components/Layout'
+import * as styles from 'public/static/styles/main.scss'
+import commonData from '../common/commonData'
+import React, { ReactElement } from 'react'
 
-function Terms() {
+export default function(): ReactElement {
   return (
-    <Layout title={"Terms of Service" + common_data.commonTitle} path="terms">
+    <Layout title={'Terms of Service' + commonData.commonTitle} path="terms">
       <div className={styles.tos_container}>
         <div className={styles.tos_subject}>Terms of Service</div>
 
         <div className={styles.tos_content}>
           Welcome to Polaris Share! This agreement (the “Agreement”) between you
           and DECOMPANY GLOBAL, Inc.(“we”, “us”, “our”) sets out your rights to
-          access and use of{" "}
+          access and use of{' '}
           <a href="https://www.polarishare.com">polarishare.com</a> and any
           other products or services provided by us (the “Service”). If you are
           accepting this Agreement and using the Services on behalf of a
@@ -255,7 +255,7 @@ function Terms() {
           <div>10. Suspension or Termination of Service.</div>
           10.1. We may suspend or terminate your access to the Services in our
           sole discretion, immediately and without prior notice, and delete or
-          deactivate your{" "}
+          deactivate your{' '}
           <a href="https://www.polarishare.com">polarishare.com</a> account and
           all related information and files in such without cost to you,
           including, for instance, if you breach any term of this Agreement. In
@@ -514,7 +514,7 @@ function Terms() {
           terminate your license to access and use of the Service, which
           includes, <a href="https://www.polarishare.com">
             polarishare.com
-          </a>{" "}
+          </a>{' '}
           and to block or prevent your future access to, and use of, the Service
           that we provide.
           <br />
@@ -544,7 +544,7 @@ function Terms() {
           <div>
             Addendum <br />
             <span>
-              These Terms of Service shall become effective on June 17, 2019.{" "}
+              These Terms of Service shall become effective on June 17, 2019.{' '}
             </span>
           </div>
         </div>
@@ -552,5 +552,3 @@ function Terms() {
     </Layout>
   )
 }
-
-export default Terms

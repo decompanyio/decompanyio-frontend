@@ -1,14 +1,14 @@
 export default class AccountInfo {
-  user: any
-  deck: any
-  gas: any
-  privateDocumentCount: number
+  public _user: {}
+  public _deck: []
+  public _gas: []
+  public _privateDocumentCount: 0
 
-  constructor(data: any) {
-    this.user = data && data.user ? data.user : {}
-    this.deck = data && data.deck ? data.deck : []
-    this.gas = data && data.gas ? data.gas : []
-    this.privateDocumentCount =
+  public constructor(data) {
+    this._user = data && data.user ? data.user : {}
+    this._deck = data && data.deck ? data.deck : []
+    this._gas = data && data.gas ? data.gas : []
+    this._privateDocumentCount =
       data && data.privateDocumentCount ? data.privateDocumentCount : 0
   }
 }

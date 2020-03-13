@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react"
-import { FadingCircle } from "better-react-spinkit"
-import * as styles from "../../../public/static/styles/main.scss"
-import { useSelector, useDispatch } from "react-redux"
-import LinesEllipsis from "react-lines-ellipsis"
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"
-import common_view from "common/common_view"
-import { psString } from "utils/localization"
-import common from "common/common"
-import { APP_CONFIG } from "../../../app.config"
-import Link from "next/link"
-import repos from "../../../utils/repos"
-import { AUTH_APIS } from "../../../utils/auth"
-import RewardCard from "../../common/card/RewardCard"
-import { setActionMain } from "../../../redux/reducer/main"
-import DocumentInfo from "../../../service/model/DocumentInfo"
-import ProfileCreatorClaim from "./ProfileCreatorClaim"
+import React, { ReactElement, useEffect, useState } from 'react'
+import { FadingCircle } from 'better-react-spinkit'
+import * as styles from '../../../public/static/styles/main.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import LinesEllipsis from 'react-lines-ellipsis'
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import commonView from 'common/commonView'
+import { psString } from 'utils/localization'
+import common from 'common/common'
+import { APP_CONFIG } from '../../../app.config'
+import Link from 'next/link'
+import repos from '../../../utils/repos'
+import { AUTH_APIS } from '../../../utils/auth'
+import RewardCard from '../../common/card/RewardCard'
+import { setActionMain } from '../../../redux/reducer/main'
+import DocumentInfo from '../../../service/model/DocumentInfo'
+import ProfileCreatorClaim from './ProfileCreatorClaim'
 
-type Type = {
-  documentData: any
+interface ProfileUploadTabItemProps {
+  documentData
   idx: number
-  handleUploadSettings: any
-  viewerOptionOpenedIdx: any
+  handleUploadSettings: () => void
+  viewerOptionOpenedIdx: number
   owner: boolean
 }
 
@@ -32,7 +32,7 @@ export default function({
   handleUploadSettings,
   viewerOptionOpenedIdx,
   owner
-}: Type) {
+}: ProfileUploadTabItemProps): ReactElement {
   const dispatch = useDispatch()
   const myInfo = useSelector(state => state.main.myInfo)
   const isMobile = useSelector(state => state.main.isMobile)
@@ -46,12 +46,12 @@ export default function({
   const getContentDownload = (documentId: string, documentName: string) =>
     repos.Document.getDocumentDownloadUrl({ documentId: documentId })
       .then(result => {
-        const a = document.createElement("a")
+        const a = document.createElement('a')
 
-        a.style.display = "none"
+        a.style.display = 'none'
         document.body.appendChild(a)
         a.href = result.downloadUrl
-        a.setAttribute("download", documentName)
+        a.setAttribute('download', documentName)
         a.click()
 
         window.URL.revokeObjectURL(a.href)
@@ -93,7 +93,7 @@ export default function({
     if (
       !owner ||
       !tmpDocumentData.state ||
-      tmpDocumentData.state === "CONVERT_COMPLETE"
+      tmpDocumentData.state === 'CONVERT_COMPLETE'
     ) {
       return false
     }
@@ -101,7 +101,7 @@ export default function({
     let interval = setInterval(() => {
       repos.Document.getDocument(tmpDocumentData.seoTitle)
         .then(res => {
-          if (res && res.document.state === "CONVERT_COMPLETE") {
+          if (res && res.document.state === 'CONVERT_COMPLETE') {
             clearInterval(interval)
             setDocumentState(res.document.state)
             dispatch(
@@ -118,15 +118,15 @@ export default function({
 
   // 공유 버튼 클릭
   const handleClickShareBtn = () =>
-    dispatch(setActionMain.modal("share", { documentData }))
+    dispatch(setActionMain.modal('share', { documentData }))
 
   // 삭제 버튼 클릭
   const handleClickDeleteBtn = () =>
-    dispatch(setActionMain.modal("delete", { documentData }))
+    dispatch(setActionMain.modal('delete', { documentData }))
 
   // 출판 버튼 클릭
   const handleClickPublishBtn = () =>
-    dispatch(setActionMain.modal("publish", { documentData }))
+    dispatch(setActionMain.modal('publish', { documentData }))
 
   useEffect(() => {
     handleState()
@@ -147,7 +147,7 @@ export default function({
     <div className={styles.puti_container}>
       <div className={styles.puti_thumbWrapper}>
         {tmpDocumentData.state &&
-        tmpDocumentData.state !== "CONVERT_COMPLETE" ? (
+        tmpDocumentData.state !== 'CONVERT_COMPLETE' ? (
           <div className={styles.puti_thumbLoading}>
             <div className={styles.puti_notConvertContainer}>
               <div className={styles.puti_notConvert}>
@@ -158,10 +158,10 @@ export default function({
         ) : (
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: tmpDocumentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+            as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
           >
             <div className={styles.puti_thumb}>
               <img
@@ -178,17 +178,17 @@ export default function({
                 }
                 className={
                   styles.puti_cardImg +
-                  " " +
+                  ' ' +
                   (tmpDocumentData.state &&
-                  tmpDocumentData.state !== "CONVERT_COMPLETE"
+                  tmpDocumentData.state !== 'CONVERT_COMPLETE'
                     ? styles.puti_notConvertBackground
-                    : "")
+                    : '')
                 }
                 onError={e => {
                   let element = e.target as HTMLImageElement
                   element.onerror = null
                   element.src =
-                    APP_CONFIG.domain().static + "/image/logo-cut.png"
+                    APP_CONFIG.domain().static + '/image/logo-cut.png'
                 }}
               />
             </div>
@@ -201,8 +201,8 @@ export default function({
           <div className={styles.puti_optionBtn}>
             <i
               className={
-                "material-icons " +
-                (viewerOptionOpenedIdx === idx ? styles.puti_optionShow : "")
+                'material-icons ' +
+                (viewerOptionOpenedIdx === idx ? styles.puti_optionShow : '')
               }
               onClick={() => handleUploadSettings()}
             >
@@ -212,54 +212,54 @@ export default function({
             <div
               className={
                 styles[
-                  "puti_optionTable" +
-                    (viewerOptionOpenedIdx === idx ? "" : "Hide")
+                  'puti_optionTable' +
+                    (viewerOptionOpenedIdx === idx ? '' : 'Hide')
                 ]
               }
-              id={"optionTable" + idx}
+              id={'optionTable' + idx}
             >
-              {tmpDocumentData.state === "CONVERT_COMPLETE" && (
+              {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleClickShareBtn()}
                 >
                   <i className="material-icons">share</i>
-                  {psString("share-modal-btn")}
+                  {psString('share-modal-btn')}
                 </div>
               )}
-              {tmpDocumentData.state === "CONVERT_COMPLETE" && (
+              {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleDownloadContent()}
                 >
                   <i className="material-icons">save_alt</i>
-                  {psString("download-btn")}
+                  {psString('download-btn')}
                 </div>
               )}
 
               {((common.dateAgo(tmpDocumentData.created) > 0 &&
                 tmpDocumentData.state &&
-                tmpDocumentData.state !== "CONVERT_COMPLETE") ||
+                tmpDocumentData.state !== 'CONVERT_COMPLETE') ||
                 !tmpDocumentData.isPublic) && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleClickDeleteBtn()}
                 >
                   <i className="material-icons">delete</i>
-                  {psString("common-modal-delete")}
+                  {psString('common-modal-delete')}
                 </div>
               )}
             </div>
           </div>
         )}
         {tmpDocumentData.desc &&
-        tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+        tmpDocumentData.state === 'CONVERT_COMPLETE' ? (
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: tmpDocumentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+            as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
           >
             <div className={styles.puti_title}>
               {tmpDocumentData.title
@@ -277,13 +277,13 @@ export default function({
 
         <div className={styles.puti_descWrapper}>
           {tmpDocumentData.desc &&
-          tmpDocumentData.state === "CONVERT_COMPLETE" ? (
+          tmpDocumentData.state === 'CONVERT_COMPLETE' ? (
             <Link
               href={{
-                pathname: "/contents_view",
+                pathname: '/contents_view',
                 query: { seoTitle: tmpDocumentData.seoTitle }
               }}
-              as={"/@" + identification + "/" + tmpDocumentData.seoTitle}
+              as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
             >
               <div className={styles.puti_desc}>
                 <ResponsiveEllipsis
@@ -318,7 +318,7 @@ export default function({
             <img
               className={styles.puti_arrow}
               src={
-                APP_CONFIG.domain().static + "/image/icon/i_arrow_down_blue.svg"
+                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
               }
               alt="arrow button"
             />
@@ -330,7 +330,7 @@ export default function({
           <span className={styles.puti_view}>{view}</span>
           <span className={styles.puti_vote}>{common.deckStr(vote)}</span>
           <div className={styles.puti_date}>
-            {common_view.dateTimeAgo(tmpDocumentData.created, isMobile)}
+            {commonView.dateTimeAgo(tmpDocumentData.created, isMobile)}
           </div>
 
           {owner && validClaimAmount > 0 && (
@@ -343,14 +343,14 @@ export default function({
           )}
 
           {!tmpDocumentData.isPublic &&
-            tmpDocumentData.state === "CONVERT_COMPLETE" && (
+            tmpDocumentData.state === 'CONVERT_COMPLETE' && (
               <div className={styles.puti_publishBtnWrapper}>
                 <p
-                  data-tip={psString("tooltip-publish")}
+                  data-tip={psString('tooltip-publish')}
                   className={styles.puti_publishBtn}
                   onClick={() => handleClickPublishBtn()}
                 >
-                  {psString("common-modal-publish")}
+                  {psString('common-modal-publish')}
                 </p>
               </div>
             )}

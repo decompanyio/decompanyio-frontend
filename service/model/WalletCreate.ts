@@ -1,7 +1,7 @@
 export default class WalletCreate {
-  address: string
+  public address: string
 
-  constructor(data) {
-    this.address = data && data.address ? data.address : ""
+  public constructor(data) {
+    this.address = data && data.address ? data.address : ''
   }
 }

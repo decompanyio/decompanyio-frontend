@@ -1,4 +1,4 @@
-import ReduxTypes from "redux/reduxTypes"
+import ReduxTypes from 'redux/reduxTypes'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 

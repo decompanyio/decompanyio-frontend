@@ -1,10 +1,10 @@
 export default class UserProfile {
-  picture: string
-  signedUploadUrl: string
+  public picture: string
+  public signedUploadUrl: string
 
-  constructor(data) {
+  public constructor(data) {
     this.signedUploadUrl =
-      data && data.signedUploadUrl ? data.signedUploadUrl : ""
-    this.picture = data && data.picture ? data.picture : ""
+      data && data.signedUploadUrl ? data.signedUploadUrl : ''
+    this.picture = data && data.picture ? data.picture : ''
   }
 }

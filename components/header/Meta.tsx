@@ -1,12 +1,12 @@
-import Head from "next/head"
-import React from "react"
+import Head from 'next/head'
+import React, { ReactElement } from 'react'
 
-type Type = {
+interface MetaProps {
   title: string
-  metaData: any
+  metaData
 }
 
-export default function({ title, metaData }: Type) {
+export default function({ title, metaData }: MetaProps): ReactElement {
   return (
     <Head>
       <title>{title}</title>

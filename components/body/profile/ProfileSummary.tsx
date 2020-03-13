@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import * as styles from "public/static/styles/main.scss"
-import { psString } from "../../../utils/localization"
-import MyAvatar from "../../common/avatar/MyAvatar"
-import ProfileUsernameEdit from "./ProfileUsernameEdit"
-import ProfileAvatarEdit from "./ProfileAvatarEdit"
-import repos from "../../../utils/repos"
-import log from "utils/log"
-import WalletBalance from "../../../service/model/WalletBalance"
-import common from "common/common"
-import { setActionMain } from "../../../redux/reducer/main"
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import * as styles from 'public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import MyAvatar from '../../common/avatar/MyAvatar'
+import ProfileUsernameEdit from './ProfileUsernameEdit'
+import ProfileAvatarEdit from './ProfileAvatarEdit'
+import repos from '../../../utils/repos'
+import log from 'utils/log'
+import WalletBalance from '../../../service/model/WalletBalance'
+import common from 'common/common'
+import { setActionMain } from '../../../redux/reducer/main'
 
-type Type = {
-  profileInfo: any
+interface ProfileSummaryProps {
+  profileInfo
   owner: boolean
 }
 
-export default function({ profileInfo, owner }: Type) {
+export default function({
+  profileInfo,
+  owner
+}: ProfileSummaryProps): ReactElement {
   const dispatch = useDispatch()
   const [balance, setBalance] = useState(new WalletBalance(null))
   const [reward, setReward] = useState({
@@ -29,6 +32,27 @@ export default function({ profileInfo, owner }: Type) {
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
   )
+
+  // 잔액 조회
+  const getBalance = () =>
+    repos.Wallet.getWalletBalance({ userId: profileInfo._id }).then(
+      (res: any) => {
+        setBalance(res)
+        log.CreatorSummary.getBalance(false)
+      }
+    )
+
+  // 계산된 리워드 GET
+  const getCalculatedReward = (value): number => {
+    if (value && value.length > 0) {
+      let { reward } = value.reduce(
+        (prev, value): number => prev.reward + value.reward
+      )
+      return reward
+    } else {
+      return 0
+    }
+  }
 
   // 리워드 조회
   const getRewards = () => {
@@ -45,42 +69,27 @@ export default function({ profileInfo, owner }: Type) {
     })
   }
 
-  // 잔액 조회
-  const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: profileInfo._id }).then(
-      (res: any) => {
-        setBalance(res)
-        log.CreatorSummary.getBalance(false)
-      }
-    )
-
-  // 계산된 리워드 GET
-  const getCalculatedReward = value => {
-    if (value && value.length > 0) {
-      let { reward } = value.reduce((prev, value) => prev.reward + value.reward)
-      return reward
-    } else {
-      return 0
-    }
-  }
-
   // username 수정 시
-  const handleClickEvent = () => setUserNameEdit(true)
+  const handleClickEvent = (): void => setUserNameEdit(true)
 
   // 수정 취소
-  const handleUsernameEditCancel = () => setUserNameEdit(false)
+  const handleUsernameEditCancel = (): void => setUserNameEdit(false)
 
   // 수정 완료
-  const handleUsernameEditDone = (value: string) => {
+  const handleUsernameEditDone = (value: string): void => {
     setUserNameEdit(false)
     setUsername(value)
   }
 
   // 입금 버튼 클릭 관리
-  const handleDepositBtnClick = () => dispatch(setActionMain.modal("deposit"))
+  const handleDepositBtnClick = (): void => {
+    dispatch(setActionMain.modal('deposit'))
+  }
 
   // 출금 버튼 클릭 관리
-  const handleWithdrawBtnClick = () => dispatch(setActionMain.modal("withdraw"))
+  const handleWithdrawBtnClick = (): void => {
+    dispatch(setActionMain.modal('withdraw'))
+  }
 
   useEffect(() => {
     void getBalance()
@@ -116,7 +125,7 @@ export default function({ profileInfo, owner }: Type) {
                     className={styles.ps_usernameEditBtn}
                     onClick={() => handleClickEvent()}
                   >
-                    {psString("profile-edit")}
+                    {psString('profile-edit')}
                   </div>
                 )}
               </span>
@@ -124,28 +133,31 @@ export default function({ profileInfo, owner }: Type) {
           </div>
 
           <div className={styles.ps_info}>
-            {psString("profile-total-balance")}
+            {psString('profile-total-balance')}
             <span>
-              {"$ " +
+              {'$ ' +
                 common.withComma(balance.dollar) +
-                " (" +
+                ' (' +
                 balance.deck +
-                " DECK)"}
+                ' DECK)'}
             </span>
             <br />
-            {psString("profile-estimated-earnings")}
+            {psString('profile-estimated-earnings')}
             <span>
-              {"$ " +
+              {'$ ' +
                 common.withComma(
-                  common.deckToDollarWithComma(
-                    reward.todayEstimatedCreator + reward.todayEstimatedCurator
+                  Number(
+                    common.deckToDollarWithComma(
+                      reward.todayEstimatedCreator +
+                        reward.todayEstimatedCurator
+                    )
                   )
                 )}
             </span>
             <br />
-            {psString("profile-revenue-7-days")}
+            {psString('profile-revenue-7-days')}
             <span>
-              {"$ " +
+              {'$ ' +
                 common.deckToDollarWithComma(
                   reward.last7Creator + reward.last7Curator
                 )}
@@ -155,18 +167,18 @@ export default function({ profileInfo, owner }: Type) {
           {owner && (
             <div className={styles.ps_depositBtnWrapper}>
               <p
-                data-tip={psString("deposit-modal-title")}
+                data-tip={psString('deposit-modal-title')}
                 className={styles.ps_depositBtn}
                 onClick={() => handleDepositBtnClick()}
               >
-                {psString("common-modal-deposit")}
+                {psString('common-modal-deposit')}
               </p>
               <p
-                data-tip={psString("withdraw-modal-title")}
+                data-tip={psString('withdraw-modal-title')}
                 className={styles.ps_withdrawBtn}
                 onClick={() => handleWithdrawBtnClick()}
               >
-                {psString("common-modal-withdraw")}
+                {psString('common-modal-withdraw')}
               </p>
             </div>
           )}
@@ -175,33 +187,33 @@ export default function({ profileInfo, owner }: Type) {
 
       <div className={styles.ps_bottom}>
         <div className={styles.ps_creatorWrapper}>
-          <h5>{psString("profile-author-rewards")}</h5>
+          <h5>{psString('profile-author-rewards')}</h5>
           <div className={styles.ps_info}>
-            {psString("profile-estimated-earnings")}
+            {psString('profile-estimated-earnings')}
             <span>
-              {"$ " +
+              {'$ ' +
                 common.deckToDollarWithComma(reward.todayEstimatedCreator)}
             </span>
             <br />
-            {psString("profile-revenue-7-days")}
+            {psString('profile-revenue-7-days')}
             <span>
-              {"$ " + common.deckToDollarWithComma(reward.last7Creator)}
+              {'$ ' + common.deckToDollarWithComma(reward.last7Creator)}
             </span>
           </div>
         </div>
 
         <div className={styles.ps_curatorWrapper}>
-          <h5>{psString("profile-curator-rewards")}</h5>
+          <h5>{psString('profile-curator-rewards')}</h5>
           <div className={styles.ps_info}>
-            {psString("profile-estimated-earnings")}
+            {psString('profile-estimated-earnings')}
             <span>
-              {"$ " +
+              {'$ ' +
                 common.deckToDollarWithComma(reward.todayEstimatedCurator)}
             </span>
             <br />
-            {psString("profile-revenue-7-days")}
+            {psString('profile-revenue-7-days')}
             <span>
-              {"$ " + common.deckToDollarWithComma(reward.last7Curator)}
+              {'$ ' + common.deckToDollarWithComma(reward.last7Curator)}
             </span>
           </div>
         </div>

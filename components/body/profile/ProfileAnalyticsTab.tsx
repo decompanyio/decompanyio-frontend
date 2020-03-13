@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import Link from "next/link"
-import { ThreeBounce } from "better-react-spinkit"
-import repos from "utils/repos"
-import { psString } from "utils/localization"
-import NoDataIcon from "components/common/NoDataIcon"
-import { APP_CONFIG } from "../../../app.config"
-import AnalyticsList from "../../../service/model/AnalyticsList"
-import * as styles from "../../../public/static/styles/main.scss"
-import ProfileAnalyticsChart from "./ProfileAnalyticsChart"
-import { setActionMain } from "../../../redux/reducer/main"
-import common_view from "common/common_view"
-import common from "common/common"
-import Pagination from "../../common/Pagination"
-import common_data from "../../../common/common_data"
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Link from 'next/link'
+import { ThreeBounce } from 'better-react-spinkit'
+import repos from 'utils/repos'
+import { psString } from 'utils/localization'
+import NoDataIcon from 'components/common/NoDataIcon'
+import { APP_CONFIG } from '../../../app.config'
+import AnalyticsList from '../../../service/model/AnalyticsList'
+import * as styles from '../../../public/static/styles/main.scss'
+import ProfileAnalyticsChart from './ProfileAnalyticsChart'
+import { setActionMain } from '../../../redux/reducer/main'
+import commonView from 'common/commonView'
+import common from 'common/common'
+import Pagination from '../../common/Pagination'
+import commonData from '../../../common/commonData'
+import DocumentList from '../../../service/model/DocumentList'
 
-type Type = {
-  profileInfo: any
+interface ProfileAnalyticsTabProps {
+  profileInfo
 }
 
 const resultListModel = {
@@ -25,24 +26,43 @@ const resultListModel = {
   totalCount: 0
 }
 
-const pageSize = common_data.myPageListSize // 화면상 리스트 수
+const pageSize = commonData.myPageListSize // 화면상 리스트 수
 
-export default function({ profileInfo }: Type) {
+export default function({
+  profileInfo
+}: ProfileAnalyticsTabProps): ReactElement {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [chartFlag, setChartFlag] = useState(false)
   const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null))
   const [spreadItem, setSpreadItem] = useState(-1)
   const [page, setPage] = useState(1)
-  const [documentId, setDocumentId] = useState(null)
+  const [documentId, setDocumentId] = useState('')
   const [dataSet, setDataSet] = useState(resultListModel)
   const [dateSet, setDateSet] = useState({
     year: -1,
     week: 1
   })
 
+  // GET 데이터 관리
+  const handleData = (res): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      setLoading(false)
+
+      if (!res || !res.resultList) return reject()
+
+      resolve(
+        setDataSet({
+          resultList: res.resultList,
+          pageNo: res.pageNo,
+          totalCount: res.count
+        })
+      )
+    })
+  }
+
   // 문서 리스트 GET
-  const fetchDocuments = (page: number) => {
+  const fetchDocuments = async (page: number): Promise<void> => {
     let params = {
       pageNo: page,
       username: profileInfo.username,
@@ -50,9 +70,9 @@ export default function({ profileInfo }: Type) {
     }
 
     return Promise.resolve()
-      .then(() => setDataSet(resultListModel))
-      .then(() => setLoading(true))
-      .then(() => repos.Document.getDocumentList(params))
+      .then((): void => setDataSet(resultListModel))
+      .then((): void => setLoading(true))
+      .then((): Promise<DocumentList> => repos.Document.getDocumentList(params))
       .then(res => handleData(res))
       .catch(err => {
         console.error(err)
@@ -60,20 +80,8 @@ export default function({ profileInfo }: Type) {
       })
   }
 
-  // GET 데이터 관리
-  const handleData = (res: any) => {
-    if (!res || !res.resultList) return Promise.reject()
-    setLoading(false)
-
-    setDataSet({
-      resultList: res.resultList,
-      pageNo: res.pageNo,
-      totalCount: res.count
-    })
-  }
-
   // 차트 정보 GET
-  const getAnalytics = (documentId: any, dataKey) => {
+  const getAnalytics = (documentId: string, dataKey) => {
     repos.Analytics.getAnalyticsList({
       week: dateSet.week,
       year: dateSet.year > 0 ? dateSet.year : null,
@@ -87,9 +95,9 @@ export default function({ profileInfo }: Type) {
   }
 
   // 스크롤 아웃 관리 메소드
-  const handleClick = (e: any) => {
-    const dataKey = e.currentTarget.getAttribute("data-key")
-    const dataId = e.currentTarget.getAttribute("data-id")
+  const handleClick = e => {
+    const dataKey = e.currentTarget.getAttribute('data-key')
+    const dataId = e.currentTarget.getAttribute('data-id')
 
     setDateSet({
       week: 1,
@@ -111,13 +119,13 @@ export default function({ profileInfo }: Type) {
       week: dateSet.year
     }
     repos.Analytics.getAnalyticsExport(data).then(rst => {
-      const a = document.createElement("a")
-      a.style.display = "none"
+      const a = document.createElement('a')
+      a.style.display = 'none'
       document.body.appendChild(a)
 
       a.href = rst.csvDownloadUrl
 
-      a.setAttribute("download", "analystics_" + seoTitle + ".xls")
+      a.setAttribute('download', 'analystics_' + seoTitle + '.xls')
       a.click()
 
       window.URL.revokeObjectURL(a.href)
@@ -131,19 +139,19 @@ export default function({ profileInfo }: Type) {
     let weekValueNum = -1
 
     switch (weekValue) {
-      case "1w":
+      case '1w':
         return (weekValueNum = 1)
 
-      case "1m":
+      case '1m':
         return (weekValueNum = 4)
 
-      case "3m":
+      case '3m':
         return (weekValueNum = 12)
 
-      case "6m":
+      case '6m':
         return (weekValueNum = 24)
 
-      case "1y":
+      case '1y':
         return (weekValueNum = 1)
 
       default:
@@ -151,8 +159,8 @@ export default function({ profileInfo }: Type) {
     }
 
     setDateSet({
-      week: weekValue !== "1y" ? weekValueNum : -1,
-      year: weekValue !== "1y" ? -1 : weekValueNum
+      week: weekValue !== '1y' ? weekValueNum : -1,
+      year: weekValue !== '1y' ? -1 : weekValueNum
     })
     setChartFlag(false) // 차트 데이터 props 타이밍 동기화
     getAnalytics(documentId, spreadItem)
@@ -177,7 +185,7 @@ export default function({ profileInfo }: Type) {
   return (
     <div className={styles.pat_container}>
       <div className={styles.pat_totalNum}>
-        {psString("profile-total-documents")}
+        {psString('profile-total-documents')}
         <span>{dataSet.totalCount}</span>
       </div>
 
@@ -187,14 +195,14 @@ export default function({ profileInfo }: Type) {
             <div className={styles.pat_thumbWrapper}>
               <Link
                 href={{
-                  pathname: "/contents_view",
+                  pathname: '/contents_view',
                   query: { seoTitle: result.seoTitle }
                 }}
-                as={"/@" + identification + "/" + result.seoTitle}
+                as={'/@' + identification + '/' + result.seoTitle}
               >
                 <div
                   className={styles.pat_thumb}
-                  onClick={() => common_view.scrollTop()}
+                  onClick={() => commonView.scrollTop()}
                 >
                   <img
                     src={common.getThumbnail(
@@ -208,7 +216,7 @@ export default function({ profileInfo }: Type) {
                       let element = e.target as HTMLImageElement
                       element.onerror = null
                       element.src =
-                        APP_CONFIG.domain().static + "/image/logo-cut.png"
+                        APP_CONFIG.domain().static + '/image/logo-cut.png'
                     }}
                   />
                 </div>
@@ -218,14 +226,14 @@ export default function({ profileInfo }: Type) {
             <div className={styles.pat_titleWrapper}>
               <Link
                 href={{
-                  pathname: "/contents_view",
+                  pathname: '/contents_view',
                   query: { seoTitle: result.seoTitle }
                 }}
-                as={"/@" + identification + "/" + result.seoTitle}
+                as={'/@' + identification + '/' + result.seoTitle}
               >
                 <div
                   className={styles.pat_title}
-                  onClick={() => common_view.scrollTop()}
+                  onClick={() => commonView.scrollTop()}
                 >
                   {result.title ? result.title : result.documentName}
                 </div>
@@ -233,13 +241,13 @@ export default function({ profileInfo }: Type) {
             </div>
 
             <div className={styles.pat_date}>
-              {common_view.dateTimeAgo(result.created, false)}
+              {commonView.dateTimeAgo(result.created, false)}
             </div>
 
             <div
               className={
                 styles[
-                  "pat_btn" + (idx === spreadItem && chartFlag ? "On" : "")
+                  'pat_btn' + (idx === spreadItem && chartFlag ? 'On' : '')
                 ]
               }
               onClick={e => handleClick(e)}
@@ -250,7 +258,7 @@ export default function({ profileInfo }: Type) {
               <i>
                 <img
                   src={
-                    APP_CONFIG.domain().static + "/image/icon/i_faq_reverse.png"
+                    APP_CONFIG.domain().static + '/image/icon/i_faq_reverse.png'
                   }
                   alt="dropdown icon"
                 />

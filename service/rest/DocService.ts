@@ -1,22 +1,22 @@
-import AxiosService from "./AxiosService"
+import AxiosService from './AxiosService'
 
-let getDocumentUrl = "document/info"
-let getDocumentListUrl = "document/list"
-let voteDocumentUrl = "document/vote"
-let documentDownloadUrl = "document/download"
-let registerDocumentInfoUrl = "document/regist"
-let updateDocumentUrl = "document/update"
-let documentPdfUrl = "document/pdf"
-let getDocumentsUrl = "account/documents"
-let getCuratorDocumentsUrl = "curator/document/list"
+let getDocumentUrl = 'document/info'
+let getDocumentListUrl = 'document/list'
+let voteDocumentUrl = 'document/vote'
+let documentDownloadUrl = 'document/download'
+let registerDocumentInfoUrl = 'document/regist'
+let updateDocumentUrl = 'document/update'
+let documentPdfUrl = 'document/pdf'
+let getDocumentsUrl = 'account/documents'
+let getCuratorDocumentsUrl = 'curator/document/list'
 
 export default {
   GET: {
     document: data => {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
-          getDocumentUrl + "/" + data,
-          "GET",
+          getDocumentUrl + '/' + data,
+          'GET',
           null,
           data => resolve(data),
           err => reject(err)
@@ -27,7 +27,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getDocumentsUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
@@ -38,7 +38,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           getDocumentListUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
@@ -49,7 +49,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           documentDownloadUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
@@ -60,7 +60,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           getCuratorDocumentsUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
@@ -71,7 +71,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           documentPdfUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
@@ -83,7 +83,7 @@ export default {
     sendVoteInfo: (data, callback, error) => {
       AxiosService._requestWithUrlPram(
         voteDocumentUrl,
-        "POST",
+        'POST',
         data,
         data => callback(data),
         err => error(err)
@@ -92,7 +92,7 @@ export default {
     registerDocument: (data, callback, error) => {
       AxiosService._requestWithHeaderBody(
         registerDocumentInfoUrl,
-        "POST",
+        'POST',
         data,
         data => callback(data),
         err => error(err)
@@ -102,7 +102,7 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBody(
           updateDocumentUrl,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)

@@ -1,15 +1,4 @@
-import common_data from "../../common/common_data"
-
-export default class TagList {
-  tagList?: any
-
-  constructor(data) {
-    this.tagList =
-      data && data.resultList
-        ? data.resultList.sort(compare)
-        : common_data.tagList
-  }
-}
+import commonData from '../../common/commonData'
 
 const compare = (a, b) => {
   if (a._id < b._id) {
@@ -19,4 +8,15 @@ const compare = (a, b) => {
     return 1
   }
   return 0
+}
+
+export default class TagList {
+  public tagList?: []
+
+  public constructor(data) {
+    this.tagList =
+      data && data.resultList
+        ? data.resultList.sort(compare)
+        : commonData.tagList
+  }
 }

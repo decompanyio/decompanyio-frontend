@@ -1,15 +1,18 @@
-import * as styles from "public/static/styles/main.scss"
-import Dropzone from "react-dropzone"
-import { useSelector } from "react-redux"
-import { psString } from "../../utils/localization"
-import { useState } from "react"
+import * as styles from 'public/static/styles/main.scss'
+import Dropzone from 'react-dropzone'
+import { useSelector } from 'react-redux'
+import { psString } from '../../utils/localization'
+import React, { ReactElement, useState } from 'react'
 
-type Type = {
-  handleFileChange: any
-  fileInfoError: any
+interface DropZoneProps {
+  handleFileChange
+  fileInfoError
 }
 
-export default function({ handleFileChange, fileInfoError }: Type) {
+export default function({
+  handleFileChange,
+  fileInfoError
+}: DropZoneProps): ReactElement {
   const isMobile = useSelector(state => state.main.isMobile)
   const [file, setFile] = useState([])
   const [dragOver, setDragOver] = useState(false)
@@ -42,8 +45,8 @@ export default function({ handleFileChange, fileInfoError }: Type) {
           {...getRootProps({
             className:
               styles.dz_container +
-              " " +
-              (fileInfoError.length > 0 ? " tag-input-warning " : "") +
+              ' ' +
+              (fileInfoError.length > 0 ? ' tag-input-warning ' : '') +
               (dragOver && styles.dz_over)
           })}
         >
@@ -55,8 +58,8 @@ export default function({ handleFileChange, fileInfoError }: Type) {
               <i className="material-icons">cloud_upload</i>
               <div>
                 {isMobile
-                  ? psString("content-add-click")
-                  : psString("content-add-drag-drop")}
+                  ? psString('content-add-click')
+                  : psString('content-add-drag-drop')}
               </div>
               <div />
             </div>

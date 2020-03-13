@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
-import Router from "next/router"
-import * as styles from "public/static/styles/main.scss"
+import React, { ReactElement, useEffect, useState } from 'react'
+import Router from 'next/router'
+import * as styles from 'public/static/styles/main.scss'
 
-type Type = {
+interface DeletedPageProps {
   errMessage?: string
 }
 
-export default function({ errMessage }: Type) {
+export default function({ errMessage }: DeletedPageProps): ReactElement {
   const [time, setTime] = useState(5)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function({ errMessage }: Type) {
       setTime(time => {
         if (time <= 0) {
           clearInterval(interval)
-          Router.push("/")
+          Router.push('/')
         }
         return time - 1
       })
@@ -27,7 +27,7 @@ export default function({ errMessage }: Type) {
       <div className={styles.nfpw_container}>
         <i className="material-icons">report</i>
         <br />
-        {errMessage || "Deleted Document."}
+        {errMessage || 'Deleted Document.'}
         <br />
         Go to main page after
         <span>{time}</span>

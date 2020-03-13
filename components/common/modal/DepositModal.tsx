@@ -1,16 +1,20 @@
-import { APP_CONFIG } from "../../../app.config"
-import { psString } from "../../../utils/localization"
-import { useDispatch } from "react-redux"
-import React, { useEffect, useState } from "react"
-import common_view from "../../../common/common_view"
-import common from "../../../common/common"
-import { setActionMain } from "../../../redux/reducer/main"
-import * as styles from "../../../public/static/styles/main.scss"
+import { APP_CONFIG } from '../../../app.config'
+import { psString } from '../../../utils/localization'
+import { useDispatch } from 'react-redux'
+import React, { ReactElement, useEffect, useState } from 'react'
+import commonView from '../../../common/commonView'
+import common from '../../../common/common'
+import { setActionMain } from '../../../redux/reducer/main'
+import * as styles from '../../../public/static/styles/main.scss'
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const [closeFlag, setCloseFlag] = useState(false)
-  const [copyBtnText, setCopyBtnText] = useState(psString("common-modal-copy"))
+  const [copyBtnText, setCopyBtnText] = useState(psString('common-modal-copy'))
+
+  // 모달 숨기기 클래스 추가
+  const handleCloseFlag = () =>
+    new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 종료 버튼 관리
   const handleClickClose = () =>
@@ -18,26 +22,22 @@ export default function() {
       .then(() => common.delay(200))
       .then(() => dispatch(setActionMain.modal(null)))
 
+  // 복사 버튼 텍스트 SET
+  const handleCopyBtnText = () =>
+    setCopyBtnText(psString('deposit-modal-copied'))
+
   // 복사 버튼 관리
   const handleCopyBtnClick = id =>
-    common_view
+    commonView
       .clipboardCopy(id)
       .then(() => dispatch(setActionMain.alertCode(2005, {})))
       .then(() => handleCopyBtnText())
 
-  // 복사 버튼 텍스트 SET
-  const handleCopyBtnText = () =>
-    setCopyBtnText(psString("deposit-modal-copied"))
-
-  // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () =>
-    new Promise(resolve => resolve(setCloseFlag(true)))
-
   useEffect(() => {
-    common_view.setBodyStyleLock()
+    commonView.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock()
+      commonView.setBodyStyleUnlock()
     }
   }, [])
 
@@ -46,24 +46,24 @@ export default function() {
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("deposit-modal-title")}</h3>
+          <h3>{psString('deposit-modal-title')}</h3>
         </div>
 
         <div className={styles.modal_content}>
           <div className={styles.dm_qrWrapper}>
             <img
               src={
-                APP_CONFIG.domain().static + "/image/common/qr-foundation.svg"
+                APP_CONFIG.domain().static + '/image/common/qr-foundation.svg'
               }
               alt="Foundation Account"
             />
@@ -82,7 +82,7 @@ export default function() {
 
         <div className={styles.modal_footer}>
           <div
-            onClick={() => handleCopyBtnClick("depositModalCompleteCopyDummy")}
+            onClick={() => handleCopyBtnClick('depositModalCompleteCopyDummy')}
             className={styles.modal_okBtn}
           >
             {copyBtnText}

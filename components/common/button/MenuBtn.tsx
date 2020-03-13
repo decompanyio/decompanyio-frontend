@@ -1,8 +1,8 @@
-import * as styles from "public/static/styles/main.scss"
-import Menu from "../../header/menu/Menu"
-import React, { useState } from "react"
+import * as styles from 'public/static/styles/main.scss'
+import Menu from '../../header/menu/Menu'
+import React, { ReactElement, useState } from 'react'
 
-export default function() {
+export default function(): ReactElement {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (

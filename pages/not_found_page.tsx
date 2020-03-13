@@ -1,11 +1,11 @@
-import common_data from "../common/common_data"
-import Layout from "../components/Layout"
-import React from "react"
-import NotFoundPage from "../components/common/page/NotFoundPage"
+import commonData from '../common/commonData'
+import Layout from '../components/Layout'
+import React, { ReactElement } from 'react'
+import NotFoundPage from '../components/common/page/NotFoundPage'
 
-export default function index(...rest) {
+export default function(...rest): ReactElement {
   return (
-    <Layout title={"404" + common_data.commonTitle} path="404" {...rest}>
+    <Layout title={'404' + commonData.commonTitle} path="404" {...rest}>
       <NotFoundPage />
     </Layout>
   )

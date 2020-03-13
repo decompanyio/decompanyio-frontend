@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { FadingCircle } from "better-react-spinkit"
-import * as styles from "public/static/styles/main.scss"
-import { APP_CONFIG } from "../../../app.config"
-import common_data from "../../../common/common_data"
-import repos from "../../../utils/repos"
-import { psString } from "utils/localization"
-import common from "common/common"
-import { setActionMain } from "../../../redux/reducer/main"
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { FadingCircle } from 'better-react-spinkit'
+import * as styles from 'public/static/styles/main.scss'
+import { APP_CONFIG } from '../../../app.config'
+import commonData from '../../../common/commonData'
+import repos from '../../../utils/repos'
+import { psString } from 'utils/localization'
+import common from 'common/common'
+import { setActionMain } from '../../../redux/reducer/main'
 
-type Type = {
-  done: any
-  cancel: any
+interface ProfileUsernameEditProps {
+  done: (name) => void
+  cancel: () => void
   username: string
 }
 
-export default function({ done, cancel, username }: Type) {
+export default function({
+  done,
+  cancel,
+  username
+}: ProfileUsernameEditProps): ReactElement {
   const dispatch = useDispatch()
   const myInfoFromRedux = useSelector(state => state.main.myInfo)
-  const [errMsg, setErrMsg] = useState("")
+  const [errMsg, setErrMsg] = useState('')
   const [editLoading, setEditLoading] = useState(false)
 
   // 유저 네임 유효성 체크
   const validateUsername = (value: any) => {
     if (!value || value.length < 1) {
-      return setErrMsg(psString("profile-error-1"))
+      return setErrMsg(psString('profile-error-1'))
     }
 
     if (!common.checkUsernameForm(value)) {
-      return setErrMsg(psString("profile-error-2"))
+      return setErrMsg(psString('profile-error-2'))
     }
 
     if (value.length < 4 || value.length > 20) {
-      return setErrMsg(psString("profile-error-3"))
+      return setErrMsg(psString('profile-error-3'))
     }
 
-    if (errMsg !== "") {
-      return setErrMsg(psString(""))
+    if (errMsg !== '') {
+      return setErrMsg(psString(''))
     }
   }
 
@@ -55,13 +59,13 @@ export default function({ done, cancel, username }: Type) {
     setEditLoading(true)
 
     let element = document.getElementById(
-      "usernameEditInput"
+      'usernameEditInput'
     ) as HTMLInputElement
     let name = element.value
 
     validateUsername(name)
 
-    if (errMsg === "") {
+    if (errMsg === '') {
       repos.Account.updateUsername(name)
         .then(() => {
           dispatch(setActionMain.alertCode(2141, {}))
@@ -69,8 +73,8 @@ export default function({ done, cancel, username }: Type) {
           setMyinfo(name)
           window.history.replaceState(
             {},
-            name + common_data.commonTitle,
-            APP_CONFIG.domain().mainHost + "/@" + name
+            name + commonData.commonTitle,
+            APP_CONFIG.domain().mainHost + '/@' + name
           )
           done(name)
         })
@@ -83,7 +87,7 @@ export default function({ done, cancel, username }: Type) {
 
   useEffect(() => {
     let element = document.getElementById(
-      "usernameEditInput"
+      'usernameEditInput'
     ) as HTMLInputElement
 
     element.value = username
@@ -98,8 +102,8 @@ export default function({ done, cancel, username }: Type) {
         placeholder="User Name . . ."
         className={
           styles.pue_input +
-          " " +
-          (errMsg.length > 0 ? styles.pue_inputWarning : "")
+          ' ' +
+          (errMsg.length > 0 ? styles.pue_inputWarning : '')
         }
         onChange={e => handleChangeUsername(e.target.value)}
         spellCheck={false}
@@ -107,9 +111,9 @@ export default function({ done, cancel, username }: Type) {
       />
       <div
         onClick={() => handleEditBtn()}
-        className={styles["pue_okBtn" + (!editLoading ? "" : "Disabled")]}
+        className={styles['pue_okBtn' + (!editLoading ? '' : 'Disabled')]}
       >
-        {!editLoading ? "Done" : <FadingCircle color="#3681fe" size={17} />}
+        {!editLoading ? 'Done' : <FadingCircle color="#3681fe" size={17} />}
       </div>
       {!editLoading && (
         <div

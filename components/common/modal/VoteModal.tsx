@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { FadingCircle } from "better-react-spinkit"
-import { useDispatch, useSelector } from "react-redux"
-import common from "common/common"
-import common_view from "common/common_view"
-import { psString } from "utils/localization"
-import { setActionMain } from "../../../redux/reducer/main"
-import repos from "../../../utils/repos"
-import * as styles from "../../../public/static/styles/main.scss"
+import React, { ReactElement, useEffect, useState } from 'react'
+import { FadingCircle } from 'better-react-spinkit'
+import { useDispatch, useSelector } from 'react-redux'
+import common from 'common/common'
+import commonView from 'common/commonView'
+import { psString } from 'utils/localization'
+import { setActionMain } from '../../../redux/reducer/main'
+import repos from '../../../utils/repos'
+import * as styles from '../../../public/static/styles/main.scss'
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const myInfo = useSelector(state => state.main.myInfo)
   const { documentData } = useSelector(state => state.main.modalData)
@@ -20,31 +20,25 @@ export default function() {
     myVoteAmount: 0,
     totalVoteAmount: 0
   })
-  const [deckError, setDeckError] = useState("")
-  // Deck 예금 값 입력 캐치
-  const onChangeDeposit = e => {
-    setDeposit(e.target.value)
-    return validateDeposit(e.target.value)
-  }
+  const [deckError, setDeckError] = useState('')
 
   // 예금 값 유효성 체크
   const validateDeposit = (value: number) => {
     return new Promise(resolve => {
-      let errMsg = ""
-      if (value <= 0) errMsg = psString("vote-modal-err-1")
+      let errMsg = ''
+      if (value <= 0) errMsg = psString('vote-modal-err-1')
       else if (value > Number(common.toDeck(balance).toFixed(2))) {
-        errMsg = psString("vote-modal-err-2")
+        errMsg = psString('vote-modal-err-2')
       }
       setDeckError(errMsg)
       resolve(errMsg)
     })
   }
 
-  // 투표 Confirm 버튼 클릭
-  const onClickVote = async () => {
-    if (balance <= 0) return
-    let v = await validateDeposit(deposit)
-    if (v === "") return onVoteDocument()
+  // Deck 예금 값 입력 캐치
+  const onChangeDeposit = e => {
+    setDeposit(e.target.value)
+    return validateDeposit(e.target.value)
   }
 
   // 투표 POST
@@ -60,6 +54,13 @@ export default function() {
       setLoading(false)
       window.location.reload()
     })
+  }
+
+  // 투표 Confirm 버튼 클릭
+  const onClickVote = async () => {
+    if (balance <= 0) return
+    let v = await validateDeposit(deposit)
+    if (v === '') return onVoteDocument()
   }
 
   // 문서 투표액 GET
@@ -103,10 +104,10 @@ export default function() {
     handleBalance()
     getDocumentVoteAmount()
 
-    common_view.setBodyStyleLock()
+    commonView.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock()
+      commonView.setBodyStyleUnlock()
     }
   }, [])
 
@@ -115,36 +116,36 @@ export default function() {
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("vote-modal-title")}</h3>
+          <h3>{psString('vote-modal-title')}</h3>
         </div>
 
         <div className={styles.modal_content}>
           <div className={styles.modal_subject}>
-            {psString("vote-modal-subj-1")}
+            {psString('vote-modal-subj-1')}
           </div>
           <ul className={styles.vm_list}>
             <li>
-              <strong>{psString("vote-modal-you")} : </strong>
+              <strong>{psString('vote-modal-you')} : </strong>
               {voteAmount.myVoteAmount} DECK
             </li>
             <li>
-              <strong>{psString("vote-modal-total")} : </strong>
+              <strong>{psString('vote-modal-total')} : </strong>
               {voteAmount.totalVoteAmount} DECK
             </li>
           </ul>
 
           <div className={styles.modal_subject}>
-            {psString("vote-modal-subj-2")}
+            {psString('vote-modal-subj-2')}
           </div>
           <ul className={styles.vm_list}>
             <li>
@@ -156,14 +157,14 @@ export default function() {
                 {common
                   .weiToDollar(balance)
                   .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               </span>
               )
             </li>
           </ul>
 
           <div className={styles.modal_subject}>
-            {psString("vote-modal-subj-3")}
+            {psString('vote-modal-subj-3')}
           </div>
           <input
             type="number"
@@ -172,15 +173,15 @@ export default function() {
             id="deposit"
             className={
               styles.common_input +
-              " " +
-              (deckError.length > 0 ? styles.common_inputWarning : "")
+              ' ' +
+              (deckError.length > 0 ? styles.common_inputWarning : '')
             }
             onChange={e => onChangeDeposit(e)}
             onKeyDown={e => handleKeyDown(e)}
           />
           <span>{deckError}</span>
 
-          <p className={styles.vm_note}>{psString("vote-modal-note")}</p>
+          <p className={styles.vm_note}>{psString('vote-modal-note')}</p>
         </div>
 
         <div className={styles.modal_footer}>
@@ -188,12 +189,12 @@ export default function() {
             onClick={() => handleClickClose()}
             className={styles.modal_cancelBtn}
           >
-            {psString("common-modal-cancel")}
+            {psString('common-modal-cancel')}
           </div>
           <div
             onClick={() => onClickVote()}
             className={
-              styles.modal_okBtn + " " + (loading && styles.common_disabledBtn)
+              styles.modal_okBtn + ' ' + (loading && styles.common_disabledBtn)
             }
           >
             {loading && (
@@ -201,7 +202,7 @@ export default function() {
                 <FadingCircle color="#3681fe" size={17} />
               </div>
             )}
-            {psString("common-modal-confirm")}
+            {psString('common-modal-confirm')}
           </div>
         </div>
       </div>

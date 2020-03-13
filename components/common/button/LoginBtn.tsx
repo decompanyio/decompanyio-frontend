@@ -1,12 +1,12 @@
-import * as styles from "public/static/styles/main.scss"
-import { psString } from "../../../utils/localization"
-import { AUTH_APIS } from "../../../utils/auth"
-import React from "react"
+import * as styles from 'public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import { AUTH_APIS } from '../../../utils/auth'
+import React, { ReactElement } from 'react'
 
-export default function() {
+export default function(): ReactElement {
   return (
     <div className={styles.common_loginBtn} onClick={() => AUTH_APIS.login()}>
-      {psString("header-login")}
+      {psString('header-login')}
     </div>
   )
 }

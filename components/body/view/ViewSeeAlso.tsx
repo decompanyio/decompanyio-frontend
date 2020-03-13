@@ -1,13 +1,13 @@
-import { ThreeBounce } from "better-react-spinkit"
-import { psString } from "utils/localization"
-import * as styles from "public/static/styles/main.scss"
-import React from "react"
+import { ThreeBounce } from 'better-react-spinkit'
+import { psString } from 'utils/localization'
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement } from 'react'
 
-type Type = {
-  documentData: any
+interface ViewSeeAlsoProps {
+  documentData
 }
 
-export default function({ documentData }: Type) {
+export default function({ documentData }: ViewSeeAlsoProps): ReactElement {
   if (!documentData) {
     return (
       <div className="spinner">
@@ -17,7 +17,7 @@ export default function({ documentData }: Type) {
   } else {
     return (
       <aside className={styles.vsa_container}>
-        <div className={styles.vsa_mainTitle}>{psString("see-also-text")}</div>
+        <div className={styles.vsa_mainTitle}>{psString('see-also-text')}</div>
         {/*  {documentData.featuredList.map((result, idx) => (
           <FeaturedListItemContainer resultItem={result} key={idx} />
         ))}*/}

@@ -1,10 +1,10 @@
 export default class ProfileRewards {
-  last7CreatorReward: any
-  last7CuratorReward: any
-  todayEstimatedCreatorReward: any
-  todayEstimatedCuratorReward: any
+  public last7CreatorReward: []
+  public last7CuratorReward: []
+  public todayEstimatedCreatorReward: {}
+  public todayEstimatedCuratorReward: {}
 
-  constructor(data) {
+  public constructor(data) {
     this.last7CreatorReward =
       data && data.getLast6CreatorReward ? data.getLast6CreatorReward : []
     this.last7CuratorReward =

@@ -1,8 +1,8 @@
-import React from "react"
-import store from "redux/store"
-import { Provider } from "react-redux"
+import React, { ReactElement } from 'react'
+import store from 'redux/store'
+import { Provider } from 'react-redux'
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }): ReactElement {
   return (
     <Provider store={store}>
       <Component {...pageProps} />

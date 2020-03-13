@@ -1,9 +1,9 @@
 export default class DocumentDownload {
-  document: any
-  downloadUrl: string
+  public document: []
+  public downloadUrl: string
 
-  constructor(data) {
+  public constructor(data) {
     this.document = data && data.document ? data.document : []
-    this.downloadUrl = data && data.downloadUrl ? data.downloadUrl : ""
+    this.downloadUrl = data && data.downloadUrl ? data.downloadUrl : ''
   }
 }

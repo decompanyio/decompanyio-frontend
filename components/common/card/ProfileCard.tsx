@@ -1,21 +1,21 @@
-import * as styles from "public/static/styles/main.scss"
-import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { FadingCircle } from "better-react-spinkit"
-import { psString } from "../../../utils/localization"
-import { AUTH_APIS } from "../../../utils/auth"
-import MyAvatar from "../avatar/MyAvatar"
-import Link from "next/link"
-import repos from "../../../utils/repos"
-import log from "../../../utils/log"
-import WalletBalance from "../../../service/model/WalletBalance"
-import common from "../../../common/common"
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { FadingCircle } from 'better-react-spinkit'
+import { psString } from '../../../utils/localization'
+import { AUTH_APIS } from '../../../utils/auth'
+import MyAvatar from '../avatar/MyAvatar'
+import Link from 'next/link'
+import repos from '../../../utils/repos'
+import log from '../../../utils/log'
+import WalletBalance from '../../../service/model/WalletBalance'
+import common from '../../../common/common'
 
-type Type = {
-  click: any
+interface ProfileCardProps {
+  click: () => void
 }
 
-function ProfileCard({ click }: Type) {
+function ProfileCard({ click }: ProfileCardProps): ReactElement {
   const myInfoFromRedux = useSelector(state => state.main.myInfo)
   const [loading, setLoading] = useState(true)
   const [balance, setBalance] = useState(new WalletBalance(null))
@@ -33,7 +33,7 @@ function ProfileCard({ click }: Type) {
   // 클릭 관리
   const handleClick = e => {
     const targetElement = e.target
-    const profileCard = document.getElementById("profileCard")
+    const profileCard = document.getElementById('profileCard')
 
     if (profileCard) {
       if (!profileCard.contains(targetElement)) click()
@@ -41,11 +41,11 @@ function ProfileCard({ click }: Type) {
   }
 
   useEffect(() => {
-    window.addEventListener("click", handleClick)
+    window.addEventListener('click', handleClick)
     void getBalance() // 잔액 조회
 
     return () => {
-      window.removeEventListener("click", handleClick)
+      window.removeEventListener('click', handleClick)
     }
   }, [])
 
@@ -69,12 +69,12 @@ function ProfileCard({ click }: Type) {
 
       <div className={styles.pc_balanceWrapper}>
         <div className={styles.pc_balance}>
-          {psString("profile-card-total-balance")}
+          {psString('profile-card-total-balance')}
         </div>
         {!loading ? (
           <span>
-            {"$ " + common.withComma(balance.dollar)}
-            <span>{"(" + balance.deck + " DECK)"}</span>
+            {'$ ' + common.withComma(balance.dollar)}
+            <span>{'(' + balance.deck + ' DECK)'}</span>
           </span>
         ) : (
           <div className={styles.pc_loadingWrapper}>
@@ -87,13 +87,13 @@ function ProfileCard({ click }: Type) {
         {AUTH_APIS.isAuthenticated() ? (
           <Link
             href={{
-              pathname: "/my_page",
+              pathname: '/my_page',
               query: { identification: identification }
             }}
-            as={"/@" + identification}
+            as={'/@' + identification}
           >
             <div className={styles.pc_accountBtn} data-id={identification}>
-              {psString("profile-card-my-page")}
+              {psString('profile-card-my-page')}
             </div>
           </Link>
         ) : (
@@ -101,11 +101,11 @@ function ProfileCard({ click }: Type) {
             className={styles.pc_accountBtn}
             onClick={() => AUTH_APIS.login()}
           >
-            {psString("profile-card-login")}
+            {psString('profile-card-login')}
           </div>
         )}
         <div className={styles.pc_logoutBtn} onClick={() => AUTH_APIS.logout()}>
-          {psString("profile-card-logout")}
+          {psString('profile-card-logout')}
         </div>
       </div>
     </div>

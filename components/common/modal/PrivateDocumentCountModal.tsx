@@ -1,13 +1,13 @@
-import { psString } from "../../../utils/localization"
-import { useSelector, useDispatch } from "react-redux"
-import common_view from "common/common_view"
-import common from "common/common"
-import React, { useEffect, useState } from "react"
-import Router from "next/router"
-import * as styles from "../../../public/static/styles/main.scss"
-import { setActionMain } from "../../../redux/reducer/main"
+import { psString } from '../../../utils/localization'
+import { useSelector, useDispatch } from 'react-redux'
+import commonView from 'common/commonView'
+import common from 'common/common'
+import React, { ReactElement, useEffect, useState } from "react";
+import Router from 'next/router'
+import * as styles from '../../../public/static/styles/main.scss'
+import { setActionMain } from '../../../redux/reducer/main'
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const myInfo = useSelector(state => state.main.myInfo)
   const [closeFlag, setCloseFlag] = useState(false)
@@ -28,17 +28,17 @@ export default function() {
 
     return Router.push(
       {
-        pathname: "/my_page"
+        pathname: '/my_page'
       },
-      "/@" + username
+      '/@' + username
     )
   }
 
   useEffect(() => {
-    common_view.setBodyStyleLock()
+    commonView.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock()
+      commonView.setBodyStyleUnlock()
     }
   }, [])
 
@@ -47,21 +47,21 @@ export default function() {
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("private-doc-modal-subj")}</h3>
+          <h3>{psString('private-doc-modal-subj')}</h3>
         </div>
 
         <div className={styles.modal_content}>
-          <div className="">{psString("private-doc-modal-desc")}</div>
+          <div className="">{psString('private-doc-modal-desc')}</div>
         </div>
 
         <div className={styles.modal_footer}>
@@ -69,11 +69,11 @@ export default function() {
             onClick={() => handleClickClose()}
             className={styles.modal_okBtn}
           >
-            {psString("common-modal-confirm")}
+            {psString('common-modal-confirm')}
           </div>
-          {username !== common_view.getPath().substring(1) && (
+          {username !== commonView.getPath().substring(1) && (
             <div onClick={() => handleLinkBtn()} className={styles.pdc_okBtn}>
-              {psString("private-doc-modal-btn")}
+              {psString('private-doc-modal-btn')}
             </div>
           )}
         </div>

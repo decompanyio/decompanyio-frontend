@@ -1,45 +1,40 @@
-import { AUTH_APIS } from "./auth"
-import axios from "axios"
-import ReactGA from "react-ga"
+import { AUTH_APIS } from './auth'
+import axios from 'axios'
+import ReactGA from 'react-ga'
 
-import AuthService from "service/rest/AuthService"
-import DocService from "service/rest/DocService"
-import TrackingService from "service/rest/TrackingService"
-import TagService from "service/rest/TagService"
-import WalletService from "service/rest/WalletService"
-import AnalyticsService from "service/rest/AnalyticsService"
+import AuthService from 'service/rest/AuthService'
+import DocService from 'service/rest/DocService'
+import TrackingService from 'service/rest/TrackingService'
+import TagService from 'service/rest/TagService'
+import WalletService from 'service/rest/WalletService'
+import AnalyticsService from 'service/rest/AnalyticsService'
 
-import graphql from "service/graphql/graphql"
-import mutations from "../service/graphql/mutations"
-import queries from "service/graphql/queries"
+import graphql from 'service/graphql/graphql'
+import mutations from '../service/graphql/mutations'
+import queries from 'service/graphql/queries'
 
-import DocumentList from "service/model/DocumentList"
-import Document from "service/model/Document"
-import AccountInfo from "service/model/AccountInfo"
-import DocumentDownload from "service/model/DocumentDownload"
-import UserInfo from "service/model/UserInfo"
-import TagList from "service/model/TagList"
-import TrackingList from "service/model/TrackingList"
-import TrackingExport from "service/model/TrackingExport"
-import TrackingInfo from "service/model/TrackingInfo"
-import DocumentInfo from "service/model/DocumentInfo"
-import CuratorDocuments from "service/model/CuratorDocuments"
-import AnalyticsList from "../service/model/AnalyticsList"
-import AnalysticsExport from "service/model/AnalysticsExport"
-import UserProfile from "service/model/UserProfile"
-import WalletBalance from "../service/model/WalletBalance"
-import WalletCreate from "../service/model/WalletCreate"
-import ProfileRewards from "service/model/ProfileRewards"
-import ClaimableRoyalty from "../service/model/ClaimableRoyalty"
-import ClaimableReward from "../service/model/ClaimableReward"
-import DocumentPdfUrl from "../service/model/DocumentPdfUrl"
+import DocumentList from 'service/model/DocumentList'
+import Document from 'service/model/Document'
+import AccountInfo from 'service/model/AccountInfo'
+import DocumentDownload from 'service/model/DocumentDownload'
+import UserInfo from 'service/model/UserInfo'
+import TagList from 'service/model/TagList'
+import TrackingList from 'service/model/TrackingList'
+import TrackingExport from 'service/model/TrackingExport'
+import TrackingInfo from 'service/model/TrackingInfo'
+import DocumentInfo from 'service/model/DocumentInfo'
+import CuratorDocuments from 'service/model/CuratorDocuments'
+import AnalyticsList from '../service/model/AnalyticsList'
+import AnalyticsExport from 'service/model/AnalyticsExport'
+import UserProfile from 'service/model/UserProfile'
+import WalletBalance from '../service/model/WalletBalance'
+import WalletCreate from '../service/model/WalletCreate'
+import ProfileRewards from 'service/model/ProfileRewards'
+import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
+import ClaimableReward from '../service/model/ClaimableReward'
+import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
 
 let instance: any
-
-export const init = () => {
-  repos.ref()
-  return repos
-}
 
 export const repos = {
   ref() {
@@ -49,12 +44,12 @@ export const repos = {
   init() {
     // Google Analytics 초기화
     let gaId =
-      process.env.NODE_ENV_SUB === "production"
-        ? "UA-140503497-1"
-        : "UA-129300994-1"
+      process.env.NODE_ENV_SUB === 'production'
+        ? 'UA-140503497-1'
+        : 'UA-129300994-1'
     if (
-      process.env.NODE_ENV_SUB === "production" ||
-      process.env.NODE_ENV_SUB === "development"
+      process.env.NODE_ENV_SUB === 'production' ||
+      process.env.NODE_ENV_SUB === 'development'
     ) {
       ReactGA.initialize(gaId, {
         debug: false
@@ -72,7 +67,7 @@ export const repos = {
   Common: {
     checkNone(res) {
       if (res.length === 0) {
-        throw new Error("handled")
+        throw new Error('handled')
       } else return res
     }
   },
@@ -114,7 +109,7 @@ export const repos = {
     profileImageUpload(params) {
       return new Promise((resolve, reject) => {
         if (params.file == null) {
-          return console.error("file object is null", params)
+          return console.error('file object is null', params)
         }
 
         axios
@@ -195,7 +190,7 @@ export const repos = {
 
       if (!fileInfo.file) {
         return console.error(
-          "The registration value(file or metadata) is invalid.",
+          'The registration value(file or metadata) is invalid.',
           fileInfo
         )
       }
@@ -226,7 +221,7 @@ export const repos = {
     },
     documentUpload(params) {
       if (params.file == null || params.fileid == null || params.ext == null) {
-        return console.error("file object is null", params)
+        return console.error('file object is null', params)
       }
 
       const config = {
@@ -310,7 +305,7 @@ export const repos = {
         .then((rst: any) => new DocumentInfo(rst.result))
         .catch(error => console.error(error))
     },
-    async getTagList(path: String) {
+    async getTagList(path: string) {
       return TagService.GET.tagList({ t: path })
         .then(result => new TagList(result))
         .catch(err => err)
@@ -402,14 +397,14 @@ export const repos = {
           })
           let arrLength = Object.keys(res).length / 3
           for (let i = 0; i < arrLength; ++i) {
-            if (res["latest_" + i].findOne) {
-              resultData.Document.push(res["latest_" + i].findOne)
+            if (res['latest_' + i].findOne) {
+              resultData.Document.push(res['latest_' + i].findOne)
             }
-            if (res["featured_" + i].findOne) {
-              resultData.DocumentFeatured.push(res["featured_" + i].findOne)
+            if (res['featured_' + i].findOne) {
+              resultData.DocumentFeatured.push(res['featured_' + i].findOne)
             }
-            if (res["popular_" + i].findOne) {
-              resultData.DocumentPopular.push(res["popular_" + i].findOne)
+            if (res['popular_' + i].findOne) {
+              resultData.DocumentPopular.push(res['popular_' + i].findOne)
             }
           }
           return resultData
@@ -448,14 +443,16 @@ export const repos = {
           }
         }),
     async getCreatorRewards(documentId: string, userId: string) {
-      return instance.Query.getCreatorRewards({ documentId, userId }).then(
-        (res: any) => Number(res.determineCreatorRoyalty || 0)
-      )
+      return instance.Query.getCreatorRewards({
+        documentId,
+        userId
+      }).then((res: any) => Number(res.determineCreatorRoyalty || 0))
     },
     async getCuratorRewards(documentId: string, userId: string) {
-      return instance.Query.getCuratorRewards({ documentId, userId }).then(
-        (res: any) => Number(res.determineCreatorRoyalty || 0)
-      )
+      return instance.Query.getCuratorRewards({
+        documentId,
+        userId
+      }).then((res: any) => Number(res.determineCreatorRoyalty || 0))
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
@@ -506,7 +503,7 @@ export const repos = {
         }
       }
       return TrackingService.GET.trackingInfo(params).then(
-        (res: any) => new TrackingInfo(res)
+        (res: {}) => new TrackingInfo(res)
       )
     },
     async getTrackingExport(documentId: string) {
@@ -561,7 +558,7 @@ export const repos = {
       }
 
       return AnalyticsService.GET.analyticsExport(params).then(
-        (result: any) => new AnalysticsExport(result)
+        (result: any) => new AnalyticsExport(result)
       )
     }
   },
@@ -739,6 +736,11 @@ export const repos = {
         query: queries.getClaimableReward(data)
       }).then((res: any) => res.Curator)
   }
+}
+
+export const init = () => {
+  repos.ref()
+  return repos
 }
 
 export default init()

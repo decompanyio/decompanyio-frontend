@@ -1,8 +1,8 @@
-import * as styles from "public/static/styles/main.scss"
-import DocumentCardMock from "./DocumentCardMock"
-import React from "react"
+import * as styles from 'public/static/styles/main.scss'
+import DocumentCardMock from './DocumentCardMock'
+import React, { ReactElement } from 'react'
 
-export default function() {
+export default function(): ReactElement {
   return (
     <div className={styles.mlm_container}>
       <div className={styles.mlm_subjectWrapper}>

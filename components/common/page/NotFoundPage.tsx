@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import Router from "next/router"
-import * as styles from "public/static/styles/main.scss"
+import React, { ReactElement, useEffect, useState } from "react";
+import Router from 'next/router'
+import * as styles from 'public/static/styles/main.scss'
 
-type Type = {
+interface NotFoundPageProps {
   errMessage?: string
 }
 
-export default function({ errMessage }: Type) {
+export default function({ errMessage }: NotFoundPageProps): ReactElement {
   const [time, setTime] = useState(5)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function({ errMessage }: Type) {
       setTime(time => {
         if (time <= 0) {
           clearInterval(interval)
-          void Router.push("/")
+          void Router.push('/')
         }
         return time - 1
       })
@@ -27,7 +27,7 @@ export default function({ errMessage }: Type) {
       <div className={styles.nfpw_container}>
         <i className="material-icons">report</i>
         <br />
-        {errMessage || "Not Found Page."}
+        {errMessage || 'Not Found Page.'}
         <br />
         Go to main page after
         <span>{time < 0 ? 0 : time}</span>

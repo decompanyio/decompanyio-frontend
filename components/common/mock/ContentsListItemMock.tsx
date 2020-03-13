@@ -1,13 +1,13 @@
-import * as styles from "public/static/styles/main.scss"
-import React from "react"
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement } from 'react'
 
-type Type = {
+interface ContentsListItemMockProps {
   order: number
 }
 
-export default function({ order }: Type) {
+export default function({ order }: ContentsListItemMockProps): ReactElement {
   return (
-    <div className={styles.clim_container + " " + styles["clim_mock_" + order]}>
+    <div className={styles.clim_container + ' ' + styles['clim_mock_' + order]}>
       <div className={styles.clim_imageWrapper}>
         <div className={styles.clim_image} />
       </div>

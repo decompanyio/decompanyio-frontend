@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import * as styles from "../../../public/static/styles/main.scss"
-import { psString } from "../../../utils/localization"
-import { AUTH_APIS } from "../../../utils/auth"
-import { setActionMain } from "../../../redux/reducer/main"
-import repos from "../../../utils/repos"
-import ViewBookmark from "./ViewBookmark"
+import React, { ReactElement, useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import * as styles from '../../../public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import { AUTH_APIS } from '../../../utils/auth'
+import { setActionMain } from '../../../redux/reducer/main'
+import repos from '../../../utils/repos'
+import ViewBookmark from './ViewBookmark'
 
-type Type = {
-  documentData: any
+interface ViewOptionProps {
+  documentData
 }
 
-export default function({ documentData }: Type) {
+export default function({ documentData }: ViewOptionProps): ReactElement {
   const dispatch = useDispatch()
   const myInfoFromRedux = useSelector(state => state.main.myInfo)
   const [optionTable, setOptionTable] = useState(false)
@@ -22,12 +22,12 @@ export default function({ documentData }: Type) {
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
     }).then(result => {
-      const a = document.createElement("a")
+      const a = document.createElement('a')
 
-      a.style.display = "none"
+      a.style.display = 'none'
       document.body.appendChild(a)
       a.href = result.downloadUrl
-      a.setAttribute("download", documentName)
+      a.setAttribute('download', documentName)
       a.click()
 
       window.URL.revokeObjectURL(a.href)
@@ -55,11 +55,11 @@ export default function({ documentData }: Type) {
 
   // 문서 수정 버튼 클릭 관리
   const handleClickSettings = () =>
-    dispatch(setActionMain.modal("edit", { documentData }))
+    dispatch(setActionMain.modal('edit', { documentData }))
 
   // 문서 삭제 버튼 클릭 관리
   const handleClickDeleteBtn = () =>
-    dispatch(setActionMain.modal("delete", { documentData }))
+    dispatch(setActionMain.modal('delete', { documentData }))
 
   useEffect(() => {
     void getMyList()
@@ -80,7 +80,7 @@ export default function({ documentData }: Type) {
             onClick={() => handleDownloadContent()}
           >
             <i className="material-icons">save_alt</i>
-            {psString("download-btn")}
+            {psString('download-btn')}
           </div>
           {mylist && (
             <ViewBookmark
@@ -94,7 +94,7 @@ export default function({ documentData }: Type) {
             onClick={() => handleClickSettings()}
           >
             <i className="material-icons">settings_applications</i>
-            {psString("common-modal-settings")}
+            {psString('common-modal-settings')}
           </div>
           {!documentData.isPublic && (
             <div
@@ -102,7 +102,7 @@ export default function({ documentData }: Type) {
               onClick={() => handleClickDeleteBtn()}
             >
               <i className="material-icons">delete</i>
-              {psString("common-modal-delete")}
+              {psString('common-modal-delete')}
             </div>
           )}
         </div>

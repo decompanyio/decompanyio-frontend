@@ -1,21 +1,23 @@
-import * as styles from "public/static/styles/main.scss"
-import InfiniteScroll from "react-infinite-scroll-component"
-import { ThreeBounce } from "better-react-spinkit"
-import NoDataIcon from "../../common/NoDataIcon"
-import React, { useEffect, useState } from "react"
-import repos from "../../../utils/repos"
-import log from "utils/log"
-import ContentsListItem from "./ContentsListItem"
-import { AUTH_APIS } from "../../../utils/auth"
+import * as styles from 'public/static/styles/main.scss'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { ThreeBounce } from 'better-react-spinkit'
+import NoDataIcon from '../../common/NoDataIcon'
+import React, { ReactElement, useEffect, useState } from 'react'
+import repos from '../../../utils/repos'
+import log from 'utils/log'
+import ContentsListItem from './ContentsListItem'
+import { AUTH_APIS } from '../../../utils/auth'
+import DocumentList from '../../../service/model/DocumentList'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
-type Type = {
-  documentList: any
+interface ContentsListProps {
+  documentList: DocumentList
   tag: string
   path: string
 }
 
 // document list GET API, parameter SET
-const setParams = (pageNo: number, tag: string, path: string) =>
+const setParams = (pageNo: number, tag: string, path: string): Promise<{}> =>
   Promise.resolve({
     pageNo: pageNo,
     tag: tag,
@@ -23,7 +25,7 @@ const setParams = (pageNo: number, tag: string, path: string) =>
   })
 
 // GET 한 문서 데이터 set
-const setResultList = (listData: any, resultList: any) =>
+const setResultList = (listData: [], resultList: []): Promise<{}> =>
   new Promise(resolve => {
     log.ContentList.fetchDocuments(false)
 
@@ -33,26 +35,33 @@ const setResultList = (listData: any, resultList: any) =>
         listData.length > 0 ? listData.concat(_resultList) : _resultList,
       isEndPage: resultList.length < 10
     }
-    resolve(data)
+    return resolve(data)
   })
 
-export default function({ documentList, tag, path }: Type) {
+export default function({
+  documentList,
+  tag,
+  path
+}: ContentsListProps): ReactElement {
   const [listLength, setListLength] = useState(2)
-  const [bookmarkList, setBookmarkList] = useState(null)
+  const [bookmarkList, setBookmarkList] = useState([])
   const [state, setState] = useState({
     list: documentList.resultList || [],
     endPage: documentList.resultList
       ? documentList.resultList.length < 10
-      : path !== "history" && path !== "mylist"
+      : path !== 'history' && path !== 'mylist'
   })
 
   // 무한 스크롤 추가 데이터 GET
-  const fetchData = async () =>
+  const fetchData = async (): Promise<Function> =>
     Promise.resolve(await setListLength(listLength + 1))
-      .then(() => setParams(listLength, tag, path))
-      .then(res => repos.Document.getDocumentList(res))
-      .then(res => setResultList(state.list, res.resultList || []))
-      .then((res: any) =>
+      .then((): Promise<{}> => setParams(listLength, tag, path))
+      .then((res): Promise<{}> => repos.Document.getDocumentList(res))
+      .then(
+        (res: { resultList }): Promise<{}> =>
+          setResultList(state.list, res.resultList || [])
+      )
+      .then((res: { listData; isEndPage }): void =>
         setState({ list: res.listData, endPage: res.isEndPage })
       )
       .catch(err => {
@@ -61,23 +70,20 @@ export default function({ documentList, tag, path }: Type) {
       })
 
   // 북마크 목록 GET
-  const getBookmarkList = () => {
-    repos.Query.getMyListFindMany({ userId: AUTH_APIS.getMyInfo().sub }).then(
-      res => setBookmarkList(res)
-    )
-  }
+  const getBookmarkList = (): Promise<void> =>
+    repos.Query.getMyListFindMany({
+      userId: AUTH_APIS.getMyInfo().sub
+    }).then((res): void => setBookmarkList(res))
 
   useEffect(() => {
-    if (AUTH_APIS.isAuthenticated()) {
-      getBookmarkList()
-    }
+    if (AUTH_APIS.isAuthenticated()) void getBookmarkList()
   }, [])
 
   useEffect(() => {
     if (
-      (path === "mylist" || path === "history") &&
+      (path === 'mylist' || path === 'history') &&
       !state.endPage &&
-      documentList.length > 0
+      documentList.resultList.length > 0
     ) {
       setState({ list: documentList, endPage: true })
     }
@@ -96,19 +102,21 @@ export default function({ documentList, tag, path }: Type) {
             </div>
           }
         >
-          {state.list.map(result => (
-            <div
-              className={styles.cl_itemWrapper}
-              key={result.documentId + result.accountId}
-            >
-              <ContentsListItem
+          {state.list.map(
+            (result: DocumentInfo): ReactElement => (
+              <div
+                className={styles.cl_itemWrapper}
                 key={result.documentId + result.accountId}
-                documentData={result}
-                bookmarkList={bookmarkList}
-                path={path}
-              />
-            </div>
-          ))}
+              >
+                <ContentsListItem
+                  key={result.documentId + result.accountId}
+                  documentData={result}
+                  bookmarkList={bookmarkList}
+                  path={path}
+                />
+              </div>
+            )
+          )}
         </InfiniteScroll>
       )}
 

@@ -1,7 +1,7 @@
-import React from "react"
-import * as styles from "public/static/styles/main.scss"
+import React, { ReactElement } from 'react'
+import * as styles from 'public/static/styles/main.scss'
 
-export default function() {
+export default function(): ReactElement {
   return (
     <div id="totalLoadingBar" className={styles.hlb_totalLoadingBar}>
       <div id="activeLoadingBar" className={styles.hlb_activeLoadingBar} />

@@ -1,13 +1,13 @@
-import * as styles from "public/static/styles/main.scss"
-import React from "react"
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement } from 'react'
 
-type Type = {
-  click?: any
+interface SearchBtnProps {
+  click?: () => void
 }
 
-export default function({ click }: Type) {
+export default function({ click }: SearchBtnProps): ReactElement {
   const handleSearchBtnClick = () => {
-    click()
+    click && click()
   }
 
   return (

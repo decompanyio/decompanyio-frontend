@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react"
-import Cropper from "react-easy-crop"
-import { FadingCircle } from "better-react-spinkit"
-import { useDispatch, useSelector } from "react-redux"
-import * as styles from "public/static/styles/main.scss"
-import common_view from "common/common_view"
-import repos from "utils/repos"
-import { APP_CONFIG } from "../../../app.config"
-import { psString } from "utils/localization"
-import common from "common/common"
-import { setActionMain } from "../../../redux/reducer/main"
+import React, { ReactElement, useEffect, useState } from "react";
+import Cropper from 'react-easy-crop'
+import { FadingCircle } from 'better-react-spinkit'
+import { useDispatch, useSelector } from 'react-redux'
+import * as styles from 'public/static/styles/main.scss'
+import commonView from 'common/commonView'
+import repos from 'utils/repos'
+import { APP_CONFIG } from '../../../app.config'
+import { psString } from 'utils/localization'
+import common from 'common/common'
+import { setActionMain } from '../../../redux/reducer/main'
 
 // 파일 읽기
 const readFile = file => {
   return new Promise(resolve => {
     const reader = new FileReader()
-    reader.addEventListener("load", () => resolve(reader.result), false)
+    reader.addEventListener('load', () => resolve(reader.result), false)
     reader.readAsDataURL(file)
   })
 }
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const modalData = useSelector(state => state.main.modalData)
   const myInfo = useSelector(state => state.main.myInfo)
@@ -32,10 +32,10 @@ export default function() {
 
   const style = {
     containerStyle: {
-      background: "none"
+      background: 'none'
     },
     cropAreaStyle: {
-      color: "#7171715c"
+      color: '#7171715c'
     }
   }
   const aspect = 1
@@ -111,7 +111,7 @@ export default function() {
   }
 
   useEffect(() => {
-    common_view.setBodyStyleLock()
+    commonView.setBodyStyleLock()
     ;(async function() {
       let file = await readFile(modalData.file)
 
@@ -122,7 +122,7 @@ export default function() {
       }, 200)
     })()
     return () => {
-      common_view.setBodyStyleUnlock()
+      commonView.setBodyStyleUnlock()
     }
   })
 
@@ -131,17 +131,17 @@ export default function() {
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("image-crop-modal-subject")}</h3>
+          <h3>{psString('image-crop-modal-subject')}</h3>
         </div>
 
         <div className={styles.icm_content}>
@@ -164,12 +164,12 @@ export default function() {
             onClick={() => handleClickClose()}
             className={styles.modal_cancelBtn}
           >
-            {psString("common-modal-cancel")}
+            {psString('common-modal-cancel')}
           </div>
           <div
             onClick={() => handleCropConfirm()}
             className={
-              styles.modal_okBtn + " " + (loading && styles.common_disabledBtn)
+              styles.modal_okBtn + ' ' + (loading && styles.common_disabledBtn)
             }
           >
             {loading && (
@@ -177,7 +177,7 @@ export default function() {
                 <FadingCircle color="#3681fe" size={17} />
               </div>
             )}
-            {psString("common-modal-confirm")}
+            {psString('common-modal-confirm')}
           </div>
         </div>
       </div>

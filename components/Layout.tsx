@@ -1,24 +1,24 @@
-import ReactTooltip from "react-tooltip"
-import { useSelector, useDispatch } from "react-redux"
-import * as styles from "public/static/styles/main.scss"
-import Header from "./header/Header"
-import Footer from "./footer/Footer"
-import React, { useEffect, useState } from "react"
-import common_view from "../common/common_view"
-import ToTopBtn from "./common/button/ToTopBtn"
-import repos from "../utils/repos"
-import { AUTH_APIS } from "../utils/auth"
-import log from "../utils/log"
-import LoadingModal from "./common/modal/LoadingModal"
-import { setActionMain } from "../redux/reducer/main"
-import AlertList from "./common/alert/AlertList"
-import ModalList from "./common/modal/ModalList"
-import common_data from "../common/common_data"
-import CookiePolicyNotice from "./common/notice/CookiePolicyNotice"
-import DollarPolicyNotice from "./common/notice/DollarPolicyNotice"
-import Meta from "../service/model/Meta"
+import ReactTooltip from 'react-tooltip'
+import { useSelector, useDispatch } from 'react-redux'
+import * as styles from 'public/static/styles/main.scss'
+import Header from './header/Header'
+import Footer from './footer/Footer'
+import React, { ReactElement, useEffect, useState } from 'react'
+import commonView from '../common/commonView'
+import ToTopBtn from './common/button/ToTopBtn'
+import repos from '../utils/repos'
+import { AUTH_APIS } from '../utils/auth'
+import log from '../utils/log'
+import LoadingModal from './common/modal/LoadingModal'
+import { setActionMain } from '../redux/reducer/main'
+import AlertList from './common/alert/AlertList'
+import ModalList from './common/modal/ModalList'
+import commonData from '../common/commonData'
+import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
+import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
+import Meta from '../service/model/Meta'
 
-export default function(props) {
+export default function(props): ReactElement {
   const dispatch = useDispatch()
   const myInfo = useSelector(state => state.main.myInfo)
   const modalCode = useSelector(state => state.main.modalCode)
@@ -36,55 +36,55 @@ export default function(props) {
   const manageElement = (path: string) => {
     return new Promise(resolve => {
       let currentScrollPos = window.pageYOffset
-      let headerMainNav = document.getElementById("headerMainNav")
-      let totalLoadingBar = document.getElementById("totalLoadingBar")
+      let headerMainNav = document.getElementById('headerMainNav')
+      let totalLoadingBar = document.getElementById('totalLoadingBar')
       let headerCategoryWrapper = document.getElementById(
-        "headerCategoryWrapper"
+        'headerCategoryWrapper'
       )
 
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && headerMainNav) {
-        headerMainNav.style.marginBottom = "0px"
+        headerMainNav.style.marginBottom = '0px'
         if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
-          headerMainNav.style.top = "0px"
+          headerMainNav.style.top = '0px'
         } else {
-          headerMainNav.style.top = "-60px"
+          headerMainNav.style.top = '-60px'
         }
       }
 
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && totalLoadingBar) {
         if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
-          totalLoadingBar.style.top = "60px"
+          totalLoadingBar.style.top = '60px'
         } else {
-          totalLoadingBar.style.top = "0px"
+          totalLoadingBar.style.top = '0px'
         }
       }
 
       // main 페이지, 테그 헤더 위치 처리
       if (!path && headerCategoryWrapper && headerMainNav) {
         if (headerCategoryWrapper.offsetTop < currentScrollPos) {
-          if (headerCategoryWrapper.style.position !== "fixed") {
-            headerCategoryWrapper.style.position = "fixed"
+          if (headerCategoryWrapper.style.position !== 'fixed') {
+            headerCategoryWrapper.style.position = 'fixed'
           }
           if (
-            headerCategoryWrapper.style.borderBottom !== "1px solid #b3b3b3"
+            headerCategoryWrapper.style.borderBottom !== '1px solid #b3b3b3'
           ) {
-            headerCategoryWrapper.style.borderBottom = "1px solid #b3b3b3"
+            headerCategoryWrapper.style.borderBottom = '1px solid #b3b3b3'
           }
-          if (headerCategoryWrapper.style.marginBottom !== "45px") {
-            headerMainNav.style.marginBottom = "45px"
+          if (headerCategoryWrapper.style.marginBottom !== '45px') {
+            headerMainNav.style.marginBottom = '45px'
           }
         }
         if (headerMainNav.offsetTop + 60 >= currentScrollPos) {
-          if (headerCategoryWrapper.style.borderBottom !== "none") {
-            headerCategoryWrapper.style.borderBottom = "none"
+          if (headerCategoryWrapper.style.borderBottom !== 'none') {
+            headerCategoryWrapper.style.borderBottom = 'none'
           }
-          if (headerCategoryWrapper.style.position !== "relative") {
-            headerCategoryWrapper.style.position = "relative"
+          if (headerCategoryWrapper.style.position !== 'relative') {
+            headerCategoryWrapper.style.position = 'relative'
           }
-          if (headerCategoryWrapper.style.marginBottom !== "0px") {
-            headerMainNav.style.marginBottom = "0px"
+          if (headerCategoryWrapper.style.marginBottom !== '0px') {
+            headerMainNav.style.marginBottom = '0px'
           }
         }
       }
@@ -100,7 +100,7 @@ export default function(props) {
         .then(result => {
           let res = result.user
 
-          if (!res.username || res.username === "") res.username = res.email
+          if (!res.username || res.username === '') res.username = res.email
           if (!res.picture) res.picture = myInfo.picture
 
           res.privateDocumentCount = result.privateDocumentCount
@@ -116,30 +116,22 @@ export default function(props) {
 
   // SET 태그 리스트
   const setTagList = () =>
-    repos.Document.getTagList("latest")
+    repos.Document.getTagList('latest')
       .then(result => dispatch(setActionMain.tagList(result.tagList)))
       .catch(err => log.Main.setTagList(err))
       .then(() => log.Main.setTagList(false))
 
-  // SET 이벤트 리스너
-  const setEventListener = () => {
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("keydown", handleKeydown)
-    window.addEventListener("mousemove", handleMousemove)
-  }
-
   // 자리비움 시간 SET
   const setAwayTime = () => {
     if (awayTime > 0) awayTime = 0
-    if (modalCode === "away") dispatch(setActionMain.modal(null))
+    if (modalCode === 'away') dispatch(setActionMain.modal(null))
   }
 
   // 모바일 유무 REDUX SET
   const setIsMobile = () => {
-    if (common_view.getIsMobile() !== isMobileChecker) {
+    if (commonView.getIsMobile() !== isMobileChecker) {
       isMobileChecker = !isMobileChecker
-      dispatch(setActionMain.isMobile(common_view.getIsMobile()))
+      dispatch(setActionMain.isMobile(commonView.getIsMobile()))
     }
   }
 
@@ -159,16 +151,24 @@ export default function(props) {
   // 키다운 마우스 무브 관리
   const handleMousemove = () => setAwayTime()
 
+  // SET 이벤트 리스너
+  const handleEventListener = () => {
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('keydown', handleKeydown)
+    window.addEventListener('mousemove', handleMousemove)
+  }
+
   useEffect(() => {
     awayTime = 0 // 자리비움 시간
-    t = common_data.awayCheckTime
+    t = commonData.awayCheckTime
 
     repos.init().then(() => {
       // SET 모바일 유무
       void setTagList()
 
       // SET 이벤트 리스너
-      setEventListener()
+      handleEventListener()
 
       // SET isMobile
       setIsMobile()
@@ -181,17 +181,17 @@ export default function(props) {
     let interval = setInterval(() => {
       awayTime = awayTime + t
       if (awayTime >= t * 15) {
-        if (modalCode !== "away") {
-          dispatch(setActionMain.modal("away"))
+        if (modalCode !== 'away') {
+          dispatch(setActionMain.modal('away'))
         }
       }
     }, t)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("keydown", handleKeydown)
-      window.removeEventListener("mousemove", handleMousemove)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('keydown', handleKeydown)
+      window.removeEventListener('mousemove', handleMousemove)
 
       clearInterval(interval)
     }

@@ -1,12 +1,18 @@
-import Alert from "./Alert"
-import React, { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { setActionMain } from "../../../redux/reducer/main"
-import * as styles from "public/static/styles/main.scss"
+import Alert from './Alert'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setActionMain } from '../../../redux/reducer/main'
+import * as styles from 'public/static/styles/main.scss'
 
-let arr: Array<{ html: any; code: number; serial: any }> = []
+let arr: { html: string; code: number; serial: number }[] = [
+  {
+    html: '',
+    code: 0,
+    serial: 0
+  }
+]
 
-export default function() {
+export default function(): ReactElement {
   const dispatch = useDispatch()
   const alertCodeFromRedux = useSelector(state => state.main.alertCode)
   const alertDataFromRedux = useSelector(state => state.main.alertData)
@@ -28,17 +34,6 @@ export default function() {
       }
     })
 
-  // alert 배열 push
-  const pushAlert = (serial: any) => {
-    return (
-      <Alert
-        code={alertCodeFromRedux}
-        close={() => handleClose(serial)}
-        alertData={alertDataFromRedux}
-      />
-    )
-  }
-
   // 랜더링 준비작업
   const handleRender = () =>
     new Promise(resolve => {
@@ -51,24 +46,8 @@ export default function() {
       }
     })
 
-  // 컨테이너 셋팅 작업
-  const handleContainer = _container =>
-    new Promise(resolve => {
-      let serial = _container.length + alertCodeFromRedux
-      let tempContainer = _container
-
-      tempContainer.push({
-        html: pushAlert(serial),
-        code: alertCodeFromRedux,
-        serial: _container.length + alertCodeFromRedux
-      })
-
-      setContainer(tempContainer)
-      resolve()
-    })
-
   // 닫기 버튼 관리
-  const handleClose = (serial: any) => {
+  const handleClose = (serial: number): void => {
     for (let i = 0; i < container.length; ++i) {
       if (container[i].serial === serial) {
         const tempContainer = container
@@ -79,6 +58,32 @@ export default function() {
       }
     }
   }
+
+  // alert 배열 push
+  const handlePushAlert = (serial: number): ReactElement => {
+    return (
+      <Alert
+        code={alertCodeFromRedux}
+        close={() => handleClose(serial)}
+        alertData={alertDataFromRedux}
+      />
+    )
+  }
+  // 컨테이너 셋팅 작업
+  const handleContainer = _container =>
+    new Promise(resolve => {
+      let serial = _container.length + alertCodeFromRedux
+      let tempContainer = _container
+
+      tempContainer.push({
+        html: handlePushAlert(serial),
+        code: alertCodeFromRedux,
+        serial: _container.length + alertCodeFromRedux
+      })
+
+      setContainer(tempContainer)
+      resolve()
+    })
 
   useEffect(() => {
     checkRender()
@@ -96,9 +101,10 @@ export default function() {
         {alertCodeFromRedux}
         {deleteFlag}
       </span>
-      {container.map((arr: any, idx: number) => (
-        <span key={idx}>{arr.html}</span>
-      ))}
+      {container &&
+        container.map((arrData: any, idx: number) => (
+          <span key={idx}>{arrData.html}</span>
+        ))}
     </div>
   )
 }

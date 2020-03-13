@@ -1,8 +1,8 @@
-import axios from "axios"
-import shortid from "shortid"
-import ReactGA from "react-ga"
-import Common from "../common/common"
-import { APP_CONFIG } from "../app.config"
+import axios from 'axios'
+import shortid from 'shortid'
+import ReactGA from 'react-ga'
+import Common from '../common/common'
+import { APP_CONFIG } from '../app.config'
 
 type Type = {
   sid: any
@@ -11,7 +11,7 @@ type Type = {
 }
 
 let apiDomain = APP_CONFIG.domain().api
-let trackingUrl = "/api/tracking/collect"
+let trackingUrl = '/api/tracking/collect'
 
 const makeId = () => shortid.generate()
 
@@ -21,7 +21,7 @@ export const setTrackingInfo = () =>
     let trackingInfo: Type = { sid: null, cid: null, touchAt: null }
 
     try {
-      trackingInfo = JSON.parse(localStorage.getItem("tracking_info") || "")
+      trackingInfo = JSON.parse(localStorage.getItem('tracking_info') || '')
     } catch (e) {
       console.error(e)
     }
@@ -29,7 +29,7 @@ export const setTrackingInfo = () =>
     if (!trackingInfo.sid) {
       trackingInfo = {
         sid: makeId(),
-        cid: "",
+        cid: '',
         touchAt: timestamp
       }
     }
@@ -42,18 +42,18 @@ export const setTrackingInfo = () =>
       trackingInfo.sid = makeId()
     }
 
-    ReactGA.ga(tracker => (trackingInfo.cid = tracker.get("clientId")))
+    ReactGA.ga(tracker => (trackingInfo.cid = tracker.get('clientId')))
 
     if (!trackingInfo.cid && APP_CONFIG.debug) {
-      console.log("client id invalid on tracking")
+      console.log('client id invalid on tracking')
     }
 
-    localStorage.setItem("tracking_info", JSON.stringify(trackingInfo))
+    localStorage.setItem('tracking_info', JSON.stringify(trackingInfo))
     resolve(trackingInfo)
   })
 
 export const tracking = async (params, sidClear) => {
-  if (APP_CONFIG.env !== "production" && APP_CONFIG.env !== "development") {
+  if (APP_CONFIG.env !== 'production' && APP_CONFIG.env !== 'development') {
     return false
   }
 
@@ -69,7 +69,7 @@ export const tracking = async (params, sidClear) => {
     let tracking = apiDomain + trackingUrl + querystring
 
     axios({
-      method: "GET",
+      method: 'GET',
       url: tracking,
       withCredentials: true
     }).then(res => {
@@ -77,7 +77,7 @@ export const tracking = async (params, sidClear) => {
 
       // touchAt 현재 시간으로 갱신 후 localStorage에 저장
       trackingInfo.touchAt = timestamp
-      localStorage.setItem("tracking_info", JSON.stringify(trackingInfo))
+      localStorage.setItem('tracking_info', JSON.stringify(trackingInfo))
       resolve(res)
     })
   })

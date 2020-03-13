@@ -1,5 +1,5 @@
-import ReduxTypes from "redux/reduxTypes"
-import Document from "../../service/model/Document"
+import ReduxTypes from 'redux/reduxTypes'
+import Document from '../../service/model/Document'
 
 // 액션 생성자
 export const setAction = {

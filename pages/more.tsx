@@ -1,19 +1,17 @@
-import Layout from "components/Layout"
-import More from "../components/body/more/More"
-import TagList from "../service/model/TagList"
-import common_data from "../common/common_data"
-import React from "react"
+import Layout from 'components/Layout'
+import More from '../components/body/more/More'
+import TagList from '../service/model/TagList'
+import commonData from '../common/commonData'
+import React, { ReactElement } from "react";
 
-function index({ tagList }) {
+export default function Index({ tagList }): ReactElement {
   return (
-    <Layout title={"More" + common_data.commonTitle} path="more">
+    <Layout title={'More' + commonData.commonTitle} path="more">
       <More tagList={tagList} />
     </Layout>
   )
 }
 
-index.getInitialProps = () => {
+Index.getInitialProps = () => {
   return new TagList(null)
 }
-
-export default index

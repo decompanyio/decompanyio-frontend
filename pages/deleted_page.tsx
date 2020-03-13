@@ -1,12 +1,12 @@
-import common_data from "../common/common_data"
-import Layout from "../components/Layout"
-import React from "react"
-import NotFoundPage from "../components/common/page/NotFoundPage"
+import commonData from '../common/commonData'
+import Layout from '../components/Layout'
+import React, { ReactElement } from 'react'
+import NotFoundPage from '../components/common/page/NotFoundPage'
 
-export default function index(...rest) {
+export default function(...rest): ReactElement {
   return (
     <Layout
-      title={"Deleted document" + common_data.commonTitle}
+      title={'Deleted document' + commonData.commonTitle}
       path="deleted"
       {...rest}
     >

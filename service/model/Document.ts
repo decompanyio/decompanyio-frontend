@@ -1,14 +1,14 @@
 export default class Document {
-  document: any
-  featuredList: any
-  totalViewCountInfo: any
-  text: string
+  public document: {}
+  public featuredList: []
+  public totalViewCountInfo: {}
+  public text: string
 
-  constructor(data) {
+  public constructor(data) {
     this.document = data && data.document ? data.document : {}
     this.totalViewCountInfo =
       data && data.totalViewCountInfo ? data.totalViewCountInfo : {}
     this.featuredList = data && data.featuredList ? data.featuredList : []
-    this.text = data && data.text ? data.text : ""
+    this.text = data && data.text ? data.text : ''
   }
 }

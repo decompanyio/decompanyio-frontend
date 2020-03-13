@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react"
-import ReactTooltip from "react-tooltip"
-import * as styles from "public/static/styles/main.scss"
-import { ThreeBounce } from "better-react-spinkit"
-import { useSelector } from "react-redux"
-import { psString } from "utils/localization"
-import common_view from "common/common_view"
-import common from "../../../common/common"
-import SearchBtn from "components/common/button/SearchBtn"
-import repos from "utils/repos"
-import AutoSuggestInput from "components/common/input/AutoSuggestInput"
-import CustomChart from "../../common/chart/CustomChart"
-import Router from "next/router"
-import NoDataIcon from "../../common/NoDataIcon"
+import React, { ReactElement, useEffect, useState } from 'react'
+import ReactTooltip from 'react-tooltip'
+import * as styles from 'public/static/styles/main.scss'
+import { ThreeBounce } from 'better-react-spinkit'
+import { useSelector } from 'react-redux'
+import { psString } from 'utils/localization'
+import commonView from 'common/commonView'
+import common from '../../../common/common'
+import SearchBtn from 'components/common/button/SearchBtn'
+import repos from 'utils/repos'
+import AutoSuggestInput from 'components/common/input/AutoSuggestInput'
+import CustomChart from '../../common/chart/CustomChart'
+import Router from 'next/router'
+import NoDataIcon from '../../common/NoDataIcon'
 
-type Type = {
-  documentData: any
+interface TrackingListProps {
+  documentData
 }
 
-export default function({ documentData }: Type) {
+export default function({ documentData }: TrackingListProps): ReactElement {
   const isMobileFromRedux = useSelector(state => state.main.isMobile)
   const [showAnonymous, setShowAnonymous] = useState(false)
   const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false)
@@ -25,55 +25,12 @@ export default function({ documentData }: Type) {
   const [selectedSearch, setSelectedSearch] = useState(false)
   const [filterList, setFilterList] = useState([])
   const [trackingList, setTrackingList] = useState([])
-  const [selectedTr, setSelectedTr] = useState(null)
+  const [selectedTr, setSelectedTr] = useState(-1)
   const [loading, setLoading] = useState(false)
   const [chartResultList, setChartResultList] = useState({})
 
-  // 트랙킹 정보 GET
-  const getTrackingInfo = async (cid: any) => {
-    const params = {
-      cid: cid,
-      documentId: documentData.documentId
-    }
-
-    return repos.Tracking.getTrackingInfo(params).then(
-      (res: any) => setChartData(res.resultList), // 페이지 별 머문 시간 계산
-      err => {
-        console.error(err)
-        let _setTimeout = setTimeout(() => {
-          clearTimeout(_setTimeout)
-          return getTrackingInfo(cid)
-        }, 8000)
-      }
-    )
-  }
-
-  // 트랙킹 리스트 GET
-  const getTrackingList = () => {
-    const params = {
-      documentId: documentData.documentId,
-      anonymous: includeOnlyOnePage ? "true" : "false",
-      include: showAnonymous ? "true" : "false"
-    }
-
-    setLoading(true)
-    repos.Tracking.getTrackingList(params).then(
-      (res: any) => {
-        setLoading(false)
-        setTrackingList(res.resultList ? res.resultList : [])
-      },
-      err => {
-        console.error(err)
-        let _setTimeout = setTimeout(() => {
-          clearTimeout(_setTimeout)
-          return getTrackingList()
-        }, 8000)
-      }
-    )
-  }
-
   // 페이지별 머문 시간 계산 및 차트 데이터 SET
-  const setChartData = (res: any) => {
+  const setChartData = (res): void => {
     let dataObj = {}
     for (let i = 0; i < res.length; ++i) {
       let vrArr = res[i].viewTracking
@@ -93,20 +50,63 @@ export default function({ documentData }: Type) {
     setChartResultList(dataObj)
   }
 
+  // 트랙킹 정보 GET
+  const getTrackingInfo = async (cid: number) => {
+    const params = {
+      cid: cid,
+      documentId: documentData.documentId
+    }
+
+    return repos.Tracking.getTrackingInfo(params).then(
+      (res: any) => setChartData(res.resultList), // 페이지 별 머문 시간 계산
+      err => {
+        console.error(err)
+        let _setTimeout = setTimeout(() => {
+          clearTimeout(_setTimeout)
+          return getTrackingInfo(cid)
+        }, 8000)
+      }
+    )
+  }
+
+  // 트랙킹 리스트 GET
+  const getTrackingList = (): void => {
+    const params = {
+      documentId: documentData.documentId,
+      anonymous: includeOnlyOnePage ? 'true' : 'false',
+      include: showAnonymous ? 'true' : 'false'
+    }
+
+    setLoading(true)
+    repos.Tracking.getTrackingList(params).then(
+      (res: any) => {
+        setLoading(false)
+        setTrackingList(res.resultList ? res.resultList : [])
+      },
+      err => {
+        console.error(err)
+        let _setTimeout = setTimeout(() => {
+          clearTimeout(_setTimeout)
+          return getTrackingList()
+        }, 8000)
+      }
+    )
+  }
+
   // 검색 초기화
-  const handleClearSearch = () => {
+  const handleClearSearch = (): void => {
     setFilterList([])
     setSelectedSearch(false)
   }
 
   // 1 페이지 보기/숨김 옵션 관리
-  const handleOnePageOption = () => {
+  const handleOnePageOption = (): void => {
     setIncludeOnlyOnePage(includeOnlyOnePage)
     getTrackingList()
   }
 
   // Anonymous 보기/숨김 옵션 관리
-  const handleAnonymousOption = () => {
+  const handleAnonymousOption = (): void => {
     setShowAnonymous(!showAnonymous)
     getTrackingList()
   }
@@ -115,8 +115,8 @@ export default function({ documentData }: Type) {
   const handleScrollExpand = e => {
     e.stopPropagation() // 버블링 방지
 
-    let idx: any
-    let cid: any
+    let idx: number
+    let cid: number
     let target = e.target.parentElement
 
     if (target.dataset.idx) {
@@ -132,7 +132,7 @@ export default function({ documentData }: Type) {
       setChartResultList({})
       return getTrackingInfo(cid)
     } else {
-      setSelectedTr(null)
+      setSelectedTr(-1)
     }
   }
 
@@ -150,7 +150,11 @@ export default function({ documentData }: Type) {
   }
 
   // 특정 링크 클릭 이벤트 관리
-  const handleLinkClickEvent = (_cid: any, _email: string, _time: any) => {
+  const handleLinkClickEvent = (
+    _cid: number,
+    _email: string,
+    _time: number
+  ) => {
     let identification = documentData.author
       ? documentData.author.username && documentData.author.username.length > 0
         ? documentData.author.username
@@ -159,13 +163,13 @@ export default function({ documentData }: Type) {
 
     return Router.push(
       {
-        pathname: "/tracking_detail",
+        pathname: '/tracking_detail',
         query: {
           documentData: documentData,
           cid: _cid
         }
       },
-      "/td/@" + identification + "/" + documentData.seoTitle + "?cid=" + _cid
+      '/td/@' + identification + '/' + documentData.seoTitle + '?cid=' + _cid
     )
   }
 
@@ -177,7 +181,7 @@ export default function({ documentData }: Type) {
     <div className={styles.tl_container}>
       <div className={styles.tl_top}>
         <div className={styles.tl_title}>
-          {psString("tracking-list-visitors")}
+          {psString('tracking-list-visitors')}
         </div>
         <div
           className={styles.tl_optionBtn}
@@ -189,26 +193,26 @@ export default function({ documentData }: Type) {
               <div
                 title={
                   showAnonymous
-                    ? psString("tracking-list-option-hide")
-                    : psString("tracking-list-option-show")
+                    ? psString('tracking-list-option-hide')
+                    : psString('tracking-list-option-show')
                 }
-                onClick={() => handleAnonymousOption()}
+                onClick={(): void => handleAnonymousOption()}
               >
                 {showAnonymous
-                  ? psString("tracking-list-option-hide")
-                  : psString("tracking-list-option-show")}
+                  ? psString('tracking-list-option-hide')
+                  : psString('tracking-list-option-show')}
               </div>
               <div
                 title={
                   includeOnlyOnePage
-                    ? psString("tracking-list-option-exclude")
-                    : psString("tracking-list-option-include")
+                    ? psString('tracking-list-option-exclude')
+                    : psString('tracking-list-option-include')
                 }
-                onClick={() => handleOnePageOption()}
+                onClick={(): void => handleOnePageOption()}
               >
                 {includeOnlyOnePage
-                  ? psString("tracking-list-option-exclude")
-                  : psString("tracking-list-option-include")}
+                  ? psString('tracking-list-option-exclude')
+                  : psString('tracking-list-option-include')}
               </div>
             </div>
           )}
@@ -219,7 +223,7 @@ export default function({ documentData }: Type) {
             <div className={styles.tl_searchContainer}>
               <AutoSuggestInput
                 search={handleSelectedSearch}
-                type={"name"}
+                type={'name'}
                 getNameList={trackingList}
               />
               <SearchBtn />
@@ -227,11 +231,11 @@ export default function({ documentData }: Type) {
           ) : (
             <div className={styles.tl_searchSelectedWrapper}>
               <div className={styles.tl_searchSelected}>
-                {selectedSearch || psString("tracking-list-anonymous")}
+                {selectedSearch || psString('tracking-list-anonymous')}
               </div>
               <i
                 className="material-icons"
-                onClick={() => {
+                onClick={(): void => {
                   handleClearSearch()
                 }}
               >
@@ -245,12 +249,12 @@ export default function({ documentData }: Type) {
       <div className={styles.tl_table}>
         <div className={styles.tl_tr_0}>
           <div className={styles.tl_td_1}>
-            <span>{psString("tracking-list-name")}</span>
+            <span>{psString('tracking-list-name')}</span>
           </div>
           <div className={styles.tl_td_2}>
-            {psString("tracking-list-views")}
+            {psString('tracking-list-views')}
           </div>
-          <div className={styles.tl_td_3}>{psString("tracking-list-last")}</div>
+          <div className={styles.tl_td_3}>{psString('tracking-list-last')}</div>
           <div className={styles.tl_td_4} />
         </div>
 
@@ -263,29 +267,29 @@ export default function({ documentData }: Type) {
                     result.cid,
                     result.user
                       ? result.user.e
-                      : psString("tracking-list-anonymous"),
+                      : psString('tracking-list-anonymous'),
                     result.viewTimestamp
                   )
                 }
-                id={"trackingTableTr" + idx}
+                id={'trackingTableTr' + idx}
                 className={styles.tl_tr_2}
               >
                 <div className={styles.tl_td_1}>
                   <span>
                     {result.user
                       ? result.user.e
-                      : psString("tracking-list-anonymous")}
+                      : psString('tracking-list-anonymous')}
                   </span>
                 </div>
 
                 <div className={styles.tl_td_2}>
                   <p
                     data-tip={
-                      psString("tracking-list-view-count") +
+                      psString('tracking-list-view-count') +
                       (result.count > 1
-                        ? psString("tracking-list-view-times")
-                        : "") +
-                      ": " +
+                        ? psString('tracking-list-view-times')
+                        : '') +
+                      ': ' +
                       result.count
                     }
                   >
@@ -294,7 +298,7 @@ export default function({ documentData }: Type) {
                 </div>
 
                 <div className={styles.tl_td_3}>
-                  {common_view.dateTimeAgo(
+                  {commonView.dateTimeAgo(
                     result.viewTimestamp,
                     isMobileFromRedux
                   )}
@@ -308,8 +312,8 @@ export default function({ documentData }: Type) {
                       )}
                       className={
                         styles[
-                          "tl_duration" +
-                            (result.totalReadTimestamp === 0 ? "Disabled" : "")
+                          'tl_duration' +
+                            (result.totalReadTimestamp === 0 ? 'Disabled' : '')
                         ]
                       }
                     >
@@ -318,15 +322,15 @@ export default function({ documentData }: Type) {
 
                     <p
                       data-tip={
-                        psString("tracking-list-viewed") +
-                        ": " +
+                        psString('tracking-list-viewed') +
+                        ': ' +
                         (result.readPageCount / documentData.totalPages >= 1
                           ? 100
                           : Math.round(
                               (result.readPageCount / documentData.totalPages) *
                                 100
                             )) +
-                        "%"
+                        '%'
                       }
                       className={styles.tl_circularChartWrapper}
                     >
@@ -345,7 +349,7 @@ export default function({ documentData }: Type) {
                             Math.round(
                               (result.readPageCount / documentData.totalPages) *
                                 100
-                            ) + ", 100"
+                            ) + ', 100'
                           }
                         />
                         <circle
@@ -372,23 +376,23 @@ export default function({ documentData }: Type) {
                     <div
                       className={
                         styles[
-                          "tl_chartBtn" +
-                            (result.totalReadTimestamp === 0 ? "Disabled" : "")
+                          'tl_chartBtn' +
+                            (result.totalReadTimestamp === 0 ? 'Disabled' : '')
                         ]
                       }
                     >
                       <i className="material-icons">bar_chart</i>
                       <i className="material-icons">
-                        {selectedTr && String(idx) === selectedTr
-                          ? "keyboard_arrow_down"
-                          : "keyboard_arrow_up"}
+                        {selectedTr && idx === selectedTr
+                          ? 'keyboard_arrow_down'
+                          : 'keyboard_arrow_up'}
                       </i>
                     </div>
                   </div>
                 </div>
               </div>
               {selectedTr &&
-                String(idx) === selectedTr &&
+                idx === selectedTr &&
                 Object.entries(chartResultList).length !== 0 &&
                 chartResultList.constructor === Object && (
                   <div className={styles.tl_chartWrapper}>

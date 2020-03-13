@@ -1,26 +1,26 @@
-import Link from "next/link"
-import { useSelector } from "react-redux"
-import * as styles from "public/static/styles/main.scss"
-import LinesEllipsis from "react-lines-ellipsis"
-import common_view from "../../../common/common_view"
-import common from "../../../common/common"
-import { psString } from "../../../utils/localization"
-import { APP_CONFIG } from "../../../app.config"
-import React, { useEffect, useState } from "react"
-import dynamic from "next/dynamic"
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"
-import { repos } from "../../../utils/repos"
+import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import * as styles from 'public/static/styles/main.scss'
+import LinesEllipsis from 'react-lines-ellipsis'
+import commonView from '../../../common/commonView'
+import common from '../../../common/common'
+import { psString } from '../../../utils/localization'
+import { APP_CONFIG } from '../../../app.config'
+import React, { ReactElement, useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import { repos } from '../../../utils/repos'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
-  () => import("components/common/avatar/UserAvatar"),
+  () => import('components/common/avatar/UserAvatar'),
   { ssr: false }
 )
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 // 이미지 정보 GET
-const getImgInfo = (documentData: any) => {
+const getImgInfo = (documentData): void => {
   let img = new Image()
 
   img.src = common.getThumbnail(
@@ -36,11 +36,11 @@ const getImgInfo = (documentData: any) => {
   }
 }
 
-type Type = {
-  documentData: any
+interface DocumentCardProps {
+  documentData
 }
 
-export default function({ documentData }: Type) {
+export default function({ documentData }: DocumentCardProps): ReactElement {
   const isMobileFromRedux = useSelector(state => state.main.isMobile)
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)
@@ -75,20 +75,20 @@ export default function({ documentData }: Type) {
       documentData.documentId,
       documentData.author._id
     ).then(res => setReward(common.toEther(res)))
-  }, [])
+  }, [documentData.author._id, documentData.documentId])
 
   return (
     <div className={styles.dc_container}>
       <Link
         href={{
-          pathname: "/contents_view",
+          pathname: '/contents_view',
           query: { seoTitle: documentData.seoTitle }
         }}
-        as={"/@" + identification + "/" + documentData.seoTitle}
+        as={'/@' + identification + '/' + documentData.seoTitle}
       >
         <div
           className={styles.dc_imgWrapper}
-          onClick={() => common_view.scrollTop()}
+          onClick={() => commonView.scrollTop()}
         >
           <img
             src={imgUrl}
@@ -101,10 +101,10 @@ export default function({ documentData }: Type) {
         <div className={styles.dc_title}>
           <Link
             href={{
-              pathname: "/contents_view",
+              pathname: '/contents_view',
               query: { seoTitle: documentData.seoTitle }
             }}
-            as={"/@" + identification + "/" + documentData.seoTitle}
+            as={'/@' + identification + '/' + documentData.seoTitle}
           >
             <ResponsiveEllipsis
               text={
@@ -122,10 +122,10 @@ export default function({ documentData }: Type) {
 
         <Link
           href={{
-            pathname: "/my_page",
+            pathname: '/my_page',
             query: { identification: identification }
           }}
-          as={"/@" + identification}
+          as={'/@' + identification}
         >
           <div className={styles.dc_avatarWrapper}>
             <div>
@@ -141,7 +141,7 @@ export default function({ documentData }: Type) {
 
         {!isMobileFromRedux && (
           <span className={styles.dc_date}>
-            {common_view.dateTimeAgo(documentData.created, false)}
+            {commonView.dateTimeAgo(documentData.created, false)}
           </span>
         )}
 
@@ -155,7 +155,7 @@ export default function({ documentData }: Type) {
             <img
               className={styles.dc_rewardArrow}
               src={
-                APP_CONFIG.domain().static + "/image/icon/i_arrow_down_blue.svg"
+                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
               }
               alt="arrow button"
             />
@@ -164,7 +164,7 @@ export default function({ documentData }: Type) {
           <div className={styles.dc_vote}>{common.deckStr(vote)}</div>
           {isMobileFromRedux && (
             <div className={styles.dc_date}>
-              {common_view.dateTimeAgo(documentData.created, false)}
+              {commonView.dateTimeAgo(documentData.created, false)}
             </div>
           )}
         </div>
@@ -172,9 +172,9 @@ export default function({ documentData }: Type) {
 
       {reward > 0 && rewardInfoOpen && (
         <div className={styles.dc_rewardInfo}>
-          {psString("profile-payout-txt-1")}
+          {psString('profile-payout-txt-1')}
           <span>{!reward ? 0 : reward} DECK</span>
-          {psString("profile-payout-txt-2")}
+          {psString('profile-payout-txt-2')}
         </div>
       )}
     </div>

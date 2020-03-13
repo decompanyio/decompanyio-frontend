@@ -1,26 +1,26 @@
-import axios from "axios"
-import React, { useEffect, useState } from "react"
-import * as styles from "public/static/styles/main.scss"
-import Layout from "../components/Layout"
-import { APP_CONFIG } from "../app.config"
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import * as styles from 'public/static/styles/main.scss'
+import Layout from '../components/Layout'
+import { APP_CONFIG } from '../app.config'
 // import { AUTH_APIS } from "../utils/auth"
 
-function index(props) {
-  const [at, setAt] = useState("")
-  const [rt, setRt] = useState("")
-  const [testResult, setTestResult] = useState("")
+export default function(props) {
+  const [at, setAt] = useState('')
+  const [rt, setRt] = useState('')
+  const [testResult, setTestResult] = useState('')
   const [refresh, setRefresh] = useState(false)
 
   const handleCcByCheckbox = () => setRefresh(!refresh)
 
   function getQueryParams(qs) {
-    const _qs = qs.split("+").join(" ")
+    const _qs = qs.split('+').join(' ')
     const re = /[?&]?([^=]+)=([^&]*)/g
 
     let params = {
-      error: "",
-      authorization_token: "",
-      refresh_token: ""
+      error: '',
+      authorization_token: '',
+      refresh_token: ''
     }
 
     let tokens
@@ -35,25 +35,25 @@ function index(props) {
   function saveResponse(at, rt) {
     // Save token to local storage for later use
     if (at) {
-      localStorage.setItem("authorization_token", at)
+      localStorage.setItem('authorization_token', at)
     }
     if (rt) {
-      localStorage.setItem("refresh_token", rt)
+      localStorage.setItem('refresh_token', rt)
     }
 
-    setAt(`${localStorage.getItem("authorization_token")}`)
-    setRt(`${localStorage.getItem("refresh_token")}`)
+    setAt(`${localStorage.getItem('authorization_token')}`)
+    setRt(`${localStorage.getItem('refresh_token')}`)
   }
 
   function refreshToken() {
-    setTestResult("Loading...")
-    console.log("refreshToken")
+    setTestResult('Loading...')
+    console.log('refreshToken')
     // refresh token
     axios({
-      method: "GET",
+      method: 'GET',
       url: `${
         APP_CONFIG.domain().auth
-      }/authentication/refresh/${localStorage.getItem("refresh_token")}`
+      }/authentication/refresh/${localStorage.getItem('refresh_token')}`
     })
       .then((res: any) => {
         if (res.errorMessage) {
@@ -64,20 +64,20 @@ function index(props) {
         }
       })
       .catch(() => {
-        setTestResult("Unauthorized")
+        setTestResult('Unauthorized')
       })
   }
 
   function testToken() {
-    const authorizationToken = localStorage.getItem("authorization_token")
+    const authorizationToken = localStorage.getItem('authorization_token')
 
     console.log(authorizationToken)
 
     if (authorizationToken) {
-      setTestResult("Loading...")
+      setTestResult('Loading...')
       // set token to Authorization header
       axios({
-        method: "GET",
+        method: 'GET',
         url: `${APP_CONFIG.domain().authTest}`,
         headers: {
           Authorization: authorizationToken
@@ -89,14 +89,14 @@ function index(props) {
         .catch(() => {
           // @ts-ignore
           if (refresh) {
-            setTestResult("Refreshing token...")
+            setTestResult('Refreshing token...')
             refreshToken()
           } else {
-            setTestResult("Unauthorized")
+            setTestResult('Unauthorized')
           }
         })
     } else {
-      setTestResult("Unauthorized")
+      setTestResult('Unauthorized')
     }
   }
 
@@ -105,11 +105,11 @@ function index(props) {
 
     if (query.error) {
       setAt(query.error)
-      localStorage.removeItem("authorization_token")
-      localStorage.removeItem("refresh_token")
+      localStorage.removeItem('authorization_token')
+      localStorage.removeItem('refresh_token')
     } else {
-      const aToken = query.authorization_token || ""
-      const rToken = query.refresh_token || ""
+      const aToken = query.authorization_token || ''
+      const rToken = query.refresh_token || ''
 
       saveResponse(aToken, rToken)
       // trigger test token
@@ -118,7 +118,7 @@ function index(props) {
   }, [])
 
   return (
-    <Layout title={"Loading . . ."} path="callback" {...props}>
+    <Layout title={'Loading . . .'} path="callback" {...props}>
       <div className="main">
         <style>
           {`
@@ -247,5 +247,3 @@ function index(props) {
     </Layout>
   )
 }
-
-export default index

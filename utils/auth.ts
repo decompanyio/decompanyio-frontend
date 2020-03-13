@@ -1,31 +1,35 @@
-import auth0 from "auth0-js"
-import { APP_CONFIG } from "app.config"
-import AuthService from "../service/rest/AuthService"
-import UserInfo from "service/model/UserInfo"
+import auth0 from 'auth0-js'
+import { APP_CONFIG } from 'app.config'
+import AuthService from '../service/rest/AuthService'
+import UserInfo from 'service/model/UserInfo'
 
 const AUTH_CONFIG = {
-  domain: "decompany.auth0.com",
-  clientID: "e7kW3VpEKzprBPyHy13VL221pB1q971j",
-  redirectUri: APP_CONFIG.domain().mainHost + "/callback",
-  responseType: "token id_token",
-  scope: "openid profile email"
+  domain: 'decompany.auth0.com',
+  clientID: 'e7kW3VpEKzprBPyHy13VL221pB1q971j',
+  redirectUri: APP_CONFIG.domain().mainHost + '/callback',
+  responseType: 'token id_token',
+  scope: 'openid profile email'
 }
 
 let authData = new auth0.WebAuth(AUTH_CONFIG)
 
 export const AUTH_APIS = {
   sync(callback, error) {
-    const token = localStorage.getItem("id_token")
-    const userInfo = localStorage.getItem("user_info")
+    const token = localStorage.getItem('id_token')
+    const userInfo = localStorage.getItem('user_info')
     const data = {
       header: { Authorization: `Bearer ${token}` },
       data: userInfo
     }
-    AuthService.POST.sync(data, result => callback(result), err => error(err))
+    AuthService.POST.sync(
+      data,
+      result => callback(result),
+      err => error(err)
+    )
   },
   login: (isSilentAuthentication?: boolean) => {
     if (isSilentAuthentication) {
-      authData.authorize({ prompt: "none" })
+      authData.authorize({ prompt: 'none' })
     } else authData.authorize()
   },
   logout() {
@@ -35,33 +39,33 @@ export const AUTH_APIS = {
       returnTo: APP_CONFIG.domain().mainHost,
       clientID: AUTH_CONFIG.clientID
     })
-    window.location.href = "/"
+    window.location.href = '/'
   },
   syncUser() {
     const session = this.getSession()
-    const idToken = localStorage.getItem("id_token")
+    const idToken = localStorage.getItem('id_token')
     if (idToken && session) {
       this.sync(
         res => {
           if (res.success) {
-            localStorage.setItem("user_sync", JSON.stringify(res))
+            localStorage.setItem('user_sync', JSON.stringify(res))
           } else {
-            console.error("Login failed because user sync failed.")
+            console.error('Login failed because user sync failed.')
             this.logout()
           }
         },
         err => console.log(err)
       )
-    } else console.log("session is not init...")
+    } else console.log('session is not init...')
   },
   isAuthenticated() {
-    if (typeof window === "undefined") return false
+    if (typeof window === 'undefined') return false
 
-    const expiresAt = JSON.parse(localStorage.getItem("expires_at") || "{}")
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}')
     return new Date().getTime() < expiresAt
   },
   scheduleRenewal() {
-    let expiresAt = JSON.parse(localStorage.getItem("expires_at") || "{}")
+    let expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}')
     let timeout = expiresAt - Date.now() // mms
 
     if (timeout > 0) (() => setTimeout(() => this.renewSession(), timeout))()
@@ -120,32 +124,32 @@ export const AUTH_APIS = {
     let expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     )
-    localStorage.setItem("access_token", authResult.accessToken)
-    localStorage.setItem("id_token", authResult.idToken)
-    localStorage.setItem("expires_at", expiresAt)
+    localStorage.setItem('access_token', authResult.accessToken)
+    localStorage.setItem('id_token', authResult.idToken)
+    localStorage.setItem('expires_at', expiresAt)
 
-    if (userInfo) localStorage.setItem("user_info", JSON.stringify(userInfo))
+    if (userInfo) localStorage.setItem('user_info', JSON.stringify(userInfo))
   },
   getSession() {
     return {
-      accessToken: localStorage.getItem("access_token"),
-      idToken: localStorage.getItem("id_token"),
-      userInfo: JSON.parse(localStorage.getItem("user_info") || "{}"),
-      expiresAt: JSON.parse(localStorage.getItem("expires_at") || "{}")
+      accessToken: localStorage.getItem('access_token'),
+      idToken: localStorage.getItem('id_token'),
+      userInfo: JSON.parse(localStorage.getItem('user_info') || '{}'),
+      expiresAt: JSON.parse(localStorage.getItem('expires_at') || '{}')
     }
   },
   clearSession() {
     // Auth0 API
-    localStorage.removeItem("access_token")
-    localStorage.removeItem("id_token")
-    localStorage.removeItem("expires_at")
-    localStorage.removeItem("user_info")
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('id_token')
+    localStorage.removeItem('expires_at')
+    localStorage.removeItem('user_info')
 
     // Tracking API
-    localStorage.removeItem("tracking_info")
+    localStorage.removeItem('tracking_info')
 
     // Content Editor
-    localStorage.removeItem("content")
+    localStorage.removeItem('content')
   },
   setMyInfo(authResult) {
     return new Promise((resolve, reject) => {
@@ -161,8 +165,8 @@ export const AUTH_APIS = {
     })
   },
   getMyInfo() {
-    let userInfo = localStorage.getItem("user_info")
-    let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ""
+    let userInfo = localStorage.getItem('user_info')
+    let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
     if (!userInfoWithJson && this.isAuthenticated()) {
       this.renewSession()
       return new UserInfo(null)

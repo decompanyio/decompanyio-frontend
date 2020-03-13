@@ -1,4 +1,4 @@
-import ReduxTypes from "../reduxTypes"
+import ReduxTypes from '../reduxTypes'
 
 // 액션 생성자
 export const setAction = {

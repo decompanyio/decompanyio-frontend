@@ -1,19 +1,19 @@
-import common from "../../../common/common"
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { psString } from "utils/localization"
-import { repos } from "../../../utils/repos"
-import { setActionMain } from "../../../redux/reducer/main"
-import * as styles from "../../../public/static/styles/main.scss"
-import { AUTH_APIS } from "../../../utils/auth"
+import common from '../../../common/common'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { psString } from 'utils/localization'
+import { repos } from '../../../utils/repos'
+import { setActionMain } from '../../../redux/reducer/main'
+import * as styles from '../../../public/static/styles/main.scss'
+import { AUTH_APIS } from '../../../utils/auth'
 
-type Type = {
-  documentData: any
+interface ProfileVoteProps {
+  documentData
 }
 
-export default function({ documentData }: Type) {
+export default function({ documentData }: ProfileVoteProps): ReactElement {
   const dispatch = useDispatch()
-  const [btnText, setBtnText] = useState(psString("claim-text"))
+  const [btnText, setBtnText] = useState(psString('claim-text'))
   const [determineReward, setDetermineReward] = useState(100)
 
   let claimReward = common.deckToDollarWithComma(
@@ -21,35 +21,35 @@ export default function({ documentData }: Type) {
   )
 
   // 클레임
-  const claimCuratorReward = () => {
+  const claimCuratorReward = (): void => {
     repos.Wallet.claimCurator({ documentId: documentData.documentId })
-      .then((res: any) => {
+      .then((res: { royalties }) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
           dispatch(setActionMain.alertCode(2038, {}))
         } else {
-          setBtnText(psString("claim-btn-text-1"))
+          setBtnText(psString('claim-btn-text-1'))
           window.location.reload()
         }
       })
       .catch(err => {
         console.log(err)
-        setBtnText(psString("claim-text"))
+        setBtnText(psString('claim-text'))
         dispatch(setActionMain.alertCode(2035, {}))
       })
   }
 
   // 크리에이터 확정 보상 GET
-  const getDetermineCreatorReward = () => {
+  const getDetermineCreatorReward = (): void => {
     if (documentData && determineReward === null) {
       setDetermineReward(100)
     }
   }
 
   // 클레임 버튼 클릭 관리
-  const handelClickClaim = () => {
+  const handelClickClaim = (): void => {
     if (documentData) {
-      setBtnText(psString("claim-btn-text-2"))
+      setBtnText(psString('claim-btn-text-2'))
       claimCuratorReward()
     }
   }
@@ -58,22 +58,21 @@ export default function({ documentData }: Type) {
     getDetermineCreatorReward()
   }, [])
 
-  if (claimReward <= 0 || !AUTH_APIS.isAuthenticated()) return <div />
+  if (determineReward <= 0 || !AUTH_APIS.isAuthenticated()) return <div />
 
   return (
     <div
       className={
         styles.pcc_btn +
-        " " +
-        (btnText === psString("claim-btn-text-2") ||
-        btnText === psString("claim-btn-text-1")
+        ' ' +
+        (btnText === psString('claim-btn-text-2') ||
+        btnText === psString('claim-btn-text-1')
           ? styles.pcc_btnDisabled
-          : "")
+          : '')
       }
-      onClick={() => handelClickClaim()}
+      onClick={(): void => handelClickClaim()}
     >
-      {/*{btnText} {(btnText === psString("claim-btn-text-2") ? "" : claimReward)}*/}
-      {btnText}
+      {btnText} {btnText === psString('claim-btn-text-2') ? '' : claimReward}
     </div>
   )
 }

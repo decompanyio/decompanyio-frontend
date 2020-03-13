@@ -1,18 +1,18 @@
-import * as styles from "public/static/styles/main.scss"
-import Meta from "./Meta"
-import HeaderSectionFirst from "./section/HeaderSectionFirst"
-import HeaderSectionSecond from "./section/HeaderSectionSecond"
-import Category from "./category/Category"
-import React from "react"
-import HeaderLoadingBar from "./HeaderLoadingBar"
+import * as styles from 'public/static/styles/main.scss'
+import Meta from './Meta'
+import HeaderSectionFirst from './section/HeaderSectionFirst'
+import HeaderSectionSecond from './section/HeaderSectionSecond'
+import Category from './category/Category'
+import React, { ReactElement } from "react";
+import HeaderLoadingBar from './HeaderLoadingBar'
 
-type Type = {
+interface HeaderProps {
   title: string
   path: string
-  metaData: any
+  metaData
 }
 
-export default function({ title, path, metaData }: Type) {
+export default function({ title, path, metaData }: HeaderProps): ReactElement {
   return (
     <header>
       <Meta title={title} metaData={metaData} />
@@ -26,7 +26,7 @@ export default function({ title, path, metaData }: Type) {
         </div>
       </nav>
       {!path && <Category />}
-      {path === "contents_view" && <HeaderLoadingBar />}
+      {path === 'contents_view' && <HeaderLoadingBar />}
     </header>
   )
 }

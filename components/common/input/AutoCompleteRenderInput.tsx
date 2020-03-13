@@ -1,13 +1,13 @@
-import React from "react"
-import AutoSuggest from "react-autosuggest"
+import React, { ReactElement } from 'react'
+import AutoSuggest from 'react-autosuggest'
 
-export default function({ addTag, tagList, ...props }) {
+export default function({ addTag, tagList, ...props }): ReactElement {
   let handleOnChange = (e, { method }) => {
-    if (method === "enter") return e.preventDefault()
+    if (method === 'enter') return e.preventDefault()
     else return props.onChange(e)
   }
 
-  let inputValue = (props.value && props.value.trim().toLowerCase()) || ""
+  let inputValue = (props.value && props.value.trim().toLowerCase()) || ''
   let inputLength = inputValue.length
   let suggestions =
     tagList && tagList.length > 0
