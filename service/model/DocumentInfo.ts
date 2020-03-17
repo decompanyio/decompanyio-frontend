@@ -7,7 +7,7 @@ export default class DocumentInfo {
   public cc: []
   public created: number
   public desc: string
-  public dimensions: {}
+  public dimensions: { height: number; width: number }
   public documentId: string
   public documentName: string
   public documentSize: number
@@ -31,7 +31,7 @@ export default class DocumentInfo {
   public useTracking: boolean
   public latestVoteAmount: number
   public latestPageview: number
-  public _id: string
+  public id: string
 
   public constructor(data) {
     this.accountId = data && data.accountId ? data.accountId : ''
@@ -39,7 +39,8 @@ export default class DocumentInfo {
     this.cc = data && data.cc ? data.cc : []
     this.created = data && data.created ? data.created : 0
     this.desc = data && data.desc ? data.desc : ''
-    this.dimensions = data && data.dimensions ? data.dimensions : {}
+    this.dimensions =
+      data && data.dimensions ? data.dimensions : { height: 0, width: 0 }
     this.documentId = data && data.documentId ? data.documentId : ''
     this.documentName = data && data.documentName ? data.documentName : ''
     this.documentSize = data && data.documentSize ? data.documentSize : 0
@@ -62,7 +63,7 @@ export default class DocumentInfo {
       data && data.updated ? data.updated : common.timestampToDateTime(0)
     this.viewCount = data && data.viewCount ? data.viewCount : 0
     this.useTracking = data && data.useTracking ? data.useTracking : false
-    this._id = data && data._id ? data._id : ''
+    this.id = (data && (data.sub || data._id || data.id)) || ''
     this.latestVoteAmount =
       data && data.latestVoteAmount ? data.latestVoteAmount : 0
     this.latestPageview = data && data.latestPageview ? data.latestPageview : 0

@@ -25,7 +25,7 @@ export default function({
     let flag
 
     if (mylist.length > 0) {
-      flag = mylist.filter(v => v.documentId === documentData._id).length > 0
+      flag = mylist.filter(v => v.documentId === documentData.id).length > 0
     } else {
       flag = false
     }

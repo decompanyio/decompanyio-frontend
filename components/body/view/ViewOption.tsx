@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as styles from '../../../public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
@@ -38,7 +38,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
   // 찜 목록 GET
   const getMyList = () =>
     repos.Query.getMyListFindMany({
-      userId: myInfoFromRedux._id
+      userId: myInfoFromRedux.id
     }).then(res => setMylist(res))
 
   // 문서 다운로드 전 데이터 SET

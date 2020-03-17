@@ -108,6 +108,7 @@ export default function({
     void handleFetchDocuments(1)
 
     window.addEventListener('click', handleOption)
+
     return () => {
       window.removeEventListener('click', handleOption)
     }

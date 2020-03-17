@@ -22,7 +22,7 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
 
   // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: myInfoFromRedux._id }).then(
+    repos.Wallet.getWalletBalance({ userId: myInfoFromRedux.id }).then(
       (res: any) => {
         setLoading(false)
         setBalance(res)

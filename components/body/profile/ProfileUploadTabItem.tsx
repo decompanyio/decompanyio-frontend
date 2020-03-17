@@ -63,7 +63,7 @@ export default function({
   const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(
       documentData.documentId,
-      myInfo.sub
+      myInfo.id
     ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
 
   // document state 관리

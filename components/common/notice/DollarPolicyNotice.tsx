@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import commonView from 'common/commonView'
 import { APP_CONFIG } from '../../../app.config'

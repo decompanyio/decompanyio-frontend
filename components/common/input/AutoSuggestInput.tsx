@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { psString } from 'utils/localization'
 import React, { ReactElement, useState } from 'react'
 
-type AutoSuggestInputProps = {
+interface AutoSuggestInputProps {
   search: any
   type: string
   getNameList?: any

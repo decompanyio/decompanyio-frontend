@@ -11,29 +11,19 @@ interface MainListProps {
   path: string
 }
 
-// DocumentCard - No SSR
 const DocumentCardWithoutSSR = dynamic(
   () => import('components/common/card/DocumentCard'),
   { ssr: false }
 )
 
-// 문서 목록 GET
 const getDocuments = (path: string): Promise<[]> =>
-  repos.Document.getDocumentList({ path: path })
-    .then((res): [] => res.resultList)
-    .catch((_err): [] => [])
+  repos.Document.getDocumentList({ path: path }).then(res => res.resultList)
 
-// 찜 목록 GET
-const getMylist = (id: string): Promise<[]> =>
-  repos.Document.getMyList({ userId: id })
-    .then((res): [] => res)
-    .catch((_err): [] => [])
+const getMylist = (id: string) =>
+  repos.Document.getMyList({ userId: id }).then(res => res.resultList)
 
-// 내가 본 문서 목록 GET
-const getHistory = (id: string): Promise<[]> =>
-  repos.Document.getHistory({ userId: id })
-    .then((res): [] => res)
-    .catch((_err): [] => [])
+const getHistory = (id: string) =>
+  repos.Document.getHistory({ userId: id }).then(res => res.resultList)
 
 export default function({ path }: MainListProps): ReactElement {
   const [documentData, setDocumentData] = useState([])
@@ -44,10 +34,10 @@ export default function({ path }: MainListProps): ReactElement {
       let _documentData = []
 
       if (AUTH_APIS.isAuthenticated() && path === 'mylist') {
-        _documentData = await getMylist(AUTH_APIS.getMyInfo().sub)
+        _documentData = await getMylist(AUTH_APIS.getMyInfo().id)
         _documentData = _documentData['resultList']
       } else if (AUTH_APIS.isAuthenticated() && path === 'history') {
-        _documentData = await getHistory(AUTH_APIS.getMyInfo().sub)
+        _documentData = await getHistory(AUTH_APIS.getMyInfo().id)
         _documentData = _documentData['resultList']
       } else if (path !== 'mylist' && path !== 'history') {
         _documentData = await getDocuments(path)
@@ -55,7 +45,8 @@ export default function({ path }: MainListProps): ReactElement {
         setDataExist(false)
       }
 
-      if (_documentData.length > 0) setDocumentData(_documentData)
+      if (_documentData && _documentData.length > 0)
+        setDocumentData(_documentData)
       else setDataExist(false)
     })()
   }, [])

@@ -35,7 +35,7 @@ export default function({
 
   // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: profileInfo._id }).then(
+    repos.Wallet.getWalletBalance({ userId: profileInfo.id }).then(
       (res: any) => {
         setBalance(res)
         log.CreatorSummary.getBalance(false)
@@ -56,7 +56,7 @@ export default function({
 
   // 리워드 조회
   const getRewards = () => {
-    repos.Wallet.getProfileRewards(profileInfo._id).then(res => {
+    repos.Wallet.getProfileRewards(profileInfo.id).then(res => {
       let creatorReward = getCalculatedReward(res.last7CreatorReward)
       let curatorReward = getCalculatedReward(res.last7CuratorReward)
 
@@ -138,7 +138,7 @@ export default function({
               {'$ ' +
                 common.withComma(balance.dollar) +
                 ' (' +
-                balance.deck +
+                (balance.deck || 0) +
                 ' DECK)'}
             </span>
             <br />

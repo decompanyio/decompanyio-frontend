@@ -12,7 +12,7 @@ export default function({ addTag, tagList, ...props }): ReactElement {
   let suggestions =
     tagList && tagList.length > 0
       ? tagList.filter(
-          tag => tag._id.toLowerCase().slice(0, inputLength) === inputValue
+          tag => tag.id.toLowerCase().slice(0, inputLength) === inputValue
         )
       : []
 
@@ -23,11 +23,11 @@ export default function({ addTag, tagList, ...props }): ReactElement {
       shouldRenderSuggestions={value => value && value.trim().length > 0}
       getSuggestionValue={suggestion => suggestion}
       renderSuggestion={suggestion => (
-        <span key={suggestion._id}>{suggestion._id}</span>
+        <span key={suggestion.id}>{suggestion.id}</span>
       )}
       inputProps={{ ...props, onChange: handleOnChange }}
       onSuggestionSelected={(_e, { suggestion }) => {
-        addTag(suggestion._id)
+        addTag(suggestion.id)
       }}
       onSuggestionsFetchRequested={() => true}
       onSuggestionsClearRequested={() => true}

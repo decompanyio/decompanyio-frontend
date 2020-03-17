@@ -53,7 +53,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
-      documentData.author._id
+      documentData.author.id
     ).then(res => setReward(common.toEther(res)))
   }, [])
 
@@ -116,7 +116,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
           <span className={styles.vib_view}>{view}</span>
           <span className={styles.vib_vote}>{common.deckStr(vote)}</span>
           {AUTH_APIS.isAuthenticated() &&
-            documentData.author.sub === myInfoFromRedux.sub && (
+            documentData.author.sub === myInfoFromRedux.id && (
               <ViewOption documentData={documentData} />
             )}
         </div>

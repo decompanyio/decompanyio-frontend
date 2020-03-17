@@ -72,7 +72,7 @@ export default function({
   // 북마크 목록 GET
   const getBookmarkList = (): Promise<void> =>
     repos.Query.getMyListFindMany({
-      userId: AUTH_APIS.getMyInfo().sub
+      userId: AUTH_APIS.getMyInfo().id
     }).then((res): void => setBookmarkList(res))
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export default function({
       !state.endPage &&
       documentList.resultList.length > 0
     ) {
-      setState({ list: documentList, endPage: true })
+      setState({ list: documentList.resultList, endPage: true })
     }
   })
 

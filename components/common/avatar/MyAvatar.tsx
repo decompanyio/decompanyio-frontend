@@ -85,7 +85,7 @@ export default function({
       ) : (
         <img
           src={require('public/static/image/icon/i_profile-default.png')}
-          className={styles.ma_avatar}
+          className={styles['ma_avatar' + (size === 90 ? '_big' : '')]}
           alt="Link to my profile"
         />
       )}

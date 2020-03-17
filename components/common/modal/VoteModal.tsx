@@ -66,7 +66,7 @@ export default function(): ReactElement {
   // 문서 투표액 GET
   const getDocumentVoteAmount = () => {
     repos.Document.getDocumentVoteAmount({
-      userId: myInfo.sub,
+      userId: myInfo.id,
       documentId: documentData.documentId
     }).then(res =>
       setVoteAmount({
@@ -96,7 +96,7 @@ export default function(): ReactElement {
     if (balance >= 0) return false
 
     return repos.Wallet.getWalletBalance({
-      userId: myInfo._id
+      userId: myInfo.id
     }).then(res => setBalance(res.wei))
   }
 

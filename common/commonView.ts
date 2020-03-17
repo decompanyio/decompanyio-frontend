@@ -69,7 +69,7 @@ export default {
   },
 
   getCookie: (cname: string) => {
-    if (typeof window === 'undefined') {
+    if (typeof window !== 'undefined') {
       let cookieName = cname + '='
       let decodedCookie = decodeURIComponent(document.cookie)
       let ca = decodedCookie.split(';')
@@ -85,7 +85,7 @@ export default {
   },
 
   deleteCookie: (name: string): void => {
-    if (typeof window === 'undefined') {
+    if (typeof window !== 'undefined') {
       if (this.getCookie(name))
         document.cookie = name + '=;expires=Thu, 01-Jan-70 00:00:01 GMT'
     }

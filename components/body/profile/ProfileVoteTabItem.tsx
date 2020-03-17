@@ -31,7 +31,7 @@ export default function({
   const getCuratorRewards = () =>
     repos.Document.getClaimableReward(
       documentData.documentId,
-      myInfo.sub
+      myInfo.id
     ).then((res): void => setValidClaimAmount(common.deckToDollar(res)))
 
   const reward = common.toEther(0)

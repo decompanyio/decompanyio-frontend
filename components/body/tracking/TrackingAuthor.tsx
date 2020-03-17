@@ -63,7 +63,7 @@ export default function({
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
-      documentData.author._id
+      documentData.author.id
     ).then((res): void => setReward(common.toEther(res)))
   }, [])
 

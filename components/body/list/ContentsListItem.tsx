@@ -36,7 +36,7 @@ export default function({
   const [reward, setReward] = useState(0)
   const vote = common.toEther(documentData.latestVoteAmount) || 0
   const view = documentData.latestPageview || 0
-  const profileUrl = documentData.author ? documentData.author.picture : null
+  const profileUrl = documentData.author ? documentData.author.picture : ''
   const imageUrl = common.getThumbnail(
     documentData.documentId,
     commonView.getIsMobile ? 640 : 320,
@@ -55,7 +55,7 @@ export default function({
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
-      documentData.author._id
+      documentData.author.id
     ).then((res): void => setReward(common.toEther(res)))
   }, [])
 

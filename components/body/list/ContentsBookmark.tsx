@@ -27,7 +27,7 @@ export default function({
     if (bookmarkList.length > 0)
       flag =
         bookmarkList.filter(
-          (v: { documentId }): boolean => v.documentId === documentData._id
+          (v: { documentId }): boolean => v.documentId === documentData.id
         ).length > 0
     else flag = false
 

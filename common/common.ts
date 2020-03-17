@@ -202,7 +202,7 @@ export default {
     )
   },
 
-  // Get Date Ago on Number
+  // 오늘 기준 몇일 전
   dateAgo: (timestamp: number): number => {
     let currentDate = Number(new Date())
     let lastDate = Number(new Date(timestamp))
@@ -222,21 +222,13 @@ export default {
   escapeRegexCharacters: (str: string): string => {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   },
-
-  // 이메일 양식 체크
   checkEmailForm: (email: string): boolean => {
-    let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
-
-    return !(!email || (email && email.match(regExp)))
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
   },
-
-  // 유저 네임 양식 체크
   checkUsernameForm: (name: string): boolean => {
     let regExp = /^[a-z0-9+]*$/
     return !!name.match(regExp)
   },
-
-  // wei -> dollar
   weiToDollar: (wei: number | string): number => {
     if (isNaN(wei as number) || !wei) return 0
     let c = 0.005
@@ -246,8 +238,6 @@ export default {
     // 120,000,000,000,000,000,000
     return Math.round(dollar.toNumber() * 100) / 100
   },
-
-  // token -> dollar
   deckToDollar: (deck: number): number => {
     if (isNaN(deck) || !deck) return 0
     let c = 0.005
@@ -256,8 +246,6 @@ export default {
     // 120,000,000,000,000,000,000
     return Math.round(dollar.toNumber() * 100) / 100
   },
-
-  // Add , to dollar
   toDollarWithComma: (deck: number): string => {
     if (isNaN(deck) || !deck) return '0'
     let c = 0.005
@@ -267,12 +255,8 @@ export default {
     let result = Math.round(dollar.toNumber() * 100) / 100
     return result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   },
-
-  // Add ,
   withComma: (data: number): string =>
-    data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-
-  // wei to token
+    data ? data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0',
   toDeck: (smallDeck: number | string): number => {
     if (isNaN(smallDeck as number) || !smallDeck) return 0
     let d = new BigNumber('1e+18')

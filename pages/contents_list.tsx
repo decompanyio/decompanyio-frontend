@@ -26,7 +26,7 @@ export default function Index(
 
   useEffect(() => {
     const params = {
-      userId: AUTH_APIS.getMyInfo().sub
+      userId: AUTH_APIS.getMyInfo().id
     }
 
     if (

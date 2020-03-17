@@ -41,7 +41,7 @@ export const repos = {
     // 자기 참조
     instance = this
   },
-  init() {
+  init(): Promise<boolean> {
     // Google Analytics 초기화
     let gaId =
       process.env.NODE_ENV_SUB === 'production'
@@ -74,36 +74,41 @@ export const repos = {
   Account: {
     getProfileInfo(params) {
       return AuthService.GET.profileGet(params)
-        .then((result: any) => new UserInfo(result.user))
+        .then((result: { user }): UserInfo => new UserInfo(result.user))
         .catch(err => err)
     },
     async getAccountInfo() {
       const data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         }
       }
 
       return AuthService.GET.accountInfo(data)
-        .then((result: any) => new AccountInfo(result))
-        .catch(err => {
-          AUTH_APIS.logout()
-          return err
-        })
+        .then((result): AccountInfo => new AccountInfo(result))
+        .catch(
+          (err): AccountInfo => {
+            console.log(err)
+            AUTH_APIS.logout()
+            return new AccountInfo(null)
+          }
+        )
     },
     async updateUsername(username: string) {
       const _data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: { username: username }
       }
       AuthService.POST.accountUpdate(_data)
-        .then(() => AUTH_APIS.renewSession())
+        .then((): void => {
+          AUTH_APIS.scheduleRenewal()
+        })
         .catch(err => err)
     },
     profileImageUpload(params) {
@@ -118,33 +123,67 @@ export const repos = {
           .catch(err => reject(err))
       })
     },
-    async updateProfileImage(data: any) {
+    async updateProfileImage(data) {
       return new Promise(async (resolve, reject) => {
         const _data = {
           header: {
-            Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-              (res: any) => res.idToken
-            )}`
+            Authorization: await AUTH_APIS.scheduleRenewal().then(
+              (res: string) => res
+            )
           },
           data: data
         }
         AuthService.POST.accountUpdate(_data)
-          .then(() => resolve(AUTH_APIS.renewSession()))
+          .then(() => resolve(AUTH_APIS.scheduleRenewal()))
           .catch(err => reject(err))
       })
     },
     async getProfileImageUploadUrl() {
       const _data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         }
       }
 
       return AuthService.POST.profileImageUpdate(_data)
-        .then(result => new UserProfile(result))
+        .then((result): UserProfile => new UserProfile(result))
         .catch(err => err)
+    },
+    async getUserInfo(at?: string) {
+      let authorizationToken =
+        at || (await AUTH_APIS.scheduleRenewal().then((res: string) => res))
+      const _data = {
+        header: {
+          Authorization: authorizationToken
+        }
+      }
+
+      return AuthService.GET.userInfo(_data)
+        .then((result: { user }): UserInfo => new UserInfo(result.user))
+        .catch(err => {
+          console.log(err)
+          return err
+        })
+    },
+    async syncAuthAndRest(ui: UserInfo, at?: string) {
+      let authorizationToken =
+        at ||
+        (await AUTH_APIS.scheduleRenewal()
+          .then((res: string) => res)
+          .catch(err => {
+            console.log(err)
+            return false
+          }))
+      const _data = {
+        header: {
+          Authorization: authorizationToken
+        },
+        data: ui
+      }
+
+      return AuthService.POST.syncAuthAndRest(_data).then(result => result)
     }
   },
   Document: {
@@ -167,15 +206,15 @@ export const repos = {
 
       const data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: {
           filename: fileInfo.file.name,
           size: fileInfo.file.size,
           username: user.userName,
-          sub: user.sub,
+          sub: user.id,
           ethAccount: ethAccount,
           title: title,
           desc: desc,
@@ -197,7 +236,7 @@ export const repos = {
 
       DocService.POST.registerDocument(
         data,
-        (res: any) => {
+        res => {
           if (res && res.success && !res.code) {
             let documentId = res.documentId
             let owner = res.accountId
@@ -236,18 +275,18 @@ export const repos = {
     },
     async getDocument(seoTitle: string) {
       return DocService.GET.document(seoTitle)
-        .then((res: any) => {
+        .then((res: { message?: string }) => {
           if (!res.message) return new Document(res)
           else throw new Error(res.message)
         })
         .catch(err => err)
     },
-    async getDocuments(data: any) {
+    async getDocuments(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: {
           pageSize: data.pageSize,
@@ -256,15 +295,25 @@ export const repos = {
       }
 
       return DocService.GET.documents(params)
-        .then(result => new DocumentList(result))
-        .catch(err => err)
+        .then((result): DocumentList => new DocumentList(result))
+        .catch(
+          (err): DocumentList => {
+            console.log(err)
+            return new DocumentList(null)
+          }
+        )
     },
-    async getDocumentList(params: any) {
+    async getDocumentList(params) {
       return DocService.GET.documentList(params)
-        .then(result => new DocumentList(result))
-        .catch(err => err)
+        .then((result): DocumentList => new DocumentList(result))
+        .catch(
+          (err): DocumentList => {
+            console.log(err)
+            return new DocumentList(null)
+          }
+        )
     },
-    async getDocumentVoteAmount(data: any) {
+    async getDocumentVoteAmount(data) {
       return instance.Query.getDocumentVoteAmount(data).then(res => {
         let totalVoteAmount = res.getTodayActiveVoteAmount.reduce(
           (a, b) => Number(a.voteAmount || b.voteAmount || 0),
@@ -283,12 +332,12 @@ export const repos = {
         .then(result => new DocumentDownload(result))
         .catch(err => err)
     },
-    async updateDocument(data: any) {
+    async updateDocument(data) {
       const _data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: {
           documentId: data.documentId,
@@ -310,12 +359,12 @@ export const repos = {
         .then(result => new TagList(result))
         .catch(err => err)
     },
-    async deleteDocument(data: any) {
+    async deleteDocument(data) {
       const _data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -323,12 +372,12 @@ export const repos = {
         .then((rst: any) => new DocumentInfo(rst.result))
         .catch(error => console.error(error))
     },
-    async publishDocument(data: any) {
+    async publishDocument(data) {
       const _data = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -383,7 +432,13 @@ export const repos = {
               return idx !== -1 ? (v.author = userData[idx]) : v
             })
           }
-        }),
+        })
+        .catch(
+          (err): DocumentList => {
+            console.log(err)
+            return new DocumentList(null)
+          }
+        ),
     getHistory: async data =>
       instance.Query.getHistoryFindById(data)
         .then(res => instance.Common.checkNone(res))
@@ -441,59 +496,66 @@ export const repos = {
               return idx !== -1 ? (v.author = userData[idx]) : v
             })
           }
-        }),
+        })
+        .catch(
+          (err): DocumentList => {
+            console.log(err)
+            return new DocumentList(null)
+          }
+        ),
     async getCreatorRewards(documentId: string, userId: string) {
       return instance.Query.getCreatorRewards({
         documentId,
         userId
-      }).then((res: any) => Number(res.determineCreatorRoyalty || 0))
+      }).then(res => Number(res.determineCreatorRoyalty || 0))
     },
     async getCuratorRewards(documentId: string, userId: string) {
       return instance.Query.getCuratorRewards({
         documentId,
         userId
-      }).then((res: any) => Number(res.determineCreatorRoyalty || 0))
+      }).then(res => Number(res.determineCreatorRoyalty || 0))
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
+      console.log('documentId : ', documentId)
+      console.log('userId : ', userId)
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
-        (res: any) =>
-          new ClaimableRoyalty(res ? res.getClaimableRoyalty[0] : null)
+        res => new ClaimableRoyalty(res ? res.getClaimableRoyalty[0] : null)
       )
     },
     async getClaimableReward(documentId: string, userId: string) {
       return instance.Query.getClaimableReward({ documentId, userId }).then(
-        (res: any) =>
+        res =>
           new ClaimableReward(
             res && res.length > 0 ? res.getClaimableReward[0] : null
           )
       )
     },
-    async getDocumentPdfUrl(data: any) {
+    async getDocumentPdfUrl(data) {
       return DocService.GET.documentPdfUrl({ documentId: data }).then(
-        (result: any) => new DocumentPdfUrl(result)
+        result => new DocumentPdfUrl(result)
       )
     }
   },
   Tracking: {
-    async getTrackingList(data: any) {
+    async getTrackingList(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: data
       }
       return TrackingService.GET.trackingList(params).then(
-        (res: any) => new TrackingList(res)
+        res => new TrackingList(res)
       )
     },
-    async getTrackingInfo(data: any) {
+    async getTrackingInfo(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: {
           cid: data.cid,
@@ -509,15 +571,15 @@ export const repos = {
     async getTrackingExport(documentId: string) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: { documentId: documentId }
       }
 
       return TrackingService.GET.trackingExport(params).then(
-        (result: any) => new TrackingExport(result)
+        result => new TrackingExport(result)
       )
     },
     postTrackingConfirm(data) {
@@ -528,9 +590,9 @@ export const repos = {
     async getAnalyticsList(params: any) {
       const _params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: {
           userId: null,
@@ -539,16 +601,16 @@ export const repos = {
           documentId: params.documentId
         }
       }
-      return AnalyticsService.GET.analyticsList(_params).then((result: any) => {
+      return AnalyticsService.GET.analyticsList(_params).then(result => {
         return new AnalyticsList(result)
       })
     },
-    async getAnalyticsExport(data: any) {
+    async getAnalyticsExport(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         params: {
           documentId: data.documentId,
@@ -558,12 +620,12 @@ export const repos = {
       }
 
       return AnalyticsService.GET.analyticsExport(params).then(
-        (result: any) => new AnalyticsExport(result)
+        result => new AnalyticsExport(result)
       )
     }
   },
   Wallet: {
-    async getWalletBalance(data: any) {
+    async getWalletBalance(data) {
       return WalletService.POST.walletBalance(data)
         .then(result => new WalletBalance(result))
         .catch(err => err)
@@ -571,9 +633,9 @@ export const repos = {
     async createWallet() {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         }
       }
 
@@ -583,12 +645,12 @@ export const repos = {
         })
         .catch(err => err)
     },
-    async walletWithdraw(data: any) {
+    async walletWithdraw(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -599,12 +661,12 @@ export const repos = {
         })
         .catch(err => err)
     },
-    async voteDocument(data: any) {
+    async voteDocument(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -613,12 +675,12 @@ export const repos = {
         .then(result => result)
         .catch(err => err)
     },
-    async claimCreator(data: any) {
+    async claimCreator(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -627,12 +689,12 @@ export const repos = {
         .then(result => result)
         .catch(err => err)
     },
-    async claimCurator(data: any) {
+    async claimCurator(data) {
       const params = {
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         data: data
       }
@@ -641,59 +703,63 @@ export const repos = {
         .then(result => result)
         .catch(err => err)
     },
-    async getProfileRewards(data: any) {
+    async getProfileRewards(data) {
       return instance.Query.getProfileRewards(data).then(
         res => new ProfileRewards(res.ProfileSummary)
       )
     }
   },
   Mutation: {
-    addMyList: async (data: any) =>
+    addMyList: async data =>
       graphql({
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         mutation: mutations.addMyList(data)
       }).then(res => res),
-    removeMyList: async (data: any) =>
+    removeMyList: async data =>
       graphql({
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         mutation: mutations.removeMyList(data)
       }).then(res => res),
-    addHistory: async (data: any) =>
+    addHistory: async data =>
       graphql({
         header: {
-          Authorization: `Bearer ${await AUTH_APIS.renewSessionPromise().then(
-            (res: any) => res.idToken
-          )}`
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
         },
         mutation: mutations.addHistory(data)
       }).then(res => res)
   },
   Query: {
-    getDocumentVoteAmount: async (data: any) =>
+    getDocumentVoteAmount: async data =>
       graphql({
         query: queries.getDocumentVoteAmount(data)
-      }).then((res: any) => res.Curator),
-    getMyListFindMany: async (data: any) =>
+      }).then((res: { Curator }) => res.Curator),
+    getMyListFindMany: async data =>
       graphql({
         query: queries.getMyListFindMany(data)
-      }).then((res: any) => res.UserDocumentFavorite.findMany),
-    getHistoryFindById: async (data: any) =>
+      }).then(
+        (res: { UserDocumentFavorite }) => res.UserDocumentFavorite.findMany
+      ),
+    getHistoryFindById: async data =>
       graphql({
         query: queries.getHistoryFindById(data)
-      }).then((res: any) => res.UserDocumentHistory.findMany),
-    getDocumentListByIds: async (data: any) =>
+      }).then(
+        (res: { UserDocumentHistory }) => res.UserDocumentHistory.findMany
+      ),
+    getDocumentListByIds: async data =>
       graphql({
         query: queries.getDocumentListByIds(data)
       }).then(res => res),
-    getDocumentListByIdsMultiple: async (data: any) =>
+    getDocumentListByIdsMultiple: async data =>
       graphql({
         query: data.map(
           (v, i) =>
@@ -711,30 +777,30 @@ export const repos = {
             queries.getDocumentPopularByFindOne(v)
         )
       }).then(res => res),
-    getUserByIds: async (data: any) =>
+    getUserByIds: async data =>
       graphql({
         query: queries.getUserByIds(data)
-      }).then((res: any) => res.User.findByIds),
-    getProfileRewards: async (data: any) =>
+      }).then((res: { User }) => res.User.findByIds),
+    getProfileRewards: async data =>
       graphql({
         query: queries.getProfileRewards(data)
       }).then(res => res),
-    getCreatorRewards: async (data: any) =>
+    getCreatorRewards: async data =>
       graphql({
         query: queries.getCreatorRewards(data)
-      }).then((res: any) => res.Creator),
-    getCuratorRewards: async (data: any) =>
+      }).then((res: { Creator }) => res.Creator),
+    getCuratorRewards: async data =>
       graphql({
         query: queries.getCuratorRewards(data)
-      }).then((res: any) => res.Curator),
-    getClaimableRoyalty: async (data: any) =>
+      }).then((res: { Curator }) => res.Curator),
+    getClaimableRoyalty: async data =>
       graphql({
         query: queries.getClaimableRoyalty(data)
-      }).then((res: any) => res.Creator),
-    getClaimableReward: async (data: any) =>
+      }).then((res: { Creator }) => res.Creator),
+    getClaimableReward: async data =>
       graphql({
         query: queries.getClaimableReward(data)
-      }).then((res: any) => res.Curator)
+      }).then((res: { Curator }) => res.Curator)
   }
 }
 

@@ -5,17 +5,20 @@ let accountGetUrl = 'account/get'
 let accountUpdateUrl = 'account/update'
 let profileImageUpdateUrl = 'account/picture'
 let profileGetUrl = 'profile/get'
+let userInfoUrl = 'authentication/userinfo'
 
 export default {
   POST: {
-    sync: (data, callback, error) => {
-      AxiosService._requestWithHeader(
-        accountSyncUrl,
-        'POST',
-        data,
-        data => callback(data),
-        err => error(err)
-      )
+    syncAuthAndRest: data => {
+      return new Promise((resolve, reject) => {
+        AxiosService._requestWithHeader(
+          accountSyncUrl,
+          'POST',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      })
     },
     accountUpdate: data => {
       return new Promise((resolve, reject) => {
@@ -56,6 +59,17 @@ export default {
       return new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           accountGetUrl,
+          'GET',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      })
+    },
+    userInfo: data => {
+      return new Promise((resolve, reject) => {
+        AxiosService._requestWithUrlPramForAuth(
+          userInfoUrl,
           'GET',
           data,
           data => resolve(data),

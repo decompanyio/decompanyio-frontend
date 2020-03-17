@@ -17,7 +17,7 @@ export default function(): ReactElement {
     if (!_cookiePolicyValue) {
       commonView.setCookie('cpv', false, 1000)
       setCookiePolicyValue(false)
-    } else if (_cookiePolicyValue) {
+    } else if (_cookiePolicyValue === 'true') {
       setCookiePolicyValue(true)
     }
   })

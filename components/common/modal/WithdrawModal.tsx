@@ -22,7 +22,7 @@ export default function(): ReactElement {
 
   // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: myInfo._id }).then((res: any) => {
+    repos.Wallet.getWalletBalance({ userId: myInfo.id }).then((res: any) => {
       setBalanceLoading(false)
       setBalance(res)
       log.CreatorSummary.getBalance(false)

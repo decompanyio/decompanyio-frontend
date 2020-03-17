@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Carousel } from 'react-responsive-carousel'
 import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../../../utils/auth'
-import AccountInfo from "../../../service/model/AccountInfo";
 
 // 배너 제목
 const subject = [
@@ -28,7 +27,6 @@ const content = [
 ]
 
 export default function(): ReactElement {
-  // 업로드 클릭 관리
   const handleUploadClick = (): void => {
     if (AUTH_APIS.isAuthenticated()) {
       const el = document.getElementById('commonAddBtn') as HTMLElement
@@ -37,8 +35,7 @@ export default function(): ReactElement {
       AUTH_APIS.login()
     }
   }
-  console.log(new AccountInfo({}))
-  // 검색 클릭 관리
+
   const handleSearchClick = (): void => {
     const el = document.getElementById('commonAddBtn') as HTMLElement
     el.click()

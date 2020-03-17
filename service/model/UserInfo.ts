@@ -8,12 +8,13 @@ export default class UserInfo {
   public nickname: string
   public picture: string
   public provider: string
+  public id: string
   public sub: string
-  public _id: string
   public username: string
   public ethAccount: string
+  public privateDocumentCount: number
 
-  public constructor(data: any) {
+  public constructor(data) {
     this.connected = data && data.connected ? data.connected : 0
     this.croppedArea = data && data.croppedArea ? data.croppedArea : {}
     this.email = data && data.email ? data.email : ''
@@ -23,9 +24,10 @@ export default class UserInfo {
     this.nickname = data && data.nickname ? data.nickname : ''
     this.picture = data && data.picture ? data.picture : ''
     this.provider = data && data.provider ? data.provider : ''
-    this.sub = data && data.sub ? data.sub : ''
-    this._id = data && data._id ? data._id : ''
+    this.id = (data && (data.sub || data._id || data.id)) || ''
+    this.sub = (data && (data.sub || data._id || data.id)) || ''
     this.username = data && data.username ? data.username : ''
     this.ethAccount = data && data.ethAccount ? data.ethAccount : ''
+    this.privateDocumentCount = 0
   }
 }

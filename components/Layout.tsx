@@ -17,6 +17,7 @@ import commonData from '../common/commonData'
 import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
 import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
+import UserInfo from '../service/model/UserInfo'
 
 export default function(props): ReactElement {
   const dispatch = useDispatch()
@@ -77,9 +78,6 @@ export default function(props): ReactElement {
           }
         }
         if (headerMainNav.offsetTop + 60 >= currentScrollPos) {
-          if (headerCategoryWrapper.style.borderBottom !== 'none') {
-            headerCategoryWrapper.style.borderBottom = 'none'
-          }
           if (headerCategoryWrapper.style.position !== 'relative') {
             headerCategoryWrapper.style.position = 'relative'
           }
@@ -98,8 +96,7 @@ export default function(props): ReactElement {
     if (AUTH_APIS.isAuthenticated() && myInfo.email.length === 0) {
       return repos.Account.getAccountInfo()
         .then(result => {
-          let res = result.user
-
+          let res = new UserInfo(result.user)
           if (!res.username || res.username === '') res.username = res.email
           if (!res.picture) res.picture = myInfo.picture
 
@@ -209,11 +206,13 @@ export default function(props): ReactElement {
 
       <DollarPolicyNotice />
 
-      {
+      {init ? (
         <article className={styles.l_articleContainer}>
           {props.children}
         </article>
-      }
+      ) : (
+        <LoadingModal />
+      )}
 
       <Footer />
 
@@ -225,7 +224,7 @@ export default function(props): ReactElement {
 
       <ReactTooltip />
 
-      {!init && <LoadingModal />}
+      <div id="callbackIframeContainer" />
     </div>
   )
 }

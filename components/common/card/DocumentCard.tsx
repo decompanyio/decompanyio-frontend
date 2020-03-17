@@ -73,9 +73,9 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   useEffect(() => {
     repos.Document.getCreatorRewards(
       documentData.documentId,
-      documentData.author._id
+      documentData.author.id
     ).then(res => setReward(common.toEther(res)))
-  }, [documentData.author._id, documentData.documentId])
+  }, [documentData.author.id, documentData.documentId])
 
   return (
     <div className={styles.dc_container}>

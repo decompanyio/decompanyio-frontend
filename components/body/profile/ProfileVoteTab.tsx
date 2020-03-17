@@ -54,7 +54,7 @@ export default function({
   const handleFetchDocuments = (page: number): Promise<void> => {
     let params = {
       pageNo: page,
-      userId: profileInfo._id
+      userId: profileInfo.id
     }
 
     return Promise.resolve()

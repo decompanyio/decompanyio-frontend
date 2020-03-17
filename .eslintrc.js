@@ -9,7 +9,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     "prettier/prettier": "error",
-    "camelcase": [2, {"properties": "never"}],
+    "@typescript-eslint/camelcase": "off",
     //"@typescript-eslint/explicit-function-return-type": "off"
   },
 };

@@ -128,7 +128,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
         </p>
       )}
       {AUTH_APIS.isAuthenticated() &&
-        documentData.author.sub === myInfoFromRedux.sub && (
+        documentData.author.id === myInfoFromRedux.id && (
           <Link
             href={{
               pathname: '/tracking',

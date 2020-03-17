@@ -14,7 +14,7 @@ const env =
   process.env.NODE_ENV.trim().toLowerCase() === 'production'
     ? 'production'
     : 'development'
-const port = 80
+const port = process.env.NODE_ENV_SUB ? 80 : 3000
 const dev = env !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -247,7 +247,6 @@ app.prepare().then(() => {
   })
 
   server.all('*', (req, res) => {
-    //모두?
     return handle(req, makeTrackingCookieResponse(req, res))
   })
 
