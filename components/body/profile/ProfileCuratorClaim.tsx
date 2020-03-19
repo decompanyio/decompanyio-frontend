@@ -18,10 +18,9 @@ export default function({
   const dispatch = useDispatch()
   const [btnText, setBtnText] = useState(psString('claim-text'))
 
-  // 클레임
   const claimCuratorReward = () => {
     repos.Wallet.claimCurator({ documentId: documentData.documentId })
-      .then((res: any) => {
+      .then((res: { royalties }) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
           setBtnText('')
@@ -31,7 +30,7 @@ export default function({
           dispatch(setActionMain.alertCode(2033, {}))
         }
       })
-      .catch(err => {
+      .catch((err): void => {
         console.log(err)
         setBtnText(psString('claim-text'))
         dispatch(setActionMain.alertCode(2032, {}))
@@ -39,7 +38,7 @@ export default function({
   }
 
   // 클레임 버튼 클릭 관리
-  const handelClickClaim = () => {
+  const handelClaimBtnClick = (): void => {
     if (documentData) {
       setBtnText(psString('claim-btn-text-2'))
       claimCuratorReward()
@@ -60,7 +59,7 @@ export default function({
           ? styles.pcc_btnDisabled
           : '')
       }
-      onClick={() => handelClickClaim()}
+      onClick={(): void => handelClaimBtnClick()}
     >
       {btnText}{' '}
       {btnText === psString('claim-btn-text-2') ? '' : validClaimAmount}

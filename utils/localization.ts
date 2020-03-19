@@ -918,6 +918,13 @@ const strings = new Map([
     }
   ],
   [
+    'alert-2092',
+    {
+      KOR: '다운로드 실패',
+      ENG: 'Document Upload failed'
+    }
+  ],
+  [
     'alert-2121',
     {
       KOR: '내가 찜한 목록에 등록하였습니다.',

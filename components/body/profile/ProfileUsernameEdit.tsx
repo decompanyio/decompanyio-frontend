@@ -25,37 +25,24 @@ export default function({
   const [errMsg, setErrMsg] = useState('')
   const [editLoading, setEditLoading] = useState(false)
 
-  // 유저 네임 유효성 체크
-  const validateUsername = (value: any) => {
-    if (!value || value.length < 1) {
-      return setErrMsg(psString('profile-error-1'))
-    }
+  const validateUsername = (value): void => {
+    if (!value || value.length < 1) setErrMsg(psString('profile-error-1'))
 
-    if (!common.checkUsernameForm(value)) {
-      return setErrMsg(psString('profile-error-2'))
-    }
+    if (!common.checkUsernameForm(value)) setErrMsg(psString('profile-error-2'))
 
-    if (value.length < 4 || value.length > 20) {
-      return setErrMsg(psString('profile-error-3'))
-    }
+    if (value.length < 4 || value.length > 20)
+      setErrMsg(psString('profile-error-3'))
 
-    if (errMsg !== '') {
-      return setErrMsg(psString(''))
-    }
+    if (errMsg !== '') setErrMsg(psString(''))
   }
 
-  // redux myinfo SET
-  const setMyinfo = (name: string) => {
-    const myinfo = myInfoFromRedux
-    myinfo.username = name
-    dispatch(setActionMain.myInfo(myinfo))
+  const setMyInfoInRedux = (name: string): void => {
+    const myInfo = myInfoFromRedux
+    myInfo.username = name
+    dispatch(setActionMain.myInfo(myInfo))
   }
 
-  // 유져네임 수정 상태 핸들
-  const handleChangeUsername = (value: any) => validateUsername(value)
-
-  // 수정 버튼 핸들
-  const handleEditBtn = () => {
+  const handleEditBtnClick = () => {
     setEditLoading(true)
 
     let element = document.getElementById(
@@ -70,7 +57,7 @@ export default function({
         .then(() => {
           dispatch(setActionMain.alertCode(2141, {}))
           setEditLoading(true)
-          setMyinfo(name)
+          setMyInfoInRedux(name)
           window.history.replaceState(
             {},
             name + commonData.commonTitle,
@@ -81,9 +68,6 @@ export default function({
         .catch(err => console.log(err))
     }
   }
-
-  // username 수정 취소 시
-  const handleCancelEvent = () => cancel()
 
   useEffect(() => {
     let element = document.getElementById(
@@ -105,21 +89,18 @@ export default function({
           ' ' +
           (errMsg.length > 0 ? styles.pue_inputWarning : '')
         }
-        onChange={e => handleChangeUsername(e.target.value)}
+        onChange={e => validateUsername(e.target.value)}
         spellCheck={false}
         maxLength={20}
       />
       <div
-        onClick={() => handleEditBtn()}
+        onClick={() => handleEditBtnClick()}
         className={styles['pue_okBtn' + (!editLoading ? '' : 'Disabled')]}
       >
         {!editLoading ? 'Done' : <FadingCircle color="#3681fe" size={17} />}
       </div>
       {!editLoading && (
-        <div
-          onClick={() => handleCancelEvent()}
-          className={styles.pue_cancelBtn}
-        >
+        <div onClick={(): void => cancel()} className={styles.pue_cancelBtn}>
           Cancel
         </div>
       )}

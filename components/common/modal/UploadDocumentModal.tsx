@@ -47,8 +47,8 @@ export default function(): ReactElement {
   }
 
   // 문서 등록 API
-  const registerDocument = () => {
-    return new Promise((resolve, reject) => {
+  const registerDocument = () =>
+    new Promise((resolve, reject) => {
       repos.Document.registerDocument(
         {
           fileInfo: fileInfo,
@@ -76,7 +76,6 @@ export default function(): ReactElement {
         err => reject(err)
       )
     })
-  }
 
   // 모달 숨기기 클래스 추가
   const handleCloseFlag = () =>

@@ -7,6 +7,7 @@ import { psString } from 'utils/localization'
 import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import * as styles from '../../../public/static/styles/main.scss'
+import log from '../../../utils/log'
 
 export default function(): ReactElement {
   const dispatch = useDispatch()
@@ -23,8 +24,8 @@ export default function(): ReactElement {
   const [deckError, setDeckError] = useState('')
 
   // 예금 값 유효성 체크
-  const validateDeposit = (value: number) => {
-    return new Promise(resolve => {
+  const validateDeposit = (value: number) =>
+    new Promise(resolve => {
       let errMsg = ''
       if (value <= 0) errMsg = psString('vote-modal-err-1')
       else if (value > Number(common.toDeck(balance).toFixed(2))) {
@@ -33,7 +34,6 @@ export default function(): ReactElement {
       setDeckError(errMsg)
       resolve(errMsg)
     })
-  }
 
   // Deck 예금 값 입력 캐치
   const onChangeDeposit = e => {
@@ -50,10 +50,14 @@ export default function(): ReactElement {
       amount: deposit
     }
 
-    repos.Wallet.voteDocument(data).then(() => {
-      setLoading(false)
-      window.location.reload()
-    })
+    repos.Wallet.voteDocument(data)
+      .then(() => {
+        log.VoteModal.voteDocument()
+
+        setLoading(false)
+        window.location.reload()
+      })
+      .catch((err): void => log.VoteModal.voteDocument(err))
   }
 
   // 투표 Confirm 버튼 클릭
@@ -101,6 +105,8 @@ export default function(): ReactElement {
   }
 
   useEffect(() => {
+    log.VoteModal.init()
+
     handleBalance()
     getDocumentVoteAmount()
 

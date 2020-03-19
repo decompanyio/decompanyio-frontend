@@ -20,18 +20,20 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
   const [loading, setLoading] = useState(true)
   const [balance, setBalance] = useState(new WalletBalance(null))
 
-  // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: myInfoFromRedux.id }).then(
-      (res: any) => {
+    repos.Wallet.getWalletBalance({ userId: myInfoFromRedux.id })
+      .then((res): void => {
         setLoading(false)
         setBalance(res)
-        log.CreatorSummary.getBalance(false)
-      }
-    )
+        log.Common.getBalance()
+      })
+      .catch((err): void => {
+        log.Common.getBalance(err)
+        setLoading(false)
+        setBalance(new WalletBalance(null))
+      })
 
-  // 클릭 관리
-  const handleClick = e => {
+  const handleClickEvent = (e): void => {
     const targetElement = e.target
     const profileCard = document.getElementById('profileCard')
 
@@ -41,11 +43,13 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
   }
 
   useEffect(() => {
-    window.addEventListener('click', handleClick)
+    log.ProfileCard.init()
+
+    window.addEventListener('click', handleClickEvent)
     void getBalance() // 잔액 조회
 
     return () => {
-      window.removeEventListener('click', handleClick)
+      window.removeEventListener('click', handleClickEvent)
     }
   }, [])
 
@@ -99,12 +103,15 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
         ) : (
           <div
             className={styles.pc_accountBtn}
-            onClick={() => AUTH_APIS.login()}
+            onClick={(): void => AUTH_APIS.login()}
           >
             {psString('profile-card-login')}
           </div>
         )}
-        <div className={styles.pc_logoutBtn} onClick={() => AUTH_APIS.logout()}>
+        <div
+          className={styles.pc_logoutBtn}
+          onClick={(): void => AUTH_APIS.logout()}
+        >
           {psString('profile-card-logout')}
         </div>
       </div>

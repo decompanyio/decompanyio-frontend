@@ -2,9 +2,14 @@ import * as styles from 'public/static/styles/main.scss'
 import MainBanner from './MainBanner'
 import MainList from './MainList'
 import commonData from '../../../common/commonData'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect } from 'react'
+import log from '../../../utils/log'
 
 export default function(): ReactElement {
+  useEffect(() => {
+    log.Main.init()
+  })
+
   return (
     <div>
       <MainBanner />

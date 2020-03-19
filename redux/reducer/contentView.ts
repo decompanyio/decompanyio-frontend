@@ -3,7 +3,7 @@ import Document from '../../service/model/Document'
 
 // 액션 생성자
 export const setAction = {
-  document: (document: any) => ({ type: ReduxTypes.SET_DOCUMENT, document })
+  document: document => ({ type: ReduxTypes.SET_DOCUMENT, document })
 }
 
 // 초기 상태

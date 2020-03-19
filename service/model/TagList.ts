@@ -11,7 +11,7 @@ const compare = (a, b) => {
 }
 
 export default class TagList {
-  public tagList?: []
+  public tagList: []
 
   public constructor(data) {
     this.tagList =

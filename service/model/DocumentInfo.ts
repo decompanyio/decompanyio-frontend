@@ -35,7 +35,7 @@ export default class DocumentInfo {
 
   public constructor(data) {
     this.accountId = data && data.accountId ? data.accountId : ''
-    this.author = data && data.author ? data.author : new UserInfo(null)
+    this.author = data && data.author ? new UserInfo(data.author) : new UserInfo(null)
     this.cc = data && data.cc ? data.cc : []
     this.created = data && data.created ? data.created : 0
     this.desc = data && data.desc ? data.desc : ''

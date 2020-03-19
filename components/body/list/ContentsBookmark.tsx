@@ -20,8 +20,7 @@ export default function({
   const dispatch = useDispatch()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
-  // 찜하기
-  const checkBookmark = (): void => {
+  const checkBookmarkList = (): void => {
     let flag: boolean
 
     if (bookmarkList.length > 0)
@@ -34,8 +33,7 @@ export default function({
     setBookmarkFlag(flag)
   }
 
-  // 북마크 버튼 클릭 관리
-  const handleBookmark = (): void => {
+  const handleBookmarkBtnClick = (): void => {
     setBookmarkFlag(true)
 
     repos.Mutation.addMyList(documentData.documentId)
@@ -43,8 +41,7 @@ export default function({
       .catch((): void => dispatch(setActionMain.alertCode(2122, {})))
   }
 
-  // 북마크 삭제 버튼 클릭 관리
-  const handleBookmarkRemove = (): void => {
+  const handleBookmarkRemoveBtnClick = (): void => {
     setBookmarkFlag(false)
 
     repos.Mutation.removeMyList(documentData.documentId)
@@ -56,7 +53,7 @@ export default function({
   }
 
   useEffect(() => {
-    checkBookmark()
+    checkBookmarkList()
   }, [])
 
   if (bookmarkFlag) {
@@ -64,7 +61,7 @@ export default function({
       <p
         data-tip={psString('bookmark-remove')}
         className={styles.cb_checked}
-        onClick={(): void => handleBookmarkRemove()}
+        onClick={(): void => handleBookmarkRemoveBtnClick()}
       >
         <i className="material-icons">bookmark</i>
       </p>
@@ -74,7 +71,7 @@ export default function({
       <p
         data-tip={psString('bookmark-add')}
         className={styles.cb_bookmark}
-        onClick={(): void => handleBookmark()}
+        onClick={(): void => handleBookmarkBtnClick()}
       >
         <i className="material-icons">bookmark_border</i>
       </p>

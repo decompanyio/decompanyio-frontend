@@ -18,7 +18,6 @@ interface ContentsListItemProps {
   bookmarkList
 }
 
-// UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
   { ssr: false }

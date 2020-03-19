@@ -16,6 +16,7 @@ interface ProfileVoteTabItemProps {
   owner: boolean
 }
 
+// ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
@@ -27,7 +28,6 @@ export default function({
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 
-  // 저자 리워드
   const getCuratorRewards = () =>
     repos.Document.getClaimableReward(
       documentData.documentId,

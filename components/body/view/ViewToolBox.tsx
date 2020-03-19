@@ -23,14 +23,13 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
       : documentData.author.email
     : documentData.accountId
 
-  // 문서 다운로드
-  const getContentDownload = (documentId: string, documentName: string) => {
+  const downloadDocument = (documentId: string, documentName: string) => {
     setDownloadLoading(true)
 
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
-    }).then(
-      result => {
+    })
+      .then(result => {
         const a = document.createElement('a') as HTMLAnchorElement
 
         a.style.display = 'none'
@@ -43,21 +42,20 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
         document.body.removeChild(a)
 
         setDownloadLoading(false)
-      },
-      (): void => setDownloadLoading(false)
-    )
+      })
+      .catch((err): void => {
+        console.log(err)
+        setDownloadLoading(false)
+      })
   }
 
-  // 문서 다운로드 전 데이터 SET
-  const handleDownloadContent = (): void => {
-    if (!documentData) {
-      return dispatch(setActionMain.alertCode(2091, {}))
-    }
-    if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email) {
-      return dispatch(setActionMain.alertCode(2003, {}))
-    }
+  const setRequiredForDownload = (): void => {
+    if (!documentData) return dispatch(setActionMain.alertCode(2091, {}))
 
-    getContentDownload(documentData.documentId, documentData.documentName)
+    if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email)
+      return dispatch(setActionMain.alertCode(2003, {}))
+
+    downloadDocument(documentData.documentId, documentData.documentName)
   }
 
   // 공유 버튼 클릭 관리
@@ -115,7 +113,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           className={
             styles['vtb_downloadBtn' + (downloadLoading ? 'Disabled' : '')]
           }
-          onClick={() => handleDownloadContent()}
+          onClick={() => setRequiredForDownload()}
         >
           {downloadLoading ? (
             <FadingCircle color="#3681fe" size={17} />

@@ -10,15 +10,13 @@ export default function(): ReactElement {
   const dispatch = useDispatch()
   const [dollarPolicyValue, setDollarPolicyValue] = useState(false)
 
-  // 모달 종료 관리
-  const handleClose = () => {
+  const handleCloseBtnClick = (): void => {
     commonView.setCookie('dpv', true, 1000)
     setDollarPolicyValue(true)
   }
 
-  // 모달 실행 시
-  const getStarted = () => {
-    handleClose()
+  const handleAcceptBtnClick = (): void => {
+    handleCloseBtnClick()
     dispatch(setActionMain.modal('dollarLearnMore'))
   }
 
@@ -47,14 +45,17 @@ export default function(): ReactElement {
           <div className={styles.dpn_text}>
             {psString('dollar-policy-content')}
             <span />
-            <span className={styles.dpn_learnMore} onClick={() => getStarted()}>
+            <span
+              className={styles.dpn_learnMore}
+              onClick={(): void => handleAcceptBtnClick()}
+            >
               {psString('dollar-policy-learn-more')}
             </span>
           </div>
 
           <i
             className={'material-icons ' + styles.dpn_close}
-            onClick={() => handleClose()}
+            onClick={(): void => handleCloseBtnClick()}
           >
             close
           </i>

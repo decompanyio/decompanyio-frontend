@@ -5,8 +5,8 @@ let getAnalyticsListUrl = 'analytics/list'
 
 export default {
   GET: {
-    analyticsList: data => {
-      return new Promise((resolve, reject) => {
+    analyticsList: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getAnalyticsListUrl,
           'GET',
@@ -14,10 +14,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    analyticsExport: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    analyticsExport: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getAnalyticsExportUrl,
           'GET',
@@ -26,7 +25,6 @@ export default {
           err => reject(err)
         )
       })
-    }
   },
   POST: {}
 }

@@ -12,7 +12,8 @@ export default function({ addTag, tagList, ...props }): ReactElement {
   let suggestions =
     tagList && tagList.length > 0
       ? tagList.filter(
-          tag => tag.id.toLowerCase().slice(0, inputLength) === inputValue
+          (tag): boolean =>
+            tag.id.toLowerCase().slice(0, inputLength) === inputValue
         )
       : []
 
@@ -20,7 +21,9 @@ export default function({ addTag, tagList, ...props }): ReactElement {
     <AutoSuggest
       ref={props.ref}
       suggestions={suggestions}
-      shouldRenderSuggestions={value => value && value.trim().length > 0}
+      shouldRenderSuggestions={(value): boolean =>
+        value && value.trim().length > 0
+      }
       getSuggestionValue={suggestion => suggestion}
       renderSuggestion={suggestion => (
         <span key={suggestion.id}>{suggestion.id}</span>

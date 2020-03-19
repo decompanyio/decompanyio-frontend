@@ -9,8 +9,8 @@ let claimCurator = 'claim/reward'
 
 export default {
   POST: {
-    walletBalance: data => {
-      return new Promise((resolve, reject) => {
+    walletBalance: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithBodyForWallet(
           walletBalance,
           'POST',
@@ -18,10 +18,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    walletCreate: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    walletCreate: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           walletCreate,
           'POST',
@@ -29,10 +28,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    walletWithdraw: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    walletWithdraw: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           walletWithdraw,
           'POST',
@@ -40,10 +38,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    voteDocument: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    voteDocument: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           voteDocument,
           'POST',
@@ -51,10 +48,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    claimCreator: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    claimCreator: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           claimCreator,
           'POST',
@@ -62,10 +58,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    claimCurator: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    claimCurator: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           claimCurator,
           'POST',
@@ -74,6 +69,5 @@ export default {
           err => reject(err)
         )
       })
-    }
   }
 }

@@ -11,13 +11,13 @@ interface TrackingDetailItemProps {
   text
 }
 
-// 정렬 시간 GET
+// 내림 차순으로 정렬된 시간  GET
 const getSortedTime = ({ viewTracking }): void => {
   viewTracking.sort((a, b) => a.t - b.t)
   common.timestampToTime(viewTracking[0].t)
 }
 
-// 머문 시간 GET
+// 특정 페이지에 머문 시간 계산 후 GET
 const getStayingTime = ({ viewTracking }): string => {
   viewTracking.sort((a, b) => a.t - b.t)
   let nextDt = viewTracking[viewTracking.length - 1].t

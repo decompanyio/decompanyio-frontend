@@ -34,10 +34,10 @@ import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
 import ClaimableReward from '../service/model/ClaimableReward'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
 
-let instance: any
+let instance
 
 export const repos = {
-  ref() {
+  ref(): void {
     // 자기 참조
     instance = this
   },
@@ -59,7 +59,7 @@ export const repos = {
     ReactGA.pageview(window.location.pathname + window.location.search)
 
     // 로그인 체크
-    if (AUTH_APIS.isAuthenticated()) AUTH_APIS.scheduleRenewal()
+    if (AUTH_APIS.isAuthenticated()) void AUTH_APIS.scheduleRenewal()
     else AUTH_APIS.clearSession()
 
     return Promise.resolve(true)
@@ -75,7 +75,12 @@ export const repos = {
     getProfileInfo(params) {
       return AuthService.GET.profileGet(params)
         .then((result: { user }): UserInfo => new UserInfo(result.user))
-        .catch(err => err)
+        .catch(
+          (err): UserInfo => {
+            console.log(err)
+            return new UserInfo(null)
+          }
+        )
     },
     async getAccountInfo() {
       const data = {
@@ -99,17 +104,13 @@ export const repos = {
     async updateUsername(username: string) {
       const _data = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
         },
         data: { username: username }
       }
-      AuthService.POST.accountUpdate(_data)
-        .then((): void => {
-          AUTH_APIS.scheduleRenewal()
-        })
-        .catch(err => err)
+      AuthService.POST.accountUpdate(_data).then((): void => {
+        AUTH_APIS.scheduleRenewal()
+      })
     },
     profileImageUpload(params) {
       return new Promise((resolve, reject) => {
@@ -127,9 +128,7 @@ export const repos = {
       return new Promise(async (resolve, reject) => {
         const _data = {
           header: {
-            Authorization: await AUTH_APIS.scheduleRenewal().then(
-              (res: string) => res
-            )
+            Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
           },
           data: data
         }
@@ -141,9 +140,7 @@ export const repos = {
     async getProfileImageUploadUrl() {
       const _data = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
         }
       }
 
@@ -187,12 +184,7 @@ export const repos = {
     }
   },
   Document: {
-    async registerDocument(
-      args: any,
-      progress: any,
-      callback: any,
-      error: any
-    ) {
+    async registerDocument(args, progress, callback, error) {
       let fileInfo = args.fileInfo
       let user = args.userInfo
       let ethAccount = args.ethAccount
@@ -252,7 +244,7 @@ export const repos = {
               callback: progress
             })
               .then(() => callback(res))
-              .catch((err: any) => error(err))
+              .catch(err => error(err))
           } else callback(res)
         },
         err => error(err)
@@ -327,10 +319,10 @@ export const repos = {
         return { totalVoteAmount, myVoteAmount }
       })
     },
-    getDocumentDownloadUrl(params: any) {
-      return DocService.GET.documentDownload(params)
-        .then(result => new DocumentDownload(result))
-        .catch(err => err)
+    getDocumentDownloadUrl(params) {
+      return DocService.GET.documentDownload(params).then(
+        (result): DocumentDownload => new DocumentDownload(result)
+      )
     },
     async updateDocument(data) {
       const _data = {
@@ -350,14 +342,14 @@ export const repos = {
           cc: data.cc
         }
       }
-      return DocService.POST.updateDocument(_data)
-        .then((rst: any) => new DocumentInfo(rst.result))
-        .catch(error => console.error(error))
+      return DocService.POST.updateDocument(_data).then(
+        (res: { result }): DocumentInfo => new DocumentInfo(res.result)
+      )
     },
     async getTagList(path: string) {
-      return TagService.GET.tagList({ t: path })
-        .then(result => new TagList(result))
-        .catch(err => err)
+      return TagService.GET.tagList({ t: path }).then(
+        (res): TagList => new TagList(res)
+      )
     },
     async deleteDocument(data) {
       const _data = {
@@ -368,9 +360,9 @@ export const repos = {
         },
         data: data
       }
-      return DocService.POST.updateDocument(_data)
-        .then((rst: any) => new DocumentInfo(rst.result))
-        .catch(error => console.error(error))
+      return DocService.POST.updateDocument(_data).then(
+        (res: { result }): DocumentInfo => new DocumentInfo(res.result)
+      )
     },
     async publishDocument(data) {
       const _data = {
@@ -383,12 +375,12 @@ export const repos = {
       }
 
       return DocService.POST.updateDocument(_data)
-        .then((rst: any) => new DocumentInfo(rst.result))
-        .catch(error => console.error(error))
+        .then((res: { result }): DocumentInfo => new DocumentInfo(res.result))
+        .catch(err => console.error(err))
     },
-    async getCuratorDocuments(params: any) {
+    async getCuratorDocuments(params) {
       return DocService.GET.curatorDocuments(params)
-        .then(result => new CuratorDocuments(result))
+        .then((result): CuratorDocuments => new CuratorDocuments(result))
         .catch(err => err)
     },
     getMyList: async data =>
@@ -516,15 +508,13 @@ export const repos = {
       }).then(res => Number(res.determineCreatorRoyalty || 0))
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
-      console.log('documentId : ', documentId)
-      console.log('userId : ', userId)
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
         res => new ClaimableRoyalty(res ? res.getClaimableRoyalty[0] : null)
       )
     },
     async getClaimableReward(documentId: string, userId: string) {
       return instance.Query.getClaimableReward({ documentId, userId }).then(
-        res =>
+        (res): ClaimableReward =>
           new ClaimableReward(
             res && res.length > 0 ? res.getClaimableReward[0] : null
           )
@@ -532,7 +522,7 @@ export const repos = {
     },
     async getDocumentPdfUrl(data) {
       return DocService.GET.documentPdfUrl({ documentId: data }).then(
-        result => new DocumentPdfUrl(result)
+        (result): DocumentPdfUrl => new DocumentPdfUrl(result)
       )
     }
   },
@@ -547,7 +537,7 @@ export const repos = {
         params: data
       }
       return TrackingService.GET.trackingList(params).then(
-        res => new TrackingList(res)
+        (res): TrackingList => new TrackingList(res)
       )
     },
     async getTrackingInfo(data) {
@@ -565,7 +555,7 @@ export const repos = {
         }
       }
       return TrackingService.GET.trackingInfo(params).then(
-        (res: {}) => new TrackingInfo(res)
+        (res: {}): TrackingInfo => new TrackingInfo(res)
       )
     },
     async getTrackingExport(documentId: string) {
@@ -579,15 +569,18 @@ export const repos = {
       }
 
       return TrackingService.GET.trackingExport(params).then(
-        result => new TrackingExport(result)
+        (res): TrackingExport => new TrackingExport(res)
       )
+    },
+    async getTrackingCollect(params) {
+      return TrackingService.GET.trackingCollect(params).then(result => result)
     },
     postTrackingConfirm(data) {
       return TrackingService.POST.trackingConfirm(data)
     }
   },
   Analytics: {
-    async getAnalyticsList(params: any) {
+    async getAnalyticsList(params) {
       const _params = {
         header: {
           Authorization: await AUTH_APIS.scheduleRenewal().then(
@@ -601,9 +594,9 @@ export const repos = {
           documentId: params.documentId
         }
       }
-      return AnalyticsService.GET.analyticsList(_params).then(result => {
-        return new AnalyticsList(result)
-      })
+      return AnalyticsService.GET.analyticsList(_params).then(
+        (res): AnalyticsList => new AnalyticsList(res)
+      )
     },
     async getAnalyticsExport(data) {
       const params = {
@@ -620,15 +613,15 @@ export const repos = {
       }
 
       return AnalyticsService.GET.analyticsExport(params).then(
-        result => new AnalyticsExport(result)
+        (res): AnalyticsExport => new AnalyticsExport(res)
       )
     }
   },
   Wallet: {
     async getWalletBalance(data) {
-      return WalletService.POST.walletBalance(data)
-        .then(result => new WalletBalance(result))
-        .catch(err => err)
+      return WalletService.POST.walletBalance(data).then(
+        (res): WalletBalance => new WalletBalance(res)
+      )
     },
     async createWallet() {
       const params = {
@@ -639,11 +632,9 @@ export const repos = {
         }
       }
 
-      return WalletService.POST.walletCreate(params)
-        .then(result => {
-          return new WalletCreate(result)
-        })
-        .catch(err => err)
+      return WalletService.POST.walletCreate(params).then(
+        (res): WalletCreate => new WalletCreate(res)
+      )
     },
     async walletWithdraw(data) {
       const params = {
@@ -655,11 +646,11 @@ export const repos = {
         data: data
       }
 
-      return WalletService.POST.walletWithdraw(params)
-        .then(result => {
-          return new WalletCreate(result)
-        })
-        .catch(err => err)
+      return WalletService.POST.walletWithdraw(params).then(
+        (res): WalletCreate => {
+          return new WalletCreate(res)
+        }
+      )
     },
     async voteDocument(data) {
       const params = {
@@ -671,9 +662,7 @@ export const repos = {
         data: data
       }
 
-      return WalletService.POST.voteDocument(params)
-        .then(result => result)
-        .catch(err => err)
+      return WalletService.POST.voteDocument(params).then(res => res)
     },
     async claimCreator(data) {
       const params = {

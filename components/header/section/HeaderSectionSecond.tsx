@@ -28,16 +28,16 @@ export default function(): ReactElement {
   }
 
   // 프로필 카드 클릭 관리
-  const handleProfileCardClick = () => {
+  const handleProfileCardClick = (): void => {
     if (profileCardShow) setProfileCardShow(false)
   }
 
   // 검색버튼 관리
-  const handleSearchBtnClick = () =>
+  const handleSearchBtnClick = (): void =>
     setShowSearchBar(showSearchBar === 1 ? 0 : 1)
 
   // 아바타 클릭 관리
-  const handleAvatarClick = () => setProfileCardShow(true)
+  const handleAvatarClick = (): void => setProfileCardShow(true)
 
   return (
     <div className={styles.hss_section_2}>

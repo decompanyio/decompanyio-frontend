@@ -5,14 +5,12 @@ import repos from '../utils/repos'
 import commonData from '../common/commonData'
 import { AUTH_APIS } from '../utils/auth'
 
-// get Tag
-const getTag = (path: any) => {
-  if (path[1] && path[1] === 'tag') return path[2] || null
-  else return null
+const getTag = (path: string[]): string => {
+  if (path[1] && path[1] === 'tag') return path[2] || ''
+  else return ''
 }
 
-// get Path
-const getPath = (path: any) => {
+const getPath = (path: string[]): string => {
   if (path[1] && commonData.pathArr.includes(path[1])) {
     return path[1] || 'latest'
   } else return 'latest'

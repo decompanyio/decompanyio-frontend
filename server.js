@@ -44,7 +44,7 @@ const makeTrackingCookieResponse = (req, res) => {
   if (!_sid) _sid = getRandomId()
   if (!_tid) _tid = getRandomId()
 
-  const secure = env === 'production' ? true : false
+  const secure = env === 'production'
   const domain = req.headers.host
 
   res.cookie('_tid', _tid, {
@@ -164,34 +164,19 @@ app.prepare().then(() => {
 
   // 최신 문서 목록 페이지
   server.get('/latest', (req, res) => {
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_list',
-      req.query
-    )
+    return app.render(req, '/contents_list', req.query)
   })
 
   // 추천 문서 목록 페이지
   server.get('/featured', (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_list',
-      req.query
-    )
+    return app.render(req, '/contents_list', req.query)
   })
 
   // 인기 문서 목록 페이지
   server.get('/popular', (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_list',
-      req.query
-    )
+    return app.render(req, '/contents_list', req.query)
   })
 
   // 찜 문서 목록 페이지
@@ -203,12 +188,7 @@ app.prepare().then(() => {
   // 내가 본 문서 목록 페이지
   server.get('/history', (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_list',
-      req.query
-    )
+    return app.render(req, '/contents_list', req.query)
   })
 
   // 회사소개 페이지
@@ -247,7 +227,7 @@ app.prepare().then(() => {
   })
 
   server.all('*', (req, res) => {
-    return handle(req, makeTrackingCookieResponse(req, res))
+    return handle(req, res)
   })
 
   server.listen(port, err => {

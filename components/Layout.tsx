@@ -34,8 +34,8 @@ export default function(props): ReactElement {
   let isMobileChecker = false
 
   // 스크롤 이벤트 시 element 관리
-  const manageElement = (path: string) => {
-    return new Promise(resolve => {
+  const manageElement = (path: string) =>
+    new Promise(resolve => {
       let currentScrollPos = window.pageYOffset
       let headerMainNav = document.getElementById('headerMainNav')
       let totalLoadingBar = document.getElementById('totalLoadingBar')
@@ -49,7 +49,7 @@ export default function(props): ReactElement {
         if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
           headerMainNav.style.top = '0px'
         } else {
-          headerMainNav.style.top = '-60px'
+          headerMainNav.style.top = '-61px'
         }
       }
 
@@ -89,7 +89,6 @@ export default function(props): ReactElement {
 
       resolve(currentScrollPos)
     })
-  }
 
   // 내 정보 REDUX SET
   const setMyInfo = () => {
@@ -102,10 +101,10 @@ export default function(props): ReactElement {
 
           res.privateDocumentCount = result.privateDocumentCount
           dispatch(setActionMain.myInfo(res))
-          log.Main.setMyInfo(false)
+          log.Layout.setMyInfo()
           return Promise.resolve()
         })
-        .catch(err => log.Main.setMyInfo(err))
+        .catch(err => log.Layout.setMyInfo(err))
     } else {
       return Promise.resolve()
     }
@@ -115,48 +114,50 @@ export default function(props): ReactElement {
   const setTagList = () =>
     repos.Document.getTagList('latest')
       .then(result => dispatch(setActionMain.tagList(result.tagList)))
-      .catch(err => log.Main.setTagList(err))
-      .then(() => log.Main.setTagList(false))
+      .catch(err => log.Layout.setTagList(err))
+      .then(() => log.Layout.setTagList(false))
 
   // 자리비움 시간 SET
-  const setAwayTime = () => {
+  const setAwayTime = (): void => {
     if (awayTime > 0) awayTime = 0
     if (modalCode === 'away') dispatch(setActionMain.modal(null))
   }
 
   // 모바일 유무 REDUX SET
-  const setIsMobile = () => {
+  const setIsMobile = (): void => {
     if (commonView.getIsMobile() !== isMobileChecker) {
       isMobileChecker = !isMobileChecker
       dispatch(setActionMain.isMobile(commonView.getIsMobile()))
+      log.Layout.setIsMobile()
     }
   }
 
-  // 스크롤 이벤트 관리
   const handleScroll = () =>
     manageElement(path).then((currentScrollPos: number) => {
       setScrollToTopValue(currentScrollPos)
       _prevScrollPos = currentScrollPos
     })
-
-  // 화면 리사이즈 이벤트 관리
-  const handleResize = () => setIsMobile()
-
-  // 키다운 이벤트 관리
-  const handleKeydown = () => setAwayTime()
-
-  // 키다운 마우스 무브 관리
-  const handleMousemove = () => setAwayTime()
+  const handleResize = (): void => setIsMobile()
+  const handleKeydown = (): void => setAwayTime()
+  const handleMousemove = (): void => setAwayTime()
 
   // SET 이벤트 리스너
-  const handleEventListener = () => {
+  const handleEventListener = (): void => {
     window.addEventListener('scroll', handleScroll)
+    log.Layout.handleScroll()
+
     window.addEventListener('resize', handleResize)
+    log.Layout.handleResize()
+
     window.addEventListener('keydown', handleKeydown)
+    log.Layout.handleKeydown()
+
     window.addEventListener('mousemove', handleMousemove)
+    log.Layout.handleMousemove()
   }
 
   useEffect(() => {
+    log.Layout.init()
     awayTime = 0 // 자리비움 시간
     t = commonData.awayCheckTime
 
@@ -171,24 +172,29 @@ export default function(props): ReactElement {
       setIsMobile()
 
       // SET myInfo
-      setMyInfo().then(() => setInit(true))
+      setMyInfo().then((): void => setInit(true))
     })
 
     // Check Away Time
     let interval = setInterval(() => {
       awayTime = awayTime + t
-      if (awayTime >= t * 15) {
-        if (modalCode !== 'away') {
-          dispatch(setActionMain.modal('away'))
-        }
-      }
+
+      if (awayTime >= t * 15 && modalCode !== 'away')
+        dispatch(setActionMain.modal('away'))
     }, t)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      log.Layout.handleScrollEnd()
+
       window.removeEventListener('resize', handleResize)
+      log.Layout.handleResizeEnd()
+
       window.removeEventListener('keydown', handleKeydown)
+      log.Layout.handleKeydownEnd()
+
       window.removeEventListener('mousemove', handleMousemove)
+      log.Layout.handleMousemoveEnd()
 
       clearInterval(interval)
     }

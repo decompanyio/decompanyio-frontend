@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react'
 import { useDispatch } from 'react-redux'
 import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
@@ -20,8 +20,7 @@ export default function({
 }: ViewFullscreenBtnProps): ReactElement {
   const dispatch = useDispatch()
 
-  // 전체화면 버튼 관리
-  const handleFullscreenClick = () => {
+  const handleFullscreenBtnClick = (): void => {
     dispatch(
       setActionMain.modal('fullscreen', { documentData, ratio, readPage })
     )
@@ -31,7 +30,7 @@ export default function({
     <div className={styles.vfb_container}>
       <div
         className={styles.vfb_wrapper}
-        onClick={() => handleFullscreenClick()}
+        onClick={() => handleFullscreenBtnClick()}
       >
         <i title="viewer button" className="material-icons">
           fullscreen

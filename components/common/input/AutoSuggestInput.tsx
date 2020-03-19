@@ -1,12 +1,12 @@
 import * as styles from 'public/static/styles/main.scss'
 import common from '../../../common/common'
-import Autosuggest from 'react-autosuggest'
+import AutoSuggest from 'react-autosuggest'
 import { useSelector } from 'react-redux'
 import { psString } from 'utils/localization'
 import React, { ReactElement, useState } from 'react'
 
 interface AutoSuggestInputProps {
-  search: any
+  search: Function
   type: string
   getNameList?: any
 }
@@ -20,8 +20,7 @@ function AutoSuggestInput({
   const [value, setValue] = useState('')
   const [suggestions, setSuggestions] = useState([])
 
-  // 자동 완성 리스트 설정
-  const getSuggestions = (value: string) => {
+  const setAutoSuggestions = (value: string) => {
     const escapedValue = common.escapeRegexCharacters(value.trim())
 
     if (escapedValue === '') return []
@@ -50,7 +49,6 @@ function AutoSuggestInput({
     }
   }
 
-  // 보여줄 값 GET
   const getSuggestionValue = suggestion => {
     switch (type) {
       case 'tag':
@@ -64,14 +62,13 @@ function AutoSuggestInput({
     }
   }
 
-  const getSectionSuggestions = section => {
+  const getSectionSuggestions = (section): { _id: string; value: number }[] => {
     let arr = new Array(0)
     arr.push(section)
     return arr
   }
 
-  // placeholder 설정
-  const getPlaceholder = () => {
+  const setPlaceholder = (): string => {
     let _placeholder: string
     _placeholder = ''
 
@@ -89,17 +86,15 @@ function AutoSuggestInput({
     return _placeholder
   }
 
-  // @ts-ignore
-  const onChange = (event, { newValue }) => setValue(newValue)
+  const onChange = (_event, { newValue }) => setValue(newValue)
 
-  // @ts-ignore
-  const onSuggestionSelected = (event, { suggestion }) => {
+  const onSuggestionSelected = (_event, { suggestion }) => {
     search(suggestion)
     setValue('')
   }
 
   const onSuggestionsFetchRequested = ({ value }) =>
-    setSuggestions(getSuggestions(value))
+    setSuggestions(setAutoSuggestions(value))
 
   const onSuggestionsClearRequested = () => setSuggestions([])
 
@@ -122,13 +117,13 @@ function AutoSuggestInput({
   }
 
   const inputProps = {
-    placeholder: getPlaceholder(),
+    placeholder: setPlaceholder(),
     value,
     onChange: onChange
   }
 
   return (
-    <Autosuggest
+    <AutoSuggest
       multiSection={true}
       suggestions={suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}

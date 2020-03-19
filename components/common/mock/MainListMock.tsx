@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react'
 
 export default function(): ReactElement {
   return (
-    <div className={styles.mlm_container}>
+    <div>
       <div className={styles.mlm_subjectWrapper}>
         <div className={styles.mlm_subject} />
       </div>

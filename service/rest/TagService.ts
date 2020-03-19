@@ -4,8 +4,8 @@ let tagListUrl = 'tags'
 
 export default {
   GET: {
-    tagList: data => {
-      return new Promise((resolve, reject) => {
+    tagList: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           tagListUrl,
           'GET',
@@ -14,6 +14,5 @@ export default {
           err => reject(err)
         )
       })
-    }
   }
 }

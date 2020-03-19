@@ -24,6 +24,7 @@ interface ProfileUploadTabItemProps {
   owner: boolean
 }
 
+// ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
@@ -42,8 +43,7 @@ export default function({
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 
-  // 문서 다운로드
-  const getContentDownload = (documentId: string, documentName: string) =>
+  const downloadDocument = (documentId: string, documentName: string) =>
     repos.Document.getDocumentDownloadUrl({ documentId: documentId })
       .then(result => {
         const a = document.createElement('a')
@@ -59,22 +59,19 @@ export default function({
       })
       .catch(err => console.error(err))
 
-  // 저자 리워드
   const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(
       documentData.documentId,
       myInfo.id
     ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
 
-  // document state 관리
-  const setDocumentState = state => {
+  const setStateDocumentData = state => {
     let _tmpDocumentData = state.tmpDocumentData
     _tmpDocumentData.state = state
     setTmpDocumentData(_tmpDocumentData)
   }
 
-  // 문서 다운로드 전 데이터 SET
-  const handleDownloadContent = () => {
+  const setRequiredForDownload = () => {
     if (!tmpDocumentData) {
       return dispatch(setActionMain.alertCode(2091, {}))
     }
@@ -85,11 +82,10 @@ export default function({
     const documentId = tmpDocumentData.documentId
     const documentName = tmpDocumentData.documentName
 
-    return getContentDownload(documentId, documentName)
+    return downloadDocument(documentId, documentName)
   }
 
-  // 문서 상태관리
-  const handleState = () => {
+  const handleConvertingState = () => {
     if (
       !owner ||
       !tmpDocumentData.state ||
@@ -103,7 +99,7 @@ export default function({
         .then(res => {
           if (res && res.document.state === 'CONVERT_COMPLETE') {
             clearInterval(interval)
-            setDocumentState(res.document.state)
+            setStateDocumentData(res.document.state)
             dispatch(
               setActionMain.alertCode(2075, { title: tmpDocumentData.title })
             )
@@ -116,20 +112,17 @@ export default function({
     }, 5000)
   }
 
-  // 공유 버튼 클릭
-  const handleClickShareBtn = () =>
+  const handleShareBtnClick = () =>
     dispatch(setActionMain.modal('share', { documentData }))
 
-  // 삭제 버튼 클릭
-  const handleClickDeleteBtn = () =>
+  const handleDeleteBtnClick = () =>
     dispatch(setActionMain.modal('delete', { documentData }))
 
-  // 출판 버튼 클릭
-  const handleClickPublishBtn = () =>
+  const handlePublishBtnClick = () =>
     dispatch(setActionMain.modal('publish', { documentData }))
 
   useEffect(() => {
-    handleState()
+    handleConvertingState()
     if (owner) void getCreatorRewards()
   }, [])
 
@@ -221,7 +214,7 @@ export default function({
               {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
-                  onClick={() => handleClickShareBtn()}
+                  onClick={() => handleShareBtnClick()}
                 >
                   <i className="material-icons">share</i>
                   {psString('share-modal-btn')}
@@ -230,7 +223,7 @@ export default function({
               {tmpDocumentData.state === 'CONVERT_COMPLETE' && (
                 <div
                   className={styles.puti_optionTableBtn}
-                  onClick={() => handleDownloadContent()}
+                  onClick={() => setRequiredForDownload()}
                 >
                   <i className="material-icons">save_alt</i>
                   {psString('download-btn')}
@@ -243,7 +236,7 @@ export default function({
                 !tmpDocumentData.isPublic) && (
                 <div
                   className={styles.puti_optionTableBtn}
-                  onClick={() => handleClickDeleteBtn()}
+                  onClick={() => handleDeleteBtnClick()}
                 >
                   <i className="material-icons">delete</i>
                   {psString('common-modal-delete')}
@@ -348,7 +341,7 @@ export default function({
                 <p
                   data-tip={psString('tooltip-publish')}
                   className={styles.puti_publishBtn}
-                  onClick={() => handleClickPublishBtn()}
+                  onClick={() => handlePublishBtnClick()}
                 >
                   {psString('common-modal-publish')}
                 </p>

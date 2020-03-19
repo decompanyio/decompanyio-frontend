@@ -9,8 +9,8 @@ let userInfoUrl = 'authentication/userinfo'
 
 export default {
   POST: {
-    syncAuthAndRest: data => {
-      return new Promise((resolve, reject) => {
+    syncAuthAndRest: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeader(
           accountSyncUrl,
           'POST',
@@ -18,10 +18,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    accountUpdate: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    accountUpdate: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBody(
           accountUpdateUrl,
           'POST',
@@ -29,10 +28,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    profileImageUpdate: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    profileImageUpdate: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeader(
           profileImageUpdateUrl,
           'POST',
@@ -41,11 +39,10 @@ export default {
           err => reject(err)
         )
       })
-    }
   },
   GET: {
-    profileGet: data => {
-      return new Promise((resolve, reject) => {
+    profileGet: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           profileGetUrl,
           'GET',
@@ -53,10 +50,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    accountInfo: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    accountInfo: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           accountGetUrl,
           'GET',
@@ -64,10 +60,9 @@ export default {
           data => resolve(data),
           err => reject(err)
         )
-      })
-    },
-    userInfo: data => {
-      return new Promise((resolve, reject) => {
+      }),
+    userInfo: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPramForAuth(
           userInfoUrl,
           'GET',
@@ -76,6 +71,5 @@ export default {
           err => reject(err)
         )
       })
-    }
   }
 }

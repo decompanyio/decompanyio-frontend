@@ -5,7 +5,10 @@ import React, { ReactElement } from 'react'
 
 export default function(): ReactElement {
   return (
-    <div className={styles.common_loginBtn} onClick={() => AUTH_APIS.login()}>
+    <div
+      className={styles.common_loginBtn}
+      onClick={(): void => AUTH_APIS.login()}
+    >
       {psString('header-login')}
     </div>
   )

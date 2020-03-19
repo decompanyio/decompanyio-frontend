@@ -20,7 +20,6 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
     determineReward > 0 ? determineReward : 0
   )
 
-  // 클레임
   const claimCuratorReward = (): void => {
     repos.Wallet.claimCurator({ documentId: documentData.documentId })
       .then((res: { royalties }) => {
@@ -39,15 +38,13 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
       })
   }
 
-  // 크리에이터 확정 보상 GET
   const getDetermineCreatorReward = (): void => {
     if (documentData && determineReward === null) {
       setDetermineReward(100)
     }
   }
 
-  // 클레임 버튼 클릭 관리
-  const handelClickClaim = (): void => {
+  const handelClaimBtnClick = (): void => {
     if (documentData) {
       setBtnText(psString('claim-btn-text-2'))
       claimCuratorReward()
@@ -70,7 +67,7 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
           ? styles.pcc_btnDisabled
           : '')
       }
-      onClick={(): void => handelClickClaim()}
+      onClick={(): void => handelClaimBtnClick()}
     >
       {btnText} {btnText === psString('claim-btn-text-2') ? '' : claimReward}
     </div>

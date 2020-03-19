@@ -35,24 +35,25 @@ export default function({
   const [dataSet, setDataSet] = useState(resultListModel)
   const [page, setPage] = useState(1)
 
-  // GET 데이터 관리
-  const handleData = res => {
+  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  const setResultData = res => {
     if (!res || !res.resultList) return Promise.reject()
     setLoading(false)
 
-    setDataSet({
-      resultList: res.resultList,
-      totalCount: res.count,
-      pageNo: res.pageNo,
-      totalViewCountInfo:
-        res && res.totalViewCountInfo && !dataSet.totalViewCountInfo
-          ? res.totalViewCountInfo
-          : null
-    })
+    return Promise.resolve(
+      setDataSet({
+        resultList: res.resultList,
+        totalCount: res.count,
+        pageNo: res.pageNo,
+        totalViewCountInfo:
+          res && res.totalViewCountInfo && !dataSet.totalViewCountInfo
+            ? res.totalViewCountInfo
+            : null
+      })
+    )
   }
 
-  // 데이터 GET
-  const handleFetchDocuments = (page: number) => {
+  const getUploadList = (page: number) => {
     let params = {
       pageNo: page,
       username: profileInfo.username || '',
@@ -68,20 +69,19 @@ export default function({
           ? repos.Document.getDocuments(params)
           : repos.Document.getDocumentList(params)
       )
-      .then(res => handleData(res))
+      .then(res => setResultData(res))
       .catch(err => {
         console.error(err)
         dispatch(setActionMain.alertCode(2001, {}))
       })
   }
 
-  // 업로드 탭, 설정창 on/off 관리
-  const handleUploadSettings = (idx: number): void => {
+  // 업로드 탭의 설정창 표시 여부를 관리 합니다.
+  const handleSettingVisible = (idx: number): void => {
     setViewerOptionOpenedIdx(viewerOptionOpenedIdx !== idx ? idx : -1)
   }
 
-  // 클릭 이벤트 리스너
-  const handleOption = e => {
+  const handleClickEvent = (e): void => {
     if (viewerOptionOpenedIdx !== -1) {
       const targetElement = e.target
       const el = document.getElementById(
@@ -95,22 +95,20 @@ export default function({
     }
   }
 
-  // handle pageNation click
-  const handlePageClick = (page: number) => {
-    return Promise.resolve()
-      .then(() => setPage(page))
-      .then(() => handleFetchDocuments(page))
-  }
+  const handlePageBtnClick = (page: number) =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): Promise<void> => getUploadList(page))
 
   useEffect(() => {
-    log.CreatorUploadTab.init(false)
+    log.ProfileUploadTab.init(false)
     // url 위변조 방지 위하여, 첫 로드시 set state 진행
-    void handleFetchDocuments(1)
+    void getUploadList(1)
 
-    window.addEventListener('click', handleOption)
+    window.addEventListener('click', handleClickEvent)
 
     return () => {
-      window.removeEventListener('click', handleOption)
+      window.removeEventListener('click', handleClickEvent)
     }
   }, [])
 
@@ -128,7 +126,7 @@ export default function({
             idx={idx}
             key={idx}
             owner={owner}
-            handleUploadSettings={() => handleUploadSettings(idx)}
+            handleUploadSettings={() => handleSettingVisible(idx)}
             viewerOptionOpenedIdx={viewerOptionOpenedIdx}
           />
         ))
@@ -144,7 +142,7 @@ export default function({
         <Pagination
           totalCount={dataSet.totalCount}
           pageCount={pageSize}
-          click={handlePageClick}
+          click={handlePageBtnClick}
           selectedPage={page}
         />
       )}

@@ -17,9 +17,9 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
+// ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
-// 이미지 정보 GET
 const getImgInfo = (documentData): void => {
   let img = new Image()
 
@@ -29,7 +29,7 @@ const getImgInfo = (documentData): void => {
     1,
     documentData.documentName
   )
-  img.onload = () => {
+  img.onload = (): number => {
     let height = img.height
     let width = img.width
     return width / height
@@ -51,7 +51,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   let vote: number
   let view: number
   let ratio: number
-  let croppedArea: any
+  let croppedArea: {}
 
   identification = documentData.author
     ? documentData.author.username && documentData.author.username.length > 0
@@ -88,7 +88,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
       >
         <div
           className={styles.dc_imgWrapper}
-          onClick={() => commonView.scrollTop()}
+          onClick={(): void => commonView.scrollTop()}
         >
           <img
             src={imgUrl}
@@ -148,8 +148,8 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
         <div className={styles.dc_count}>
           <div
             className={styles.dc_reward}
-            onMouseOver={() => setRewardInfo(true)}
-            onMouseOut={() => setRewardInfo(false)}
+            onMouseOver={(): void => setRewardInfo(true)}
+            onMouseOut={(): void => setRewardInfo(false)}
           >
             $ {common.deckToDollarWithComma(reward)}
             <img

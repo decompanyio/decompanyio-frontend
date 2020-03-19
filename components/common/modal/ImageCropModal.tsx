@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import Cropper from 'react-easy-crop'
 import { FadingCircle } from 'better-react-spinkit'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,13 +11,12 @@ import common from 'common/common'
 import { setActionMain } from '../../../redux/reducer/main'
 
 // 파일 읽기
-const readFile = file => {
-  return new Promise(resolve => {
+const readFile = file =>
+  new Promise(resolve => {
     const reader = new FileReader()
     reader.addEventListener('load', () => resolve(reader.result), false)
     reader.readAsDataURL(file)
   })
-}
 
 export default function(): ReactElement {
   const dispatch = useDispatch()

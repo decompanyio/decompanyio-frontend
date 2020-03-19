@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import { psString } from 'utils/localization'
 import TagsInput from 'react-tagsinput'
@@ -12,6 +12,7 @@ import commonView from '../../../common/commonView'
 import common from '../../../common/common'
 import * as styles from '../../../public/static/styles/main.scss'
 import AutoCompleteRenderInput from '../input/AutoCompleteRenderInput'
+import log from '../../../utils/log'
 
 export default function(): ReactElement {
   const dispatch = useDispatch()
@@ -56,8 +57,7 @@ export default function(): ReactElement {
     )
   }
 
-  // CC 값 GET
-  const getCcValue = () => {
+  const getCcValue = (): string => {
     if (!by) return 'none'
 
     if (!nc && !nd && !sa) return 'by'
@@ -66,9 +66,10 @@ export default function(): ReactElement {
     else if (!nc && !nd && sa) return 'by-sa'
     else if (nc && !nd && sa) return 'by-nc-sa'
     else if (nc && nd && !sa) return 'by-nc-nd'
+
+    return 'none'
   }
 
-  // CC 상세값 GET
   const getCcDetailValue = cc => {
     if (!cc || cc === '' || cc === 'none') return 'none'
 
@@ -111,16 +112,21 @@ export default function(): ReactElement {
         : documentData.author.email
       : documentData.accountId
 
-    repos.Document.updateDocument(data).then((result: any) => {
-      setLoading(false)
-      void handleClickClose()
-      return Router.push(
-        {
-          pathname: '/contents_view'
-        },
-        '/@' + identification + '/' + result.seoTitle
-      )
-    })
+    repos.Document.updateDocument(data)
+      .then(result => {
+        setLoading(false)
+        void handleClickClose()
+        return Router.push(
+          {
+            pathname: '/contents_view'
+          },
+          '/@' + identification + '/' + result.seoTitle
+        )
+      })
+      .catch((err): void => {
+        dispatch(setActionMain.alertCode(2092, {}))
+        log.EditDocumentModal.updateDocument(err)
+      })
   }
 
   // 확인 버튼 관리
@@ -181,6 +187,8 @@ export default function(): ReactElement {
   const handleMoreOptions = (): void => setMoreOptions(!moreOptions)
 
   useEffect(() => {
+    log.EditDocumentModal.init()
+
     getCcDetailValue(documentData.cc)
     commonView.setBodyStyleLock()
 

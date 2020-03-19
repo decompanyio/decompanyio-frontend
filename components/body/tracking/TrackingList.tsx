@@ -29,8 +29,8 @@ export default function({ documentData }: TrackingListProps): ReactElement {
   const [loading, setLoading] = useState(false)
   const [chartResultList, setChartResultList] = useState({})
 
-  // 페이지별 머문 시간 계산 및 차트 데이터 SET
-  const setChartData = (res): void => {
+  // 페이지별 머문 시간이 계산된 차트 데이터를 Hooks state 에 셋팅 합니다
+  const setChartDataOnState = (res): void => {
     let dataObj = {}
     for (let i = 0; i < res.length; ++i) {
       let vrArr = res[i].viewTracking
@@ -50,7 +50,6 @@ export default function({ documentData }: TrackingListProps): ReactElement {
     setChartResultList(dataObj)
   }
 
-  // 트랙킹 정보 GET
   const getTrackingInfo = async (cid: number) => {
     const params = {
       cid: cid,
@@ -58,7 +57,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
     }
 
     return repos.Tracking.getTrackingInfo(params).then(
-      (res: any) => setChartData(res.resultList), // 페이지 별 머문 시간 계산
+      (res: any) => setChartDataOnState(res.resultList), // 페이지 별 머문 시간 계산
       err => {
         console.error(err)
         let _setTimeout = setTimeout(() => {
@@ -69,7 +68,6 @@ export default function({ documentData }: TrackingListProps): ReactElement {
     )
   }
 
-  // 트랙킹 리스트 GET
   const getTrackingList = (): void => {
     const params = {
       documentId: documentData.documentId,
@@ -93,27 +91,24 @@ export default function({ documentData }: TrackingListProps): ReactElement {
     )
   }
 
-  // 검색 초기화
-  const handleClearSearch = (): void => {
+  const handleClearSearchValue = (): void => {
     setFilterList([])
     setSelectedSearch(false)
   }
 
-  // 1 페이지 보기/숨김 옵션 관리
-  const handleOnePageOption = (): void => {
+  const handleOnePageVisibleOption = (): void => {
     setIncludeOnlyOnePage(includeOnlyOnePage)
     getTrackingList()
   }
 
-  // Anonymous 보기/숨김 옵션 관리
-  const handleAnonymousOption = (): void => {
+  const handleAnonymousVisibleOption = (): void => {
     setShowAnonymous(!showAnonymous)
     getTrackingList()
   }
 
-  // 스크롤 아웃 관리 메소드
-  const handleScrollExpand = e => {
-    e.stopPropagation() // 버블링 방지
+  const handleScrollExpandEvent = e => {
+    // 버블링 방지
+    e.stopPropagation()
 
     let idx: number
     let cid: number
@@ -149,7 +144,6 @@ export default function({ documentData }: TrackingListProps): ReactElement {
     setSelectedSearch(value.user ? value.user.e : null)
   }
 
-  // 특정 링크 클릭 이벤트 관리
   const handleLinkClickEvent = (
     _cid: number,
     _email: string,
@@ -196,7 +190,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
                     ? psString('tracking-list-option-hide')
                     : psString('tracking-list-option-show')
                 }
-                onClick={(): void => handleAnonymousOption()}
+                onClick={(): void => handleAnonymousVisibleOption()}
               >
                 {showAnonymous
                   ? psString('tracking-list-option-hide')
@@ -208,7 +202,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
                     ? psString('tracking-list-option-exclude')
                     : psString('tracking-list-option-include')
                 }
-                onClick={(): void => handleOnePageOption()}
+                onClick={(): void => handleOnePageVisibleOption()}
               >
                 {includeOnlyOnePage
                   ? psString('tracking-list-option-exclude')
@@ -236,7 +230,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
               <i
                 className="material-icons"
                 onClick={(): void => {
-                  handleClearSearch()
+                  handleClearSearchValue()
                 }}
               >
                 close
@@ -368,7 +362,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
                     onClick={e =>
                       result.totalReadTimestamp === 0
                         ? e.stopPropagation()
-                        : handleScrollExpand(e)
+                        : handleScrollExpandEvent(e)
                     }
                     data-idx={idx}
                     data-cid={result.cid}

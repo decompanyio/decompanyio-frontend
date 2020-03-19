@@ -6,7 +6,6 @@ import common from 'common/common'
 import commonView from '../../../common/commonView'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { setActionMain } from '../../../redux/reducer/main'
-import { setTrackingInfo } from '../../../utils/tracking'
 import * as styles from '../../../public/static/styles/main.scss'
 import Router from 'next/router'
 
@@ -94,10 +93,7 @@ export default function(): ReactElement {
   const handleSendBtn = async () => {
     if (validateEmail(email) && validateCheckBox(policyChecked)) {
       setLoading(true)
-      const trackingInfo = await setTrackingInfo().then((res: any) => res)
       let data = {
-        cid: trackingInfo.cid,
-        sid: trackingInfo.sid,
         email: email,
         documentId: documentData.documentId
       }

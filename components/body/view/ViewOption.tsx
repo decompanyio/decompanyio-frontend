@@ -17,8 +17,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
   const [optionTable, setOptionTable] = useState(false)
   const [mylist, setMylist] = useState(null)
 
-  // 문서 다운로드
-  const getContentDownload = (documentId: string, documentName: string) => {
+  const downloadDocument = (documentId: string, documentName: string) => {
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
     }).then(result => {
@@ -35,14 +34,12 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
     })
   }
 
-  // 찜 목록 GET
   const getMyList = () =>
     repos.Query.getMyListFindMany({
       userId: myInfoFromRedux.id
     }).then(res => setMylist(res))
 
-  // 문서 다운로드 전 데이터 SET
-  const handleDownloadContent = () => {
+  const setRequiredForDownload = () => {
     if (!documentData) {
       return dispatch(setActionMain.alertCode(2091, {}))
     }
@@ -50,15 +47,15 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
       return dispatch(setActionMain.alertCode(2003, {}))
     }
 
-    getContentDownload(documentData.documentId, documentData.documentName)
+    downloadDocument(documentData.documentId, documentData.documentName)
   }
 
   // 문서 수정 버튼 클릭 관리
-  const handleClickSettings = () =>
+  const handleSettingsBtnClick = () =>
     dispatch(setActionMain.modal('edit', { documentData }))
 
   // 문서 삭제 버튼 클릭 관리
-  const handleClickDeleteBtn = () =>
+  const handleDeleteBtnClick = () =>
     dispatch(setActionMain.modal('delete', { documentData }))
 
   useEffect(() => {
@@ -77,7 +74,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
         <div className={styles.vib_optionTable} id="viewer-option-table">
           <div
             className={styles.vib_optionTableBtn}
-            onClick={() => handleDownloadContent()}
+            onClick={() => setRequiredForDownload()}
           >
             <i className="material-icons">save_alt</i>
             {psString('download-btn')}
@@ -91,7 +88,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
           )}
           <div
             className={styles.vib_optionTableBtn}
-            onClick={() => handleClickSettings()}
+            onClick={() => handleSettingsBtnClick()}
           >
             <i className="material-icons">settings_applications</i>
             {psString('common-modal-settings')}
@@ -99,7 +96,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
           {!documentData.isPublic && (
             <div
               className={styles.puti_optionTableBtn}
-              onClick={() => handleClickDeleteBtn()}
+              onClick={() => handleDeleteBtnClick()}
             >
               <i className="material-icons">delete</i>
               {psString('common-modal-delete')}

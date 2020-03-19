@@ -45,8 +45,8 @@ export default function({
   })
 
   // GET 데이터 관리
-  const handleData = (res): Promise<void> => {
-    return new Promise((resolve, reject) => {
+  const handleData = (res): Promise<void> =>
+    new Promise((resolve, reject) => {
       setLoading(false)
 
       if (!res || !res.resultList) return reject()
@@ -59,10 +59,8 @@ export default function({
         })
       )
     })
-  }
 
-  // 문서 리스트 GET
-  const fetchDocuments = async (page: number): Promise<void> => {
+  const getDocumentList = async (page: number): Promise<void> => {
     let params = {
       pageNo: page,
       username: profileInfo.username,
@@ -80,22 +78,20 @@ export default function({
       })
   }
 
-  // 차트 정보 GET
-  const getAnalytics = (documentId: string, dataKey) => {
+  const getChartData = (documentId: string, dataKey): void => {
     repos.Analytics.getAnalyticsList({
       week: dateSet.week,
       year: dateSet.year > 0 ? dateSet.year : null,
       documentId: documentId
-    }).then(result => {
+    }).then((res): void => {
       setSpreadItem(Number(dataKey))
-      setAnalyticsList(result)
+      setAnalyticsList(res)
       setDocumentId(documentId)
       setChartFlag(true) // 차트 데이터 props 타이밍 동기화
     })
   }
 
-  // 스크롤 아웃 관리 메소드
-  const handleClick = e => {
+  const handleMouseClick = (e): void => {
     const dataKey = e.currentTarget.getAttribute('data-key')
     const dataId = e.currentTarget.getAttribute('data-id')
 
@@ -105,25 +101,25 @@ export default function({
     })
 
     setSpreadItem(-1)
-    if (!chartFlag) getAnalytics(dataId, dataKey)
+
     // 차트 데이터 GET
-    else setChartFlag(false)
+    if (!chartFlag) getChartData(dataId, dataKey)
     // 차트 데이터 props 타이밍 동기화
+    else setChartFlag(false)
   }
 
-  // 엑셀 추출 버튼
-  const handleExport = (seoTitle: string) => {
+  const handleExportBtnClick = (seoTitle: string): void => {
     const data = {
       documentId: documentId,
       year: dateSet.week,
       week: dateSet.year
     }
-    repos.Analytics.getAnalyticsExport(data).then(rst => {
+    repos.Analytics.getAnalyticsExport(data).then((res): void => {
       const a = document.createElement('a')
       a.style.display = 'none'
       document.body.appendChild(a)
 
-      a.href = rst.csvDownloadUrl
+      a.href = res.csvDownloadUrl
 
       a.setAttribute('download', 'analystics_' + seoTitle + '.xls')
       a.click()
@@ -133,26 +129,30 @@ export default function({
     })
   }
 
-  // 날짜 선택 버튼
-  const handleWeekBtnClick = (e: any) => {
+  const handleWeekBtnClick = (e): void => {
     let weekValue = e.target.dataset.value
     let weekValueNum = -1
 
     switch (weekValue) {
       case '1w':
-        return (weekValueNum = 1)
+        weekValueNum = 1
+        break
 
       case '1m':
-        return (weekValueNum = 4)
+        weekValueNum = 4
+        break
 
       case '3m':
-        return (weekValueNum = 12)
+        weekValueNum = 12
+        break
 
       case '6m':
-        return (weekValueNum = 24)
+        weekValueNum = 24
+        break
 
       case '1y':
-        return (weekValueNum = 1)
+        weekValueNum = 1
+        break
 
       default:
         break
@@ -162,19 +162,18 @@ export default function({
       week: weekValue !== '1y' ? weekValueNum : -1,
       year: weekValue !== '1y' ? -1 : weekValueNum
     })
+
     setChartFlag(false) // 차트 데이터 props 타이밍 동기화
-    getAnalytics(documentId, spreadItem)
+    getChartData(documentId, spreadItem)
   }
 
-  // handle pageNation click
-  const handlePageClick = (page: number) => {
-    return Promise.resolve()
-      .then(() => setPage(page))
-      .then(() => void fetchDocuments(page))
-  }
+  const handlePageBtnClick = (page: number): Promise<void> =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): void => void getDocumentList(page))
 
   useEffect(() => {
-    void fetchDocuments(1)
+    void getDocumentList(1)
   }, [])
 
   let identification =
@@ -250,7 +249,7 @@ export default function({
                   'pat_btn' + (idx === spreadItem && chartFlag ? 'On' : '')
                 ]
               }
-              onClick={e => handleClick(e)}
+              onClick={e => handleMouseClick(e)}
               title="See analytics of this document"
               data-key={idx}
               data-id={result.documentId}
@@ -269,7 +268,7 @@ export default function({
               idx={idx}
               spreadItem={spreadItem}
               weekBtnClick={handleWeekBtnClick}
-              exportBtnClick={handleExport}
+              exportBtnClick={handleExportBtnClick}
               dateSet={dateSet}
               analyticsList={analyticsList}
               chartFlag={chartFlag}
@@ -289,7 +288,7 @@ export default function({
         <Pagination
           totalCount={dataSet.totalCount}
           pageCount={pageSize}
-          click={handlePageClick}
+          click={handlePageBtnClick}
           selectedPage={page}
         />
       )}

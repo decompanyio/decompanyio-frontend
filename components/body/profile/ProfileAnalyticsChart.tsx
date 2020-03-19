@@ -13,15 +13,15 @@ export default function({
   chartFlag,
   result
 }): ReactElement {
-  const handleWeekBtnClick = e => weekBtnClick(e)
-  const handleExport = value => exportBtnClick(value)
+  const handleWeekBtnClick = (e): Function => weekBtnClick(e)
+  const handleExport = (value): Function => exportBtnClick(value)
 
   return (
     <div className={styles.pat_chartWrapper}>
       {idx === spreadItem && (
         <div
           className={styles.pat_dateBtn}
-          onClick={e => handleWeekBtnClick(e)}
+          onClick={(e): Function => handleWeekBtnClick(e)}
         >
           <div
             data-value="1w"
@@ -62,7 +62,7 @@ export default function({
             <p
               data-tip="Export tracking data as Excel file."
               className={styles.pat_exportBtn}
-              onClick={() => handleExport(result.seoTitle)}
+              onClick={(): Function => handleExport(result.seoTitle)}
             >
               <span>
                 <i className="material-icons">save</i>

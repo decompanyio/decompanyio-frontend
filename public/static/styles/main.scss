@@ -2671,14 +2671,10 @@ input[type="radio"]:checked + label span i {
 //         MAIN LIST MOCK CSS
 // =====================================
 
-.mlm_container {
-  @include container;
-}
-
 .mlm_subjectWrapper {
-  @include p(3);
-  @include pl-sm(0);
+  @include inner-container;
   @include pb-sm(3);
+  @include d-flex;
 }
 
 .mlm_subject {
@@ -2693,10 +2689,11 @@ input[type="radio"]:checked + label span i {
 }
 
 .mlm_documentCardMockWrapper {
+  @include inner-container;
   @include row;
   position: relative;
   margin-bottom: 65px;
-  @media (max-width: $lg-max-width) {
+  @media (max-width: $md-max-width) {
     justify-content: center;
     border-bottom: 1px solid #e8e8e8;
   }

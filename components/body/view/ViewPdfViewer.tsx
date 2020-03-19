@@ -6,6 +6,7 @@ import * as styles from 'public/static/styles/main.scss'
 import { repos } from '../../../utils/repos'
 import commonData from '../../../common/commonData'
 import common from '../../../common/common'
+import log from 'utils/log'
 
 interface ViewPdfViewerProps {
   documentData
@@ -33,7 +34,7 @@ export default function({
   let totalScroll = 0
 
   // ArrayBuffer to Base64
-  const _arrayBufferToBase64 = (buffer: any) => {
+  const _arrayBufferToBase64 = (buffer): string => {
     let binary = ''
     let bytes = new Uint8Array(buffer)
     let len = bytes.byteLength
@@ -43,9 +44,11 @@ export default function({
     return binary
   }
 
-  // 캔버스 가로 길이 GET
-  const getCanvasWidth = () => {
+  const getCanvasWidth = (): number => {
     const el = document.getElementById('canvasLayer') as HTMLElement
+
+    if (!el) return 0
+
     let windowWidth = el.offsetWidth
     let widthMargin = isMobile ? 0 : commonData.style.common.margin * 2
 
@@ -61,8 +64,7 @@ export default function({
     }
   }
 
-  // 썸네일 주소 배열 SET
-  const setThumbAddr = () => {
+  const setThumbnailUrlAddress = (): void => {
     let arr = [documentData.totalPages]
     for (let i = 0; i < documentData.totalPages; i++) {
       arr[i] = common.getThumbnail(documentData.documentId, 1024, i + 1, '')
@@ -70,8 +72,7 @@ export default function({
     setThumbArr(arr)
   }
 
-  // 뷰어 wrapper SET
-  const handleWrapperHeight = () => {
+  const setViewerWrapperHeight = (): void => {
     let ele = document.getElementById('pdfViewerWrapper')
     if (ele) {
       let height = Number(ele.offsetWidth / ratio)
@@ -83,9 +84,9 @@ export default function({
     }
   }
 
-  // update progress
-  const handleUpdateProgress = (e: any) => {
+  const handleUpdateProgress = (e): void => {
     let contentLength
+
     if (e.lengthComputable) {
       contentLength = e.total
     } else {
@@ -93,12 +94,13 @@ export default function({
     }
 
     let scrollPercentage = Math.floor((e.loaded / contentLength) * 100)
-
     const el = document.getElementById('totalLoadingBar') as HTMLElement
-    el.style.width = (scrollPercentage > 100 ? 100 : scrollPercentage) + '%'
+
+    if (el) {
+      el.style.width = (scrollPercentage > 100 ? 100 : scrollPercentage) + '%'
+    }
   }
 
-  // pdf data get
   const handlePdfData = (pdfUrl: string): Promise<string> =>
     new Promise((resolve, reject) => {
       let url = pdfUrl.replace(/&amp;/g, '&')
@@ -120,8 +122,8 @@ export default function({
 
       xhtml.send(null)
     })
-  // active 페이지 바 관리
-  const handlePageBar = (e): void => {
+
+  const handleActivePageBar = (e): void => {
     const canvasContainer = document.getElementById(
       'canvasLayer'
     ) as HTMLElement
@@ -135,8 +137,7 @@ export default function({
     elLoadingBar.style.width = scrollPercentage + '%'
   }
 
-  // 스크롤 관리
-  const handleOnScroll = (e: any): void => {
+  const handleScrolling = (e): void => {
     let calcNum = e.target.scrollTop / e.target.offsetHeight
     let page = parseInt(String(calcNum), 10)
     if (presentPage !== page) {
@@ -144,10 +145,9 @@ export default function({
       setPresentPage(page)
     }
 
-    handlePageBar(e)
+    handleActivePageBar(e)
   }
 
-  // pdf 렌더 관리
   const handlePdfViewerRendering = (): void => {
     const elThumbnailWrapper = document.getElementById(
       'thumbnailWrapper'
@@ -162,14 +162,13 @@ export default function({
     textContainer.style.display = 'block'
   }
 
-  // PDF 렌더링
   const renderPDF = async (pdfUrl: string) => {
     const canvasContainer = document.getElementById(
       'canvasLayer'
     ) as HTMLElement
     const textContainer = document.getElementById('textLayer') as HTMLElement
     let pdfData = await handlePdfData(pdfUrl)
-    let _pdfData = atob(typeof pdfData === 'string' ? pdfData : '')
+    let _pdfData = atob(pdfData)
 
     // 텍스트 렌더링
     const textRender = async (page, viewport) =>
@@ -226,6 +225,7 @@ export default function({
   }
 
   useEffect(() => {
+    log.ViewPdfViewer.init()
     ;(async function() {
       const { pdfUrl } = await repos.Document.getDocumentPdfUrl(
         documentData.documentId
@@ -239,13 +239,12 @@ export default function({
       }
     })()
 
-    setThumbAddr()
-
-    handleWrapperHeight()
+    setThumbnailUrlAddress()
+    setViewerWrapperHeight()
   }, [])
 
   return (
-    <div className={styles.vpv_container} onScroll={e => handleOnScroll(e)}>
+    <div className={styles.vpv_container} onScroll={e => handleScrolling(e)}>
       <div id={'pdfViewerWrapper'} className={styles.vpv_wrapper}>
         <div id={'thumbnailWrapper'} className={styles.vpv_thumbnailWrapper}>
           {thumbArr.length > 0

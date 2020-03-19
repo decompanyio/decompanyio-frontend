@@ -2,7 +2,7 @@ import * as styles from 'public/static/styles/main.scss'
 import Link from 'next/link'
 import { psString } from 'utils/localization'
 import { APP_CONFIG } from 'app.config'
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react'
 
 export default function(): ReactElement {
   return (

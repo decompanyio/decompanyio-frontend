@@ -22,19 +22,25 @@ export default function(): ReactElement {
 
   // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: myInfo.id }).then((res: any) => {
-      setBalanceLoading(false)
-      setBalance(res)
-      log.CreatorSummary.getBalance(false)
-    })
+    repos.Wallet.getWalletBalance({ userId: myInfo.id })
+      .then((res): void => {
+        setBalanceLoading(false)
+        setBalance(res)
+        log.Common.getBalance()
+      })
+      .catch((err): void => {
+        log.Common.getBalance(err)
+        setLoading(false)
+        setBalance(new WalletBalance(null))
+      })
 
   // 모달 숨기기 클래스 추가
   const handleClickCloseFlag = () =>
     new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 출금 값 유효성 체크
-  const validateWithdraw = (value: number) => {
-    return new Promise(resolve => {
+  const validateWithdraw = (value: number) =>
+    new Promise(resolve => {
       let errMsg = ''
       if (value <= 0) errMsg = psString('withdraw-modal-err-1')
       else if (value > balance.deck) {
@@ -44,7 +50,6 @@ export default function(): ReactElement {
       setDeckError(errMsg)
       resolve(errMsg)
     })
-  }
 
   // Deck 출금 값 입력 캐치
   const onChangeAmount = e => {
@@ -63,10 +68,16 @@ export default function(): ReactElement {
     repos.Wallet.walletWithdraw({
       amount: Number(amount),
       toAddress: '0x60D1a46018c84ece3D8fbf39a7aFf9Cde9cA5044'
-    }).then(() => {
-      setLoading(false)
-      return handleClickClose()
     })
+      .then(() => {
+        log.WithdrawModal.walletWithdraw()
+
+        setLoading(false)
+        return handleClickClose()
+      })
+      .catch((err): void => {
+        log.WithdrawModal.walletWithdraw(err)
+      })
   }
 
   // 확이 버튼 관리
@@ -84,6 +95,8 @@ export default function(): ReactElement {
   }
 
   useEffect(() => {
+    log.WithdrawModal.init()
+
     void getBalance()
     commonView.setBodyStyleLock()
 

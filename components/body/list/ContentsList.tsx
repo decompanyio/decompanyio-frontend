@@ -24,20 +24,6 @@ const setParams = (pageNo: number, tag: string, path: string): Promise<{}> =>
     path: path
   })
 
-// GET 한 문서 데이터 set
-const setResultList = (listData: [], resultList: []): Promise<{}> =>
-  new Promise(resolve => {
-    log.ContentList.fetchDocuments(false)
-
-    const _resultList = resultList
-    const data = {
-      listData:
-        listData.length > 0 ? listData.concat(_resultList) : _resultList,
-      isEndPage: resultList.length < 10
-    }
-    return resolve(data)
-  })
-
 export default function({
   documentList,
   tag,
@@ -52,7 +38,21 @@ export default function({
       : path !== 'history' && path !== 'mylist'
   })
 
-  // 무한 스크롤 추가 데이터 GET
+  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  const setResultList = (listData: [], resultList: []): Promise<{}> =>
+    new Promise(resolve => {
+      log.ContentList.fetchDocuments()
+
+      const _resultList = resultList
+      const data = {
+        listData:
+          listData.length > 0 ? listData.concat(_resultList) : _resultList,
+        isEndPage: resultList.length < 10
+      }
+      return resolve(data)
+    })
+
+  // 무한 스크롤 액션 시, 추가 데이터를 GET 하여 기존 목록에 덧붙입니다.
   const fetchData = async (): Promise<Function> =>
     Promise.resolve(await setListLength(listLength + 1))
       .then((): Promise<{}> => setParams(listLength, tag, path))
@@ -69,13 +69,14 @@ export default function({
         return err
       })
 
-  // 북마크 목록 GET
   const getBookmarkList = (): Promise<void> =>
     repos.Query.getMyListFindMany({
       userId: AUTH_APIS.getMyInfo().id
     }).then((res): void => setBookmarkList(res))
 
   useEffect(() => {
+    log.ContentList.init()
+
     if (AUTH_APIS.isAuthenticated()) void getBookmarkList()
   }, [])
 

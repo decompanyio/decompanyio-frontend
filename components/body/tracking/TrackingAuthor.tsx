@@ -31,18 +31,15 @@ export default function({
   const vote = common.toEther(documentData.latestVoteAmount)
   const view = documentData.latestPageview || 0
 
-  // Anonymous 보기/숨김 옵션 관리
-  const handleAnonymousOption = (): void => {
+  const handleAnonymousVisibleOption = (): void => {
     setShowAnonymous(!showAnonymous)
   }
 
-  // 1 페이지 보기/숨김 옵션 관리
-  const handleOnePageOption = (): void => {
+  const handleOnePageVisibleOption = (): void => {
     setIncludeOnlyOnePage(includeOnlyOnePage)
   }
 
-  // 파일 export
-  const handleExport = (): void => {
+  const handleExportBtnClick = (): void => {
     repos.Tracking.getTrackingExport(documentData.documentId).then(
       (rst): void => {
         const a = document.createElement('a')
@@ -112,7 +109,7 @@ export default function({
                       ? psString('tracking-list-option-hide')
                       : psString('tracking-list-option-show')
                   }
-                  onClick={(): void => handleAnonymousOption()}
+                  onClick={(): void => handleAnonymousVisibleOption()}
                 >
                   {showAnonymous
                     ? psString('tracking-list-option-hide')
@@ -125,7 +122,7 @@ export default function({
                       ? psString('tracking-list-option-exclude')
                       : psString('tracking-list-option-include')
                   }
-                  onClick={(): void => handleOnePageOption()}
+                  onClick={(): void => handleOnePageVisibleOption()}
                 >
                   {includeOnlyOnePage
                     ? psString('tracking-list-option-exclude')
@@ -164,7 +161,7 @@ export default function({
           <p
             data-tip="Export tracking data as Excel file."
             className={styles.ta_exportBtn}
-            onClick={(): void => handleExport()}
+            onClick={(): void => handleExportBtnClick()}
           >
             <span>
               <i className="material-icons">save</i>

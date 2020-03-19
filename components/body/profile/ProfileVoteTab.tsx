@@ -22,7 +22,8 @@ const resultListModel = {
   totalCount: 0
 }
 
-const pageSize = commonData.myPageListSize // 화면상 리스트 수
+// 표시되 리스트 수는 범위
+const pageSize = commonData.myPageListSize
 
 export default function({
   profileInfo,
@@ -33,9 +34,9 @@ export default function({
   const [dataSet, setDataSet] = useState(resultListModel)
   const [page, setPage] = useState(1)
 
-  // GET 데이터 관리
-  const handleData = (res): Promise<void> => {
-    return new Promise((resolve, reject) => {
+  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  const setResultData = (res): Promise<void> =>
+    new Promise((resolve, reject) => {
       setLoading(false)
 
       if (!res || !res.resultList) return reject()
@@ -48,10 +49,8 @@ export default function({
         })
       )
     })
-  }
 
-  // 문서 정보 fetch
-  const handleFetchDocuments = (page: number): Promise<void> => {
+  const getVoteList = (page: number): Promise<void> => {
     let params = {
       pageNo: page,
       userId: profileInfo.id
@@ -64,22 +63,20 @@ export default function({
         (): Promise<CuratorDocuments> =>
           repos.Document.getCuratorDocuments(params)
       )
-      .then(res => handleData(res))
-      .catch(err => {
+      .then(res => setResultData(res))
+      .catch((err): void => {
         console.error(err)
         dispatch(setActionMain.alertCode(2001, {}))
       })
   }
 
-  // handle pageNation click
-  const handlePageClick = (page: number) => {
-    return Promise.resolve()
-      .then(() => setPage(page))
-      .then(() => void handleFetchDocuments(page))
-  }
+  const handlePageBtnClick = (page: number) =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): void => void getVoteList(page))
 
   useEffect(() => {
-    void handleFetchDocuments(1)
+    void getVoteList(1)
   }, [])
 
   return (
@@ -105,7 +102,7 @@ export default function({
         <Pagination
           totalCount={dataSet.totalCount}
           pageCount={pageSize}
-          click={handlePageClick}
+          click={handlePageBtnClick}
           selectedPage={page}
         />
       )}

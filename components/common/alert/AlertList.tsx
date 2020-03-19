@@ -19,8 +19,7 @@ export default function(): ReactElement {
   const [container, setContainer] = useState(arr)
   const [deleteFlag, setDeleteFlag] = useState(false)
 
-  // Alert 렌더 여부 체크
-  const checkRender = () =>
+  const checkRendered = () =>
     new Promise((resolve, reject) => {
       if (
         alertCodeFromRedux &&
@@ -34,8 +33,7 @@ export default function(): ReactElement {
       }
     })
 
-  // 랜더링 준비작업
-  const handleRender = () =>
+  const readyForRendering = () =>
     new Promise(resolve => {
       if (container.length === 3) {
         const tempContainer = container
@@ -46,8 +44,7 @@ export default function(): ReactElement {
       }
     })
 
-  // 닫기 버튼 관리
-  const handleClose = (serial: number): void => {
+  const handleCloseBtnClick = (serial: number): void => {
     for (let i = 0; i < container.length; ++i) {
       if (container[i].serial === serial) {
         const tempContainer = container
@@ -59,24 +56,23 @@ export default function(): ReactElement {
     }
   }
 
-  // alert 배열 push
-  const handlePushAlert = (serial: number): ReactElement => {
+  const pushAlertCompToArrayList = (serial: number): ReactElement => {
     return (
       <Alert
         code={alertCodeFromRedux}
-        close={() => handleClose(serial)}
+        close={() => handleCloseBtnClick(serial)}
         alertData={alertDataFromRedux}
       />
     )
   }
-  // 컨테이너 셋팅 작업
-  const handleContainer = _container =>
+
+  const setContainerRequired = _container =>
     new Promise(resolve => {
       let serial = _container.length + alertCodeFromRedux
       let tempContainer = _container
 
       tempContainer.push({
-        html: handlePushAlert(serial),
+        html: pushAlertCompToArrayList(serial),
         code: alertCodeFromRedux,
         serial: _container.length + alertCodeFromRedux
       })
@@ -86,9 +82,9 @@ export default function(): ReactElement {
     })
 
   useEffect(() => {
-    checkRender()
-      .then(() => handleRender())
-      .then((_container: any) => handleContainer(_container))
+    checkRendered()
+      .then(() => readyForRendering())
+      .then((_container: any) => setContainerRequired(_container))
       .then(() => dispatch(setActionMain.alertCode(null, {})))
       .catch(() => false)
 

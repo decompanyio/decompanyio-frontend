@@ -7,8 +7,10 @@ import ProfileTab from '../components/body/profile/ProfileTab'
 import commonData from '../common/commonData'
 import { AUTH_APIS } from '../utils/auth'
 
-const getParams = (identification: string) => {
-  let params: {}
+const getParams = (
+  identification: string
+): { email: string } | { username: string } => {
+  let params
   if (common.checkEmailForm(identification)) params = { email: identification }
   else params = { username: identification }
   return params

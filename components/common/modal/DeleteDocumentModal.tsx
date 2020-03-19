@@ -8,6 +8,7 @@ import common from '../../../common/common'
 import { setActionMain } from '../../../redux/reducer/main'
 import Router from 'next/router'
 import * as styles from '../../../public/static/styles/main.scss'
+import log from '../../../utils/log'
 
 export default function(): ReactElement {
   const dispatch = useDispatch()
@@ -47,15 +48,21 @@ export default function(): ReactElement {
       isDeleted: true,
       documentId: documentData.documentId
     })
-      .then((): void => dispatch(setActionMain.modal(null)))
+      .then((): void => {
+        log.DeleteDocumentModal.updateDocument()
+        dispatch(setActionMain.modal(null))
+      })
       .then((): Promise<boolean> => handleDeleteAfter())
-      .catch(() => {
+      .catch((err): void => {
+        log.DeleteDocumentModal.updateDocument(err)
         setLoading(false)
         dispatch(setActionMain.alertCode(2003, {}))
       })
   }
 
   useEffect(() => {
+    log.DeleteDocumentModal.init()
+
     void commonView.setBodyStyleLock()
     return () => {
       void commonView.setBodyStyleUnlock()

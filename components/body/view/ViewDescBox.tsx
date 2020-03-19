@@ -1,3 +1,4 @@
+import React, { ReactElement } from 'react'
 import Linkify from 'react-linkify'
 import { useSelector } from 'react-redux'
 import Link from 'next/link'
@@ -9,7 +10,6 @@ import {
   LinkedinShareButton,
   TwitterShareButton
 } from 'react-share'
-import React, { ReactElement } from 'react'
 
 interface ViewDescBoxProps {
   documentData
@@ -21,7 +21,6 @@ export default function({ documentData }: ViewDescBoxProps): ReactElement {
 
   return (
     <div className={styles.vdb_container}>
-      {/*<div dangerouslySetInnerHTML={{ __html: documentData.desc }} />*/}
       <Linkify
         properties={{
           title: psString('Link to this URL'),

@@ -20,7 +20,6 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
-// 리워드 정보 표시
 const showRewardInfo = (id: string): void => {
   const el = document.getElementById(id) as HTMLElement
   if (el) {
@@ -28,7 +27,6 @@ const showRewardInfo = (id: string): void => {
   }
 }
 
-// 리워드 정보 숨김
 const hideRewardInfo = (id: string): void => {
   const el = document.getElementById(id) as HTMLElement
   if (el) {

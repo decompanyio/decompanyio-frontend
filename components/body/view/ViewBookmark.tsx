@@ -20,12 +20,13 @@ export default function({
   const dispatch = useDispatch()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
-  // 찜하기
-  const checkBookmark = (): void => {
+  const checkBookmarkAdded = (): void => {
     let flag
 
     if (mylist.length > 0) {
-      flag = mylist.filter(v => v.documentId === documentData.id).length > 0
+      flag =
+        mylist.filter((v): boolean => v.documentId === documentData.id).length >
+        0
     } else {
       flag = false
     }
@@ -33,8 +34,7 @@ export default function({
     setBookmarkFlag(flag)
   }
 
-  // 북마크 버튼 클릭 관리
-  const handleBookmark = (): void => {
+  const handleBookmarkBtnClick = (): void => {
     setBookmarkFlag(true)
     repos.Mutation.addMyList(documentData.documentId)
       .then((): void => {
@@ -44,8 +44,7 @@ export default function({
       .catch((): void => dispatch(setActionMain.alertCode(2122, {})))
   }
 
-  // 북마크 삭제 버튼 클릭 관리
-  const handleBookmarkRemove = () => {
+  const handleBookmarkRemoveBtnClick = () => {
     setBookmarkFlag(false)
     repos.Mutation.removeMyList(documentData.documentId)
       .then((): void => {
@@ -56,7 +55,7 @@ export default function({
   }
 
   useEffect(() => {
-    checkBookmark()
+    checkBookmarkAdded()
   }, [])
 
   if (!AUTH_APIS.isAuthenticated()) return <div />
@@ -64,7 +63,7 @@ export default function({
     return (
       <div
         className={styles.vib_optionTableBtn}
-        onClick={(): void => handleBookmarkRemove()}
+        onClick={(): void => handleBookmarkRemoveBtnClick()}
       >
         <i className="material-icons">bookmark_border</i>
         {psString('bookmark-remove')}
@@ -74,7 +73,7 @@ export default function({
     return (
       <div
         className={styles.vib_optionTableBtn}
-        onClick={(): void => handleBookmark()}
+        onClick={(): void => handleBookmarkBtnClick()}
       >
         <i className="material-icons">bookmark</i>
         {psString('bookmark-add')}

@@ -42,7 +42,7 @@ export default function({
   }
 
   // handle click page
-  const handleClick = (page: number) => {
+  const handlePageBtnClick = (page: number) => {
     setCurrentPage(page)
     return click(page)
   }
@@ -65,7 +65,7 @@ export default function({
       {pageArray.map((page, idx) => (
         <div
           key={idx}
-          onClick={() => handleClick(page)}
+          onClick={() => handlePageBtnClick(page)}
           className={page === currentPage ? styles.p_selectedPage : ''}
         >
           {page}

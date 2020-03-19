@@ -4,13 +4,11 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 // 액션 생성자
 export const setAction = {
-  tempEmail: (tempEmail: boolean) => {
-    return dispatch => {
-      dispatch({ type: ReduxTypes.SET_TEMP_EMAIL, tempEmail })
-      return delay(100).then(() => {
-        // callback();
-      })
-    }
+  tempEmail: (tempEmail: boolean) => dispatch => {
+    dispatch({ type: ReduxTypes.SET_TEMP_EMAIL, tempEmail })
+    return delay(100).then(() => {
+      // callback();
+    })
   }
 }
 

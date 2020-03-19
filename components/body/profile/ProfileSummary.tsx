@@ -33,16 +33,18 @@ export default function({
     profileInfo.username || profileInfo.email
   )
 
-  // 잔액 조회
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: profileInfo.id }).then(
-      (res: any) => {
+    repos.Wallet.getWalletBalance({ userId: profileInfo.id })
+      .then((res): void => {
         setBalance(res)
-        log.CreatorSummary.getBalance(false)
-      }
-    )
+        log.Common.getBalance()
+      })
+      .catch((err): void => {
+        setBalance(new WalletBalance(null))
+        log.Common.getBalance(err)
+      })
 
-  // 계산된 리워드 GET
+  // 보상금 총액을 계삽합니다.
   const getCalculatedReward = (value): number => {
     if (value && value.length > 0) {
       let { reward } = value.reduce(
@@ -54,44 +56,52 @@ export default function({
     }
   }
 
-  // 리워드 조회
-  const getRewards = () => {
-    repos.Wallet.getProfileRewards(profileInfo.id).then(res => {
-      let creatorReward = getCalculatedReward(res.last7CreatorReward)
-      let curatorReward = getCalculatedReward(res.last7CuratorReward)
+  const getRewards = (): void => {
+    repos.Wallet.getProfileRewards(profileInfo.id)
+      .then((res): void => {
+        log.Common.getReward()
 
-      setReward({
-        last7Creator: creatorReward,
-        last7Curator: curatorReward,
-        todayEstimatedCreator: res.todayEstimatedCreatorReward.reward || 0,
-        todayEstimatedCurator: res.todayEstimatedCuratorReward.reward || 0
+        let creatorReward = getCalculatedReward(res.last7CreatorReward)
+        let curatorReward = getCalculatedReward(res.last7CuratorReward)
+
+        setReward({
+          last7Creator: creatorReward,
+          last7Curator: curatorReward,
+          todayEstimatedCreator: res.todayEstimatedCreatorReward.reward || 0,
+          todayEstimatedCurator: res.todayEstimatedCuratorReward.reward || 0
+        })
       })
-    })
+      .catch((err): void => {
+        log.Common.getReward(err)
+        setReward({
+          last7Creator: 0,
+          last7Curator: 0,
+          todayEstimatedCreator: 0,
+          todayEstimatedCurator: 0
+        })
+      })
   }
 
-  // username 수정 시
   const handleClickEvent = (): void => setUserNameEdit(true)
 
-  // 수정 취소
-  const handleUsernameEditCancel = (): void => setUserNameEdit(false)
+  const handleEditCancelBtnClick = (): void => setUserNameEdit(false)
 
-  // 수정 완료
-  const handleUsernameEditDone = (value: string): void => {
+  const handleEditDoneBtnClick = (value: string): void => {
     setUserNameEdit(false)
     setUsername(value)
   }
 
-  // 입금 버튼 클릭 관리
   const handleDepositBtnClick = (): void => {
     dispatch(setActionMain.modal('deposit'))
   }
 
-  // 출금 버튼 클릭 관리
   const handleWithdrawBtnClick = (): void => {
     dispatch(setActionMain.modal('withdraw'))
   }
 
   useEffect(() => {
+    log.ProfileSummary.init()
+
     void getBalance()
     getRewards()
   }, [])
@@ -113,8 +123,8 @@ export default function({
           <div className={styles.ps_name}>
             {userNameEdit ? (
               <ProfileUsernameEdit
-                cancel={handleUsernameEditCancel}
-                done={handleUsernameEditDone}
+                cancel={handleEditCancelBtnClick}
+                done={handleEditDoneBtnClick}
                 username={username}
               />
             ) : (
@@ -123,7 +133,7 @@ export default function({
                 {owner && (
                   <div
                     className={styles.ps_usernameEditBtn}
-                    onClick={() => handleClickEvent()}
+                    onClick={(): void => handleClickEvent()}
                   >
                     {psString('profile-edit')}
                   </div>
@@ -169,14 +179,14 @@ export default function({
               <p
                 data-tip={psString('deposit-modal-title')}
                 className={styles.ps_depositBtn}
-                onClick={() => handleDepositBtnClick()}
+                onClick={(): void => handleDepositBtnClick()}
               >
                 {psString('common-modal-deposit')}
               </p>
               <p
                 data-tip={psString('withdraw-modal-title')}
                 className={styles.ps_withdrawBtn}
-                onClick={() => handleWithdrawBtnClick()}
+                onClick={(): void => handleWithdrawBtnClick()}
               >
                 {psString('common-modal-withdraw')}
               </p>

@@ -18,9 +18,13 @@ export default function({ documentData }: ViewSeeAlsoProps): ReactElement {
     return (
       <aside className={styles.vsa_container}>
         <div className={styles.vsa_mainTitle}>{psString('see-also-text')}</div>
-        {/*  {documentData.featuredList.map((result, idx) => (
+        {
+          // TODO  추천 리스트 추가 필요합니다.
+          //
+          /*  {documentData.featuredList.map((result, idx) => (
           <FeaturedListItemContainer resultItem={result} key={idx} />
-        ))}*/}
+        ))}*/
+        }
       </aside>
     )
   }

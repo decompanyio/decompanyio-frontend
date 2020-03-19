@@ -6,8 +6,7 @@ import * as styles from 'public/static/styles/main.scss'
 export default function(): ReactElement {
   const [cookiePolicyValue, setCookiePolicyValue] = useState(false)
 
-  // 모달 실행 시
-  const getStarted = () => {
+  const handleAcceptBtnClick = (): void => {
     commonView.setCookie('cpv', true, 1000)
     setCookiePolicyValue(true)
   }
@@ -31,7 +30,10 @@ export default function(): ReactElement {
             {psString('cookie-policy-content')}
           </div>
 
-          <div className={styles.cpn_btn} onClick={() => getStarted()}>
+          <div
+            className={styles.cpn_btn}
+            onClick={(): void => handleAcceptBtnClick()}
+          >
             Accept
           </div>
         </div>

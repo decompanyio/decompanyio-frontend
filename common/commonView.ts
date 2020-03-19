@@ -68,7 +68,7 @@ export default {
     }
   },
 
-  getCookie: (cname: string) => {
+  getCookie: (cname: string): string => {
     if (typeof window !== 'undefined') {
       let cookieName = cname + '='
       let decodedCookie = decodeURIComponent(document.cookie)
@@ -81,6 +81,9 @@ export default {
         if (c.indexOf(cookieName) === 0)
           return c.substring(cookieName.length, c.length)
       }
+      return ''
+    } else {
+      return ''
     }
   },
 
