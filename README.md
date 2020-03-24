@@ -19,6 +19,9 @@
 - typings : type configuration files for importing files in Next js project
 - utils : third-party APIs
 
+## Release Note
+> https://github.com/decompanyio/decompanyio-frontend/blob/master/doc/RELEASE_NOTE.md
+
 ## Guide
 English
 > https://github.com/decompanyio/decompanyio-frontend/blob/master/doc/GUIDE.md
