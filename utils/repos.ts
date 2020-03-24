@@ -404,7 +404,7 @@ export const repos = {
           let resultData = res
           resultData.Document.findByIds = res.Document.findByIds.filter(l => {
             let latestArr = res.DocumentPopular.findByIds.filter(
-              p => p._id === l._id
+              (p): boolean => p._id === l._id
             )[0]
             return latestArr
               ? (l.latestPageview = latestArr.latestPageview)

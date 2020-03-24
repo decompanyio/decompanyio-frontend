@@ -5,11 +5,17 @@ import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
 
 export const AUTH_APIS = {
-  login: (provider?: string) => {
+  login: (provider?: string, returnUrl?: string) => {
     window.location.href = `${
       APP_CONFIG.domain().auth
     }/authentication/signin/${provider ||
-      commonData.defaultLoginPlatform}?returnUrl=http://127.0.0.1`
+      commonData.defaultLoginPlatform}?redirectUrl=${APP_CONFIG.domain()}/callback&returnUrl=${returnUrl}`
+  },
+  silentLogin: (email: string, provider?: string) => {
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signin/${provider ||
+      commonData.defaultLoginPlatform}?prompt=none&login_hint=${email}`
   },
   logout: (): void => {
     AUTH_APIS.clearSession()
@@ -129,15 +135,14 @@ export const AUTH_APIS = {
       const _renewSession = () =>
         AUTH_APIS.renewSession()
           .then(at => {
-            console.log(2, at)
             resolve(at)
           })
-          .catch(err => {
+          .catch((err): void => {
             console.log(err)
             reject(err)
           })
 
-      return timeout > 0 ? resolve(at) : _renewSession()
+      timeout > 0 ? resolve(at) : _renewSession()
     }),
   iframeHandler: (provider?: string) =>
     new Promise((resolve, reject) => {
@@ -152,9 +157,10 @@ export const AUTH_APIS = {
       iframeEle.style.display = 'none'
       iframeEle.src = `${
         APP_CONFIG.domain().auth
-      }/authentication/signin/${provider || commonData.defaultLoginPlatform}`
-
-      console.log(callbackIframeContainer)
+      }/authentication/signin/${provider ||
+        commonData.defaultLoginPlatform}&prompt=none&login_hint=${
+        AUTH_APIS.getMyInfo().email
+      }`
 
       if (
         callbackIframeContainer &&
@@ -164,12 +170,9 @@ export const AUTH_APIS = {
 
       callbackIframeContainer.appendChild(iframeEle)
 
-      console.log(iframeEle)
-
       // TODO IE, 표준 방법도 추가
       // iframeEle.onload = AUTH_APIS.iframeEventListener(iframeEle.id)
       iframeEle.addEventListener('load', function(_e): void {
-        console.log('make frame')
         AUTH_APIS.iframeEventListener(iframeEle.id)
           .then(at => resolve(at))
           .catch(err => reject(err))
@@ -181,10 +184,8 @@ export const AUTH_APIS = {
         'callbackIframeContainer'
       ) as HTMLElement
       const iframeEle = document.getElementById(id) as HTMLIFrameElement
-      console.log(id)
-      console.log(iframeEle)
+
       if (iframeEle && iframeEle.contentWindow) {
-        console.log('start getting url')
         const urlFromIframe = iframeEle.contentWindow.location.href
         if (urlFromIframe && urlFromIframe !== 'about:blank') {
           let url = new URL(urlFromIframe)

@@ -17,7 +17,7 @@ export default function(): ReactElement {
             />
           </Link>
           <div className={styles.f_copyright}>
-            Copyrightⓒ 2019 POLARIS SHARE
+            Copyrightⓒ 2020 POLARIS SHARE
           </div>
         </div>
         <div className={styles.f_legal}>
@@ -93,7 +93,7 @@ export default function(): ReactElement {
           </div>
         </div>
         <div className={styles.f_copyrightMobile}>
-          Copyrightⓒ 2019 POLARIS SHARE
+          Copyrightⓒ 2020 POLARIS SHARE
         </div>
       </div>
     </footer>

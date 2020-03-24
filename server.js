@@ -226,6 +226,12 @@ app.prepare().then(() => {
     return app.render(req, res, '/user_guide', req.query)
   })
 
+  // 유저 가이드 페이지
+  server.get('/silentCallback', (req, res) => {
+    res.header('X-Robots-Tag', 'noindex')
+    return app.render(req, res, '/silentCallback', req.query)
+  })
+
   server.all('*', (req, res) => {
     return handle(req, res)
   })

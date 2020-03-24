@@ -221,7 +221,7 @@ export default function({
     }
 
     pdfjs.disableWorker = false
-    pdfjs.getDocument({ data: _pdfData }).then(renderPages)
+    await pdfjs.getDocument({ data: _pdfData }).promise.then(renderPages)
   }
 
   useEffect(() => {
