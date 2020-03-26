@@ -1,3 +1,5 @@
+import 'es6-promise/auto'
+import 'babel-polyfill'
 import React, { ReactElement } from 'react'
 import store from 'redux/store'
 import { Provider } from 'react-redux'

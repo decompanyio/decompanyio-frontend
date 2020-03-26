@@ -49,6 +49,9 @@ Index.getInitialProps = async props => {
 
   const metaData = {
     title: documentData.title,
+    // @ts-ignore
+    tag: documentData.tags.length > 0 ? documentData.tags[0] : '',
+    extension: documentData.documentName.split('.')[1],
     seoTitle: documentData.seoTitle,
     description: documentData.desc,
     twitter: {

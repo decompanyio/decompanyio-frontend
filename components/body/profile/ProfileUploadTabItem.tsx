@@ -169,14 +169,7 @@ export default function({
                     ? tmpDocumentData.title
                     : tmpDocumentData.documentName
                 }
-                className={
-                  styles.puti_cardImg +
-                  ' ' +
-                  (tmpDocumentData.state &&
-                  tmpDocumentData.state !== 'CONVERT_COMPLETE'
-                    ? styles.puti_notConvertBackground
-                    : '')
-                }
+                className={styles.puti_cardImg}
                 onError={e => {
                   let element = e.target as HTMLImageElement
                   element.onerror = null

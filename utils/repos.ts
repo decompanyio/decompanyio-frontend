@@ -33,6 +33,7 @@ import ProfileRewards from 'service/model/ProfileRewards'
 import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
 import ClaimableReward from '../service/model/ClaimableReward'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
+import log from './log';
 
 let instance
 
@@ -95,7 +96,7 @@ export const repos = {
         .then((result): AccountInfo => new AccountInfo(result))
         .catch(
           (err): AccountInfo => {
-            console.log(err)
+            log.Layout.setMyInfo(err)
             AUTH_APIS.logout()
             return new AccountInfo(null)
           }

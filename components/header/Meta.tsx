@@ -22,6 +22,8 @@ export default function({ title, metaData }: MetaProps): ReactElement {
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="title" content={title} />
+      <meta name="tag" content={metaData.tag} />
+      <meta name="extension" content={metaData.extension} />
       <meta name="description" content={metaData.description} />
       <meta name="seoTitle" content={metaData.seoTitle} />
       <meta name="twitter:card" content={metaData.twitter.card} />

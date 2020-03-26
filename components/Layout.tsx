@@ -93,18 +93,16 @@ export default function(props): ReactElement {
   // 내 정보 REDUX SET
   const setMyInfo = () => {
     if (AUTH_APIS.isAuthenticated() && myInfo.email.length === 0) {
-      return repos.Account.getAccountInfo()
-        .then(result => {
-          let res = new UserInfo(result.user)
-          if (!res.username || res.username === '') res.username = res.email
-          if (!res.picture) res.picture = myInfo.picture
+      return repos.Account.getAccountInfo().then(result => {
+        let res = new UserInfo(result.user)
+        if (!res.username || res.username === '') res.username = res.email
+        if (!res.picture) res.picture = myInfo.picture
 
-          res.privateDocumentCount = result.privateDocumentCount
-          dispatch(setActionMain.myInfo(res))
-          log.Layout.setMyInfo()
-          return Promise.resolve()
-        })
-        .catch(err => log.Layout.setMyInfo(err))
+        res.privateDocumentCount = result.privateDocumentCount
+        dispatch(setActionMain.myInfo(res))
+        log.Layout.setMyInfo()
+        return Promise.resolve()
+      })
     } else {
       return Promise.resolve()
     }

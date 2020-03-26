@@ -52,6 +52,8 @@ export default {
   // 메타 데이터 기본값
   metaData: {
     title: 'Polaris Share',
+    extension: '',
+    tag: '',
     seoTitle: 'Polaris Share',
     description: 'Sharing knowledge in new ways',
     twitter: {

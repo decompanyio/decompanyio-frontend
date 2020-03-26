@@ -325,15 +325,15 @@ export default {
     documentName: string
   ): string => {
     let _size = size
-    if (documentName) {
-      if (
-        documentName.lastIndexOf('.dotx') > 0 ||
+
+    if (
+      documentName &&
+      (documentName.lastIndexOf('.dotx') > 0 ||
         documentName.lastIndexOf('.dot') > 0 ||
-        documentName.lastIndexOf('.docx') > 0
-      ) {
-        _size = 1024
-      }
-    }
+        documentName.lastIndexOf('.docx') > 0)
+    )
+      _size = 1024
+
     return imgDomain + '/' + documentId + '/' + _size + '/' + pageNo
   },
 

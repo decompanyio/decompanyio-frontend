@@ -97,24 +97,30 @@ export const AUTH_APIS = {
         const ea = query.expired_at || ''
         const ru = query.return_url || ''
 
-        AUTH_APIS.setTokens(at, ea, ru).then((userInfo: UserInfo) => {
-          AUTH_APIS.syncAuthAndRest(userInfo, at)
-          resolve(userInfo.email)
-        })
+        AUTH_APIS.setTokens(at, ea, ru).then((userInfo: any) =>
+          AUTH_APIS.syncAuthAndRest(userInfo, at).then(() =>
+            resolve(userInfo.email)
+          )
+        )
       }
     }),
-  syncAuthAndRest: (ui, at): void => {
-    if (at) {
-      repos.Account.syncAuthAndRest(ui, at)
-        .then(res => {
-          localStorage.setItem('user_sync', JSON.stringify(res))
-        })
-        .catch((): void => {
-          console.error('Login failed because user sync failed.')
-          //AUTH_APIS.logout()
-        })
-    } else console.log('session is not init...')
-  },
+  syncAuthAndRest: (ui, at: string) =>
+    new Promise(resolve => {
+      if (at) {
+        repos.Account.syncAuthAndRest(ui, at)
+          .then(res => {
+            localStorage.setItem('user_sync', JSON.stringify(res))
+            resolve()
+          })
+          .catch((): void => {
+            console.error('Login failed because user sync failed.')
+            AUTH_APIS.logout()
+          })
+      } else {
+        console.log('session is not init...')
+        AUTH_APIS.logout()
+      }
+    }),
   renewSession: (): Promise<string> =>
     new Promise((resolve, reject) => {
       AUTH_APIS.iframeHandler()
