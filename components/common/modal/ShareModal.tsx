@@ -1,15 +1,23 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { APP_CONFIG } from '../../../app.config'
 import common from 'common/common'
 import commonView from 'common/commonView'
-import { setActionMain } from '../../../redux/reducer/main'
 import { psString } from 'utils/localization'
 import * as styles from '../../../public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData, type } = useSelector(state => state.main.modalData)
+  const { modalData, setModal, setAlertCode } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
+  const type = tempModalData && tempModalData.type ? tempModalData.type : ''
+
   const [closeFlag, setCloseFlag] = useState(false)
   const [urlData, setUrlData] = useState({
     url: '',
@@ -24,7 +32,7 @@ export default function(): ReactElement {
     '" title="embed" width="640" height="360" frameBorder="0" marginWidth="0" marginHeight="0" scrolling="no" allowFullScreen/>'
 
   // URL 셋팅
-  const setUrl = () => {
+  const setUrl = (): void => {
     let url =
       documentData.shortUrl ||
       APP_CONFIG.domain().embed +
@@ -42,24 +50,31 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 복사 관리
-  const handleCopy = id => {
+  const handleCopy = (id: string): void => {
     let copyUrl = document.getElementById(id) as HTMLInputElement
-    copyUrl.select()
-    document.execCommand('copy')
-    dispatch(setActionMain.alertCode(2005, {}))
 
-    let icon1 = document.getElementById('icon-1') as HTMLElement
-    let icon2 = document.getElementById('icon-2') as HTMLElement
-    let icon3 = document.getElementById('icon-3') as HTMLElement
-    let el = copyUrl.nextElementSibling!.firstChild!
+    if (id && copyUrl) {
+      copyUrl.select()
+      document.execCommand('copy')
+      setAlertCode(2005, {})
 
-    icon1.innerText = 'file_copy'
-    icon2.innerText = 'file_copy'
-    icon3.innerText = 'file_copy'
-    el.textContent = 'done'
+      let icon1 = document.getElementById('icon-1') as HTMLElement
+      let icon2 = document.getElementById('icon-2') as HTMLElement
+      let icon3 = document.getElementById('icon-3') as HTMLElement
+
+      if (copyUrl.nextElementSibling && copyUrl.nextElementSibling.firstChild) {
+        copyUrl.nextElementSibling.firstChild.textContent = 'done'
+      }
+
+      icon1.innerText = 'file_copy'
+      icon2.innerText = 'file_copy'
+      icon3.innerText = 'file_copy'
+    } else {
+      setAlertCode(2007, {})
+    }
   }
 
   useEffect(() => {

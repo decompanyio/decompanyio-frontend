@@ -6,7 +6,7 @@ export default {
   /**
    * @return {boolean}
    */
-  DEBUG: (): boolean => false,
+  DEBUG: (): boolean => APP_CONFIG.debug,
   getRootUrlWithApi: (): string => APP_CONFIG.domain().api + '/api/',
   getRootUrlWithWallet: (): string => APP_CONFIG.domain().wallet + '/api/',
   getRootUrlWithAuth: (): string => APP_CONFIG.domain().auth + '/',

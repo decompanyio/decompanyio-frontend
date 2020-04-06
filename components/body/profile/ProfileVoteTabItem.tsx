@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import LinesEllipsis from 'react-lines-ellipsis'
-import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import common from '../../../common/common'
 import commonView from '../../../common/commonView'
@@ -10,11 +9,8 @@ import * as styles from '../../../public/static/styles/main.scss'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import repos from '../../../utils/repos'
 import ProfileCuratorClaim from './ProfileCuratorClaim'
-
-interface ProfileVoteTabItemProps {
-  documentData
-  owner: boolean
-}
+import { ProfileVoteTabItemProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
@@ -23,8 +19,7 @@ export default function({
   documentData,
   owner
 }: ProfileVoteTabItemProps): ReactElement {
-  const isMobile = useSelector(state => state.main.isMobile)
-  const myInfo = useSelector(state => state.main.myInfo)
+  const { myInfo, isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 

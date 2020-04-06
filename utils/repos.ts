@@ -33,7 +33,8 @@ import ProfileRewards from 'service/model/ProfileRewards'
 import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
 import ClaimableReward from '../service/model/ClaimableReward'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
-import log from './log';
+import log from './log'
+import { ParamsGetDocumentList } from '../typings/interfaces'
 
 let instance
 
@@ -60,7 +61,7 @@ export const repos = {
     ReactGA.pageview(window.location.pathname + window.location.search)
 
     // 로그인 체크
-    if (AUTH_APIS.isAuthenticated()) void AUTH_APIS.scheduleRenewal()
+    if (AUTH_APIS.isLogin()) void AUTH_APIS.scheduleRenewal()
     else AUTH_APIS.clearSession()
 
     return Promise.resolve(true)
@@ -151,19 +152,16 @@ export const repos = {
     },
     async getUserInfo(at?: string) {
       let authorizationToken =
-        at || (await AUTH_APIS.scheduleRenewal().then((res: string) => res))
+        at || (await AUTH_APIS.scheduleRenewal().then((res: any) => res))
       const _data = {
         header: {
           Authorization: authorizationToken
         }
       }
 
-      return AuthService.GET.userInfo(_data)
-        .then((result: { user }): UserInfo => new UserInfo(result.user))
-        .catch(err => {
-          console.log(err)
-          return err
-        })
+      return AuthService.GET.userInfo(_data).then(
+        (result: any): UserInfo => new UserInfo(result.user)
+      )
     },
     async syncAuthAndRest(ui: UserInfo, at?: string) {
       let authorizationToken =
@@ -296,15 +294,10 @@ export const repos = {
           }
         )
     },
-    async getDocumentList(params) {
-      return DocService.GET.documentList(params)
-        .then((result): DocumentList => new DocumentList(result))
-        .catch(
-          (err): DocumentList => {
-            console.log(err)
-            return new DocumentList(null)
-          }
-        )
+    async getDocumentList(params: ParamsGetDocumentList) {
+      return DocService.GET.documentList(params).then(
+        (result): DocumentList => new DocumentList(result)
+      )
     },
     async getDocumentVoteAmount(data) {
       return instance.Query.getDocumentVoteAmount(data).then(res => {
@@ -656,9 +649,7 @@ export const repos = {
     async voteDocument(data) {
       const params = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
         },
         data: data
       }
@@ -668,23 +659,19 @@ export const repos = {
     async claimCreator(data) {
       const params = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
         },
         data: data
       }
 
       return WalletService.POST.claimCreator(params)
-        .then(result => result)
+        .then((result) => result)
         .catch(err => err)
     },
     async claimCurator(data) {
       const params = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
         },
         data: data
       }
@@ -707,7 +694,8 @@ export const repos = {
             (res: string) => res
           )
         },
-        mutation: mutations.addMyList(data)
+        mutation: mutations.addMyList(data),
+        private: true
       }).then(res => res),
     removeMyList: async data =>
       graphql({
@@ -725,7 +713,8 @@ export const repos = {
             (res: string) => res
           )
         },
-        mutation: mutations.addHistory(data)
+        mutation: mutations.addHistory(data),
+        private: true
       }).then(res => res)
   },
   Query: {

@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import * as styles from '../../../public/static/styles/main.scss'
-import { useSelector, useDispatch } from 'react-redux'
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import commonView from 'common/commonView'
@@ -12,17 +11,10 @@ import Link from 'next/link'
 import repos from '../../../utils/repos'
 import { AUTH_APIS } from '../../../utils/auth'
 import RewardCard from '../../common/card/RewardCard'
-import { setActionMain } from '../../../redux/reducer/main'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 import ProfileCreatorClaim from './ProfileCreatorClaim'
-
-interface ProfileUploadTabItemProps {
-  documentData
-  idx: number
-  handleUploadSettings: () => void
-  viewerOptionOpenedIdx: number
-  owner: boolean
-}
+import { ProfileUploadTabItemProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
@@ -34,9 +26,7 @@ export default function({
   viewerOptionOpenedIdx,
   owner
 }: ProfileUploadTabItemProps): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
-  const isMobile = useSelector(state => state.main.isMobile)
+  const { setAlertCode, setModal, myInfo, isMobile } = useMain()
   const [tmpDocumentData, setTmpDocumentData] = useState(
     new DocumentInfo(documentData)
   )
@@ -73,10 +63,10 @@ export default function({
 
   const setRequiredForDownload = () => {
     if (!tmpDocumentData) {
-      return dispatch(setActionMain.alertCode(2091, {}))
+      return setAlertCode(2091, {})
     }
-    if (!AUTH_APIS.isAuthenticated() && !myInfo.email) {
-      return dispatch(setActionMain.alertCode(2003, {}))
+    if (!AUTH_APIS.isLogin() && !myInfo.email) {
+      return setAlertCode(2003, {})
     }
 
     const documentId = tmpDocumentData.documentId
@@ -100,26 +90,21 @@ export default function({
           if (res && res.document.state === 'CONVERT_COMPLETE') {
             clearInterval(interval)
             setStateDocumentData(res.document.state)
-            dispatch(
-              setActionMain.alertCode(2075, { title: tmpDocumentData.title })
-            )
+            setAlertCode(2075, { title: tmpDocumentData.title })
           }
         })
         .catch(() => {
           clearInterval(interval)
-          dispatch(setActionMain.alertCode(2001, {}))
+          setAlertCode(2001, {})
         })
     }, 5000)
   }
 
-  const handleShareBtnClick = () =>
-    dispatch(setActionMain.modal('share', { documentData }))
+  const handleShareBtnClick = () => setModal('share', { documentData })
 
-  const handleDeleteBtnClick = () =>
-    dispatch(setActionMain.modal('delete', { documentData }))
+  const handleDeleteBtnClick = () => setModal('delete', { documentData })
 
-  const handlePublishBtnClick = () =>
-    dispatch(setActionMain.modal('publish', { documentData }))
+  const handlePublishBtnClick = () => setModal('publish', { documentData })
 
   useEffect(() => {
     handleConvertingState()

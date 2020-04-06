@@ -2,10 +2,7 @@ import * as styles from 'public/static/styles/main.scss'
 import commonView from '../../../common/commonView'
 import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement } from 'react'
-
-interface ToTopBtnProps {
-  prevScrollPos: number
-}
+import { ToTopBtnProps } from '../../../typings/interfaces'
 
 export default function({ prevScrollPos }: ToTopBtnProps): ReactElement {
   if (prevScrollPos <= 100) return <div />

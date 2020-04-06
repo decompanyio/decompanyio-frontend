@@ -1,5 +1,4 @@
-import React, { ReactElement } from "react";
-import { useSelector } from 'react-redux'
+import React, { ReactElement } from 'react'
 import UploadDocumentModal from './UploadDocumentModal'
 import EditDocumentModal from './EditDocumentModal'
 import AwayModal from './AwayModal'
@@ -16,9 +15,10 @@ import VoteModal from './VoteModal'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 import FullscreenModal from './FullscreenModal'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const modalCode = useSelector(state => state.main.modalCode)
+  const { modalCode } = useMain()
 
   return (
     {

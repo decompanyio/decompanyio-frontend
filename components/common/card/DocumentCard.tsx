@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import LinesEllipsis from 'react-lines-ellipsis'
 import commonView from '../../../common/commonView'
@@ -10,6 +9,8 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import { repos } from '../../../utils/repos'
+import { DocumentCardProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -36,12 +37,8 @@ const getImgInfo = (documentData): void => {
   }
 }
 
-interface DocumentCardProps {
-  documentData
-}
-
 export default function({ documentData }: DocumentCardProps): ReactElement {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)
 
@@ -75,7 +72,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
       documentData.documentId,
       documentData.author.id
     ).then(res => setReward(common.toEther(res)))
-  }, [documentData.author.id, documentData.documentId])
+  })
 
   return (
     <div className={styles.dc_container}>
@@ -139,7 +136,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           </div>
         </Link>
 
-        {!isMobileFromRedux && (
+        {!isMobile && (
           <span className={styles.dc_date}>
             {commonView.dateTimeAgo(documentData.created, false)}
           </span>
@@ -162,7 +159,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           </div>
           <div className={styles.dc_view}>{view}</div>
           <div className={styles.dc_vote}>{common.deckStr(vote)}</div>
-          {isMobileFromRedux && (
+          {isMobile && (
             <div className={styles.dc_date}>
               {commonView.dateTimeAgo(documentData.created, false)}
             </div>

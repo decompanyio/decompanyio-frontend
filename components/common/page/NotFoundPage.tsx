@@ -1,10 +1,7 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import Router from 'next/router'
 import * as styles from 'public/static/styles/main.scss'
-
-interface NotFoundPageProps {
-  errMessage?: string
-}
+import { NotFoundPageProps } from '../../../typings/interfaces'
 
 export default function({ errMessage }: NotFoundPageProps): ReactElement {
   const [time, setTime] = useState(5)

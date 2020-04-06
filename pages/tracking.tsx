@@ -12,7 +12,7 @@ export default function Index(
   { documentData, ratio },
   ...rest
 ): ReactElement | Promise<boolean> {
-  if (typeof window !== 'undefined' && !AUTH_APIS.isAuthenticated()) {
+  if (typeof window !== 'undefined' && !AUTH_APIS.isLogin()) {
     return Router.push('/not_found_page')
   }
 

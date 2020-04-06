@@ -1,9 +1,6 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement } from 'react'
-
-interface DocumentCardMockProps {
-  order: number
-}
+import { DocumentCardMockProps } from '../../../typings/interfaces'
 
 export default function({ order }: DocumentCardMockProps): ReactElement {
   return (

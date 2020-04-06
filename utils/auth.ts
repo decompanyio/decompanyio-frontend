@@ -9,13 +9,17 @@ export const AUTH_APIS = {
     window.location.href = `${
       APP_CONFIG.domain().auth
     }/authentication/signin/${provider ||
-      commonData.defaultLoginPlatform}?redirectUrl=${APP_CONFIG.domain()}/callback&returnUrl=${returnUrl}`
+      commonData.defaultLoginPlatform}?redirectUrl=${
+      APP_CONFIG.domain().mainHost
+    }/callback${returnUrl ? '&returnUrl=' + returnUrl : ''}`
   },
   silentLogin: (email: string, provider?: string) => {
     window.location.href = `${
       APP_CONFIG.domain().auth
     }/authentication/signin/${provider ||
-      commonData.defaultLoginPlatform}?prompt=none&login_hint=${email}`
+      commonData.defaultLoginPlatform}?prompt=none&login_hint=${email}&redirectUrl=${
+      APP_CONFIG.domain().mainHost
+    }/callback`
   },
   logout: (): void => {
     AUTH_APIS.clearSession()
@@ -23,12 +27,23 @@ export const AUTH_APIS = {
   },
   isAuthenticated: (): boolean => {
     if (typeof window === 'undefined') return false
+    const loginInfo = AUTH_APIS.getTokens()
+    const expiresAt = JSON.parse(loginInfo.expiredAt)
+    const userInfo = JSON.parse(loginInfo.userInfo)
 
-    const expiresAt = JSON.parse(localStorage.getItem('ps_ea') || '{}')
-    return new Date().getTime() < expiresAt
+    return new Date().getTime() < expiresAt && userInfo.email
+  },
+  isLogin: (): boolean => {
+    const loginInfo = AUTH_APIS.getTokens()
+
+    return (
+      loginInfo.authorization_token !== '' &&
+      loginInfo.expiredAt !== '' &&
+      loginInfo.userInfo !== ''
+    )
   },
   // URL 쿼리 -> 파라미터
-  getParamsFromAuthUrlQuery: (qs): GetQueryParams => {
+  getParamsFromAuthUrlQuery: (qs: string): GetQueryParams => {
     const _qs = qs.split('+').join(' ')
     const re = /[?&]?([^=]+)=([^&]*)/g
     let params = {
@@ -40,30 +55,35 @@ export const AUTH_APIS = {
     let tokens
 
     while ((tokens = re.exec(_qs))) {
+      // @ts-ignore
       params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])
     }
     return params
   },
-  getMyInfo() {
+  getMyInfo(): UserInfo {
     let userInfo = localStorage.getItem('ps_ui')
     let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
-    if (!userInfoWithJson && AUTH_APIS.isAuthenticated()) {
+    if (!userInfoWithJson && AUTH_APIS.isLogin()) {
       AUTH_APIS.scheduleRenewal()
       return new UserInfo(null)
     }
     return new UserInfo(userInfoWithJson)
   },
   // 계정 관련 토큰 로컬스토리지 저장
-  setTokens: (at, ea, ru) =>
+  setTokens: (at: string, ea: any, ru: string) =>
     new Promise(resolve => {
       if (at) localStorage.setItem('ps_at', at)
       if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
       if (ru) localStorage.setItem('ps_ru', ru)
 
-      repos.Account.getUserInfo(at).then(res => {
-        localStorage.setItem('ps_ui', JSON.stringify(res))
-        resolve(res)
-      })
+      repos.Account.getUserInfo(at)
+        .then(res => {
+          localStorage.setItem('ps_ui', JSON.stringify(res))
+          resolve(res)
+        })
+        .catch((err: any) => {
+          console.log(err)
+        })
     }),
   getTokens: (): GetTokenProps => ({
     authorization_token: localStorage.getItem('ps_at') || '',
@@ -71,8 +91,7 @@ export const AUTH_APIS = {
     returnUrl: localStorage.getItem('ps_ru') || '',
     userInfo: localStorage.getItem('ps_ui') || ''
   }),
-  getExpiredAt: (ea: number): string =>
-    JSON.stringify(ea * 1000 + new Date().getTime()),
+  getExpiredAt: (ea: number): string => JSON.stringify(ea * 1000),
   clearSession(): void {
     localStorage.removeItem('ps_at')
     localStorage.removeItem('ps_ea')
@@ -85,7 +104,7 @@ export const AUTH_APIS = {
     // Content Editor
     localStorage.removeItem('content')
   },
-  handleAuthentication: location =>
+  handleAuthentication: (location: any) =>
     new Promise((resolve, reject) => {
       const query = AUTH_APIS.getParamsFromAuthUrlQuery(location.search)
 
@@ -104,11 +123,11 @@ export const AUTH_APIS = {
         )
       }
     }),
-  syncAuthAndRest: (ui, at: string) =>
+  syncAuthAndRest: (ui: any, at: string) =>
     new Promise(resolve => {
       if (at) {
         repos.Account.syncAuthAndRest(ui, at)
-          .then(res => {
+          .then((res: any) => {
             localStorage.setItem('user_sync', JSON.stringify(res))
             resolve()
           })
@@ -124,11 +143,12 @@ export const AUTH_APIS = {
   renewSession: (): Promise<string> =>
     new Promise((resolve, reject) => {
       AUTH_APIS.iframeHandler()
-        .then((at: string) => {
+        .then((at: any) => {
           resolve(at)
         })
         .catch(err => {
           AUTH_APIS.clearSession()
+          console.log('renewSession error')
           reject(err)
         })
     }),
@@ -143,12 +163,12 @@ export const AUTH_APIS = {
           .then(at => {
             resolve(at)
           })
-          .catch((err): void => {
+          .catch(err => {
             console.log(err)
             reject(err)
           })
 
-      timeout > 0 ? resolve(at) : _renewSession()
+      return timeout > 0 ? resolve(at) : _renewSession()
     }),
   iframeHandler: (provider?: string) =>
     new Promise((resolve, reject) => {
@@ -158,15 +178,17 @@ export const AUTH_APIS = {
 
       if (!callbackIframeContainer) reject()
 
+      console.log(callbackIframeContainer)
+
       const iframeEle = document.createElement('iframe')
       iframeEle.id = 'authIframe'
       iframeEle.style.display = 'none'
       iframeEle.src = `${
         APP_CONFIG.domain().auth
       }/authentication/signin/${provider ||
-        commonData.defaultLoginPlatform}&prompt=none&login_hint=${
+        commonData.defaultLoginPlatform}?prompt=none&login_hint=${
         AUTH_APIS.getMyInfo().email
-      }`
+      }&redirectUrl=${APP_CONFIG.domain().mainHost}/callback`
 
       if (
         callbackIframeContainer &&
@@ -193,9 +215,10 @@ export const AUTH_APIS = {
 
       if (iframeEle && iframeEle.contentWindow) {
         const urlFromIframe = iframeEle.contentWindow.location.href
+
         if (urlFromIframe && urlFromIframe !== 'about:blank') {
           let url = new URL(urlFromIframe)
-          let at = url.searchParams.get('authorization_token')
+          let at = url.searchParams.get('authorization_token') || ''
           let ea = AUTH_APIS.getExpiredAt(
             Number(url.searchParams.get('expired'))
           )

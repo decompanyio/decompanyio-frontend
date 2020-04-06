@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
+// @ts-ignore
 import { Wordpress } from 'better-react-spinkit'
 import commonView from 'common/commonView'
 import * as styles from 'public/static/styles/main.scss'

@@ -4,16 +4,10 @@ import common from 'common/common'
 import { psString } from 'utils/localization'
 import { ThreeBounce } from 'better-react-spinkit'
 import { Chart } from 'react-google-charts'
+import { CustromChartProps } from '../../../typings/interfaces'
 
 // https://www.npmjs.com/package/react-google-charts#quick-start
 // 구글 리액트 차트 라이브러리
-
-interface CustromChartProps {
-  subject
-  chartData
-  week
-  year
-}
 
 export default function({
   subject,

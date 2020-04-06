@@ -1,7 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { ThreeBounce } from 'better-react-spinkit'
-import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import { psString } from '../../../utils/localization'
 import ProfileVoteTabItem from './ProfileVoteTabItem'
@@ -10,11 +8,8 @@ import NoDataIcon from '../../common/NoDataIcon'
 import Pagination from '../../common/Pagination'
 import commonData from '../../../common/commonData'
 import CuratorDocuments from '../../../service/model/CuratorDocuments'
-
-interface ProfileVoteTabProps {
-  profileInfo
-  owner: boolean
-}
+import { ProfileVoteTabProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 const resultListModel = {
   resultList: [],
@@ -29,7 +24,7 @@ export default function({
   profileInfo,
   owner
 }: ProfileVoteTabProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [loading, setLoading] = useState(false)
   const [dataSet, setDataSet] = useState(resultListModel)
   const [page, setPage] = useState(1)
@@ -66,7 +61,7 @@ export default function({
       .then(res => setResultData(res))
       .catch((err): void => {
         console.error(err)
-        dispatch(setActionMain.alertCode(2001, {}))
+        setAlertCode(2001, {})
       })
   }
 

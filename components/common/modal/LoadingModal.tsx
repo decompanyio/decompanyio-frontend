@@ -1,7 +1,7 @@
 import { APP_CONFIG } from '../../../app.config'
 import { DoubleBounce } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/main.scss'
-import React, { ReactElement, useEffect } from "react";
+import React, { ReactElement, useEffect } from 'react'
 import commonView from '../../../common/commonView'
 
 export default function(): ReactElement {

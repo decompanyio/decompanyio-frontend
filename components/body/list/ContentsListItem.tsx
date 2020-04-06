@@ -1,5 +1,7 @@
 import * as styles from 'public/static/styles/main.scss'
+// @ts-ignore
 import LinesEllipsis from 'react-lines-ellipsis'
+// @ts-ignore
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -10,13 +12,7 @@ import RewardCard from 'components/common/card/RewardCard'
 import React, { ReactElement, useEffect, useState } from 'react'
 import ContentsBookmark from './ContentsBookmark'
 import { repos } from '../../../utils/repos'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-
-interface ContentsListItemProps {
-  documentData: DocumentInfo
-  path: string
-  bookmarkList
-}
+import { ContentsListItemProps } from '../../../typings/interfaces'
 
 const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),

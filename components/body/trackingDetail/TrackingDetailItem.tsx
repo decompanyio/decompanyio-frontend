@@ -4,12 +4,7 @@ import { APP_CONFIG } from '../../../app.config'
 import common from '../../../common/common'
 import Link from 'next/link'
 import React, { ReactElement, useState } from 'react'
-
-interface TrackingDetailItemProps {
-  mapData
-  documentData
-  text
-}
+import { TrackingDetailItemProps } from '../../../typings/interfaces';
 
 // 내림 차순으로 정렬된 시간  GET
 const getSortedTime = ({ viewTracking }): void => {

@@ -1,13 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import * as styles from '../../public/static/styles/main.scss'
 import { psString } from '../../utils/localization'
-
-interface PaginationProps {
-  totalCount: number
-  pageCount: number
-  selectedPage?: number // url parameter 에 page 추가 됐을시 사용
-  click: (page: number) => void
-}
+import { PaginationProps } from '../../typings/interfaces'
 
 export default function({
   totalCount,

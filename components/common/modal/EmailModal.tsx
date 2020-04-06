@@ -1,17 +1,23 @@
-import { useSelector, useDispatch } from 'react-redux'
 import { FadingCircle } from 'better-react-spinkit'
 import { psString } from 'utils/localization'
 import repos from '../../../utils/repos'
 import common from 'common/common'
 import commonView from '../../../common/commonView'
 import React, { ReactElement, useEffect, useState } from 'react'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
 import Router from 'next/router'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData } = useSelector(state => state.main.modalData)
+  const { modalData, setModal } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
@@ -66,7 +72,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
       .then(() => setLocalstorage())
       .then(() => handleRouter(3))
 
@@ -74,14 +80,14 @@ export default function(): ReactElement {
   const handleSuccessClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
       .then(() => handleRouter(3))
 
   // 강제입력 시 모달 종료 관리
   const handleBack = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
       .then(() => handleRouter(1))
 
   // 메일 입력 체크

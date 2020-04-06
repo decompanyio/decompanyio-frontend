@@ -1,7 +1,7 @@
-import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Link from 'next/link'
+// @ts-ignore
 import { ThreeBounce } from 'better-react-spinkit'
+import React, { ReactElement, useEffect, useState } from 'react'
+import Link from 'next/link'
 import repos from 'utils/repos'
 import { psString } from 'utils/localization'
 import NoDataIcon from 'components/common/NoDataIcon'
@@ -9,16 +9,13 @@ import { APP_CONFIG } from '../../../app.config'
 import AnalyticsList from '../../../service/model/AnalyticsList'
 import * as styles from '../../../public/static/styles/main.scss'
 import ProfileAnalyticsChart from './ProfileAnalyticsChart'
-import { setActionMain } from '../../../redux/reducer/main'
 import commonView from 'common/commonView'
 import common from 'common/common'
 import Pagination from '../../common/Pagination'
 import commonData from '../../../common/commonData'
 import DocumentList from '../../../service/model/DocumentList'
-
-interface ProfileAnalyticsTabProps {
-  profileInfo
-}
+import { ProfileAnalyticsTabProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 const resultListModel = {
   resultList: [],
@@ -31,7 +28,7 @@ const pageSize = commonData.myPageListSize // 화면상 리스트 수
 export default function({
   profileInfo
 }: ProfileAnalyticsTabProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [loading, setLoading] = useState(false)
   const [chartFlag, setChartFlag] = useState(false)
   const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null))
@@ -45,7 +42,7 @@ export default function({
   })
 
   // GET 데이터 관리
-  const handleData = (res): Promise<void> =>
+  const handleData = (res: DocumentList): Promise<void> =>
     new Promise((resolve, reject) => {
       setLoading(false)
 
@@ -74,25 +71,25 @@ export default function({
       .then(res => handleData(res))
       .catch(err => {
         console.error(err)
-        dispatch(setActionMain.alertCode(2001, {}))
+        setAlertCode(2001, {})
       })
   }
 
-  const getChartData = (documentId: string, dataKey): void => {
+  const getChartData = (documentId: string, dataKey: number): void => {
     repos.Analytics.getAnalyticsList({
       week: dateSet.week,
       year: dateSet.year > 0 ? dateSet.year : null,
       documentId: documentId
     }).then((res): void => {
-      setSpreadItem(Number(dataKey))
+      setSpreadItem(dataKey)
       setAnalyticsList(res)
       setDocumentId(documentId)
       setChartFlag(true) // 차트 데이터 props 타이밍 동기화
     })
   }
 
-  const handleMouseClick = (e): void => {
-    const dataKey = e.currentTarget.getAttribute('data-key')
+  const handleMouseClick = (e: React.MouseEvent<HTMLElement>): void => {
+    const dataKey = Number(e.currentTarget.getAttribute('data-key'))
     const dataId = e.currentTarget.getAttribute('data-id')
 
     setDateSet({
@@ -103,7 +100,7 @@ export default function({
     setSpreadItem(-1)
 
     // 차트 데이터 GET
-    if (!chartFlag) getChartData(dataId, dataKey)
+    if (!chartFlag && dataKey && dataId) getChartData(dataId, dataKey)
     // 차트 데이터 props 타이밍 동기화
     else setChartFlag(false)
   }
@@ -129,7 +126,7 @@ export default function({
     })
   }
 
-  const handleWeekBtnClick = (e): void => {
+  const handleWeekBtnClick = (e: any): void => {
     let weekValue = e.target.dataset.value
     let weekValueNum = -1
 

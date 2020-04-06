@@ -1,5 +1,6 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
+import { UserAvatarProps } from '../../../typings/interfaces'
 
 /*일반 유저 아바타
 picture, croppedArea, size 지정하여 사용*/
@@ -10,12 +11,6 @@ const getImgInfo = (picture: string) =>
     img.src = picture
     img.onload = () => resolve(Boolean(img.height > img.width))
   })
-
-interface UserAvatarProps {
-  croppedArea
-  size: number
-  picture: string
-}
 
 export default function({
   croppedArea,

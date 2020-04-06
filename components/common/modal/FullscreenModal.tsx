@@ -1,20 +1,27 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { FadingCircle } from 'better-react-spinkit'
 import commonView from 'common/commonView'
 import * as styles from 'public/static/styles/main.scss'
 import common from '../../../common/common'
-import { setActionMain } from '../../../redux/reducer/main'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
-  const { documentData, ratio, readPage } = useSelector(
-    state => state.main.modalData
+  const { modalData, myInfo, setModal } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
   )
+  const ratio = tempModalData && tempModalData.ratio ? tempModalData.ratio : 1
+  const readPage =
+    tempModalData && tempModalData.readPage ? tempModalData.readPage : 1
+
   const [url, setUrl] = useState('')
   const [closeFlag, setCloseFlag] = useState(false)
-  const thumbnailArr = [documentData.totalPages]
+  const thumbnailArr = new Array(documentData.totalPages)
   let page = 1
 
   // thumbnail 비율 portrait 여부
@@ -25,7 +32,8 @@ export default function(): ReactElement {
   const getPrevPage = (p: number): number => (p > 1 ? p - 1 : 1)
 
   // 다음 페이지 GET
-  const getNextPage = (p: number): number => (p < thumbnailArr.length ? p + 1 : p)
+  const getNextPage = (p: number): number =>
+    p < thumbnailArr.length ? p + 1 : p
 
   // url SET
   const setImageData = (p: number): void => {
@@ -50,8 +58,7 @@ export default function(): ReactElement {
     new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 모달 취소버튼 클릭 관리
-  const handleClickClose = () =>
-    handleCloseFlag().then(() => dispatch(setActionMain.modal(null)))
+  const handleClickClose = () => handleCloseFlag().then(() => setModal(''))
 
   // 페이지 및 썸네일 관리
   const handelPageWithThumb = (action: string) => {

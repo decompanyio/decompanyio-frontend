@@ -1,5 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import React, { ReactElement, useEffect, useState } from 'react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -9,12 +8,20 @@ import commonView from '../../../common/commonView'
 import { APP_CONFIG } from '../../../app.config'
 import { psString } from 'utils/localization'
 import common from 'common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData } = useSelector(state => state.main.modalData)
+  const { modalData, setModal, setAlertCode } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
+
   const [closeFlag, setCloseFlag] = useState(false)
   const [copyBtnText, setCopyBtnText] = useState(
     psString('publish-modal-complete-copy-url')
@@ -28,7 +35,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 복사 버튼 텍스트 SET
   const handleCopyBtnText = () =>
@@ -38,9 +45,9 @@ export default function(): ReactElement {
   const handleCopyBtnClick = id =>
     commonView
       .clipboardCopy(id)
-      .then(() => dispatch(setActionMain.alertCode(2005, {})))
+      .then(() => setAlertCode(2005, {}))
       .then(() => handleCopyBtnText())
-      .catch(() => dispatch(setActionMain.alertCode(2007, {})))
+      .catch(() => setAlertCode(2007, {}))
 
   useEffect(() => {
     commonView.setBodyStyleLock()

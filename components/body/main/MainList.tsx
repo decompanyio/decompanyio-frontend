@@ -7,10 +7,8 @@ import MainListMock from 'components/common/mock/MainListMock'
 import repos from '../../../utils/repos'
 import { AUTH_APIS } from '../../../utils/auth'
 import log from '../../../utils/log'
-
-interface MainListProps {
-  path: string
-}
+import { MainListProps } from '../../../typings/interfaces'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 const DocumentCardWithoutSSR = dynamic(
   () => import('components/common/card/DocumentCard'),
@@ -18,10 +16,12 @@ const DocumentCardWithoutSSR = dynamic(
 )
 
 export default function({ path }: MainListProps): ReactElement {
-  const [documentData, setDocumentData] = useState([])
+  const [documentData, setDocumentData] = useState([{}])
   const [dataExist, setDataExist] = useState(true)
 
-  const getDocuments = (path: string): Promise<[]> =>
+  const getDocuments = (
+    path: string
+  ): Promise<[]> => //TODO catch 추가 필요합니다
     repos.Document.getDocumentList({ path: path }).then(res => res.resultList)
 
   const getMylist = (id: string): Promise<[]> =>
@@ -32,11 +32,11 @@ export default function({ path }: MainListProps): ReactElement {
 
   useEffect(() => {
     ;(async function(): Promise<void> {
-      let _documentData = []
+      let _documentData = [{}]
 
-      if (AUTH_APIS.isAuthenticated() && path === 'mylist') {
+      if (AUTH_APIS.isLogin() && path === 'mylist') {
         _documentData = await getMylist(AUTH_APIS.getMyInfo().id)
-      } else if (AUTH_APIS.isAuthenticated() && path === 'history') {
+      } else if (AUTH_APIS.isLogin() && path === 'history') {
         _documentData = await getHistory(AUTH_APIS.getMyInfo().id)
       } else if (path !== 'mylist' && path !== 'history') {
         _documentData = await getDocuments(path)
@@ -72,7 +72,10 @@ export default function({ path }: MainListProps): ReactElement {
             {documentData.map((res, idx) => {
               return (
                 idx < 4 && (
-                  <DocumentCardWithoutSSR key={idx} documentData={res} />
+                  <DocumentCardWithoutSSR
+                    key={idx}
+                    documentData={new DocumentInfo(res)}
+                  />
                 )
               )
             })}

@@ -1,18 +1,16 @@
 import * as styles from 'public/static/styles/main.scss'
-import { useSelector, useDispatch } from 'react-redux'
 import React, { ReactElement, useEffect, useState } from 'react'
 import commonView from 'common/commonView'
 import repos from '../../../utils/repos'
 import { AUTH_APIS } from '../../../utils/auth'
 import { psString } from '../../../utils/localization'
 import common from '../../../common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import DropZone from '../DropZone'
 import UploadProgressModal from './UploadProgressModal'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo, setMyInfo, setAlertCode, setModal } = useMain()
   const [percentage, setPercentage] = useState(0)
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
@@ -27,13 +25,13 @@ export default function(): ReactElement {
   const [closeFlag, setCloseFlag] = useState(false)
 
   // 제목 유효성 체크
-  const validateTitle = (value: string) => {
+  const validateTitle = (value: string): boolean => {
     setTitleError(value.length > 0 ? '' : psString('edit-doc-error-1'))
     return value.length > 0
   }
 
   // 파일 유효성 체크
-  const validateFile = () => {
+  const validateFile = (): boolean => {
     setFileInfoError(
       fileInfo.filename === null ? psString('upload-doc-check') : ''
     )
@@ -41,7 +39,7 @@ export default function(): ReactElement {
   }
 
   // 파일 업로드 로딩 바 핸들 함수
-  const handleProgress = e => {
+  const handleProgress = (e): void => {
     let percent = Math.round((e.loaded / e.total) * 100)
     if (percent !== null) setPercentage(percent)
   }
@@ -53,7 +51,7 @@ export default function(): ReactElement {
         {
           fileInfo: fileInfo,
           userInfo: AUTH_APIS.getMyInfo(),
-          ethAccount: myInfoFromRedux.ethAccount,
+          ethAccount: myInfo.ethAccount,
           title: title,
           desc: desc,
           tags: [],
@@ -65,10 +63,10 @@ export default function(): ReactElement {
         handleProgress,
         result => {
           if (result.code && result.code === 'EXCEEDEDLIMIT') {
-            let tmpMyInfo = myInfoFromRedux
+            let tmpMyInfo = myInfo
             tmpMyInfo.privateDocumentCount = 5
-            dispatch(setActionMain.myInfo(tmpMyInfo))
-            dispatch(setActionMain.alertCode(2072, {}))
+            setMyInfo(tmpMyInfo)
+            setAlertCode(2072, {})
             reject()
           }
           resolve(result)
@@ -82,7 +80,7 @@ export default function(): ReactElement {
     new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 진행도 모달 닫기
-  const handleProcessModalClose = () => {
+  const handleProcessModalClose = (): void => {
     const modal = document.getElementById('progressModal')
     const wrapper = document.getElementById('progressWrapper')
 
@@ -91,7 +89,7 @@ export default function(): ReactElement {
   }
 
   // 진행도 모달 열기
-  const handleProcessModalOpen = () => {
+  const handleProcessModalOpen = (): void => {
     const modal = document.getElementById('progressModal')
     const wrapper = document.getElementById('progressWrapper')
 
@@ -100,25 +98,23 @@ export default function(): ReactElement {
   }
 
   // 업로드 함수
-  const handleUpload = () => {
+  const handleUpload = (): void => {
     handleProcessModalOpen()
 
     // 문서 등록 API
     registerDocument()
       .then((res: any) => {
         // 업로드 성공 모달 전환
-        dispatch(
-          setActionMain.modal('uploadComplete', {
-            privateDocumentCount: res.privateDocumentCount || 0,
-            identifier: myInfoFromRedux.username || myInfoFromRedux.email
-          })
-        )
+        setModal('uploadComplete', {
+          privateDocumentCount: res.privateDocumentCount || 0,
+          identifier: myInfo.username || myInfo.email
+        })
       })
       .catch(err => {
         handleProcessModalClose()
         console.error(err)
-        dispatch(setActionMain.alertCode(2071, {}))
-        dispatch(setActionMain.modal(null))
+        setAlertCode(2071, {})
+        setModal('')
       })
   }
 
@@ -131,13 +127,13 @@ export default function(): ReactElement {
   };*/
 
   // 업로드 버튼 관리, input 값 유효성 검사
-  const handleUploadBtn = () => {
+  const handleUploadBtn = (): void | boolean => {
     if (!validateTitle(title) || !validateFile()) return false
     handleUpload()
   }
 
   // file input 등록/변경 시
-  const handleFileChange = e => {
+  const handleFileChange = (e): void | boolean => {
     const file = e[0]
     if (!file) return false
     let filename = file.name
@@ -158,10 +154,10 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 제목 변경 관리
-  const handleTitleChange = e => {
+  const handleTitleChange = (e): void => {
     if (validateTitle(e.target.value)) setTitle(e.target.value)
   }
 
@@ -169,8 +165,8 @@ export default function(): ReactElement {
   const handleDescChange = e => setDesc(e.target.value)
 
   useEffect(() => {
-    if (myInfoFromRedux.privateDocumentCount > 0) {
-      dispatch(setActionMain.alertCode(2074, {}))
+    if (myInfo.privateDocumentCount > 0) {
+      setAlertCode(2074, {})
     }
 
     commonView.setBodyStyleLock()

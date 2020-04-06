@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import ReactTooltip from 'react-tooltip'
 import * as styles from 'public/static/styles/main.scss'
 import { ThreeBounce } from 'better-react-spinkit'
-import { useSelector } from 'react-redux'
 import { psString } from 'utils/localization'
 import commonView from 'common/commonView'
 import common from '../../../common/common'
@@ -12,13 +11,11 @@ import AutoSuggestInput from 'components/common/input/AutoSuggestInput'
 import CustomChart from '../../common/chart/CustomChart'
 import Router from 'next/router'
 import NoDataIcon from '../../common/NoDataIcon'
-
-interface TrackingListProps {
-  documentData
-}
+import { TrackingListProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({ documentData }: TrackingListProps): ReactElement {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const { isMobile } = useMain()
   const [showAnonymous, setShowAnonymous] = useState(false)
   const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false)
   const [optionTable, setOptionTable] = useState(false)
@@ -292,10 +289,7 @@ export default function({ documentData }: TrackingListProps): ReactElement {
                 </div>
 
                 <div className={styles.tl_td_3}>
-                  {commonView.dateTimeAgo(
-                    result.viewTimestamp,
-                    isMobileFromRedux
-                  )}
+                  {commonView.dateTimeAgo(result.viewTimestamp, isMobile)}
                 </div>
 
                 <div className={styles.tl_td_4}>

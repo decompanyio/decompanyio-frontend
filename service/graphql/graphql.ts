@@ -10,7 +10,10 @@ export default params => {
   return new Promise(async (resolve, reject) =>
     axios({
       method: 'POST',
-      url: APP_CONFIG.domain().graphql + 'api/graphql',
+      url:
+        APP_CONFIG.domain().graphql +
+        'api/' +
+        (params.private ? 'private' : 'graphql'),
       data: {
         query:
           (params.mutation

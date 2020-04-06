@@ -1,20 +1,26 @@
 import { FadingCircle } from 'better-react-spinkit'
-import { useSelector, useDispatch } from 'react-redux'
 import { psString } from '../../../utils/localization'
 import commonView from 'common/commonView'
 import repos from 'utils/repos'
 import React, { ReactElement, useEffect, useState } from 'react'
 import common from '../../../common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import Router from 'next/router'
 import * as styles from '../../../public/static/styles/main.scss'
 import log from '../../../utils/log'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData } = useSelector(state => state.main.modalData)
+  const { modalData, setModal, setAlertCode } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
 
   // 모달 숨기기 클래스 추가
   const handleCloseFlag = (): Promise<void> =>
@@ -24,7 +30,7 @@ export default function(): ReactElement {
   const handleClickClose = (): void => {
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
   }
 
   // 삭제후 관리
@@ -33,7 +39,7 @@ export default function(): ReactElement {
       commonView.getPaths().length > 2 &&
       decodeURI(commonView.getPaths()[2]) === documentData.seoTitle
     ) {
-      dispatch(setActionMain.alertCode(2076, {}))
+      setAlertCode(2076, {})
       return Router.push('/')
     } else {
       document.location.reload()
@@ -50,13 +56,13 @@ export default function(): ReactElement {
     })
       .then((): void => {
         log.DeleteDocumentModal.updateDocument()
-        dispatch(setActionMain.modal(null))
+        setModal('')
       })
       .then((): Promise<boolean> => handleDeleteAfter())
       .catch((err): void => {
         log.DeleteDocumentModal.updateDocument(err)
         setLoading(false)
-        dispatch(setActionMain.alertCode(2003, {}))
+        setAlertCode(2003, {})
       })
   }
 

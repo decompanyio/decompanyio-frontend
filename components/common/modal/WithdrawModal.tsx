@@ -1,18 +1,16 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
-import { useSelector, useDispatch } from 'react-redux'
 import { psString } from 'utils/localization'
 import commonView from '../../../common/commonView'
 import repos from 'utils/repos'
 import common from '../../../common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import log from '../../../utils/log'
 import * as styles from '../../../public/static/styles/main.scss'
 import WalletBalance from '../../../service/model/WalletBalance'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
+  const { myInfo, setModal } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
   const [balanceLoading, setBalanceLoading] = useState(true)
@@ -61,7 +59,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleClickCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 출금 api POST
   const handleWalletWithdraw = () => {

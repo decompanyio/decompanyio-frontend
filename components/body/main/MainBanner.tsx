@@ -28,7 +28,7 @@ const content = [
 
 export default function(): ReactElement {
   const handleUploadClick = (): void => {
-    if (AUTH_APIS.isAuthenticated()) {
+    if (AUTH_APIS.isLogin()) {
       const el = document.getElementById('commonAddBtn') as HTMLElement
       el.click()
     } else {

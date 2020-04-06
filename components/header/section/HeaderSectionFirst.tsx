@@ -1,14 +1,11 @@
 import * as styles from 'public/static/styles/main.scss'
-import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { psString } from 'utils/localization'
 import commonView from '../../../common/commonView'
 import commonData from '../../../common/commonData'
-import React, { ReactElement } from "react";
-
-interface HeaderSectionFirstProps {
-  path: string
-}
+import React, { ReactElement } from 'react'
+import { useMain } from '../../../redux/main/hooks'
+import { HeaderSectionFirstProps } from '../../../typings/interfaces'
 
 // GET subtitle
 const getSubTitle = () => {
@@ -24,7 +21,7 @@ const getSubTitle = () => {
 }
 
 export default function({ path }: HeaderSectionFirstProps): ReactElement {
-  const isMobile = useSelector(state => state.main.isMobile)
+  const { isMobile } = useMain()
   let subTitle = getSubTitle()
 
   return (

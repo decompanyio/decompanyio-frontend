@@ -1,6 +1,5 @@
 import { ThreeBounce } from 'better-react-spinkit'
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import log from 'utils/log'
 import { psString } from 'utils/localization'
 import * as styles from '../../../public/static/styles/main.scss'
@@ -8,13 +7,9 @@ import NoDataIcon from 'components/common/NoDataIcon'
 import repos from '../../../utils/repos'
 import ProfileUploadTabItem from './ProfileUploadTabItem'
 import Pagination from '../../common/Pagination'
-import { setActionMain } from '../../../redux/reducer/main'
 import commonData from '../../../common/commonData'
-
-interface ProfileUploadProps {
-  profileInfo
-  owner: boolean
-}
+import { ProfileUploadProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 const resultListModel = {
   resultList: [],
@@ -29,7 +24,7 @@ export default function({
   profileInfo,
   owner
 }: ProfileUploadProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [loading, setLoading] = useState(false)
   const [viewerOptionOpenedIdx, setViewerOptionOpenedIdx] = useState(-1)
   const [dataSet, setDataSet] = useState(resultListModel)
@@ -72,7 +67,7 @@ export default function({
       .then(res => setResultData(res))
       .catch(err => {
         console.error(err)
-        dispatch(setActionMain.alertCode(2001, {}))
+        setAlertCode(2001, {})
       })
   }
 

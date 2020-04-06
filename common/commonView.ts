@@ -2,7 +2,7 @@ import { psString } from 'utils/localization'
 
 export default {
   // Get Date Time Ago on Number
-  dateTimeAgo: (timestamp: number, isMobile: boolean): string => {
+  dateTimeAgo(timestamp: number, isMobile: boolean): string {
     if (typeof window === 'undefined') return '0'
 
     let currentDate = Number(new Date())
@@ -59,7 +59,7 @@ export default {
     }
   },
 
-  setCookie: (name: string, value: boolean, expire: number): void => {
+  setCookie(name: string, value: boolean, expire: number): void {
     if (typeof window !== 'undefined') {
       let d = new Date()
       d.setTime(d.getTime() + expire * 24 * 60 * 60 * 1000)
@@ -68,7 +68,7 @@ export default {
     }
   },
 
-  getCookie: (cname: string): string => {
+  getCookie(cname: string): string {
     if (typeof window !== 'undefined') {
       let cookieName = cname + '='
       let decodedCookie = decodeURIComponent(document.cookie)
@@ -87,42 +87,42 @@ export default {
     }
   },
 
-  deleteCookie: (name: string): void => {
+  deleteCookie(name: string): void {
     if (typeof window !== 'undefined') {
       if (this.getCookie(name))
         document.cookie = name + '=;expires=Thu, 01-Jan-70 00:00:01 GMT'
     }
   },
 
-  isAndroid: (): boolean => {
+  isAndroid(): boolean {
     return /Android/i.test(navigator.userAgent)
   },
 
-  getPath: (): string => {
+  getPath(): string {
     if (typeof window === 'undefined') return ''
 
     const pathArr = window.location.pathname.split('/')
     return decodeURI(pathArr[1])
   },
 
-  getPathFromPathname: (pathname: string): string => {
+  getPathFromPathname(pathname: string): string {
     const pathArr = pathname.split('/')
     if (pathArr.length > 2) return decodeURI(pathArr[2])
     else return decodeURI(pathArr[1])
   },
 
-  getPaths: (): string[] => {
+  getPaths(): string[] {
     if (typeof window === 'undefined') return []
 
     return window.location.pathname.split('/')
   },
 
-  getIsMobile: (): boolean => {
+  getIsMobile(): boolean {
     if (typeof window === 'undefined') return false
     return document.documentElement.clientWidth < 576
   },
 
-  getTag: (): string => {
+  getTag(): string {
     if (typeof window === 'undefined') return ''
 
     const pathArr = window.location.pathname.split('/')
@@ -139,23 +139,24 @@ export default {
   },
 
   // Clip board copy
-  clipboardCopy: (id: string): Promise<Function> =>
-    new Promise((resolve, reject): void => {
+  clipboardCopy(id: string): Promise<Function> {
+    return new Promise((resolve, reject): void => {
       if (typeof window === 'undefined') return reject()
 
       const ele = document.getElementById(id) as HTMLInputElement
       ele.select()
       document.execCommand('copy')
       resolve()
-    }),
+    })
+  },
 
   // Scroll to top
-  scrollTop: (): void => {
+  scrollTop(): void {
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   },
 
   // Set BODY TAG Style
-  setBodyStyleLock: (): void => {
+  setBodyStyleLock(): void {
     if (typeof window !== 'undefined') {
       document.body.style.overflow = 'hidden'
       document.body.style.paddingRight = '5px'
@@ -163,7 +164,7 @@ export default {
   },
 
   // Set BODY TAG Style
-  setBodyStyleUnlock: (): void => {
+  setBodyStyleUnlock(): void {
     if (typeof window !== 'undefined') {
       document.body.style.overflow = ''
       document.body.style.paddingRight = ''
@@ -171,7 +172,7 @@ export default {
   },
 
   // 페이지 GET
-  getPageNum: (): number => {
+  getPageNum(): number {
     if (typeof window === 'undefined') return 1
 
     let pathName = window.location.pathname.split('/')[3]
@@ -180,7 +181,7 @@ export default {
   },
 
   // 페이지 변경 시, URL 수정
-  handleUrl: (index: number, text: string): void => {
+  handleUrl(index: number, text: string): void {
     let _readPage = index + 1
     let _documentText = ''
     let pathName = window.location.pathname.split('/')

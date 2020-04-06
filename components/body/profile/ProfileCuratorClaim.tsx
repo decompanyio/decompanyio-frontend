@@ -1,39 +1,34 @@
 import React, { ReactElement, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { psString } from 'utils/localization'
 import { repos } from '../../../utils/repos'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
 import { AUTH_APIS } from '../../../utils/auth'
-
-interface ProfileCuratorClaimProps {
-  documentData
-  validClaimAmount: number
-}
+import { ProfileCuratorClaimProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({
   documentData,
   validClaimAmount
 }: ProfileCuratorClaimProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [btnText, setBtnText] = useState(psString('claim-text'))
 
   const claimCuratorReward = () => {
     repos.Wallet.claimCurator({ documentId: documentData.documentId })
-      .then((res: { royalties }) => {
+      .then((res: any) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
           setBtnText('')
-          dispatch(setActionMain.alertCode(2031, {}))
+          setAlertCode(2031, {})
         } else {
           setBtnText(psString('claim-btn-text-1'))
-          dispatch(setActionMain.alertCode(2033, {}))
+          setAlertCode(2033, {})
         }
       })
       .catch((err): void => {
         console.log(err)
         setBtnText(psString('claim-text'))
-        dispatch(setActionMain.alertCode(2032, {}))
+        setAlertCode(2032, {})
       })
   }
 
@@ -45,7 +40,7 @@ export default function({
     }
   }
 
-  if (validClaimAmount <= 0 || !AUTH_APIS.isAuthenticated() || btnText === '') {
+  if (validClaimAmount <= 0 || !AUTH_APIS.isLogin() || btnText === '') {
     return <div />
   }
 

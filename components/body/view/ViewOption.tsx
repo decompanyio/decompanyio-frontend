@@ -1,19 +1,14 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import * as styles from '../../../public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
 import { AUTH_APIS } from '../../../utils/auth'
-import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import ViewBookmark from './ViewBookmark'
-
-interface ViewOptionProps {
-  documentData
-}
+import { ViewOptionProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({ documentData }: ViewOptionProps): ReactElement {
-  const dispatch = useDispatch()
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo, setAlertCode, setModal } = useMain()
   const [optionTable, setOptionTable] = useState(false)
   const [mylist, setMylist] = useState(null)
 
@@ -36,27 +31,25 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
 
   const getMyList = () =>
     repos.Query.getMyListFindMany({
-      userId: myInfoFromRedux.id
+      userId: myInfo.id
     }).then(res => setMylist(res))
 
   const setRequiredForDownload = () => {
     if (!documentData) {
-      return dispatch(setActionMain.alertCode(2091, {}))
+      return setAlertCode(2091, {})
     }
-    if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email) {
-      return dispatch(setActionMain.alertCode(2003, {}))
+    if (!AUTH_APIS.isLogin() && !myInfo.email) {
+      return setAlertCode(2003, {})
     }
 
     downloadDocument(documentData.documentId, documentData.documentName)
   }
 
   // 문서 수정 버튼 클릭 관리
-  const handleSettingsBtnClick = () =>
-    dispatch(setActionMain.modal('edit', { documentData }))
+  const handleSettingsBtnClick = () => setModal('edit', { documentData })
 
   // 문서 삭제 버튼 클릭 관리
-  const handleDeleteBtnClick = () =>
-    dispatch(setActionMain.modal('delete', { documentData }))
+  const handleDeleteBtnClick = () => setModal('delete', { documentData })
 
   useEffect(() => {
     void getMyList()

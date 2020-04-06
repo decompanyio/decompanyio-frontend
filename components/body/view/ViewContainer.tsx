@@ -1,6 +1,5 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import ViewFullscreenBtn from './ViewFullscreenBtn'
 import ViewInfoBox from './ViewInfoBox'
 import ViewToolBox from './ViewToolBox'
@@ -10,10 +9,10 @@ import dynamic from 'next/dist/next-server/lib/dynamic'
 import commonView from '../../../common/commonView'
 import commonData from '../../../common/commonData'
 import { AUTH_APIS } from '../../../utils/auth'
-import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import { APP_CONFIG } from '../../../app.config'
 import log from 'utils/log'
+import { useMain } from '../../../redux/main/hooks'
 
 interface ViewContainerProps {
   documentData
@@ -33,8 +32,7 @@ export default function({
   readPage,
   text
 }: ViewContainerProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
-  const dispatch = useDispatch()
+  const { myInfo, setModal } = useMain()
   let stayTime = 0
 
   // Tracking API POST
@@ -48,7 +46,7 @@ export default function({
   // 로그인 시, cid ~ email 싱크 작업
   const postTrackingConfirm = async () => {
     let data = {
-      email: myInfoFromRedux.email,
+      email: myInfo.email,
       documentId: documentData.documentId
     }
 
@@ -71,7 +69,7 @@ export default function({
   const checkQualified = (page: number) =>
     new Promise(resolve => {
       if (documentData.useTracking) {
-        if (AUTH_APIS.isAuthenticated()) {
+        if (AUTH_APIS.isLogin()) {
           resolve('view')
         } else {
           if (page === 2) {
@@ -83,7 +81,7 @@ export default function({
             ) {
               resolve('view')
             } else {
-              dispatch(setActionMain.modal('email', { documentData }))
+              setModal('email', { documentData })
             }
           } else {
             resolve('view')
@@ -131,7 +129,7 @@ export default function({
         ? 0
         : commonView.getPageNum()
 
-    if (AUTH_APIS.isAuthenticated()) {
+    if (AUTH_APIS.isLogin()) {
       void repos.Mutation.addHistory(documentData.documentId)
 
       postTrackingConfirm()

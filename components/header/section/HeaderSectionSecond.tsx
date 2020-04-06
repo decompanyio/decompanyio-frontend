@@ -1,5 +1,4 @@
 import * as styles from 'public/static/styles/main.scss'
-import { useSelector } from 'react-redux'
 import AddBtn from 'components/common/button/AddBtn'
 import LoginBtn from '../../common/button/LoginBtn'
 import SearchBtn from 'components/common/button/SearchBtn'
@@ -9,10 +8,10 @@ import React, { ReactElement, useState } from 'react'
 import AutoSuggestInput from '../../common/input/AutoSuggestInput'
 import Router from 'next/router'
 import ProfileCard from '../../common/card/ProfileCard'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const myInfo = useSelector(state => state.main.myInfo)
-  const isMobile = useSelector(state => state.main.isMobile)
+  const { isMobile, myInfo } = useMain()
   const [showSearchBar, setShowSearchBar] = useState(-1)
   const [profileCardShow, setProfileCardShow] = useState(false)
 

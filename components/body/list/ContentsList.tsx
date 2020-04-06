@@ -7,14 +7,14 @@ import repos from '../../../utils/repos'
 import log from 'utils/log'
 import ContentsListItem from './ContentsListItem'
 import { AUTH_APIS } from '../../../utils/auth'
-import DocumentList from '../../../service/model/DocumentList'
 import DocumentInfo from '../../../service/model/DocumentInfo'
-
-interface ContentsListProps {
-  documentList: DocumentList
-  tag: string
-  path: string
-}
+import {
+  ContentsListProps,
+  ContentsListResultListSet,
+  DocumentId,
+  ParamsGetDocumentList
+} from '../../../typings/interfaces'
+import DocumentList from '../../../service/model/DocumentList';
 
 // document list GET API, parameter SET
 const setParams = (pageNo: number, tag: string, path: string): Promise<{}> =>
@@ -30,43 +30,47 @@ export default function({
   path
 }: ContentsListProps): ReactElement {
   const [listLength, setListLength] = useState(2)
-  const [bookmarkList, setBookmarkList] = useState([])
+  const [bookmarkList, setBookmarkList] = useState([] as DocumentId[])
   const [state, setState] = useState({
-    list: documentList.resultList || [],
+    list: (documentList.resultList as []) || [],
     endPage: documentList.resultList
       ? documentList.resultList.length < 10
       : path !== 'history' && path !== 'mylist'
   })
 
   // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
-  const setResultList = (listData: [], resultList: []): Promise<{}> =>
+  const setResultList = (
+    listData: [],
+    resultList: []
+  ): Promise<ContentsListResultListSet> =>
     new Promise(resolve => {
       log.ContentList.fetchDocuments()
 
-      const _resultList = resultList
-      const data = {
-        listData:
-          listData.length > 0 ? listData.concat(_resultList) : _resultList,
+      let data: ContentsListResultListSet
+
+      data = {
+        listData: listData.concat(resultList) as [],
         isEndPage: resultList.length < 10
       }
       return resolve(data)
     })
 
   // 무한 스크롤 액션 시, 추가 데이터를 GET 하여 기존 목록에 덧붙입니다.
-  const fetchData = async (): Promise<Function> =>
+  const fetchData = async (): Promise<void> =>
     Promise.resolve(await setListLength(listLength + 1))
-      .then((): Promise<{}> => setParams(listLength, tag, path))
-      .then((res): Promise<{}> => repos.Document.getDocumentList(res))
       .then(
-        (res: { resultList }): Promise<{}> =>
+        (): Promise<ParamsGetDocumentList> => setParams(listLength, tag, path)
+      )
+      .then((res): Promise<DocumentList> => repos.Document.getDocumentList(res))
+      .then(
+        (res): Promise<ContentsListResultListSet> =>
           setResultList(state.list, res.resultList || [])
       )
-      .then((res: { listData; isEndPage }): void =>
+      .then((res): void =>
         setState({ list: res.listData, endPage: res.isEndPage })
       )
-      .catch(err => {
+      .catch((err): void => {
         log.ContentList.fetchDocuments(err)
-        return err
       })
 
   const getBookmarkList = (): Promise<void> =>
@@ -74,13 +78,13 @@ export default function({
       userId: AUTH_APIS.getMyInfo().id
     }).then((res): void => setBookmarkList(res))
 
-  useEffect(() => {
+  useEffect((): void => {
     log.ContentList.init()
 
-    if (AUTH_APIS.isAuthenticated()) void getBookmarkList()
+    if (AUTH_APIS.isLogin()) void getBookmarkList()
   }, [])
 
-  useEffect(() => {
+  useEffect((): void => {
     if (
       (path === 'mylist' || path === 'history') &&
       !state.endPage &&
@@ -88,7 +92,7 @@ export default function({
     ) {
       setState({ list: documentList.resultList, endPage: true })
     }
-  })
+  }, [path, state.endPage, documentList.resultList])
 
   return (
     <div className={styles.cl_container}>

@@ -1,15 +1,13 @@
 import { psString } from '../../../utils/localization'
-import { useSelector, useDispatch } from 'react-redux'
 import commonView from 'common/commonView'
 import common from 'common/common'
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import Router from 'next/router'
 import * as styles from '../../../public/static/styles/main.scss'
-import { setActionMain } from '../../../redux/reducer/main'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
+  const { myInfo, setModal } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [username] = useState(myInfo.username ? myInfo.username : myInfo.email)
 
@@ -20,7 +18,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 링크 이동 관리
   const handleLinkBtn = () => {

@@ -7,7 +7,7 @@
 > Production URL : https://www.polarishare.com
 
 ## Local
-- npm start (port 80)
+- npm start (port 3000)
 
 ## Directory
 - common : common script files

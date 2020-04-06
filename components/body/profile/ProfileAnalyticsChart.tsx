@@ -2,6 +2,7 @@ import * as styles from '../../../public/static/styles/main.scss'
 import CustomChart from '../../common/chart/CustomChart'
 import NoDataIcon from '../../common/NoDataIcon'
 import React, { ReactElement } from 'react'
+import { ProfileAnalyticsChartProps } from '../../../typings/interfaces'
 
 export default function({
   idx,
@@ -12,9 +13,9 @@ export default function({
   analyticsList,
   chartFlag,
   result
-}): ReactElement {
-  const handleWeekBtnClick = (e): Function => weekBtnClick(e)
-  const handleExport = (value): Function => exportBtnClick(value)
+}: ProfileAnalyticsChartProps): ReactElement {
+  const handleWeekBtnClick = (e: any): Function => weekBtnClick(e)
+  const handleExport = (value: string): Function => exportBtnClick(value)
 
   return (
     <div className={styles.pat_chartWrapper}>

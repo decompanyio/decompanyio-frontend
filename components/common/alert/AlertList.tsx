@@ -1,8 +1,7 @@
 import Alert from './Alert'
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from 'public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
 
 let arr: { html: string; code: number; serial: number }[] = [
   {
@@ -13,19 +12,17 @@ let arr: { html: string; code: number; serial: number }[] = [
 ]
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const alertCodeFromRedux = useSelector(state => state.main.alertCode)
-  const alertDataFromRedux = useSelector(state => state.main.alertData)
+  const { alertCode, alertData, setAlertCode } = useMain()
   const [container, setContainer] = useState(arr)
   const [deleteFlag, setDeleteFlag] = useState(false)
 
   const checkRendered = () =>
     new Promise((resolve, reject) => {
       if (
-        alertCodeFromRedux &&
+        alertCode !== -1 &&
         (container.length === 0 ||
           (container.length > 0 &&
-            container[container.length - 1].code !== alertCodeFromRedux))
+            container[container.length - 1].code !== alertCode))
       ) {
         resolve()
       } else {
@@ -59,22 +56,22 @@ export default function(): ReactElement {
   const pushAlertCompToArrayList = (serial: number): ReactElement => {
     return (
       <Alert
-        code={alertCodeFromRedux}
+        code={alertCode}
         close={() => handleCloseBtnClick(serial)}
-        alertData={alertDataFromRedux}
+        alertData={alertData}
       />
     )
   }
 
   const setContainerRequired = _container =>
     new Promise(resolve => {
-      let serial = _container.length + alertCodeFromRedux
+      let serial = _container.length + alertCode
       let tempContainer = _container
 
       tempContainer.push({
         html: pushAlertCompToArrayList(serial),
-        code: alertCodeFromRedux,
-        serial: _container.length + alertCodeFromRedux
+        code: alertCode,
+        serial: _container.length + alertCode
       })
 
       setContainer(tempContainer)
@@ -85,7 +82,7 @@ export default function(): ReactElement {
     checkRendered()
       .then(() => readyForRendering())
       .then((_container: any) => setContainerRequired(_container))
-      .then(() => dispatch(setActionMain.alertCode(null, {})))
+      .then(() => setAlertCode(-1, {}))
       .catch(() => false)
 
     if (deleteFlag) setDeleteFlag(false)
@@ -93,8 +90,8 @@ export default function(): ReactElement {
 
   return (
     <div className={styles.al_container}>
-      <span className="d-none">
-        {alertCodeFromRedux}
+      <span>
+        {alertCode}
         {deleteFlag}
       </span>
       {container &&

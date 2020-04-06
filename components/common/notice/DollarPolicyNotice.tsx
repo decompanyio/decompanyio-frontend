@@ -1,13 +1,12 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import commonView from 'common/commonView'
 import { APP_CONFIG } from '../../../app.config'
 import { psString } from 'utils/localization'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from 'public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
+  const { setModal } = useMain()
   const [dollarPolicyValue, setDollarPolicyValue] = useState(false)
 
   const handleCloseBtnClick = (): void => {
@@ -17,7 +16,7 @@ export default function(): ReactElement {
 
   const handleAcceptBtnClick = (): void => {
     handleCloseBtnClick()
-    dispatch(setActionMain.modal('dollarLearnMore'))
+    setModal('dollarLearnMore')
   }
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import * as styles from 'public/static/styles/main.scss'
-import { useSelector } from 'react-redux'
 import {
   Lang,
   psGetLang,
@@ -13,22 +12,19 @@ import React, { ReactElement, useEffect } from 'react'
 import { APP_CONFIG } from '../../../app.config'
 import { AUTH_APIS } from '../../../utils/auth'
 import MenuAvatar from './MenuAvatar'
-
-interface MenuProps {
-  setMenuClose
-}
+import { MenuProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // 언어 설정 관리
 const handleLang = () =>
   psGetLang() === 'EN' ? psSetLang(Lang.KO) : psSetLang(Lang.EN)
 
 export default function({ setMenuClose }: MenuProps): ReactElement {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile)
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { isMobile, myInfo } = useMain()
   const identification =
-    myInfoFromRedux.username.length && myInfoFromRedux.username.length > 0
-      ? myInfoFromRedux.username
-      : myInfoFromRedux.email
+    myInfo.username.length && myInfo.username.length > 0
+      ? myInfo.username
+      : myInfo.email
 
   useEffect(() => {
     // 스크롤 숨김
@@ -49,12 +45,12 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
           src={
             APP_CONFIG.domain().static +
             '/image/icon/i_close_menu' +
-            (isMobileFromRedux ? '_mobile' : '') +
+            (isMobile ? '_mobile' : '') +
             '.svg'
           }
           alt="menu close button"
         />
-        {isMobileFromRedux && AUTH_APIS.isAuthenticated() && (
+        {isMobile && AUTH_APIS.isLogin() && (
           <MenuAvatar identification={identification} />
         )}
 
@@ -107,8 +103,8 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
         </div>
       </div>
 
-      {isMobileFromRedux &&
-        (!AUTH_APIS.isAuthenticated() ? (
+      {isMobile &&
+        (!AUTH_APIS.isLogin() ? (
           <div className={styles.mn_loginBtn} onClick={() => AUTH_APIS.login()}>
             {psString('menu-login')}
           </div>
@@ -121,7 +117,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
           </div>
         ))}
 
-      {isMobileFromRedux && AUTH_APIS.isAuthenticated() && (
+      {isMobile && AUTH_APIS.isLogin() && (
         <div
           className={styles.mn_logoutBtnSub}
           onClick={() => AUTH_APIS.logout()}

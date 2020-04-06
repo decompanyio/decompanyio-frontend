@@ -1,13 +1,12 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import common from 'common/common'
 import { psString } from 'utils/localization'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
 import commonView from '../../../common/commonView'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
+  const { setModal } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
 
   // 모달 숨기기 클래스 추가
@@ -17,7 +16,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   useEffect(() => {
     void commonView.setBodyStyleLock()

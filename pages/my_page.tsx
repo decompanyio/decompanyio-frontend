@@ -22,7 +22,7 @@ export default function Index({ profileInfo }, ...rest): ReactElement {
   useEffect(() => {
     if (owner === -1) {
       if (
-        AUTH_APIS.isAuthenticated() &&
+        AUTH_APIS.isLogin() &&
         profileInfo.email &&
         profileInfo.email === AUTH_APIS.getMyInfo().email
       ) {

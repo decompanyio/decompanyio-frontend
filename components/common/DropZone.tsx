@@ -1,19 +1,15 @@
 import * as styles from 'public/static/styles/main.scss'
 import Dropzone from 'react-dropzone'
-import { useSelector } from 'react-redux'
 import { psString } from '../../utils/localization'
 import React, { ReactElement, useState } from 'react'
-
-interface DropZoneProps {
-  handleFileChange
-  fileInfoError
-}
+import { DropZoneProps } from '../../typings/interfaces'
+import { useMain } from '../../redux/main/hooks'
 
 export default function({
   handleFileChange,
   fileInfoError
 }: DropZoneProps): ReactElement {
-  const isMobile = useSelector(state => state.main.isMobile)
+  const { isMobile } = useMain()
   const [file, setFile] = useState([])
   const [dragOver, setDragOver] = useState(false)
 

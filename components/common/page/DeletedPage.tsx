@@ -1,10 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Router from 'next/router'
 import * as styles from 'public/static/styles/main.scss'
-
-interface DeletedPageProps {
-  errMessage?: string
-}
+import { DeletedPageProps } from '../../../typings/interfaces'
 
 export default function({ errMessage }: DeletedPageProps): ReactElement {
   const [time, setTime] = useState(5)

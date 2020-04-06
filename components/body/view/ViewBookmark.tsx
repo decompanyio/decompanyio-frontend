@@ -1,23 +1,17 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { AUTH_APIS } from '../../../utils/auth'
 import * as styles from '../../../public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
 import repos from '../../../utils/repos'
-import { setActionMain } from '../../../redux/reducer/main'
-
-interface ViewBookmarkProps {
-  documentData
-  mylist
-  click
-}
+import { useMain } from '../../../redux/main/hooks'
+import { ViewBookmarkProps } from '../../../typings/interfaces'
 
 export default function({
   documentData,
   mylist,
   click
 }: ViewBookmarkProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
   const checkBookmarkAdded = (): void => {
@@ -38,27 +32,27 @@ export default function({
     setBookmarkFlag(true)
     repos.Mutation.addMyList(documentData.documentId)
       .then((): void => {
-        dispatch(setActionMain.alertCode(2121, {}))
+        setAlertCode(2121, {})
         click()
       })
-      .catch((): void => dispatch(setActionMain.alertCode(2122, {})))
+      .catch(() => setAlertCode(2122, {}))
   }
 
   const handleBookmarkRemoveBtnClick = () => {
     setBookmarkFlag(false)
     repos.Mutation.removeMyList(documentData.documentId)
       .then((): void => {
-        dispatch(setActionMain.alertCode(2123, {}))
+        setAlertCode(2123, {})
         click()
       })
-      .catch((): void => dispatch(setActionMain.alertCode(2124, {})))
+      .catch(() => setAlertCode(2124, {}))
   }
 
   useEffect(() => {
     checkBookmarkAdded()
   }, [])
 
-  if (!AUTH_APIS.isAuthenticated()) return <div />
+  if (!AUTH_APIS.isLogin()) return <div />
   if (bookmarkFlag) {
     return (
       <div

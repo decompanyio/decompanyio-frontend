@@ -1,14 +1,11 @@
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
-import { useSelector } from 'react-redux'
 import * as styles from '../../../public/static/styles/main.scss'
-
-interface MenuAvatarProps {
-  identification: string
-}
+import { MenuAvatarProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({ identification }: MenuAvatarProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo } = useMain()
 
   return (
     <Link
@@ -19,9 +16,9 @@ export default function({ identification }: MenuAvatarProps): ReactElement {
       as={'/@' + identification}
     >
       <a className={styles.ma_avatarWrapper}>
-        {myInfoFromRedux.picture.length > 0 ? (
+        {myInfo.picture.length > 0 ? (
           <img
-            src={myInfoFromRedux.picture}
+            src={myInfo.picture}
             className={styles.ma_avatar}
             alt="Link to my profile"
             onError={e => {

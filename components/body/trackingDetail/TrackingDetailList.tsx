@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import { APP_CONFIG } from '../../../app.config'
 import TrackingDetailItem from './TrackingDetailItem'
@@ -7,12 +6,8 @@ import { psString } from 'utils/localization'
 import repos from 'utils/repos'
 import TrackingInfo from '../../../service/model/TrackingInfo'
 import common from '../../../common/common'
-
-interface TrackingDetailListProps {
-  cid
-  documentData
-  text
-}
+import { TrackingDetailListProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // TODO SSR 미동작
 export default function({
@@ -20,12 +15,12 @@ export default function({
   text,
   cid
 }: TrackingDetailListProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo } = useMain()
   const [trackingInfo, setTrackingInfo] = useState(new TrackingInfo(null))
   const [email, setEmail] = useState('')
 
   useEffect(() => {
-    setEmail(myInfoFromRedux.email)
+    setEmail(myInfo.email)
     ;(async function() {
       let trackingInfoResult = await repos.Tracking.getTrackingInfo({
         cid: cid,

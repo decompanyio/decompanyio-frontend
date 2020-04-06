@@ -17,7 +17,7 @@ export default function Index(
   { document, text, cid },
   ...rest
 ): ReactElement | Promise<boolean> {
-  if (typeof window !== 'undefined' && !AUTH_APIS.isAuthenticated()) {
+  if (typeof window !== 'undefined' && !AUTH_APIS.isLogin()) {
     return Router.push('/not_found_page')
   }
 

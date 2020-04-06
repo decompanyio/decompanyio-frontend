@@ -1,5 +1,4 @@
 import ReactTooltip from 'react-tooltip'
-import { useSelector, useDispatch } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import Header from './header/Header'
 import Footer from './footer/Footer'
@@ -10,7 +9,6 @@ import repos from '../utils/repos'
 import { AUTH_APIS } from '../utils/auth'
 import log from '../utils/log'
 import LoadingModal from './common/modal/LoadingModal'
-import { setActionMain } from '../redux/reducer/main'
 import AlertList from './common/alert/AlertList'
 import ModalList from './common/modal/ModalList'
 import commonData from '../common/commonData'
@@ -18,11 +16,17 @@ import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
 import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
 import UserInfo from '../service/model/UserInfo'
+import { useMain } from '../redux/main/hooks'
 
 export default function(props): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
-  const modalCode = useSelector(state => state.main.modalCode)
+  const {
+    modalCode,
+    myInfo,
+    setMyInfo,
+    setModal,
+    setTagList,
+    setIsMobile
+  } = useMain()
 
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
@@ -91,15 +95,15 @@ export default function(props): ReactElement {
     })
 
   // 내 정보 REDUX SET
-  const setMyInfo = () => {
-    if (AUTH_APIS.isAuthenticated() && myInfo.email.length === 0) {
+  const setMyInfoToStore = () => {
+    if (AUTH_APIS.isLogin() && myInfo.email.length === 0) {
       return repos.Account.getAccountInfo().then(result => {
         let res = new UserInfo(result.user)
         if (!res.username || res.username === '') res.username = res.email
         if (!res.picture) res.picture = myInfo.picture
 
         res.privateDocumentCount = result.privateDocumentCount
-        dispatch(setActionMain.myInfo(res))
+        setMyInfo(res)
         log.Layout.setMyInfo()
         return Promise.resolve()
       })
@@ -109,23 +113,23 @@ export default function(props): ReactElement {
   }
 
   // SET 태그 리스트
-  const setTagList = () =>
+  const setTagListToStore = () =>
     repos.Document.getTagList('latest')
-      .then(result => dispatch(setActionMain.tagList(result.tagList)))
+      .then(result => setTagList(result.tagList))
       .catch(err => log.Layout.setTagList(err))
       .then(() => log.Layout.setTagList(false))
 
   // 자리비움 시간 SET
   const setAwayTime = (): void => {
     if (awayTime > 0) awayTime = 0
-    if (modalCode === 'away') dispatch(setActionMain.modal(null))
+    if (modalCode === 'away') setModal('')
   }
 
   // 모바일 유무 REDUX SET
-  const setIsMobile = (): void => {
+  const setIsMobileToRedux = (): void => {
     if (commonView.getIsMobile() !== isMobileChecker) {
       isMobileChecker = !isMobileChecker
-      dispatch(setActionMain.isMobile(commonView.getIsMobile()))
+      setIsMobile(commonView.getIsMobile())
       log.Layout.setIsMobile()
     }
   }
@@ -135,7 +139,7 @@ export default function(props): ReactElement {
       setScrollToTopValue(currentScrollPos)
       _prevScrollPos = currentScrollPos
     })
-  const handleResize = (): void => setIsMobile()
+  const handleResize = (): void => setIsMobileToRedux()
   const handleKeydown = (): void => setAwayTime()
   const handleMousemove = (): void => setAwayTime()
 
@@ -161,24 +165,23 @@ export default function(props): ReactElement {
 
     repos.init().then(() => {
       // SET 모바일 유무
-      void setTagList()
+      void setTagListToStore()
 
       // SET 이벤트 리스너
       handleEventListener()
 
       // SET isMobile
-      setIsMobile()
+      setIsMobileToRedux()
 
       // SET myInfo
-      setMyInfo().then((): void => setInit(true))
+      setMyInfoToStore().then((): void => setInit(true))
     })
 
     // Check Away Time
     let interval = setInterval(() => {
       awayTime = awayTime + t
 
-      if (awayTime >= t * 15 && modalCode !== 'away')
-        dispatch(setActionMain.modal('away'))
+      if (awayTime >= t * 15 && modalCode !== 'away') setModal('away')
     }, t)
 
     return () => {

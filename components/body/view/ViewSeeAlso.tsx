@@ -2,10 +2,7 @@ import { ThreeBounce } from 'better-react-spinkit'
 import { psString } from 'utils/localization'
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement } from 'react'
-
-interface ViewSeeAlsoProps {
-  documentData
-}
+import { ViewSeeAlsoProps } from '../../../typings/interfaces'
 
 export default function({ documentData }: ViewSeeAlsoProps): ReactElement {
   if (!documentData) {

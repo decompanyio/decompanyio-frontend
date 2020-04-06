@@ -23,7 +23,7 @@ Client Architecture
 ## Quick start
 1. Make sure that you have Node.js v8.10 and npm v5 or above installed.
 2. Run <b>"npm install"</b>  in order to install dependencies.
-3. At this point you can run <b>"npm start"</b> or <b>"npm run start"</b> to see the example app at http://localhost:8000.
+3. At this point you can run <b>"npm start"</b> or <b>"npm run start"</b> to see the example app at http://localhost:3000.
 
 ## Main library
 - react (https://reactjs.org/)

@@ -1,16 +1,15 @@
 import React, { ReactElement, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 import { AUTH_APIS } from '../utils/auth'
-import { setActionMain } from '../redux/reducer/main'
 import LoadingModal from 'components/common/modal/LoadingModal'
 import commonView from '../common/commonView'
+import { useMain } from '../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (AUTH_APIS.isAuthenticated()) Router.push('/')
+      if (AUTH_APIS.isLogin()) Router.push('/')
 
       // 스크롤 숨김
       commonView.setBodyStyleLock()
@@ -26,7 +25,7 @@ export default function(): ReactElement {
         )
         .catch((err): void => {
           console.log('err: ', err)
-          dispatch(setActionMain.alertCode(2004, null))
+          setAlertCode(2004, null)
           Router.push('/')
         })
     }

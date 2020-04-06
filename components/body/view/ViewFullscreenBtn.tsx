@@ -1,15 +1,9 @@
 import React, { ReactElement } from 'react'
-import { useDispatch } from 'react-redux'
 import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 import * as styles from 'public/static/styles/main.scss'
-import { setActionMain } from '../../../redux/reducer/main'
-
-interface ViewFullscreenBtnProps {
-  documentData
-  ratio: number
-  readPage: number
-}
+import { useMain } from '../../../redux/main/hooks'
+import { ViewFullscreenBtnProps } from '../../../typings/interfaces'
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
@@ -18,12 +12,10 @@ export default function({
   ratio,
   readPage
 }: ViewFullscreenBtnProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setModal } = useMain()
 
   const handleFullscreenBtnClick = (): void => {
-    dispatch(
-      setActionMain.modal('fullscreen', { documentData, ratio, readPage })
-    )
+    setModal('fullscreen', { documentData, ratio, readPage })
   }
 
   return (

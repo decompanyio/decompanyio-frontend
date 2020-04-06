@@ -5,11 +5,7 @@ import ProfileUploadTab from './ProfileUploadTab'
 import ProfileVoteTab from './ProfileVoteTab'
 import ProfileAnalyticsTab from './ProfileAnalyticsTab'
 import React, { ReactElement } from 'react'
-
-interface ProfileTabProps {
-  profileInfo
-  owner: boolean
-}
+import { ProfileTabProps } from '../../../typings/interfaces'
 
 export default function({ profileInfo, owner }: ProfileTabProps): ReactElement {
   return (

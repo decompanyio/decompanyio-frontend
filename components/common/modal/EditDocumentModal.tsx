@@ -2,22 +2,28 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import { psString } from 'utils/localization'
 import TagsInput from 'react-tagsinput'
-import { useSelector, useDispatch } from 'react-redux'
 import Router from 'next/router'
 
 import { APP_CONFIG } from '../../../app.config'
-import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'
 import * as styles from '../../../public/static/styles/main.scss'
 import AutoCompleteRenderInput from '../input/AutoCompleteRenderInput'
 import log from '../../../utils/log'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData } = useSelector(state => state.main.modalData)
-  const tagList = useSelector(state => state.main.tagList)
+  const { modalData, tagList, setAlertCode, setModal } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
+
   const [by, setBy] = useState(false)
   const [nc, setNc] = useState(false)
   const [nd, setNd] = useState(false)
@@ -91,7 +97,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 확인 관리
   const handleConfirm = () => {
@@ -124,7 +130,7 @@ export default function(): ReactElement {
         )
       })
       .catch((err): void => {
-        dispatch(setActionMain.alertCode(2092, {}))
+        setAlertCode(2092, {})
         log.EditDocumentModal.updateDocument(err)
       })
   }

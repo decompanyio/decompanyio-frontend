@@ -1,15 +1,14 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import { psString } from 'utils/localization'
-import { useSelector, useDispatch } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import commonView from 'common/commonView'
 import common from 'common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import Router from 'next/router'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const modalData = useSelector(state => state.main.modalData)
+  const { modalData, setModal } = useMain()
+  const { identifier, privateDocumentCount } = modalData as any
   const [closeFlag, setCloseFlag] = useState(false)
 
   // 모달 숨기기 클래스 추가
@@ -19,7 +18,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 마이페이지에서 모달 종료 관리
   const handleCloseOnMyPage = () => {
@@ -30,7 +29,6 @@ export default function(): ReactElement {
   // 링크 이동 관리
   const handleLinkBtn = () => {
     void handleClickClose()
-    let identifier = modalData.identifier
     return Router.push(
       {
         pathname: '/my_page',
@@ -67,18 +65,18 @@ export default function(): ReactElement {
         </div>
 
         <div className={styles.modal_content}>
-          {modalData.privateDocumentCount >= 5 ? (
+          {privateDocumentCount >= 5 ? (
             <div>{psString('upload-doc-desc-3')}</div>
           ) : (
             <div>
               {psString('upload-doc-desc-2') +
                 psString('upload-doc-desc-4-a') +
-                modalData.privateDocumentCount +
+                privateDocumentCount +
                 psString('upload-doc-desc-4-b')}
             </div>
           )}
         </div>
-        {modalData.identifier === commonView.getPath().substring(1) ? (
+        {identifier === commonView.getPath().substring(1) ? (
           <div className={styles.modal_footer}>
             <div
               onClick={() => handleCloseOnMyPage()}

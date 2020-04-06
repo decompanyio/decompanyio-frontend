@@ -67,7 +67,7 @@ Index.getInitialProps = async props => {
   const documentList =
     params.path === 'mylist' || params.path === 'history'
       ? []
-      : await repos.Document.getDocumentList(params)
+      : await repos.Document.getDocumentList(params) //TODO catch 추가 필요합니다
 
   return { documentList, tag: params.tag, path: params.path }
 }

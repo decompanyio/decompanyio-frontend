@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import Linkify from 'react-linkify'
-import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import * as styles from 'public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
@@ -10,13 +9,14 @@ import {
   LinkedinShareButton,
   TwitterShareButton
 } from 'react-share'
+import { useMain } from '../../../redux/main/hooks'
 
 interface ViewDescBoxProps {
   documentData
 }
 
 export default function({ documentData }: ViewDescBoxProps): ReactElement {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile)
+  const { isMobile } = useMain()
   const ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle
 
   return (
@@ -113,7 +113,7 @@ export default function({ documentData }: ViewDescBoxProps): ReactElement {
                 src={
                   APP_CONFIG.domain().static +
                   '/image/cc/' +
-                  (isMobileFromRedux ? 'm-' : '') +
+                  (isMobile ? 'm-' : '') +
                   documentData.cc +
                   '.svg'
                 }

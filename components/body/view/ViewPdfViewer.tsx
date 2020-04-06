@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 import * as styles from 'public/static/styles/main.scss'
@@ -7,6 +6,7 @@ import { repos } from '../../../utils/repos'
 import commonData from '../../../common/commonData'
 import common from '../../../common/common'
 import log from 'utils/log'
+import { useMain } from '../../../redux/main/hooks'
 
 interface ViewPdfViewerProps {
   documentData
@@ -25,8 +25,7 @@ export default function({
   readPage,
   text
 }: ViewPdfViewerProps): ReactElement {
-  const isMobile = useSelector(state => state.main.isMobile)
-  const myInfo = useSelector(state => state.main.myInfo)
+  const { isMobile, myInfo } = useMain()
   const initArr: string[] = []
   const [thumbArr, setThumbArr] = useState(initArr)
   const [presentPage, setPresentPage] = useState(readPage)

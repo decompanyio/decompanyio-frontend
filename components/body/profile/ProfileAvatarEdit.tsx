@@ -1,28 +1,23 @@
 import React, { ReactElement } from 'react'
-import { useDispatch } from 'react-redux'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from 'public/static/styles/main.scss'
+import { ProfileAvatarEditProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
-interface ProfileAvatarEdit {
-  owner: boolean
-}
-
-export default function({ owner }: ProfileAvatarEdit): ReactElement {
-  const dispatch = useDispatch()
-
+export default function({ owner }: ProfileAvatarEditProps): ReactElement {
+  const { setModal, setAlertCode } = useMain()
   const handleUploadBtnClick = (): void => {
     const el = document.getElementById('imgFile') as HTMLElement
     el.click()
   }
 
-  const handleImageFileChange = (e): void => {
+  const handleImageFileChange = (e: any): void => {
     if (e && e.length > 0) {
       const type = e[0].type.split('/')[0]
 
       if (type === 'image') {
-        dispatch(setActionMain.modal('imageCrop', { file: e[0] }))
+        setModal('imageCrop', { file: e[0] })
       } else {
-        dispatch(setActionMain.alertCode(2145, {}))
+        setAlertCode(2145, {})
       }
     }
   }
@@ -40,7 +35,7 @@ export default function({ owner }: ProfileAvatarEdit): ReactElement {
           id="imgFile"
           accept="image/*"
           onChange={(e): void => handleImageFileChange(e.target.files)}
-          onClick={(e: { target }): void => {
+          onClick={(e: any): void => {
             e.target.value = null
           }}
         />

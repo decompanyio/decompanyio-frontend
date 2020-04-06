@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { FadingCircle } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/main.scss'
 import { APP_CONFIG } from '../../../app.config'
@@ -7,7 +6,7 @@ import commonData from '../../../common/commonData'
 import repos from '../../../utils/repos'
 import { psString } from 'utils/localization'
 import common from 'common/common'
-import { setActionMain } from '../../../redux/reducer/main'
+import { useMain } from '../../../redux/main/hooks'
 
 interface ProfileUsernameEditProps {
   done: (name) => void
@@ -20,8 +19,7 @@ export default function({
   cancel,
   username
 }: ProfileUsernameEditProps): ReactElement {
-  const dispatch = useDispatch()
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { setAlertCode, setMyInfo, myInfo } = useMain()
   const [errMsg, setErrMsg] = useState('')
   const [editLoading, setEditLoading] = useState(false)
 
@@ -37,9 +35,8 @@ export default function({
   }
 
   const setMyInfoInRedux = (name: string): void => {
-    const myInfo = myInfoFromRedux
     myInfo.username = name
-    dispatch(setActionMain.myInfo(myInfo))
+    setMyInfo(myInfo)
   }
 
   const handleEditBtnClick = () => {
@@ -55,7 +52,7 @@ export default function({
     if (errMsg === '') {
       repos.Account.updateUsername(name)
         .then(() => {
-          dispatch(setActionMain.alertCode(2141, {}))
+          setAlertCode(2141, {})
           setEditLoading(true)
           setMyInfoInRedux(name)
           window.history.replaceState(

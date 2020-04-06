@@ -1,10 +1,6 @@
 import Head from 'next/head'
 import React, { ReactElement } from 'react'
-
-interface MetaProps {
-  title: string
-  metaData
-}
+import { MetaProps } from '../../typings/interfaces'
 
 export default function({ title, metaData }: MetaProps): ReactElement {
   return (

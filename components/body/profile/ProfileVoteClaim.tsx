@@ -1,18 +1,14 @@
 import common from '../../../common/common'
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { psString } from 'utils/localization'
 import { repos } from '../../../utils/repos'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
 import { AUTH_APIS } from '../../../utils/auth'
-
-interface ProfileVoteProps {
-  documentData
-}
+import { ProfileVoteProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({ documentData }: ProfileVoteProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [btnText, setBtnText] = useState(psString('claim-text'))
   const [determineReward, setDetermineReward] = useState(100)
 
@@ -25,7 +21,7 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
       .then((res: { royalties }) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
-          dispatch(setActionMain.alertCode(2038, {}))
+          setAlertCode(2038, {})
         } else {
           setBtnText(psString('claim-btn-text-1'))
           window.location.reload()
@@ -34,7 +30,7 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
       .catch(err => {
         console.log(err)
         setBtnText(psString('claim-text'))
-        dispatch(setActionMain.alertCode(2035, {}))
+        setAlertCode(2035, {})
       })
   }
 
@@ -55,7 +51,7 @@ export default function({ documentData }: ProfileVoteProps): ReactElement {
     getDetermineCreatorReward()
   }, [])
 
-  if (determineReward <= 0 || !AUTH_APIS.isAuthenticated()) return <div />
+  if (determineReward <= 0 || !AUTH_APIS.isLogin()) return <div />
 
   return (
     <div

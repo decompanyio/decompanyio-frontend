@@ -1,10 +1,7 @@
 import * as styles from 'public/static/styles/main.scss'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
-
-interface MoreProps {
-  tagList: []
-}
+import { MoreProps } from '../../../typings/interfaces'
 
 export default function({ tagList }: MoreProps): ReactElement {
   return (

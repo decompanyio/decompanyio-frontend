@@ -6,11 +6,7 @@ import RewardCard from 'components/common/card/RewardCard'
 import common from '../../../common/common'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
-
-interface TrackingAuthorProps {
-  documentData
-  ratio: number
-}
+import { TrackingAuthorProps } from '../../../typings/interfaces'
 
 export default function({
   documentData,

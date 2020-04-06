@@ -1,14 +1,13 @@
 import { APP_CONFIG } from '../../../app.config'
 import { psString } from '../../../utils/localization'
-import { useDispatch } from 'react-redux'
 import React, { ReactElement, useEffect, useState } from 'react'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 import * as styles from '../../../public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
+  const { setModal, setAlertCode } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [copyBtnText, setCopyBtnText] = useState(psString('common-modal-copy'))
 
@@ -20,7 +19,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 복사 버튼 텍스트 SET
   const handleCopyBtnText = () =>
@@ -30,7 +29,7 @@ export default function(): ReactElement {
   const handleCopyBtnClick = id =>
     commonView
       .clipboardCopy(id)
-      .then(() => dispatch(setActionMain.alertCode(2005, {})))
+      .then(() => setAlertCode(2005, {}))
       .then(() => handleCopyBtnText())
 
   useEffect(() => {

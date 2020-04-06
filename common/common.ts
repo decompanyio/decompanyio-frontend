@@ -5,14 +5,14 @@ const imgDomain = APP_CONFIG.domain().image
 
 export default {
   // Timestamp GET
-  getTimestamp: (): number => {
+  getTimestamp(): number {
     // daily YYYY-MM-DD 00:00:00(실행기준에서 전날 일자)
     let date = Number(new Date())
     return Math.floor(date / (60 * 60 * 24 * 1000)) * (60 * 60 * 24 * 1000)
   },
 
   // change timestamp to duration
-  timestampToDuration: (timestamp: number): string => {
+  timestampToDuration(timestamp: number): string {
     let date = new Date(timestamp)
 
     let h = date.getHours() - 9
@@ -29,7 +29,7 @@ export default {
   },
 
   // change timestamp to duration
-  timestampToDurationJustTime: (timestamp: number): string => {
+  timestampToDurationJustTime(timestamp: number): string {
     let date = new Date(timestamp)
 
     let h: number = date.getHours() - 9
@@ -46,7 +46,7 @@ export default {
   },
 
   // change Timestamp to Datetime
-  timestampToDateTime: (timestamp: number): string => {
+  timestampToDateTime(timestamp: number): string {
     let date = new Date(timestamp)
     const months = [
       'Jan',
@@ -87,7 +87,7 @@ export default {
   },
 
   // change Timestamp to Date
-  timestampToDate: (timestamp: number): string => {
+  timestampToDate(timestamp: number): string {
     let date = new Date(timestamp)
     const months = [
       'Jan',
@@ -110,7 +110,7 @@ export default {
   },
 
   // change Timestamp to Time
-  timestampToTime: (timestamp: number): string => {
+  timestampToTime(timestamp: number): string {
     let date = new Date(timestamp)
     let hour = date.getHours()
     let min = date.getMinutes()
@@ -129,7 +129,7 @@ export default {
   },
 
   // change Timestamp to Time
-  timestampToTimeNotGmt: (timestamp: number): string => {
+  timestampToTimeNotGmt(timestamp: number): string {
     let date = new Date(timestamp)
     let hour = date.getHours() - 9
     let min = date.getMinutes()
@@ -147,14 +147,14 @@ export default {
   },
 
   // Get Date String
-  dateString: (date: Date): string => {
+  dateString(date: Date): string {
     return new Date(date.getTime() - date.getTimezoneOffset() * 60000)
       .toISOString()
       .split('T')[0]
   },
 
   // Get Month String
-  monthToString: (month: number): string => {
+  monthToString(month: number): string {
     const months = [
       'Jan',
       'Feb',
@@ -173,7 +173,7 @@ export default {
   },
 
   // Get  A particular week Monday
-  getMonday: (date: Date): Date => {
+  getMonday(date: Date): Date {
     date = new Date(date)
     let day = date.getDay()
     let diff = date.getDate() - day + (day === 0 ? -6 : 1) // adjust when day is sunday
@@ -181,7 +181,7 @@ export default {
   },
 
   // Get The number of weeks in a particular month
-  getWeeksCount: (year: number, month: number): number => {
+  getWeeksCount(year: number, month: number): number {
     const dayThreshold = [5, 1, 5, 6, 5, 6, 5, 5, 6, 5, 6, 5]
     let firstDay = new Date(year, month, 1).getDay()
     let baseWeeks = month === 1 ? 4 : 5
@@ -190,7 +190,7 @@ export default {
   },
 
   // Set Date Type
-  setDateType: (year: number, month: number, date: number): string => {
+  setDateType(year: number, month: number, date: number): string {
     return (
       year +
       '-' +
@@ -203,12 +203,12 @@ export default {
   },
 
   // 오늘 기준 몇일 전
-  dateAgo: (timestamp: number): number => {
+  dateAgo(timestamp: number): number {
     let currentDate = Number(new Date())
     let lastDate = Number(new Date(timestamp))
     return Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 1000))
   },
-  convertTimestampToString: (timestamp: number): string => {
+  convertTimestampToString(timestamp: number): string {
     const options = {
       weekday: 'long',
       year: 'numeric',
@@ -219,17 +219,17 @@ export default {
     }
     return new Date(timestamp).toLocaleString('en-US', options)
   },
-  escapeRegexCharacters: (str: string): string => {
+  escapeRegexCharacters(str: string): string {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   },
-  checkEmailForm: (email: string): boolean => {
+  checkEmailForm(email: string): boolean {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
   },
-  checkUsernameForm: (name: string): boolean => {
+  checkUsernameForm(name: string): boolean {
     let regExp = /^[a-z0-9+]*$/
     return !!name.match(regExp)
   },
-  weiToDollar: (wei: number | string): number => {
+  weiToDollar(wei: number | string): number {
     if (isNaN(wei as number) || !wei) return 0
     let c = 0.005
     let d = new BigNumber('1e+18')
@@ -238,7 +238,7 @@ export default {
     // 120,000,000,000,000,000,000
     return Math.round(dollar.toNumber() * 100) / 100
   },
-  deckToDollar: (deck: number): number => {
+  deckToDollar(deck: number): number {
     if (isNaN(deck) || !deck) return 0
     let c = 0.005
     let bn = new BigNumber(deck)
@@ -246,7 +246,7 @@ export default {
     // 120,000,000,000,000,000,000
     return Math.round(dollar.toNumber() * 100) / 100
   },
-  toDollarWithComma: (deck: number): string => {
+  toDollarWithComma(deck: number): string {
     if (isNaN(deck) || !deck) return '0'
     let c = 0.005
     let d = new BigNumber('1e+18')
@@ -255,9 +255,10 @@ export default {
     let result = Math.round(dollar.toNumber() * 100) / 100
     return result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   },
-  withComma: (data: number): string =>
-    data ? data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0',
-  toDeck: (smallDeck: number | string): number => {
+  withComma(data: number): string {
+    return data ? data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0'
+  },
+  toDeck(smallDeck: number | string): number {
     if (isNaN(smallDeck as number) || !smallDeck) return 0
     let d = new BigNumber('1e+18')
     let bn = new BigNumber(smallDeck)
@@ -267,7 +268,7 @@ export default {
   },
 
   // wei to ether
-  toEther: (str: number): number => {
+  toEther(str: number): number {
     if (isNaN(str) || !str) return 0
     let d = new BigNumber('1e+18')
     let bn = new BigNumber(str)
@@ -276,7 +277,7 @@ export default {
   },
 
   // deck -> dollar with ,
-  deckToDollarWithComma: (deck: number): string => {
+  deckToDollarWithComma(deck: number): string {
     if (isNaN(deck) || !deck) return '0'
     let c = 0.005
     let bn = new BigNumber(deck)
@@ -287,7 +288,7 @@ export default {
   },
 
   // deck -> string
-  deckStr: (deck: number): string => {
+  deckStr(deck: number): string {
     let deck1m =
       Math.round(deck / 1000000) > 0 ? Math.floor(deck / 100000) / 10 : 0
     let deck1k = Math.round(deck / 1000) > 0 ? Math.floor(deck / 100) / 10 : 0
@@ -305,25 +306,13 @@ export default {
     return deckStr
   },
 
-  // json -> query string
-  jsonToQueryString: (json: JSON): string => {
-    return (
-      '?' +
-      Object.keys(json)
-        .map((key: string): string => {
-          return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
-        })
-        .join('&')
-    )
-  },
-
   // GET thumbnail URL
-  getThumbnail: (
+  getThumbnail(
     documentId: string,
     size: number | string,
     pageNo: number,
     documentName: string
-  ): string => {
+  ): string {
     let _size = size
 
     if (
@@ -338,9 +327,12 @@ export default {
   },
 
   // GET Version of this Project
-  getVersion: (): string => 'v ' + process.env.npm_package_version,
+  getVersion(): string {
+    return 'v ' + process.env.npm_package_version
+  },
 
   // SET Delay
-  delay: (ms: number): Promise<Function> =>
-    new Promise(resolve => setTimeout(resolve, ms))
+  delay(ms: number): Promise<Function> {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
 }

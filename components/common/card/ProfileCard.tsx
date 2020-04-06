@@ -1,6 +1,5 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { FadingCircle } from 'better-react-spinkit'
 import { psString } from '../../../utils/localization'
 import { AUTH_APIS } from '../../../utils/auth'
@@ -10,18 +9,16 @@ import repos from '../../../utils/repos'
 import log from '../../../utils/log'
 import WalletBalance from '../../../service/model/WalletBalance'
 import common from '../../../common/common'
-
-interface ProfileCardProps {
-  click: () => void
-}
+import { ProfileCardProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 function ProfileCard({ click }: ProfileCardProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo } = useMain()
   const [loading, setLoading] = useState(true)
   const [balance, setBalance] = useState(new WalletBalance(null))
 
   const getBalance = () =>
-    repos.Wallet.getWalletBalance({ userId: myInfoFromRedux.id })
+    repos.Wallet.getWalletBalance({ userId: myInfo.id })
       .then((res): void => {
         setLoading(false)
         setBalance(res)
@@ -54,20 +51,20 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
   }, [])
 
   let identification =
-    myInfoFromRedux.username && myInfoFromRedux.username.length > 0
-      ? myInfoFromRedux.username
-      : myInfoFromRedux.email
+    myInfo.username && myInfo.username.length > 0
+      ? myInfo.username
+      : myInfo.email
 
   return (
     <div className={styles.pc_container} id="profileCard">
       <div className={styles.pc_avatarWrapper}>
         <MyAvatar
           size={90}
-          picture={myInfoFromRedux.picture}
-          croppedArea={myInfoFromRedux.croppedArea}
+          picture={myInfo.picture}
+          croppedArea={myInfo.croppedArea}
         />
         <div className={styles.pc_username}>
-          {AUTH_APIS.isAuthenticated() && identification}
+          {AUTH_APIS.isLogin() && identification}
         </div>
       </div>
 
@@ -88,7 +85,7 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
       </div>
 
       <div>
-        {AUTH_APIS.isAuthenticated() ? (
+        {AUTH_APIS.isLogin() ? (
           <Link
             href={{
               pathname: '/my_page',

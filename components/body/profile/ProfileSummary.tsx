@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
 import MyAvatar from '../../common/avatar/MyAvatar'
@@ -9,18 +8,15 @@ import repos from '../../../utils/repos'
 import log from 'utils/log'
 import WalletBalance from '../../../service/model/WalletBalance'
 import common from 'common/common'
-import { setActionMain } from '../../../redux/reducer/main'
 
-interface ProfileSummaryProps {
-  profileInfo
-  owner: boolean
-}
+import { useMain } from '../../../redux/main/hooks'
+import { ProfileSummaryProps } from '../../../typings/interfaces'
 
 export default function({
   profileInfo,
   owner
 }: ProfileSummaryProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setModal } = useMain()
   const [balance, setBalance] = useState(new WalletBalance(null))
   const [reward, setReward] = useState({
     last7Creator: 0,
@@ -92,11 +88,11 @@ export default function({
   }
 
   const handleDepositBtnClick = (): void => {
-    dispatch(setActionMain.modal('deposit'))
+    setModal('deposit')
   }
 
   const handleWithdrawBtnClick = (): void => {
-    dispatch(setActionMain.modal('withdraw'))
+    setModal('withdraw')
   }
 
   useEffect(() => {

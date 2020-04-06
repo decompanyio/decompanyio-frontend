@@ -1,14 +1,13 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Cropper from 'react-easy-crop'
 import { FadingCircle } from 'better-react-spinkit'
-import { useDispatch, useSelector } from 'react-redux'
 import * as styles from 'public/static/styles/main.scss'
 import commonView from 'common/commonView'
 import repos from 'utils/repos'
 import { APP_CONFIG } from '../../../app.config'
 import { psString } from 'utils/localization'
 import common from 'common/common'
-import { setActionMain } from '../../../redux/reducer/main'
+import { useMain } from '../../../redux/main/hooks'
 
 // 파일 읽기
 const readFile = file =>
@@ -19,9 +18,11 @@ const readFile = file =>
   })
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const modalData = useSelector(state => state.main.modalData)
-  const myInfo = useSelector(state => state.main.myInfo)
+  const { modalData, myInfo, setModal, setAlertCode, setMyInfo } = useMain()
+
+  const tempModalData = modalData as any
+  const file = tempModalData && tempModalData.file ? tempModalData.file : null
+
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
   const [crop, setCrop] = useState({ x: 0, y: 0 })
@@ -61,7 +62,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 자르기 확인
   const handleCropConfirm = () => {
@@ -73,7 +74,7 @@ export default function(): ReactElement {
     repos.Account.getProfileImageUploadUrl()
       .then(result => {
         let params = {
-          file: modalData.file,
+          file: file,
           signedUrl: result.signedUploadUrl
         }
 
@@ -95,12 +96,12 @@ export default function(): ReactElement {
               _myInfo.croppedArea = croppedArea
 
               setLoading(true)
-              dispatch(setActionMain.alertCode(2143, {}))
-              dispatch(setActionMain.myInfo(_myInfo))
+              setAlertCode(2143, {})
+              setMyInfo(_myInfo)
 
               return handleClickClose()
             })
-            .catch(() => dispatch(setActionMain.alertCode(2144, {})))
+            .catch(() => setAlertCode(2144, {}))
         })
       })
       .catch(err => {
@@ -112,11 +113,11 @@ export default function(): ReactElement {
   useEffect(() => {
     commonView.setBodyStyleLock()
     ;(async function() {
-      let file = await readFile(modalData.file)
+      let _file = await readFile(file)
 
       // 모달 오픈 에니메이션 delay
       let timeout = setTimeout(() => {
-        setImage(file)
+        setImage(_file)
         clearTimeout(timeout)
       }, 200)
     })()

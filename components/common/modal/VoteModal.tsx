@@ -1,18 +1,24 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
-import { useDispatch, useSelector } from 'react-redux'
 import common from 'common/common'
 import commonView from 'common/commonView'
 import { psString } from 'utils/localization'
-import { setActionMain } from '../../../redux/reducer/main'
 import repos from '../../../utils/repos'
 import * as styles from '../../../public/static/styles/main.scss'
 import log from '../../../utils/log'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const myInfo = useSelector(state => state.main.myInfo)
-  const { documentData } = useSelector(state => state.main.modalData)
+  const { modalData, myInfo, setModal } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
+
   const [loading, setLoading] = useState(false)
   const [closeFlag, setCloseFlag] = useState(false)
   const [balance, setBalance] = useState(-1)
@@ -88,7 +94,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 키 다운 관리
   const handleKeyDown = e => {

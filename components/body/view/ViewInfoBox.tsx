@@ -1,5 +1,4 @@
 import * as styles from 'public/static/styles/main.scss'
-import { useSelector } from 'react-redux'
 import { APP_CONFIG } from '../../../app.config'
 import common from 'common/common'
 import Link from 'next/link'
@@ -9,10 +8,8 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import ViewOption from './ViewOption'
 import dynamic from 'next/dynamic'
 import { repos } from '../../../utils/repos'
-
-interface ViewInfoBoxProps {
-  documentData
-}
+import { ViewInfoBoxProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -35,7 +32,7 @@ const hideRewardInfo = (id: string): void => {
 }
 
 export default function({ documentData }: ViewInfoBoxProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo } = useMain()
   const [reward, setReward] = useState(0)
 
   let vote = common.toEther(documentData.latestVoteAmount) || 0
@@ -113,10 +110,9 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
           )}
           <span className={styles.vib_view}>{view}</span>
           <span className={styles.vib_vote}>{common.deckStr(vote)}</span>
-          {AUTH_APIS.isAuthenticated() &&
-            documentData.author.sub === myInfoFromRedux.id && (
-              <ViewOption documentData={documentData} />
-            )}
+          {AUTH_APIS.isLogin() && documentData.author.sub === myInfo.id && (
+            <ViewOption documentData={documentData} />
+          )}
         </div>
       </div>
     </div>

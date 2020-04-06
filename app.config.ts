@@ -24,7 +24,7 @@ export const APP_CONFIG = {
       viewer: 'https://viewer.share.decompany.io/',
       bounty: 'https://api.share.decompany.io/bounty/',
       graphql: 'https://api.share.decompany.io/graphql/',
-      auth: 'https://auth.share.decompany.io/local'
+      auth: 'https://auth.share.decompany.io/dev'
     }
   },
   dev: {

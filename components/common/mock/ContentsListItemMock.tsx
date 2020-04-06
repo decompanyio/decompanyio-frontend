@@ -1,9 +1,6 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement } from 'react'
-
-interface ContentsListItemMockProps {
-  order: number
-}
+import { ContentsListItemMockProps } from '../../../typings/interfaces'
 
 export default function({ order }: ContentsListItemMockProps): ReactElement {
   return (

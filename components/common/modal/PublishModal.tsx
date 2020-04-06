@@ -1,21 +1,25 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import TagsInput from 'react-tagsinput'
-import { useSelector, useDispatch } from 'react-redux'
-
 import repos from 'utils/repos'
 import { psString } from 'utils/localization'
 import common from 'common/common'
 import commonView from 'common/commonView'
-import { setActionMain } from '../../../redux/reducer/main'
 import { APP_CONFIG } from '../../../app.config'
 import * as styles from '../../../public/static/styles/main.scss'
 import AutoCompleteRenderInput from '../input/AutoCompleteRenderInput'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const dispatch = useDispatch()
-  const { documentData } = useSelector(state => state.main.modalData)
-  const tagList = useSelector(state => state.main.tagList)
+  const { modalData, tagList, setModal, setAlertCode } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
   const [by, setBy] = useState(false)
   const [nc, setNc] = useState(false)
   const [nd, setNd] = useState(false)
@@ -80,7 +84,7 @@ export default function(): ReactElement {
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)))
+      .then(() => setModal(''))
 
   // 태그 변경 관리
   const handleTagChange = tags => {
@@ -106,13 +110,11 @@ export default function(): ReactElement {
     setLoading(true)
     handlePublish()
       // 퍼블리시 완료 모달 오픈
-      .then(() =>
-        dispatch(setActionMain.modal('publishComplete', { documentData }))
-      )
+      .then(() => setModal('publishComplete', { documentData }))
       .catch(err => {
         console.error(err)
-        dispatch(setActionMain.alertCode(2071, {}))
-        dispatch(setActionMain.modal(null))
+        setAlertCode(2071, {})
+        setModal('')
       })
   }
 

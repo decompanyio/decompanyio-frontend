@@ -1,9 +1,10 @@
 import * as styles from 'public/static/styles/main.scss'
 import common from '../../../common/common'
 import AutoSuggest from 'react-autosuggest'
-import { useSelector } from 'react-redux'
 import { psString } from 'utils/localization'
 import React, { ReactElement, useState } from 'react'
+import { useMain } from '../../../redux/main/hooks'
+import TagListItem from '../../../service/model/TagListItem'
 
 interface AutoSuggestInputProps {
   search: Function
@@ -16,7 +17,7 @@ function AutoSuggestInput({
   type,
   getNameList
 }: AutoSuggestInputProps): ReactElement {
-  const tagListFromRedux = useSelector(state => state.main.tagList)
+  const { tagList } = useMain()
   const [value, setValue] = useState('')
   const [suggestions, setSuggestions] = useState([])
 
@@ -29,7 +30,7 @@ function AutoSuggestInput({
 
     switch (type) {
       case 'tag':
-        return tagListFromRedux.filter(data => regex.test(data._id))
+        return tagList.filter((data: TagListItem) => regex.test(data._id))
 
       case 'name':
         let tempArr = getNameList.filter(

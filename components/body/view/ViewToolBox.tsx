@@ -2,19 +2,14 @@ import { FadingCircle } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/main.scss'
 import { psString } from '../../../utils/localization'
 import { AUTH_APIS } from '../../../utils/auth'
-import { useSelector, useDispatch } from 'react-redux'
 import React, { ReactElement, useState } from 'react'
 import repos from '../../../utils/repos'
-import { setActionMain } from '../../../redux/reducer/main'
 import Link from 'next/link'
-
-interface ViewToolBoxProps {
-  documentData
-}
+import { ViewToolBoxProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({ documentData }: ViewToolBoxProps): ReactElement {
-  const dispatch = useDispatch()
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
+  const { myInfo, setModal, setAlertCode } = useMain()
   const [downloadLoading, setDownloadLoading] = useState(false)
 
   let identification = documentData.author
@@ -49,30 +44,26 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
       })
   }
 
-  const setRequiredForDownload = (): void => {
-    if (!documentData) return dispatch(setActionMain.alertCode(2091, {}))
+  const setRequiredForDownload = () => {
+    if (!documentData) return setAlertCode(2091, {})
 
-    if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email)
-      return dispatch(setActionMain.alertCode(2003, {}))
+    if (!AUTH_APIS.isLogin() && !myInfo.email) return setAlertCode(2003, {})
 
     downloadDocument(documentData.documentId, documentData.documentName)
   }
 
   // 공유 버튼 클릭 관리
-  const handleShareBtnClick = (): void =>
-    dispatch(setActionMain.modal('share', { documentData }))
+  const handleShareBtnClick = () => setModal('share', { documentData })
 
   // 투표 버튼 클릭 관리
-  const handleVoteBtn = (): void =>
-    dispatch(setActionMain.modal('vote', { documentData }))
+  const handleVoteBtn = () => setModal('vote', { documentData })
 
   // 출판 버튼 클릭 관리
-  const handlePublishBtn = (): void =>
-    dispatch(setActionMain.modal('publish', { documentData }))
+  const handlePublishBtn = () => setModal('publish', { documentData })
 
   return (
     <div className={styles.vtb_container}>
-      {AUTH_APIS.isAuthenticated() && !documentData.isPublic && (
+      {AUTH_APIS.isLogin() && !documentData.isPublic && (
         <p
           data-tip={psString('tooltip-publish')}
           className={styles.vtb_publishBtn}
@@ -84,7 +75,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           </span>
         </p>
       )}
-      {AUTH_APIS.isAuthenticated() && documentData.isPublic && (
+      {AUTH_APIS.isLogin() && documentData.isPublic && (
         <p
           data-tip={psString('vote-modal-tooltip-1')}
           className={styles.vtb_voteBtn}
@@ -107,7 +98,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           {psString('share-modal-btn')}
         </span>
       </p>
-      {!myInfoFromRedux.email && documentData.isDownload && (
+      {!myInfo.email && documentData.isDownload && (
         <p
           data-tip={psString('tooltip-download')}
           className={
@@ -125,26 +116,25 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           )}
         </p>
       )}
-      {AUTH_APIS.isAuthenticated() &&
-        documentData.author.id === myInfoFromRedux.id && (
-          <Link
-            href={{
-              pathname: '/tracking',
-              query: { seoTitle: documentData.seoTitle }
-            }}
-            as={'/t/@' + identification + '/' + documentData.seoTitle}
+      {AUTH_APIS.isLogin() && documentData.author.id === myInfo.id && (
+        <Link
+          href={{
+            pathname: '/tracking',
+            query: { seoTitle: documentData.seoTitle }
+          }}
+          as={'/t/@' + identification + '/' + documentData.seoTitle}
+        >
+          <p
+            data-tip={psString('tooltip-tracking')}
+            className={styles.vtb_trackingBtn}
           >
-            <p
-              data-tip={psString('tooltip-tracking')}
-              className={styles.vtb_trackingBtn}
-            >
-              <span>
-                <i className="material-icons">bar_chart</i>
-                {psString('tracking-btn')}
-              </span>
-            </p>
-          </Link>
-        )}
+            <span>
+              <i className="material-icons">bar_chart</i>
+              {psString('tracking-btn')}
+            </span>
+          </p>
+        </Link>
+      )}
       <div className={styles.common_hr} />
     </div>
   )

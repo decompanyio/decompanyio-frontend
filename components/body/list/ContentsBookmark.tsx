@@ -1,32 +1,25 @@
 import { psString } from '../../../utils/localization'
 import * as styles from 'public/static/styles/main.scss'
-import { useDispatch } from 'react-redux'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
-import { setActionMain } from '../../../redux/reducer/main'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-
-interface ContentsBookmarkProps {
-  documentData: DocumentInfo
-  bookmarkList: []
-  path: string
-}
+import { DocumentId, ContentsBookmarkProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function({
   bookmarkList,
   documentData,
   path
 }: ContentsBookmarkProps): ReactElement {
-  const dispatch = useDispatch()
+  const { setAlertCode } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
   const checkBookmarkList = (): void => {
-    let flag: boolean
+    let flag
 
     if (bookmarkList.length > 0)
       flag =
         bookmarkList.filter(
-          (v: { documentId }): boolean => v.documentId === documentData.id
+          (value: DocumentId): boolean => value.documentId === documentData.id
         ).length > 0
     else flag = false
 
@@ -37,19 +30,19 @@ export default function({
     setBookmarkFlag(true)
 
     repos.Mutation.addMyList(documentData.documentId)
-      .then((): void => dispatch(setActionMain.alertCode(2121, {})))
-      .catch((): void => dispatch(setActionMain.alertCode(2122, {})))
+      .then(() => setAlertCode(2121, {}))
+      .catch(() => setAlertCode(2122, {}))
   }
 
   const handleBookmarkRemoveBtnClick = (): void => {
     setBookmarkFlag(false)
 
     repos.Mutation.removeMyList(documentData.documentId)
-      .then((): void => dispatch(setActionMain.alertCode(2123, {})))
+      .then(() => setAlertCode(2123, {}))
       .then((): void | boolean =>
         path === 'mylist' ? window.location.reload() : true
       )
-      .catch((): void => dispatch(setActionMain.alertCode(2124, {})))
+      .catch(() => setAlertCode(2124, {}))
   }
 
   useEffect(() => {

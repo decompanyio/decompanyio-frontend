@@ -1,14 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { psString } from '../../../utils/localization'
 import * as styles from 'public/static/styles/main.scss'
 import commonData from '../../../common/commonData'
-
-interface AlertProps {
-  code: number
-  alertData
-  close
-}
+import { AlertProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // 메세지 GET
 const getMsg = (code: number): string => psString('alert-' + code)
@@ -179,8 +174,8 @@ const getStatus = (
 }
 
 export default function({ code, alertData, close }: AlertProps): ReactElement {
-  const myInfoFromRedux = useSelector(state => state.main.myInfo)
-  const [data] = useState(getStatus(code, alertData, myInfoFromRedux))
+  const { myInfo } = useMain()
+  const [data] = useState(getStatus(code, alertData, myInfo))
 
   useEffect(() => {
     let _setTimeout = setTimeout(() => {

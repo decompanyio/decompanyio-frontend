@@ -1,9 +1,6 @@
 import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement } from 'react'
-
-interface SearchBtnProps {
-  click?: () => void
-}
+import { SearchBtnProps } from '../../../typings/interfaces'
 
 export default function({ click }: SearchBtnProps): ReactElement {
   const handleSearchBtnClick = () => {
