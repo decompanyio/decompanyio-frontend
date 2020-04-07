@@ -1,44 +1,40 @@
-import * as styles from "public/static/styles/main.scss";
-import { useSelector } from "react-redux";
+import * as styles from 'public/static/styles/main.scss'
 import {
   Lang,
   psGetLang,
   psSetLang,
   psString
-} from "../../../utils/localization";
-import Link from "next/link";
-import common_view from "../../../common/common_view";
-import common from "../../../common/common";
-import React, { useEffect } from "react";
-import { APP_CONFIG } from "../../../app.config";
-import { AUTH_APIS } from "../../../utils/auth";
-import MenuAvatar from "./MenuAvatar";
-
-type Type = {
-  setMenuClose: any;
-};
+} from '../../../utils/localization'
+import Link from 'next/link'
+import commonView from '../../../common/commonView'
+import common from '../../../common/common'
+import React, { ReactElement, useEffect } from 'react'
+import { APP_CONFIG } from '../../../app.config'
+import { AUTH_APIS } from '../../../utils/auth'
+import MenuAvatar from './MenuAvatar'
+import { MenuProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 // 언어 설정 관리
 const handleLang = () =>
-  psGetLang() === "EN" ? psSetLang(Lang.KO) : psSetLang(Lang.EN);
+  psGetLang() === 'EN' ? psSetLang(Lang.KO) : psSetLang(Lang.EN)
 
-export default function({ setMenuClose }: Type) {
-  const isMobileFromRedux = useSelector(state => state.main.isMobile);
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
+export default function({ setMenuClose }: MenuProps): ReactElement {
+  const { isMobile, myInfo } = useMain()
   const identification =
-    myInfoFromRedux.username.length && myInfoFromRedux.username.length > 0
-      ? myInfoFromRedux.username
-      : myInfoFromRedux.email;
+    myInfo.username.length && myInfo.username.length > 0
+      ? myInfo.username
+      : myInfo.email
 
   useEffect(() => {
     // 스크롤 숨김
-    common_view.setBodyStyleLock();
+    commonView.setBodyStyleLock()
 
     return () => {
       // 스크롤 표시
-      common_view.setBodyStyleUnlock();
-    };
-  }, []);
+      commonView.setBodyStyleUnlock()
+    }
+  }, [])
 
   return (
     <div className={styles.mn_wrapper}>
@@ -48,13 +44,13 @@ export default function({ setMenuClose }: Type) {
           onClick={() => setMenuClose()}
           src={
             APP_CONFIG.domain().static +
-            "/image/icon/i_close_menu" +
-            (isMobileFromRedux ? "_mobile" : "") +
-            ".svg"
+            '/image/icon/i_close_menu' +
+            (isMobile ? '_mobile' : '') +
+            '.svg'
           }
           alt="menu close button"
         />
-        {isMobileFromRedux && AUTH_APIS.isAuthenticated() && (
+        {isMobile && AUTH_APIS.isLogin() && (
           <MenuAvatar identification={identification} />
         )}
 
@@ -64,7 +60,7 @@ export default function({ setMenuClose }: Type) {
               className={styles.mn_contentItem}
               onClick={() => setMenuClose()}
             >
-              {psString("menu-1")}
+              {psString('menu-1')}
             </div>
           </Link>
           <Link href="/user_guide" as="ug">
@@ -72,7 +68,7 @@ export default function({ setMenuClose }: Type) {
               className={styles.mn_contentItem}
               onClick={() => setMenuClose()}
             >
-              {psString("menu-2")}
+              {psString('menu-2')}
             </div>
           </Link>
           <Link href="/faq">
@@ -88,52 +84,49 @@ export default function({ setMenuClose }: Type) {
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            <div className={styles.mn_contentItem}>{psString("menu-5")}</div>
+            <div className={styles.mn_contentItem}>{psString('menu-5')}</div>
           </a>
           <a
             href="https://www.linkedin.com/in/decompany-io-720812178/"
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            <div className={styles.mn_contentItemSub}>{psString("menu-3")}</div>
+            <div className={styles.mn_contentItemSub}>{psString('menu-3')}</div>
           </a>
-          <div className={styles.mn_contentItemSub}>{psString("menu-4")}</div>
+          <div className={styles.mn_contentItemSub}>{psString('menu-4')}</div>
           <div
             className={styles.mn_contentItemSub}
             onClick={() => handleLang()}
           >
-            {psGetLang() === "EN" ? "Global" : "Korea"}
+            {psGetLang() === 'EN' ? 'Global' : 'Korea'}
           </div>
         </div>
       </div>
 
-      {isMobileFromRedux &&
-        (!AUTH_APIS.isAuthenticated() ? (
-          <div
-            className={styles.mn_loginBtn}
-            onClick={() => AUTH_APIS.login(false)}
-          >
-            {psString("menu-login")}
+      {isMobile &&
+        (!AUTH_APIS.isLogin() ? (
+          <div className={styles.mn_loginBtn} onClick={() => AUTH_APIS.login()}>
+            {psString('menu-login')}
           </div>
         ) : (
           <div
             className={styles.mn_logoutBtn}
             onClick={() => AUTH_APIS.logout()}
           >
-            {psString("menu-sign-out")}
+            {psString('menu-sign-out')}
           </div>
         ))}
 
-      {isMobileFromRedux && AUTH_APIS.isAuthenticated() && (
+      {isMobile && AUTH_APIS.isLogin() && (
         <div
           className={styles.mn_logoutBtnSub}
           onClick={() => AUTH_APIS.logout()}
         >
-          {psString("menu-sign-out")}
+          {psString('menu-sign-out')}
         </div>
       )}
 
       <div className={styles.mn_version}>{common.getVersion()}</div>
     </div>
-  );
+  )
 }

@@ -1,172 +1,235 @@
-import auth0 from "auth0-js";
-import { APP_CONFIG } from "app.config";
-import AuthService from "../service/rest/AuthService";
-import UserInfo from "service/model/UserInfo";
-
-const AUTH_CONFIG = {
-  domain: "decompany.auth0.com",
-  clientID: "e7kW3VpEKzprBPyHy13VL221pB1q971j",
-  redirectUri: APP_CONFIG.domain().mainHost + "/callback",
-  responseType: "token id_token",
-  scope: "openid profile email"
-};
-
-let authData = new auth0.WebAuth(AUTH_CONFIG);
+import commonData from '../common/commonData'
+import { repos } from './repos'
+import { GetTokenProps, GetQueryParams } from './types'
+import UserInfo from '../service/model/UserInfo'
+import { APP_CONFIG } from '../app.config'
 
 export const AUTH_APIS = {
-  sync(callback, error) {
-    const token = localStorage.getItem("id_token");
-    const userInfo = localStorage.getItem("user_info");
-    const data = {
-      header: { Authorization: `Bearer ${token}` },
-      data: userInfo
-    };
-    AuthService.POST.sync(data, result => callback(result), err => error(err));
+  login: (provider?: string, returnUrl?: string) => {
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signin/${provider ||
+      commonData.defaultLoginPlatform}?redirectUrl=${
+      APP_CONFIG.domain().mainHost
+    }/callback${returnUrl ? '&returnUrl=' + returnUrl : ''}`
   },
-  login: (isSilentAuthentication: boolean) => {
-    if (isSilentAuthentication) {
-      authData.authorize({ prompt: "none" });
-    } else authData.authorize();
+  silentLogin: (email: string, provider?: string) => {
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signin/${provider ||
+      commonData.defaultLoginPlatform}?prompt=none&login_hint=${email}&redirectUrl=${
+      APP_CONFIG.domain().mainHost
+    }/callback`
   },
-  logout() {
-    this.clearSession();
+  logout: (): void => {
+    AUTH_APIS.clearSession()
+    window.location.href = '/'
+  },
+  isAuthenticated: (): boolean => {
+    if (typeof window === 'undefined') return false
+    const loginInfo = AUTH_APIS.getTokens()
+    const expiresAt = JSON.parse(loginInfo.expiredAt)
+    const userInfo = JSON.parse(loginInfo.userInfo)
 
-    authData.logout({
-      returnTo: APP_CONFIG.domain().mainHost,
-      clientID: AUTH_CONFIG.clientID
-    });
-    window.location.href = "/";
+    return new Date().getTime() < expiresAt && userInfo.email
   },
-  syncUser() {
-    const session = this.getSession();
-    const idToken = localStorage.getItem("id_token");
-    if (idToken && session) {
-      this.sync(
-        res => {
-          if (res.success) {
-            localStorage.setItem("user_sync", JSON.stringify(res));
-          } else {
-            console.error("Login failed because user sync failed.");
-            this.logout();
-          }
-        },
-        err => console.log(err)
-      );
-    } else console.log("session is not init...");
-  },
-  isAuthenticated() {
-    if (typeof window === "undefined") return false;
+  isLogin: (): boolean => {
+    const loginInfo = AUTH_APIS.getTokens()
 
-    const expiresAt = JSON.parse(localStorage.getItem("expires_at") || "{}");
-    return new Date().getTime() < expiresAt;
+    return (
+      loginInfo.authorization_token !== '' &&
+      loginInfo.expiredAt !== '' &&
+      loginInfo.userInfo !== ''
+    )
   },
-  scheduleRenewal() {
-    let expiresAt = JSON.parse(localStorage.getItem("expires_at") || "{}");
-    let timeout = expiresAt - Date.now(); // mms
+  // URL 쿼리 -> 파라미터
+  getParamsFromAuthUrlQuery: (qs: string): GetQueryParams => {
+    const _qs = qs.split('+').join(' ')
+    const re = /[?&]?([^=]+)=([^&]*)/g
+    let params = {
+      error: '',
+      authorization_token: '',
+      return_url: '',
+      expired_at: 0
+    }
+    let tokens
 
-    if (timeout > 0) (() => setTimeout(() => this.renewSession(), timeout))();
-    else if (timeout <= 0) this.logout();
+    while ((tokens = re.exec(_qs))) {
+      // @ts-ignore
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])
+    }
+    return params
   },
-  renewSession() {
-    authData.checkSession({}, (err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setMyInfo(authResult)
-          .then(user => this.setSession(authResult, user))
-          .catch(() => this.logout());
-      } else if (err) {
-        this.logout();
-        console.error(err);
-      }
-    });
+  getMyInfo(): UserInfo {
+    let userInfo = localStorage.getItem('ps_ui')
+    let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
+    if (!userInfoWithJson && AUTH_APIS.isLogin()) {
+      AUTH_APIS.scheduleRenewal()
+      return new UserInfo(null)
+    }
+    return new UserInfo(userInfoWithJson)
   },
-  renewSessionPromise() {
-    return new Promise((resolve, reject) => {
-      authData.checkSession({}, (err, authResult) => {
-        if (authResult && authResult.accessToken && authResult.idToken) {
-          resolve(authResult);
-          this.setMyInfo(authResult).then(user =>
-            this.setSession(authResult, user)
-          );
-        } else if (err) {
-          console.log(err);
-          this.clearSession();
-          reject(err);
-        }
-      });
-    });
-  },
-  handleAuthentication(location) {
-    return new Promise((resolve, reject) => {
-      if (!/access_token|id_token|error/.test(location.hash)) reject();
+  // 계정 관련 토큰 로컬스토리지 저장
+  setTokens: (at: string, ea: any, ru: string) =>
+    new Promise(resolve => {
+      if (at) localStorage.setItem('ps_at', at)
+      if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
+      if (ru) localStorage.setItem('ps_ru', ru)
 
-      authData.parseHash((err, authResult) => {
-        if (authResult && authResult.accessToken && authResult.idToken) {
-          this.setMyInfo(authResult)
-            .then(user => {
-              this.setSession(authResult, user);
-              this.scheduleRenewal();
-              this.syncUser();
-              resolve(user.sub);
-            })
-            .catch(err => reject(err));
-        } else if (err) {
-          this.clearSession();
-          reject(err);
-        }
-      });
-    });
-  },
-  setSession(authResult, userInfo) {
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    localStorage.setItem("access_token", authResult.accessToken);
-    localStorage.setItem("id_token", authResult.idToken);
-    localStorage.setItem("expires_at", expiresAt);
-
-    if (userInfo) localStorage.setItem("user_info", JSON.stringify(userInfo));
-  },
-  getSession() {
-    return {
-      accessToken: localStorage.getItem("access_token"),
-      idToken: localStorage.getItem("id_token"),
-      userInfo: JSON.parse(localStorage.getItem("user_info") || "{}"),
-      expiresAt: JSON.parse(localStorage.getItem("expires_at") || "{}")
-    };
-  },
-  clearSession() {
-    // Auth0 API
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
-    localStorage.removeItem("user_info");
+      repos.Account.getUserInfo(at)
+        .then(res => {
+          localStorage.setItem('ps_ui', JSON.stringify(res))
+          resolve(res)
+        })
+        .catch((err: any) => {
+          console.log(err)
+        })
+    }),
+  getTokens: (): GetTokenProps => ({
+    authorization_token: localStorage.getItem('ps_at') || '',
+    expiredAt: localStorage.getItem('ps_ea') || '',
+    returnUrl: localStorage.getItem('ps_ru') || '',
+    userInfo: localStorage.getItem('ps_ui') || ''
+  }),
+  getExpiredAt: (ea: number): string => JSON.stringify(ea * 1000),
+  clearSession(): void {
+    localStorage.removeItem('ps_at')
+    localStorage.removeItem('ps_ea')
+    localStorage.removeItem('ps_ru')
+    localStorage.removeItem('ps_ui')
 
     // Tracking API
-    localStorage.removeItem("tracking_info");
+    localStorage.removeItem('tracking_info')
 
     // Content Editor
-    localStorage.removeItem("content");
+    localStorage.removeItem('content')
   },
-  setMyInfo(authResult) {
-    return new Promise((resolve, reject) => {
-      authData.client.userInfo(authResult.accessToken, (err, user) => {
-        if (err) {
-          // console.error('Getting userInfo', err);
-          reject(console.error(`Error: ${err.error}. Getting UserInfo`));
-        } else {
-          // console.log('Getting Userinfo Success!!', { user, authResult });
-          resolve(user);
+  handleAuthentication: (location: any) =>
+    new Promise((resolve, reject) => {
+      const query = AUTH_APIS.getParamsFromAuthUrlQuery(location.search)
+
+      if (query.error) {
+        AUTH_APIS.clearSession()
+        reject()
+      } else {
+        const at = query.authorization_token || ''
+        const ea = query.expired_at || ''
+        const ru = query.return_url || ''
+
+        AUTH_APIS.setTokens(at, ea, ru).then((userInfo: any) =>
+          AUTH_APIS.syncAuthAndRest(userInfo, at).then(() =>
+            resolve(userInfo.email)
+          )
+        )
+      }
+    }),
+  syncAuthAndRest: (ui: any, at: string) =>
+    new Promise(resolve => {
+      if (at) {
+        repos.Account.syncAuthAndRest(ui, at)
+          .then((res: any) => {
+            localStorage.setItem('user_sync', JSON.stringify(res))
+            resolve()
+          })
+          .catch((): void => {
+            console.error('Login failed because user sync failed.')
+            AUTH_APIS.logout()
+          })
+      } else {
+        console.log('session is not init...')
+        AUTH_APIS.logout()
+      }
+    }),
+  renewSession: (): Promise<string> =>
+    new Promise((resolve, reject) => {
+      AUTH_APIS.iframeHandler()
+        .then((at: any) => {
+          resolve(at)
+        })
+        .catch(err => {
+          AUTH_APIS.clearSession()
+          console.log('renewSession error')
+          reject(err)
+        })
+    }),
+  scheduleRenewal: () =>
+    new Promise((resolve, reject) => {
+      let expiresAt = JSON.parse(localStorage.getItem('ps_ea') || '{}')
+      let at = localStorage.getItem('ps_at') || ''
+      let timeout = expiresAt - Date.now() // mms
+
+      const _renewSession = () =>
+        AUTH_APIS.renewSession()
+          .then(at => {
+            resolve(at)
+          })
+          .catch(err => {
+            console.log(err)
+            reject(err)
+          })
+
+      return timeout > 0 ? resolve(at) : _renewSession()
+    }),
+  iframeHandler: (provider?: string) =>
+    new Promise((resolve, reject) => {
+      const callbackIframeContainer = document.getElementById(
+        'callbackIframeContainer'
+      ) as HTMLElement
+
+      if (!callbackIframeContainer) reject()
+
+      console.log(callbackIframeContainer)
+
+      const iframeEle = document.createElement('iframe')
+      iframeEle.id = 'authIframe'
+      iframeEle.style.display = 'none'
+      iframeEle.src = `${
+        APP_CONFIG.domain().auth
+      }/authentication/signin/${provider ||
+        commonData.defaultLoginPlatform}?prompt=none&login_hint=${
+        AUTH_APIS.getMyInfo().email
+      }&redirectUrl=${APP_CONFIG.domain().mainHost}/callback`
+
+      if (
+        callbackIframeContainer &&
+        callbackIframeContainer.children.length !== 0
+      )
+        callbackIframeContainer.innerHTML = ''
+
+      callbackIframeContainer.appendChild(iframeEle)
+
+      // TODO IE, 표준 방법도 추가
+      // iframeEle.onload = AUTH_APIS.iframeEventListener(iframeEle.id)
+      iframeEle.addEventListener('load', function(_e): void {
+        AUTH_APIS.iframeEventListener(iframeEle.id)
+          .then(at => resolve(at))
+          .catch(err => reject(err))
+      })
+    }),
+  iframeEventListener: (id: string) =>
+    new Promise((resolve, reject) => {
+      const callbackIframeContainer = document.getElementById(
+        'callbackIframeContainer'
+      ) as HTMLElement
+      const iframeEle = document.getElementById(id) as HTMLIFrameElement
+
+      if (iframeEle && iframeEle.contentWindow) {
+        const urlFromIframe = iframeEle.contentWindow.location.href
+
+        if (urlFromIframe && urlFromIframe !== 'about:blank') {
+          let url = new URL(urlFromIframe)
+          let at = url.searchParams.get('authorization_token') || ''
+          let ea = AUTH_APIS.getExpiredAt(
+            Number(url.searchParams.get('expired'))
+          )
+          AUTH_APIS.setTokens(at, ea, '')
+          iframeEle.removeAttribute('onload')
+          callbackIframeContainer.innerHTML = ''
+          resolve(at)
         }
-      });
-    });
-  },
-  getMyInfo() {
-    let userInfo = localStorage.getItem("user_info");
-    let userInfoWithJson = userInfo ? JSON.parse(userInfo) : "";
-    if (!userInfoWithJson && this.isAuthenticated()) {
-      this.renewSession();
-      return new UserInfo(null);
-    }
-    return new UserInfo(userInfoWithJson);
-  }
-};
+      } else {
+        let err = 'iframe does not exist.'
+        reject(err)
+      }
+    })
+}

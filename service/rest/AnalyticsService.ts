@@ -1,32 +1,30 @@
-import AxiosService from "./AxiosService";
+import AxiosService from './AxiosService'
 
-let getAnalyticsExportUrl = "analytics/export";
-let getAnalyticsListUrl = "analytics/list";
+let getAnalyticsExportUrl = 'analytics/export'
+let getAnalyticsListUrl = 'analytics/list'
 
 export default {
   GET: {
-    analyticsList: data => {
-      return new Promise((resolve, reject) => {
+    analyticsList: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getAnalyticsListUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    },
-    analyticsExport: data => {
-      return new Promise((resolve, reject) => {
+        )
+      }),
+    analyticsExport: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           getAnalyticsExportUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    }
+        )
+      })
   },
   POST: {}
-};
+}

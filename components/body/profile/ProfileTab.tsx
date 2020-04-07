@@ -1,24 +1,20 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import * as styles from "../../../public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import ProfileUploadTab from "./ProfileUploadTab";
-import ProfileVoteTab from "./ProfileVoteTab";
-import ProfileAnalyticsTab from "./ProfileAnalyticsTab";
-import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import * as styles from '../../../public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import ProfileUploadTab from './ProfileUploadTab'
+import ProfileVoteTab from './ProfileVoteTab'
+import ProfileAnalyticsTab from './ProfileAnalyticsTab'
+import React, { ReactElement } from 'react'
+import { ProfileTabProps } from '../../../typings/interfaces'
 
-type Type = {
-  profileInfo: any;
-  owner: boolean;
-};
-
-export default function({ profileInfo, owner }: Type) {
+export default function({ profileInfo, owner }: ProfileTabProps): ReactElement {
   return (
     <div className={styles.pt_container}>
       <Tabs forceRenderTabPanel={true}>
         <TabList>
-          <Tab>{psString("profile-uploaded")}</Tab>
-          <Tab>{psString("profile-voted")}</Tab>
-          {owner && <Tab>{psString("profile-analytics")}</Tab>}
+          <Tab>{psString('profile-uploaded')}</Tab>
+          <Tab>{psString('profile-voted')}</Tab>
+          {owner && <Tab>{psString('profile-analytics')}</Tab>}
         </TabList>
 
         <TabPanel>
@@ -36,5 +32,5 @@ export default function({ profileInfo, owner }: Type) {
         )}
       </Tabs>
     </div>
-  );
+  )
 }

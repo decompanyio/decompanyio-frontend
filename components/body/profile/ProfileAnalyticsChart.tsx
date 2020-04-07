@@ -1,7 +1,8 @@
-import * as styles from "../../../public/static/styles/main.scss";
-import CustomChart from "../../common/chart/CustomChart";
-import NoDataIcon from "../../common/NoDataIcon";
-import React from "react";
+import * as styles from '../../../public/static/styles/main.scss'
+import CustomChart from '../../common/chart/CustomChart'
+import NoDataIcon from '../../common/NoDataIcon'
+import React, { ReactElement } from 'react'
+import { ProfileAnalyticsChartProps } from '../../../typings/interfaces'
 
 export default function({
   idx,
@@ -12,44 +13,44 @@ export default function({
   analyticsList,
   chartFlag,
   result
-}) {
-  const handleWeekBtnClick = e => weekBtnClick(e);
-  const handleExport = value => exportBtnClick(value);
+}: ProfileAnalyticsChartProps): ReactElement {
+  const handleWeekBtnClick = (e: any): Function => weekBtnClick(e)
+  const handleExport = (value: string): Function => exportBtnClick(value)
 
   return (
     <div className={styles.pat_chartWrapper}>
       {idx === spreadItem && (
         <div
           className={styles.pat_dateBtn}
-          onClick={e => handleWeekBtnClick(e)}
+          onClick={(e): Function => handleWeekBtnClick(e)}
         >
           <div
             data-value="1w"
-            className={dateSet.week === 1 ? styles.pat_clicked : ""}
+            className={dateSet.week === 1 ? styles.pat_clicked : ''}
           >
             1w
           </div>
           <div
             data-value="1m"
-            className={dateSet.week === 4 ? styles.pat_clicked : ""}
+            className={dateSet.week === 4 ? styles.pat_clicked : ''}
           >
             1m
           </div>
           <div
             data-value="3m"
-            className={dateSet.week === 12 ? styles.pat_clicked : ""}
+            className={dateSet.week === 12 ? styles.pat_clicked : ''}
           >
             3m
           </div>
           <div
             data-value="6m"
-            className={dateSet.week === 24 ? styles.pat_clicked : ""}
+            className={dateSet.week === 24 ? styles.pat_clicked : ''}
           >
             6m
           </div>
           <div
             data-value="1y"
-            className={dateSet.year === 1 ? styles.pat_clicked : ""}
+            className={dateSet.year === 1 ? styles.pat_clicked : ''}
           >
             1y
           </div>
@@ -62,7 +63,7 @@ export default function({
             <p
               data-tip="Export tracking data as Excel file."
               className={styles.pat_exportBtn}
-              onClick={() => handleExport(result.seoTitle)}
+              onClick={(): Function => handleExport(result.seoTitle)}
             >
               <span>
                 <i className="material-icons">save</i>
@@ -83,5 +84,5 @@ export default function({
         analyticsList &&
         analyticsList.resultList.length === 0 && <NoDataIcon />}
     </div>
-  );
+  )
 }

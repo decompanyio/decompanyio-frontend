@@ -1,13 +1,13 @@
-import Layout from "../components/Layout";
-import { psString } from "../utils/localization";
-import * as styles from "public/static/styles/main.scss";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from '../components/Layout'
+import { psString } from '../utils/localization'
+import * as styles from 'public/static/styles/main.scss'
+import commonData from '../common/commonData'
+import React, { ReactElement } from 'react'
 
-function Privacy() {
+export default function Privacy(): ReactElement {
   return (
     <Layout
-      title={psString("helmet-title-privacy") + common_data.commonTitle}
+      title={psString('helmet-title-privacy') + commonData.commonTitle}
       path="privacy_policy"
     >
       <div className={styles.pp_container}>
@@ -348,7 +348,7 @@ function Privacy() {
           the information below.
           <br />
           ▶ Data Protection Officer (DPO):
-          <br />- Email address:{" "}
+          <br />- Email address:{' '}
           <a href="mailto: connect@decompany.io">connect@decompany.io</a>
           <br />
           Please do not hesitate to contact us should you have any concerns or
@@ -587,7 +587,7 @@ function Privacy() {
           Users may object to the collection and use of personal information by
           first contacting the Polaris Share owner / administrator. In the event
           that the Polaris Share owner / administrator cannot be reached, users
-          can send an email to{" "}
+          can send an email to{' '}
           <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
           <br />
           <div>
@@ -598,10 +598,10 @@ function Privacy() {
           <br />
           <div>8. Right to Independent Arbitration</div>
           Users whose objections are not resolved by any other means, may
-          contact{" "}
+          contact{' '}
           <a href="https://www.icdr.org">
             the International Centre For Dispute Resolution
-          </a>{" "}
+          </a>{' '}
           to invoke binding arbitration to determine whether Polaris Share has
           violated its obligations to an individual and whether any such
           violation remains fully or partially un-remedied.
@@ -609,13 +609,13 @@ function Privacy() {
           <br /> <br />
           <div>Exercising Rights</div>
           Users may exercise rights related to the collection and use of
-          personal information per the statements above or by email at{" "}
+          personal information per the statements above or by email at{' '}
           <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
           <br />
           <div>Changing / Withdrawing Consent</div>
           After granting consent, users can subsequently change / withdraw their
           consent to the collection, use and storage of personal information by
-          emailing{" "}
+          emailing{' '}
           <a href="mailto: connect@decompany.io">connect@decompany.io</a>.
           <br />
           <div>Legal Basis</div>
@@ -678,7 +678,5 @@ function Privacy() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
-
-export default Privacy;

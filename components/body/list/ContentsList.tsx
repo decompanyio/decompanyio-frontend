@@ -1,87 +1,98 @@
-import * as styles from "public/static/styles/main.scss";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { ThreeBounce } from "better-react-spinkit";
-import NoDataIcon from "../../common/NoDataIcon";
-import React, { useEffect, useState } from "react";
-import repos from "../../../utils/repos";
-import log from "utils/log";
-import ContentsListItem from "./ContentsListItem";
-import { AUTH_APIS } from "../../../utils/auth";
-
-type Type = {
-  documentList: any;
-  tag: string;
-  path: string;
-};
+import * as styles from 'public/static/styles/main.scss'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { ThreeBounce } from 'better-react-spinkit'
+import NoDataIcon from '../../common/NoDataIcon'
+import React, { ReactElement, useEffect, useState } from 'react'
+import repos from '../../../utils/repos'
+import log from 'utils/log'
+import ContentsListItem from './ContentsListItem'
+import { AUTH_APIS } from '../../../utils/auth'
+import DocumentInfo from '../../../service/model/DocumentInfo'
+import {
+  ContentsListProps,
+  ContentsListResultListSet,
+  DocumentId,
+  ParamsGetDocumentList
+} from '../../../typings/interfaces'
+import DocumentList from '../../../service/model/DocumentList';
 
 // document list GET API, parameter SET
-const setParams = (pageNo: number, tag: string, path: string) =>
+const setParams = (pageNo: number, tag: string, path: string): Promise<{}> =>
   Promise.resolve({
     pageNo: pageNo,
     tag: tag,
     path: path
-  });
+  })
 
-// GET 한 문서 데이터 set
-const setResultList = (listData: any, resultList: any) =>
-  new Promise(resolve => {
-    log.ContentList.fetchDocuments(false);
-
-    const _resultList = resultList;
-    const data = {
-      listData:
-        listData.length > 0 ? listData.concat(_resultList) : _resultList,
-      isEndPage: resultList.length < 10
-    };
-    resolve(data);
-  });
-
-export default function({ documentList, tag, path }: Type) {
-  const [listLength, setListLength] = useState(2);
-  const [bookmarkList, setBookmarkList] = useState(null);
+export default function({
+  documentList,
+  tag,
+  path
+}: ContentsListProps): ReactElement {
+  const [listLength, setListLength] = useState(2)
+  const [bookmarkList, setBookmarkList] = useState([] as DocumentId[])
   const [state, setState] = useState({
-    list: documentList.resultList || [],
+    list: (documentList.resultList as []) || [],
     endPage: documentList.resultList
       ? documentList.resultList.length < 10
-      : path !== "history" && path !== "mylist"
-  });
+      : path !== 'history' && path !== 'mylist'
+  })
 
-  // 무한 스크롤 추가 데이터 GET
-  const fetchData = async () =>
+  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  const setResultList = (
+    listData: [],
+    resultList: []
+  ): Promise<ContentsListResultListSet> =>
+    new Promise(resolve => {
+      log.ContentList.fetchDocuments()
+
+      let data: ContentsListResultListSet
+
+      data = {
+        listData: listData.concat(resultList) as [],
+        isEndPage: resultList.length < 10
+      }
+      return resolve(data)
+    })
+
+  // 무한 스크롤 액션 시, 추가 데이터를 GET 하여 기존 목록에 덧붙입니다.
+  const fetchData = async (): Promise<void> =>
     Promise.resolve(await setListLength(listLength + 1))
-      .then(() => setParams(listLength, tag, path))
-      .then(res => repos.Document.getDocumentList(res))
-      .then(res => setResultList(state.list, res.resultList || []))
-      .then((res: any) =>
+      .then(
+        (): Promise<ParamsGetDocumentList> => setParams(listLength, tag, path)
+      )
+      .then((res): Promise<DocumentList> => repos.Document.getDocumentList(res))
+      .then(
+        (res): Promise<ContentsListResultListSet> =>
+          setResultList(state.list, res.resultList || [])
+      )
+      .then((res): void =>
         setState({ list: res.listData, endPage: res.isEndPage })
       )
-      .catch(err => {
-        log.ContentList.fetchDocuments(err);
-        return err;
-      });
+      .catch((err): void => {
+        log.ContentList.fetchDocuments(err)
+      })
 
-  // 북마크 목록 GET
-  const getBookmarkList = () => {
-    repos.Query.getMyListFindMany({ userId: AUTH_APIS.getMyInfo().sub }).then(
-      res => setBookmarkList(res)
-    );
-  };
+  const getBookmarkList = (): Promise<void> =>
+    repos.Query.getMyListFindMany({
+      userId: AUTH_APIS.getMyInfo().id
+    }).then((res): void => setBookmarkList(res))
 
-  useEffect(() => {
-    if (AUTH_APIS.isAuthenticated()) {
-      getBookmarkList();
-    }
-  }, []);
+  useEffect((): void => {
+    log.ContentList.init()
 
-  useEffect(() => {
+    if (AUTH_APIS.isLogin()) void getBookmarkList()
+  }, [])
+
+  useEffect((): void => {
     if (
-      (path === "mylist" || path === "history") &&
+      (path === 'mylist' || path === 'history') &&
       !state.endPage &&
-      documentList.length > 0
+      documentList.resultList.length > 0
     ) {
-      setState({ list: documentList, endPage: true });
+      setState({ list: documentList.resultList, endPage: true })
     }
-  });
+  }, [path, state.endPage, documentList.resultList])
 
   return (
     <div className={styles.cl_container}>
@@ -96,19 +107,21 @@ export default function({ documentList, tag, path }: Type) {
             </div>
           }
         >
-          {state.list.map(result => (
-            <div
-              className={styles.cl_itemWrapper}
-              key={result.documentId + result.accountId}
-            >
-              <ContentsListItem
+          {state.list.map(
+            (result: DocumentInfo): ReactElement => (
+              <div
+                className={styles.cl_itemWrapper}
                 key={result.documentId + result.accountId}
-                documentData={result}
-                bookmarkList={bookmarkList}
-                path={path}
-              />
-            </div>
-          ))}
+              >
+                <ContentsListItem
+                  key={result.documentId + result.accountId}
+                  documentData={result}
+                  bookmarkList={bookmarkList}
+                  path={path}
+                />
+              </div>
+            )
+          )}
         </InfiniteScroll>
       )}
 
@@ -125,5 +138,5 @@ export default function({ documentList, tag, path }: Type) {
         </div>
       )}
     </div>
-  );
+  )
 }

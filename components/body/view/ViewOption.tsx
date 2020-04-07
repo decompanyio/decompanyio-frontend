@@ -1,69 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import * as styles from "../../../public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import { AUTH_APIS } from "../../../utils/auth";
-import { setActionMain } from "../../../redux/reducer/main";
-import repos from "../../../utils/repos";
-import ViewBookmark from "./ViewBookmark";
+import React, { ReactElement, useEffect, useState } from 'react'
+import * as styles from '../../../public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import { AUTH_APIS } from '../../../utils/auth'
+import repos from '../../../utils/repos'
+import ViewBookmark from './ViewBookmark'
+import { ViewOptionProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
-type Type = {
-  documentData: any;
-};
+export default function({ documentData }: ViewOptionProps): ReactElement {
+  const { myInfo, setAlertCode, setModal } = useMain()
+  const [optionTable, setOptionTable] = useState(false)
+  const [mylist, setMylist] = useState(null)
 
-export default function({ documentData }: Type) {
-  const dispatch = useDispatch();
-  const myInfoFromRedux = useSelector(state => state.main.myInfo);
-  const [optionTable, setOptionTable] = useState(false);
-  const [mylist, setMylist] = useState(null);
-
-  // 문서 다운로드
-  const getContentDownload = (documentId: string, documentName: string) => {
+  const downloadDocument = (documentId: string, documentName: string) => {
     repos.Document.getDocumentDownloadUrl({
       documentId: documentId
     }).then(result => {
-      const a = document.createElement("a");
+      const a = document.createElement('a')
 
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.href = result.downloadUrl;
-      a.setAttribute("download", documentName);
-      a.click();
+      a.style.display = 'none'
+      document.body.appendChild(a)
+      a.href = result.downloadUrl
+      a.setAttribute('download', documentName)
+      a.click()
 
-      window.URL.revokeObjectURL(a.href);
-      document.body.removeChild(a);
-    });
-  };
+      window.URL.revokeObjectURL(a.href)
+      document.body.removeChild(a)
+    })
+  }
 
-  // 찜 목록 GET
   const getMyList = () =>
     repos.Query.getMyListFindMany({
-      userId: myInfoFromRedux._id
-    }).then(res => setMylist(res));
+      userId: myInfo.id
+    }).then(res => setMylist(res))
 
-  // 문서 다운로드 전 데이터 SET
-  const handleDownloadContent = () => {
+  const setRequiredForDownload = () => {
     if (!documentData) {
-      return dispatch(setActionMain.alertCode(2091, {}));
+      return setAlertCode(2091, {})
     }
-    if (!AUTH_APIS.isAuthenticated() && !myInfoFromRedux.email) {
-      return dispatch(setActionMain.alertCode(2003, {}));
+    if (!AUTH_APIS.isLogin() && !myInfo.email) {
+      return setAlertCode(2003, {})
     }
 
-    getContentDownload(documentData.documentId, documentData.documentName);
-  };
+    downloadDocument(documentData.documentId, documentData.documentName)
+  }
 
   // 문서 수정 버튼 클릭 관리
-  const handleClickSettings = () =>
-    dispatch(setActionMain.modal("edit", { documentData }));
+  const handleSettingsBtnClick = () => setModal('edit', { documentData })
 
   // 문서 삭제 버튼 클릭 관리
-  const handleClickDeleteBtn = () =>
-    dispatch(setActionMain.modal("delete", { documentData }));
+  const handleDeleteBtnClick = () => setModal('delete', { documentData })
 
   useEffect(() => {
-    void getMyList();
-  }, []);
+    void getMyList()
+  }, [])
 
   return (
     <div className={styles.vib_optionBtn} id="viewer-option-btn">
@@ -77,10 +67,10 @@ export default function({ documentData }: Type) {
         <div className={styles.vib_optionTable} id="viewer-option-table">
           <div
             className={styles.vib_optionTableBtn}
-            onClick={() => handleDownloadContent()}
+            onClick={() => setRequiredForDownload()}
           >
             <i className="material-icons">save_alt</i>
-            {psString("download-btn")}
+            {psString('download-btn')}
           </div>
           {mylist && (
             <ViewBookmark
@@ -91,22 +81,22 @@ export default function({ documentData }: Type) {
           )}
           <div
             className={styles.vib_optionTableBtn}
-            onClick={() => handleClickSettings()}
+            onClick={() => handleSettingsBtnClick()}
           >
             <i className="material-icons">settings_applications</i>
-            {psString("common-modal-settings")}
+            {psString('common-modal-settings')}
           </div>
           {!documentData.isPublic && (
             <div
               className={styles.puti_optionTableBtn}
-              onClick={() => handleClickDeleteBtn()}
+              onClick={() => handleDeleteBtnClick()}
             >
               <i className="material-icons">delete</i>
-              {psString("common-modal-delete")}
+              {psString('common-modal-delete')}
             </div>
           )}
         </div>
       )}
     </div>
-  );
+  )
 }

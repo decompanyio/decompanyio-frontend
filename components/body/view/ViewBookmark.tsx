@@ -1,80 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { AUTH_APIS } from "../../../utils/auth";
-import * as styles from "../../../public/static/styles/main.scss";
-import { psString } from "../../../utils/localization";
-import repos from "../../../utils/repos";
-import { setActionMain } from "../../../redux/reducer/main";
+import React, { ReactElement, useEffect, useState } from 'react'
+import { AUTH_APIS } from '../../../utils/auth'
+import * as styles from '../../../public/static/styles/main.scss'
+import { psString } from '../../../utils/localization'
+import repos from '../../../utils/repos'
+import { useMain } from '../../../redux/main/hooks'
+import { ViewBookmarkProps } from '../../../typings/interfaces'
 
-type Type = {
-  documentData: any;
-  mylist: any;
-  click: any;
-};
+export default function({
+  documentData,
+  mylist,
+  click
+}: ViewBookmarkProps): ReactElement {
+  const { setAlertCode } = useMain()
+  const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
-export default function({ documentData, mylist, click }: Type) {
-  const dispatch = useDispatch();
-  const [bookmarkFlag, setBookmarkFlag] = useState(false);
-
-  // 찜하기
-  const checkBookmark = () => {
-    let flag;
+  const checkBookmarkAdded = (): void => {
+    let flag
 
     if (mylist.length > 0) {
-      flag = mylist.filter(v => v.documentId === documentData._id).length > 0;
+      flag =
+        mylist.filter((v): boolean => v.documentId === documentData.id).length >
+        0
     } else {
-      flag = false;
+      flag = false
     }
 
-    setBookmarkFlag(flag);
-  };
+    setBookmarkFlag(flag)
+  }
 
-  // 북마크 버튼 클릭 관리
-  const handleBookmark = () => {
-    setBookmarkFlag(true);
-    return repos.Mutation.addMyList(documentData.documentId)
-      .then(() => {
-        dispatch(setActionMain.alertCode(2121, {}));
-        return click();
+  const handleBookmarkBtnClick = (): void => {
+    setBookmarkFlag(true)
+    repos.Mutation.addMyList(documentData.documentId)
+      .then((): void => {
+        setAlertCode(2121, {})
+        click()
       })
-      .catch(() => dispatch(setActionMain.alertCode(2122, {})));
-  };
+      .catch(() => setAlertCode(2122, {}))
+  }
 
-  // 북마크 삭제 버튼 클릭 관리
-  const handleBookmarkRemove = () => {
-    setBookmarkFlag(false);
-    return repos.Mutation.removeMyList(documentData.documentId)
-      .then(() => {
-        dispatch(setActionMain.alertCode(2123, {}));
-        return click();
+  const handleBookmarkRemoveBtnClick = () => {
+    setBookmarkFlag(false)
+    repos.Mutation.removeMyList(documentData.documentId)
+      .then((): void => {
+        setAlertCode(2123, {})
+        click()
       })
-      .catch(() => dispatch(setActionMain.alertCode(2124, {})));
-  };
+      .catch(() => setAlertCode(2124, {}))
+  }
 
   useEffect(() => {
-    checkBookmark();
-  }, []);
+    checkBookmarkAdded()
+  }, [])
 
-  if (!AUTH_APIS.isAuthenticated()) return <div />;
+  if (!AUTH_APIS.isLogin()) return <div />
   if (bookmarkFlag) {
     return (
       <div
         className={styles.vib_optionTableBtn}
-        onClick={() => handleBookmarkRemove()}
+        onClick={(): void => handleBookmarkRemoveBtnClick()}
       >
         <i className="material-icons">bookmark_border</i>
-        {psString("bookmark-remove")}
+        {psString('bookmark-remove')}
       </div>
-    );
+    )
   } else {
     return (
       <div
         className={styles.vib_optionTableBtn}
-        onClick={() => handleBookmark()}
+        onClick={(): void => handleBookmarkBtnClick()}
       >
         <i className="material-icons">bookmark</i>
-        {psString("bookmark-add")}
+        {psString('bookmark-add')}
       </div>
-    );
+    )
   }
 }

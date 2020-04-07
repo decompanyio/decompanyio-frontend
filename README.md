@@ -7,7 +7,7 @@
 > Production URL : https://www.polarishare.com
 
 ## Local
-- npm start (port 80)
+- npm start (port 3000)
 
 ## Directory
 - common : common script files
@@ -18,6 +18,9 @@
 - redux : redux files (reducer, store ...)
 - typings : type configuration files for importing files in Next js project
 - utils : third-party APIs
+
+## Release Note
+> https://github.com/decompanyio/decompanyio-frontend/blob/master/doc/RELEASE_NOTE.md
 
 ## Guide
 English

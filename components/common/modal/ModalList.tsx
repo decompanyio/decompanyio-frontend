@@ -1,23 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import UploadDocumentModal from "./UploadDocumentModal";
-import EditDocumentModal from "./EditDocumentModal";
-import AwayModal from "./AwayModal";
-import UploadCompleteModal from "./UploadCompleteModal";
-import EmailModal from "./EmailModal";
-import ShareModal from "./ShareModal";
-import PrivateDocumentCountModal from "./PrivateDocumentCountModal";
-import DeleteDocumentModal from "./DeleteDocumentModal";
-import PublishModal from "./PublishModal";
-import PublishCompleteModal from "./PublishCompleteModal";
-import ImageCropModal from "./ImageCropModal";
-import DollarLearnMoreModal from "./DollarLearnMoreModal";
-import VoteModal from "./VoteModal";
-import DepositModal from "./DepositModal";
-import WithdrawModal from "./WithdrawModal";
+import React, { ReactElement } from 'react'
+import UploadDocumentModal from './UploadDocumentModal'
+import EditDocumentModal from './EditDocumentModal'
+import AwayModal from './AwayModal'
+import UploadCompleteModal from './UploadCompleteModal'
+import EmailModal from './EmailModal'
+import ShareModal from './ShareModal'
+import PrivateDocumentCountModal from './PrivateDocumentCountModal'
+import DeleteDocumentModal from './DeleteDocumentModal'
+import PublishModal from './PublishModal'
+import PublishCompleteModal from './PublishCompleteModal'
+import ImageCropModal from './ImageCropModal'
+import DollarLearnMoreModal from './DollarLearnMoreModal'
+import VoteModal from './VoteModal'
+import DepositModal from './DepositModal'
+import WithdrawModal from './WithdrawModal'
+import FullscreenModal from './FullscreenModal'
+import { useMain } from '../../../redux/main/hooks'
 
-export default function() {
-  const modalCode = useSelector(state => state.main.modalCode);
+export default function(): ReactElement {
+  const { modalCode } = useMain()
 
   return (
     {
@@ -64,7 +65,10 @@ export default function() {
       deposit: <DepositModal />,
 
       // 출금 모달
-      withdraw: <WithdrawModal />
+      withdraw: <WithdrawModal />,
+
+      // 전체화면 모달
+      fullscreen: <FullscreenModal />
     }[modalCode] || <div />
-  );
+  )
 }

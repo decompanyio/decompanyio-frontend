@@ -1,82 +1,89 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { ReactElement, useEffect, useState } from 'react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton
-} from "react-share";
-import common_view from "../../../common/common_view";
-import { APP_CONFIG } from "../../../app.config";
-import { psString } from "utils/localization";
-import common from "common/common";
-import { setActionMain } from "../../../redux/reducer/main";
-import * as styles from "../../../public/static/styles/main.scss";
+} from 'react-share'
+import commonView from '../../../common/commonView'
+import { APP_CONFIG } from '../../../app.config'
+import { psString } from 'utils/localization'
+import common from 'common/common'
+import * as styles from '../../../public/static/styles/main.scss'
+import { useMain } from '../../../redux/main/hooks'
+import DocumentInfo from '../../../service/model/DocumentInfo'
 
-export default function() {
-  const dispatch = useDispatch();
-  const { documentData } = useSelector(state => state.main.modalData);
-  const [closeFlag, setCloseFlag] = useState(false);
+export default function(): ReactElement {
+  const { modalData, setModal, setAlertCode } = useMain()
+
+  const tempModalData = modalData as any
+  const documentData = new DocumentInfo(
+    tempModalData && tempModalData.documentData
+      ? tempModalData.documentData
+      : null
+  )
+
+  const [closeFlag, setCloseFlag] = useState(false)
   const [copyBtnText, setCopyBtnText] = useState(
-    psString("publish-modal-complete-copy-url")
-  );
+    psString('publish-modal-complete-copy-url')
+  )
+
+  // 모달 숨기기 클래스 추가
+  const handleCloseFlag = () =>
+    new Promise(resolve => resolve(setCloseFlag(true)))
 
   // 종료 버튼 관리
   const handleClickClose = () =>
     handleCloseFlag()
       .then(() => common.delay(200))
-      .then(() => dispatch(setActionMain.modal(null)));
-
-  // 복사 버튼 관리
-  const handleCopyBtnClick = id =>
-    common_view
-      .clipboardCopy(id)
-      .then(() => dispatch(setActionMain.alertCode(2005, {})))
-      .then(() => handleCopyBtnText())
-      .catch(() => dispatch(setActionMain.alertCode(2007, {})));
+      .then(() => setModal(''))
 
   // 복사 버튼 텍스트 SET
   const handleCopyBtnText = () =>
-    setCopyBtnText(psString("publish-modal-complete-copied"));
+    setCopyBtnText(psString('publish-modal-complete-copied'))
 
-  // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () =>
-    new Promise(resolve => resolve(setCloseFlag(true)));
+  // 복사 버튼 관리
+  const handleCopyBtnClick = id =>
+    commonView
+      .clipboardCopy(id)
+      .then(() => setAlertCode(2005, {}))
+      .then(() => handleCopyBtnText())
+      .catch(() => setAlertCode(2007, {}))
 
   useEffect(() => {
-    common_view.setBodyStyleLock();
+    commonView.setBodyStyleLock()
 
     return () => {
-      common_view.setBodyStyleUnlock();
-      document.location.reload();
-    };
-  }, []);
+      commonView.setBodyStyleUnlock()
+      document.location.reload()
+    }
+  }, [])
 
-  let ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle;
+  let ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle
 
   return (
     <div className={styles.modal_container}>
       <div className={styles.modal_wrapper} />
       <div
         className={
-          styles.modal_body + " " + (closeFlag ? styles.modal_hide : "")
+          styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
         }
       >
         <div className={styles.modal_title}>
           <i
-            className={"material-icons " + styles.modal_closeBtn}
+            className={'material-icons ' + styles.modal_closeBtn}
             onClick={() => handleClickClose()}
           >
             close
           </i>
-          <h3>{psString("publish-modal-complete-title")}</h3>
+          <h3>{psString('publish-modal-complete-title')}</h3>
         </div>
 
         <div className={styles.modal_content}>
           <div className={styles.pcm_subject}>
-            {psString("publish-modal-complete-explain")}
+            {psString('publish-modal-complete-explain')}
           </div>
           <div className={styles.pcm_subject}>
-            {psString("publish-modal-complete-subject")}
+            {psString('publish-modal-complete-subject')}
           </div>
 
           <div className={styles.pcm_sns}>
@@ -85,11 +92,11 @@ export default function() {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    "/image/sns/ic-sns-linkedin-color.png"
+                    '/image/sns/ic-sns-linkedin-color.png'
                   }
                   alt="facebook sns icon"
                 />
-                {psString("viewer-page-sns-linkedin")}
+                {psString('viewer-page-sns-linkedin')}
               </div>
             </LinkedinShareButton>
           </div>
@@ -100,11 +107,11 @@ export default function() {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    "/image/sns/ic-sns-facebook-color.png"
+                    '/image/sns/ic-sns-facebook-color.png'
                   }
                   alt="facebook sns icon"
                 />
-                {psString("viewer-page-sns-fb")}
+                {psString('viewer-page-sns-fb')}
               </div>
             </FacebookShareButton>
           </div>
@@ -115,18 +122,18 @@ export default function() {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    "/image/sns/ic-sns-twitter-color.png"
+                    '/image/sns/ic-sns-twitter-color.png'
                   }
                   alt="facebook sns icon"
                 />
-                {psString("viewer-page-sns-twitter")}
+                {psString('viewer-page-sns-twitter')}
               </div>
             </TwitterShareButton>
           </div>
 
           <div
             className={styles.pcm_sns}
-            onClick={() => handleCopyBtnClick("publishModalCompleteCopyDummy")}
+            onClick={() => handleCopyBtnClick('publishModalCompleteCopyDummy')}
           >
             {copyBtnText}
             <input
@@ -140,5 +147,5 @@ export default function() {
         </div>
       </div>
     </div>
-  );
+  )
 }

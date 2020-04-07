@@ -1,183 +1,187 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import Link from "next/link";
-import { ThreeBounce } from "better-react-spinkit";
-import repos from "utils/repos";
-import { psString } from "utils/localization";
-import NoDataIcon from "components/common/NoDataIcon";
-import { APP_CONFIG } from "../../../app.config";
-import AnalyticsList from "../../../service/model/AnalyticsList";
-import * as styles from "../../../public/static/styles/main.scss";
-import ProfileAnalyticsChart from "./ProfileAnalyticsChart";
-import { setActionMain } from "../../../redux/reducer/main";
-import common_view from "common/common_view";
-import common from "common/common";
-import Pagination from "../../common/Pagination";
-import common_data from "../../../common/common_data";
-
-type Type = {
-  profileInfo: any;
-};
+// @ts-ignore
+import { ThreeBounce } from 'better-react-spinkit'
+import React, { ReactElement, useEffect, useState } from 'react'
+import Link from 'next/link'
+import repos from 'utils/repos'
+import { psString } from 'utils/localization'
+import NoDataIcon from 'components/common/NoDataIcon'
+import { APP_CONFIG } from '../../../app.config'
+import AnalyticsList from '../../../service/model/AnalyticsList'
+import * as styles from '../../../public/static/styles/main.scss'
+import ProfileAnalyticsChart from './ProfileAnalyticsChart'
+import commonView from 'common/commonView'
+import common from 'common/common'
+import Pagination from '../../common/Pagination'
+import commonData from '../../../common/commonData'
+import DocumentList from '../../../service/model/DocumentList'
+import { ProfileAnalyticsTabProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 const resultListModel = {
   resultList: [],
   pageNo: 1,
   totalCount: 0
-};
+}
 
-const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+const pageSize = commonData.myPageListSize // 화면상 리스트 수
 
-export default function({ profileInfo }: Type) {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [chartFlag, setChartFlag] = useState(false);
-  const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null));
-  const [spreadItem, setSpreadItem] = useState(-1);
-  const [page, setPage] = useState(1);
-  const [documentId, setDocumentId] = useState(null);
-  const [dataSet, setDataSet] = useState(resultListModel);
+export default function({
+  profileInfo
+}: ProfileAnalyticsTabProps): ReactElement {
+  const { setAlertCode } = useMain()
+  const [loading, setLoading] = useState(false)
+  const [chartFlag, setChartFlag] = useState(false)
+  const [analyticsList, setAnalyticsList] = useState(new AnalyticsList(null))
+  const [spreadItem, setSpreadItem] = useState(-1)
+  const [page, setPage] = useState(1)
+  const [documentId, setDocumentId] = useState('')
+  const [dataSet, setDataSet] = useState(resultListModel)
   const [dateSet, setDateSet] = useState({
     year: -1,
     week: 1
-  });
+  })
 
-  // 문서 리스트 GET
-  const fetchDocuments = (page: number) => {
+  // GET 데이터 관리
+  const handleData = (res: DocumentList): Promise<void> =>
+    new Promise((resolve, reject) => {
+      setLoading(false)
+
+      if (!res || !res.resultList) return reject()
+
+      resolve(
+        setDataSet({
+          resultList: res.resultList,
+          pageNo: res.pageNo,
+          totalCount: res.count
+        })
+      )
+    })
+
+  const getDocumentList = async (page: number): Promise<void> => {
     let params = {
       pageNo: page,
       username: profileInfo.username,
       email: profileInfo.email
-    };
+    }
 
     return Promise.resolve()
-      .then(() => setDataSet(resultListModel))
-      .then(() => setLoading(true))
-      .then(() => repos.Document.getDocumentList(params))
+      .then((): void => setDataSet(resultListModel))
+      .then((): void => setLoading(true))
+      .then((): Promise<DocumentList> => repos.Document.getDocumentList(params))
       .then(res => handleData(res))
       .catch(err => {
-        console.error(err);
-        dispatch(setActionMain.alertCode(2001, {}));
-      });
-  };
+        console.error(err)
+        setAlertCode(2001, {})
+      })
+  }
 
-  // GET 데이터 관리
-  const handleData = (res: any) => {
-    if (!res || !res.resultList) return Promise.reject();
-    setLoading(false);
-
-    setDataSet({
-      resultList: res.resultList,
-      pageNo: res.pageNo,
-      totalCount: res.count
-    });
-  };
-
-  // 차트 정보 GET
-  const getAnalytics = (documentId: any, dataKey) => {
+  const getChartData = (documentId: string, dataKey: number): void => {
     repos.Analytics.getAnalyticsList({
       week: dateSet.week,
       year: dateSet.year > 0 ? dateSet.year : null,
       documentId: documentId
-    }).then(result => {
-      setSpreadItem(Number(dataKey));
-      setAnalyticsList(result);
-      setDocumentId(documentId);
-      setChartFlag(true); // 차트 데이터 props 타이밍 동기화
-    });
-  };
+    }).then((res): void => {
+      setSpreadItem(dataKey)
+      setAnalyticsList(res)
+      setDocumentId(documentId)
+      setChartFlag(true) // 차트 데이터 props 타이밍 동기화
+    })
+  }
 
-  // 스크롤 아웃 관리 메소드
-  const handleClick = (e: any) => {
-    const dataKey = e.currentTarget.getAttribute("data-key");
-    const dataId = e.currentTarget.getAttribute("data-id");
+  const handleMouseClick = (e: React.MouseEvent<HTMLElement>): void => {
+    const dataKey = Number(e.currentTarget.getAttribute('data-key'))
+    const dataId = e.currentTarget.getAttribute('data-id')
 
     setDateSet({
       week: 1,
       year: -1
-    });
+    })
 
-    setSpreadItem(-1);
-    if (!chartFlag) getAnalytics(dataId, dataKey);
+    setSpreadItem(-1)
+
     // 차트 데이터 GET
-    else setChartFlag(false);
+    if (!chartFlag && dataKey && dataId) getChartData(dataId, dataKey)
     // 차트 데이터 props 타이밍 동기화
-  };
+    else setChartFlag(false)
+  }
 
-  // 엑셀 추출 버튼
-  const handleExport = (seoTitle: string) => {
+  const handleExportBtnClick = (seoTitle: string): void => {
     const data = {
       documentId: documentId,
       year: dateSet.week,
       week: dateSet.year
-    };
-    repos.Analytics.getAnalyticsExport(data).then(rst => {
-      const a = document.createElement("a");
-      a.style.display = "none";
-      document.body.appendChild(a);
+    }
+    repos.Analytics.getAnalyticsExport(data).then((res): void => {
+      const a = document.createElement('a')
+      a.style.display = 'none'
+      document.body.appendChild(a)
 
-      a.href = rst.csvDownloadUrl;
+      a.href = res.csvDownloadUrl
 
-      a.setAttribute("download", "analystics_" + seoTitle + ".xls");
-      a.click();
+      a.setAttribute('download', 'analystics_' + seoTitle + '.xls')
+      a.click()
 
-      window.URL.revokeObjectURL(a.href);
-      document.body.removeChild(a);
-    });
-  };
+      window.URL.revokeObjectURL(a.href)
+      document.body.removeChild(a)
+    })
+  }
 
-  // 날짜 선택 버튼
-  const handleWeekBtnClick = (e: any) => {
-    let weekValue = e.target.dataset.value;
-    let weekValueNum = -1;
+  const handleWeekBtnClick = (e: any): void => {
+    let weekValue = e.target.dataset.value
+    let weekValueNum = -1
 
     switch (weekValue) {
-      case "1w":
-        return (weekValueNum = 1);
+      case '1w':
+        weekValueNum = 1
+        break
 
-      case "1m":
-        return (weekValueNum = 4);
+      case '1m':
+        weekValueNum = 4
+        break
 
-      case "3m":
-        return (weekValueNum = 12);
+      case '3m':
+        weekValueNum = 12
+        break
 
-      case "6m":
-        return (weekValueNum = 24);
+      case '6m':
+        weekValueNum = 24
+        break
 
-      case "1y":
-        return (weekValueNum = 1);
+      case '1y':
+        weekValueNum = 1
+        break
 
       default:
-        break;
+        break
     }
 
     setDateSet({
-      week: weekValue !== "1y" ? weekValueNum : -1,
-      year: weekValue !== "1y" ? -1 : weekValueNum
-    });
-    setChartFlag(false); // 차트 데이터 props 타이밍 동기화
-    getAnalytics(documentId, spreadItem);
-  };
+      week: weekValue !== '1y' ? weekValueNum : -1,
+      year: weekValue !== '1y' ? -1 : weekValueNum
+    })
 
-  // handle pageNation click
-  const handlePageClick = (page: number) => {
-    return Promise.resolve()
-      .then(() => setPage(page))
-      .then(() => void fetchDocuments(page));
-  };
+    setChartFlag(false) // 차트 데이터 props 타이밍 동기화
+    getChartData(documentId, spreadItem)
+  }
+
+  const handlePageBtnClick = (page: number): Promise<void> =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): void => void getDocumentList(page))
 
   useEffect(() => {
-    void fetchDocuments(1);
-  }, []);
+    void getDocumentList(1)
+  }, [])
 
   let identification =
     profileInfo.username && profileInfo.username.length > 0
       ? profileInfo.username
-      : profileInfo.email;
+      : profileInfo.email
 
   return (
     <div className={styles.pat_container}>
       <div className={styles.pat_totalNum}>
-        {psString("profile-total-documents")}
+        {psString('profile-total-documents')}
         <span>{dataSet.totalCount}</span>
       </div>
 
@@ -187,14 +191,14 @@ export default function({ profileInfo }: Type) {
             <div className={styles.pat_thumbWrapper}>
               <Link
                 href={{
-                  pathname: "/contents_view",
+                  pathname: '/contents_view',
                   query: { seoTitle: result.seoTitle }
                 }}
-                as={"/@" + identification + "/" + result.seoTitle}
+                as={'/@' + identification + '/' + result.seoTitle}
               >
                 <div
                   className={styles.pat_thumb}
-                  onClick={() => common_view.scrollTop()}
+                  onClick={() => commonView.scrollTop()}
                 >
                   <img
                     src={common.getThumbnail(
@@ -205,10 +209,10 @@ export default function({ profileInfo }: Type) {
                     )}
                     alt={result.title ? result.title : result.documentName}
                     onError={e => {
-                      let element = e.target as HTMLImageElement;
-                      element.onerror = null;
+                      let element = e.target as HTMLImageElement
+                      element.onerror = null
                       element.src =
-                        APP_CONFIG.domain().static + "/image/logo-cut.png";
+                        APP_CONFIG.domain().static + '/image/logo-cut.png'
                     }}
                   />
                 </div>
@@ -218,14 +222,14 @@ export default function({ profileInfo }: Type) {
             <div className={styles.pat_titleWrapper}>
               <Link
                 href={{
-                  pathname: "/contents_view",
+                  pathname: '/contents_view',
                   query: { seoTitle: result.seoTitle }
                 }}
-                as={"/@" + identification + "/" + result.seoTitle}
+                as={'/@' + identification + '/' + result.seoTitle}
               >
                 <div
                   className={styles.pat_title}
-                  onClick={() => common_view.scrollTop()}
+                  onClick={() => commonView.scrollTop()}
                 >
                   {result.title ? result.title : result.documentName}
                 </div>
@@ -233,16 +237,16 @@ export default function({ profileInfo }: Type) {
             </div>
 
             <div className={styles.pat_date}>
-              {common_view.dateTimeAgo(result.created, false)}
+              {commonView.dateTimeAgo(result.created, false)}
             </div>
 
             <div
               className={
                 styles[
-                  "pat_btn" + (idx === spreadItem && chartFlag ? "On" : "")
+                  'pat_btn' + (idx === spreadItem && chartFlag ? 'On' : '')
                 ]
               }
-              onClick={e => handleClick(e)}
+              onClick={e => handleMouseClick(e)}
               title="See analytics of this document"
               data-key={idx}
               data-id={result.documentId}
@@ -250,7 +254,7 @@ export default function({ profileInfo }: Type) {
               <i>
                 <img
                   src={
-                    APP_CONFIG.domain().static + "/image/icon/i_faq_reverse.png"
+                    APP_CONFIG.domain().static + '/image/icon/i_faq_reverse.png'
                   }
                   alt="dropdown icon"
                 />
@@ -261,7 +265,7 @@ export default function({ profileInfo }: Type) {
               idx={idx}
               spreadItem={spreadItem}
               weekBtnClick={handleWeekBtnClick}
-              exportBtnClick={handleExport}
+              exportBtnClick={handleExportBtnClick}
               dateSet={dateSet}
               analyticsList={analyticsList}
               chartFlag={chartFlag}
@@ -281,10 +285,10 @@ export default function({ profileInfo }: Type) {
         <Pagination
           totalCount={dataSet.totalCount}
           pageCount={pageSize}
-          click={handlePageClick}
+          click={handlePageBtnClick}
           selectedPage={page}
         />
       )}
     </div>
-  );
+  )
 }

@@ -1,79 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { ThreeBounce } from "better-react-spinkit";
-import { setActionMain } from "../../../redux/reducer/main";
-import repos from "../../../utils/repos";
-import { psString } from "../../../utils/localization";
-import ProfileVoteTabItem from "./ProfileVoteTabItem";
-import * as styles from "../../../public/static/styles/main.scss";
-import NoDataIcon from "../../common/NoDataIcon";
-import Pagination from "../../common/Pagination";
-import common_data from "../../../common/common_data";
-
-type Type = {
-  profileInfo: any;
-  owner: boolean;
-};
+import React, { ReactElement, useEffect, useState } from 'react'
+import { ThreeBounce } from 'better-react-spinkit'
+import repos from '../../../utils/repos'
+import { psString } from '../../../utils/localization'
+import ProfileVoteTabItem from './ProfileVoteTabItem'
+import * as styles from '../../../public/static/styles/main.scss'
+import NoDataIcon from '../../common/NoDataIcon'
+import Pagination from '../../common/Pagination'
+import commonData from '../../../common/commonData'
+import CuratorDocuments from '../../../service/model/CuratorDocuments'
+import { ProfileVoteTabProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
 const resultListModel = {
   resultList: [],
   pageNo: 1,
   totalCount: 0
-};
+}
 
-const pageSize = common_data.myPageListSize; // 화면상 리스트 수
+// 표시되 리스트 수는 범위
+const pageSize = commonData.myPageListSize
 
-export default function({ profileInfo, owner }: Type) {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [dataSet, setDataSet] = useState(resultListModel);
-  const [page, setPage] = useState(1);
+export default function({
+  profileInfo,
+  owner
+}: ProfileVoteTabProps): ReactElement {
+  const { setAlertCode } = useMain()
+  const [loading, setLoading] = useState(false)
+  const [dataSet, setDataSet] = useState(resultListModel)
+  const [page, setPage] = useState(1)
 
-  // 문서 정보 fetch
-  const fetchDocuments = (page: number) => {
+  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  const setResultData = (res): Promise<void> =>
+    new Promise((resolve, reject) => {
+      setLoading(false)
+
+      if (!res || !res.resultList) return reject()
+
+      resolve(
+        setDataSet({
+          resultList: res.resultList,
+          pageNo: res.pageNo,
+          totalCount: res.count
+        })
+      )
+    })
+
+  const getVoteList = (page: number): Promise<void> => {
     let params = {
       pageNo: page,
-      userId: profileInfo._id
-    };
+      userId: profileInfo.id
+    }
 
     return Promise.resolve()
-      .then(() => setDataSet(resultListModel))
-      .then(() => setLoading(true))
-      .then(() => repos.Document.getCuratorDocuments(params))
-      .then(res => handleData(res))
-      .catch(err => {
-        console.error(err);
-        dispatch(setActionMain.alertCode(2001, {}));
-      });
-  };
+      .then((): void => setDataSet(resultListModel))
+      .then((): void => setLoading(true))
+      .then(
+        (): Promise<CuratorDocuments> =>
+          repos.Document.getCuratorDocuments(params)
+      )
+      .then(res => setResultData(res))
+      .catch((err): void => {
+        console.error(err)
+        setAlertCode(2001, {})
+      })
+  }
 
-  // GET 데이터 관리
-  const handleData = (res: any) => {
-    if (!res || !res.resultList) return Promise.reject();
-    setLoading(false);
-
-    setDataSet({
-      resultList: res.resultList,
-      pageNo: res.pageNo,
-      totalCount: res.count
-    });
-  };
-
-  // handle pageNation click
-  const handlePageClick = (page: number) => {
-    return Promise.resolve()
-      .then(() => setPage(page))
-      .then(() => void fetchDocuments(page));
-  };
+  const handlePageBtnClick = (page: number) =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): void => void getVoteList(page))
 
   useEffect(() => {
-    void fetchDocuments(1);
-  }, []);
+    void getVoteList(1)
+  }, [])
 
   return (
     <div className={styles.pvt_container}>
       <div className={styles.pvt_totalNum}>
-        {psString("profile-total-documents")}
+        {psString('profile-total-documents')}
         <span>{dataSet.resultList.length}</span>
       </div>
 
@@ -93,10 +97,10 @@ export default function({ profileInfo, owner }: Type) {
         <Pagination
           totalCount={dataSet.totalCount}
           pageCount={pageSize}
-          click={handlePageClick}
+          click={handlePageBtnClick}
           selectedPage={page}
         />
       )}
     </div>
-  );
+  )
 }

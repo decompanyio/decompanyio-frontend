@@ -1,10 +1,10 @@
-import * as styles from "public/static/styles/main.scss";
-import DocumentCardMock from "./DocumentCardMock";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import DocumentCardMock from './DocumentCardMock'
+import React, { ReactElement } from 'react'
 
-export default function() {
+export default function(): ReactElement {
   return (
-    <div className={styles.mlm_container}>
+    <div>
       <div className={styles.mlm_subjectWrapper}>
         <div className={styles.mlm_subject} />
       </div>
@@ -16,5 +16,5 @@ export default function() {
         <DocumentCardMock order={4} />
       </div>
     </div>
-  );
+  )
 }

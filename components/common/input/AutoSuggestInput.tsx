@@ -1,129 +1,130 @@
-import * as styles from "public/static/styles/main.scss";
-import common from "../../../common/common";
-import Autosuggest from "react-autosuggest";
-import { useSelector } from "react-redux";
-import { psString } from "utils/localization";
-import React, { useState } from "react";
+import * as styles from 'public/static/styles/main.scss'
+import common from '../../../common/common'
+import AutoSuggest from 'react-autosuggest'
+import { psString } from 'utils/localization'
+import React, { ReactElement, useState } from 'react'
+import { useMain } from '../../../redux/main/hooks'
+import TagListItem from '../../../service/model/TagListItem'
 
-type Type = {
-  search: any;
-  type: string;
-  getNameList?: any;
-};
+interface AutoSuggestInputProps {
+  search: Function
+  type: string
+  getNameList?: any
+}
 
-function AutoSuggestInput({ search, type, getNameList }: Type) {
-  const tagListFromRedux = useSelector(state => state.main.tagList);
-  const [value, setValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+function AutoSuggestInput({
+  search,
+  type,
+  getNameList
+}: AutoSuggestInputProps): ReactElement {
+  const { tagList } = useMain()
+  const [value, setValue] = useState('')
+  const [suggestions, setSuggestions] = useState([])
 
-  // 자동 완성 리스트 설정
-  const getSuggestions = (value: string) => {
-    const escapedValue = common.escapeRegexCharacters(value.trim());
+  const setAutoSuggestions = (value: string) => {
+    const escapedValue = common.escapeRegexCharacters(value.trim())
 
-    if (escapedValue === "") return [];
+    if (escapedValue === '') return []
 
-    const regex = new RegExp("^" + escapedValue, "i");
+    const regex = new RegExp('^' + escapedValue, 'i')
 
     switch (type) {
-      case "tag":
-        return tagListFromRedux.filter(data => regex.test(data._id));
+      case 'tag':
+        return tagList.filter((data: TagListItem) => regex.test(data._id))
 
-      case "name":
+      case 'name':
         let tempArr = getNameList.filter(
           (data, i) =>
             getNameList.findIndex(
               data2 =>
-                (data.user ? data.user.e : "Anonymous") ===
-                (data2.user ? data2.user.e : "Anonymous")
+                (data.user ? data.user.e : 'Anonymous') ===
+                (data2.user ? data2.user.e : 'Anonymous')
             ) === i
-        );
+        )
         return tempArr.filter(data =>
-          regex.test(data.user ? data.user.e : "Anonymous")
-        );
+          regex.test(data.user ? data.user.e : 'Anonymous')
+        )
 
       default:
-        break;
+        break
     }
-  };
+  }
 
-  // 보여줄 값 GET
   const getSuggestionValue = suggestion => {
     switch (type) {
-      case "tag":
-        return suggestion._id;
+      case 'tag':
+        return suggestion._id
 
-      case "name":
-        return suggestion.user ? suggestion.user.e : "Anonymous";
+      case 'name':
+        return suggestion.user ? suggestion.user.e : 'Anonymous'
 
       default:
-        break;
+        break
     }
-  };
+  }
 
-  const getSectionSuggestions = section => {
-    let arr = new Array(0);
-    arr.push(section);
-    return arr;
-  };
+  const getSectionSuggestions = (section): { _id: string; value: number }[] => {
+    let arr = new Array(0)
+    arr.push(section)
+    return arr
+  }
 
-  // placeholder 설정
-  const getPlaceholder = () => {
-    let _placeholder: string = "";
+  const setPlaceholder = (): string => {
+    let _placeholder: string
+    _placeholder = ''
 
     switch (type) {
-      case "tag":
-        return (_placeholder = psString("auto-placeholder-1"));
+      case 'tag':
+        return (_placeholder = psString('auto-placeholder-1'))
 
-      case "name":
-        return (_placeholder = psString("auto-placeholder-2"));
+      case 'name':
+        return (_placeholder = psString('auto-placeholder-2'))
 
       default:
-        break;
+        break
     }
 
-    return _placeholder;
-  };
+    return _placeholder
+  }
 
-  // @ts-ignore
-  const onChange = (event, { newValue }) => setValue(newValue);
+  const onChange = (_event, { newValue }) => setValue(newValue)
 
-  // @ts-ignore
-  const onSuggestionSelected = (event, { suggestion }) => {
-    search(suggestion);
-    setValue("");
-  };
+  const onSuggestionSelected = (_event, { suggestion }) => {
+    search(suggestion)
+    setValue('')
+  }
 
   const onSuggestionsFetchRequested = ({ value }) =>
-    setSuggestions(getSuggestions(value));
+    setSuggestions(setAutoSuggestions(value))
 
-  const onSuggestionsClearRequested = () => setSuggestions([]);
+  const onSuggestionsClearRequested = () => setSuggestions([])
 
   const renderSectionTitle = section => (
     <strong className={styles.asi_count}>{section.value}</strong>
-  );
+  )
 
   // 표시할 값 SET
   const renderSuggestion = suggestion => {
     switch (type) {
-      case "tag":
-        return suggestion._id;
+      case 'tag':
+        return suggestion._id
 
-      case "name":
-        return suggestion.user ? suggestion.user.e : "Anonymous";
+      case 'name':
+        return suggestion.user ? suggestion.user.e : 'Anonymous'
 
       default:
-        break;
+        break
     }
-  };
+  }
 
   const inputProps = {
-    placeholder: getPlaceholder(),
+    placeholder: setPlaceholder(),
     value,
     onChange: onChange
-  };
+  }
 
   return (
-    <Autosuggest
+    <AutoSuggest
       multiSection={true}
       suggestions={suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -136,7 +137,7 @@ function AutoSuggestInput({ search, type, getNameList }: Type) {
       getSectionSuggestions={getSectionSuggestions}
       inputProps={inputProps}
     />
-  );
+  )
 }
 
-export default AutoSuggestInput;
+export default AutoSuggestInput

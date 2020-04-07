@@ -1,13 +1,10 @@
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement } from 'react'
+import { DocumentCardMockProps } from '../../../typings/interfaces'
 
-type Type = {
-  order: number;
-};
-
-export default function({ order }: Type) {
+export default function({ order }: DocumentCardMockProps): ReactElement {
   return (
-    <div className={styles["dcm_container_" + order]}>
+    <div className={styles['dcm_container_' + order]}>
       <div className={styles.dcm_imgWrapper} />
 
       <div className={styles.dcm_content}>
@@ -25,5 +22,5 @@ export default function({ order }: Type) {
         </div>
       </div>
     </div>
-  );
+  )
 }

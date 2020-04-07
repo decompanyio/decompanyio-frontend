@@ -1,67 +1,75 @@
-import AxiosService from "./AxiosService";
+import AxiosService from './AxiosService'
 
-let accountSyncUrl = "account/sync";
-let accountGetUrl = "account/get";
-let accountUpdateUrl = "account/update";
-let profileImageUpdateUrl = "account/picture";
-let profileGetUrl = "profile/get";
+let accountSyncUrl = 'account/sync'
+let accountGetUrl = 'account/get'
+let accountUpdateUrl = 'account/update'
+let profileImageUpdateUrl = 'account/picture'
+let profileGetUrl = 'profile/get'
+let userInfoUrl = 'authentication/userinfo'
 
 export default {
   POST: {
-    sync: (data, callback, error) => {
-      AxiosService._requestWithHeader(
-        accountSyncUrl,
-        "POST",
-        data,
-        data => callback(data),
-        err => error(err)
-      );
-    },
-    accountUpdate: data => {
-      return new Promise((resolve, reject) => {
+    syncAuthAndRest: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestWithHeader(
+          accountSyncUrl,
+          'POST',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      }),
+    accountUpdate: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBody(
           accountUpdateUrl,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    },
-    profileImageUpdate: data => {
-      return new Promise((resolve, reject) => {
+        )
+      }),
+    profileImageUpdate: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithHeader(
           profileImageUpdateUrl,
-          "POST",
+          'POST',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    }
+        )
+      })
   },
   GET: {
-    profileGet: data => {
-      return new Promise((resolve, reject) => {
+    profileGet: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestWithUrlPram(
           profileGetUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    },
-    accountInfo: data => {
-      return new Promise((resolve, reject) => {
+        )
+      }),
+    accountInfo: data =>
+      new Promise((resolve, reject) => {
         AxiosService._requestGetWithHeader(
           accountGetUrl,
-          "GET",
+          'GET',
           data,
           data => resolve(data),
           err => reject(err)
-        );
-      });
-    }
+        )
+      }),
+    userInfo: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestWithUrlPramForAuth(
+          userInfoUrl,
+          'GET',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      })
   }
-};
+}

@@ -1,22 +1,33 @@
-import common_data from "../../common/common_data";
+import commonData from '../../common/commonData'
+import TagListItem from './TagListItem'
+
+const compare = (a, b) => {
+  if (a._id < b._id) return -1
+  if (a._id > b._id) return 1
+  return 0
+}
+
+const defaultTagArray = (tagList): TagListItem[] => {
+  let newTagArray: TagListItem[] = []
+
+  tagList.forEach(v => {
+    const tag = {
+      _id: v,
+      value: 0
+    }
+    newTagArray.push(new TagListItem(tag))
+  })
+
+  return newTagArray
+}
 
 export default class TagList {
-  tagList?: any;
+  public tagList: []
 
-  constructor(data) {
+  public constructor(data) {
     this.tagList =
       data && data.resultList
         ? data.resultList.sort(compare)
-        : common_data.tagList;
+        : defaultTagArray(commonData.tagList)
   }
 }
-
-const compare = (a, b) => {
-  if (a._id < b._id) {
-    return -1;
-  }
-  if (a._id > b._id) {
-    return 1;
-  }
-  return 0;
-};

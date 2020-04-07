@@ -1,7 +1,7 @@
 export default class TrackingExport {
-  downloadUrl: string;
+  public downloadUrl: string
 
-  constructor(data) {
-    this.downloadUrl = data && data.downloadUrl ? data.downloadUrl : "";
+  public constructor(data) {
+    this.downloadUrl = data && data.downloadUrl ? data.downloadUrl : ''
   }
 }

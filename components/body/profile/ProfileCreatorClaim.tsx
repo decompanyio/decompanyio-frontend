@@ -1,65 +1,61 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { psString } from "utils/localization";
-import { repos } from "../../../utils/repos";
-import { setActionMain } from "../../../redux/reducer/main";
-import * as styles from "../../../public/static/styles/main.scss";
+import React, { ReactElement, useState } from 'react'
+import { psString } from 'utils/localization'
+import { repos } from '../../../utils/repos'
+import * as styles from '../../../public/static/styles/main.scss'
+import { ProfileCreatorClaimProps } from '../../../typings/interfaces'
+import { useMain } from '../../../redux/main/hooks'
 
-type Type = {
-  documentData: any;
-  validClaimAmount: number;
-};
+export default function({
+  documentData,
+  validClaimAmount
+}: ProfileCreatorClaimProps): ReactElement {
+  const { setAlertCode } = useMain()
+  const [btnText, setBtnText] = useState(psString('claim-text'))
 
-export default function({ documentData, validClaimAmount }: Type) {
-  const dispatch = useDispatch();
-  const [btnText, setBtnText] = useState(psString("claim-text"));
-
-  // 클레임
-  const claimCreatorReward = () => {
+  const claimCreatorReward = (): void => {
     repos.Wallet.claimCreator({ documentId: documentData.documentId })
       .then((res: any) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
-          setBtnText("");
-          dispatch(setActionMain.alertCode(2031, {}));
+          setBtnText('')
+          setAlertCode(2031, {})
         } else {
-          setBtnText(psString("claim-btn-text-1"));
-          dispatch(setActionMain.alertCode(2033, {}));
+          setBtnText(psString('claim-btn-text-1'))
+          setAlertCode(2033, {})
         }
       })
-      .catch(err => {
-        console.log(err);
-        setBtnText(psString("claim-text"));
-        dispatch(setActionMain.alertCode(2032, {}));
-      });
-  };
+      .catch((err): void => {
+        console.log(err)
+        setBtnText(psString('claim-text'))
+        setAlertCode(2032, {})
+      })
+  }
 
-  // 클레임 버튼 클릭 관리
-  const handelClickClaim = () => {
+  const handelClaimBtnClick = (): void => {
     if (documentData) {
-      setBtnText(psString("claim-btn-text-2"));
-      claimCreatorReward();
+      setBtnText(psString('claim-btn-text-2'))
+      claimCreatorReward()
     }
-  };
+  }
 
-  if (btnText === "") {
-    return <div />;
+  if (btnText === '') {
+    return <div />
   }
 
   return (
     <div
       className={
         styles.pcc_btn +
-        " " +
-        (btnText === psString("claim-btn-text-2") ||
-        btnText === psString("claim-btn-text-1")
+        ' ' +
+        (btnText === psString('claim-btn-text-2') ||
+        btnText === psString('claim-btn-text-1')
           ? styles.pcc_btnDisabled
-          : "")
+          : '')
       }
-      onClick={() => handelClickClaim()}
+      onClick={(): void => handelClaimBtnClick()}
     >
-      {btnText}{" "}
-      {btnText === psString("claim-btn-text-2") ? "" : "$ " + validClaimAmount}
+      {btnText}{' '}
+      {btnText === psString('claim-btn-text-2') ? '' : '$ ' + validClaimAmount}
     </div>
-  );
+  )
 }

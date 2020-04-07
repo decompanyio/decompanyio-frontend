@@ -1,41 +1,41 @@
-import Layout from "components/Layout";
-import Link from "next/link";
-import * as styles from "public/static/styles/main.scss";
-import { psString } from "../utils/localization";
-import common_view from "../common/common_view";
-import { APP_CONFIG } from "../app.config";
-import common_data from "../common/common_data";
-import React from "react";
+import Layout from 'components/Layout'
+import Link from 'next/link'
+import * as styles from 'public/static/styles/main.scss'
+import { psString } from '../utils/localization'
+import commonView from '../common/commonView'
+import { APP_CONFIG } from '../app.config'
+import commonData from '../common/commonData'
+import React, { ReactElement } from 'react'
 
-export default function() {
+export default function(): ReactElement {
   return (
-    <Layout title={"About Us" + common_data.commonTitle} path="about_us">
+    <Layout title={'About Us' + commonData.commonTitle} path="about_us">
       <div className={styles.au_container}>
         <section className={styles.au_sectionWrapper_1}>
           <div className={styles.au_sectionDummy_1} />
 
           <div className={styles.au_section_1}>
             <div className={styles.au_mainTitle}>
-              {psString("about-main-subj")}
+              {psString('about-main-subj')}
             </div>
             <div className={styles.au_mainContent}>
-              {psString("about-main-explain")}
+              {psString('about-main-explain')}
             </div>
             <div className={styles.au_textAlign}>
               <Link href="/f">
                 <div
                   className={styles.au_learnMoreBtn}
-                  onClick={() => common_view.scrollTop()}
+                  onClick={() => commonView.scrollTop()}
                   title="Link to FAQ"
                 >
-                  {psString("main-banner-btn-4")}
+                  {psString('main-banner-btn-4')}
                 </div>
               </Link>
             </div>
           </div>
           <div className={styles.au_mainImg}>
             <img
-              src={APP_CONFIG.domain().static + "/image/common/about-main.png"}
+              src={APP_CONFIG.domain().static + '/image/common/about-main.png'}
               alt="about us main"
             />
           </div>
@@ -43,10 +43,10 @@ export default function() {
 
         <section className={styles.au_sectionWrapper_2}>
           <div className={styles.au_subTitle}>
-            {psString("about-first-section-subj")}
+            {psString('about-first-section-subj')}
           </div>
           <div className={styles.au_subContent}>
-            <div> {psString("about-first-section-explain")} </div>
+            <div> {psString('about-first-section-explain')} </div>
             <div>
               <iframe
                 width="560"
@@ -63,17 +63,17 @@ export default function() {
 
         <section className={styles.au_sectionWrapper_3}>
           <div className={styles.au_sectionDummy_3} />
-          <div className={styles.au_subTitle}>{psString("about-service")}</div>
+          <div className={styles.au_subTitle}>{psString('about-service')}</div>
           <div className={styles.au_subContent}>
-            {psString("about-second-section-explain")}
+            {psString('about-second-section-explain')}
             <div className={styles.au_section_3} />
           </div>
         </section>
 
         <section className={styles.au_sectionWrapper_4}>
-          <div className={styles.au_subTitle}>{psString("about-vision")}</div>
+          <div className={styles.au_subTitle}>{psString('about-vision')}</div>
           <div className={styles.au_subContent}>
-            {psString("about-third-section-explain")}
+            {psString('about-third-section-explain')}
           </div>
 
           <div className={styles.au_section_4}>
@@ -81,45 +81,45 @@ export default function() {
               <img
                 src={
                   APP_CONFIG.domain().static +
-                  "/image/common/about-vision-img-01.svg"
+                  '/image/common/about-vision-img-01.svg'
                 }
                 alt="Value of knowledge"
               />
               <div className={styles.au_visionTitle}>
-                {psString("about-third-section-chap-subj-1")}
+                {psString('about-third-section-chap-subj-1')}
               </div>
               <div className={styles.au_visionContent}>
-                {psString("about-third-section-chap-explain-1")}
+                {psString('about-third-section-chap-explain-1')}
               </div>
             </div>
             <div className={styles.au_visionWrapper}>
               <img
                 src={
                   APP_CONFIG.domain().static +
-                  "/image/common/about-vision-img-02.svg"
+                  '/image/common/about-vision-img-02.svg'
                 }
                 alt="No transaction fees"
               />
               <div className={styles.au_visionTitle}>
-                {psString("about-third-section-chap-subj-2")}
+                {psString('about-third-section-chap-subj-2')}
               </div>
               <div className={styles.au_visionContent}>
-                {psString("about-third-section-chap-explain-2")}
+                {psString('about-third-section-chap-explain-2')}
               </div>
             </div>
             <div className={styles.au_visionWrapper}>
               <img
                 src={
                   APP_CONFIG.domain().static +
-                  "/image/common/about-vision-img-03.svg"
+                  '/image/common/about-vision-img-03.svg'
                 }
                 alt="Content shared"
               />
               <div className={styles.au_visionTitle}>
-                {psString("about-third-section-chap-subj-3")}
+                {psString('about-third-section-chap-subj-3')}
               </div>
               <div className={styles.au_visionContent}>
-                {psString("about-third-section-chap-explain-3")}
+                {psString('about-third-section-chap-explain-3')}
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function() {
 
         <section className={styles.au_sectionWrapper_5}>
           <div className={styles.au_sectionDummy_5} />
-          <div className={styles.au_subTitle}> {psString("about-ps-team")}</div>
+          <div className={styles.au_subTitle}> {psString('about-ps-team')}</div>
 
           <div className={styles.au_subContent_5}>
             <div className={styles.au_teamWrapper}>
@@ -141,7 +141,7 @@ export default function() {
                     <img
                       src={
                         APP_CONFIG.domain().static +
-                        "/image/common/about-linkedin.svg"
+                        '/image/common/about-linkedin.svg'
                       }
                       alt="Linkedin icon"
                     />
@@ -179,7 +179,7 @@ export default function() {
                     <img
                       src={
                         APP_CONFIG.domain().static +
-                        "/image/common/about-linkedin.svg"
+                        '/image/common/about-linkedin.svg'
                       }
                       alt="Linkedin icon"
                     />
@@ -217,7 +217,7 @@ export default function() {
                     <img
                       src={
                         APP_CONFIG.domain().static +
-                        "/image/common/about-linkedin.svg"
+                        '/image/common/about-linkedin.svg'
                       }
                       alt="Linkedin icon"
                     />
@@ -252,7 +252,7 @@ export default function() {
                     <img
                       src={
                         APP_CONFIG.domain().static +
-                        "/image/common/about-linkedin.svg"
+                        '/image/common/about-linkedin.svg'
                       }
                       alt="Linkedin icon"
                     />
@@ -279,5 +279,5 @@ export default function() {
         </section>
       </div>
     </Layout>
-  );
+  )
 }

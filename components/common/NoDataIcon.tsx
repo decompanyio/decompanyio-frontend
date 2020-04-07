@@ -1,6 +1,6 @@
-import * as styles from "public/static/styles/main.scss";
-import React from "react";
+import * as styles from 'public/static/styles/main.scss'
+import React, { ReactElement } from 'react'
 
-export default function() {
-  return <div className={styles.ndi_container}>NO DATA</div>;
+export default function(): ReactElement {
+  return <div className={styles.ndi_container}>NO DATA</div>
 }

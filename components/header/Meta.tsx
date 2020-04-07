@@ -1,12 +1,8 @@
-import Head from "next/head";
-import React from "react";
+import Head from 'next/head'
+import React, { ReactElement } from 'react'
+import { MetaProps } from '../../typings/interfaces'
 
-type Type = {
-  title: string;
-  metaData: any;
-};
-
-export default function({ title, metaData }: Type) {
+export default function({ title, metaData }: MetaProps): ReactElement {
   return (
     <Head>
       <title>{title}</title>
@@ -22,6 +18,8 @@ export default function({ title, metaData }: Type) {
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="title" content={title} />
+      <meta name="tag" content={metaData.tag} />
+      <meta name="extension" content={metaData.extension} />
       <meta name="description" content={metaData.description} />
       <meta name="seoTitle" content={metaData.seoTitle} />
       <meta name="twitter:card" content={metaData.twitter.card} />
@@ -120,5 +118,5 @@ export default function({ title, metaData }: Type) {
         href="/static/styles/thirdparty.css"
       />
     </Head>
-  );
+  )
 }
