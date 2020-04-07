@@ -1,9 +1,14 @@
 {
   "preset": "ts-jest",
-  "testEnvironment": "node",
+  "testEnvironment": "jsdom",
   "globals": {
     "ts-jest": {
       "tsConfig": "tsconfig.jest.json"
     }
-  }
+  },
+  "moduleNameMapper": {
+    "^.+\\.(css|less|scss)$": "babel-jest"
+  },
+  "moduleDirectories": ["node_modules", "./"],
+  "rootDir": "./"
 }

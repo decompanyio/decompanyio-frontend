@@ -26,6 +26,7 @@
     "@zeit/next-sass": "^1.0.1",
     "auth0-js": "^9.12.2",
     "axios": "^0.19.2",
+    "babel-jest": "^25.2.6",
     "babel-polyfill": "^6.26.0",
     "better-react-spinkit": "^2.0.4",
     "bignumber.js": "^9.0.0",

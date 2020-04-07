@@ -1,5 +1,5 @@
 import { psString } from '../../../utils/localization'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/main.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
 import { DocumentId, ContentsBookmarkProps } from '../../../typings/interfaces'
@@ -16,12 +16,12 @@ export default function({
   const checkBookmarkList = (): void => {
     let flag
 
-    if (bookmarkList.length > 0)
+    if (bookmarkList.length > 0) {
       flag =
         bookmarkList.filter(
           (value: DocumentId): boolean => value.documentId === documentData.id
         ).length > 0
-    else flag = false
+    } else flag = false
 
     setBookmarkFlag(flag)
   }

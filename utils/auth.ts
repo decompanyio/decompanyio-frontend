@@ -1,8 +1,8 @@
-import { APP_CONFIG } from 'app.config'
 import commonData from '../common/commonData'
 import { repos } from './repos'
 import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
+import { APP_CONFIG } from '../app.config'
 
 export const AUTH_APIS = {
   login: (provider?: string, returnUrl?: string) => {

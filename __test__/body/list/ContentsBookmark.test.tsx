@@ -4,32 +4,41 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import ContentsBookmark from '../../../components/body/list/ContentsBookmark'
 import DocumentInfo from '../../../service/model/DocumentInfo'
+import { DocumentId } from '../../../typings/interfaces'
+import store from '../../../redux/store'
+import { Provider } from 'react-redux'
 
-let bookmarkList: {}[]
+let bookmarkList: DocumentId[]
 let path = ''
-let documentData = new DocumentInfo({ documentId: 'test1234' })
+let documentData = new DocumentInfo({ id: 'test1234' })
 
 describe('<ContentsBookmark />', () => {
   it('show icons correctly when bookmark flag is TRUE', () => {
-    bookmarkList = [{ documentList: 'test1234' }]
+    bookmarkList = [{ documentId: 'test1234' }]
 
     const tree = render(
-      <ContentsBookmark
-        bookmarkList={bookmarkList}
-        documentData={documentData}
-        path={path}
-      />
+      <Provider store={store}>
+        <ContentsBookmark
+          bookmarkList={bookmarkList}
+          documentData={documentData}
+          path={path}
+        />
+      </Provider>
     )
     tree.getByText('bookmark')
   })
 
   it('show icons correctly when bookmark flag is FALSE', () => {
+    bookmarkList = [{ documentId: '' }]
+
     const tree = render(
-      <ContentsBookmark
-        bookmarkList={bookmarkList}
-        documentData={documentData}
-        path={path}
-      />
+      <Provider store={store}>
+        <ContentsBookmark
+          bookmarkList={bookmarkList}
+          documentData={documentData}
+          path={path}
+        />
+      </Provider>
     )
     tree.getByText('bookmark_border')
   })
