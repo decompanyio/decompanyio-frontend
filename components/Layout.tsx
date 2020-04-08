@@ -11,7 +11,6 @@ import log from '../utils/log'
 import LoadingModal from './common/modal/LoadingModal'
 import AlertList from './common/alert/AlertList'
 import ModalList from './common/modal/ModalList'
-import commonData from '../common/commonData'
 import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
 import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
@@ -19,22 +18,13 @@ import UserInfo from '../service/model/UserInfo'
 import { useMain } from '../redux/main/hooks'
 
 export default function(props): ReactElement {
-  const {
-    modalCode,
-    myInfo,
-    setMyInfo,
-    setModal,
-    setTagList,
-    setIsMobile
-  } = useMain()
+  const { myInfo, setMyInfo, setTagList, setIsMobile } = useMain()
 
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
   const [path] = useState(props.path)
 
   let _prevScrollPos = 0
-  let awayTime: number // 자리비움 시간
-  let t: number // 1 min
   let isMobileChecker = false
 
   // 스크롤 이벤트 시 element 관리
@@ -119,11 +109,31 @@ export default function(props): ReactElement {
       .catch(err => log.Layout.setTagList(err))
       .then(() => log.Layout.setTagList(false))
 
+  // TODO 트랙킹 자리비움 백엔드 로직 배포 시, 기능 추
   // 자리비움 시간 SET
+  /*let t = commonData.awayCheckTime // 1 min
+  let awayTime = 0 // 자리비움 시간*/
+
   const setAwayTime = (): void => {
-    if (awayTime > 0) awayTime = 0
-    if (modalCode === 'away') setModal('')
+    /*   if (awayTime > 0) awayTime = 0
+    if (modalCode === 'away') setModal('')*/
   }
+
+  /*  // Check Away Time
+  const setIntervalAwayTime = setInterval(() => {
+    awayTime += t
+
+    console.log('interval awaytime', awayTime, modalCode)
+
+    if (awayTime >= t * 15 && modalCode !== 'away') {
+      console.log('get in!!')
+      setModal('away')
+    }
+  }, t)
+
+
+      clearInterval(interval)
+  */
 
   // 모바일 유무 REDUX SET
   const setIsMobileToRedux = (): void => {
@@ -134,14 +144,14 @@ export default function(props): ReactElement {
     }
   }
 
+  const handleResize = (): void => setIsMobileToRedux()
+  const handleKeydown = (): void => setAwayTime()
+  const handleMousemove = (): void => setAwayTime()
   const handleScroll = () =>
     manageElement(path).then((currentScrollPos: number) => {
       setScrollToTopValue(currentScrollPos)
       _prevScrollPos = currentScrollPos
     })
-  const handleResize = (): void => setIsMobileToRedux()
-  const handleKeydown = (): void => setAwayTime()
-  const handleMousemove = (): void => setAwayTime()
 
   // SET 이벤트 리스너
   const handleEventListener = (): void => {
@@ -160,8 +170,6 @@ export default function(props): ReactElement {
 
   useEffect(() => {
     log.Layout.init()
-    awayTime = 0 // 자리비움 시간
-    t = commonData.awayCheckTime
 
     repos.init().then(() => {
       // SET 모바일 유무
@@ -177,13 +185,6 @@ export default function(props): ReactElement {
       setMyInfoToStore().then((): void => setInit(true))
     })
 
-    // Check Away Time
-    let interval = setInterval(() => {
-      awayTime = awayTime + t
-
-      if (awayTime >= t * 15 && modalCode !== 'away') setModal('away')
-    }, t)
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
       log.Layout.handleScrollEnd()
@@ -196,8 +197,6 @@ export default function(props): ReactElement {
 
       window.removeEventListener('mousemove', handleMousemove)
       log.Layout.handleMousemoveEnd()
-
-      clearInterval(interval)
     }
   }, [])
 

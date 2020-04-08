@@ -9,25 +9,34 @@ export default function(): ReactElement {
   const { setAlertCode } = useMain()
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (AUTH_APIS.isLogin()) Router.push('/')
+      let url = new URL(document.location.href)
+      let returnUrl = url.searchParams.get('return_url') || ''
 
-      // 스크롤 숨김
-      commonView.setBodyStyleLock()
-      AUTH_APIS.handleAuthentication(window.location)
-        .then((email: string) =>
-          Router.push(
-            {
-              pathname: '/my_page',
-              query: { identification: email }
-            },
-            '/@' + email
-          )
-        )
-        .catch((err): void => {
-          console.log('err: ', err)
-          setAlertCode(2004, null)
-          Router.push('/')
-        })
+      if (returnUrl && returnUrl === 'silent') {
+        // console.log('This page is made for Silent Login.')
+      } else {
+        if (AUTH_APIS.isLogin()) Router.push('/')
+        else {
+          // 스크롤 숨김
+          commonView.setBodyStyleLock()
+
+          AUTH_APIS.handleAuthentication(window.location)
+            .then((email: string) =>
+              Router.push(
+                {
+                  pathname: '/my_page',
+                  query: { identification: email }
+                },
+                '/@' + email
+              )
+            )
+            .catch((err): void => {
+              console.log('err: ', err)
+              setAlertCode(2004, null)
+              Router.push('/')
+            })
+        }
+      }
     }
 
     return () => {

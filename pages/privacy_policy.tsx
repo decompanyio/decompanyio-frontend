@@ -4,7 +4,7 @@ import * as styles from 'public/static/styles/main.scss'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
 
-export default function Privacy(): ReactElement {
+export default function(): ReactElement {
   return (
     <Layout
       title={psString('helmet-title-privacy') + commonData.commonTitle}

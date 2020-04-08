@@ -30,19 +30,17 @@ export default function({ path }: MainListProps): ReactElement {
   const getHistory = (id: string): Promise<[]> =>
     repos.Document.getHistory({ userId: id }).then(res => res.resultList)
 
-  useEffect(() => {
+  useEffect((): void => {
     ;(async function(): Promise<void> {
       let _documentData = [{}]
 
-      if (AUTH_APIS.isLogin() && path === 'mylist') {
+      if (AUTH_APIS.isLogin() && path === 'mylist')
         _documentData = await getMylist(AUTH_APIS.getMyInfo().id)
-      } else if (AUTH_APIS.isLogin() && path === 'history') {
+      else if (AUTH_APIS.isLogin() && path === 'history')
         _documentData = await getHistory(AUTH_APIS.getMyInfo().id)
-      } else if (path !== 'mylist' && path !== 'history') {
+      else if (path !== 'mylist' && path !== 'history')
         _documentData = await getDocuments(path)
-      } else {
-        setDataExist(false)
-      }
+      else setDataExist(false)
 
       log.MainList.getDocuments(path)
 
@@ -53,11 +51,11 @@ export default function({ path }: MainListProps): ReactElement {
   }, [])
 
   if (dataExist) {
-    if (documentData.length > 0) {
+    if (documentData.length > 0 && documentData[0] !== {}) {
       return (
         <div>
           <div className={styles.ml_subjectWrapper}>
-            <Link href="/contents_list" as={path}>
+            <Link href={'/contents_list'} as={path}>
               <div className={styles.ml_subject}>
                 {psString('main-category-' + path)}
               </div>

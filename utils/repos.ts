@@ -665,7 +665,7 @@ export const repos = {
       }
 
       return WalletService.POST.claimCreator(params)
-        .then((result) => result)
+        .then(result => result)
         .catch(err => err)
     },
     async claimCurator(data) {
