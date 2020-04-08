@@ -55,7 +55,7 @@ export const APP_CONFIG = {
       viewer: 'https://viewer.polarishare.com/',
       embed: 'https://embed.polarishare.com/',
       graphql: 'https://api.polarishare.com/graphql/',
-      auth: 'https://auth.share.decompany.io'
+      auth: 'https://auth.polarishare.com/'
     }
   }
 }
