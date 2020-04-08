@@ -255,6 +255,7 @@ app.prepare().then(() => {
           .blue
     )
 
+    console.log('Project Version : '.bold + process.env.npm_package_version)
     console.log('NODE_ENV : '.bold + process.env.NODE_ENV)
     console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB)
     console.log('\n\n')
