@@ -229,8 +229,6 @@ export const AUTH_APIS = {
           )
           AUTH_APIS.setTokens(at, ea, '')
 
-          // console.log('iframe token : ', at)
-
           if (at) resolve(at)
           else reject('Authorize Token does not exist.')
         }
