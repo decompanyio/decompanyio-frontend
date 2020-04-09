@@ -1,7 +1,7 @@
 # Release Note
 
 ## 2020.04.09a
-- Edit credential option of AXIOS
+- Edit the credential option of AXIOS
 
 ## 1.9.19
 - Delete Away mode

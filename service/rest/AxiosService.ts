@@ -20,7 +20,7 @@ export default {
 
     let tempUrl = ''
     if (url.split('/')[6]) {
-      tempUrl = url.split('/')[6].split('/')[0]
+      tempUrl = url.split('/')[6].split('?')[0]
     }
 
     axios({
@@ -31,6 +31,7 @@ export default {
       withCredentials: tempUrl === 'download' || tempUrl === 'collect'
     })
       .then(response => {
+        console.log(response)
         if (this.DEBUG()) {
           console.log(
             '성공\nurl: ' + url + '\nres:\n' + JSON.stringify(response.data)
