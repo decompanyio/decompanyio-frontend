@@ -20,6 +20,8 @@ export default function Index({ profileInfo }, ...rest): ReactElement {
   const [owner, setOwner] = useState(-1)
 
   useEffect(() => {
+    console.log(profileInfo)
+
     if (owner === -1) {
       if (
         AUTH_APIS.isLogin() &&

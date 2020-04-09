@@ -20,7 +20,7 @@ export default {
 
     let tempUrl = ''
     if (url.split('/')[6]) {
-      tempUrl = url.split('/')[6].substr(0, 8)
+      tempUrl = url.split('/')[6].split('/')[0]
     }
 
     axios({
