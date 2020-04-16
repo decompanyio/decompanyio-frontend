@@ -68,10 +68,9 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   ratio = Number(getImgInfo(documentData))
 
   useEffect(() => {
-    repos.Document.getCreatorRewards(
-      documentData.documentId,
-      documentData.author.id
-    ).then(res => setReward(common.toEther(res)))
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
   })
 
   return (
@@ -88,6 +87,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           onClick={(): void => commonView.scrollTop()}
         >
           <img
+            id="test1234"
             src={imgUrl}
             alt={documentData.title}
             className={ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img}

@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { MainState } from './reducer'
 import { useCallback } from 'react'
 import UserInfo from '../../service/model/UserInfo'
 import { actions } from './actions'
+import { StateProps } from '../../typings/interfaces'
 
 export const useMain = () => {
-  const initComplete = useSelector((state: MainState) => state.initComplete)
-  const myInfo = useSelector((state: MainState) => state.myInfo)
-  const tagList = useSelector((state: MainState) => state.tagList)
-  const isMobile = useSelector((state: MainState) => state.isMobile)
-  const alertCode = useSelector((state: MainState) => state.alertCode)
-  const alertData = useSelector((state: MainState) => state.alertData)
-  const modalCode = useSelector((state: MainState) => state.modalCode)
-  const modalData = useSelector((state: MainState) => state.modalData)
+  const initComplete = useSelector(({ main }: StateProps) => main.initComplete)
+  const myInfo = useSelector(({ main }: StateProps) => main.myInfo)
+  const tagList = useSelector(({ main }: StateProps) => main.tagList)
+  const isMobile = useSelector(({ main }: StateProps) => main.isMobile)
+  const alertCode = useSelector(({ main }: StateProps) => main.alertCode)
+  const alertData = useSelector(({ main }: StateProps) => main.alertData)
+  const modalCode = useSelector(({ main }: StateProps) => main.modalCode)
+  const modalData = useSelector(({ main }: StateProps) => main.modalData)
 
   const dispatch = useDispatch()
 

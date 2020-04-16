@@ -7,20 +7,19 @@ import repos from 'utils/repos'
 import TrackingInfo from '../../../service/model/TrackingInfo'
 import common from '../../../common/common'
 import { TrackingDetailListProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
 
 // TODO SSR 미동작
 export default function({
   documentData,
   text,
-  cid
+  cid,
+  user
 }: TrackingDetailListProps): ReactElement {
-  const { myInfo } = useMain()
   const [trackingInfo, setTrackingInfo] = useState(new TrackingInfo(null))
   const [email, setEmail] = useState('')
 
   useEffect(() => {
-    setEmail(myInfo.email)
+    setEmail(user)
     ;(async function() {
       let trackingInfoResult = await repos.Tracking.getTrackingInfo({
         cid: cid,
@@ -33,7 +32,9 @@ export default function({
   return (
     <section className={styles.tdl_container}>
       <div className={styles.tdl_title}>
-        <span className={styles.tdl_email}>{email}</span>
+        <span className={styles.tdl_email}>
+          {email === 'anonymous' ? psString('tracking-list-anonymous') : email}
+        </span>
         <span className={styles.tdl_time}>
           {trackingInfo.resultList.length > 0
             ? common.timestampToDate(

@@ -22,7 +22,7 @@ export default function(): ReactElement {
       {
         pathname: '/contents_list'
       },
-      'tag/' + tag._id
+      '/tag/' + tag._id
     )
   }
 

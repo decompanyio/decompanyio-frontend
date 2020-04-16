@@ -169,7 +169,6 @@ export default {
   getCreatorRewards: data =>
     `Creator {
     determineCreatorRoyalty(
-      userId: "${data.userId}"
       documentId: "${data.documentId}"
     ) {
       activeDate
@@ -178,6 +177,19 @@ export default {
       pageview
       totalPageview
       royalty
+    }
+  }`,
+  getNDaysRoyalty: data =>
+    `Creator {
+    getNDaysRoyalty(
+      documentId: "${data.documentId}"
+      days: ${data.days}
+    ) {
+      activeDate
+      documentId
+      royalty
+      pageview
+      totalPageview
     }
   }`,
   getCuratorRewards: data =>
@@ -196,7 +208,6 @@ export default {
   getClaimableRoyalty: data =>
     `Creator  {
     getClaimableRoyalty(
-      userId: "${data.userId}"
       documentId: "${data.documentId}"
     ) {
       activeDate

@@ -32,7 +32,7 @@ export default function(): ReactElement {
             )
             .catch((err): void => {
               console.log('err: ', err)
-              setAlertCode(2004, null)
+              setAlertCode(2004, {})
               Router.push('/')
             })
         }

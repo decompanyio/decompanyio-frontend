@@ -1,6 +1,5 @@
 import * as styles from 'public/static/styles/main.scss'
 import Link from 'next/link'
-import { psString } from 'utils/localization'
 import { APP_CONFIG } from '../../../app.config'
 import RewardCard from 'components/common/card/RewardCard'
 import common from '../../../common/common'
@@ -12,9 +11,6 @@ export default function({
   documentData,
   ratio
 }: TrackingAuthorProps): ReactElement {
-  const [showAnonymous, setShowAnonymous] = useState(false)
-  const [includeOnlyOnePage, setIncludeOnlyOnePage] = useState(false)
-  const [optionTable, setOptionTable] = useState(false)
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)
 
@@ -27,38 +23,11 @@ export default function({
   const vote = common.toEther(documentData.latestVoteAmount)
   const view = documentData.latestPageview || 0
 
-  const handleAnonymousVisibleOption = (): void => {
-    setShowAnonymous(!showAnonymous)
-  }
-
-  const handleOnePageVisibleOption = (): void => {
-    setIncludeOnlyOnePage(includeOnlyOnePage)
-  }
-
-  const handleExportBtnClick = (): void => {
-    repos.Tracking.getTrackingExport(documentData.documentId).then(
-      (rst): void => {
-        const a = document.createElement('a')
-        a.style.display = 'none'
-        document.body.appendChild(a)
-
-        a.href = rst.downloadUrl
-
-        a.setAttribute('download', 'tracking_' + documentData.seoTitle + '.xls')
-        a.click()
-
-        window.URL.revokeObjectURL(a.href)
-        document.body.removeChild(a)
-      }
-    )
-  }
-
   useEffect(() => {
-    repos.Document.getCreatorRewards(
-      documentData.documentId,
-      documentData.author.id
-    ).then((res): void => setReward(common.toEther(res)))
-  }, [])
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
+  })
 
   return (
     <div className={styles.ta_container}>
@@ -91,42 +60,7 @@ export default function({
           <Link href={'/@' + identification + '/' + documentData.seoTitle}>
             <a className={styles.ta_infoTitle}>{documentData.title}</a>
           </Link>
-          <div
-            className={styles.ta_optionBtn}
-            onClick={(): void => setOptionTable(!optionTable)}
-          >
-            <i className="material-icons">more_vert</i>
-            {optionTable && (
-              <div className={styles.ta_optionTable}>
-                <div
-                  className={styles.ta_optionTableBtn}
-                  title={
-                    showAnonymous
-                      ? psString('tracking-list-option-hide')
-                      : psString('tracking-list-option-show')
-                  }
-                  onClick={(): void => handleAnonymousVisibleOption()}
-                >
-                  {showAnonymous
-                    ? psString('tracking-list-option-hide')
-                    : psString('tracking-list-option-show')}
-                </div>
-                <div
-                  className={styles.ta_optionTableBtn}
-                  title={
-                    includeOnlyOnePage
-                      ? psString('tracking-list-option-exclude')
-                      : psString('tracking-list-option-include')
-                  }
-                  onClick={(): void => handleOnePageVisibleOption()}
-                >
-                  {includeOnlyOnePage
-                    ? psString('tracking-list-option-exclude')
-                    : psString('tracking-list-option-include')}
-                </div>
-              </div>
-            )}
-          </div>
+
           <div className={styles.ta_item}>
             <span
               className={styles.ta_reward}
@@ -154,16 +88,6 @@ export default function({
               {common.timestampToDate(documentData.created)}
             </div>
           </div>
-          <p
-            data-tip="Export tracking data as Excel file."
-            className={styles.ta_exportBtn}
-            onClick={(): void => handleExportBtnClick()}
-          >
-            <span>
-              <i className="material-icons">save</i>
-              {psString('tracking-list-export')}
-            </span>
-          </p>
         </dl>
       </div>
     </div>

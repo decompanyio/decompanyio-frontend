@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/main.scss'
-import { ProfileAvatarEditProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
+import { ProfileAvatarEditProps } from '../../../../../typings/interfaces'
+import { useMain } from '../../../../../redux/main/hooks'
 
 export default function({ owner }: ProfileAvatarEditProps): ReactElement {
   const { setModal, setAlertCode } = useMain()

@@ -59,7 +59,7 @@ export default function({
         className={styles.vib_optionTableBtn}
         onClick={(): void => handleBookmarkRemoveBtnClick()}
       >
-        <i className="material-icons">bookmark_border</i>
+        <i className="material-icons">bookmark</i>
         {psString('bookmark-remove')}
       </div>
     )
@@ -69,7 +69,7 @@ export default function({
         className={styles.vib_optionTableBtn}
         onClick={(): void => handleBookmarkBtnClick()}
       >
-        <i className="material-icons">bookmark</i>
+        <i className="material-icons">bookmark_border</i>
         {psString('bookmark-add')}
       </div>
     )

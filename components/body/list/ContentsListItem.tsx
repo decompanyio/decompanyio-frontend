@@ -48,11 +48,10 @@ export default function({
     : documentData.accountId
 
   useEffect(() => {
-    repos.Document.getCreatorRewards(
-      documentData.documentId,
-      documentData.author.id
-    ).then((res): void => setReward(common.toEther(res)))
-  }, [])
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
+  })
 
   return (
     <div className={styles.cli_container} key={documentData.seoTitle}>

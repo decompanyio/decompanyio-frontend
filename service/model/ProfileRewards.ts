@@ -11,11 +11,11 @@ export default class ProfileRewards {
       data && data.getLast6CuratorReward ? data.getLast6CuratorReward : []
     this.todayEstimatedCreatorReward =
       data && data.getTodayEstimatedCreatorReward
-        ? data.getTodayEstimatedCreatorReward
+        ? data.getTodayEstimatedCreatorReward[0]
         : {}
     this.todayEstimatedCuratorReward =
       data && data.getTodayEstimatedCuratorReward
-        ? data.getTodayEstimatedCuratorReward
+        ? data.getTodayEstimatedCuratorReward[0]
         : {}
   }
 }

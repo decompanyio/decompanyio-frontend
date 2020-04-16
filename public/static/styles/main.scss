@@ -1442,7 +1442,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-/*스크롤 top 버튼*/
+/*스크롤 author 버튼*/
 .common_toTopBtn {
   position: fixed;
   right: 40px;
@@ -4201,6 +4201,7 @@ input[type="radio"]:checked + label span i {
 
   div > span {
     font-weight: bold;
+    margin: 5px;
   }
 }
 
@@ -4404,6 +4405,11 @@ input[type="radio"]:checked + label span i {
     position: relative !important;
     display: block !important;
     margin-top: 10px;
+  }
+
+  .rc_container {
+    right: 0;
+    top: 25px;
   }
 }
 
@@ -5117,9 +5123,14 @@ input[type="radio"]:checked + label span i {
 
 .ta_optionBtn {
   @extend .common_optionBtn;
-  top: 15px;
-  position: absolute;
-  right: 0;
+  @include inner-container;
+  width: 100%;
+
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 }
 
 .ta_optionTable {
@@ -5173,7 +5184,7 @@ input[type="radio"]:checked + label span i {
 
 /*
 .tracking-item .info_date {
-  top: 1px;
+  author: 1px;
   float: none;
 }
 }*/
@@ -5226,7 +5237,12 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.ta_exportBtn {
+
+//======================================
+//      TRACKING EXPORT BUTTON CSS
+// =====================================
+
+.teb_exportBtn {
   @include mb(0);
   @extend .common_toolBtn;
   position: absolute !important;
@@ -5418,7 +5434,49 @@ input[type="radio"]:checked + label span i {
   position: relative;
 }
 
-.tl_durationWrapper {
+.tl_noDataIconWrapper {
+  @include mt(4);
+}
+
+//======================================
+//       TRACKING LIST ITEM CSS
+// =====================================
+
+.tli_tr_2 {
+  @extend .tl_tr;
+  cursor: pointer;
+}
+
+.tli_td_1 {
+  @extend .tl_td;
+  @include col(4);
+
+  span {
+    @include ml(3);
+  }
+}
+
+.tli_td_2 {
+  @extend .tl_td;
+  @include col(3);
+  @include col_sm(2);
+  text-align: center;
+}
+
+.tli_td_3 {
+  @extend .tl_td;
+  @include col(3);
+  text-align: right;
+}
+
+.tli_td_4 {
+  @extend .tl_td;
+  @include col(2);
+  @include col_sm(3);
+  position: relative;
+}
+
+.tli_durationWrapper {
   position: relative;
   display: none;
 
@@ -5427,7 +5485,7 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.tl_duration {
+.tli_duration {
   font-weight: 500;
   color: #868686;
   position: absolute;
@@ -5438,18 +5496,22 @@ input[type="radio"]:checked + label span i {
   top: 3px;
 }
 
-.tl_durationDisabled {
-  @extend .tl_duration;
-  @extend .common_disabledBtn
+.tli_durationDisabled {
+  @extend .tli_duration;
+  @extend .common_disabledBtn;
 }
 
-.tl_circularChartWrapper {
+.tli_anonymous {
+  color: #d2d2d2 !important;
+}
+
+.tli_circularChartWrapper {
   display: inline-block;
   position: absolute;
   right: 73px;
 }
 
-.tl_circularChart {
+.tli_circularChart {
   display: inline-block;
   height: auto;
   border-radius: 50%;
@@ -5459,37 +5521,33 @@ input[type="radio"]:checked + label span i {
   fill: #e6e6e6;
 }
 
-.tl_circle {
+.tli_circle {
   stroke: $primary-color;
   stroke-width: 15;
   animation: circle-chart-progress 1s ease-out forwards;
 }
 
-.tl_circleSub {
+.tli_circleSub {
   fill: white;
 }
 
-.tl_chartBtnWrapper {
+.tli_chartBtnWrapper {
   display: inline-block;
   position: absolute;
   right: 0;
 }
 
-.tl_chartBtn {
+.tli_chartBtn {
   @extend .common_chartBtn;
 }
 
-.tl_chartBtnDisabled {
+.tli_chartBtnDisabled {
   @extend .common_chartBtn;
   @extend .common_disabledBtn;
 }
 
-.tl_chartWrapper {
+.tli_chartWrapper {
   @include col(12);
-}
-
-.tl_noDataIconWrapper {
-  @include mt(4);
 }
 
 //======================================
@@ -6672,11 +6730,6 @@ input[type="radio"]:checked + label span i {
   color: #888888;
 }
 
-.pm_rewardArrow {
-  margin-left: 5px;
-  margin-bottom: 3px;
-}
-
 .pm_moreContainer_1 {
   @include row;
 
@@ -6728,6 +6781,11 @@ input[type="radio"]:checked + label span i {
 
 .pm_desc {
   font-size: 13px;
+}
+
+.pm_rewardArrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
 }
 
 

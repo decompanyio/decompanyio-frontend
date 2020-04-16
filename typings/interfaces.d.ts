@@ -1,6 +1,8 @@
 import DocumentInfo from '../service/model/DocumentInfo'
 import DocumentList from '../service/model/DocumentList'
 import UserInfo from '../service/model/UserInfo'
+import { MainState } from '../redux/main/reducer'
+import { TrackingState } from '../redux/tracking/reducer'
 
 export interface DocumentId {
   documentId: string
@@ -82,6 +84,17 @@ export interface ProfileSummaryProps {
   owner: boolean
 }
 
+export interface ProfileSummaryRewardsProps {
+  reward
+}
+
+export interface ProfileSummaryAuthorProps {
+  balance
+  reward
+  profileInfo
+  owner
+}
+
 export interface ProfileTabProps {
   profileInfo
   owner: boolean
@@ -123,6 +136,12 @@ export interface TrackingListProps {
   documentData
 }
 
+export interface TrackingListItemProps {
+  documentData
+  listItemData
+  idx: number
+}
+
 export interface TrackingDetailItemProps {
   mapData
   documentData
@@ -130,15 +149,16 @@ export interface TrackingDetailItemProps {
 }
 
 export interface TrackingDetailListProps {
-  cid
+  cid: string
   documentData
   text
+  user: string
 }
 
 export interface ViewBookmarkProps {
   documentData
   mylist
-  click
+  click?: any
 }
 
 export interface ViewFullscreenBtnProps {
@@ -194,11 +214,15 @@ export interface DocumentCardProps {
   documentData
 }
 
+export interface TrackingExportBtnProps {
+  documentData
+}
+
 export interface ProfileCardProps {
   click: () => void
 }
 
-export interface CustromChartProps {
+export interface CustomChartProps {
   subject
   chartData
   week
@@ -260,7 +284,7 @@ export interface MetaProps {
   metaData
 }
 
-export interface InitState {
+export interface MainInitState {
   initComplete: boolean
   myInfo: UserInfo
   alertCode: number
@@ -269,4 +293,15 @@ export interface InitState {
   modalCode: string
   modalData?: {}
   isMobile: false
+}
+
+export interface TrackingInitState {
+  showAnonymous: boolean
+  showOnePage: boolean
+}
+
+// redux 도메인 추가 시, interface 도 함께 추가해주어야 합니다.
+export interface StateProps {
+  tracking: TrackingState
+  main: MainState
 }

@@ -130,6 +130,9 @@ const getStatus = (
     case 2092:
       setStatusData(code, 'error') // 문서 업로드 싪패
       break
+    case 2093:
+      setStatusData(code, 'error') // 투표 싪패
+      break
 
     // 북마크 관련 메세지 2121~
     case 2121:

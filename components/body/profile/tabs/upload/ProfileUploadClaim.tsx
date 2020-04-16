@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react'
 import { psString } from 'utils/localization'
-import { repos } from '../../../utils/repos'
-import * as styles from '../../../public/static/styles/main.scss'
-import { ProfileCreatorClaimProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
+import { repos } from '../../../../../utils/repos'
+import * as styles from '../../../../../public/static/styles/main.scss'
+import { ProfileCreatorClaimProps } from '../../../../../typings/interfaces'
+import { useMain } from '../../../../../redux/main/hooks'
 
 export default function({
   documentData,

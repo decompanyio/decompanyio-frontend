@@ -1,16 +1,16 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import LinesEllipsis from 'react-lines-ellipsis'
 import Link from 'next/link'
-import common from '../../../common/common'
-import commonView from '../../../common/commonView'
-import { APP_CONFIG } from '../../../app.config'
-import RewardCard from '../../common/card/RewardCard'
-import * as styles from '../../../public/static/styles/main.scss'
+import common from '../../../../../common/common'
+import commonView from '../../../../../common/commonView'
+import { APP_CONFIG } from '../../../../../app.config'
+import RewardCard from '../../../../common/card/RewardCard'
+import * as styles from '../../../../../public/static/styles/main.scss'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
-import repos from '../../../utils/repos'
-import ProfileCuratorClaim from './ProfileCuratorClaim'
-import { ProfileVoteTabItemProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
+import repos from '../../../../../utils/repos'
+import ProfileVoteClaim from './ProfileVoteClaim'
+import { ProfileVoteTabItemProps } from '../../../../../typings/interfaces'
+import { useMain } from '../../../../../redux/main/hooks'
 
 // ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
@@ -21,6 +21,7 @@ export default function({
 }: ProfileVoteTabItemProps): ReactElement {
   const { myInfo, isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [reward, setReward] = useState(0)
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   const getCuratorRewards = () =>
@@ -29,7 +30,11 @@ export default function({
       myInfo.id
     ).then((res): void => setValidClaimAmount(common.deckToDollar(res)))
 
-  const reward = common.toEther(0)
+  const getNDaysRoyalty = () =>
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
+
   const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0
   const view = documentData.latestPageview || 0
   const identification = documentData.author
@@ -39,6 +44,7 @@ export default function({
     : documentData.accountId
 
   useEffect(() => {
+    void getNDaysRoyalty()
     if (owner) {
       void getCuratorRewards()
     }
@@ -139,7 +145,7 @@ export default function({
 
           {owner && validClaimAmount > 0 && (
             <div className={isMobile ? 'mt-2' : 'float-right'}>
-              <ProfileCuratorClaim
+              <ProfileVoteClaim
                 documentData={documentData}
                 validClaimAmount={validClaimAmount}
               />

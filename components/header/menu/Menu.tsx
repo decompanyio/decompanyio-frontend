@@ -98,7 +98,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
             className={styles.mn_contentItemSub}
             onClick={() => handleLang()}
           >
-            {psGetLang() === 'EN' ? 'Global' : 'Korea'}
+            {psGetLang() === 'EN' ? 'Korean' : 'English'}
           </div>
         </div>
       </div>

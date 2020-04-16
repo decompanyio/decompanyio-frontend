@@ -8,51 +8,51 @@ export default {
     let currentDate = Number(new Date())
     let lastDate = Number(new Date(timestamp))
     let y = Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 365 * 1000))
+    let m = Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 30 * 1000))
     let d = Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 1000))
-    let h = Math.floor((currentDate - lastDate) / (60 * 60 * 1000))
-    let m = Math.floor((currentDate - lastDate) / (60 * 1000))
-    let s = Math.floor((currentDate - lastDate) / 1000)
+    let hh = Math.floor((currentDate - lastDate) / (60 * 60 * 1000))
+    let mm = Math.floor((currentDate - lastDate) / (60 * 1000))
+    let ss = Math.floor((currentDate - lastDate) / 1000)
+
+    const checkMultiple = t =>
+      (t > 1 && !isMobile ? psString('common-times') : '') +
+      psString('common-ago')
 
     if (y > 0) {
-      return (
-        y +
-        (isMobile ? 'y' : psString('common-year')) +
-        (y > 1 && !isMobile ? psString('common-times') : '') +
-        psString('common-ago')
-      )
+      return y + (isMobile ? 'y' : psString('common-year')) + checkMultiple(y)
     } else {
-      if (d > 0) {
+      if (m > 0) {
         return (
-          d +
-          (isMobile ? 'd' : psString('common-day')) +
-          (d > 1 && !isMobile ? psString('common-times') : '') +
-          psString('common-ago')
+          m + (isMobile ? 'm' : psString('common-month')) + checkMultiple(m)
         )
       } else {
-        if (h > 0) {
+        if (d > 0) {
           return (
-            h +
-            (isMobile ? 'h' : psString('common-hour')) +
-            (h > 1 && !isMobile ? psString('common-times') : '') +
-            psString('common-ago')
+            d + (isMobile ? 'd' : psString('common-day')) + checkMultiple(d)
           )
         } else {
-          if (m > 0) {
+          if (hh > 0) {
             return (
-              m +
-              (isMobile ? 'm' : psString('common-minute')) +
-              (m > 1 && !isMobile ? psString('common-times') : '') +
-              psString('common-ago')
+              hh +
+              (isMobile ? 'h' : psString('common-hour')) +
+              checkMultiple(hh)
             )
           } else {
-            if (s > 0) {
+            if (mm > 0) {
               return (
-                s +
-                (isMobile ? 's' : psString('common-second')) +
-                (s > 1 && !isMobile ? psString('common-times') : '') +
-                psString('common-ago')
+                mm +
+                (isMobile ? 'm' : psString('common-minute')) +
+                checkMultiple(mm)
               )
-            } else return 'now'
+            } else {
+              if (ss > 0) {
+                return (
+                  ss +
+                  (isMobile ? 's' : psString('common-second')) +
+                  checkMultiple(ss)
+                )
+              } else return 'now'
+            }
           }
         }
       }
@@ -150,7 +150,7 @@ export default {
     })
   },
 
-  // Scroll to top
+  // Scroll to author
   scrollTop(): void {
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   },

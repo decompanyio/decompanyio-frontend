@@ -10,7 +10,7 @@ import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 
 export default function(): ReactElement {
-  const { modalData, myInfo, setModal } = useMain()
+  const { modalData, myInfo, setModal, setAlertCode } = useMain()
 
   const tempModalData = modalData as any
   const documentData = new DocumentInfo(
@@ -63,7 +63,11 @@ export default function(): ReactElement {
         setLoading(false)
         window.location.reload()
       })
-      .catch((err): void => log.VoteModal.voteDocument(err))
+      .catch((err): void => {
+        log.VoteModal.voteDocument(err)
+        setLoading(false)
+        setAlertCode(2093, {})
+      })
   }
 
   // 투표 Confirm 버튼 클릭

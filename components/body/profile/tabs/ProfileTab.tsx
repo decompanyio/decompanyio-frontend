@@ -1,11 +1,11 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import * as styles from '../../../public/static/styles/main.scss'
-import { psString } from '../../../utils/localization'
-import ProfileUploadTab from './ProfileUploadTab'
-import ProfileVoteTab from './ProfileVoteTab'
-import ProfileAnalyticsTab from './ProfileAnalyticsTab'
+import * as styles from '../../../../public/static/styles/main.scss'
+import { psString } from '../../../../utils/localization'
+import ProfileUploadTab from './upload/ProfileUploadTab'
+import ProfileVoteTab from './vote/ProfileVoteTab'
+import ProfileAnalyticsTab from './analytics/ProfileAnalyticsTab'
 import React, { ReactElement } from 'react'
-import { ProfileTabProps } from '../../../typings/interfaces'
+import { ProfileTabProps } from '../../../../typings/interfaces'
 
 export default function({ profileInfo, owner }: ProfileTabProps): ReactElement {
   return (
