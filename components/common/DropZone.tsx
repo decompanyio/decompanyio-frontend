@@ -46,7 +46,10 @@ export default function({
               (dragOver && styles.dz_over)
           })}
         >
-          <input {...getInputProps()} />
+          <input
+            {...getInputProps()}
+            accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+          />
           {file.length > 0 ? (
             <div>{_files}</div>
           ) : (

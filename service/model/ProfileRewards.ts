@@ -1,8 +1,8 @@
 export default class ProfileRewards {
   public last7CreatorReward: []
   public last7CuratorReward: []
-  public todayEstimatedCreatorReward: {}
-  public todayEstimatedCuratorReward: {}
+  public todayEstimatedCreatorReward: []
+  public todayEstimatedCuratorReward: []
 
   public constructor(data) {
     this.last7CreatorReward =
@@ -12,10 +12,10 @@ export default class ProfileRewards {
     this.todayEstimatedCreatorReward =
       data && data.getTodayEstimatedCreatorReward
         ? data.getTodayEstimatedCreatorReward
-        : {}
+        : []
     this.todayEstimatedCuratorReward =
       data && data.getTodayEstimatedCuratorReward
         ? data.getTodayEstimatedCuratorReward
-        : {}
+        : []
   }
 }

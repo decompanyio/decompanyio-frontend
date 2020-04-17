@@ -2,10 +2,11 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import Layout from 'components/Layout'
 import repos from '../utils/repos'
 import common from '../common/common'
-import ProfileSummary from '../components/body/profile/ProfileSummary'
-import ProfileTab from '../components/body/profile/ProfileTab'
+import ProfileSummary from '../components/body/profile/summary/ProfileSummary'
+import ProfileTab from '../components/body/profile/tabs/ProfileTab'
 import commonData from '../common/commonData'
 import { AUTH_APIS } from '../utils/auth'
+import Router from 'next/router'
 
 const getParams = (
   identification: string
@@ -20,7 +21,7 @@ export default function Index({ profileInfo }, ...rest): ReactElement {
   const [owner, setOwner] = useState(-1)
 
   useEffect(() => {
-    console.log(profileInfo)
+    if (!profileInfo.email) Router.push('/not_found_page')
 
     if (owner === -1) {
       if (

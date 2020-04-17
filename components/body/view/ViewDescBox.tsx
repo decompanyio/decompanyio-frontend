@@ -122,7 +122,7 @@ export default function({ documentData }: ViewDescBoxProps): ReactElement {
           )}
       </div>
 
-      <div className={styles.common_hr} />
+      {/*  <div className={styles.common_hr} />*/}
     </div>
   )
 }

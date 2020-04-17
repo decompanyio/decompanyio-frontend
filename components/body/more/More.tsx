@@ -12,8 +12,8 @@ export default function({ tagList }: MoreProps): ReactElement {
           tagList.length > 0 &&
           tagList.sort().map(
             (result, idx): ReactElement => (
-              <Link href="/contents_list" as={'/tag/' + result} key={idx}>
-                <a className={styles.more_item}># {result}</a>
+              <Link href="/contents_list" as={'/tag/' + result._id} key={idx}>
+                <a className={styles.more_item}># {result._id}</a>
               </Link>
             )
           )}

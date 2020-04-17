@@ -46,11 +46,10 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
     : documentData.accountId
 
   useEffect(() => {
-    repos.Document.getCreatorRewards(
-      documentData.documentId,
-      documentData.author.id
-    ).then(res => setReward(common.toEther(res)))
-  }, [])
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
+  })
 
   return (
     <div className={styles.vib_container}>

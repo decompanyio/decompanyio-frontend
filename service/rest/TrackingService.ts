@@ -40,7 +40,7 @@ export default {
       }),
     trackingCollect: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           trackingCollectUrl,
           'GET',
           data,

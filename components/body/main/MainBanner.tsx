@@ -37,7 +37,7 @@ export default function(): ReactElement {
   }
 
   const handleSearchClick = (): void => {
-    const el = document.getElementById('commonAddBtn') as HTMLElement
+    const el = document.getElementById('commonSearchBtn') as HTMLElement
     el.click()
   }
 
@@ -80,14 +80,12 @@ export default function(): ReactElement {
                         </div>
                       )
                     ) : (
-                      <Link href="/ca">
-                        <div
-                          className={styles.mc_uploadBtn}
-                          onClick={(): void => handleUploadClick()}
-                        >
-                          {buttonText[idx]}
-                        </div>
-                      </Link>
+                      <div
+                        className={styles.mc_uploadBtn}
+                        onClick={(): void => handleUploadClick()}
+                      >
+                        {buttonText[idx]}
+                      </div>
                     )}
                     <Link href="/faq">
                       <div className={styles.mc_learnMoreBtn}>

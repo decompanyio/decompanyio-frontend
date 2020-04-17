@@ -19,10 +19,7 @@ export const APP_CONFIG = {
       static: 'https://res.share.decompany.io/static',
       api: 'https://api.share.decompany.io/rest',
       wallet: 'https://api.share.decompany.io/wallet',
-      email: 'https://api.share.decompany.io/ve',
       embed: 'https://embed.share.decompany.io/',
-      viewer: 'https://viewer.share.decompany.io/',
-      bounty: 'https://api.share.decompany.io/bounty/',
       graphql: 'https://api.share.decompany.io/graphql/',
       auth: 'https://auth.share.decompany.io/dev'
     }
@@ -35,10 +32,7 @@ export const APP_CONFIG = {
       static: 'https://res.share.decompany.io/static',
       api: 'https://api.share.decompany.io/rest',
       wallet: 'https://api.share.decompany.io/wallet',
-      email: 'https://api.share.decompany.io/ve',
       embed: 'https://embed.share.decompany.io/',
-      viewer: 'https://viewer.share.decompany.io/',
-      bounty: 'https://api.share.decompany.io/bounty/',
       graphql: 'https://api.share.decompany.io/graphql/',
       auth: 'https://auth.share.decompany.io/dev'
     }
@@ -51,8 +45,6 @@ export const APP_CONFIG = {
       static: 'https://res.polarishare.com/static',
       api: 'https://api.polarishare.com/rest',
       wallet: 'https://api.polarishare.com/wallet',
-      email: 'https://api.polarishare.com/ve',
-      viewer: 'https://viewer.polarishare.com/',
       embed: 'https://embed.polarishare.com/',
       graphql: 'https://api.polarishare.com/graphql/',
       auth: 'https://auth.polarishare.com/asem'

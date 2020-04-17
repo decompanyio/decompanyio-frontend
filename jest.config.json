@@ -10,5 +10,7 @@
     "^.+\\.(css|less|scss)$": "babel-jest"
   },
   "moduleDirectories": ["node_modules", "./"],
-  "rootDir": "./"
+  "rootDir": "./",
+  "setupFiles": ["./jest.setup.js"],
+  "testPathIgnorePatterns" : ["./.next/", "./node_modules/"]
 }

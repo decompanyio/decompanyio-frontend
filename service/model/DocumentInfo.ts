@@ -11,7 +11,6 @@ export default class DocumentInfo {
   public documentId: string
   public documentName: string
   public documentSize: number
-  public ethAccount: string
   public forceTracking: boolean
   public isBlocked: boolean
   public isDeleted: boolean
@@ -45,7 +44,6 @@ export default class DocumentInfo {
     this.documentId = data && data.documentId ? data.documentId : ''
     this.documentName = data && data.documentName ? data.documentName : ''
     this.documentSize = data && data.documentSize ? data.documentSize : 0
-    this.ethAccount = data && data.ethAccount ? data.ethAccount : ''
     this.forceTracking = data && data.forceTracking ? data.forceTracking : false
     this.isBlocked = data && data.isBlocked ? data.isBlocked : false
     this.isDeleted = data && data.isDeleted ? data.isDeleted : false

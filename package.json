@@ -1,7 +1,7 @@
 {
   "name": "decompanyio-frontend",
   "description": "www.polarishare.com",
-  "version": "2020.04.09a",
+  "version": "2020.04.17-c",
   "private": true,
   "keywords": [],
   "author": "Decompany.io",
@@ -71,10 +71,14 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^10.0.2",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^25.1.4",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "babel-eslint": "^10.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-react-app": "^4.0.1",

@@ -19,8 +19,10 @@ export default {
     if (header) _header = Object.assign(header, _header)
 
     let tempUrl = ''
+    let tempUrlSub = ''
     if (url.split('/')[6]) {
       tempUrl = url.split('/')[6].split('?')[0]
+      tempUrlSub = url.split('/')[5]
     }
 
     axios({
@@ -28,7 +30,10 @@ export default {
       url: url,
       data: data,
       headers: _header,
-      withCredentials: tempUrl === 'download' || tempUrl === 'collect'
+      withCredentials:
+        tempUrl === 'download' ||
+        (tempUrlSub === 'tracking' && tempUrl === 'collect') ||
+        (tempUrlSub === 'tracking' && tempUrl === 'confirm')
     })
       .then(response => {
         if (this.DEBUG()) {
@@ -79,7 +84,7 @@ export default {
       false
     )
   },
-  _requestWithUrlPram: function(url, type, data, success, failure): void {
+  _requestWithUrlParam: function(url, type, data, success, failure): void {
     data = data || {}
     let params = data ? '?' + qs.stringify(data) : ''
     this._request(
@@ -189,7 +194,7 @@ export default {
       failure
     )
   },
-  _requestWithUrlPramForAuth: function(
+  _requestWithUrlParamForAuth: function(
     url,
     type,
     data,

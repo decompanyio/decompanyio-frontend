@@ -7,11 +7,11 @@ import {
   SET_TAG_LIST
 } from './types'
 import UserInfo from '../../service/model/UserInfo'
-import { InitState } from '../../typings/interfaces'
+import { MainInitState } from '../../typings/interfaces'
 import { MainAction } from './actions'
 
 // 초기 상태
-const initState: InitState = {
+const initState: MainInitState = {
   initComplete: false,
   myInfo: new UserInfo(null),
   alertCode: -1,

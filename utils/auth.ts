@@ -192,8 +192,7 @@ export const AUTH_APIS = {
 
       const iframeEle = document.createElement('iframe')
       iframeEle.id = 'authIframe' + randomNumber
-      // iframeEle.style.display = 'none'
-      iframeEle.style.width = '100%'
+      iframeEle.style.display = 'none'
       iframeEle.src = src
 
       callbackIframeContainer.appendChild(iframeEle)

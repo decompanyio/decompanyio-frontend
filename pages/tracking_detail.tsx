@@ -14,7 +14,7 @@ const TrackingDetailListWithoutSSR = dynamic(
 )
 
 export default function Index(
-  { document, text, cid },
+  { document, text, cid, user },
   ...rest
 ): ReactElement | Promise<boolean> {
   if (typeof window !== 'undefined' && !AUTH_APIS.isLogin()) {
@@ -31,6 +31,7 @@ export default function Index(
         documentData={document}
         text={text}
         cid={cid}
+        user={user}
       />
     </Layout>
   )
@@ -40,12 +41,14 @@ Index.getInitialProps = async props => {
   let seoTitle = decodeURI(props.asPath.split('/')[3])
   let url = new URL(APP_CONFIG.domain().mainHost + props.asPath)
   let cid = url.searchParams.get('cid')
+  let user = url.searchParams.get('user')
 
   const { document, text } = await repos.Document.getDocument(seoTitle)
 
   return {
     document,
     text,
-    cid
+    cid,
+    user
   }
 }

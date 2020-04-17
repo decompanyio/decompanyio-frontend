@@ -4,7 +4,6 @@ import ViewFullscreenBtn from './ViewFullscreenBtn'
 import ViewInfoBox from './ViewInfoBox'
 import ViewToolBox from './ViewToolBox'
 import ViewDescBox from './ViewDescBox'
-import ViewSeeAlso from './ViewSeeAlso'
 import dynamic from 'next/dist/next-server/lib/dynamic'
 import commonView from '../../../common/commonView'
 import commonData from '../../../common/commonData'
@@ -36,12 +35,15 @@ export default function({
   let stayTime = 0
 
   // Tracking API POST
-  const postTracking = (page: number, type: string) =>
-    repos.Tracking.getTrackingCollect({
+  const postTracking = (page: number, type: string) => {
+    stayTime = Date.now()
+
+    return repos.Tracking.getTrackingCollect({
       id: documentData.documentId,
       n: page + 1,
       ev: type
     }).then(res => res)
+  }
 
   // 로그인 시, cid ~ email 싱크 작업
   const postTrackingConfirm = async () => {
@@ -169,7 +171,7 @@ export default function({
       <ViewInfoBox documentData={documentData} />
       <ViewToolBox documentData={documentData} />
       <ViewDescBox documentData={documentData} />
-      <ViewSeeAlso documentData={documentData} />
+      {/*<ViewSeeAlso documentData={documentData} />*/}
     </div>
   )
 }

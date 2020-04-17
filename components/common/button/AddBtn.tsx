@@ -21,7 +21,7 @@ export default function(): ReactElement {
       id="commonAddBtn"
       onClick={() => handleAddBtnClick()}
     >
-      <p data-tip="Share your contents">
+      <p data-tip="Share your contents" data-place="bottom">
         <i className="material-icons">add</i>
       </p>
     </div>

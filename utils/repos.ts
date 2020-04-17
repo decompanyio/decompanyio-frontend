@@ -75,14 +75,9 @@ export const repos = {
   },
   Account: {
     getProfileInfo(params) {
-      return AuthService.GET.profileGet(params)
-        .then((result: { user }): UserInfo => new UserInfo(result.user))
-        .catch(
-          (err): UserInfo => {
-            console.log(err)
-            return new UserInfo(null)
-          }
-        )
+      return AuthService.GET.profileGet(params).then(
+        (result: { user }): UserInfo => new UserInfo(result.user)
+      )
     },
     async getAccountInfo() {
       const data = {
@@ -186,7 +181,6 @@ export const repos = {
     async registerDocument(args, progress, callback, error) {
       let fileInfo = args.fileInfo
       let user = args.userInfo
-      let ethAccount = args.ethAccount
       let tags = args.tags
       let title = args.title
       let desc = args.desc
@@ -206,7 +200,6 @@ export const repos = {
           size: fileInfo.file.size,
           username: user.userName,
           sub: user.id,
-          ethAccount: ethAccount,
           title: title,
           desc: desc,
           tags: tags,
@@ -489,11 +482,26 @@ export const repos = {
             return new DocumentList(null)
           }
         ),
-    async getCreatorRewards(documentId: string, userId: string) {
+    async getCreatorRewards(documentId: string) {
       return instance.Query.getCreatorRewards({
-        documentId,
-        userId
+        documentId
       }).then(res => Number(res.determineCreatorRoyalty || 0))
+    },
+    async getNDaysRoyalty(documentId: string, days: number) {
+      return instance.Query.getNDaysRoyalty({
+        documentId,
+        days
+      }).then((res): number => {
+        let totalRoyalty = 0
+        if (res.getNDaysRoyalty.length > 0) {
+          totalRoyalty = res.getNDaysRoyalty.reduce(
+            (prev, v): number => prev + v.royalty,
+            0
+          )
+        }
+
+        return Number(totalRoyalty || 0)
+      })
     },
     async getCuratorRewards(documentId: string, userId: string) {
       return instance.Query.getCuratorRewards({
@@ -503,7 +511,10 @@ export const repos = {
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
-        res => new ClaimableRoyalty(res ? res.getClaimableRoyalty[0] : null)
+        res =>
+          new ClaimableRoyalty(
+            res && res.length > 0 ? res.getClaimableRoyalty[0] : null
+          )
       )
     },
     async getClaimableReward(documentId: string, userId: string) {
@@ -548,6 +559,7 @@ export const repos = {
           anonymous: data.anonymous
         }
       }
+
       return TrackingService.GET.trackingInfo(params).then(
         (res: {}): TrackingInfo => new TrackingInfo(res)
       )
@@ -767,6 +779,10 @@ export const repos = {
     getCreatorRewards: async data =>
       graphql({
         query: queries.getCreatorRewards(data)
+      }).then((res: { Creator }) => res.Creator),
+    getNDaysRoyalty: async data =>
+      graphql({
+        query: queries.getNDaysRoyalty(data)
       }).then((res: { Creator }) => res.Creator),
     getCuratorRewards: async data =>
       graphql({

@@ -925,6 +925,13 @@ const strings = new Map([
     }
   ],
   [
+    'alert-2093',
+    {
+      KOR: '투표 실패',
+      ENG: 'Document Vote failed'
+    }
+  ],
+  [
     'alert-2121',
     {
       KOR: '내가 찜한 목록에 등록하였습니다.',
@@ -1126,36 +1133,43 @@ const strings = new Map([
   [
     'common-year',
     {
-      KOR: ' 년',
-      ENG: ' year'
+      KOR: '년',
+      ENG: 'year'
+    }
+  ],
+  [
+    'common-month',
+    {
+      KOR: '개월',
+      ENG: 'month'
     }
   ],
   [
     'common-day',
     {
-      KOR: ' 일',
-      ENG: ' day'
+      KOR: '일',
+      ENG: 'day'
     }
   ],
   [
     'common-hour',
     {
-      KOR: ' 시간',
-      ENG: ' hour'
+      KOR: '시간',
+      ENG: 'hour'
     }
   ],
   [
     'common-minute',
     {
-      KOR: ' 분',
-      ENG: ' minute'
+      KOR: '분',
+      ENG: 'minute'
     }
   ],
   [
     'common-second',
     {
-      KOR: ' 초',
-      ENG: ' second'
+      KOR: '초',
+      ENG: 'second'
     }
   ],
   [
@@ -2440,7 +2454,7 @@ const strings = new Map([
       KOR:
         '이제 몇 시간 후부터는 검색엔진에서 당신의 문서가 검색될 것입니다. 외부에서 당신의 문서를 참조하는 링크가 많아지면 검색 결과의 상단에 노출되는데 도움이 됩니다.',
       ENG:
-        'After a few hours, your document will be retrieved from the search engine. More links to your documents from outside can help you reach the top of your search results.'
+        'After a few hours, your document will be retrieved from the search engine. More links to your documents from outside can help you reach the author of your search results.'
     }
   ],
   [

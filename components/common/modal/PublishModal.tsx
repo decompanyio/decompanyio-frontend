@@ -181,7 +181,7 @@ export default function(): ReactElement {
         </div>
 
         <div className={styles.modal_content}>
-          <div className={styles.p_desc}>
+          <div className={styles.pm_desc}>
             {psString('publish-modal-desc-1')}
           </div>
           <div className={styles.modal_subject}>
@@ -193,7 +193,7 @@ export default function(): ReactElement {
               renderInput={getAutoCompleteRenderInput}
               className={
                 'react-tagsinput ' +
-                (tagError.length > 0 ? styles.p_tagInputWarning : '')
+                (tagError.length > 0 ? styles.pm_tagInputWarning : '')
               }
               value={tags}
               onChange={handleTagChange}
@@ -203,15 +203,15 @@ export default function(): ReactElement {
           )}
           <span> {tagError}</span>
 
-          <div className={styles.p_moreBtnWrapper}>
-            <div className={styles.p_moreBtnLine} />
+          <div className={styles.pm_moreBtnWrapper}>
+            <div className={styles.pm_moreBtnLine} />
             <div
-              className={styles.p_moreBtn}
+              className={styles.pm_moreBtn}
               onClick={() => handleMoreOptions()}
             >
               {psString('common-modal-more-option')}
               <img
-                className={styles.p_rewardArrow}
+                className={styles.pm_rewardArrow}
                 src={
                   APP_CONFIG.domain().static +
                   '/image/icon/i_arrow_' +
@@ -227,7 +227,7 @@ export default function(): ReactElement {
               <div className={styles.modal_subject}>
                 {psString('common-modal-option')}
               </div>
-              <div className={styles.p_moreContainer_1}>
+              <div className={styles.pm_moreContainer_1}>
                 <div>
                   <input
                     type="checkbox"
@@ -277,7 +277,7 @@ export default function(): ReactElement {
               <div className={styles.modal_subject}>
                 {psString('edit-cc-license')}
               </div>
-              <div className={styles.p_moreContainer_2}>
+              <div className={styles.pm_moreContainer_2}>
                 <div>
                   <input
                     type="checkbox"
@@ -356,7 +356,7 @@ export default function(): ReactElement {
             }
           >
             {loading && (
-              <div className={styles.p_loadingWrapper}>
+              <div className={styles.pm_loadingWrapper}>
                 <FadingCircle color="#3681fe" size={17} />
               </div>
             )}

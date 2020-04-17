@@ -16,13 +16,15 @@ const DocumentCardWithoutSSR = dynamic(
 )
 
 export default function({ path }: MainListProps): ReactElement {
-  const [documentData, setDocumentData] = useState([{}])
+  const [documentData, setDocumentData] = useState([])
   const [dataExist, setDataExist] = useState(true)
 
   const getDocuments = (
     path: string
   ): Promise<[]> => //TODO catch 추가 필요합니다
-    repos.Document.getDocumentList({ path: path }).then(res => res.resultList)
+    repos.Document.getDocumentList({ path: path })
+      .then(res => res.resultList)
+      .catch(() => [])
 
   const getMylist = (id: string): Promise<[]> =>
     repos.Document.getMyList({ userId: id }).then(res => res.resultList)
@@ -32,7 +34,7 @@ export default function({ path }: MainListProps): ReactElement {
 
   useEffect((): void => {
     ;(async function(): Promise<void> {
-      let _documentData = [{}]
+      let _documentData
 
       if (AUTH_APIS.isLogin() && path === 'mylist')
         _documentData = await getMylist(AUTH_APIS.getMyInfo().id)
@@ -51,7 +53,7 @@ export default function({ path }: MainListProps): ReactElement {
   }, [])
 
   if (dataExist) {
-    if (documentData.length > 0 && documentData[0] !== {}) {
+    if (documentData.length > 0) {
       return (
         <div>
           <div className={styles.ml_subjectWrapper}>

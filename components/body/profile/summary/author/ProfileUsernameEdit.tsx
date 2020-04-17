@@ -1,12 +1,12 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/main.scss'
-import { APP_CONFIG } from '../../../app.config'
-import commonData from '../../../common/commonData'
-import repos from '../../../utils/repos'
+import { APP_CONFIG } from '../../../../../app.config'
+import commonData from '../../../../../common/commonData'
+import repos from '../../../../../utils/repos'
 import { psString } from 'utils/localization'
 import common from 'common/common'
-import { useMain } from '../../../redux/main/hooks'
+import { useMain } from '../../../../../redux/main/hooks'
 
 interface ProfileUsernameEditProps {
   done: (name) => void

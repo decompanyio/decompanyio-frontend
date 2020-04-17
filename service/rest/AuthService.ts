@@ -43,7 +43,7 @@ export default {
   GET: {
     profileGet: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           profileGetUrl,
           'GET',
           data,
@@ -63,7 +63,7 @@ export default {
       }),
     userInfo: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPramForAuth(
+        AxiosService._requestWithUrlParamForAuth(
           userInfoUrl,
           'GET',
           data,

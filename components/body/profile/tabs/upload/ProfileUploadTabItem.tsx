@@ -1,20 +1,20 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/main.scss'
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import commonView from 'common/commonView'
 import { psString } from 'utils/localization'
 import common from 'common/common'
-import { APP_CONFIG } from '../../../app.config'
+import { APP_CONFIG } from '../../../../../app.config'
 import Link from 'next/link'
-import repos from '../../../utils/repos'
-import { AUTH_APIS } from '../../../utils/auth'
-import RewardCard from '../../common/card/RewardCard'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import ProfileCreatorClaim from './ProfileCreatorClaim'
-import { ProfileUploadTabItemProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
+import repos from '../../../../../utils/repos'
+import { AUTH_APIS } from '../../../../../utils/auth'
+import RewardCard from '../../../../common/card/RewardCard'
+import DocumentInfo from '../../../../../service/model/DocumentInfo'
+import ProfileUploadClaim from './ProfileUploadClaim'
+import { ProfileUploadTabItemProps } from '../../../../../typings/interfaces'
+import { useMain } from '../../../../../redux/main/hooks'
 
 // ellipsis 반응형 설정
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
@@ -31,6 +31,7 @@ export default function({
     new DocumentInfo(documentData)
   )
   const [rewardInfoOpen, setRewardInfo] = useState(false)
+  const [reward, setReward] = useState(0)
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   const downloadDocument = (documentId: string, documentName: string) =>
@@ -50,10 +51,17 @@ export default function({
       .catch(err => console.error(err))
 
   const getCreatorRewards = () =>
-    repos.Document.getClaimableRoyalty(
-      documentData.documentId,
-      myInfo.id
-    ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
+    repos.Document.getClaimableRoyalty(documentData.documentId, myInfo.id).then(
+      res => {
+        if (res.royalty > 0)
+          setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
+      }
+    )
+
+  const getNDaysRoyalty = () =>
+    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
+      setReward(res)
+    })
 
   const setStateDocumentData = state => {
     let _tmpDocumentData = state.tmpDocumentData
@@ -108,10 +116,10 @@ export default function({
 
   useEffect(() => {
     handleConvertingState()
+    void getNDaysRoyalty()
     if (owner) void getCreatorRewards()
   }, [])
 
-  let reward = common.toEther(0)
   const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0
   let view = tmpDocumentData.latestPageview || 0
   let identification = tmpDocumentData.author
@@ -208,10 +216,7 @@ export default function({
                 </div>
               )}
 
-              {((common.dateAgo(tmpDocumentData.created) > 0 &&
-                tmpDocumentData.state &&
-                tmpDocumentData.state !== 'CONVERT_COMPLETE') ||
-                !tmpDocumentData.isPublic) && (
+              {common.dateAgo(tmpDocumentData.created) > 0 && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleDeleteBtnClick()}
@@ -306,7 +311,7 @@ export default function({
 
           {owner && validClaimAmount > 0 && (
             <div className={styles.puti_claimWrapper}>
-              <ProfileCreatorClaim
+              <ProfileUploadClaim
                 documentData={tmpDocumentData}
                 validClaimAmount={validClaimAmount}
               />

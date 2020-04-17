@@ -7,6 +7,7 @@ import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../utils/auth'
 import Router from 'next/router'
 import DocumentInfo from '../service/model/DocumentInfo'
+import TrackingOption from '../components/body/tracking/TrackingOption'
 
 export default function Index(
   { documentData, ratio },
@@ -22,6 +23,7 @@ export default function Index(
       path="tracking"
       {...rest}
     >
+      <TrackingOption />
       <TrackingAuthor documentData={documentData} ratio={ratio} />
       <TrackingList documentData={documentData} />
     </Layout>

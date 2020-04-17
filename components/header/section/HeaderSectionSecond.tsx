@@ -15,27 +15,32 @@ export default function(): ReactElement {
   const [showSearchBar, setShowSearchBar] = useState(-1)
   const [profileCardShow, setProfileCardShow] = useState(false)
 
-  // 자동완성 선택 시, 페이지 이동
+  // 자동 완성 값 선택 시, 해당 태그의 리스트 페이지로 이동합니다.
   const onSuggestionSelected = tag => {
     setShowSearchBar(0)
     return Router.push(
       {
         pathname: '/contents_list'
       },
-      'tag/' + tag._id
+      '/tag/' + tag._id
     )
   }
 
-  // 프로필 카드 클릭 관리
   const handleProfileCardClick = (): void => {
     if (profileCardShow) setProfileCardShow(false)
   }
 
-  // 검색버튼 관리
-  const handleSearchBtnClick = (): void =>
+  const handleSearchBtnClick = (): void => {
     setShowSearchBar(showSearchBar === 1 ? 0 : 1)
 
-  // 아바타 클릭 관리
+    let element = document.getElementById('usernameEditInput')
+    if (element && element.firstChild) {
+      let inputElement = element.firstChild.firstChild as HTMLInputElement
+
+      inputElement.focus()
+    }
+  }
+
   const handleAvatarClick = (): void => setProfileCardShow(true)
 
   return (

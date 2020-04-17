@@ -35,20 +35,15 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
     }).then(res => setMylist(res))
 
   const setRequiredForDownload = () => {
-    if (!documentData) {
-      return setAlertCode(2091, {})
-    }
-    if (!AUTH_APIS.isLogin() && !myInfo.email) {
-      return setAlertCode(2003, {})
-    }
+    if (!documentData) return setAlertCode(2091, {})
+
+    if (!AUTH_APIS.isLogin() && !myInfo.email) return setAlertCode(2003, {})
 
     downloadDocument(documentData.documentId, documentData.documentName)
   }
 
-  // 문서 수정 버튼 클릭 관리
   const handleSettingsBtnClick = () => setModal('edit', { documentData })
 
-  // 문서 삭제 버튼 클릭 관리
   const handleDeleteBtnClick = () => setModal('delete', { documentData })
 
   useEffect(() => {
@@ -58,6 +53,7 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
   return (
     <div className={styles.vib_optionBtn} id="viewer-option-btn">
       <i
+        id="viewOptionBtn"
         className="material-icons"
         onClick={() => setOptionTable(!optionTable)}
       >
@@ -86,15 +82,13 @@ export default function({ documentData }: ViewOptionProps): ReactElement {
             <i className="material-icons">settings_applications</i>
             {psString('common-modal-settings')}
           </div>
-          {!documentData.isPublic && (
-            <div
-              className={styles.puti_optionTableBtn}
-              onClick={() => handleDeleteBtnClick()}
-            >
-              <i className="material-icons">delete</i>
-              {psString('common-modal-delete')}
-            </div>
-          )}
+          <div
+            className={styles.puti_optionTableBtn}
+            onClick={() => handleDeleteBtnClick()}
+          >
+            <i className="material-icons">delete</i>
+            {psString('common-modal-delete')}
+          </div>
         </div>
       )}
     </div>

@@ -11,7 +11,6 @@ export default class UserInfo {
   public id: string
   public sub: string
   public username: string
-  public ethAccount: string
   public privateDocumentCount: number
 
   public constructor(data) {
@@ -27,7 +26,6 @@ export default class UserInfo {
     this.id = (data && (data.sub || data._id || data.id)) || ''
     this.sub = (data && (data.sub || data._id || data.id)) || ''
     this.username = data && data.username ? data.username : ''
-    this.ethAccount = data && data.ethAccount ? data.ethAccount : ''
     this.privateDocumentCount = 0
   }
 }

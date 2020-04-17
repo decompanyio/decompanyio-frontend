@@ -1,8 +1,8 @@
-import * as styles from '../../../public/static/styles/main.scss'
-import CustomChart from '../../common/chart/CustomChart'
-import NoDataIcon from '../../common/NoDataIcon'
+import * as styles from '../../../../../public/static/styles/main.scss'
+import CustomChart from '../../../../common/chart/CustomChart'
+import NoDataIcon from '../../../../common/NoDataIcon'
 import React, { ReactElement } from 'react'
-import { ProfileAnalyticsChartProps } from '../../../typings/interfaces'
+import { ProfileAnalyticsChartProps } from '../../../../../typings/interfaces'
 
 export default function({
   idx,
