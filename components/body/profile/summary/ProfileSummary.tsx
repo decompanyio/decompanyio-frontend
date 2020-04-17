@@ -32,14 +32,16 @@ export default function({
 
   // 보상금 총액을 계산합니다.
   const getCalculatedReward = (value): number => {
-    if (value && value.length > 0) {
-      let { reward } = value.reduce(
-        (prev, value): number => prev.reward + value.reward
-      )
-      return reward
-    } else {
-      return 0
-    }
+    if (value && value.length > 0)
+      return value.reduce((prev, value): number => prev + value.reward, 0)
+    else return 0
+  }
+
+  // 보상금 총액을 계산합니다.
+  const getCalculatedRoyalty = (value): number => {
+    if (value && value.length > 0)
+      return value.reduce((prev, value): number => prev + value.royalty, 0)
+    else return 0
   }
 
   const getRewards = (): void => {
@@ -47,14 +49,20 @@ export default function({
       .then((res): void => {
         log.Common.getReward()
 
-        let creatorReward = getCalculatedReward(res.last7CreatorReward) || 0
-        let curatorReward = getCalculatedReward(res.last7CuratorReward) || 0
+        let last7DaysCreatorReward =
+          getCalculatedRoyalty(res.last7CreatorReward) || 0
+        let last7DaysCuratorReward =
+          getCalculatedReward(res.last7CuratorReward) || 0
+        let todayCreatorReward =
+          getCalculatedRoyalty(res.todayEstimatedCreatorReward) || 0
+        let todayCuratorReward =
+          getCalculatedReward(res.todayEstimatedCuratorReward) || 0
 
         setReward({
-          last7Creator: creatorReward,
-          last7Curator: curatorReward,
-          todayEstimatedCreator: res.todayEstimatedCreatorReward.reward || 0,
-          todayEstimatedCurator: res.todayEstimatedCuratorReward.reward || 0
+          last7Creator: last7DaysCreatorReward,
+          last7Curator: last7DaysCuratorReward,
+          todayEstimatedCreator: todayCreatorReward,
+          todayEstimatedCurator: todayCuratorReward
         })
       })
       .catch((err): void => {

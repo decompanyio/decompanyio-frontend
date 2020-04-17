@@ -51,7 +51,6 @@ export default function(): ReactElement {
         {
           fileInfo: fileInfo,
           userInfo: AUTH_APIS.getMyInfo(),
-          ethAccount: myInfo.ethAccount,
           title: title,
           desc: desc,
           tags: [],

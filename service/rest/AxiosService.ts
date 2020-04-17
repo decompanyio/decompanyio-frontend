@@ -28,7 +28,10 @@ export default {
     axios({
       method: type,
       url: url,
-      data: data,
+      data:
+        tempUrlSub === 'tracking' && tempUrl === 'confirm'
+          ? JSON.stringify(data)
+          : data,
       headers: _header,
       withCredentials:
         tempUrl === 'download' ||

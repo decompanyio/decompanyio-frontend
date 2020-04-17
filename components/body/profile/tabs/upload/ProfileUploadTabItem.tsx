@@ -51,10 +51,12 @@ export default function({
       .catch(err => console.error(err))
 
   const getCreatorRewards = () =>
-    repos.Document.getClaimableRoyalty(
-      documentData.documentId,
-      myInfo.id
-    ).then(res => setValidClaimAmount(Number(common.deckToDollar(res.royalty))))
+    repos.Document.getClaimableRoyalty(documentData.documentId, myInfo.id).then(
+      res => {
+        if (res.royalty > 0)
+          setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
+      }
+    )
 
   const getNDaysRoyalty = () =>
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {

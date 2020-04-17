@@ -1133,43 +1133,43 @@ const strings = new Map([
   [
     'common-year',
     {
-      KOR: ' 년',
-      ENG: ' year'
+      KOR: '년',
+      ENG: 'year'
     }
   ],
   [
     'common-month',
     {
-      KOR: ' 월',
-      ENG: ' month'
+      KOR: '개월',
+      ENG: 'month'
     }
   ],
   [
     'common-day',
     {
-      KOR: ' 일',
-      ENG: ' day'
+      KOR: '일',
+      ENG: 'day'
     }
   ],
   [
     'common-hour',
     {
-      KOR: ' 시간',
-      ENG: ' hour'
+      KOR: '시간',
+      ENG: 'hour'
     }
   ],
   [
     'common-minute',
     {
-      KOR: ' 분',
-      ENG: ' minute'
+      KOR: '분',
+      ENG: 'minute'
     }
   ],
   [
     'common-second',
     {
-      KOR: ' 초',
-      ENG: ' second'
+      KOR: '초',
+      ENG: 'second'
     }
   ],
   [

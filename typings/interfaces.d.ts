@@ -3,6 +3,7 @@ import DocumentList from '../service/model/DocumentList'
 import UserInfo from '../service/model/UserInfo'
 import { MainState } from '../redux/main/reducer'
 import { TrackingState } from '../redux/tracking/reducer'
+import TagListItem from '../service/model/TagListItem';
 
 export interface DocumentId {
   documentId: string
@@ -45,7 +46,7 @@ export interface MainListProps {
 }
 
 export interface MoreProps {
-  tagList: []
+  tagList: TagListItem[]
 }
 
 export interface DateSet {

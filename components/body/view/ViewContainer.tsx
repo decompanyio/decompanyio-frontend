@@ -4,7 +4,6 @@ import ViewFullscreenBtn from './ViewFullscreenBtn'
 import ViewInfoBox from './ViewInfoBox'
 import ViewToolBox from './ViewToolBox'
 import ViewDescBox from './ViewDescBox'
-import ViewSeeAlso from './ViewSeeAlso'
 import dynamic from 'next/dist/next-server/lib/dynamic'
 import commonView from '../../../common/commonView'
 import commonData from '../../../common/commonData'
@@ -169,7 +168,7 @@ export default function({
       <ViewInfoBox documentData={documentData} />
       <ViewToolBox documentData={documentData} />
       <ViewDescBox documentData={documentData} />
-      <ViewSeeAlso documentData={documentData} />
+      {/*<ViewSeeAlso documentData={documentData} />*/}
     </div>
   )
 }

@@ -5,8 +5,6 @@ import MyAvatar from '../../../../common/avatar/MyAvatar'
 import ProfileUsernameEdit from './ProfileUsernameEdit'
 import ProfileAvatarEdit from './ProfileAvatarEdit'
 import common from 'common/common'
-
-import { useMain } from '../../../../../redux/main/hooks'
 import { ProfileSummaryAuthorProps } from '../../../../../typings/interfaces'
 
 export default function({
@@ -15,7 +13,6 @@ export default function({
   profileInfo,
   owner
 }: ProfileSummaryAuthorProps): ReactElement {
-  const { setModal } = useMain()
   const [userNameEdit, setUserNameEdit] = useState(false)
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
@@ -30,14 +27,13 @@ export default function({
     setUsername(value)
   }
 
-  const handleDepositBtnClick = (): void => {
+  /*  const handleDepositBtnClick = (): void => {
     setModal('deposit')
   }
 
   const handleWithdrawBtnClick = (): void => {
     setModal('withdraw')
-  }
-  console.log(reward)
+  }*/
 
   return (
     <div className={styles.ps_top}>
@@ -100,7 +96,7 @@ export default function({
           </span>
         </div>
 
-        {owner && (
+        {/*{owner && (
           <div className={styles.ps_depositBtnWrapper}>
             <p
               data-tip={psString('deposit-modal-title')}
@@ -117,7 +113,7 @@ export default function({
               {psString('common-modal-withdraw')}
             </p>
           </div>
-        )}
+        )}*/}
       </div>
     </div>
   )

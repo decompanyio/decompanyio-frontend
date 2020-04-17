@@ -33,7 +33,6 @@ export default {
       documentId
       documentName
       documentSize
-      ethAccount
       title
       desc
       seoTitle
@@ -73,7 +72,6 @@ export default {
       documentId
       documentName
       documentSize
-      ethAccount
       title
       desc
       seoTitle
@@ -116,7 +114,6 @@ export default {
       local
       nickname
       family_name
-      ethAccount
     }
   }`,
   getProfileRewards: data =>
@@ -127,14 +124,14 @@ export default {
       activeDate
       pageview
       totalPageview
-      reward
+      royalty
     }
     getTodayEstimatedCreatorReward(userId: "${data}") {
       documentId
       activeDate
       pageview
       totalPageview
-      reward
+      royalty
     }
     getLast6CuratorReward(userId: "${data}") {
       voteDate

@@ -9,11 +9,13 @@ const nanoidGen = require('nanoid/generate')
 let cookieParser = require('cookie-parser')
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+const version = process.env.npm_package_version
 const env =
   process.env.NODE_ENV &&
   process.env.NODE_ENV.trim().toLowerCase() === 'production'
     ? 'production'
     : 'development'
+const envSub = process.env.NODE_ENV_SUB || 'local'
 const dev = env !== 'production'
 const port = !dev ? 80 : 3000
 const app = next({ dev })
@@ -227,9 +229,9 @@ app.prepare().then(() => {
   })
 
   // 유저 가이드 페이지
-  server.get('/silentCallback', (req, res) => {
+  server.get('/callback', (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
-    return app.render(req, res, '/silentCallback', req.query)
+    return app.render(req, res, '/callback', req.query)
   })
 
   server.all('*', (req, res) => {
@@ -237,28 +239,35 @@ app.prepare().then(() => {
   })
 
   server.listen(port, err => {
-    console.log(
-      '\n\n\n' +
-        ' ____   ___   _       ____  ____   ____ _____      _____ __ __   ____  ____     ___ \n'
-          .blue +
-        '|    \\ /   \\ | |     /    ||    \\ |    / ___/     / ___/|  |  | /    ||    \\   /  _]\n'
-          .blue +
-        '|  o  )     || |    |  o  ||  D  ) |  (   \\_     (   \\_ |  |  ||  o  ||  D  ) /  [_ \n'
-          .blue +
-        '|   _/|  O  || |___ |     ||    /  |  |\\__  |     \\__  ||  _  ||     ||    / |    _]\n'
-          .blue +
-        '|  |  |     ||     ||  _  ||    \\  |  |/  \\ |     /  \\ ||  |  ||  _  ||    \\ |   [_ \n'
-          .blue +
-        '|  |  |     ||     ||  |  ||  .  \\ |  |\\    |     \\    ||  |  ||  |  ||  .  \\|     |\n'
-          .blue +
-        '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'
-          .blue
-    )
+    if (env === 'development') {
+      console.log(
+        '\n\n\n' +
+          ' ____   ___   _       ____  ____   ____ _____      _____ __ __   ____  ____     ___ \n'
+            .blue +
+          '|    \\ /   \\ | |     /    ||    \\ |    / ___/     / ___/|  |  | /    ||    \\   /  _]\n'
+            .blue +
+          '|  o  )     || |    |  o  ||  D  ) |  (   \\_     (   \\_ |  |  ||  o  ||  D  ) /  [_ \n'
+            .blue +
+          '|   _/|  O  || |___ |     ||    /  |  |\\__  |     \\__  ||  _  ||     ||    / |    _]\n'
+            .blue +
+          '|  |  |     ||     ||  _  ||    \\  |  |/  \\ |     /  \\ ||  |  ||  _  ||    \\ |   [_ \n'
+            .blue +
+          '|  |  |     ||     ||  |  ||  .  \\ |  |\\    |     \\    ||  |  ||  |  ||  .  \\|     |\n'
+            .blue +
+          '|__|   \\___/ |_____||__|__||__|\\_||____|\\___|      \\___||__|__||__|__||__|\\_||_____|\n'
+            .blue
+      )
 
-    console.log('Project Version : '.bold + process.env.npm_package_version)
-    console.log('NODE_ENV : '.bold + process.env.NODE_ENV)
-    console.log('NODE_ENV_SUB : '.bold + process.env.NODE_ENV_SUB)
-    console.log('\n\n')
+      console.log('Project Version : '.bold.blue + version)
+      console.log('NODE_ENV : '.bold.blue + env)
+      console.log('NODE_ENV_SUB : '.bold.blue + envSub)
+      console.log('\n\n')
+    } else {
+      console.log('POLARIS SHARE')
+      console.log('Project Version : ' + version)
+      console.log('NODE_ENV : ' + env)
+      console.log('NODE_ENV_SUB : ' + envSub)
+    }
 
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)

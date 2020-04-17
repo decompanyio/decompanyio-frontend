@@ -1,5 +1,6 @@
 import * as styles from '../../../public/static/styles/main.scss'
 import LinesEllipsis from 'react-lines-ellipsis'
+import ReactTooltip from 'react-tooltip'
 import { APP_CONFIG } from '../../../app.config'
 import common from '../../../common/common'
 import Link from 'next/link'
@@ -85,47 +86,49 @@ export default function({
                   )}
                   {_result.ev !== 'leave' && (
                     <div className={styles.tdi_innerInfoBtnWrapper}>
-                      <p
-                        className={styles.tdi_innerInfoBtn}
-                        data-html={true}
-                        data-tip={
-                          "<img src='" +
-                          getImgUrl(_result.n) +
-                          "' alt='thumbnail' className='" +
-                          styles.tdi_tooltipImg +
-                          "' />"
-                        }
+                      <Link
+                        href={{
+                          pathname: '/contents_view',
+                          query: { seoTitle: documentData.seoTitle }
+                        }}
+                        as={'/@' + identification + '/' + documentData.seoTitle}
                       >
-                        <span className={styles.tdi_infoBtn}> {_result.n}</span>
-                      </p>
+                        <p
+                          className={styles.tdi_innerInfoBtn}
+                          data-html={true}
+                          data-place="right"
+                          data-tip={
+                            "<img src='" +
+                            getImgUrl(_result.n) +
+                            "' alt='thumbnail' className='" +
+                            styles.tdi_tooltipImg +
+                            "' />"
+                          }
+                        >
+                          <span className={styles.tdi_infoBtn}>
+                            {' '}
+                            {_result.n}
+                          </span>
+                        </p>
+                      </Link>
                     </div>
                   )}
 
                   {_result.ev !== 'leave' && (
                     <div className={styles.tdi_link}>
                       {text && (
-                        <Link
-                          href={{
-                            pathname: '/contents_view',
-                            query: { seoTitle: documentData.seoTitle }
-                          }}
-                          as={
-                            '/@' + identification + '/' + documentData.seoTitle
+                        <LinesEllipsis
+                          text={
+                            <span className={styles.tdi_text}>
+                              {text[_result.n - 1]}
+                            </span>
                           }
-                        >
-                          <LinesEllipsis
-                            text={
-                              <span className={styles.tdi_text}>
-                                {text[_result.n - 1]}
-                              </span>
-                            }
-                            maxLine="1"
-                            ellipsis="..."
-                            trimRight
-                            basedOn="letters"
-                            className="d-none d-sm-block w-100"
-                          />
-                        </Link>
+                          maxLine="1"
+                          ellipsis="..."
+                          trimRight
+                          basedOn="letters"
+                          className="d-none d-sm-block w-100"
+                        />
                       )}
                     </div>
                   )}
@@ -134,6 +137,8 @@ export default function({
             ))}
         </dl>
       </div>
+
+      <ReactTooltip />
     </li>
   )
 }

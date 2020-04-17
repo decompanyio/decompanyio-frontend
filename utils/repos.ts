@@ -181,7 +181,6 @@ export const repos = {
     async registerDocument(args, progress, callback, error) {
       let fileInfo = args.fileInfo
       let user = args.userInfo
-      let ethAccount = args.ethAccount
       let tags = args.tags
       let title = args.title
       let desc = args.desc
@@ -201,7 +200,6 @@ export const repos = {
           size: fileInfo.file.size,
           username: user.userName,
           sub: user.id,
-          ethAccount: ethAccount,
           title: title,
           desc: desc,
           tags: tags,
@@ -493,12 +491,13 @@ export const repos = {
       return instance.Query.getNDaysRoyalty({
         documentId,
         days
-      }).then(res => {
+      }).then((res): number => {
         let totalRoyalty = 0
         if (res.getNDaysRoyalty.length > 0) {
-          totalRoyalty = res.getNDaysRoyalty.reduce((prev, v) => {
-            return prev + v.royalty
-          }, 0)
+          totalRoyalty = res.getNDaysRoyalty.reduce(
+            (prev, v): number => prev + v.royalty,
+            0
+          )
         }
 
         return Number(totalRoyalty || 0)
@@ -512,7 +511,10 @@ export const repos = {
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
       return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
-        res => new ClaimableRoyalty(res && res.length > 0 ? res.getClaimableRoyalty[0] : null)
+        res =>
+          new ClaimableRoyalty(
+            res && res.length > 0 ? res.getClaimableRoyalty[0] : null
+          )
       )
     },
     async getClaimableReward(documentId: string, userId: string) {
