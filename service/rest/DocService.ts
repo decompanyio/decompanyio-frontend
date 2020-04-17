@@ -14,7 +14,7 @@ export default {
   GET: {
     document: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           getDocumentUrl + '/' + data,
           'GET',
           null,
@@ -34,7 +34,7 @@ export default {
       }),
     documentList: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           getDocumentListUrl,
           'GET',
           data,
@@ -44,7 +44,7 @@ export default {
       }),
     documentDownload: data => {
       return new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           documentDownloadUrl,
           'GET',
           data,
@@ -55,7 +55,7 @@ export default {
     },
     curatorDocuments: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           getCuratorDocumentsUrl,
           'GET',
           data,
@@ -65,7 +65,7 @@ export default {
       }),
     documentPdfUrl: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           documentPdfUrl,
           'GET',
           data,
@@ -76,7 +76,7 @@ export default {
   },
   POST: {
     sendVoteInfo: (data, callback, error) => {
-      AxiosService._requestWithUrlPram(
+      AxiosService._requestWithUrlParam(
         voteDocumentUrl,
         'POST',
         data,

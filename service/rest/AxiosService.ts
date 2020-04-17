@@ -28,10 +28,7 @@ export default {
     axios({
       method: type,
       url: url,
-      data:
-        tempUrlSub === 'tracking' && tempUrl === 'confirm'
-          ? JSON.stringify(data)
-          : data,
+      data: data,
       headers: _header,
       withCredentials:
         tempUrl === 'download' ||
@@ -87,7 +84,7 @@ export default {
       false
     )
   },
-  _requestWithUrlPram: function(url, type, data, success, failure): void {
+  _requestWithUrlParam: function(url, type, data, success, failure): void {
     data = data || {}
     let params = data ? '?' + qs.stringify(data) : ''
     this._request(
@@ -197,7 +194,7 @@ export default {
       failure
     )
   },
-  _requestWithUrlPramForAuth: function(
+  _requestWithUrlParamForAuth: function(
     url,
     type,
     data,

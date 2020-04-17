@@ -35,7 +35,6 @@ export default function(): ReactElement {
 
     let element = document.getElementById('usernameEditInput')
     if (element && element.firstChild) {
-      console.log('open')
       let inputElement = element.firstChild.firstChild as HTMLInputElement
 
       inputElement.focus()

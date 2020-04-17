@@ -6,7 +6,7 @@ export default {
   GET: {
     tagList: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlPram(
+        AxiosService._requestWithUrlParam(
           tagListUrl,
           'GET',
           data,
