@@ -35,12 +35,15 @@ export default function({
   let stayTime = 0
 
   // Tracking API POST
-  const postTracking = (page: number, type: string) =>
-    repos.Tracking.getTrackingCollect({
+  const postTracking = (page: number, type: string) => {
+    stayTime = Date.now()
+
+    return repos.Tracking.getTrackingCollect({
       id: documentData.documentId,
       n: page + 1,
       ev: type
     }).then(res => res)
+  }
 
   // 로그인 시, cid ~ email 싱크 작업
   const postTrackingConfirm = async () => {

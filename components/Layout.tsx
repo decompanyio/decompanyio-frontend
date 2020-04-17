@@ -18,7 +18,7 @@ import UserInfo from '../service/model/UserInfo'
 import { useMain } from '../redux/main/hooks'
 
 export default function(props): ReactElement {
-  const { myInfo, setMyInfo, setTagList, setIsMobile } = useMain()
+  const { myInfo, isMobile, setMyInfo, setTagList, setIsMobile } = useMain()
 
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
@@ -50,7 +50,7 @@ export default function(props): ReactElement {
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && totalLoadingBar) {
         if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
-          totalLoadingBar.style.top = '60px'
+          totalLoadingBar.style.top = isMobile ? '55px' : '60px'
         } else {
           totalLoadingBar.style.top = '0px'
         }
