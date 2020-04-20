@@ -47,7 +47,7 @@ export default function(props): ReactElement {
         }
       }
 
-      // main 이외 페이지에서 헤더 숨길/표시 처리
+      // main 이외 페이지에서 로딩 숨길/표시 처리
       if (path && totalLoadingBar) {
         if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
           totalLoadingBar.style.top = isMobile ? '55px' : '60px'

@@ -2,13 +2,13 @@
 //              SCSS CONFIG
 // =====================================
 
-$env: "development" !default;
+$env: 'development' !default;
 
 /*URL SET*/
 $image-url: 'https://res.share.decompany.io/static/image' !default;
 $font-url: 'https://res.share.decompany.io/static/font' !default;
 
-@if ($env == "production") {
+@if ($env == 'production') {
   $image-url: 'https://res.polarishare.com/static/image';
   $font-url: 'https://res.polarishare.com/static/font';
 }
@@ -17,7 +17,6 @@ $font-url: 'https://res.share.decompany.io/static/font' !default;
 /*@debug ("SCSS ENV : [" + $env + "]");
 @debug ("SCSS image URL : [" + $image-url + "]");
 @debug ("SCSS font URL : [" + $font-url + "]");*/
-
 
 //======================================
 //              SCSS COMMON STYLE
@@ -52,7 +51,6 @@ $gutter-3: 1rem;
 $gutter-4: 1.5rem;
 $gutter-5: 3rem;
 
-
 //======================================
 //          SCSS COMMON FUNCTION
 // =====================================
@@ -66,9 +64,9 @@ $gutter-5: 3rem;
   @if $n == 0 {
     @return 0;
   } @else if $n == 1 {
-    @return .25rem;
+    @return 0.25rem;
   } @else if $n == 2 {
-    @return .5rem;
+    @return 0.5rem;
   } @else if $n == 3 {
     @return 1rem;
   } @else if $n == 4 {
@@ -77,7 +75,6 @@ $gutter-5: 3rem;
     @return 3rem;
   }
 }
-
 
 //======================================
 //              SCSS COMMON MIXIN
@@ -540,7 +537,6 @@ $gutter-5: 3rem;
   }
 }
 
-
 //======================================
 //        SCSS COMPONENT MIXIN
 // =====================================
@@ -562,7 +558,7 @@ $gutter-5: 3rem;
     width: 1px;
     height: 12px;
     margin: 0 12px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     vertical-align: middle;
   }
 }
@@ -594,7 +590,6 @@ $gutter-5: 3rem;
   animation: mock-gradient-animation 4s ease infinite;
 }
 
-
 //======================================
 //              FONTS
 // =====================================
@@ -605,30 +600,29 @@ $gutter-5: 3rem;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
-  src: url($font-url + '/poppins/Poppins-Light.otf') format('opentype');
+  src: url($font-url +'/poppins/Poppins-Light.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  src: url($font-url + '/poppins/Poppins-Medium.otf') format('opentype')
+  src: url($font-url +'/poppins/Poppins-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  src: url($font-url + '/poppins/Poppins-SemiBold.otf') format('opentype');
+  src: url($font-url +'/poppins/Poppins-SemiBold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  src: url($font-url + '/poppins/Poppins-Bold.otf') format('opentype');
+  src: url($font-url +'/poppins/Poppins-Bold.otf') format('opentype');
 }
-
 
 //======================================
 //          GLOBAL STYLE
@@ -667,11 +661,12 @@ section {
 
 body {
   margin: 0;
-  font-family: Helvetica, source-han-sans-korean, MalgumGothic, Arial, sans-serif;
+  font-family: Helvetica, source-han-sans-korean, MalgumGothic, Arial,
+  sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   text-align: left;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   -ms-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   color: #4d4d4d;
@@ -679,7 +674,7 @@ body {
   overflow-x: hidden;
 }
 
-[tabindex="-1"]:focus {
+[tabindex='-1']:focus {
   outline: 0 !important;
 }
 
@@ -755,11 +750,11 @@ sup {
 }
 
 sub {
-  bottom: -.25em;
+  bottom: -0.25em;
 }
 
 sup {
-  top: -.5em;
+  top: -0.5em;
 }
 
 a {
@@ -768,12 +763,12 @@ a {
   background-color: transparent;
 }
 
-
 a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: inherit;
     text-decoration: none;
   }
@@ -829,7 +824,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 button {
@@ -862,36 +857,36 @@ select {
 }
 
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
+html [type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
   box-sizing: border-box;
   padding: 0;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
   -webkit-appearance: listbox;
 }
 
@@ -902,24 +897,24 @@ textarea {
   min-height: 80px;
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   outline-offset: -2px;
   -webkit-appearance: none;
 }
 
-[type="file"] {
+[type='file'] {
   opacity: 0;
   left: -999999px;
   position: absolute;
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -945,7 +940,7 @@ textarea {
   }
 
   abbr[title]::after {
-    content: " (" attr(title) ")";
+    content: ' (' attr(title) ')';
   }
 
   pre {
@@ -1086,25 +1081,25 @@ footer {
 <input type="checkbox" v-model="checkbox" id="termsCheckbox"> //실제 체크박스
 <label for="termsCheckbox"><span><i class="material-icons">done</i></span>{{$str('termsLabel')}}</label> //스타일 체크박스
    */
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: none;
 }
 
-input[type="checkbox"] + label {
+input[type='checkbox'] + label {
   @include d-flex;
   color: #666666;
   font-size: 13px;
   align-items: center;
 }
 
-input[type="checkbox"]:disabled + label {
+input[type='checkbox']:disabled + label {
   @include d-flex;
   color: #d0d0d0;
   font-size: 13px;
   align-items: center;
 }
 
-input[type="checkbox"] + label span {
+input[type='checkbox'] + label span {
   display: inline-block;
   position: relative;
   min-width: 20px;
@@ -1117,29 +1112,29 @@ input[type="checkbox"] + label span {
   border-radius: 2px;
 }
 
-input[type="checkbox"]:checked + label span {
+input[type='checkbox']:checked + label span {
   border: 1px solid $primary-color;
   font-size: 13px;
   color: $primary-color;
   font-weight: bold;
 }
 
-input[type="checkbox"]:disabled + label span {
+input[type='checkbox']:disabled + label span {
   border: 1px solid #d0d0d0;
   font-size: 13px;
   color: #d0d0d0;
   font-weight: bold;
 }
 
-input[type="checkbox"]:hover:not(:disabled) + label span {
+input[type='checkbox']:hover:not(:disabled) + label span {
   border: 1px solid $primary-color;
 }
 
-input[type="checkbox"] + label span i {
+input[type='checkbox'] + label span i {
   display: none;
 }
 
-input[type="checkbox"]:checked + label span i {
+input[type='checkbox']:checked + label span i {
   position: absolute;
   right: 1px;
   bottom: 1px;
@@ -1160,25 +1155,25 @@ input[type="checkbox"]:checked + label span i {
 <label for="termsCheckbox"><span><i class="material-icons">done</i></span>{{$str('termsLabel')}}</label> //스타일 체크박스
    */
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
-input[type="radio"] + label {
+input[type='radio'] + label {
   @include d-flex;
   color: #666666;
   font-size: 13px;
   align-items: center;
 }
 
-input[type="radio"]:disabled + label {
+input[type='radio']:disabled + label {
   @include d-flex;
   color: #d0d0d0;
   font-size: 13px;
   align-items: center;
 }
 
-input[type="radio"] + label span {
+input[type='radio'] + label span {
   display: inline-block;
   position: relative;
   min-width: 20px;
@@ -1191,29 +1186,29 @@ input[type="radio"] + label span {
   border-radius: 30px;
 }
 
-input[type="radio"]:checked + label span {
+input[type='radio']:checked + label span {
   border: 1px solid $primary-color;
   font-size: 13px;
   color: $primary-color;
   font-weight: bold;
 }
 
-input[type="radio"]:disabled + label span {
+input[type='radio']:disabled + label span {
   border: 1px solid #d0d0d0;
   font-size: 13px;
   color: #d0d0d0;
   font-weight: bold;
 }
 
-input[type="radio"]:hover:not(:disabled) + label span {
+input[type='radio']:hover:not(:disabled) + label span {
   border: 1px solid $primary-color;
 }
 
-input[type="radio"] + label span i {
+input[type='radio'] + label span i {
   display: none;
 }
 
-input[type="radio"]:checked + label span i {
+input[type='radio']:checked + label span i {
   @include d-flex;
   justify-content: center;
   align-items: center;
@@ -1228,44 +1223,43 @@ input[type="radio"]:checked + label span i {
   margin-left: 1px;
 }
 
-
 //======================================
 //          COMMON ANIMATION
 // =====================================
 
 @-webkit-keyframes mock-gradient-animation {
   0% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
   50% {
-    background-position: 100% 49%
+    background-position: 100% 49%;
   }
   100% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
 }
 
 @-moz-keyframes mock-gradient-animation {
   0% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
   50% {
-    background-position: 100% 49%
+    background-position: 100% 49%;
   }
   100% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
 }
 
 @keyframes mock-gradient-animation {
   0% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
   50% {
-    background-position: 100% 49%
+    background-position: 100% 49%;
   }
   100% {
-    background-position: 0 52%
+    background-position: 0 52%;
   }
 }
 
@@ -1274,7 +1268,6 @@ input[type="radio"]:checked + label span i {
     stroke-dasharray: 0 100;
   }
 }
-
 
 @keyframes scroll-out {
   0% {
@@ -1360,11 +1353,9 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         COMMON COMPONENT CSS
 // =====================================
-
 
 .common_addBtn {
   @include d-flex;
@@ -1397,7 +1388,7 @@ input[type="radio"]:checked + label span i {
 }
 
 .common_searchBtn {
-  background-image: url($image-url + '/icon/i_search.svg');
+  background-image: url($image-url +'/icon/i_search.svg');
   cursor: pointer;
   width: 25px;
   height: 26px;
@@ -1406,7 +1397,7 @@ input[type="radio"]:checked + label span i {
   z-index: 1;
 
   &:hover {
-    background-image: url($image-url + '/icon/i_search_blue.png');
+    background-image: url($image-url +'/icon/i_search_blue.png');
   }
 }
 
@@ -1434,11 +1425,11 @@ input[type="radio"]:checked + label span i {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-image: url($image-url + '/icon/i_hamberger.svg');
+  background-image: url($image-url +'/icon/i_hamberger.svg');
   cursor: pointer;
 
   &:hover {
-    background-image: url($image-url + '/icon/i_hamberger_blue.png');
+    background-image: url($image-url +'/icon/i_hamberger_blue.png');
   }
 }
 
@@ -1501,6 +1492,9 @@ input[type="radio"]:checked + label span i {
     }
   }
 
+  @media (max-width: $sm-max-width) {
+    width: 85px;
+  }
 }
 
 .common_disabledBtn {
@@ -1601,7 +1595,8 @@ input[type="radio"]:checked + label span i {
     color: #8c8c8c;
   }
 
-  &:hover, &:hover > i {
+  &:hover,
+  &:hover > i {
     background: $primary-color;
     color: white !important;
   }
@@ -1668,13 +1663,23 @@ input[type="radio"]:checked + label span i {
   font-size: 14px;
   color: #4d4d4d;
   width: 100%;
-  background-image: linear-gradient(to top, #3681fe 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+  background-image: linear-gradient(
+                  to top,
+                  #3681fe 2px,
+                  rgba(156, 39, 176, 0) 2px
+  ),
+  linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
 
   &:focus {
-    background-image: linear-gradient(to top, #3681fe 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+    background-image: linear-gradient(
+                    to top,
+                    #3681fe 2px,
+                    rgba(156, 39, 176, 0) 2px
+    ),
+    linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
     background-size: 100% 100%, 100% 100%;
     transition-duration: 0.3s;
-    box-shadow: none
+    box-shadow: none;
   }
 
   &::placeholder {
@@ -1689,7 +1694,11 @@ input[type="radio"]:checked + label span i {
 .common_inputWarning:hover {
   background-image: linear-gradient(to top, red 2px, rgba(156, 39, 176, 0) 2px),
   linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
-  background-image: -webkit-linear-gradient(bottom, red 2px, rgba(156, 39, 176, 0) 2px),
+  background-image: -webkit-linear-gradient(
+                  bottom,
+                  red 2px,
+                  rgba(156, 39, 176, 0) 2px
+  ),
   -webkit-linear-gradient(bottom, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
   background-size: 100% 100%, 100% 100%;
 
@@ -1712,7 +1721,7 @@ input[type="radio"]:checked + label span i {
     height: 19px;
     margin-right: 5px;
     top: -3px;
-    background-image: url($image-url + '/icon/i_hit.svg');
+    background-image: url($image-url +'/icon/i_hit.svg');
     vertical-align: middle;
   }
 
@@ -1725,10 +1734,9 @@ input[type="radio"]:checked + label span i {
   @extend .common_view;
 
   &:before {
-    background-image: url($image-url + '/icon/i_thumb.svg') !important;
+    background-image: url($image-url +'/icon/i_thumb.svg') !important;
   }
 }
-
 
 //======================================
 //            MODAL CSS
@@ -1772,7 +1780,8 @@ input[type="radio"]:checked + label span i {
   flex: 0 1 auto;
   width: 100%;
   max-height: calc(100% - 96px);
-  box-shadow: 0 11px 1rem -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 11px 1rem -7px rgba(0, 0, 0, 0.2),
+  0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   background-color: #fff;
   animation: kf-custom-modal ease-in-out 0.3s;
@@ -1796,7 +1805,13 @@ input[type="radio"]:checked + label span i {
   position: relative;
   margin-bottom: 25px;
   padding: 0 24px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#5494ff), to(#307eff));
+  background-image: -webkit-gradient(
+                  linear,
+                  left top,
+                  right top,
+                  from(#5494ff),
+                  to(#307eff)
+  );
   background-image: -webkit-linear-gradient(left, #5494ff, #307eff);
   background-image: linear-gradient(90deg, #5494ff, #307eff);
   flex: 0 0 auto;
@@ -1857,7 +1872,7 @@ input[type="radio"]:checked + label span i {
   text-align: center;
   flex: 0 0 auto;
   margin-top: 1rem !important;
-  margin-bottom: .5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .modal_postAddBtn {
@@ -1909,7 +1924,7 @@ input[type="radio"]:checked + label span i {
   border-radius: 2px;
   border: 1px solid $primary-color;
   padding: 6px 20px;
-  transition: 0.2s all ease-in-out;;
+  transition: 0.2s all ease-in-out;
   font-size: 1rem;
   font-weight: 400;
   -ms-user-select: none;
@@ -1947,8 +1962,8 @@ input[type="radio"]:checked + label span i {
   font-size: 14px;
   font-weight: 400;
   padding: 10px;
-  -webkit-transition-duration: .3s;
-  transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   min-height: 120px !important;
   color: #4d4d4d;
   outline: none;
@@ -2010,15 +2025,14 @@ input[type="radio"]:checked + label span i {
 //        HEADER SECTION FIRST CSS
 // =====================================
 
-
 .hst_logo {
   @include mr(2);
   width: 183px;
   background: {
-    image: url($image-url + '/logo.png');
+    image: url($image-url +'/logo.png');
     repeat: no-repeat;
     position-y: 9px;
-  };
+  }
   position: relative;
   color: inherit;
   height: 50px;
@@ -2030,7 +2044,7 @@ input[type="radio"]:checked + label span i {
 .hst_logoCut {
   background: {
     repeat: no-repeat;
-    image: url($image-url + '/logo.png');
+    image: url($image-url +'/logo.png');
     position-y: 9px;
   }
   cursor: pointer;
@@ -2066,7 +2080,6 @@ input[type="radio"]:checked + label span i {
   align-items: center !important;
   display: flex !important;
 }
-
 
 //======================================
 //        HEADER SECTION SECOND CSS
@@ -2129,7 +2142,6 @@ input[type="radio"]:checked + label span i {
   @include ml-sm(3);
 }
 
-
 //======================================
 //        HEADER LOADING BAR CSS
 // =====================================
@@ -2151,7 +2163,6 @@ input[type="radio"]:checked + label span i {
   transition: all ease-in-out;
 }
 
-
 //======================================
 //        SEARCH BUTTON CSS
 // =====================================
@@ -2170,7 +2181,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //             MENU CSS
 // =====================================
@@ -2183,7 +2193,7 @@ input[type="radio"]:checked + label span i {
   padding: {
     left: 1px;
     top: 2px;
-  };
+  }
 
   &:hover {
     background: #d6e6ff;
@@ -2349,7 +2359,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //            CATEGORY CSS
 // =====================================
@@ -2411,7 +2420,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //             LAYOUT CSS
 // =====================================
@@ -2422,7 +2430,6 @@ input[type="radio"]:checked + label span i {
     margin-bottom: 0;
   }
 }
-
 
 //======================================
 //             FOOTER CSS
@@ -2534,7 +2541,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //              MAIN CSS
 // =====================================
@@ -2543,7 +2549,6 @@ input[type="radio"]:checked + label span i {
   @include layout-main-container;
   padding-bottom: 140px;
 }
-
 
 //======================================
 //          MAIN AVATAR CSS
@@ -2592,7 +2597,6 @@ input[type="radio"]:checked + label span i {
   color: #4d4d4d;
 }
 
-
 //======================================
 //             MAIN LIST CSS
 // =====================================
@@ -2629,7 +2633,8 @@ input[type="radio"]:checked + label span i {
 
 .ml_seeAll {
   max-height: 0;
-  transition: max-width 1s, opacity 1s, transform 750ms, -webkit-transform 750ms, -moz-transform 750ms, -o-transform 750ms;
+  transition: max-width 1s, opacity 1s, transform 750ms, -webkit-transform 750ms,
+  -moz-transform 750ms, -o-transform 750ms;
   opacity: 0;
   font-size: 16px;
   color: #808080;
@@ -2666,7 +2671,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         MAIN LIST MOCK CSS
 // =====================================
@@ -2702,7 +2706,6 @@ input[type="radio"]:checked + label span i {
     margin-right: 0 !important;
   }
 }
-
 
 //======================================
 //         MAIN CAROUSEL CSS
@@ -2879,19 +2882,18 @@ input[type="radio"]:checked + label span i {
 
 .mc_img_1 {
   @extend .mc_imgWrapper;
-  background-image: url($image-url + '/banner/img-banner-01.png');
+  background-image: url($image-url +'/banner/img-banner-01.png');
 }
 
 .mc_img_2 {
   @extend .mc_imgWrapper;
-  background-image: url($image-url + '/banner/img-banner-02.png');
+  background-image: url($image-url +'/banner/img-banner-02.png');
 }
 
 .mc_img_3 {
   @extend .mc_imgWrapper;
-  background-image: url($image-url + '/banner/img-banner-03.png');
+  background-image: url($image-url +'/banner/img-banner-03.png');
 }
-
 
 //======================================
 //         DOCUMENT CARD CSS
@@ -3087,7 +3089,7 @@ input[type="radio"]:checked + label span i {
     height: 19px;
     margin-right: 5px;
     top: -4px;
-    background-image: url($image-url + '/icon/i_hit.svg');
+    background-image: url($image-url +'/icon/i_hit.svg');
     vertical-align: middle;
   }
 }
@@ -3106,7 +3108,7 @@ input[type="radio"]:checked + label span i {
     height: 19px;
     margin-right: 5px;
     top: -4px;
-    background-image: url($image-url + '/icon/i_thumb.svg');
+    background-image: url($image-url +'/icon/i_thumb.svg');
     vertical-align: middle;
   }
 }
@@ -3155,17 +3157,15 @@ input[type="radio"]:checked + label span i {
   @include monotone-grey;
 }
 
-
 //======================================
 //         DOCUMENT CARD MOCK CSS
 // =====================================
-
 
 @for $i from 1 through 4 {
   .dcm_container_#{$i} {
     @include mb-sm(3);
     @include mr-sm(3);
-    opacity: #{(5-$i)/4};
+    opacity: #{(5-$i) / 4};
     width: 290px;
     height: 315px;
     border-radius: 4px;
@@ -3275,7 +3275,6 @@ input[type="radio"]:checked + label span i {
   width: 40px !important;
 }
 
-
 //======================================
 //         ABOUT US CSS
 // =====================================
@@ -3292,7 +3291,7 @@ input[type="radio"]:checked + label span i {
     padding: {
       top: 20px;
       bottom: 0;
-    };
+    }
   }
 }
 
@@ -3322,7 +3321,6 @@ input[type="radio"]:checked + label span i {
   @media all and (max-width: $md-max-width) {
     padding: 35px 0 !important;
   }
-
 }
 
 .au_sectionWrapper_5 {
@@ -3383,6 +3381,10 @@ input[type="radio"]:checked + label span i {
     family: $primary-fonts;
     size: 50px;
     weight: 500;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 30px !important;
   }
 }
 
@@ -3605,7 +3607,6 @@ input[type="radio"]:checked + label span i {
   top: 3px;
 }
 
-
 //======================================
 //              FAQ CSS
 // =====================================
@@ -3658,7 +3659,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //              USER GUIDE CSS
 // =====================================
@@ -3672,9 +3672,8 @@ input[type="radio"]:checked + label span i {
 }
 
 .ug_content {
-  @extend .faq_content
+  @extend .faq_content;
 }
-
 
 //======================================
 //         TERMS OF SERVICE CSS
@@ -3706,7 +3705,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         PRIVACY POLICY CSS
 // =====================================
@@ -3736,7 +3734,6 @@ input[type="radio"]:checked + label span i {
     @include ml(1);
   }
 }
-
 
 //======================================
 //         CONTENTS LIST CSS
@@ -3775,7 +3772,6 @@ input[type="radio"]:checked + label span i {
     }
   }
 }
-
 
 //======================================
 //         CONTENTS LIST ITEM CSS
@@ -3964,7 +3960,6 @@ input[type="radio"]:checked + label span i {
   @extend .common_vote;
 }
 
-
 //======================================
 //     CONTENTS LIST ITEM MOCK CSS
 // =====================================
@@ -3985,15 +3980,15 @@ input[type="radio"]:checked + label span i {
 }
 
 .clim_mock_2 {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .clim_mock_3 {
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .clim_mock_4 {
-  opacity: .2;
+  opacity: 0.2;
 }
 
 .clim_imageWrapper {
@@ -4093,7 +4088,6 @@ input[type="radio"]:checked + label span i {
   vertical-align: middle;
 }
 
-
 //======================================
 //              MORE CSS
 // =====================================
@@ -4142,7 +4136,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //            USER AVATAR CSS
 // =====================================
@@ -4168,7 +4161,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //            NO DATA ICON CSS
 // =====================================
@@ -4181,7 +4173,6 @@ input[type="radio"]:checked + label span i {
   text-align: center;
   width: 100%;
 }
-
 
 //======================================
 //            REWARD CARD CSS
@@ -4204,7 +4195,6 @@ input[type="radio"]:checked + label span i {
     margin: 5px;
   }
 }
-
 
 //======================================
 //            VIEW LANDSCAPE CSS
@@ -4290,7 +4280,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         VIEW PDF VIEWER CSS
 // =====================================
@@ -4327,10 +4316,10 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-#canvasLayer, #textLayer {
+#canvasLayer,
+#textLayer {
   display: none;
 }
-
 
 //======================================
 //      VIEW FULLSCREEN BUTTON CSS
@@ -4340,7 +4329,7 @@ input[type="radio"]:checked + label span i {
   @include container;
   position: absolute;
   height: 30px;
-  width: 100%
+  width: 100%;
 }
 
 .vfb_wrapper {
@@ -4349,8 +4338,12 @@ input[type="radio"]:checked + label span i {
   bottom: 40px;
   right: 50px;
   z-index: 2;
-}
 
+  @media all and (max-width: $sm-max-width) {
+    bottom: 30px;
+    right: 30px;
+  }
+}
 
 //======================================
 //          VIEW INFO BOX CSS
@@ -4358,12 +4351,14 @@ input[type="radio"]:checked + label span i {
 
 .vib_container {
   @include inner-container;
-  @include mt(4);
+  @include mt(3);
+  @include mt-sm(4);
   position: relative;
 }
 
 .vib_title {
-  @include mb(3);
+  @include mb(2);
+  @include mb-sm(3);
   width: 100%;
   line-height: 1.38;
   letter-spacing: -0.2px;
@@ -4380,7 +4375,7 @@ input[type="radio"]:checked + label span i {
   }
 
   @media all and (max-width: $sm-max-width) {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 
@@ -4404,7 +4399,6 @@ input[type="radio"]:checked + label span i {
   @media all and (max-width: $sm-max-width) {
     position: relative !important;
     display: block !important;
-    margin-top: 10px;
   }
 
   .rc_container {
@@ -4414,7 +4408,8 @@ input[type="radio"]:checked + label span i {
 }
 
 .vib_infoIdWrapper {
-  @include ml(3);
+  @include ml(2);
+  @include ml-sm(3);
 }
 
 .vib_infoId {
@@ -4478,7 +4473,7 @@ input[type="radio"]:checked + label span i {
   @media all and (max-width: $sm-max-width) {
     position: absolute;
     right: 0;
-    top: 3px;
+    top: 0;
   }
 }
 
@@ -4601,7 +4596,6 @@ input[type="radio"]:checked + label span i {
   user-select: none;
 }
 
-
 //======================================
 //          VIEW SEE ALSO CSS
 // =====================================
@@ -4628,7 +4622,6 @@ input[type="radio"]:checked + label span i {
   font-family: $primary-fonts;
   font-weight: 500;
 }
-
 
 //======================================
 //         PROFILE SUMMARY CSS
@@ -4686,7 +4679,9 @@ input[type="radio"]:checked + label span i {
   @include col-md(10);
   @include col-lg(11);
 
-  padding-left: 0;
+  @media all and (max-width: $md-max-width) {
+    padding-left: 0;
+  }
 }
 
 .ps_name {
@@ -4729,7 +4724,7 @@ input[type="radio"]:checked + label span i {
   }
 
   p {
-    @media all and (max-width: $sm-max-width) {
+    @media all and (max-width: $md-max-width) {
       font-size: 14px;
     }
   }
@@ -4780,7 +4775,7 @@ input[type="radio"]:checked + label span i {
     padding-bottom: 10px;
   }
 
-  @media all and (max-width: $sm-max-width) {
+  @media all and (max-width: $md-max-width) {
     padding: 1rem 0;
   }
 }
@@ -4800,7 +4795,7 @@ input[type="radio"]:checked + label span i {
     padding-bottom: 10px;
   }
 
-  @media all and (max-width: $sm-max-width) {
+  @media all and (max-width: $md-max-width) {
     padding: 1rem 0;
   }
 }
@@ -4831,7 +4826,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //       PROFILE USERNAME EDIT CSS
 // =====================================
@@ -4856,7 +4850,8 @@ input[type="radio"]:checked + label span i {
   height: 21px;
   outline: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: $primary-color;
   }
 }
@@ -4865,7 +4860,6 @@ input[type="radio"]:checked + label span i {
   border-color: red !important;
   margin-bottom: 10px;
 }
-
 
 .pue_okBtn {
   @include d-flex;
@@ -4940,7 +4934,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //            ALERT LIST CSS
 // =====================================
@@ -4959,7 +4952,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //              ALERT CSS
 // =====================================
@@ -4969,7 +4961,8 @@ input[type="radio"]:checked + label span i {
   max-height: 150px;
   width: 100%;
   position: relative;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   border-radius: 3px;
   padding: 6px 24px;
 }
@@ -4993,7 +4986,7 @@ input[type="radio"]:checked + label span i {
   @include d-flex;
   font-size: 14px;
   align-items: center;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 
   span {
     padding: 5px 1rem 5px 0;
@@ -5027,7 +5020,6 @@ input[type="radio"]:checked + label span i {
     cursor: pointer;
   }
 }
-
 
 //======================================
 //          TRACKING AUTHOR CSS
@@ -5211,7 +5203,7 @@ input[type="radio"]:checked + label span i {
     position: relative;
     height: 19px;
     top: -3px;
-    background-image: url($image-url + '/icon/i_thumb.svg');
+    background-image: url($image-url +'/icon/i_thumb.svg');
     vertical-align: middle;
   }
 
@@ -5237,7 +5229,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //      TRACKING EXPORT BUTTON CSS
 // =====================================
@@ -5248,7 +5239,6 @@ input[type="radio"]:checked + label span i {
   position: absolute !important;
   bottom: 0;
 }
-
 
 //======================================
 //         TRACKING LIST CSS
@@ -5558,7 +5548,6 @@ input[type="radio"]:checked + label span i {
   font-weight: 100;
 }
 
-
 //======================================
 //         CUSTOM CHART CSS
 // =====================================
@@ -5569,7 +5558,6 @@ input[type="radio"]:checked + label span i {
   position: relative;
   width: 100%;
 }
-
 
 //======================================
 //         TRACKING DETAIL LIST CSS
@@ -5649,7 +5637,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         TRACKING DETAIL ITEM CSS
 // =====================================
@@ -5702,7 +5689,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 .tdi_desc {
   animation-duration: 0.5s;
   overflow: hidden;
@@ -5721,7 +5707,7 @@ input[type="radio"]:checked + label span i {
       width: 1px;
       height: 100%;
       background-color: #7b9268;
-      opacity: 0.5
+      opacity: 0.5;
     }
   }
 
@@ -5804,7 +5790,7 @@ input[type="radio"]:checked + label span i {
 }
 
 .tdi_tooltipImg {
-  width: 100%;;
+  width: 100%;
 }
 
 .tdi_infoBtn {
@@ -5840,7 +5826,6 @@ input[type="radio"]:checked + label span i {
   @include d-flex;
   width: 100%;
 }
-
 
 //======================================
 //        PROFILE CARD CSS
@@ -5945,7 +5930,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //       FULLSCREEN MODAL CSS
 // =====================================
@@ -5960,7 +5944,6 @@ input[type="radio"]:checked + label span i {
   z-index: 4;
   top: 0;
   left: 0;
-
 }
 
 .fm_onWrapper {
@@ -5994,7 +5977,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //      UPLOAD PROGRESS MODAL CSS
 // =====================================
@@ -6019,7 +6001,6 @@ input[type="radio"]:checked + label span i {
   display: none;
   pointer-events: none;
 }
-
 
 .upm_progressSecond {
   border-radius: 100px;
@@ -6047,11 +6028,9 @@ input[type="radio"]:checked + label span i {
   font-weight: 500;
 }
 
-
 //======================================
 //        UPLOAD DOCUMENT MODAL CSS
 // =====================================
-
 
 .udm_textarea {
   @include mt(4);
@@ -6075,7 +6054,6 @@ input[type="radio"]:checked + label span i {
     border-color: $primary-color;
   }
 }
-
 
 //======================================
 //            DROP ZONE CSS
@@ -6134,7 +6112,6 @@ input[type="radio"]:checked + label span i {
     }
   }
 }
-
 
 //======================================
 //        EDIT DOCUMENT MODAL CSS
@@ -6223,7 +6200,6 @@ input[type="radio"]:checked + label span i {
   top: 0;
 }
 
-
 //======================================
 //          AWAY MODAL CSS
 // =====================================
@@ -6251,7 +6227,6 @@ input[type="radio"]:checked + label span i {
   z-index: 4;
   top: 0;
   left: 0;
-
 }
 
 .am_onWrapper {
@@ -6260,8 +6235,8 @@ input[type="radio"]:checked + label span i {
   height: 100%;
   background: white;
   opacity: 0.8;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .am_onContainer {
@@ -6294,7 +6269,6 @@ input[type="radio"]:checked + label span i {
   margin-bottom: 3px;
 }
 
-
 //======================================
 //         UPLOAD COMPLETE CSS
 // =====================================
@@ -6303,7 +6277,6 @@ input[type="radio"]:checked + label span i {
   @extend .modal_okBtn;
   @include ml(2);
 }
-
 
 //======================================
 //         EMAIL MODAL CSS
@@ -6345,7 +6318,6 @@ input[type="radio"]:checked + label span i {
   top: 0;
 }
 
-
 //======================================
 //   PRIVATE DOCUMENT COUNT MODAL CSS
 // =====================================
@@ -6354,7 +6326,6 @@ input[type="radio"]:checked + label span i {
   @extend .modal_okBtn;
   @include ml(3);
 }
-
 
 //======================================
 //         SHARE MODAL CSS
@@ -6391,7 +6362,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //     PROFILE UPLOAD TAB CSS
 // =====================================
@@ -6424,7 +6394,6 @@ input[type="radio"]:checked + label span i {
   align-items: center;
 }
 
-
 //======================================
 //           PROFILE TAB CSS
 // =====================================
@@ -6432,7 +6401,6 @@ input[type="radio"]:checked + label span i {
 .pt_container {
   @include container;
 }
-
 
 //======================================
 //     PROFILE UPLOAD TAB ITEM CSS
@@ -6548,7 +6516,8 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-.puti_title, .puti_title > i {
+.puti_title,
+.puti_title > i {
   @include mb(1);
   margin-right: 25px;
   cursor: pointer;
@@ -6688,7 +6657,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 //======================================
 //         PUBLISH MODAL CSS
 // =====================================
@@ -6781,7 +6749,6 @@ input[type="radio"]:checked + label span i {
   margin-bottom: 3px;
 }
 
-
 //======================================
 //     PUBLISH COMPLETE MODAL CSS
 // =====================================
@@ -6806,8 +6773,8 @@ input[type="radio"]:checked + label span i {
   border-radius: 2px;
   width: 100%;
   height: 35px;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     border-color: $primary-color;
@@ -6841,7 +6808,6 @@ input[type="radio"]:checked + label span i {
   left: -9999px;
 }
 
-
 //======================================
 //         PROFILE VOTE TAB CSS
 // =====================================
@@ -6857,7 +6823,6 @@ input[type="radio"]:checked + label span i {
 .pvt_spinner {
   @extend .put_spinner;
 }
-
 
 //======================================
 //      PROFILE ANALYTICS TAB CSS
@@ -6957,7 +6922,6 @@ input[type="radio"]:checked + label span i {
   }
 }
 
-
 .pat_btnOn {
   @extend .pat_btn;
 
@@ -7014,7 +6978,6 @@ input[type="radio"]:checked + label span i {
   z-index: 1;
 }
 
-
 //======================================
 //      PROFILE CURATOR TAB ITEM CSS
 // =====================================
@@ -7042,7 +7005,8 @@ input[type="radio"]:checked + label span i {
   margin: 0 0 0 1rem;
 }
 
-.pcti_title, .pcti_title > i {
+.pcti_title,
+.pcti_title > i {
   @include mb(1);
   cursor: pointer;
   display: inline-block;
@@ -7087,7 +7051,6 @@ input[type="radio"]:checked + label span i {
   @extend .puti_date;
 }
 
-
 //======================================
 //       IMAGE CROP MODAL CSS
 // =====================================
@@ -7100,7 +7063,6 @@ input[type="radio"]:checked + label span i {
   margin: 0 24px;
   position: relative;
 }
-
 
 //======================================
 //       PROFILE AVATAR EDIT CSS
@@ -7132,7 +7094,6 @@ input[type="radio"]:checked + label span i {
     top: 38%;
   }
 }
-
 
 //======================================
 //       COOKIE POLICY NOTICE CSS
@@ -7205,7 +7166,6 @@ input[type="radio"]:checked + label span i {
   height: 100%;
   position: absolute;
 }
-
 
 //======================================
 //       DOLLAR POLICY NOTICE CSS
@@ -7282,7 +7242,6 @@ input[type="radio"]:checked + label span i {
   position: absolute;
 }
 
-
 //======================================
 //      NOT FOUND PAGE WRAPPER CSS
 // =====================================
@@ -7307,7 +7266,7 @@ input[type="radio"]:checked + label span i {
 
   i {
     font-size: 70px;
-    color: #cccccc
+    color: #cccccc;
   }
 
   span {
@@ -7316,7 +7275,6 @@ input[type="radio"]:checked + label span i {
     font-weight: bold;
   }
 }
-
 
 //======================================
 //      CONTENTS BOOKMARK CSS
@@ -7358,7 +7316,6 @@ input[type="radio"]:checked + label span i {
     display: inline-block;
   }
 }
-
 
 //======================================
 //            VOTE MODAL CSS
@@ -7404,7 +7361,6 @@ input[type="radio"]:checked + label span i {
   font-size: 14px;
 }
 
-
 //======================================
 //            DEPOSIT MODAL CSS
 // =====================================
@@ -7431,7 +7387,6 @@ input[type="radio"]:checked + label span i {
   left: -9999px;
 }
 
-
 //======================================
 //           WITHDRAW MODAL CSS
 // =====================================
@@ -7453,7 +7408,6 @@ input[type="radio"]:checked + label span i {
     }
   }
 }
-
 
 //======================================
 //           PAGINATION CSS
@@ -7487,7 +7441,6 @@ input[type="radio"]:checked + label span i {
   margin-top: 5px !important;
   color: darkgrey;
 }
-
 
 //======================================
 //      PROFILE CREATOR CLAIM CSS

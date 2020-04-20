@@ -53,6 +53,7 @@ export default function({
   const getCreatorRewards = () =>
     repos.Document.getClaimableRoyalty(documentData.documentId, myInfo.id).then(
       res => {
+        // console.log(res)
         if (res.royalty > 0)
           setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
       }

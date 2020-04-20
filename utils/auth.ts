@@ -1,5 +1,5 @@
 import commonData from '../common/commonData'
-import { repos } from './repos'
+import repos from './repos'
 import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
 import { APP_CONFIG } from '../app.config'

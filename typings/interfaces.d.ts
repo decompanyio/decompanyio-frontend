@@ -114,10 +114,6 @@ export interface ProfileUploadTabItemProps {
   owner: boolean
 }
 
-export interface ProfileVoteProps {
-  documentData
-}
-
 export interface ProfileVoteTabProps {
   profileInfo
   owner: boolean
@@ -301,8 +297,24 @@ export interface TrackingInitState {
   showOnePage: boolean
 }
 
-// redux 도메인 추가 시, interface 도 함께 추가해주어야 합니다.
+// redux 도메인 추가 시, interface 도 함께 추가해 주어야 합니다.
 export interface StateProps {
   tracking: TrackingState
   main: MainState
+}
+
+export interface getDocumentListByIdsQuery {
+  Document
+  DocumentFeatured
+  DocumentPopular
+}
+
+export interface getDocumentListByIdsMultipleQuery {
+  Document
+  DocumentFeatured
+  DocumentPopular
+}
+
+export interface getProfileRewardsQuery {
+  ProfileSummary
 }

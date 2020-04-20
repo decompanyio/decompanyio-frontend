@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react'
 import { psString } from 'utils/localization'
-import { repos } from '../../../../../utils/repos'
+import repos from '../../../../../utils/repos'
 import * as styles from '../../../../../public/static/styles/main.scss'
 import { AUTH_APIS } from '../../../../../utils/auth'
 import { ProfileCuratorClaimProps } from '../../../../../typings/interfaces'
@@ -15,7 +15,7 @@ export default function({
 
   const claimCuratorReward = () => {
     repos.Wallet.claimCurator({ documentId: documentData.documentId })
-      .then((res: any) => {
+      .then((res: { royalties }) => {
         // TODO 임시 방편, 추후 claim reward GET API 연동 필요
         if (res.royalties && res.royalties.length === 0) {
           setBtnText('')
@@ -57,7 +57,10 @@ export default function({
       onClick={(): void => handelClaimBtnClick()}
     >
       {btnText}{' '}
-      {btnText === psString('claim-btn-text-2') ? '' : validClaimAmount}
+      {btnText === psString('claim-btn-text-2') ||
+      btnText === psString('claim-btn-text-1')
+        ? ''
+        : validClaimAmount}
     </div>
   )
 }

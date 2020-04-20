@@ -34,15 +34,14 @@ import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
 import ClaimableReward from '../service/model/ClaimableReward'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
 import log from './log'
-import { ParamsGetDocumentList } from '../typings/interfaces'
+import {
+  getDocumentListByIdsMultipleQuery,
+  getDocumentListByIdsQuery,
+  getProfileRewardsQuery,
+  ParamsGetDocumentList
+} from '../typings/interfaces'
 
-let instance
-
-export const repos = {
-  ref(): void {
-    // 자기 참조
-    instance = this
-  },
+const repos = {
   init(): Promise<boolean> {
     // Google Analytics 초기화
     let gaId =
@@ -147,7 +146,7 @@ export const repos = {
     },
     async getUserInfo(at?: string) {
       let authorizationToken =
-        at || (await AUTH_APIS.scheduleRenewal().then((res: any) => res))
+        at || (await AUTH_APIS.scheduleRenewal().then(res => res))
       const _data = {
         header: {
           Authorization: authorizationToken
@@ -155,7 +154,7 @@ export const repos = {
       }
 
       return AuthService.GET.userInfo(_data).then(
-        (result: any): UserInfo => new UserInfo(result.user)
+        (result: { user }): UserInfo => new UserInfo(result.user)
       )
     },
     async syncAuthAndRest(ui: UserInfo, at?: string) {
@@ -293,7 +292,7 @@ export const repos = {
       )
     },
     async getDocumentVoteAmount(data) {
-      return instance.Query.getDocumentVoteAmount(data).then(res => {
+      return repos.Query.getDocumentVoteAmount(data).then(res => {
         let totalVoteAmount = res.getTodayActiveVoteAmount.reduce(
           (a, b) => Number(a.voteAmount || b.voteAmount || 0),
           0
@@ -371,10 +370,10 @@ export const repos = {
         .catch(err => err)
     },
     getMyList: async data =>
-      instance.Query.getMyListFindMany(data)
-        .then(res => instance.Common.checkNone(res))
+      repos.Query.getMyListFindMany(data)
+        .then(res => repos.Common.checkNone(res))
         .then(res => res.map(v => '"' + v.documentId + '"'))
-        .then(res => instance.Query.getDocumentListByIds(res))
+        .then(res => repos.Query.getDocumentListByIds(res))
         .then(res => {
           let resultData = res
           resultData.Document.findByIds = res.Document.findByIds.filter(l => {
@@ -401,7 +400,7 @@ export const repos = {
         })
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"')
-          let userData = await instance.Query.getUserByIds(ids)
+          let userData = await repos.Query.getUserByIds(ids)
           return {
             resultList: res.filter(v => {
               let idx = -1
@@ -419,10 +418,10 @@ export const repos = {
           }
         ),
     getHistory: async data =>
-      instance.Query.getHistoryFindById(data)
-        .then(res => instance.Common.checkNone(res))
+      repos.Query.getHistoryFindById(data)
+        .then(res => repos.Common.checkNone(res))
         .then(res => res.map(v => v.documentId))
-        .then(res => instance.Query.getDocumentListByIdsMultiple(res))
+        .then(res => repos.Query.getDocumentListByIdsMultiple(res))
         .then(res => {
           const resultData = Object({
             Document: [],
@@ -465,7 +464,7 @@ export const repos = {
         })
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"')
-          let userData = await instance.Query.getUserByIds(ids)
+          let userData = await repos.Query.getUserByIds(ids)
           return {
             resultList: res.filter(v => {
               let idx = -1
@@ -483,12 +482,12 @@ export const repos = {
           }
         ),
     async getCreatorRewards(documentId: string) {
-      return instance.Query.getCreatorRewards({
+      return repos.Query.getCreatorRewards({
         documentId
       }).then(res => Number(res.determineCreatorRoyalty || 0))
     },
     async getNDaysRoyalty(documentId: string, days: number) {
-      return instance.Query.getNDaysRoyalty({
+      return repos.Query.getNDaysRoyalty({
         documentId,
         days
       }).then((res): number => {
@@ -504,24 +503,29 @@ export const repos = {
       })
     },
     async getCuratorRewards(documentId: string, userId: string) {
-      return instance.Query.getCuratorRewards({
+      return repos.Query.getCuratorRewards({
         documentId,
         userId
       }).then(res => Number(res.determineCreatorRoyalty || 0))
     },
     async getClaimableRoyalty(documentId: string, userId: string) {
-      return instance.Query.getClaimableRoyalty({ documentId, userId }).then(
-        res =>
-          new ClaimableRoyalty(
-            res && res.length > 0 ? res.getClaimableRoyalty[0] : null
+      return repos.Query.getClaimableRoyalty({ documentId, userId }).then(
+        res => {
+          return new ClaimableRoyalty(
+            res.getClaimableRoyalty && res.getClaimableRoyalty.length > 0
+              ? res.getClaimableRoyalty[0]
+              : null
           )
+        }
       )
     },
     async getClaimableReward(documentId: string, userId: string) {
-      return instance.Query.getClaimableReward({ documentId, userId }).then(
+      return repos.Query.getClaimableReward({ documentId, userId }).then(
         (res): ClaimableReward =>
           new ClaimableReward(
-            res && res.length > 0 ? res.getClaimableReward[0] : null
+            res.getClaimableReward && res.getClaimableReward.length > 0
+              ? res.getClaimableReward[0]
+              : null
           )
       )
     },
@@ -693,7 +697,7 @@ export const repos = {
         .catch(err => err)
     },
     async getProfileRewards(data) {
-      return instance.Query.getProfileRewards(data).then(
+      return repos.Query.getProfileRewards(data).then(
         res => new ProfileRewards(res.ProfileSummary)
       )
     }
@@ -749,7 +753,7 @@ export const repos = {
     getDocumentListByIds: async data =>
       graphql({
         query: queries.getDocumentListByIds(data)
-      }).then(res => res),
+      }).then((res: getDocumentListByIdsQuery) => res),
     getDocumentListByIdsMultiple: async data =>
       graphql({
         query: data.map(
@@ -767,7 +771,7 @@ export const repos = {
             `: ` +
             queries.getDocumentPopularByFindOne(v)
         )
-      }).then(res => res),
+      }).then((res: getDocumentListByIdsMultipleQuery) => res),
     getUserByIds: async data =>
       graphql({
         query: queries.getUserByIds(data)
@@ -775,7 +779,7 @@ export const repos = {
     getProfileRewards: async data =>
       graphql({
         query: queries.getProfileRewards(data)
-      }).then(res => res),
+      }).then((res: getProfileRewardsQuery) => res),
     getCreatorRewards: async data =>
       graphql({
         query: queries.getCreatorRewards(data)
@@ -799,9 +803,5 @@ export const repos = {
   }
 }
 
-export const init = () => {
-  repos.ref()
-  return repos
-}
-
-export default init()
+// @ts-ignore
+export default repos

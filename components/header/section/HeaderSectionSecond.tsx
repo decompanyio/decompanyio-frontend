@@ -65,9 +65,11 @@ export default function(): ReactElement {
         <SearchBtn click={handleSearchBtnClick} />
       </div>
 
-      <div className={styles.hss_postContainer}>
-        <AddBtn />
-      </div>
+      {((showSearchBar !== 1 && isMobile) || !isMobile) && (
+        <div className={styles.hss_postContainer}>
+          <AddBtn />
+        </div>
+      )}
 
       {myInfo.email && !isMobile && (
         <MyAvatar
@@ -82,9 +84,11 @@ export default function(): ReactElement {
 
       {!myInfo.email && !isMobile && <LoginBtn />}
 
-      <div className={styles.hss_menuContainer}>
-        <MenuBtn />
-      </div>
+      {((showSearchBar !== 1 && isMobile) || !isMobile) && (
+        <div className={styles.hss_menuContainer}>
+          <MenuBtn />
+        </div>
+      )}
     </div>
   )
 }

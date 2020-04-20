@@ -28,7 +28,7 @@ export default function({
     repos.Document.getClaimableReward(
       documentData.documentId,
       myInfo.id
-    ).then((res): void => setValidClaimAmount(common.deckToDollar(res)))
+    ).then((res): void => setValidClaimAmount(common.deckToDollar(res.reward)))
 
   const getNDaysRoyalty = () =>
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {

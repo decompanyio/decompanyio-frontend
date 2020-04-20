@@ -7,7 +7,7 @@ import { AUTH_APIS } from '../../../utils/auth'
 import React, { ReactElement, useEffect, useState } from 'react'
 import ViewOption from './ViewOption'
 import dynamic from 'next/dynamic'
-import { repos } from '../../../utils/repos'
+import repos from '../../../utils/repos'
 import { ViewInfoBoxProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
 

@@ -8,7 +8,7 @@ import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
-import { repos } from '../../../utils/repos'
+import repos from '../../../utils/repos'
 import { DocumentCardProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
 

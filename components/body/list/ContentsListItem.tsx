@@ -11,7 +11,7 @@ import { APP_CONFIG } from '../../../app.config'
 import RewardCard from 'components/common/card/RewardCard'
 import React, { ReactElement, useEffect, useState } from 'react'
 import ContentsBookmark from './ContentsBookmark'
-import { repos } from '../../../utils/repos'
+import repos from '../../../utils/repos'
 import { ContentsListItemProps } from '../../../typings/interfaces'
 
 const UserAvatarWithoutSSR = dynamic(
@@ -63,7 +63,7 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <a className={styles.cl_imageWrapper}>
+          <a className={styles.cl_imageWrapper} href="#">
             <img
               src={imageUrl}
               alt={documentData.title}

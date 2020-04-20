@@ -55,7 +55,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
         )}
 
         <div className={styles.mn_contentList}>
-          <Link href="/about_us" as="a">
+          <Link href="/about_us" as="au">
             <div
               className={styles.mn_contentItem}
               onClick={() => setMenuClose()}
