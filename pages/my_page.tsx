@@ -24,12 +24,20 @@ export default function Index({ profileInfo }, ...rest): ReactElement {
     if (!profileInfo.email) Router.push('/not_found_page')
 
     if (owner === -1) {
-      if (
-        AUTH_APIS.isLogin() &&
-        profileInfo.email &&
-        profileInfo.email === AUTH_APIS.getMyInfo().email
-      ) {
-        setOwner(1)
+      if (AUTH_APIS.isLogin()) {
+        repos.Account.getAccountInfo()
+          .then(res => {
+            setOwner(
+              profileInfo.email === res.user.email ||
+                profileInfo.username === res.user.username
+                ? 1
+                : 0
+            )
+          })
+          .catch(err => {
+            console.log(err)
+            setOwner(0)
+          })
       } else {
         setOwner(0)
       }

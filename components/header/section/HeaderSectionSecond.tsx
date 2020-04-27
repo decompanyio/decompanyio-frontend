@@ -9,6 +9,7 @@ import AutoSuggestInput from '../../common/input/AutoSuggestInput'
 import Router from 'next/router'
 import ProfileCard from '../../common/card/ProfileCard'
 import { useMain } from '../../../redux/main/hooks'
+import commonView from '../../../common/commonView'
 
 export default function(): ReactElement {
   const { isMobile, myInfo } = useMain()
@@ -65,13 +66,14 @@ export default function(): ReactElement {
         <SearchBtn click={handleSearchBtnClick} />
       </div>
 
-      {((showSearchBar !== 1 && isMobile) || !isMobile) && (
+      {((showSearchBar !== 1 && commonView.getWindowWidth() <= 830) ||
+        commonView.getWindowWidth() > 830) && (
         <div className={styles.hss_postContainer}>
           <AddBtn />
         </div>
       )}
 
-      {myInfo.email && !isMobile && (
+      {myInfo.email && commonView.getWindowWidth() > 830 && (
         <MyAvatar
           click={handleAvatarClick}
           size={33}
@@ -84,7 +86,8 @@ export default function(): ReactElement {
 
       {!myInfo.email && !isMobile && <LoginBtn />}
 
-      {((showSearchBar !== 1 && isMobile) || !isMobile) && (
+      {((showSearchBar !== 1 && commonView.getWindowWidth() <= 830) ||
+        commonView.getWindowWidth() > 830) && (
         <div className={styles.hss_menuContainer}>
           <MenuBtn />
         </div>

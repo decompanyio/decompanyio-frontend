@@ -32,7 +32,7 @@ const hideRewardInfo = (id: string): void => {
 }
 
 export default function({ documentData }: ViewInfoBoxProps): ReactElement {
-  const { myInfo } = useMain()
+  const { myInfo, isMobile } = useMain()
   const [reward, setReward] = useState(0)
 
   let vote = common.toEther(documentData.latestVoteAmount) || 0
@@ -68,7 +68,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
               <UserAvatarWithoutSSR
                 picture={profileUrl}
                 croppedArea={croppedArea}
-                size={43}
+                size={isMobile ? 37 : 43}
               />
             </div>
           </Link>

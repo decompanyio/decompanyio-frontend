@@ -55,7 +55,7 @@ const strings = new Map([
       KOR:
         '최신, 추천, 인기 문서를 둘러보세요. \n관심 분야의 문서를 보고 싶다면 태그 검색도 해보세요.',
       ENG:
-        'Check out the Latest, Featured, and Popular documents.\n You can also search for documents in a specific topic by using tags.'
+        'Check out the Latest, Featured and Popular documents.\n You can also search for documents in a specific topic by using tags.'
     }
   ],
   [
@@ -1493,8 +1493,8 @@ const strings = new Map([
   [
     'email-modal-btn-ok',
     {
-      KOR: '주소 제출 및 수신 수락',
-      ENG: 'Submit address and Accept mail'
+      KOR: '제출',
+      ENG: 'Submit'
     }
   ],
   [
@@ -2742,6 +2742,1285 @@ const strings = new Map([
     {
       KOR: '다음 목록으로',
       ENG: 'Go to next list'
+    }
+  ],
+
+  // Terms
+  [
+    'terms-title',
+    {
+      KOR: '이용약관',
+      ENG: 'Terms of Service'
+    }
+  ],
+  [
+    'terms-desc-1',
+    {
+      KOR:
+        'Polaris Share에 오신 것을 환영합니다! 귀하와 Polaris Share, Inc. ' +
+        '(이하 "우리", "당사") 간의 본 계약 ("계약")은',
+      ENG:
+        'Welcome to Polaris Share! This agreement (the “Agreement”) between you and Polaris Share, ' +
+        'Inc.(“we”, “us”, “our”) sets out your rights to access and use of'
+    }
+  ],
+  [
+    'terms-desc-2',
+    {
+      KOR:
+        '및 당사가 제공하는 기타 제품 또는 서비스에 대한 액세스 및 사용에 대한 귀하의 권리를 명시합니다. 서비스"). ' +
+        '본 계약을 수락하고 회사, 조직, 정부 또는 기타 법인을 대신하여 서비스를 사용하는 경우, ' +
+        '귀하는 귀하가 그렇게 할 권한이 있음을 진술하고 보증하며 그러한 단체를 본 계약에 구속 할 권한이 있습니다. ' +
+        '서비스에 액세스함으로써 귀하는 본 계약을 읽고, 이해하고 수락한다는 데 동의합니다.',
+      ENG:
+        'and any other products or services provided by us (the “Service”). ' +
+        'If you are accepting this Agreement and using the Services on behalf of a company, ' +
+        'organization, government, or other legal entity, ' +
+        'you represent and warrant that you are authorized to do so and have the authority to bind such entity to this Agreement. ' +
+        'By accessing our Service, you agree that you have read, understood and accepted this Agreement.'
+    }
+  ],
+  [
+    'terms-desc-3',
+    {
+      KOR:
+        '본 계약을 변경하기로 결정한 경우, 위의 "최종 업데이트"날짜를 업데이트하거나 ',
+      ENG:
+        'If we decide to make changes to this Agreement,' +
+        'we will provide notice of those changes by updating the “Last Updated” date above or posting notice on '
+    }
+  ],
+  [
+    'terms-desc-4',
+    {
+      KOR:
+        '에 공지함으로써 변경 사항에 대한 통지를 제공합니다. ' +
+        '서비스를 계속 사용하면 변경 사항에 대한 수락 여부를 확인할 수 있습니다.',
+      ENG:
+        'Your continued use of the Service will confirm your acceptance of the changes.'
+    }
+  ],
+  [
+    'terms-1-title',
+    {
+      KOR: '1. 개인 정보 보호 정책',
+      ENG: '1. Privacy Policy'
+    }
+  ],
+  [
+    'terms-1-desc',
+    {
+      KOR:
+        '당사가 귀하에 관한 정보를 수집, 사용 및 공개하는 방법에 대한 정보는 개인 정보 보호 정책을 참조하십시오.',
+      ENG:
+        'Please refer to our Privacy Policy for information about how we' +
+        'collect, use, and disclose information about you.'
+    }
+  ],
+  [
+    'terms-2-title',
+    {
+      KOR: '1. 자',
+      ENG: '2. Eligibility'
+    }
+  ],
+  [
+    'terms-2-desc',
+    {
+      KOR:
+        '본 서비스는 13 세 미만의 사용자를 대상으로 하지 않으며 사용 대상이 아닙니다. ' +
+        '본 서비스에 액세스하거나 사용하려면 13 세 이상이어야 합니다. 만 13 세에서 18 세 사이 (또는 귀하가 거주하는 법적 성년) 인 경우 ' +
+        '본 계약에 구속되는 데 동의하는 부모 또는 법적 보호자의 감독하에 서비스에 액세스하거나 사용할 수 있습니다.',
+      ENG:
+        'The Service is not targeted toward, nor intended for use by, anyone' +
+        'under the age of 13. You must be at least 13 years of age to access or' +
+        'use of the Service. If you are between 13 and 18 years of age (or the' +
+        'age of legal majority where you reside), you may only access or use' +
+        'the Service under the supervision of a parent or legal guardian who' +
+        'agrees to be bound by this Agreement.'
+    }
+  ],
+  [
+    'terms-3-title',
+    {
+      KOR: '3. 저작권 및 제한된 라이센스',
+      ENG: '3. Copyright and Limited License'
+    }
+  ],
+  [
+    'terms-3-desc-1',
+    {
+      KOR:
+        '당사는 당사가 제공하는 데이터, 텍스트, 사진, 이미지, 비디오, 오디오, 그래픽, 기사, 주석, 소프트웨어, 코드, 스크립트 및 ' +
+        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris Share 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
+        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris Share Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
+      ENG:
+        'We may retain data, text, photographs, images, video, audio, graphics,' +
+        'articles, comments, software, code, scripts, and other content' +
+        'supplied by us. Except as explicitly stated in this Agreement, we do' +
+        'not grant any express or implied rights to use Polaris Share Content.'
+    }
+  ],
+  [
+    'terms-3-desc-2',
+    {
+      KOR:
+        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris Share 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
+      ENG:
+        'You are granted a limited, non-exclusive, non-transferable, and' +
+        'non-sublicensable license to access and use the Service and Polaris' +
+        'Share Content for your personal use. You retain ownership of and' +
+        'responsibility for Content you create or own ("Your Content"). If' +
+        "you're posting anything you did not create yourself or do not own the" +
+        'rights to, you agree that you are responsible for any Content you' +
+        'post; that you will only submit Content that you have the right to' +
+        'post; and that you will fully comply with any third-party licenses' +
+        'relating to Content you post.'
+    }
+  ],
+  [
+    'terms-4-title',
+    {
+      KOR: '4. 상표권 정책',
+      ENG: '4. Trademark Policy'
+    }
+  ],
+  [
+    'terms-4-desc-1',
+    {
+      KOR:
+        '"Polaris Share", Polaris Share 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
+        '슬로건은 Polaris Share, Inc.의 상표이며, ' +
+        '전부 또는 일부를 복사, 모방 또는 사용해서는 안됩니다. ' +
+        '명시 적으로 허용되지 않거나 처음에 당사로부터 서면 허가를 받지 않은 경우. ',
+      ENG:
+        '“Polaris Share,”, the Polaris Share logo and any other product or' +
+        'service names, logos, slogans that may appear on the Service are' +
+        'trademarks of Polaris Share, Inc., and, may not be copied, imitated,' +
+        'or used, in whole or in part, unless explicitly permitted or without' +
+        'first receiving written permission from us to do so. The look and feel' +
+        'of '
+    }
+  ],
+  [
+    'terms-4-desc-2',
+    {
+      KOR:
+        '및 서비스의 모양과 느낌은 저작권 © Polaris Share, Inc.에 의해 보호됩니다. 명시 적 서면 허가없이 HTML, CSS, Javascript 또는 시각적 디자인 요소 또는 개념의 일부를 복제, 복사 또는 재사용 할 수 없습니다.',
+      ENG:
+        'and the' +
+        'Service is protected by copyright © Polaris Share, Inc. All rights' +
+        'reserved. You may not duplicate, copy, or reuse any portion of the' +
+        'HTML/CSS, Javascript, or visual design elements or concepts without' +
+        'express written permission.'
+    }
+  ],
+  [
+    'terms-4-desc-3',
+    {
+      KOR:
+        '당사 서비스에서 언급되거나 사용 된 기타 모든 상표, ' +
+        '등록 상표, 제품 이름 및 회사 이름 또는 로고는 해당 소유자의 자산이며 해당 내용의 허가없이 전체 또는 부분적으로 복사, ' +
+        '모방 또는 사용될 수 없습니다. 상표권자. 이름, 상표, 제조업체, 공급 업체 또는 다른 방법으로 제품, ' +
+        '서비스, 프로세스 또는 기타 정보를 언급했다고 해서 우리에 의한 보증, 후원 또는 추천을 의미하지는 않습니다.',
+      ENG:
+        'All other trademarks, registered trademarks, product names and company' +
+        'names or logos mentioned or used on our Service are the property of' +
+        'their respective owners and may not be copied, imitated, or used, in' +
+        'whole or in part, without the permission of the applicable trademark' +
+        'holder. Reference to any products, services, processes or other' +
+        'information by name, trademark, manufacturer, supplier or otherwise' +
+        'does not constitute or imply endorsement, sponsorship, or' +
+        'recommendation by us.'
+    }
+  ],
+  [
+    'terms-5-title',
+    {
+      KOR: '5. 위험의 가정, 책임의 한계.',
+      ENG: '5. Assumption of Risk, Limitations on Liability.'
+    }
+  ],
+  [
+    'terms-5-desc-1',
+    {
+      KOR:
+        '5.1. 귀하는 인터넷 기반 DECK 블록 체인 계정 서비스 이용과 관련된 위험이 있음을 인정하고 이에 동의합니다. 여기에는 하드웨어, 소프트웨어 및 인터넷 연결의 실패 위험, 악성 소프트웨어 도입 위험 및 제 3의 위험 - 귀하의 개인 키 ("개인 키")를 포함하되 이에 국한되지 않는 귀하의 계정에 저장되거나 연결된 개인 정보에 무단으로 액세스 할 수 있습니다. 귀하는 서비스 사용시 발생할 수 있는 통신 실패, 중단, 오류, 왜곡 또는 지연에 대해 당사가 책임지지 않음을 인정하고 인정합니다.',
+      ENG:
+        '5.1. You accept and acknowledge that there are risks associated with' +
+        'utilizing an Internet-based DECK blockchain account service including,' +
+        'but not limited to, the risk of failure of hardware, software and' +
+        'Internet connections, the risk of malicious software introduction, and' +
+        'the risk that third-parties may obtain unauthorized access to' +
+        'information stored within or associated with your Account, including,' +
+        'but not limited to your private key(s) (“Private Key”). You accept and' +
+        'acknowledge that we will not be responsible for any communication' +
+        'failures, disruptions, errors, distortions, or delays you may' +
+        'experience when using the Services, however caused.'
+    }
+  ],
+  [
+    'terms-5-desc-2',
+    {
+      KOR:
+        '5.2. 우리는 서비스의 내용, 서비스를 통해 액세스 할 수있는 정보 및 기능, 제 3 자 웹 사이트에 대한 하이퍼 링크 또는 관련된 보안 위반에 대해 어떠한 종류의 명시 적 또는 묵시적, 법정 또는 기타 어떠한 형태의 진술이나 보증도하지 않습니다. 서비스 또는 서비스와 연결된 모든 웹 사이트를 통한 정보의 전송.',
+      ENG:
+        '5.2. We make no representation or warranty of any kind, express or' +
+        'implied, statutory, or otherwise, regarding the contents of the' +
+        'Service, information and functions made accessible through the' +
+        'Service, any hyperlinks to third-party websites, nor for any breach of' +
+        'security associated with the transmission of information through the' +
+        'Service or any website linked to by the Service.'
+    }
+  ],
+  [
+    'terms-5-desc-3',
+    {
+      KOR:
+        '5.3. 우리는 다음과 같은 사항으로 인해 발생하는 손실, 손해 및 클레임을 포함하여 (단, 이에 국한되지는 않음) ' +
+        '당사의 서비스 이용에 대한 손실에 대해 귀하에게 책임을 지지 않으며 그에 대해 책임을 지지 않습니다. ' +
+        '잊어버린 암호, 잘못 구성된 거래 또는 잘못 입력 된 DECK 블록 체인 주소 (b) 서버 오류 또는 데이터 손실. ' +
+        '(c) 손상된 계정 파일. (d) 애플리케이션에 대한 무단 액세스. ' +
+        '(e) 바이러스, 피싱, 무차별 공격 또는 서비스 또는 서비스에 대한 기타 공격 수단의 사용을 포함하되 이에 국한되지 않는 ' +
+        '제 3 자의 허가되지 않은 제 3 자 활동등.',
+      ENG:
+        '5.3. We will not be responsible or liable to you for any loss and take' +
+        'no responsibility for and will not be liable to you for any use of our' +
+        'Services, including but not limited to any losses, damages or claims' +
+        'arising from: (a) User error such as forgotten passwords, incorrectly' +
+        'constructed transactions, or mistyped DECK blockchain addresses; (b)' +
+        'Server failure or data loss; (c) Corrupted Account files; (d)' +
+        'Unauthorized access to applications; (e) Any unauthorized third-party' +
+        'activities, including without limitation the use of viruses, phishing,' +
+        'brute forcing or other means of attack against the Service or Services.'
+    }
+  ],
+  [
+    'terms-5-desc-4',
+    {
+      KOR:
+        '5.4. 우리는 서비스 또는 이를 사용할 수 있는 서버가 바이러스 나 오류가 없고, 내용이 정확하고, ' +
+        '중단되지 않거나, 결함이 수정 될 것이라는 보증을 하지 않습니다. ' +
+        '우리는 서비스에 포함 된 내용이나 정보에 의존하여 취한 조치 또는 모든 종류의 손실에 대해 귀하에게 어떠한 ' +
+        '책임이나 의무도지지 않습니다.',
+      ENG:
+        '5.4. We make no warranty that the Service or the server that makes it' +
+        'available, are free of viruses or errors, that its content is' +
+        'accurate, that it will be uninterrupted, or that defects will be' +
+        'corrected. We will not be responsible or liable to you for any loss of' +
+        'any kind, from action taken, or taken in reliance on material, or' +
+        'information, contained on the Service.'
+    }
+  ],
+  [
+    'terms-5-desc-5',
+    {
+      KOR:
+        '5.5. 아래 6.1 조항에 의거하여 모든 면책, 보증, 조건 및 조건 (명시 적이든 묵시적이든)이 ' +
+        '뉴욕 법에 따라 허용되는 한도까지 배제됩니다.',
+      ENG:
+        '5.5. We will not be liable, in contract, or tort (including, without' +
+        'limitation, negligence), other than where we have been fraudulent or' +
+        'made negligent misrepresentations.'
+    }
+  ],
+  [
+    'terms-5-desc-6',
+    {
+      KOR:
+        '5.6. 우리는 사기성 또는 과실로 허위 진술 한 경우를 제외하고는 책임을 지지 않으며, ' +
+        '계약 또는 불법 행위 (과실 포함)를 하지 않습니다.',
+      ENG:
+        '5.6. Nothing in this Agreement excludes or limits liability for death' +
+        'or personal injury caused by negligence, fraudulent misrepresentation,' +
+        'or any other liability which may not otherwise be limited or excluded' +
+        'under United States law.'
+    }
+  ],
+  [
+    'terms-6-title',
+    {
+      KOR: '6. 제 3 자 서비스 및 컨텐츠에 대한 책임 없음',
+      ENG: '6. No Liability for Third-Party Services and Content'
+    }
+  ],
+  [
+    'terms-6-desc',
+    {
+      KOR:
+        '6.1. 서비스 사용시, 귀하는 웹 페이지 및 해당 당사자의 서비스 ("제 3 자 콘텐츠")에 대한 링크를 포함하여 제 3자가 제공하는 서비스를 사용하거나 콘텐츠를 볼 수 있습니다. ' +
+        '우리는 제 3 자 콘텐츠를 통제, 보증 또는 채택하지 않으며 귀하의 관할 지역에서 오도 된 정보, 불완전 정보, ' +
+        '오류, 불쾌감, 외설적 인 내용 또는 기타 불쾌한 내용을 포함하여 제 3 자 콘텐츠에 대한 책임을 지지 않습니다. ' +
+        '또한 그러한 제 3 자와의 거래 또는 서신은 전적으로 귀하와 제 3 자 사이에 있습니다. ' +
+        '당사는 그러한 거래로 인해 발생하는 모든 유형의 손실이나 손해에 대해 책임을 지지 않으며 귀하는 ' +
+        '제 3 자 콘텐츠 사용 및 제 3 자와의 상호 작용에 따른 위험 부담을 이해합니다.',
+      ENG:
+        '6.1. In using our Services, you may view content or utilize services' +
+        'provided by third parties, including links to web pages and services' +
+        'of such parties (“Third-Party Content”). We do not control, endorse,' +
+        'or adopt any Third-Party Content and will have no responsibility for' +
+        'Third-Party Content including, without limitation, material that may' +
+        'be misleading, incomplete, erroneous, offensive, indecent, or' +
+        'otherwise objectionable in your jurisdiction. In addition, your' +
+        'dealings or correspondence with such third parties are solely between' +
+        'you and the third parties. We are not responsible or liable for any' +
+        'loss or damage of any sort incurred because of any such dealings and' +
+        'you understand that your use of Third-Party Content, and your' +
+        'interactions with third parties, is at your own risk.'
+    }
+  ],
+  [
+    'terms-7-title',
+    {
+      KOR: '7. 계정 등록',
+      ENG: '7. Account Registration'
+    }
+  ],
+  [
+    'terms-7-desc-1',
+    {
+      KOR:
+        '7.1. polarisshare.com에게 무료로 계정을 만들 수 있습니다. ' +
+        '서비스의 일부를 사용하려면 DECK 블록 체인(“추후 서비스 예정”) 계정("계정")을 만들어야 합니다. ' +
+        '귀하가 계정을 만들 때 귀하는 귀하의 계정에 대한 액세스 및 또는 통제를 상실 할 수 있으므로 다음주의 사항을 지켜야합니다. ' +
+        '(b) 정확하고 정보를 제공하십시오. (c) 귀하의 계정 암호 및 귀하의 컴퓨터 및 계정에 대한 액세스를 보호하여 계정의 보안을 유지해야합니다. ' +
+        '(e) 귀하의 계정과 관련된 보안 위반을 발견하거나 의심되는 경우 즉시 알려주십시오.',
+      ENG:
+        '7.1. You need not use a DECK blockchain account provided by us, and' +
+        'you can create an account independently of the Service. If you would' +
+        'like to use part of the Service, you must create a DECK blockchain' +
+        'account (“Account”). When you create an Account, you are strongly' +
+        'advised to take the following precautions, as failure to do so may' +
+        'result in loss of access to, and/or control over, your Account: (b)' +
+        'Provide accurate and truthful information; (c) maintain the security' +
+        'of your Account by protecting your Account password and access to your' +
+        'computer and your Account; (e) Promptly notify us if you discover or' +
+        'otherwise suspect any security breaches related to your Account.'
+    }
+  ],
+  [
+    'terms-7-desc-2',
+    {
+      KOR:
+        '7.2. 귀하는 귀하의 계정 하에서 발생하는 모든 활동에 대한 책임을 지고 법이 허용하는 한도 내에서 ' +
+        '귀하의 계정에 대한 허가 된 또는 허가되지 않은 액세스의 모든 위험을 수락한다는 것을 수락하고 인정합니다.',
+      ENG:
+        '7.2. You hereby accept and acknowledge that you take responsibility' +
+        'for all activities that occur under your Account and accept all risks' +
+        'of any authorized or unauthorized access to your Account, to the' +
+        'maximum extent permitted by law.'
+    }
+  ],
+  [
+    'terms-7-desc-3',
+    {
+      KOR:
+        '7.3. 귀하는 암호가 진행되는 분야임을 인정하고 이해합니다. ' +
+        '코드 크래킹이나 양자 컴퓨터 개발과 같은 기술 발전의 진전은 귀하가 사용하는 서비스 및 귀하의 계정에 위험을 초래할 수 있으며 ' +
+        '이로 인해 귀하의 재산이 도난 또는 분실 될 수 있습니다. ' +
+        '서비스를 사용하거나 Polaris share Content에 액세스함으로써 귀하는 이러한 내재 된 위험을 인정합니다.',
+      ENG:
+        '7.3. You acknowledge and understand that cryptography is a progressing' +
+        'field. Advances in code cracking or technical advances such as the' +
+        'development of quantum computers may present risks to the Services' +
+        'that you use and your Account, which could result in the theft or loss' +
+        'of your property. By using the Service or accessing Polaris Share' +
+        'Content, you acknowledge these inherent risks.'
+    }
+  ],
+  [
+    'terms-8-title',
+    {
+      KOR: '8. 서비스',
+      ENG: '8. The Services'
+    }
+  ],
+  [
+    'terms-8-desc-1',
+    {
+      KOR:
+        '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 DECK 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 DECK에 통제가 상실 될 수 있습니다.',
+      ENG:
+        '8.1. As described in more detail below, the Services, among other' +
+        'things, provide software that facilitates the submission of DECK' +
+        'blockchain transaction data to the DECK blockchain without requiring' +
+        'you to access the DECK blockchain command line interface.'
+    }
+  ],
+  [
+    'terms-8-desc-2',
+    {
+      KOR:
+        '8.2. 암호 검색이 없습니다. 우리는 귀하의 계정 암호 또는 개인 키를 받거나 저장하지 않습니다. 귀하의 개인 키는 귀하의 개인 키이며 귀하는 귀하의 개인 키를 안전하게 보관할 책임이 있습니다. 계정 암호 검색, 재설정 또는 복구를 지원할 수는 없습니다. 계정 암호를 기억하는 것은 전적으로 귀하의 책임입니다. 계정에 저장된 계정 및 암호 쌍의 백업을 안전하게 저장하지 않은 경우 계정 암호가 없는 경우 해당 계정과 연결된 DECL가 영구적으로 액세스 할 수 없게 됩니다.',
+      ENG:
+        '8.2. No Password Retrieval. We do not receive or store your Account' +
+        'password or Private Keys. Your Private Key is your own and you are' +
+        'solely responsible for their safekeeping. We cannot assist you with' +
+        'Account password retrieval, reset, or recovery. You are solely' +
+        'responsible for remembering your Account password. If you have not' +
+        'safely stored a backup of any Account and password pairs maintained in' +
+        'your Account, you accept and acknowledge that any DECK you have' +
+        'associated with such Account will become permanently inaccessible if' +
+        'you do not have your Account password.'
+    }
+  ],
+  [
+    'terms-8-desc-3',
+    {
+      KOR:
+        '8.3. 업무. 제안 된 모든 DECK 블록 체인 거래는 DECK 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 DECK 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. DECK 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 DECK 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 DECK 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
+      ENG:
+        '8.3. Transactions. All proposed DECK blockchain transactions must be' +
+        'confirmed and recorded in the DECK blockchain via the Polaris Share' +
+        'distributed consensus network (a peer-to-peer network), which is not' +
+        'owned, controlled, or operated by us. The DECK blockchain is operated' +
+        'by a decentralized network of independent third parties. We have no' +
+        'control over the DECK blockchain and therefore cannot and will not' +
+        'ensure that any transaction details you submit via the Services will' +
+        'be confirmed on the DECK blockchain.'
+    }
+  ],
+  [
+    'terms-8-desc-4',
+    {
+      KOR:
+        '8.4. DECK의 저장 또는 운송 금지. DECK 귀하가 관리하는 무형의 디지털 자산입니다. 이러한 자산은 DECK 블록 체인에서 유지 관리되는 소유권 레코드에 의해서만 존재합니다. 서비스는 DECK를 저장, 보내거나 받지 않습니다. DECK에서 발생할 수 있는 제목 이전은 서비스가 아닌 DECK 블록 체인에서 발생합니다. 당사는 DECK에서 서비스가 제목 또는 권리 이전에 영향을 미칠 수 있다고 보장하지 않습니다.',
+      ENG:
+        '8.4. No Storage or Transmission of DECK. DECK, in any of its forms' +
+        '(DECK) is an intangible, digital asset controlled by you. These assets' +
+        'exist only by virtue of the ownership record maintained on the DECK' +
+        'blockchain. The Service does not store, send, or receive DECK. Any' +
+        'transfer of title that might occur in any DECK, occurs on the DECK' +
+        'blockchain and not within the Services. We do not guarantee that the' +
+        'Service can affect the transfer of title or right in any DECK.'
+    }
+  ],
+  [
+    'terms-8-desc-5',
+    {
+      KOR:
+        '8.5. 관계. 본 계약서의 어떠한 내용도 귀하와 당사 사이의 파트너십, 합작 투자, 대행사, 컨설팅 또는 신탁 통치를 의도하지도 않으며 작성하지도 않습니다.',
+      ENG:
+        '8.5. Relationship. Nothing in this Agreement is intended to nor shall' +
+        'create any partnership, joint venture, agency, consultancy, or' +
+        'trusteeship, between you and us.'
+    }
+  ],
+  [
+    'terms-8-desc-6',
+    {
+      KOR:
+        '8.6. 정보의 정확성. 귀하는 서비스를 통해 귀하가 제공하는 모든 정보가 정확하고 완전 함을 진술하고 보증합니다. 귀하는 서비스를 통해 시작된 DECK blockchain 거래와 관련하여 귀하가 계정 이름을 잘못 입력하거나 잘못된 정보를 제공 한 경우와 같은 실수 나 누락에 대해 책임을 지지 않습니다. 서비스를 통해 거래 정보를 작성하기 전에 거래 세부 정보를 신중하게 검토하는 것이 좋습니다.',
+      ENG:
+        '8.6. Accuracy of Information. You represent and warrant that any' +
+        'information you provide via the Services is accurate and complete. You' +
+        'accept and acknowledge that we are not responsible for any errors or' +
+        'omissions that you make in connection with any DECK blockchain' +
+        'transaction initiated via the Services, for instance, if you mistype' +
+        'an Account name or otherwise provide incorrect information. We' +
+        'strongly encourage you to review your transaction details carefully' +
+        'before completing them via the Services.'
+    }
+  ],
+  [
+    'terms-8-desc-7',
+    {
+      KOR:
+        '8.7. 취소 또는 변경 금지. 일단 서비스 세부 사항이 서비스를 통해 DECK 블록 체인에 제출되면 서비스는 귀하가 거래 세부 사항을 취소하거나 달리 수정할 수 있도록 도와줄 수 없습니다. 우리는 DECK 블록 체인을 제어 할 수 없으며 취소 또는 수정 요청을 쉽게 할 수 없습니다.',
+      ENG:
+        '8.7. No Cancellations or Modifications. Once transaction details have' +
+        'been submitted to the DECK blockchain via the Services, The Services' +
+        'cannot assist you to cancel or otherwise modify your transaction' +
+        'details. We have no control over the DECK blockchain and do not have' +
+        'the ability to facilitate any cancellation or modification requests.'
+    }
+  ],
+  [
+    'terms-8-desc-8',
+    {
+      KOR:
+        '8.8. 구실. 귀하가 서비스를 통해 거래 내역을 제출 한 거래에 대해 세금이 부과되는지 여부를 결정하는 것은 귀하의 책임이며 적절한 세무 기관에 보고하고 정확한 세금을 송금하는 것은 귀하의 책임입니다. 귀하는 DECK blockchain 거래에 세금이 적용되는지 또는 DECK blockchain 거래로 인해 발생하는 세금 징수, 보고, 원천 징수 또는 양도 여부에 대한 당사의 책임이 없음에 동의합니다.',
+      ENG:
+        '8.8. Taxes. It is your responsibility to determine what, if any, taxes' +
+        'apply to the transactions you for which you have submitted transaction' +
+        'details via the Services, and it is your responsibility to report and' +
+        'remit the correct tax to the appropriate tax authority. You agree that' +
+        'the we are not responsible for determining whether taxes apply to your' +
+        'DECK blockchain transactions or for collecting, reporting,' +
+        'withholding, or remitting any taxes arising from any DECK blockchain' +
+        'transactions.'
+    }
+  ],
+  [
+    'terms-9-title',
+    {
+      KOR: '9. 서비스의 중단.',
+      ENG: '9. Discontinuation of Services.'
+    }
+  ],
+  [
+    'terms-9-desc-1',
+    {
+      KOR:
+        '9.1. 우리는 단독 재량으로 비용없이 사전 통지 여부에 상관없이 언제든지 서비스의 일부를 일시적 또는 영구적으로 수정 또는 중단 할 수 있습니다. 서비스 외부에서 귀하가 귀하의 계정에서 유지 관리하는 계정 및 개인 키의 백업을 저장하는 것은 전적으로 귀하의 책임입니다.',
+      ENG:
+        '9.1. We may, in our sole discretion and without cost to you, with or' +
+        'without prior notice and at any time, modify or discontinue,' +
+        'temporarily or permanently, any portion of our Services. You are' +
+        'solely responsible for storing, outside of the Services, a backup of' +
+        'any Account and Private Key that you maintain in your Account.'
+    }
+  ],
+  [
+    'terms-9-desc-2',
+    {
+      KOR:
+        '9.2. 귀하가 서비스 외부에서 귀하의 계정 데이터를 백업하지 않는다면 귀하가 서비스를 중단하거나 폐지 할 경우 귀하의 계정에 유지 관리되는 모든 계좌와 관련된 DECK에 액세스하지 못할 수 있습니다.',
+      ENG:
+        '9.2. If you do not maintain a backup of your Account data outside of' +
+        'the Services, you will be may not be able to access DECK, DECK Dollars' +
+        'and DECK Power associated with any Account maintained in your Account' +
+        'if we discontinue or deprecate the Services.'
+    }
+  ],
+  [
+    'terms-10-title',
+    {
+      KOR: '10. 서비스의 일시 중지 또는 해지.',
+      ENG: '10. Suspension or Termination of Service.'
+    }
+  ],
+  [
+    'terms-10-desc-1',
+    {
+      KOR:
+        '10.1. 당사는 단독 재량으로 귀하의 서비스 이용을 예고없이 즉시 중단하거나 종료 할 수 있으며,',
+      ENG:
+        '10.1. We may suspend or terminate your access to the Services in our' +
+        'sole discretion, immediately and without prior notice, and delete or' +
+        'deactivate your'
+    }
+  ],
+  [
+    'terms-10-desc-2',
+    {
+      KOR:
+        '계정 및 모든 관련 정보와 파일을 비용없이 무료로 삭제하거나 비활성화 할 수 있습니다. 본 계약의 어떠한 조항도 위반할 수 없습니다. 계정 해지 시 귀하의 계정에 있는 금액에 액세스하려면 명령 행 API 또는 제 3 자 도구를 통해 DECK 블록 체인에 액세스 해야 하며 귀하의 계정 및 계정을 포함한 계정 데이터의 백업에 액세스 해야 합니다.',
+      ENG:
+        'account and' +
+        'all related information and files in such without cost to you,' +
+        'including, for instance, if you breach any term of this Agreement. In' +
+        'the event of termination, your access to the funds in your account' +
+        'will require you access to the DECK blockchain via the command line' +
+        'API or third party tool, and will require you to have access to your' +
+        'backup of your Account data including your Account and Private Keys.'
+    }
+  ],
+  [
+    'terms-11-title',
+    {
+      KOR: '11. 사용자 행동',
+      ENG: '11. User Conduct'
+    }
+  ],
+  [
+    'terms-11-desc-1',
+    {
+      KOR:
+        '11.1. 서비스에 액세스하거나 사용할 때 귀하는 불법 행위를 저 지르지 않으며 본 서비스를 사용하는 동안 귀하의 행위에 대한 전적인 책임이 있음에 동의합니다. 전술 한 내용의 일반성을 제한하지 않고 귀하는 다음과 같은 행위를 하지 않을 것에 동의합니다.',
+      ENG:
+        '11.1. When accessing or using the Services, you agree that you will' +
+        'not commit any unlawful act, and that you are solely responsible for' +
+        'your conduct while using our Services. Without limiting the generality' +
+        'of the foregoing, you agree that you will not:'
+    }
+  ],
+  [
+    'terms-11-desc-2',
+    {
+      KOR:
+        '11.1.1. 다른 사용자가 당사 서비스를 완전히 즐기지 못하게 방해하거나 부정적인 영향을 미칠 수있는 방식으로 서비스를 사용하거나 어떤 방식으로 든 서비스의 손상, 사용 불능, 과부하 또는 손상을 초래할 수 있는 방식으로 서비스를 사용하는 행위',
+      ENG:
+        '11.1.1. Use of our Services in any manner that could interfere with,' +
+        'disrupt, negatively affect, or inhibit other users from fully enjoying' +
+        'our Services, or that could damage, disable, overburden, or impair the' +
+        'functioning of our Services in any manner;'
+    }
+  ],
+  [
+    'terms-11-desc-3',
+    {
+      KOR:
+        '11.1.2. Google의 서비스를 사용하여 불법 도박, 사기, 돈세탁 또는 테러 자금 조달 활동을 포함하여 (이에 국한되지 않음) 법률로 금지 된 활동에 대해 비용을 지불하거나 지원하거나 달리 참여하게 하십시오.',
+      ENG:
+        '11.1.2. Use our Services to pay for, support or otherwise engage in' +
+        'any activity prohibited by law, including, but not limited to illegal' +
+        'gambling, fraud, money-laundering, or terrorist financing activities.'
+    }
+  ],
+  [
+    'terms-11-desc-4',
+    {
+      KOR:
+        '11.1.3. 허가없이 다른 사용자의 계정을 사용하거나 사용하려고 시도하십시오.',
+      ENG:
+        '11.1.3. Use or attempt to use another user’s Account without' +
+        'authorization;'
+    }
+  ],
+  [
+    'terms-11-desc-5',
+    {
+      KOR:
+        '11.1.4. 우리가 고용 한 컨텐츠 필터링 기술을 우회하거나 액세스 권한이 없는 서비스 또는 서비스 영역에 액세스하려고 시도하십시오.',
+      ENG:
+        '11.1.4. Attempt to circumvent any content filtering techniques we' +
+        'employ, or attempt to access any service or area of our Services that' +
+        'you are not authorized to access;'
+    }
+  ],
+  [
+    'terms-11-desc-6',
+    {
+      KOR:
+        '11.1.5. 바이러스, 트로이 목마, 웜, 논리 폭탄 또는 기타 유해한 물질을 서비스에 소개하십시오.',
+      ENG:
+        '11.1.5. Introduce to the Services any virus, Trojan, worms, logic' +
+        'bombs or other harmful material;'
+    }
+  ],
+  [
+    'terms-11-desc-7',
+    {
+      KOR:
+        '11.1.6. 제 3 자에게 본 절에 의거하여 금지 된 활동을 하도록 권장하거나 유도하십시오.',
+      ENG:
+        '11.1.6. Encourage or induce any third-party to engage in any of the' +
+        'activities prohibited under this Section.'
+    }
+  ],
+  [
+    'terms-12-title',
+    {
+      KOR: '12. 저작권 침해 신고, DMCA 및 게시 중단',
+      ENG: '12. Copyright Complaints, the DMCA, and Takedowns'
+    }
+  ],
+  [
+    'terms-12-desc-1',
+    {
+      KOR:
+        '12.1 디지털 밀레니엄 저작권법 (Digital Millennium Copyright Act, "DMCA")에 따른 합법적 인 요청에 응답하고, 우리는 타인의 저작권을 침해한다고 판단되는 서비스를 통해 제공된 사용자 콘텐츠에 대한 액세스를 제거 할 권리를 보유합니다. 귀하가 귀하의 저작권 권한을 침해하는 귀하의 서비스 내용을 알고 있다면 적절하게 포맷 된 DMCA 요청서 (17 USC § 512 참조)를 Polaris Share, Inc.에 제출할 수 있습니다',
+      ENG:
+        '12.1 We will respond to legitimate requests under the Digital' +
+        'Millennium Copyright Act ("DMCA"), and we retain the right to remove' +
+        'access to user content provided via the Service that we deem to be' +
+        'infringing the copyright of others. If you become aware of user' +
+        'content on the Service that infringes your copyright rights, you may' +
+        'submit a properly formatted DMCA request (see 17 U.S.C. § 512) to' +
+        'Polaris Share, Inc.'
+    }
+  ],
+  [
+    'terms-12-desc-2',
+    {
+      KOR:
+        '침해에 대한 허위 진술은 금전적 손해에 대한 책임을 초래할 수 있습니다. 귀하는 DMCA에 따라 조치를 취하기 전에 변호사와 상담할 수 있습니다. DMCA 요청은 아래 연락처 정보를 통해 Google에 전송 될 수 있습니다.',
+      ENG:
+        'Misrepresentations of infringement can result in liability for' +
+        'monetary damages. You may want to consult an attorney before taking' +
+        'any action pursuant to the DMCA. A DMCA request can be sent to us via' +
+        'the contact information below:'
+    }
+  ],
+  [
+    'terms-12-desc-3',
+    {
+      KOR: '저작권 에이전트',
+      ENG: 'Copyright Agent'
+    }
+  ],
+  [
+    'terms-12-desc-4',
+    {
+      KOR:
+        '주소가 위치한 사법 구역에 대한 연방 지방 법원의 관할권에 또는 귀하의 주소가 미국 이외의 지역에 있는 경우, 서비스 제공 업체가있을 수있는 모든 사법 구역에 대해 귀하가 DMCA 512 (c) (1) (c) 항에 의거하여 통보를 한 사람 또는 그 사람의 대리인으로부터의 절차.',
+      ENG:
+        'consent to the jurisdiction of federal district court for the judicial' +
+        'district in which the address is located, or if your address is' +
+        'outside of the United States, for any judicial district in which the' +
+        'service provider may be found, and that you will accept service of' +
+        'process from the person who provided notification under DMCA 512' +
+        'subsection (c)(1)(c) or an agent of such person.'
+    }
+  ],
+  [
+    'terms-12-desc-5',
+    {
+      KOR:
+        '이의 제기 신청서를 받으면 불만 당사자에게 전달하고 영업일 기준 10 일 이내에 귀하의 콘텐츠를 복원할 것이라고 말합니다. 해당 당사자가 해당 기간이 만료되기 전에 귀하가 해당 콘텐츠를 귀하의 서비스 사용을 제한하라는 조치를 취했다는 것을 당사에 통보하지 않으면 당사는 사용자 콘텐츠를 사이트로 복원하는 것을 고려할 것입니다.',
+      ENG:
+        'Upon receiving a counter-notice we will forward it to the complaining' +
+        'party and tell them we will restore your content within 10 business' +
+        'days. If that party does not notify us that they have filed an action' +
+        'to enjoin your use of that content on the Service before that period' +
+        'passes, we will consider restoring your user content to the site.'
+    }
+  ],
+  [
+    'terms-12-desc-6',
+    {
+      KOR:
+        '반복적 인 저작권 침해로 판단하는 사용자에게 서비스 사용을 거부하는 것이 Google의 정책입니다. Google은 재량에 따라 사용자가 다른 사람의 저작권 또는 기타 지적 재산권을 침해했다고 반복적으로 고소당한 경우와 같은 적절한 상황에서 이 정책을 적용합니다.',
+      ENG:
+        'It is our policy to deny use of the Service to users we identify as' +
+        'repeat infringers. We apply this policy at our discretion and in' +
+        'appropriate circumstances, such as when a user has repeatedly been' +
+        'charged with infringing the copyrights or other intellectual property' +
+        'rights of others.'
+    }
+  ],
+  [
+    'terms-13-title',
+    {
+      KOR: '13. 손해 배상',
+      ENG: '13. Indemnity'
+    }
+  ],
+  [
+    'terms-13-desc-1',
+    {
+      KOR:
+        '귀하가 하는 모든 일과 귀하가 서비스에 제출하거나 게시하는 모든 정보는 귀하의 책임입니다. 면책은 기본적으로 법이나 제 3 자 또는 개인의 권리를 침해하는 콘텐츠 또는 행위에 대해 법적으로 책임을 지지 않는다고 말하는 방식입니다.',
+      ENG:
+        'All the things you do and all the information you submit or post to' +
+        'the Service remain your responsibility. Indemnity is basically a way' +
+        'of saying that you will not hold us legally liable for any of your' +
+        'content or actions that infringe the law or the rights of a third' +
+        'party or person in any way.'
+    }
+  ],
+  [
+    'terms-13-desc-2',
+    {
+      KOR:
+        '특히 귀하는 당사, 계열사, 임원, 이사, 직원, 대리인 및 제 3 자 서비스 공급자를 변호인의 권리를 포함하여 청구, 비용, 손해, 손실, 경비 및 기타 책임으로부터 무해하고 방어하기로 동의합니다. 귀하의 서비스 액세스 또는 사용, 귀하의 본 이용 약관 위반 및 또는 제 3 자 또는 개인의 권리 침해로 인해 발생하는 비용, 비용 및 비용.',
+      ENG:
+        'Specifically, you agree to hold us, our affiliates, officers,' +
+        'directors, employees, agents, and third-party service providers' +
+        'harmless from and defend them against any claims, costs, damages,' +
+        'losses, expenses, and any other liabilities, including attorneys’ fees' +
+        'and costs, arising out of or related to your access to or use of the' +
+        'Service, your violation of this user agreement, and/or your violation' +
+        'of the rights of any third-party or person.'
+    }
+  ],
+  [
+    'terms-14-title',
+    {
+      KOR: '14. 면책 조항',
+      ENG: '14. Disclaimers'
+    }
+  ],
+  [
+    'terms-14-desc',
+    {
+      KOR:
+        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris Share 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris Share 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris Share 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
+      ENG:
+        'To the fullest extent permitted by applicable law, the Service and the' +
+        'Polaris Share Content are provided on an “as is” and “as available”' +
+        'basis, without warranties of any kind, either express or implied,' +
+        'including, without limitation, implied warranties of merchantability,' +
+        'fitness for a particular purpose, title and non-infringement and any' +
+        'warranties implied by any course of performance or usage of trade. The' +
+        'company does not represent or warrant that the Service and the Polaris' +
+        'Share Content: (a) will be secure or available at any time or' +
+        'location; (b) are accurate, complete, reliable, current, or error-free' +
+        'or that any defects or errors will be corrected; and (c) are free of' +
+        'viruses or other harmful components. Your use of the Service and' +
+        'Polaris Share Content is solely at your own risk. Some jurisdictions' +
+        'do not allow the disclaimer of implied terms in contracts with' +
+        'consumers, so some or all of the disclaimers in this Section may not' +
+        'apply to you.'
+    }
+  ],
+  [
+    'terms-15-title',
+    {
+      KOR: '15. 책임의 한계',
+      ENG: '15. Limitation of liability'
+    }
+  ],
+  [
+    'terms-15-desc-1',
+    {
+      KOR:
+        'Polaris Share, Inc. 는 해당 법률에서 허용하는 최대 한도 내에서 어떠한 특수한 간접적 인 책임도지지 않습니다. , 우발적, 결과적, 모범적 또는 징벌 적 손해, 계약 손실, 손해의 손실 또는 이익 손실 또는 데이터 손실을 포함하되 이에 국한되지 않는 모든 종류의 손해 제한적, 과실) 또는 달리 서비스 또는 콘텐츠의 사용 또는 사용 불가능으로 인해 발생하는 모든 손해에 대해 책임을 지지 않습니다. 해당 법률이 허용하는 최대 한도 내에서, 어떠한 경우에도 Polaris Share, Inc. 또는 관련 당사자의 계약 상 책임, 보증, 불법 행위 (과실 포함, 능동, 수동 또는 귀속 여부)',
+      ENG:
+        'To the fullest extent permitted by applicable law, in no event shall' +
+        'Polaris Share, Inc. or the any related party to Polaris Share,' +
+        'Inc., that includes but is not limited to, subsidiaries, vendors, or' +
+        'contractors, be liable for any special, indirect, incidental,' +
+        'consequential, exemplary or punitive damages, or any other damages of' +
+        'any kind, including, but not limited to, loss of use, loss of profits' +
+        'or loss of data, whether in an action in contract, tort (including,' +
+        'but not limited to, negligence) or otherwise, arising out of, or in' +
+        'any way connected with, the use of, or inability to use, the Service' +
+        'or the Polaris Share Content. To the fullest extent permitted by' +
+        'applicable law, in no event shall the aggregate liability of DECOMPANY' +
+        'GLOBAL, Inc. or any related party, whether in contract, warranty, tort' +
+        '(including negligence, whether active, passive or imputed), product' +
+        'liability, strict liability or other theory, arising out of or' +
+        'relating to the use of or inability to use of the Service'
+    }
+  ],
+  [
+    'terms-15-desc-2',
+    {
+      KOR:
+        '일부 관할지에서는 특정 손해의 배제 나 제한을 허용하지 않으므로 이 섹션의 일부 또는 전부가 귀하에게 적용되지 않을 수도 있습니다.',
+      ENG:
+        'Some jurisdictions do not allow the exclusion or limitation of certain' +
+        'damages, so some or all of the exclusions and limitations in this' +
+        'Section may not apply to you.'
+    }
+  ],
+  [
+    'terms-16-title',
+    {
+      KOR: '16. 서비스 변경',
+      ENG: '16. Modifications to the Service'
+    }
+  ],
+  [
+    'terms-16-desc',
+    {
+      KOR:
+        '우리는 사전 통지없이 서비스 또는 서비스의 기능 또는 부분을 일시적으로 또는 영구적으로 수정하거나 중단할 수 있는 권리를 보유합니다. 귀하는 서비스의 수정, 일시 중지 또는 중단에 대해 당사가 책임지지 않는다는 데 동의합니다.',
+      ENG:
+        'We reserve the right to modify or discontinue, temporarily or' +
+        'permanently, the Service, or any features or portions of the Service,' +
+        'without prior notice. You agree that we will not be liable for any' +
+        'modification, suspension, or discontinuance of the Service.'
+    }
+  ],
+  [
+    'terms-17-title',
+    {
+      KOR: '17. 중재',
+      ENG: '17. Arbitration'
+    }
+  ],
+  [
+    'terms-17-desc-1',
+    {
+      KOR:
+        'Polaris Share, Inc.와의 특정 분쟁을 중재해야 하며 Polaris Share, Inc.로부터 구제 방법을 제한하기 때문에 다음 섹션을 주의 깊게 읽으십시오. 이 섹션 20에 동의하지 않으면 서비스 사용을 중단하십시오.',
+      ENG:
+        'Please read the following section carefully because it requires you to' +
+        'arbitrate certain disputes with Polaris Share, Inc. and limits the way' +
+        'you can seek relief from Polaris Share, Inc. If you do not agree' +
+        'with this Section 20, please discontinue using the Service.'
+    }
+  ],
+  [
+    'terms-17-desc-2',
+    {
+      KOR:
+        '17.1. 중재 구속력. 일방 당사자가 소액 배상 청구 소송에서 개인 소송을 제기하거나 소송, 상표, 상호, 로고, 영업 비밀 또는 특허의 불법적 사용에 대한 금지 명령 또는 기타 공평한 구제를 요구하는 분쟁을 제외하고 귀하와 Polaris Share, Inc. (a) 법원에서이 계약 또는 Polaris Share, Inc. ( "분쟁"으로 통칭)에서 발생하는 모든 분쟁 또는 청구를 제기 할 권리를 포기합니다. (b) 귀하의 배심 재판을받을 권리를 포기하십시오. 대신, 귀하와 Polaris Share, Inc.는 법적 분쟁을 결정하기보다는 분쟁을 검토하고 해결하기위한 최종적인 구속력 있는 결정을 내린 한 명 이상의 사람에게 분쟁을 위탁하는 구속력 있는 중재를 통해 분쟁을 중재합니다. 판사 또는 배심원).',
+      ENG:
+        '17.1. Binding Arbitration. Except for disputes in which either party' +
+        'seeks to bring an individual action in small claims court or seeks' +
+        'injunctive or other equitable relief for the alleged unlawful use of' +
+        'copyrights, trademarks, trade names, logos, trade secrets or patents,' +
+        'you and Polaris Share, Inc.: (a) waive your right to have any and' +
+        'all disputes or Claims arising from this Agreement or DECOMPANY' +
+        'GLOBAL, Inc. (collectively, “Disputes”) resolved in a court; and (b)' +
+        'waive your right to a jury trial. Instead, you and Polaris Share,' +
+        'Inc. will arbitrate Disputes through binding arbitration (which is the' +
+        'referral of a Dispute to one or more persons charged with reviewing' +
+        'the Dispute and making a final and binding determination to resolve' +
+        'it, instead of having the Dispute decided by a judge or jury in' +
+        'court).'
+    }
+  ],
+  [
+    'terms-17-desc-3',
+    {
+      KOR:
+        '17.2. 클래스 중재, 집단 소송 또는 대표 행동 금지. 귀하는 모든 분쟁이 귀하와 Polaris Share, Inc.에게 개인적인 것이며 그러한 분쟁은 개별 중재를 통해서만 해결되며 계급 중재, 집단 소송 또는 기타 대표적인 소송으로 제기되지 않을 것에 동의합니다. 어느 당사자도 집단 중재 또는 다른 개인 또는 개인 집단의 대표로서 분쟁을 만들고 해결하려는 중재에 동의하지 않습니다. 또한, 귀하와 Polaris Share, Inc.는 중재 내부 또는 외부, 또는 다른 개인 또는 개인 집단을 대표하여 분쟁을 계급 또는 다른 유형의 대표적 행동으로 제기할 수 없다는 데 동의합니다.',
+      ENG:
+        '17.2. No Class Arbitrations, Class Actions or Representative Actions.' +
+        'You agree that any dispute is personal to you and Polaris Share,' +
+        'Inc. and that any such dispute will be resolved solely through' +
+        'individual arbitration and will not be brought as a class arbitration,' +
+        'class action or any other type of representative proceeding. Neither' +
+        'party agrees to class arbitration or to an arbitration in which an' +
+        'individual makes and attempt to resolve a dispute as a representative' +
+        'of another individual or group of individuals. Further, you and' +
+        'Polaris Share, Inc. agree that a dispute cannot be brought as a' +
+        'class, or other type of representative action, whether within or' +
+        'outside of arbitration, or on behalf of any other individual or group' +
+        'of individuals.'
+    }
+  ],
+  [
+    'terms-17-desc-4',
+    {
+      KOR:
+        '17.3. 연방 중재 법. 귀하는 본 계약이 주간 거래에 영향을 미치고 본 제 18 조의 집행 가능성이 연방 중재 법 (Federal Arbitration Act) 9 USC § 1 이하에 따라 실질적으로 및 절차 적으로 모두 해석되고 해석되며 시행 및 집행될 것에 동의합니다. (이하 "FAA")를 해당 법률에서 허용하는 최대한의 범위 내에서 준수해야합니다.',
+      ENG:
+        '17.3. Federal Arbitration Act. You agree that this Agreement affects' +
+        'interstate commerce and that the enforceability of this Section 20' +
+        'shall be governed by, construed, and enforced, both substantively and' +
+        'procedurally, by the Federal Arbitration Act, 9 U.S.C. § 1 et seq.' +
+        '(the “FAA”) to the maximum extent permitted by applicable law.'
+    }
+  ],
+  [
+    'terms-17-desc-5',
+    {
+      KOR:
+        '17.4. 방법. 귀하는 당사자가 논쟁을 비공식적으로 해결할 수 있도록 당사자가 발생한지 30 일 이내에 서면으로 분쟁을 서면으로 통보한다는 데 동의합니다. 법률 고문은 ',
+      ENG:
+        '17.4. Process. You agree that you will notify us in writing of any' +
+        'Dispute within thirty (30) days of when it arises so that the parties' +
+        'can attempt, in good faith, to resolve the Dispute informally. Notice' +
+        'to the us shall be provided by sending an email to'
+    }
+  ],
+  [
+    'terms-17-desc-6',
+    {
+      KOR:
+        '으로 전자 메일을 보내주십시오. 귀하의 통지에는 반드시 (1) 귀하의 이름, 우편 주소 및 이메일 주소; (2) 분쟁의 성격 또는 근거에 대한 설명; (3) 귀하가 찾고자 하는 구체적인 구제책. 통지를 받은 날로부터 30 일 이내에 분쟁을 해결하는 방법에 동의하지 않을 경우, 귀하 또는 Polaris Share, Inc.는 본 제 20 조에 따라 적절한 경우 중재 절차를 시작하거나 법원에 청구할 수 있습니다. 귀하는 분쟁 발생 후 일 (1) 년 이내에 당사에 대한 중재 또는 청구가 시작되거나 제기되어야 한다는 데 동의합니다. 그렇지 않으면, 귀하는 청구가 영구적으로 금지된다는 것에 동의합니다 (귀하가 더 이상 분쟁과 관련한 클레임을 주장할 권리가 없음을 의미). 귀하는 다음을 읽고 이해했으며 동의합니다: (a) 뉴욕 주 뉴욕 카운티에서 중재가 이루어질 것입니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야 합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다.',
+      ENG:
+        '. Your notice must include: (1) your name, postal address, and email' +
+        'address; (2) a description of the nature or basis of the Dispute; and' +
+        '(3) the specific relief that you are seeking. If we cannot agree how' +
+        'to resolve the Dispute within thirty (30) days of the us receiving the' +
+        'notice, either you or Polaris Share, Inc. may, as appropriate pursuant' +
+        'to this Section 20, commence an arbitration proceeding or file a claim' +
+        'in court. You agree that any arbitration or claim against us must be' +
+        'commenced or filed within one (1) year after the Dispute arose;' +
+        'otherwise, you agree that the claim is permanently barred (which means' +
+        'that you will no longer have the right to assert a claim regarding the' +
+        'Dispute). You have read, understand, and agree that: (a) any' +
+        'arbitration will occur in New York County, New York; (b) arbitration' +
+        'will be conducted confidentially by a single arbitrator in accordance' +
+        'with the rules of JAMS; and (c) the state or federal courts in New' +
+        'York will have exclusive jurisdiction over the enforcement of an' +
+        'arbitration award and over any Dispute between the parties that is not' +
+        'subject to arbitration. You may also litigate a Dispute in small' +
+        'claims court located in the county where you reside if the Dispute' +
+        'meets the requirements to be heard in small claims court.'
+    }
+  ],
+  [
+    'terms-17-desc-7',
+    {
+      KOR:
+        '17.5. 중재인 권한. FAA, 본 계약 및 적용 가능한 JAMS 규칙에 의해 제한되는 바와 같이, 중재자는 다음을 갖습니다: (a) 분쟁에 관한 모든 절차 적 및 실질적인 결정을 내리는 독점적 권한 및 관할권; (b) 법원에서 달리 구할 수있는 구제책을 부여할 권한. 중재인은 개인 중재를 실시할 수 있으며 둘 이상의 개인의 클레임을 통합하거나, 어떤 종류의 클래스 또는 대표 진행을 관장하거나 둘 이상의 개인이 관련된 모든 진행을 관장할 수 없습니다.',
+      ENG:
+        '17.5. Authority of Arbitrator. As limited by the FAA, this Agreement' +
+        'and applicable JAMS rules, the arbitrator will have: (a) the exclusive' +
+        'authority and jurisdiction to make all procedural and substantive' +
+        'decisions regarding a Dispute; and (b) the authority to grant any' +
+        'remedy that would otherwise be available in court. The arbitrator may' +
+        'only conduct an individual arbitration and may not consolidate more' +
+        'than one individual’ s claims, preside over any type of class or' +
+        'representative proceeding or preside over any proceeding involving' +
+        'more than one individual.'
+    }
+  ],
+  [
+    'terms-17-desc-8',
+    {
+      KOR: '17.6. JAMS의 규칙. JAMS의 규칙 및 추가 정보는 JAMS 웹 사이트 ',
+      ENG:
+        '17.6. Rules of JAMS. The rules of, and additional information about,' +
+        'JAMS are available on the JAMS website at'
+    }
+  ],
+  [
+    'terms-17-desc-9',
+    {
+      KOR:
+        '에서 볼 수 있으며 수시로 업데이트 될 수 있습니다. 본 계약의 준수에 동의함으로써 귀하는 다음 중 하나를 수행합니다. (a) 귀하가 JAMS 규칙을 읽고 이해했음을 인정하고 동의합니다. (b) JAMS의 규칙을 읽는 기회를 포기하고 JAMS의 규칙이 불공정하거나 어떠한 이유로도 적용해서는 안된다는 주장.',
+      ENG:
+        ', as may be updated from time to time. By agreeing to be bound by this' +
+        'Agreement, you either: (a) acknowledge and agree that you have read' +
+        'and understand the rules of JAMS; or (b) waive your opportunity to' +
+        'read the rules of JAMS and any claim that the rules of JAMS are unfair' +
+        'or should not apply for any reason.'
+    }
+  ],
+  [
+    'terms-17-desc-10',
+    {
+      KOR:
+        '17.7. 분리 가능성. 이 제 18조의 조항, 조항 또는 조항이 유효하지 않거나 시행이 불가능할 경우 법률에서 요구하는 최소한의 범위 내에서 유지되어야 하며 기타 모든 조항, 조항 또는 조항은 유효하고 시행 가능합니다. 또한 18.2 항에 명시된 권리 포기는 본 계약의 다른 조항과 분리되며 해당 법률에서 금지하는 경우를 제외하고는 유효하고 시행 가능합니다.',
+      ENG:
+        '17.7. Severability. If any term, clause, or provision of this Section' +
+        '20 is held invalid or unenforceable, it will be so held to the minimum' +
+        'extent required by law and all other terms, clauses or provisions will' +
+        'remain valid and enforceable. Further, the waivers set forth in' +
+        'Section 20.2 are severable from the other provisions of this Agreement' +
+        'and will remain valid and enforceable, except as prohibited by' +
+        'applicable law.'
+    }
+  ],
+  [
+    'terms-18-title',
+    {
+      KOR: '18. 적용 법률 및 장소',
+      ENG: '18. Applicable Law and Venue'
+    }
+  ],
+  [
+    'terms-18-desc',
+    {
+      KOR:
+        '본 계약 및 서비스 및 Polaris Share 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
+      ENG:
+        'This Agreement and your access to and use of the Service and the' +
+        'Polaris Share Content will be governed by, and construed in accordance' +
+        'with, the laws of New York, without resort to its conflict of law' +
+        'provisions. To the extent the arbitration provision in Section 20 does' +
+        'not apply and the Dispute cannot be heard in small claims court, you' +
+        'agree that any action at law or in equity arising out of, or relating' +
+        'to, this Agreement shall be filed only in the state and federal courts' +
+        'located in New York County, New York and you hereby irrevocably and' +
+        'unconditionally consent and submit to the exclusive jurisdiction of' +
+        'such courts over any suit, action or proceeding arising out of this' +
+        'Agreement.'
+    }
+  ],
+  [
+    'terms-19-title',
+    {
+      KOR: '19. 해지',
+      ENG: '19. Termination'
+    }
+  ],
+  [
+    'terms-19-desc-1',
+    {
+      KOR: '당사는 사전 통보없이 ',
+      ENG:
+        'We reserve the right, without notice and in our sole discretion, to' +
+        'terminate your license to access and use of the Service, which' +
+        'includes,'
+    }
+  ],
+  [
+    'terms-19-desc-2',
+    {
+      KOR:
+        '을 포함하여 서비스에 액세스하고 이를 사용하기 위한 귀하의 라이센스를 해지할 수 있는 권리를 당사의 재량에 따라 보유 할 권리를 보유하며, 귀하가 향후 서비스에 액세스하고 사용하는 것을 차단 또는 방지 할 권리를 보유합니다. 제공하십시오.',
+      ENG:
+        'and to block or prevent your future access to, and use of, the Service' +
+        'that we provide.'
+    }
+  ],
+  [
+    'terms-20-title',
+    {
+      KOR: '20. 분리 가능성',
+      ENG: '20. Severability'
+    }
+  ],
+  [
+    'terms-20-desc',
+    {
+      KOR:
+        '본 계약의 조항, 조항 또는 조항이 불법이거나 효력이 없거나 시행 할 수 없는 이유로 간주되는 경우 해당 조항, 조항 또는 조항은 본 계약에서 분리 될 수 있는 것으로 간주되며 나머지 조항의 유효성 및 집행 가능성에는 영향을 미치지 않습니다.',
+      ENG:
+        'If any term, clause, or provision of this Agreement is deemed to be' +
+        'unlawful, void or for any reason unenforceable, then that term, clause' +
+        'or provision shall be deemed severable from this Agreement and shall' +
+        'not affect the validity and enforceability of any remaining' +
+        'provisions.'
+    }
+  ],
+  [
+    'terms-21-title',
+    {
+      KOR: '21. 변경 사항',
+      ENG: '21. Changes'
+    }
+  ],
+  [
+    'terms-21-desc-1',
+    {
+      KOR:
+        '본 계약은 본 서비스에 관한 귀하와 당사 간의 완전한 합의입니다. 이는 귀하와 당사 사이의 모든 이전 또는 현재 계약을 대체합니다. 우리는 언제든지이 사용자 계약을 수정할 수 있습니다. 귀하의 권리에 중대한 영향을 미치는 본 계약을 변경하는 경우, 우리는 통지를 제공하고이 개정판을 ',
+      ENG:
+        'This Agreement is the entire agreement between you and us concerning' +
+        'the Service. It supersedes all prior or contemporaneous agreements' +
+        'between you and us. We may modify this user agreement at any time. If' +
+        'we make changes to this agreement that materially affect your rights,' +
+        'we will provide notice and keep this edition available as an archive' +
+        'on '
+    }
+  ],
+  [
+    'terms-21-desc-2',
+    {
+      KOR:
+        '의 아카이브로 보관할 것입니다. 본 계약을 변경한 후에도 서비스를 계속 사용함으로써 귀하는 그러한 변경에 동의하는 것입니다.',
+      ENG:
+        'By' +
+        'continuing to use the Services after a change to this agreement, you' +
+        'agree to those changes.'
+    }
+  ],
+  [
+    'terms-22-title',
+    {
+      KOR: '22. 연락처 정보',
+      ENG: '22. Contact Information'
+    }
+  ],
+  [
+    'terms-22-desc-1',
+    {
+      KOR: 'Polaris Share, Inc.에 대한 통지는 ',
+      ENG: 'Notices to Polaris Share, Inc. should be directed to'
+    }
+  ],
+  [
+    'terms-22-desc-2',
+    {
+      KOR: '로 보내야합니다.',
+      ENG: ' '
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
     }
   ],
   [

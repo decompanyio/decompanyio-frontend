@@ -1183,7 +1183,7 @@ input[type='radio'] + label span {
   background: white;
   border: 1px solid #8d8d8d;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 2rem;
 }
 
 input[type='radio']:checked + label span {
@@ -1437,13 +1437,13 @@ input[type='radio']:checked + label span i {
 .common_toTopBtn {
   position: fixed;
   right: 40px;
-  bottom: 30px;
+  bottom: 2rem;
   cursor: pointer;
   z-index: 3;
 
   @media (max-width: $sm-max-width) {
-    right: 30px;
-    bottom: 30px;
+    right: 2rem;
+    bottom: 2rem;
 
     i {
       font-size: 35px;
@@ -1531,7 +1531,7 @@ input[type='radio']:checked + label span i {
   border: 1px solid #b3b3b3;
   border-radius: 2px;
   width: 140px;
-  height: 30px;
+  height: 2rem;
   -webkit-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
   font: {
@@ -1568,7 +1568,7 @@ input[type='radio']:checked + label span i {
 
 .common_optionTable {
   position: absolute;
-  top: 30px;
+  top: 2rem;
   right: 20px;
   float: right;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.21), 0 0 1px rgba(0, 0, 0, 0.18);
@@ -1826,7 +1826,9 @@ input[type='radio']:checked + label span i {
   }
 
   @media (max-width: $sm-max-width) {
-    font-size: 20px !important;
+    h3 {
+      font-size: 20px !important;
+    }
   }
 }
 
@@ -1898,7 +1900,7 @@ input[type='radio']:checked + label span i {
 
   i {
     @include mr(2);
-    font-size: 30px;
+    font-size: 2rem;
   }
 }
 
@@ -1913,6 +1915,11 @@ input[type='radio']:checked + label span i {
 
   &:hover {
     color: #f92121;
+  }
+
+  @media (max-width: $sm-max-width) {
+    font-size: 0.8rem;
+    padding: 6px 17px;
   }
 }
 
@@ -1935,6 +1942,11 @@ input[type='radio']:checked + label span i {
   &:hover {
     background: $primary-color;
     color: white;
+  }
+
+  @media (max-width: $sm-max-width) {
+    font-size: 0.8rem;
+    padding: 6px 17px;
   }
 }
 
@@ -1964,7 +1976,7 @@ input[type='radio']:checked + label span i {
   padding: 10px;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  min-height: 120px !important;
+  min-height: calc(100% - 210px) !important;
   color: #4d4d4d;
   outline: none;
 
@@ -2037,7 +2049,7 @@ input[type='radio']:checked + label span i {
   color: inherit;
   height: 50px;
   font-size: 1.125rem;
-  line-height: 30px;
+  line-height: 2rem;
   cursor: pointer;
 }
 
@@ -2389,7 +2401,7 @@ input[type='radio']:checked + label span i {
 
   li {
     list-style: none;
-    min-height: 30px;
+    min-height: 2rem;
     padding: 0 1rem;
 
     &:first-child {
@@ -2559,7 +2571,7 @@ input[type='radio']:checked + label span i {
 }
 
 .ma_avatar {
-  border-radius: 30px;
+  border-radius: 2rem;
   cursor: pointer;
   position: relative !important;
   margin-right: 10px;
@@ -2581,7 +2593,7 @@ input[type='radio']:checked + label span i {
 }
 
 .ma_defaultAvatar {
-  border-radius: 30px;
+  border-radius: 2rem;
   cursor: pointer;
   position: relative !important;
   margin-right: 10px;
@@ -2684,7 +2696,7 @@ input[type='radio']:checked + label span i {
 .mlm_subject {
   width: 100px;
   border-radius: 33px;
-  height: 30px;
+  height: 2rem;
   background: linear-gradient(310deg, #ffffff, #d5d5d5);
   background-size: 800% 800%;
   -webkit-animation: mock-gradient-animation 4s ease infinite;
@@ -2744,7 +2756,7 @@ input[type='radio']:checked + label span i {
   height: 378px;
   display: inline-block;
   @media (max-width: $sm-max-width) {
-    padding: 30px !important;
+    padding: 2rem !important;
   }
 
   img {
@@ -2772,7 +2784,7 @@ input[type='radio']:checked + label span i {
     font-size: 40px !important;
   }
   @media (max-width: 480px) {
-    font-size: 30px !important;
+    font-size: 1.6rem !important;
   }
 }
 
@@ -2789,7 +2801,7 @@ input[type='radio']:checked + label span i {
     font-size: 16px !important;
   }
   @media (max-width: $sm-max-width) {
-    margin-bottom: 30px !important;
+    margin-bottom: 2rem !important;
   }
   @media (max-width: 480px) {
     font-size: 14px !important;
@@ -3384,7 +3396,7 @@ input[type='radio']:checked + label span i {
   }
 
   @media all and (max-width: $sm-max-width) {
-    font-size: 30px !important;
+    font-size: 2rem !important;
   }
 }
 
@@ -3473,7 +3485,7 @@ input[type='radio']:checked + label span i {
   }
   @media all and (max-width: $md-max-width) {
     letter-spacing: normal;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
     font: {
       size: 26px;
       weight: 600;
@@ -3544,7 +3556,7 @@ input[type='radio']:checked + label span i {
   text-align: center;
   color: #4d4d4d;
   margin-bottom: 14px;
-  margin-top: 30px;
+  margin-top: 2rem;
   @media all and (max-width: $md-max-width) {
     margin-top: 1rem;
     margin-bottom: 10px;
@@ -3559,7 +3571,7 @@ input[type='radio']:checked + label span i {
   text-align: center;
   color: #4d4d4d;
   @media all and (max-width: $md-max-width) {
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
   }
 }
 
@@ -3637,7 +3649,7 @@ input[type='radio']:checked + label span i {
   }
 
   @media all and (max-width: $sm-max-width) {
-    font-size: 30px !important;
+    font-size: 2rem !important;
   }
 }
 
@@ -3648,7 +3660,7 @@ input[type='radio']:checked + label span i {
     color: $primary-color;
 
     &:hover {
-      font-weight: 500;
+      border-bottom: 1px solid $primary-color;
     }
   }
 
@@ -4207,7 +4219,7 @@ input[type='radio']:checked + label span i {
 
   @media all and (max-width: $md-max-width) {
     margin: 0 -15px !important;
-    max-width: calc(100% + 30px) !important;
+    max-width: calc(100% + 2rem) !important;
   }
 }
 
@@ -4294,7 +4306,7 @@ input[type='radio']:checked + label span i {
 
   @media all and (max-width: $md-max-width) {
     margin: 0 -15px !important;
-    max-width: calc(100% + 30px) !important;
+    max-width: calc(100% + 2rem) !important;
   }
 }
 
@@ -4304,7 +4316,7 @@ input[type='radio']:checked + label span i {
 
   @media all and (max-width: $md-max-width) {
     margin: 0 -15px !important;
-    max-width: calc(100% + 30px) !important;
+    max-width: calc(100% + 2rem) !important;
   }
 }
 
@@ -4328,7 +4340,7 @@ input[type='radio']:checked + label span i {
 .vfb_container {
   @include container;
   position: absolute;
-  height: 30px;
+  height: 2rem;
   width: 100%;
 }
 
@@ -4340,8 +4352,8 @@ input[type='radio']:checked + label span i {
   z-index: 2;
 
   @media all and (max-width: $sm-max-width) {
-    bottom: 30px;
-    right: 30px;
+    bottom: 2rem;
+    right: 2rem;
   }
 }
 
@@ -4368,7 +4380,7 @@ input[type='radio']:checked + label span i {
   word-break: break-all;
   word-wrap: break-word;
   font: {
-    size: 30px;
+    size: 2rem;
     weight: bold;
     style: normal;
     stretch: normal;
@@ -4419,18 +4431,21 @@ input[type='radio']:checked + label span i {
   &:hover {
     color: $primary-color;
   }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 0.8rem;
+  }
 }
 
 .vib_date {
-  height: 0;
   font-size: 14px;
   color: #b3b3b3;
   position: relative;
-  top: 0;
   display: inline-block;
 
   @media all and (max-width: $sm-max-width) {
     margin-left: 0 !important;
+    font-size: 0.8rem;
   }
 }
 
@@ -4602,7 +4617,7 @@ input[type='radio']:checked + label span i {
 
 .vsa_container {
   @include inner-container;
-  margin-top: 30px;
+  margin-top: 2rem;
   margin-bottom: 50px;
   background-color: #fff;
   font-size: 18px;
@@ -5644,7 +5659,7 @@ input[type='radio']:checked + label span i {
 .tdi_title {
   display: block;
   position: relative;
-  padding: 10px 30px;
+  padding: 10px 2rem;
   font-weight: 300;
   font-size: 14px;
   cursor: pointer;
@@ -5697,7 +5712,7 @@ input[type='radio']:checked + label span i {
 
   dl {
     padding: 5px 20px 0;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 
     &:before {
       content: '';
@@ -6129,7 +6144,7 @@ input[type='radio']:checked + label span i {
 }
 
 .edm_moreBtnWrapper {
-  margin: 30px 0 0 0;
+  margin: 2rem 0 0 0;
   position: relative;
   height: 20px;
 }
@@ -6629,7 +6644,7 @@ input[type='radio']:checked + label span i {
   border: 1px solid #b3b3b3;
   border-radius: 2px;
   width: 140px;
-  height: 30px;
+  height: 2rem;
   -webkit-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
 
@@ -6662,7 +6677,7 @@ input[type='radio']:checked + label span i {
 // =====================================
 
 .pm_moreBtnWrapper {
-  margin: 30px 0 0 0;
+  margin: 2rem 0 0 0;
   position: relative;
   height: 20px;
 }
@@ -7417,7 +7432,7 @@ input[type='radio']:checked + label span i {
   @include d-flex;
   justify-content: center;
   align-items: center;
-  margin: 30px 0 40px;
+  margin: 2rem 0 40px;
   color: #4d4d4d;
 
   div {

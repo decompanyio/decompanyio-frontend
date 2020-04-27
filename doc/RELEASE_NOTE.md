@@ -1,7 +1,7 @@
 # Release Note
 
 ## 2020.04.20-a
-- Edit test of 'Claim Complete'
+- Edit test code of 'Claim Complete'
 - Edit a domain of 'about_us'
 - Edit showing condition of search box
 

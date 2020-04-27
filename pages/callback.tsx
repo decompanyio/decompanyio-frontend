@@ -7,6 +7,7 @@ import { useMain } from '../redux/main/hooks'
 
 export default function(): ReactElement {
   const { setAlertCode } = useMain()
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let url = new URL(document.location.href)

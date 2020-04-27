@@ -14,7 +14,6 @@ import ModalList from './common/modal/ModalList'
 import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
 import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
-import UserInfo from '../service/model/UserInfo'
 import { useMain } from '../redux/main/hooks'
 
 export default function(props): ReactElement {
@@ -88,7 +87,7 @@ export default function(props): ReactElement {
   const setMyInfoToStore = () => {
     if (AUTH_APIS.isLogin() && myInfo.email.length === 0) {
       return repos.Account.getAccountInfo().then(result => {
-        let res = new UserInfo(result.user)
+        let res = result.user
         if (!res.username || res.username === '') res.username = res.email
         if (!res.picture) res.picture = myInfo.picture
 

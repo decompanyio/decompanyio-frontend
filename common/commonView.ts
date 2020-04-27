@@ -117,6 +117,11 @@ export default {
     return window.location.pathname.split('/')
   },
 
+  getWindowWidth(): number {
+    if (typeof window === 'undefined') return 1024
+    return document.documentElement.clientWidth
+  },
+
   getIsMobile(): boolean {
     if (typeof window === 'undefined') return false
     return document.documentElement.clientWidth < 576
