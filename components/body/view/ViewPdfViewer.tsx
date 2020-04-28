@@ -244,8 +244,8 @@ export default function({
 
   return (
     <div className={styles.vpv_container} onScroll={e => handleScrolling(e)}>
-      <div id={'pdfViewerWrapper'} className={styles.vpv_wrapper}>
-        <div id={'thumbnailWrapper'} className={styles.vpv_thumbnailWrapper}>
+      <div id="pdfViewerWrapper" className={styles.vpv_wrapper}>
+        <div id="thumbnailWrapper" className={styles.vpv_thumbnailWrapper}>
           {thumbArr.length > 0
             ? thumbArr.map((addr, idx) => (
                 <img

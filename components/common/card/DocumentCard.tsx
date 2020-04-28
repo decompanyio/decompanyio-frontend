@@ -43,7 +43,8 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   const [reward, setReward] = useState(0)
 
   let identification: string
-  let imgUrl: string
+  let imgUrl_1: string
+  let imgUrl_2: string
   let profileUrl: string
   let vote: number
   let view: number
@@ -55,7 +56,13 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
       ? documentData.author.username
       : documentData.author.email
     : documentData.accountId
-  imgUrl = common.getThumbnail(
+  imgUrl_1 = common.getThumbnail(
+    documentData.documentId,
+    320,
+    1,
+    documentData.documentName
+  )
+  imgUrl_2 = common.getThumbnail(
     documentData.documentId,
     640,
     1,
@@ -71,7 +78,9 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
       setReward(res)
     })
-  })
+
+    commonView.lazyLoading()
+  }, [])
 
   return (
     <div className={styles.dc_container}>
@@ -87,10 +96,18 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           onClick={(): void => commonView.scrollTop()}
         >
           <img
-            id="test1234"
-            src={imgUrl}
+            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+            data-src={imgUrl_1}
+            data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
             alt={documentData.title}
-            className={ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img}
+            className={
+              'lazy ' + (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
+            }
+            onError={e => {
+              let element = e.target as HTMLImageElement
+              element.onerror = null
+              element.src = APP_CONFIG.domain().static + '/image/logo-cut.png'
+            }}
           />
         </div>
       </Link>
@@ -117,30 +134,32 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           </Link>
         </div>
 
-        <Link
-          href={{
-            pathname: '/my_page',
-            query: { identification: identification }
-          }}
-          as={'/@' + identification}
-        >
-          <div className={styles.dc_avatarWrapper}>
-            <div>
-              <UserAvatarWithoutSSR
-                picture={profileUrl}
-                croppedArea={croppedArea}
-                size={30}
-              />
-              <span className={styles.dc_name}>{identification}</span>
+        <div className={styles.dc_nameWrapper}>
+          <Link
+            href={{
+              pathname: '/my_page',
+              query: { identification: identification }
+            }}
+            as={'/@' + identification}
+          >
+            <div className={styles.dc_avatarWrapper}>
+              <div>
+                <UserAvatarWithoutSSR
+                  picture={profileUrl}
+                  croppedArea={croppedArea}
+                  size={30}
+                />
+                <span className={styles.dc_name}>{identification}</span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
 
-        {!isMobile && (
-          <span className={styles.dc_date}>
-            {commonView.dateTimeAgo(documentData.created, false)}
-          </span>
-        )}
+          {!isMobile && (
+            <span className={styles.dc_date}>
+              {commonView.dateTimeAgo(documentData.created, false)}
+            </span>
+          )}
+        </div>
 
         <div className={styles.dc_count}>
           <div

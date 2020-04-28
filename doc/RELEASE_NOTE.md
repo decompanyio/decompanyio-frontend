@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.04.28-a
+- Add lazy loading
+- Change brand logo
+
 ## 2020.04.20-a
 - Edit test code of 'Claim Complete'
 - Edit a domain of 'about_us'

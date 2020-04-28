@@ -603,9 +603,11 @@ react tab CSS*/
 
 /*2020-02-21
 pdf 뷰어*/
+
 #canvasLayer {
     line-height: 0;
 }
+
 #textLayer {
     position: absolute;
     top: 0;

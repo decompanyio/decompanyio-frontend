@@ -32,9 +32,15 @@ export default function({
   const vote = common.toEther(documentData.latestVoteAmount) || 0
   const view = documentData.latestPageview || 0
   const profileUrl = documentData.author ? documentData.author.picture : ''
-  const imageUrl = common.getThumbnail(
+  const imgUrl_1 = common.getThumbnail(
     documentData.documentId,
-    commonView.getIsMobile ? 640 : 320,
+    320,
+    1,
+    documentData.documentName
+  )
+  const imgUrl_2 = common.getThumbnail(
+    documentData.documentId,
+    640,
     1,
     documentData.documentName
   )
@@ -51,7 +57,9 @@ export default function({
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
       setReward(res)
     })
-  })
+
+    commonView.lazyLoading()
+  }, [])
 
   return (
     <div className={styles.cli_container} key={documentData.seoTitle}>
@@ -65,9 +73,11 @@ export default function({
         >
           <a className={styles.cl_imageWrapper} href="#">
             <img
-              src={imageUrl}
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+              data-src={imgUrl_1}
+              data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
               alt={documentData.title}
-              className={styles.cl_image}
+              className={'lazy ' + styles.cl_image}
               onError={e => {
                 let element = e.target as HTMLImageElement
                 element.onerror = null
