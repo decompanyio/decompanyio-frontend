@@ -241,7 +241,7 @@ export default {
         })
       })
 
-      lazyImages.forEach(function(lazyImage) {
+      lazyImages.forEach(lazyImage => {
         lazyImageObserver.observe(lazyImage)
       })
     } else {

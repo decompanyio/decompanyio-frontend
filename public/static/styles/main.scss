@@ -2465,7 +2465,6 @@ input[type='radio']:checked + label span i {
 }
 
 .f_logoImg {
-  width: 170px;
   cursor: pointer;
 }
 
@@ -2477,13 +2476,6 @@ input[type='radio']:checked + label span i {
     max-width: 100%;
     flex: 0 0 100%;
   }
-}
-
-.f_copyright {
-  font-size: 12px;
-  font-weight: 300;
-  color: #ffffff;
-  margin-top: 5px;
 }
 
 .f_copyrightMobile {

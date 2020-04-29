@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.04.29-a
+- Change brand logo in footer
+
 ## 2020.04.28-a
 - Add lazy loading
 - Change brand logo

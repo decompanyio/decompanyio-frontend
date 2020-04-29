@@ -81,7 +81,8 @@ export default function({
               onError={e => {
                 let element = e.target as HTMLImageElement
                 element.onerror = null
-                element.src = APP_CONFIG.domain().static + '/image/logo-cut.png'
+                element.srcset =
+                  APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
             />
           </a>

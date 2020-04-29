@@ -16,9 +16,6 @@ export default function(): ReactElement {
               alt="POLARIS SHARE"
             />
           </Link>
-          <div className={styles.f_copyright}>
-            Copyrightⓒ 2020 POLARIS SHARE
-          </div>
         </div>
         <div className={styles.f_legal}>
           <Link href="/about_us" as="au">

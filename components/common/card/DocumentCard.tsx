@@ -104,9 +104,11 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
               'lazy ' + (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
             }
             onError={e => {
+              console.log(e)
               let element = e.target as HTMLImageElement
               element.onerror = null
-              element.src = APP_CONFIG.domain().static + '/image/logo-cut.png'
+              element.srcset =
+                'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
             }}
           />
         </div>
