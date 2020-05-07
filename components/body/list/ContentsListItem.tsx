@@ -1,8 +1,5 @@
 import * as styles from 'public/static/styles/main.scss'
-// @ts-ignore
-import LinesEllipsis from 'react-lines-ellipsis'
-// @ts-ignore
-import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import Truncate from 'react-truncate'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import commonView from '../../../common/commonView'
@@ -18,9 +15,6 @@ const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
   { ssr: false }
 )
-
-// ellipsis 반응형 설정
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
   documentData,
@@ -71,7 +65,7 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <a className={styles.cl_imageWrapper} href="#">
+          <a className={styles.cl_imageWrapper}>
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
               data-src={imgUrl_1}
@@ -81,6 +75,7 @@ export default function({
               onError={e => {
                 let element = e.target as HTMLImageElement
                 element.onerror = null
+                element.style.padding = '20%'
                 element.srcset =
                   APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
@@ -98,17 +93,11 @@ export default function({
             }}
             as={'/@' + identification + '/' + documentData.seoTitle}
           >
-            <ResponsiveEllipsis
-              text={
-                documentData.title
-                  ? documentData.title
-                  : documentData.documentName
-              }
-              maxLine={2}
-              ellipsis="..."
-              trimRight
-              basedOn="words"
-            />
+            <Truncate lines={2} ellipsis={<span>...</span>}>
+              {documentData.title
+                ? documentData.title
+                : documentData.documentName}
+            </Truncate>
           </Link>
         </div>
         <div className={styles.cl_identification}>
@@ -143,13 +132,9 @@ export default function({
           >
             <div className={styles.cl_desc}>
               {documentData.desc && (
-                <ResponsiveEllipsis
-                  text={documentData.desc}
-                  maxLine={2}
-                  ellipsis="..."
-                  trimRight
-                  basedOn="words"
-                />
+                <Truncate lines={2} ellipsis={<span>...</span>}>
+                  {documentData.desc}
+                </Truncate>
               )}
             </div>
           </Link>

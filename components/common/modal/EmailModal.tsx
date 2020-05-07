@@ -122,6 +122,7 @@ export default function(): ReactElement {
 
     return () => {
       commonView.setBodyStyleUnlock()
+      setModal('')
     }
   }, [])
 
@@ -188,7 +189,7 @@ export default function(): ReactElement {
         </div>
 
         <div className={styles.modal_footer}>
-          {documentData.forceTracking === true ? (
+          {documentData.forceTracking ? (
             <div
               onClick={() => handleBack()}
               className={styles.modal_cancelBtn}

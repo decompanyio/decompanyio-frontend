@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import * as styles from 'public/static/styles/main.scss'
-import LinesEllipsis from 'react-lines-ellipsis'
+import Truncate from 'react-truncate'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'
 import { psString } from '../../../utils/localization'
 import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import repos from '../../../utils/repos'
 import { DocumentCardProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
@@ -17,9 +16,6 @@ const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
   { ssr: false }
 )
-
-// ellipsis 반응형 설정
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 const getImgInfo = (documentData): void => {
   let img = new Image()
@@ -122,17 +118,11 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
             }}
             as={'/@' + identification + '/' + documentData.seoTitle}
           >
-            <ResponsiveEllipsis
-              text={
-                documentData.title
-                  ? documentData.title
-                  : documentData.documentName
-              }
-              maxLine={2}
-              ellipsis="..."
-              trimRight
-              basedOn="letters"
-            />
+            <Truncate lines={2} ellipsis={<span>...</span>}>
+              {documentData.title
+                ? documentData.title
+                : documentData.documentName}
+            </Truncate>
           </Link>
         </div>
 

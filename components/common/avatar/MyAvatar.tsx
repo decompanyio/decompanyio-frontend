@@ -72,14 +72,19 @@ export default function({
           onError={e => {
             let element = e.target as HTMLImageElement
             element.onerror = null
-            element.src = require('public/static/image/icon/i_profile-default.png')
+            element.src = '/static/image/icon/i_profile-default.png'
           }}
         />
       ) : (
         <img
-          src={require('public/static/image/icon/i_profile-default.png')}
+          src={'/static/image/icon/i_profile-default.png'}
           className={styles['ma_avatar' + (size === 90 ? '_big' : '')]}
           alt="Link to my profile"
+          onError={e => {
+            let element = e.target as HTMLImageElement
+            element.onerror = null
+            element.src = '/static/image/icon/i_profile-default.png'
+          }}
         />
       )}
     </div>

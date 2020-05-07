@@ -1,8 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
+import Truncate from 'react-truncate'
 import { FadingCircle } from 'better-react-spinkit'
 import * as styles from '../../../../../public/static/styles/main.scss'
-import LinesEllipsis from 'react-lines-ellipsis'
-import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import commonView from 'common/commonView'
 import { psString } from 'utils/localization'
 import common from 'common/common'
@@ -15,9 +14,6 @@ import DocumentInfo from '../../../../../service/model/DocumentInfo'
 import ProfileUploadClaim from './ProfileUploadClaim'
 import { ProfileUploadTabItemProps } from '../../../../../typings/interfaces'
 import { useMain } from '../../../../../redux/main/hooks'
-
-// ellipsis 반응형 설정
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
 export default function({
   documentData,
@@ -263,24 +259,24 @@ export default function({
               as={'/@' + identification + '/' + tmpDocumentData.seoTitle}
             >
               <div className={styles.puti_desc}>
-                <ResponsiveEllipsis
-                  text={tmpDocumentData.desc}
-                  maxLine={2}
-                  ellipsis="..."
-                  trimRight
-                  basedOn="words"
-                />
+                <Truncate lines={2} ellipsis={<span>...</span>}>
+                  {
+                    <span className={styles.tdi_text}>
+                      {tmpDocumentData.desc}
+                    </span>
+                  }
+                </Truncate>
               </div>
             </Link>
           ) : (
             <div className={styles.puti_desc}>
-              <ResponsiveEllipsis
-                text={tmpDocumentData.desc}
-                maxLine={2}
-                ellipsis="..."
-                trimRight
-                basedOn="words"
-              />
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                {
+                  <span className={styles.tdi_text}>
+                    {tmpDocumentData.desc}
+                  </span>
+                }
+              </Truncate>
             </div>
           )}
         </div>

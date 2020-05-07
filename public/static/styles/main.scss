@@ -601,6 +601,7 @@ $gutter-5: 3rem;
   font-style: normal;
   font-weight: 300;
   src: url($font-url +'/poppins/Poppins-Light.otf') format('opentype');
+  font-display: swap;
 }
 
 @font-face {
@@ -608,6 +609,7 @@ $gutter-5: 3rem;
   font-style: normal;
   font-weight: 400;
   src: url($font-url +'/poppins/Poppins-Medium.otf') format('opentype');
+  font-display: swap;
 }
 
 @font-face {
@@ -615,6 +617,7 @@ $gutter-5: 3rem;
   font-style: normal;
   font-weight: 500;
   src: url($font-url +'/poppins/Poppins-SemiBold.otf') format('opentype');
+  font-display: swap;
 }
 
 @font-face {
@@ -622,6 +625,7 @@ $gutter-5: 3rem;
   font-style: normal;
   font-weight: 600;
   src: url($font-url +'/poppins/Poppins-Bold.otf') format('opentype');
+  font-display: swap;
 }
 
 //======================================
@@ -1801,6 +1805,7 @@ input[type='radio']:checked + label span i {
 }
 
 .modal_title {
+  word-break: break-all;
   color: #fff;
   position: relative;
   margin-bottom: 25px;
@@ -1856,7 +1861,6 @@ input[type='radio']:checked + label span i {
 
 .modal_content {
   text-align: left;
-  flex: 1 1 auto;
   min-height: 100px;
   position: relative;
   padding: 0 24px;
@@ -2683,7 +2687,7 @@ input[type='radio']:checked + label span i {
 
 .mlm_subjectWrapper {
   @include inner-container;
-  @include pb-sm(3);
+  @include pb(3);
   @include d-flex;
 }
 
@@ -3851,7 +3855,6 @@ input[type='radio']:checked + label span i {
   }
 
   div {
-    width: max-content;
     cursor: pointer;
 
     &:hover {
@@ -3863,10 +3866,6 @@ input[type='radio']:checked + label span i {
 .cl_identification {
   @include mb(1);
   position: relative;
-
-  @media all and (max-width: $sm-max-width) {
-    @include mb(0);
-  }
 }
 
 .cl_avatar {
@@ -3924,7 +3923,7 @@ input[type='radio']:checked + label span i {
   line-height: normal;
 
   @media all and (max-width: $sm-max-width) {
-    font-size: 12px;
+    font-size: 0.8rem;
   }
 }
 

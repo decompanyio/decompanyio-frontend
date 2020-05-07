@@ -34,7 +34,7 @@ export default function(): ReactElement {
         ))}
 
         <li>
-          <Link href="/more" as="m">
+          <Link href="/more">
             <a>more</a>
           </Link>
         </li>

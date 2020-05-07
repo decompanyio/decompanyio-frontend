@@ -1,6 +1,6 @@
 export const APP_CONFIG = {
   // debug 모드 이용시, true 로 변경
-  debug: false,
+  debug: process.env.NODE_ENV_SUB === 'local' && true,
   env: !process.env.NODE_ENV_SUB ? 'local' : process.env.NODE_ENV_SUB,
   domain: function() {
     if (this.env === 'production') {

@@ -1,11 +1,11 @@
 import * as styles from '../../../public/static/styles/main.scss'
-import LinesEllipsis from 'react-lines-ellipsis'
 import ReactTooltip from 'react-tooltip'
 import { APP_CONFIG } from '../../../app.config'
 import common from '../../../common/common'
 import Link from 'next/link'
 import React, { ReactElement, useState } from 'react'
 import { TrackingDetailItemProps } from '../../../typings/interfaces'
+import Truncate from 'react-truncate'
 
 // 내림 차순으로 정렬된 시간  GET
 const getSortedTime = ({ viewTracking }): void => {
@@ -117,18 +117,13 @@ export default function({
                   {_result.ev !== 'leave' && (
                     <div className={styles.tdi_link}>
                       {text && (
-                        <LinesEllipsis
-                          text={
+                        <Truncate lines={1} ellipsis={<span>...</span>}>
+                          {
                             <span className={styles.tdi_text}>
                               {text[_result.n - 1]}
                             </span>
                           }
-                          maxLine="1"
-                          ellipsis="..."
-                          trimRight
-                          basedOn="letters"
-                          className="d-none d-sm-block w-100"
-                        />
+                        </Truncate>
                       )}
                     </div>
                   )}

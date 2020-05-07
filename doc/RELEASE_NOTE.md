@@ -1,5 +1,13 @@
 # Release Note
 
+## 2020.05.07-a
+- Change ellipse library
+- Fix bugs
+- Apply error image in the avatar, thumbnail
+- Change page name in more Tab
+- Add _document.js for lang attribute in <html>
+- Add _static for uploading to S3 bucket
+
 ## 2020.04.29-a
 - Change brand logo in footer
 

@@ -1,19 +1,15 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import LinesEllipsis from 'react-lines-ellipsis'
 import Link from 'next/link'
 import common from '../../../../../common/common'
 import commonView from '../../../../../common/commonView'
 import { APP_CONFIG } from '../../../../../app.config'
 import RewardCard from '../../../../common/card/RewardCard'
 import * as styles from '../../../../../public/static/styles/main.scss'
-import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import repos from '../../../../../utils/repos'
 import ProfileVoteClaim from './ProfileVoteClaim'
 import { ProfileVoteTabItemProps } from '../../../../../typings/interfaces'
 import { useMain } from '../../../../../redux/main/hooks'
-
-// ellipsis 반응형 설정
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
+import Truncate from 'react-truncate'
 
 export default function({
   documentData,
@@ -106,13 +102,9 @@ export default function({
             as={'/@' + identification + '/' + documentData.seoTitle}
           >
             {documentData.desc && (
-              <ResponsiveEllipsis
-                text={documentData.desc}
-                maxLine={2}
-                ellipsis="..."
-                trimRight
-                basedOn="words"
-              />
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                {<span className={styles.tdi_text}>{documentData.desc}</span>}
+              </Truncate>
             )}
           </Link>
         </div>

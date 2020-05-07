@@ -61,7 +61,7 @@ export default function({
   return (
     <div className={styles.ua_container} style={wrapperStyle}>
       <img
-        src="static/image/icon/i_profile-default.png"
+        src='/static/image/icon/i_profile-default.png'
         data-src={picture}
         data-srcset={picture + ' 1x'}
         alt="profile"
@@ -70,7 +70,7 @@ export default function({
         onError={e => {
           let element = e.target as HTMLImageElement
           element.onerror = null
-          element.srcset = 'static/image/icon/i_profile-default.png'
+          element.srcset = '/static/image/icon/i_profile-default.png'
         }}
       />
     </div>
