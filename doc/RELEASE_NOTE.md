@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.05.07-b
+- Apply lazy loading to main banner image and avatar
+- Bugs fix
+
 ## 2020.05.07-a
 - Change ellipse library
 - Fix bugs

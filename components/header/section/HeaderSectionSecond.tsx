@@ -67,27 +67,29 @@ export default function(): ReactElement {
       </div>
 
       {((showSearchBar !== 1 && commonView.getWindowWidth() <= 830) ||
-        commonView.getWindowWidth() > 830) && (
+        (!isMobile && commonView.getWindowWidth() > 830)) && (
         <div className={styles.hss_postContainer}>
           <AddBtn />
         </div>
       )}
 
-      {myInfo.email && commonView.getWindowWidth() > 830 && (
-        <MyAvatar
-          click={handleAvatarClick}
-          size={33}
-          picture={myInfo.picture}
-          croppedArea={myInfo.croppedArea}
-        />
-      )}
+      {myInfo.email &&
+        ((showSearchBar !== 1 && commonView.getWindowWidth() <= 830 && !isMobile) ||
+          (!isMobile && commonView.getWindowWidth() > 830)) && (
+          <MyAvatar
+            click={handleAvatarClick}
+            size={33}
+            picture={myInfo.picture}
+            croppedArea={myInfo.croppedArea}
+          />
+        )}
 
       {profileCardShow && <ProfileCard click={handleProfileCardClick} />}
 
       {!myInfo.email && !isMobile && <LoginBtn />}
 
       {((showSearchBar !== 1 && commonView.getWindowWidth() <= 830) ||
-        commonView.getWindowWidth() > 830) && (
+        !isMobile) && (
         <div className={styles.hss_menuContainer}>
           <MenuBtn />
         </div>

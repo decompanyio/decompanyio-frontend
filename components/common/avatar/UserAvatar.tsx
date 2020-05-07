@@ -61,7 +61,7 @@ export default function({
   return (
     <div className={styles.ua_container} style={wrapperStyle}>
       <img
-        src='/static/image/icon/i_profile-default.png'
+        src="/static/image/icon/i_profile-default.png"
         data-src={picture}
         data-srcset={picture + ' 1x'}
         alt="profile"

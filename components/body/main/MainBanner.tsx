@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Carousel } from 'react-responsive-carousel'
 import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../../../utils/auth'
+import MainBannerImage from './MainBannerImage'
 
 // 배너 제목
 const subject = [
@@ -95,7 +96,12 @@ export default function(): ReactElement {
                   </div>
                 </div>
 
-                <div className={styles['mc_img_' + (idx + 1)]} />
+                {/*<div className={styles['mc_img_' + (idx + 1)]} />*/}
+                <div className={styles.s_first_bg}>
+                  <div className={styles.s_first_imageWrapper}>
+                    <MainBannerImage idx={idx} />
+                  </div>
+                </div>
               </div>
             )
           )}

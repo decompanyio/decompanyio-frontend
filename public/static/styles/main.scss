@@ -2757,13 +2757,13 @@ input[type='radio']:checked + label span i {
     padding: 2rem !important;
   }
 
-  img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: auto !important;
-  }
+  /* img {
+     position: absolute;
+     left: 0;
+     top: 0;
+     height: 100%;
+     width: auto !important;
+   }*/
 }
 
 .mc_subject {
@@ -2903,6 +2903,34 @@ input[type='radio']:checked + label span i {
 .mc_img_3 {
   @extend .mc_imgWrapper;
   background-image: url($image-url +'/banner/img-banner-03.png');
+}
+
+
+.s_first_bg {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.s_first_imageWrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.s_first_imageWrapper > img {
+  height: 100%;
+  max-width: none;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  position: absolute;
+  width: 100%;
+  margin-left: -50%;
 }
 
 //======================================

@@ -157,6 +157,8 @@ app.prepare().then(() => {
 
   // 태그 문서 목록 페이지
   server.get('/tag/:tag', (req, res) => {
+    res.header('X-Robots-Tag', 'noindex')
+
     if (!req.params.tag)
       return app.render(req, res, '/not_found_page', req.query)
 
@@ -166,6 +168,7 @@ app.prepare().then(() => {
 
   // 최신 문서 목록 페이지
   server.get('/latest', (req, res) => {
+    res.header('X-Robots-Tag', 'noindex')
     return app.render(req, res, '/contents_list', req.query)
   })
 
@@ -207,6 +210,7 @@ app.prepare().then(() => {
 
   // 태그 목록 페이지
   server.get('/more', (req, res) => {
+    res.header('X-Robots-Tag', 'noindex')
     return app.render(req, res, '/more', req.query)
   })
 
