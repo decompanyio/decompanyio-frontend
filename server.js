@@ -209,9 +209,9 @@ app.prepare().then(() => {
   })
 
   // 태그 목록 페이지
-  server.get('/more', (req, res) => {
+  server.get('/others', (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
-    return app.render(req, res, '/more', req.query)
+    return app.render(req, res, '/others', req.query)
   })
 
   // 개인정보정책 페이지

@@ -48,7 +48,7 @@ export default function(): ReactElement {
               className={styles.dpn_learnMore}
               onClick={(): void => handleAcceptBtnClick()}
             >
-              {psString('dollar-policy-learn-more')}
+              {psString('dollar-policy-learn-others')}
             </span>
           </div>
 

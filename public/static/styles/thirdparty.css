@@ -285,6 +285,16 @@
     margin: 0 8px
 }
 
+
+
+@media (max-width: 575px) {
+    .carousel .control-dots .dot {
+        width: 0.9rem;
+        height: 0.9rem;
+        margin: 0 0.9rem;
+    }
+}
+
 .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
     opacity: 1
 }

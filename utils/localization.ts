@@ -46,7 +46,7 @@ const strings = new Map([
     'main-banner-btn-4',
     {
       KOR: '상세보기',
-      ENG: 'Learn more'
+      ENG: 'Learn others'
     }
   ],
   [
@@ -496,7 +496,7 @@ const strings = new Map([
       KOR:
         '현재는 제한이 없지만 향후 1주일에 문서 1개로 제한할 계획입니다. 일정량의 토큰을 예치하면 더 많은 문서를 등록할 수 있습니다. ',
       ENG:
-        'There is currently no limit on the number of posts. However, we plan to set a limit of one document per week and to allow more posts to be updated when the user deposits a set of tokens.'
+        'There is currently no limit on the number of posts. However, we plan to set a limit of one document per week and to allow others posts to be updated when the user deposits a set of tokens.'
     }
   ],
   [
@@ -1124,7 +1124,7 @@ const strings = new Map([
     }
   ],
   [
-    'common-modal-more-option',
+    'common-modal-others-option',
     {
       KOR: '추가 옵션',
       ENG: 'More Options'
@@ -1248,14 +1248,14 @@ const strings = new Map([
 
   // Dollor Learn More Modal
   [
-    'dollar-learn-more-subj',
+    'dollar-learn-others-subj',
     {
       KOR: 'DECK 테스트 토큰에 대한 중요 공지',
       ENG: 'Important notice about the DECK test token'
     }
   ],
   [
-    'dollar-learn-more-explain-1',
+    'dollar-learn-others-explain-1',
     {
       KOR:
         'Polaris Share 알파 버전에서는 DECK 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
@@ -1264,7 +1264,7 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-learn-more-explain-2',
+    'dollar-learn-others-explain-2',
     {
       KOR:
         '무료 DECK 테스트 토큰으로 Polaris Share 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 DECK 테스트 토큰도 만료됩니다.',
@@ -1273,7 +1273,7 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-learn-more-explain-3',
+    'dollar-learn-others-explain-3',
     {
       KOR:
         '테스트에 적극적으로 참여하는 사용자는 상용 버전의 Polaris Share를 열 때 적절한 보상을 제공할 예정입니다.',
@@ -1282,7 +1282,7 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-learn-more-btn',
+    'dollar-learn-others-btn',
     {
       KOR: '알겠습니다',
       ENG: 'I got it.'
@@ -2050,7 +2050,7 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-policy-learn-more',
+    'dollar-policy-learn-others',
     {
       KOR: '상세 보기',
       ENG: 'View details'
@@ -3141,7 +3141,7 @@ const strings = new Map([
       KOR:
         '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 DECK 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 DECK에 통제가 상실 될 수 있습니다.',
       ENG:
-        '8.1. As described in more detail below, the Services, among other' +
+        '8.1. As described in others detail below, the Services, among other' +
         'things, provide software that facilitates the submission of DECK' +
         'blockchain transaction data to the DECK blockchain without requiring' +
         'you to access the DECK blockchain command line interface.'
@@ -3639,7 +3639,7 @@ const strings = new Map([
         'GLOBAL, Inc. (collectively, “Disputes”) resolved in a court; and (b)' +
         'waive your right to a jury trial. Instead, you and Polaris Share,' +
         'Inc. will arbitrate Disputes through binding arbitration (which is the' +
-        'referral of a Dispute to one or more persons charged with reviewing' +
+        'referral of a Dispute to one or others persons charged with reviewing' +
         'the Dispute and making a final and binding determination to resolve' +
         'it, instead of having the Dispute decided by a judge or jury in' +
         'court).'
@@ -3728,10 +3728,10 @@ const strings = new Map([
         'authority and jurisdiction to make all procedural and substantive' +
         'decisions regarding a Dispute; and (b) the authority to grant any' +
         'remedy that would otherwise be available in court. The arbitrator may' +
-        'only conduct an individual arbitration and may not consolidate more' +
+        'only conduct an individual arbitration and may not consolidate others' +
         'than one individual’ s claims, preside over any type of class or' +
         'representative proceeding or preside over any proceeding involving' +
-        'more than one individual.'
+        'others than one individual.'
     }
   ],
   [

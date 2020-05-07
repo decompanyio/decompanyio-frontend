@@ -35,17 +35,17 @@ export default function(): ReactElement {
           }
         >
           <div className={styles.modal_title}>
-            <h3>{psString('dollar-learn-more-subj')}</h3>
+            <h3>{psString('dollar-learn-others-subj')}</h3>
           </div>
 
           <div className={styles.modal_content}>
-            {psString('dollar-learn-more-explain-1')}
+            {psString('dollar-learn-others-explain-1')}
             <br />
             <br />
-            {psString('dollar-learn-more-explain-2')}
+            {psString('dollar-learn-others-explain-2')}
             <br />
             <br />
-            {psString('dollar-learn-more-explain-3')}
+            {psString('dollar-learn-others-explain-3')}
           </div>
 
           <div className={styles.modal_footer}>
@@ -53,7 +53,7 @@ export default function(): ReactElement {
               onClick={() => handleClickClose()}
               className={styles.modal_okBtn}
             >
-              {psString('dollar-learn-more-btn')}
+              {psString('dollar-learn-others-btn')}
             </div>
           </div>
         </div>

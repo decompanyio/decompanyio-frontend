@@ -17,7 +17,7 @@ export default class MyDocument extends Document<{
 
   public render() {
     return (
-      <Html lang={psGetLang()}>
+      <Html lang={psGetLang().toLowerCase()}>
         <Head>
           <meta charSet="utf-8" />
           <meta

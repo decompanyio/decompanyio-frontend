@@ -9,7 +9,7 @@ import store from '../../../../../redux/store'
 
 let owner: boolean
 
-describe('<More />', () => {
+describe('<ProfileAvatarEdit />', () => {
   it('shows edit button correctly when owner TRUE', () => {
     owner = true
     const tree = render(

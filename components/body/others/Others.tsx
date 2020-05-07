@@ -1,12 +1,12 @@
 import * as styles from 'public/static/styles/main.scss'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
-import { MoreProps } from '../../../typings/interfaces'
+import { OthersProps } from '../../../typings/interfaces'
 
-export default function({ tagList }: MoreProps): ReactElement {
+export default function({ tagList }: OthersProps): ReactElement {
   return (
     <div className={styles.more_container}>
-      <div className={styles.more_subject}>More tags</div>
+      <div className={styles.more_subject}>Others</div>
       <div className={styles.more_content}>
         {tagList &&
           tagList.length > 0 &&

@@ -45,7 +45,7 @@ export interface MainListProps {
   path: string
 }
 
-export interface MoreProps {
+export interface OthersProps {
   tagList: TagListItem[]
 }
 

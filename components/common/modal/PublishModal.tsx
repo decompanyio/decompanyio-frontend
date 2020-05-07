@@ -150,7 +150,7 @@ export default function(): ReactElement {
   // CC License sa 체크박스
   const handleCcSaCheckbox = () => setSa(!sa)
 
-  // more 옵션 관리 버튼
+  // others 옵션 관리 버튼
   const handleMoreOptions = () => setMoreOptions(!moreOptions)
 
   useEffect(() => {
@@ -209,7 +209,7 @@ export default function(): ReactElement {
               className={styles.pm_moreBtn}
               onClick={() => handleMoreOptions()}
             >
-              {psString('common-modal-more-option')}
+              {psString('common-modal-others-option')}
               <img
                 className={styles.pm_rewardArrow}
                 src={

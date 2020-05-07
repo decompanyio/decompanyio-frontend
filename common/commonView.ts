@@ -245,7 +245,7 @@ export default {
         lazyImageObserver.observe(lazyImage)
       })
     } else {
-      // Possibly fall back to a more compatible method here
+      // Possibly fall back to a others compatible method here
     }
   }
 }
