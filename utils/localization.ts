@@ -46,7 +46,7 @@ const strings = new Map([
     'main-banner-btn-4',
     {
       KOR: '상세보기',
-      ENG: 'Learn others'
+      ENG: 'Learn more'
     }
   ],
   [

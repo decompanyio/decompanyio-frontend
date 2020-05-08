@@ -74,7 +74,9 @@ export default function(): ReactElement {
       )}
 
       {myInfo.email &&
-        ((showSearchBar !== 1 && commonView.getWindowWidth() <= 830 && !isMobile) ||
+        ((showSearchBar !== 1 &&
+          commonView.getWindowWidth() <= 830 &&
+          !isMobile) ||
           (!isMobile && commonView.getWindowWidth() > 830)) && (
           <MyAvatar
             click={handleAvatarClick}
@@ -86,7 +88,11 @@ export default function(): ReactElement {
 
       {profileCardShow && <ProfileCard click={handleProfileCardClick} />}
 
-      {!myInfo.email && !isMobile && <LoginBtn />}
+      {!myInfo.email &&
+        ((showSearchBar !== 1 &&
+          commonView.getWindowWidth() <= 830 &&
+          !isMobile) ||
+          (!isMobile && commonView.getWindowWidth() > 830)) && <LoginBtn />}
 
       {((showSearchBar !== 1 && commonView.getWindowWidth() <= 830) ||
         !isMobile) && (
