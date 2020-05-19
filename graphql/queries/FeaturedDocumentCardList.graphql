@@ -1,0 +1,8 @@
+query FeaturedDocumentCardList {
+  DocumentFeatured {
+    findMany(skip: 0, limit: 10, sort: LATESTVOTEAMOUNT_ASC) {
+      _id
+      accountId
+    }
+  }
+}

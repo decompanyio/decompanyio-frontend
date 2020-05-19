@@ -1,0 +1,17 @@
+query LatestDocumentCardList {
+    Document {
+        findMany(
+            filter: {
+                isPublic: true
+                isDeleted: false
+                isBlocked: false
+            }
+            skip: 0
+            limit: 10
+            sort: STATE__CREATED_ASC
+        ) {
+            documentId
+            accountId
+        }
+    }
+}

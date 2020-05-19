@@ -1,0 +1,2162 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type CreatorRoyalty {
+    activeDate: Date
+    documentId: String
+    pageview: Int
+    royalty: Float
+    totalPageview: Int
+    userId: String
+}
+
+type CuratorReward {
+    activeDate: Date
+    documentId: String
+    reward: Float
+    userId: String
+    voteAmount: String
+    voteDate: Date
+}
+
+type DailyCuratorReward {
+    documentId: String
+    reward: Float
+    voteDate: Date
+}
+
+type Document {
+    _id: String!
+    accountId: String
+    cc: String
+    created: Float
+    desc: String
+    dimensions: DocumentDimensions
+    documentId: String
+    documentName: String
+    documentSize: String
+    ext: String
+    forceTracking: Boolean
+    isBlocked: Boolean
+    isDeleted: Boolean
+    isDownload: Boolean
+    isPublic: Boolean
+    lang: String
+    seoTitle: String
+    state: EnumDocumentState
+    title: String
+    useTracking: Boolean
+}
+
+"A connection to a list of items."
+type DocumentConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [DocumentEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+type DocumentDimensions {
+    _id: MongoID
+    height: Float
+    type: String
+    width: Float
+}
+
+"An edge in a connection."
+type DocumentEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: Document!
+}
+
+type DocumentFeatured {
+    _id: String!
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestVoteAmount: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+"A connection to a list of items."
+type DocumentFeaturedConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [DocumentFeaturedEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type DocumentFeaturedEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: DocumentFeatured!
+}
+
+"List of items with pagination."
+type DocumentFeaturedPagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [DocumentFeatured]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+"List of items with pagination."
+type DocumentPagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [Document]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+type DocumentPopular {
+    _id: String!
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestPageview: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+"A connection to a list of items."
+type DocumentPopularConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [DocumentPopularEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type DocumentPopularEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: DocumentPopular!
+}
+
+"List of items with pagination."
+type DocumentPopularPagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [DocumentPopular]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+type DocumentV2 {
+    _id: String
+    accountId: String
+    author: User
+    created: Date
+    documentId: String
+    documentName: String
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+}
+
+type PaginationInfo {
+    currentPage: Int!
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+    itemCount: Int
+    pageCount: Int
+    perPage: Int!
+}
+
+type Query {
+    Creator: QueryCreator
+    Curator: QueryCurator
+    Document: QueryDocument
+    DocumentFeatured: QueryDocumentFeatured
+    DocumentPopular: QueryDocumentPopular
+    DocumentV2: QueryDocumentV2
+    ProfileSummary: QueryProfileSummary
+    User: QueryUser
+    UserDocumentFavorite: QueryUserDocumentFavorite
+    UserDocumentHistory: QueryUserDocumentHistory
+}
+
+type QueryCreator {
+    determineCreatorRoyalty(documentId: String!): [CreatorRoyalty]
+    getClaimableRoyalty(documentId: String!): [CreatorRoyalty]
+    getNDaysRoyalty(days: Int!, documentId: String!): [CreatorRoyalty]
+}
+
+type QueryCurator {
+    determineCuratorReward(documentId: String!, userId: String!): [CuratorReward]
+    getClaimableReward(documentId: String!, userId: String!): [CuratorReward]
+    getTodayActiveVoteAmount(documentId: String!): [UserActiveVoteAmount]
+    getTodayUserActiveVoteAmount(documentId: String!, userId: String!): [UserActiveVoteAmount]
+}
+
+type QueryDocument {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyDocumentInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionDocumentEnum = _ID_DESC
+    ): DocumentConnection
+    count(
+        "Filter by fields"
+        filter: FilterDocumentInput
+    ): Int
+    findById(_id: MongoID!): Document
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsDocumentInput): [Document]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyDocumentInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyDocumentInput
+    ): [Document]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneDocumentInput,
+        skip: Int,
+        sort: SortFindOneDocumentInput
+    ): Document
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyDocumentInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyDocumentInput
+    ): DocumentPagination
+}
+
+type QueryDocumentFeatured {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyDocumentFeaturedInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionDocumentFeaturedEnum = _ID_DESC
+    ): DocumentFeaturedConnection
+    count(
+        "Filter by fields"
+        filter: FilterDocumentFeaturedInput
+    ): Int
+    findById(_id: MongoID!): DocumentFeatured
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsDocumentFeaturedInput): [DocumentFeatured]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyDocumentFeaturedInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyDocumentFeaturedInput
+    ): [DocumentFeatured]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneDocumentFeaturedInput,
+        skip: Int,
+        sort: SortFindOneDocumentFeaturedInput
+    ): DocumentFeatured
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyDocumentFeaturedInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyDocumentFeaturedInput
+    ): DocumentFeaturedPagination
+}
+
+type QueryDocumentPopular {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyDocumentPopularInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionDocumentPopularEnum = _ID_DESC
+    ): DocumentPopularConnection
+    count(
+        "Filter by fields"
+        filter: FilterDocumentPopularInput
+    ): Int
+    findById(_id: MongoID!): DocumentPopular
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsDocumentPopularInput): [DocumentPopular]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyDocumentPopularInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyDocumentPopularInput
+    ): [DocumentPopular]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneDocumentPopularInput,
+        skip: Int,
+        sort: SortFindOneDocumentPopularInput
+    ): DocumentPopular
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyDocumentPopularInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyDocumentPopularInput
+    ): DocumentPopularPagination
+}
+
+type QueryDocumentV2 {
+    GetDocument(documentId: String!): DocumentV2
+}
+
+type QueryProfileSummary {
+    getLast6CreatorReward(userId: String!): [CreatorRoyalty]
+    getLast6CuratorReward(userId: String!): [DailyCuratorReward]
+    getTodayEstimatedCreatorReward(timestamp: Float, userId: String!): [CreatorRoyalty]
+    getTodayEstimatedCuratorReward(userId: String!): [DailyCuratorReward]
+}
+
+type QueryUser {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyUserInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionUserEnum = _ID_DESC
+    ): UserConnection
+    count(
+        "Filter by fields"
+        filter: FilterUserInput
+    ): Int
+    findById(_id: MongoID!): User
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsUserInput): [User]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyUserInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyUserInput
+    ): [User]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneUserInput,
+        skip: Int,
+        sort: SortFindOneUserInput
+    ): User
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyUserInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyUserInput
+    ): UserPagination
+}
+
+type QueryUserDocumentFavorite {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentFavoriteInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionUserDocumentFavoriteEnum = _ID_DESC
+    ): UserDocumentFavoriteConnection
+    count(
+        "Filter by fields"
+        filter: FilterUserDocumentFavoriteInput
+    ): Int
+    findById(_id: MongoID!): UserDocumentFavorite
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsUserDocumentFavoriteInput): [UserDocumentFavorite]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentFavoriteInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyUserDocumentFavoriteInput
+    ): [UserDocumentFavorite]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneUserDocumentFavoriteInput,
+        skip: Int,
+        sort: SortFindOneUserDocumentFavoriteInput
+    ): UserDocumentFavorite
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentFavoriteInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyUserDocumentFavoriteInput
+    ): UserDocumentFavoritePagination
+}
+
+type QueryUserDocumentHistory {
+    connection(
+        "Forward pagination argument for returning at most first edges"
+        after: String,
+        "Backward pagination argument for returning at most last edges"
+        before: String,
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentHistoryInput,
+        "Forward pagination argument for returning at most first edges"
+        first: Int,
+        "Backward pagination argument for returning at most last edges"
+        last: Int,
+        "Sort argument for data ordering"
+        sort: SortConnectionUserDocumentHistoryEnum = _ID_DESC
+    ): UserDocumentHistoryConnection
+    count(
+        "Filter by fields"
+        filter: FilterUserDocumentHistoryInput
+    ): Int
+    findById(_id: MongoID!): UserDocumentHistory
+    findByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsUserDocumentHistoryInput): [UserDocumentHistory]
+    findMany(
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentHistoryInput,
+        limit: Int = 1000,
+        skip: Int,
+        sort: SortFindManyUserDocumentHistoryInput
+    ): [UserDocumentHistory]
+    findOne(
+        "Filter by fields"
+        filter: FilterFindOneUserDocumentHistoryInput,
+        skip: Int,
+        sort: SortFindOneUserDocumentHistoryInput
+    ): UserDocumentHistory
+    pagination(
+        "Filter by fields"
+        filter: FilterFindManyUserDocumentHistoryInput,
+        "Page number for displaying"
+        page: Int,
+        perPage: Int = 20,
+        sort: SortFindManyUserDocumentHistoryInput
+    ): UserDocumentHistoryPagination
+}
+
+type User {
+    _id: String!
+    created: Float
+    croppedArea: UserCroppedArea
+    email: String
+    ethAccount: String
+    family_name: String
+    local: String
+    nickname: String
+    picture: String
+    username: String
+}
+
+type UserActiveVoteAmount {
+    activeDate: Date
+    documentId: String
+    userId: String
+    voteAmount: String
+    voteDate: Date
+}
+
+"A connection to a list of items."
+type UserConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [UserEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+type UserCroppedArea {
+    _id: MongoID
+    height: JSON
+    width: JSON
+    x: JSON
+    y: JSON
+    zoom: JSON
+}
+
+type UserDocumentFavorite {
+    _id: MongoID!
+    created: Float
+    documentId: String
+    userId: String
+}
+
+"A connection to a list of items."
+type UserDocumentFavoriteConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [UserDocumentFavoriteEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type UserDocumentFavoriteEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: UserDocumentFavorite!
+}
+
+"List of items with pagination."
+type UserDocumentFavoritePagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [UserDocumentFavorite]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+type UserDocumentHistory {
+    _id: MongoID!
+    created: Float
+    documentId: String
+    refs: Float
+    updated: Float
+    userId: String
+}
+
+"A connection to a list of items."
+type UserDocumentHistoryConnection {
+    "Total object count."
+    count: Int!
+    "Information to aid in pagination."
+    edges: [UserDocumentHistoryEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type UserDocumentHistoryEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: UserDocumentHistory!
+}
+
+"List of items with pagination."
+type UserDocumentHistoryPagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [UserDocumentHistory]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+"An edge in a connection."
+type UserEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: User!
+}
+
+"List of items with pagination."
+type UserPagination {
+    "Total object count."
+    count: Int
+    "Array of objects."
+    items: [User]
+    "Information to aid in pagination."
+    pageInfo: PaginationInfo!
+}
+
+enum EnumDocumentState {
+    CONVERT_COMPLETE
+    CONVERT_FAIL
+    NOT_CONVERT
+    UPLOAD_COMPLETE
+}
+
+enum SortConnectionDocumentEnum {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortConnectionDocumentFeaturedEnum {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortConnectionDocumentPopularEnum {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortConnectionUserDocumentFavoriteEnum {
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortConnectionUserDocumentHistoryEnum {
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortConnectionUserEnum {
+    USERNAME_ASC
+    USERNAME_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsDocumentFeaturedInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    LATESTVOTEAMOUNT_ASC
+    LATESTVOTEAMOUNT_DESC
+    LATESTVOTEAMOUNT__CREATED_ASC
+    LATESTVOTEAMOUNT__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    TAGS__LATESTVOTEAMOUNT_ASC
+    TAGS__LATESTVOTEAMOUNT_DESC
+    TAGS__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__LATESTVOTEAMOUNT__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsDocumentInput {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    STATE_ASC
+    STATE_DESC
+    STATE__ACCOUNTID_ASC
+    STATE__ACCOUNTID_DESC
+    STATE__ACCOUNTID__CREATED_ASC
+    STATE__ACCOUNTID__CREATED_DESC
+    STATE__CREATED_ASC
+    STATE__CREATED_DESC
+    STATE__ISDELETED_ASC
+    STATE__ISDELETED_DESC
+    STATE__ISDELETED__ISPUBLIC_ASC
+    STATE__ISDELETED__ISPUBLIC_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_DESC
+    STATE__TAGS_ASC
+    STATE__TAGS_DESC
+    STATE__TAGS__ACCOUNTID_ASC
+    STATE__TAGS__ACCOUNTID_DESC
+    STATE__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__TAGS__CREATED_ASC
+    STATE__TAGS__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsDocumentPopularInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTPAGEVIEW_ASC
+    ACCOUNTID__LATESTPAGEVIEW_DESC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    LATESTPAGEVIEW_ASC
+    LATESTPAGEVIEW_DESC
+    LATESTPAGEVIEW__CREATED_ASC
+    LATESTPAGEVIEW__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    TAGS__LATESTPAGEVIEW_ASC
+    TAGS__LATESTPAGEVIEW_DESC
+    TAGS__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__LATESTPAGEVIEW__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsUserDocumentFavoriteInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsUserDocumentHistoryInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    USERID__UPDATED_ASC
+    USERID__UPDATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindByIdsUserInput {
+    EMAIL_ASC
+    EMAIL_DESC
+    USERNAME_ASC
+    USERNAME_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyDocumentFeaturedInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    LATESTVOTEAMOUNT_ASC
+    LATESTVOTEAMOUNT_DESC
+    LATESTVOTEAMOUNT__CREATED_ASC
+    LATESTVOTEAMOUNT__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    TAGS__LATESTVOTEAMOUNT_ASC
+    TAGS__LATESTVOTEAMOUNT_DESC
+    TAGS__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__LATESTVOTEAMOUNT__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyDocumentInput {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    STATE_ASC
+    STATE_DESC
+    STATE__ACCOUNTID_ASC
+    STATE__ACCOUNTID_DESC
+    STATE__ACCOUNTID__CREATED_ASC
+    STATE__ACCOUNTID__CREATED_DESC
+    STATE__CREATED_ASC
+    STATE__CREATED_DESC
+    STATE__ISDELETED_ASC
+    STATE__ISDELETED_DESC
+    STATE__ISDELETED__ISPUBLIC_ASC
+    STATE__ISDELETED__ISPUBLIC_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_DESC
+    STATE__TAGS_ASC
+    STATE__TAGS_DESC
+    STATE__TAGS__ACCOUNTID_ASC
+    STATE__TAGS__ACCOUNTID_DESC
+    STATE__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__TAGS__CREATED_ASC
+    STATE__TAGS__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyDocumentPopularInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTPAGEVIEW_ASC
+    ACCOUNTID__LATESTPAGEVIEW_DESC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    LATESTPAGEVIEW_ASC
+    LATESTPAGEVIEW_DESC
+    LATESTPAGEVIEW__CREATED_ASC
+    LATESTPAGEVIEW__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    TAGS__LATESTPAGEVIEW_ASC
+    TAGS__LATESTPAGEVIEW_DESC
+    TAGS__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__LATESTPAGEVIEW__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyUserDocumentFavoriteInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyUserDocumentHistoryInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    USERID__UPDATED_ASC
+    USERID__UPDATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindManyUserInput {
+    EMAIL_ASC
+    EMAIL_DESC
+    USERNAME_ASC
+    USERNAME_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneDocumentFeaturedInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    LATESTVOTEAMOUNT_ASC
+    LATESTVOTEAMOUNT_DESC
+    LATESTVOTEAMOUNT__CREATED_ASC
+    LATESTVOTEAMOUNT__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT_DESC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTVOTEAMOUNT__CREATED_DESC
+    TAGS__LATESTVOTEAMOUNT_ASC
+    TAGS__LATESTVOTEAMOUNT_DESC
+    TAGS__LATESTVOTEAMOUNT__CREATED_ASC
+    TAGS__LATESTVOTEAMOUNT__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneDocumentInput {
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    STATE_ASC
+    STATE_DESC
+    STATE__ACCOUNTID_ASC
+    STATE__ACCOUNTID_DESC
+    STATE__ACCOUNTID__CREATED_ASC
+    STATE__ACCOUNTID__CREATED_DESC
+    STATE__CREATED_ASC
+    STATE__CREATED_DESC
+    STATE__ISDELETED_ASC
+    STATE__ISDELETED_DESC
+    STATE__ISDELETED__ISPUBLIC_ASC
+    STATE__ISDELETED__ISPUBLIC_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_ASC
+    STATE__ISDELETED__ISPUBLIC__ISBLOCKED__TAGS__CREATED_DESC
+    STATE__TAGS_ASC
+    STATE__TAGS_DESC
+    STATE__TAGS__ACCOUNTID_ASC
+    STATE__TAGS__ACCOUNTID_DESC
+    STATE__TAGS__ACCOUNTID__CREATED_ASC
+    STATE__TAGS__ACCOUNTID__CREATED_DESC
+    STATE__TAGS__CREATED_ASC
+    STATE__TAGS__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneDocumentPopularInput {
+    ACCOUNTID_ASC
+    ACCOUNTID_DESC
+    ACCOUNTID__LATESTPAGEVIEW_ASC
+    ACCOUNTID__LATESTPAGEVIEW_DESC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    LATESTPAGEVIEW_ASC
+    LATESTPAGEVIEW_DESC
+    LATESTPAGEVIEW__CREATED_ASC
+    LATESTPAGEVIEW__CREATED_DESC
+    SEOTITLE_ASC
+    SEOTITLE_DESC
+    TAGS_ASC
+    TAGS_DESC
+    TAGS__ACCOUNTID_ASC
+    TAGS__ACCOUNTID_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW_DESC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__ACCOUNTID__LATESTPAGEVIEW__CREATED_DESC
+    TAGS__LATESTPAGEVIEW_ASC
+    TAGS__LATESTPAGEVIEW_DESC
+    TAGS__LATESTPAGEVIEW__CREATED_ASC
+    TAGS__LATESTPAGEVIEW__CREATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneUserDocumentFavoriteInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneUserDocumentHistoryInput {
+    USERID_ASC
+    USERID_DESC
+    USERID__CREATED_ASC
+    USERID__CREATED_DESC
+    USERID__DOCUMENTID_ASC
+    USERID__DOCUMENTID_DESC
+    USERID__UPDATED_ASC
+    USERID__UPDATED_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+enum SortFindOneUserInput {
+    EMAIL_ASC
+    EMAIL_DESC
+    USERNAME_ASC
+    USERNAME_DESC
+    _ID_ASC
+    _ID_DESC
+}
+
+input AccountIdOperatorsFilterDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input AccountIdOperatorsFilterDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input AccountIdOperatorsFilterFindManyDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input AccountIdOperatorsFilterFindManyDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input AccountIdOperatorsFilterFindOneDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input AccountIdOperatorsFilterFindOneDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input DocumentDimensionsInput {
+    _id: MongoID
+    height: Float
+    type: String
+    width: Float
+}
+
+input EmailOperatorsFilterFindManyUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input EmailOperatorsFilterFindOneUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input EmailOperatorsFilterUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input FilterDocumentFeaturedInput {
+    AND: [FilterDocumentFeaturedInput!]
+    OR: [FilterDocumentFeaturedInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterDocumentFeaturedInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestVoteAmount: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterDocumentInput {
+    AND: [FilterDocumentInput!]
+    OR: [FilterDocumentInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterDocumentInput
+    accountId: String
+    cc: String
+    created: Float
+    desc: String
+    dimensions: DocumentDimensionsInput
+    documentId: String
+    documentName: String
+    documentSize: String
+    ext: String
+    forceTracking: Boolean
+    isBlocked: Boolean
+    isDeleted: Boolean
+    isDownload: Boolean
+    isPublic: Boolean
+    lang: String
+    seoTitle: String
+    state: EnumDocumentState
+    title: String
+    useTracking: Boolean
+}
+
+input FilterDocumentPopularInput {
+    AND: [FilterDocumentPopularInput!]
+    OR: [FilterDocumentPopularInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterDocumentPopularInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestPageview: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterFindManyDocumentFeaturedInput {
+    AND: [FilterFindManyDocumentFeaturedInput!]
+    OR: [FilterFindManyDocumentFeaturedInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyDocumentFeaturedInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestVoteAmount: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterFindManyDocumentInput {
+    AND: [FilterFindManyDocumentInput!]
+    OR: [FilterFindManyDocumentInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyDocumentInput
+    accountId: String
+    cc: String
+    created: Float
+    desc: String
+    dimensions: DocumentDimensionsInput
+    documentId: String
+    documentName: String
+    documentSize: String
+    ext: String
+    forceTracking: Boolean
+    isBlocked: Boolean
+    isDeleted: Boolean
+    isDownload: Boolean
+    isPublic: Boolean
+    lang: String
+    seoTitle: String
+    state: EnumDocumentState
+    title: String
+    useTracking: Boolean
+}
+
+input FilterFindManyDocumentPopularInput {
+    AND: [FilterFindManyDocumentPopularInput!]
+    OR: [FilterFindManyDocumentPopularInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyDocumentPopularInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestPageview: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterFindManyUserDocumentFavoriteInput {
+    AND: [FilterFindManyUserDocumentFavoriteInput!]
+    OR: [FilterFindManyUserDocumentFavoriteInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyUserDocumentFavoriteInput
+    created: Float
+    documentId: String
+    userId: String
+}
+
+input FilterFindManyUserDocumentHistoryInput {
+    AND: [FilterFindManyUserDocumentHistoryInput!]
+    OR: [FilterFindManyUserDocumentHistoryInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyUserDocumentHistoryInput
+    created: Float
+    documentId: String
+    refs: Float
+    updated: Float
+    userId: String
+}
+
+input FilterFindManyUserInput {
+    AND: [FilterFindManyUserInput!]
+    OR: [FilterFindManyUserInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindManyUserInput
+    created: Float
+    croppedArea: UserCroppedAreaInput
+    email: String
+    ethAccount: String
+    family_name: String
+    local: String
+    nickname: String
+    picture: String
+    username: String
+}
+
+input FilterFindOneDocumentFeaturedInput {
+    AND: [FilterFindOneDocumentFeaturedInput!]
+    OR: [FilterFindOneDocumentFeaturedInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneDocumentFeaturedInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestVoteAmount: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterFindOneDocumentInput {
+    AND: [FilterFindOneDocumentInput!]
+    OR: [FilterFindOneDocumentInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneDocumentInput
+    accountId: String
+    cc: String
+    created: Float
+    desc: String
+    dimensions: DocumentDimensionsInput
+    documentId: String
+    documentName: String
+    documentSize: String
+    ext: String
+    forceTracking: Boolean
+    isBlocked: Boolean
+    isDeleted: Boolean
+    isDownload: Boolean
+    isPublic: Boolean
+    lang: String
+    seoTitle: String
+    state: EnumDocumentState
+    title: String
+    useTracking: Boolean
+}
+
+input FilterFindOneDocumentPopularInput {
+    AND: [FilterFindOneDocumentPopularInput!]
+    OR: [FilterFindOneDocumentPopularInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneDocumentPopularInput
+    accountId: String
+    created: Float
+    desc: String
+    documentId: String
+    latestPageview: Float
+    latestVoteAmountDate: Date
+    seoTitle: String
+    tags: [String]
+    title: String
+}
+
+input FilterFindOneUserDocumentFavoriteInput {
+    AND: [FilterFindOneUserDocumentFavoriteInput!]
+    OR: [FilterFindOneUserDocumentFavoriteInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneUserDocumentFavoriteInput
+    created: Float
+    documentId: String
+    userId: String
+}
+
+input FilterFindOneUserDocumentHistoryInput {
+    AND: [FilterFindOneUserDocumentHistoryInput!]
+    OR: [FilterFindOneUserDocumentHistoryInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneUserDocumentHistoryInput
+    created: Float
+    documentId: String
+    refs: Float
+    updated: Float
+    userId: String
+}
+
+input FilterFindOneUserInput {
+    AND: [FilterFindOneUserInput!]
+    OR: [FilterFindOneUserInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterFindOneUserInput
+    created: Float
+    croppedArea: UserCroppedAreaInput
+    email: String
+    ethAccount: String
+    family_name: String
+    local: String
+    nickname: String
+    picture: String
+    username: String
+}
+
+input FilterUserDocumentFavoriteInput {
+    AND: [FilterUserDocumentFavoriteInput!]
+    OR: [FilterUserDocumentFavoriteInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterUserDocumentFavoriteInput
+    created: Float
+    documentId: String
+    userId: String
+}
+
+input FilterUserDocumentHistoryInput {
+    AND: [FilterUserDocumentHistoryInput!]
+    OR: [FilterUserDocumentHistoryInput!]
+    _id: MongoID
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterUserDocumentHistoryInput
+    created: Float
+    documentId: String
+    refs: Float
+    updated: Float
+    userId: String
+}
+
+input FilterUserInput {
+    AND: [FilterUserInput!]
+    OR: [FilterUserInput!]
+    _id: String
+    _ids: [MongoID]
+    "List of *indexed* fields that can be filtered via operators."
+    _operators: OperatorsFilterUserInput
+    created: Float
+    croppedArea: UserCroppedAreaInput
+    email: String
+    ethAccount: String
+    family_name: String
+    local: String
+    nickname: String
+    picture: String
+    username: String
+}
+
+input LatestPageviewOperatorsFilterDocumentPopularInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input LatestPageviewOperatorsFilterFindManyDocumentPopularInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input LatestPageviewOperatorsFilterFindOneDocumentPopularInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input LatestVoteAmountOperatorsFilterDocumentFeaturedInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input LatestVoteAmountOperatorsFilterFindManyDocumentFeaturedInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input LatestVoteAmountOperatorsFilterFindOneDocumentFeaturedInput {
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterDocumentFeaturedInput {
+    _id: _idOperatorsFilterDocumentFeaturedInput
+    accountId: AccountIdOperatorsFilterDocumentFeaturedInput
+    latestVoteAmount: LatestVoteAmountOperatorsFilterDocumentFeaturedInput
+    seoTitle: SeoTitleOperatorsFilterDocumentFeaturedInput
+    tags: TagsOperatorsFilterDocumentFeaturedInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterDocumentInput {
+    _id: _idOperatorsFilterDocumentInput
+    seoTitle: SeoTitleOperatorsFilterDocumentInput
+    state: StateOperatorsFilterDocumentInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterDocumentPopularInput {
+    _id: _idOperatorsFilterDocumentPopularInput
+    accountId: AccountIdOperatorsFilterDocumentPopularInput
+    latestPageview: LatestPageviewOperatorsFilterDocumentPopularInput
+    seoTitle: SeoTitleOperatorsFilterDocumentPopularInput
+    tags: TagsOperatorsFilterDocumentPopularInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyDocumentFeaturedInput {
+    _id: _idOperatorsFilterFindManyDocumentFeaturedInput
+    accountId: AccountIdOperatorsFilterFindManyDocumentFeaturedInput
+    latestVoteAmount: LatestVoteAmountOperatorsFilterFindManyDocumentFeaturedInput
+    seoTitle: SeoTitleOperatorsFilterFindManyDocumentFeaturedInput
+    tags: TagsOperatorsFilterFindManyDocumentFeaturedInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyDocumentInput {
+    _id: _idOperatorsFilterFindManyDocumentInput
+    seoTitle: SeoTitleOperatorsFilterFindManyDocumentInput
+    state: StateOperatorsFilterFindManyDocumentInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyDocumentPopularInput {
+    _id: _idOperatorsFilterFindManyDocumentPopularInput
+    accountId: AccountIdOperatorsFilterFindManyDocumentPopularInput
+    latestPageview: LatestPageviewOperatorsFilterFindManyDocumentPopularInput
+    seoTitle: SeoTitleOperatorsFilterFindManyDocumentPopularInput
+    tags: TagsOperatorsFilterFindManyDocumentPopularInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyUserDocumentFavoriteInput {
+    _id: _idOperatorsFilterFindManyUserDocumentFavoriteInput
+    userId: UserIdOperatorsFilterFindManyUserDocumentFavoriteInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyUserDocumentHistoryInput {
+    _id: _idOperatorsFilterFindManyUserDocumentHistoryInput
+    userId: UserIdOperatorsFilterFindManyUserDocumentHistoryInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindManyUserInput {
+    _id: _idOperatorsFilterFindManyUserInput
+    email: EmailOperatorsFilterFindManyUserInput
+    username: UsernameOperatorsFilterFindManyUserInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneDocumentFeaturedInput {
+    _id: _idOperatorsFilterFindOneDocumentFeaturedInput
+    accountId: AccountIdOperatorsFilterFindOneDocumentFeaturedInput
+    latestVoteAmount: LatestVoteAmountOperatorsFilterFindOneDocumentFeaturedInput
+    seoTitle: SeoTitleOperatorsFilterFindOneDocumentFeaturedInput
+    tags: TagsOperatorsFilterFindOneDocumentFeaturedInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneDocumentInput {
+    _id: _idOperatorsFilterFindOneDocumentInput
+    seoTitle: SeoTitleOperatorsFilterFindOneDocumentInput
+    state: StateOperatorsFilterFindOneDocumentInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneDocumentPopularInput {
+    _id: _idOperatorsFilterFindOneDocumentPopularInput
+    accountId: AccountIdOperatorsFilterFindOneDocumentPopularInput
+    latestPageview: LatestPageviewOperatorsFilterFindOneDocumentPopularInput
+    seoTitle: SeoTitleOperatorsFilterFindOneDocumentPopularInput
+    tags: TagsOperatorsFilterFindOneDocumentPopularInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneUserDocumentFavoriteInput {
+    _id: _idOperatorsFilterFindOneUserDocumentFavoriteInput
+    userId: UserIdOperatorsFilterFindOneUserDocumentFavoriteInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneUserDocumentHistoryInput {
+    _id: _idOperatorsFilterFindOneUserDocumentHistoryInput
+    userId: UserIdOperatorsFilterFindOneUserDocumentHistoryInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterFindOneUserInput {
+    _id: _idOperatorsFilterFindOneUserInput
+    email: EmailOperatorsFilterFindOneUserInput
+    username: UsernameOperatorsFilterFindOneUserInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterUserDocumentFavoriteInput {
+    _id: _idOperatorsFilterUserDocumentFavoriteInput
+    userId: UserIdOperatorsFilterUserDocumentFavoriteInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterUserDocumentHistoryInput {
+    _id: _idOperatorsFilterUserDocumentHistoryInput
+    userId: UserIdOperatorsFilterUserDocumentHistoryInput
+}
+
+"For performance reason this type contains only *indexed* fields."
+input OperatorsFilterUserInput {
+    _id: _idOperatorsFilterUserInput
+    email: EmailOperatorsFilterUserInput
+    username: UsernameOperatorsFilterUserInput
+}
+
+input SeoTitleOperatorsFilterDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindManyDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindManyDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindManyDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindOneDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindOneDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input SeoTitleOperatorsFilterFindOneDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input StateOperatorsFilterDocumentInput {
+    gt: EnumDocumentState
+    gte: EnumDocumentState
+    in: [EnumDocumentState]
+    lt: EnumDocumentState
+    lte: EnumDocumentState
+    ne: EnumDocumentState
+    nin: [EnumDocumentState]
+}
+
+input StateOperatorsFilterFindManyDocumentInput {
+    gt: EnumDocumentState
+    gte: EnumDocumentState
+    in: [EnumDocumentState]
+    lt: EnumDocumentState
+    lte: EnumDocumentState
+    ne: EnumDocumentState
+    nin: [EnumDocumentState]
+}
+
+input StateOperatorsFilterFindOneDocumentInput {
+    gt: EnumDocumentState
+    gte: EnumDocumentState
+    in: [EnumDocumentState]
+    lt: EnumDocumentState
+    lte: EnumDocumentState
+    ne: EnumDocumentState
+    nin: [EnumDocumentState]
+}
+
+input TagsOperatorsFilterDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input TagsOperatorsFilterDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input TagsOperatorsFilterFindManyDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input TagsOperatorsFilterFindManyDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input TagsOperatorsFilterFindOneDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input TagsOperatorsFilterFindOneDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserCroppedAreaInput {
+    _id: MongoID
+    height: JSON
+    width: JSON
+    x: JSON
+    y: JSON
+    zoom: JSON
+}
+
+input UserIdOperatorsFilterFindManyUserDocumentFavoriteInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserIdOperatorsFilterFindManyUserDocumentHistoryInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserIdOperatorsFilterFindOneUserDocumentFavoriteInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserIdOperatorsFilterFindOneUserDocumentHistoryInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserIdOperatorsFilterUserDocumentFavoriteInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UserIdOperatorsFilterUserDocumentHistoryInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UsernameOperatorsFilterFindManyUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UsernameOperatorsFilterFindOneUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input UsernameOperatorsFilterUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindManyDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindManyDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindManyDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindManyUserDocumentFavoriteInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterFindManyUserDocumentHistoryInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterFindManyUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindOneDocumentFeaturedInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindOneDocumentInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindOneDocumentPopularInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterFindOneUserDocumentFavoriteInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterFindOneUserDocumentHistoryInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterFindOneUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+input _idOperatorsFilterUserDocumentFavoriteInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterUserDocumentHistoryInput {
+    gt: MongoID
+    gte: MongoID
+    in: [MongoID]
+    lt: MongoID
+    lte: MongoID
+    ne: MongoID
+    nin: [MongoID]
+}
+
+input _idOperatorsFilterUserInput {
+    gt: String
+    gte: String
+    in: [String]
+    lt: String
+    lte: String
+    ne: String
+    nin: [String]
+}
+
+
+"The `ID` scalar type represents a unique MongoDB identifier in collection. MongoDB by default use 12-byte ObjectId value (https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB also may accepts string or integer as correct values for _id field."
+scalar MongoID
+
+scalar Date
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON

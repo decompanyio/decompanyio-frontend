@@ -1,0 +1,20 @@
+{
+  "name": "Polaris Share GraphQL",
+  "schema": "./schema.graphql",
+  "schemaPath": "schema.graphql",
+  "documents": "./*/*.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://api.share.decompany.io/graphql/api/graphql",
+        "headers": {
+          "credentials": "same-origin"
+        },
+        "introspect": false
+      }
+    },
+    "customConfig" : {
+      "value": true
+    }
+  }
+}

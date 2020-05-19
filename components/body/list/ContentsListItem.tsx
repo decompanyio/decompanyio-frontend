@@ -41,11 +41,7 @@ export default function({
   const croppedArea = documentData.author
     ? documentData.author.croppedArea
     : null
-  const identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  const identification = documentData.author.username
 
   useEffect(() => {
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {

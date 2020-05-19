@@ -1,0 +1,13 @@
+query UserDocumentHistory($userId: String) {
+    UserDocumentHistory {
+        findMany(
+            filter: { userId: $userId }
+            skip: 0
+            limit: 10
+            sort: USERID__UPDATED_ASC
+        ) {
+            documentId
+            userId
+        }
+    }
+}

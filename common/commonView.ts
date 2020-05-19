@@ -1,4 +1,5 @@
 import { psString } from 'utils/localization'
+import common from './common'
 
 export default {
   // Get Date Time Ago on Number
@@ -247,5 +248,29 @@ export default {
     } else {
       // Possibly fall back to a others compatible method here
     }
+  },
+
+  getImgInfo(documentData) {
+    let img = new Image()
+
+    img.src = common.getThumbnail(
+      documentData.documentId,
+      640,
+      1,
+      documentData.documentName
+    )
+    img.onload = (): number => {
+      let height = img.height
+      let width = img.width
+      return width / height
+    }
+  },
+
+  getImgInfoOnPromise(picture: string) {
+    return new Promise(resolve => {
+      let img = new Image()
+      img.src = picture
+      img.onload = () => resolve(Boolean(img.height > img.width))
+    })
   }
 }

@@ -6,13 +6,6 @@ import commonView from '../../../common/commonView';
 /*일반 유저 아바타
 picture, croppedArea, size, (click) 지정하여 사용*/
 
-const getImgInfo = picture =>
-  new Promise(resolve => {
-    let img = new Image()
-    img.src = picture
-    img.onload = () => resolve(Boolean(img.height > img.width))
-  })
-
 export default function({
   size,
   picture,
@@ -35,7 +28,7 @@ export default function({
   }
 
   useEffect(() => {
-    getImgInfo(picture).then(imgInfo => {
+    commonView.getImgInfoOnPromise(picture).then(imgInfo => {
       if (croppedArea) {
         xLocation = Math.floor(
           (croppedArea.x || xLocation) /

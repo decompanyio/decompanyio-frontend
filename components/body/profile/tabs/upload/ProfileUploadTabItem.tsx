@@ -119,12 +119,7 @@ export default function({
 
   const vote = common.toEther(tmpDocumentData.latestVoteAmount) || 0
   let view = tmpDocumentData.latestPageview || 0
-  let identification = tmpDocumentData.author
-    ? tmpDocumentData.author.username &&
-      tmpDocumentData.author.username.length > 0
-      ? tmpDocumentData.author.username
-      : tmpDocumentData.author.email
-    : tmpDocumentData.accountId
+  let identification = tmpDocumentData.author.username
 
   return (
     <div className={styles.puti_container}>

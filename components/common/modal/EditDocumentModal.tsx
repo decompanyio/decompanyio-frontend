@@ -112,11 +112,7 @@ export default function(): ReactElement {
       cc: getCcValue()
     }
 
-    const identification = documentData.author
-      ? documentData.author.username && documentData.author.username.length > 0
-        ? documentData.author.username
-        : documentData.author.email
-      : documentData.accountId
+    const identification = documentData.author.username
 
     repos.Document.updateDocument(data)
       .then(result => {
