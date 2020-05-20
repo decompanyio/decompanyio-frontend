@@ -14,7 +14,7 @@ import {
   DocumentId,
   ParamsGetDocumentList
 } from '../../../typings/interfaces'
-import DocumentList from '../../../service/model/DocumentList';
+import DocumentList from '../../../service/model/DocumentList'
 
 // document list GET API, parameter SET
 const setParams = (pageNo: number, tag: string, path: string): Promise<{}> =>
@@ -38,7 +38,7 @@ export default function({
       : path !== 'history' && path !== 'mylist'
   })
 
-  // GET API 응답 결과인 문서리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅합니다.
+  // GET API 응답 결과인 문서 리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅 합니다.
   const setResultList = (
     listData: [],
     resultList: []

@@ -15,6 +15,7 @@ import CookiePolicyNotice from './common/notice/CookiePolicyNotice'
 import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
 import { useMain } from '../redux/main/hooks'
+import common from '../common/common';
 
 export default function(props): ReactElement {
   const { myInfo, isMobile, setMyInfo, setTagList, setIsMobile } = useMain()
@@ -211,7 +212,7 @@ export default function(props): ReactElement {
 
       <DollarPolicyNotice />
 
-      {init ? (
+      {common.isServer() || init ? (
         <article className={styles.l_articleContainer}>
           {props.children}
         </article>

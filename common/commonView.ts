@@ -76,7 +76,8 @@ export default {
       let d = new Date()
       d.setTime(d.getTime() + expire * 24 * 60 * 60 * 1000)
       let expires = 'expires=' + d.toUTCString()
-      document.cookie = name + '=' + value + '; ' + expires + '; path=/;'
+      document.cookie =
+        name + '=' + value + '; ' + expires + '; path=/;samesite=strict'
     }
   },
 

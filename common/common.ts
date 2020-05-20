@@ -334,5 +334,9 @@ export default {
   // SET Delay
   delay(ms: number): Promise<Function> {
     return new Promise(resolve => setTimeout(resolve, ms))
+  },
+
+  isServer(): boolean {
+    return typeof window === 'undefined'
   }
 }

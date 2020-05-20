@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import _ from 'lodash'
 import * as styles from 'public/static/styles/main.scss'
 import Truncate from 'react-truncate'
 import commonView from '../../../common/commonView'
@@ -7,9 +8,16 @@ import { psString } from '../../../utils/localization'
 import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import repos from '../../../utils/repos'
-import { DocumentCardProps } from '../../../typings/interfaces'
+import { DocumentCardApolloProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import DocumentCardInfo from '../../../graphql/queries/DocumentCardInfo.graphql'
+import DocumentInfo from '../../../service/model/DocumentInfo'
+import UserInfo from '../../../service/model/UserInfo'
+import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
+import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
+import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
 import commonData from '../../../common/commonData'
 
 // UserAvatar - No SSR
@@ -18,55 +26,85 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
-export default function({ documentData }: DocumentCardProps): ReactElement {
+export default function({
+  userId,
+  documentId
+}: DocumentCardApolloProps): ReactElement {
   const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
-  const [reward, setReward] = useState(0)
+  const { loading, error, data } = useQuery(
+    gql`
+      ${DocumentCardInfo}
+    `,
+    {
+      variables: {
+        userId: userId || '',
+        documentId_scalar: documentId,
+        documentId: documentId,
+        days: 7
+      },
+      notifyOnNetworkStatusChange: false
+    }
+  )
 
-  let identification: string
-  let imgUrl_1: string
-  let imgUrl_2: string
-  let profileUrl: string
-  let vote: number
-  let view: number
-  let ratio: number
-  let croppedArea: {}
+  if (error) return <div />
 
-  identification = documentData.author.username
-  imgUrl_1 = common.getThumbnail(
-    documentData.documentId,
+  let _data = {
+    Document: {},
+    User: {},
+    Creator: {},
+    DocumentFeatured: {},
+    DocumentPopular: {}
+  }
+
+  if (!loading) {
+    _.chain(data)
+      .forOwn((v, k) => {
+        _data[k] = _.values(v)[0]
+      })
+      .value()
+  }
+
+  const { Document, User, Creator, DocumentFeatured, DocumentPopular } = _data
+
+  const documentInfo = new DocumentInfo(Document)
+  const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
+  const documentPopular = new DocumentPopularModel(DocumentPopular)
+  const creatorRoyalty = new CreatorRoyalty(Creator[0])
+
+  documentInfo.author = new UserInfo(User)
+  documentInfo.latestPageview = documentPopular.latestPageview
+  documentInfo.latestVoteAmount = documentFeatured.latestVoteAmount
+
+  let imgUrl_1 = common.getThumbnail(
+    documentId,
     320,
     1,
-    documentData.documentName
+    documentInfo.documentName
   )
-  imgUrl_2 = common.getThumbnail(
-    documentData.documentId,
+  let imgUrl_2 = common.getThumbnail(
+    documentId,
     640,
     1,
-    documentData.documentName
+    documentInfo.documentName
   )
-  profileUrl = documentData.author ? documentData.author.picture : null
-  croppedArea = documentData.author ? documentData.author.croppedArea : null
-  vote = common.toEther(documentData.latestVoteAmount) || 0
-  view = documentData.latestPageview || 0
-  ratio = Number(commonView.getImgInfo(documentData))
+  let vote = common.deckStr(
+    common.toEther(documentFeatured.latestVoteAmount) || 0
+  )
+  let ratio = Number(commonView.getImgInfo(documentInfo))
 
   useEffect(() => {
-    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
-      setReward(res)
-    })
-
     commonView.lazyLoading()
-  }, [documentData])
+  }, [])
 
   return (
     <div className={styles.dc_container}>
       <Link
         href={{
           pathname: '/contents_view',
-          query: { seoTitle: documentData.seoTitle }
+          query: { seoTitle: documentInfo.seoTitle }
         }}
-        as={'/@' + identification + '/' + documentData.seoTitle}
+        as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
       >
         <div
           className={styles.dc_imgWrapper}
@@ -76,7 +114,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
             src={commonData.dummyImage.gray}
             data-src={imgUrl_1}
             data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
-            alt={documentData.title}
+            alt={documentInfo.title}
             className={
               'lazy ' + (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
             }
@@ -94,14 +132,14 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           <Link
             href={{
               pathname: '/contents_view',
-              query: { seoTitle: documentData.seoTitle }
+              query: { seoTitle: documentInfo.seoTitle }
             }}
-            as={'/@' + identification + '/' + documentData.seoTitle}
+            as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
             <Truncate lines={2} ellipsis={<span>...</span>}>
-              {documentData.title
-                ? documentData.title
-                : documentData.documentName}
+              {documentInfo.title
+                ? documentInfo.title
+                : documentInfo.documentName}
             </Truncate>
           </Link>
         </div>
@@ -110,25 +148,27 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           <Link
             href={{
               pathname: '/my_page',
-              query: { identification: identification }
+              query: { identification: documentInfo.author.username }
             }}
-            as={'/@' + identification}
+            as={`/@${documentInfo.author.username}`}
           >
             <div className={styles.dc_avatarWrapper}>
               <div>
                 <UserAvatarWithoutSSR
-                  picture={profileUrl}
-                  croppedArea={croppedArea}
+                  picture={documentInfo.author.picture}
+                  croppedArea={documentInfo.author.croppedArea}
                   size={30}
                 />
-                <span className={styles.dc_name}>{identification}</span>
+                <span className={styles.dc_name}>
+                  {documentInfo.author.username}
+                </span>
               </div>
             </div>
           </Link>
 
           {!isMobile && (
             <span className={styles.dc_date}>
-              {commonView.dateTimeAgo(documentData.created, false)}
+              {commonView.dateTimeAgo(documentInfo.created, isMobile)}
             </span>
           )}
         </div>
@@ -139,29 +179,31 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
             onMouseOver={(): void => setRewardInfo(true)}
             onMouseOut={(): void => setRewardInfo(false)}
           >
-            $ {common.deckToDollarWithComma(reward)}
+            $ {common.deckToDollarWithComma(creatorRoyalty.royalty)}
             <img
               className={styles.dc_rewardArrow}
-              src={
-                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
-              }
+              src={`${
+                APP_CONFIG.domain().static
+              }/image/icon/i_arrow_down_blue.svg`}
               alt="arrow button"
             />
           </div>
-          <div className={styles.dc_view}>{view}</div>
-          <div className={styles.dc_vote}>{common.deckStr(vote)}</div>
+          <div className={styles.dc_view}>{documentInfo.latestPageview}</div>
+          <div className={styles.dc_vote}>{vote}</div>
           {isMobile && (
             <div className={styles.dc_date}>
-              {commonView.dateTimeAgo(documentData.created, false)}
+              {commonView.dateTimeAgo(documentInfo.created, isMobile)}
             </div>
           )}
         </div>
       </div>
 
-      {reward > 0 && rewardInfoOpen && (
+      {creatorRoyalty.royalty > 0 && rewardInfoOpen && (
         <div className={styles.dc_rewardInfo}>
           {psString('profile-payout-txt-1')}
-          <span>{!reward ? 0 : reward} DECK</span>
+          <span>
+            {!creatorRoyalty.royalty ? 0 : creatorRoyalty.royalty} DECK
+          </span>
           {psString('profile-payout-txt-2')}
         </div>
       )}

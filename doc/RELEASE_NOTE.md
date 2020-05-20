@@ -1,7 +1,8 @@
 # Release Note
 
-## 2020.05.20-a
+## 2020.05.20-b
 - Add Apollo Client
+- SSR bugs fix
 
 ## 2020.05.07-b
 - Apply lazy loading to main banner image and avatar

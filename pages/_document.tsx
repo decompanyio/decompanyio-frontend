@@ -24,12 +24,12 @@ export default class MyDocument extends Document<{
             name="viewport"
             content="width=device-width,minimum-scale=1,initial-scale=1"
           />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#3d5afe" />
           <meta
             name="msapplication-TileImage"
             content="https://res.polarishare.com/static/favicon/ms-icon-144x144.png"
           />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#3d5afe" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
           <link rel="manifest" type="application/json" href="/manifest.json" />
           <link

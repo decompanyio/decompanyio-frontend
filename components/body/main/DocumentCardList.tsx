@@ -16,7 +16,7 @@ import MainListMock from '../../common/mock/MainListMock'
 import log from '../../../utils/log'
 
 const DocumentCardWithoutSSR = dynamic(
-  () => import('components/common/card/DocumentCardApollo'),
+  () => import('components/common/card/DocumentCard'),
   { ssr: false }
 )
 

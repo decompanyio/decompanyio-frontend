@@ -5,21 +5,15 @@ import repos from '../utils/repos'
 import commonData from '../common/commonData'
 import { AUTH_APIS } from '../utils/auth'
 
-const getTag = (path: string[]): string => {
-  if (path[1] && path[1] === 'tag') return path[2] || ''
-  else return ''
-}
+const getTag = (path: string[]): string =>
+  path[1] && path[1] === 'tag' ? path[2] || '' : ''
 
-const getPath = (path: string[]): string => {
-  if (path[1] && commonData.pathArr.includes(path[1])) {
-    return path[1] || 'latest'
-  } else return 'latest'
-}
+const getPath = (path: string[]): string =>
+  path[1] && commonData.pathArr.includes(path[1])
+    ? path[1] || 'latest' // path 기본값은 'latest'로 정의 합니다.
+    : 'latest'
 
-export default function Index(
-  { documentList, tag, path },
-  ...rest
-): ReactElement {
+function Index({ documentList, tag, path }, ...rest): ReactElement {
   const [list, setList] = useState(documentList)
 
   useEffect(() => {
@@ -67,7 +61,9 @@ Index.getInitialProps = async props => {
   const documentList =
     params.path === 'mylist' || params.path === 'history'
       ? []
-      : await repos.Document.getDocumentList(params) //TODO catch 추가 필요합니다
+      : await repos.Document.getDocumentList(params) //TODO catch 추가 필요 합니다
 
   return { documentList, tag: params.tag, path: params.path }
 }
+
+export default Index
