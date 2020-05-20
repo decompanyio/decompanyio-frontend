@@ -27,28 +27,30 @@ export default function({
   }
 
   useEffect(() => {
-    commonView.getImgInfoOnPromise(picture).then(imgInfo => {
-      if (croppedArea) {
-        xLocation = Math.floor(
-          (croppedArea.x || xLocation) /
-            ((imgInfo ? croppedArea.height : croppedArea.width) / size)
-        )
-        yLocation = Math.floor(
-          (croppedArea.y || yLocation) /
-            ((imgInfo ? croppedArea.height : croppedArea.width) / size)
-        )
-        zoom = croppedArea.zoom || zoom
-      }
+    if (picture) {
+      commonView.getImgInfoOnPromise(picture).then(imgInfo => {
+        if (croppedArea) {
+          xLocation = Math.floor(
+            (croppedArea.x || xLocation) /
+              ((imgInfo ? croppedArea.height : croppedArea.width) / size)
+          )
+          yLocation = Math.floor(
+            (croppedArea.y || yLocation) /
+              ((imgInfo ? croppedArea.height : croppedArea.width) / size)
+          )
+          zoom = croppedArea.zoom || zoom
+        }
 
-      setImgStyle({
-        width: !imgInfo ? 'auto' : Number(zoom * 100) + '%',
-        height: imgInfo ? 'auto' : Number(zoom * 100) + '%',
-        left: '-' + xLocation + 'px',
-        top: '-' + yLocation + 'px'
+        setImgStyle({
+          width: !imgInfo ? 'auto' : Number(zoom * 100) + '%',
+          height: imgInfo ? 'auto' : Number(zoom * 100) + '%',
+          left: '-' + xLocation + 'px',
+          top: '-' + yLocation + 'px'
+        })
       })
-    })
 
-    if (picture) commonView.lazyLoading()
+      commonView.lazyLoading()
+    }
   }, [picture])
 
   return (

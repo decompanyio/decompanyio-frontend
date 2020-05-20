@@ -44,20 +44,13 @@ import {
 const repos = {
   init(): Promise<boolean> {
     // Google Analytics 초기화
-    let gaId =
-      process.env.NODE_ENV_SUB === 'production'
-        ? 'UA-140503497-1'
-        : 'UA-129300994-1'
-    if (
-      process.env.NODE_ENV_SUB === 'production' ||
-      process.env.NODE_ENV_SUB === 'development'
-    ) {
-      ReactGA.initialize(gaId, {
+    if (process.env.NODE_ENV_SUB === 'production') {
+      ReactGA.initialize('UA-140503497-1', {
         debug: false
       })
-    }
 
-    ReactGA.pageview(window.location.pathname + window.location.search)
+      ReactGA.pageview(window.location.pathname + window.location.search)
+    }
 
     // 로그인 체크
     if (AUTH_APIS.isLogin()) void AUTH_APIS.scheduleRenewal()
