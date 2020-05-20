@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.05.20-a
+- Add Apollo Client
+
 ## 2020.05.07-b
 - Apply lazy loading to main banner image and avatar
 - Bugs fix
