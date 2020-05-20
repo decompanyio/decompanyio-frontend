@@ -1,5 +1,5 @@
 {
-  "short_name": "Polaris Share",
+  "short_name": "PS",
   "name": "Polaris Share",
   "manifest_version": 2,
   "icons": [
@@ -43,5 +43,7 @@
   "start_url": "../index.html",
   "display": "standalone",
   "theme_color": "#3d5afe",
-  "background_color": "#3d5afe"
+  "background_color": "#3d5afe",
+  "crossorigin": "use-credentials",
+  "filename": "manifest.json"
 }

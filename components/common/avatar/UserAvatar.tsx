@@ -6,13 +6,6 @@ import commonView from '../../../common/commonView'
 /*일반 유저 아바타
 picture, croppedArea, size 지정하여 사용*/
 
-const getImgInfo = (picture: string) =>
-  new Promise(resolve => {
-    let img = new Image()
-    img.src = picture
-    img.onload = () => resolve(Boolean(img.height > img.width))
-  })
-
 export default function({
   croppedArea,
   size,
@@ -34,29 +27,31 @@ export default function({
   }
 
   useEffect(() => {
-    getImgInfo(picture).then(imgInfo => {
-      if (croppedArea) {
-        xLocation = Math.floor(
-          (croppedArea.x || xLocation) /
-            ((imgInfo ? croppedArea.height : croppedArea.width) / size)
-        )
-        yLocation = Math.floor(
-          (croppedArea.y || yLocation) /
-            ((imgInfo ? croppedArea.height : croppedArea.width) / size)
-        )
-        zoom = croppedArea.zoom || zoom
-      }
+    if (picture) {
+      commonView.getImgInfoOnPromise(picture).then(imgInfo => {
+        if (croppedArea) {
+          xLocation = Math.floor(
+            (croppedArea.x || xLocation) /
+              ((imgInfo ? croppedArea.height : croppedArea.width) / size)
+          )
+          yLocation = Math.floor(
+            (croppedArea.y || yLocation) /
+              ((imgInfo ? croppedArea.height : croppedArea.width) / size)
+          )
+          zoom = croppedArea.zoom || zoom
+        }
 
-      setImgStyle({
-        width: !imgInfo ? 'auto' : Number(zoom * 100) + '%',
-        height: imgInfo ? 'auto' : Number(zoom * 100) + '%',
-        left: '-' + xLocation + 'px',
-        top: '-' + yLocation + 'px'
+        setImgStyle({
+          width: !imgInfo ? 'auto' : Number(zoom * 100) + '%',
+          height: imgInfo ? 'auto' : Number(zoom * 100) + '%',
+          left: '-' + xLocation + 'px',
+          top: '-' + yLocation + 'px'
+        })
       })
-    })
 
-    commonView.lazyLoading()
-  }, [])
+      commonView.lazyLoading()
+    }
+  }, [picture])
 
   return (
     <div className={styles.ua_container} style={wrapperStyle}>

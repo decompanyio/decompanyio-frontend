@@ -10,28 +10,13 @@ import dynamic from 'next/dynamic'
 import repos from '../../../utils/repos'
 import { DocumentCardProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import commonData from '../../../common/commonData'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
   { ssr: false }
 )
-
-const getImgInfo = (documentData): void => {
-  let img = new Image()
-
-  img.src = common.getThumbnail(
-    documentData.documentId,
-    640,
-    1,
-    documentData.documentName
-  )
-  img.onload = (): number => {
-    let height = img.height
-    let width = img.width
-    return width / height
-  }
-}
 
 export default function({ documentData }: DocumentCardProps): ReactElement {
   const { isMobile } = useMain()
@@ -47,11 +32,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   let ratio: number
   let croppedArea: {}
 
-  identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  identification = documentData.author.username
   imgUrl_1 = common.getThumbnail(
     documentData.documentId,
     320,
@@ -68,7 +49,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
   croppedArea = documentData.author ? documentData.author.croppedArea : null
   vote = common.toEther(documentData.latestVoteAmount) || 0
   view = documentData.latestPageview || 0
-  ratio = Number(getImgInfo(documentData))
+  ratio = Number(commonView.getImgInfo(documentData))
 
   useEffect(() => {
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
@@ -76,7 +57,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
     })
 
     commonView.lazyLoading()
-  }, [])
+  }, [documentData])
 
   return (
     <div className={styles.dc_container}>
@@ -92,7 +73,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
           onClick={(): void => commonView.scrollTop()}
         >
           <img
-            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+            src={commonData.dummyImage.gray}
             data-src={imgUrl_1}
             data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
             alt={documentData.title}
@@ -103,8 +84,7 @@ export default function({ documentData }: DocumentCardProps): ReactElement {
               console.log(e)
               let element = e.target as HTMLImageElement
               element.onerror = null
-              element.srcset =
-                'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
+              element.srcset = commonData.dummyImage.gray
             }}
           />
         </div>

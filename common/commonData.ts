@@ -110,5 +110,9 @@ export default {
     container: {
       width: 1280 // common container width
     }
+  },
+
+  dummyImage: {
+    gray: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
   }
 }

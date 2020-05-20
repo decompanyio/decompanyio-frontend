@@ -63,11 +63,7 @@ export default function({
     _email: string,
     _time: number
   ) => {
-    let identification = documentData.author
-      ? documentData.author.username && documentData.author.username.length > 0
-        ? documentData.author.username
-        : documentData.author.email
-      : documentData.accountId
+    let identification = documentData.author.username
 
     return Router.push(
       {

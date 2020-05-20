@@ -33,11 +33,7 @@ export default function({
 
   const vote = common.toEther(Number(documentData.latestVoteAmount)) || 0
   const view = documentData.latestPageview || 0
-  const identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  const identification = documentData.author.email
 
   useEffect(() => {
     void getNDaysRoyalty()

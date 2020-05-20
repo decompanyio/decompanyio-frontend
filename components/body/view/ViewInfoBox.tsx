@@ -39,11 +39,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
   let view = documentData.latestPageview || 0
   let profileUrl = documentData.author ? documentData.author.picture : null
   let croppedArea = documentData.author ? documentData.author.croppedArea : null
-  let identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  let identification = documentData.author.username
 
   useEffect(() => {
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {

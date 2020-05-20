@@ -1,0 +1,13 @@
+query UserDocumentFavorite($userId: String) {
+    UserDocumentFavorite {
+        findMany(
+            filter: { userId: $userId }
+            skip: 0
+            limit: 10
+            sort: USERID__CREATED_ASC
+        ) {
+            documentId
+            userId
+        }
+    }
+}

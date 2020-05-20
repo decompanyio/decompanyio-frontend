@@ -25,11 +25,7 @@ export default function(): ReactElement {
   const [policyChecked, setPolicyChecked] = useState(false)
   const [policyError, setPolicyError] = useState(false)
 
-  const identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  const identification = documentData.author.username
 
   // 이메일 유효성 체크
   const validateEmail = (value: string) => {

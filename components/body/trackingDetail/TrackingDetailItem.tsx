@@ -33,11 +33,7 @@ export default function({
   const getImgUrl = (page: number): string =>
     common.getThumbnail(documentData.documentId, 320, page, '')
 
-  let identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  let identification = documentData.author.username
 
   return (
     <li>

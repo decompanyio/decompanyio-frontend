@@ -15,11 +15,7 @@ export default function({
   const [reward, setReward] = useState(0)
 
   const addr = common.getThumbnail(documentData.documentId, 320, 1, '')
-  const identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  const identification = documentData.author.username
   const vote = common.toEther(documentData.latestVoteAmount)
   const view = documentData.latestPageview || 0
 

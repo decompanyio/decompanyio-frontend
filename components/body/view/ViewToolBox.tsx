@@ -12,11 +12,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
   const { myInfo, setModal, setAlertCode } = useMain()
   const [downloadLoading, setDownloadLoading] = useState(false)
 
-  let identification = documentData.author
-    ? documentData.author.username && documentData.author.username.length > 0
-      ? documentData.author.username
-      : documentData.author.email
-    : documentData.accountId
+  let identification = documentData.author.username
 
   const downloadDocument = (documentId: string, documentName: string) => {
     setDownloadLoading(true)

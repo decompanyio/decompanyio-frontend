@@ -41,7 +41,7 @@ export interface ContentsListItemProps {
   bookmarkList: DocumentId[]
 }
 
-export interface MainListProps {
+export interface DocumentCardListProps {
   path: string
 }
 
@@ -209,6 +209,17 @@ export interface ToTopBtnProps {
 
 export interface DocumentCardProps {
   documentData
+}
+
+export interface DocumentCardApolloProps {
+  userId: string
+  documentId: string
+}
+
+export interface QueryDocumentCardInfo {
+  document: any
+  user: any
+  creator: any
 }
 
 export interface TrackingExportBtnProps {

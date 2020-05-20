@@ -157,8 +157,8 @@ export default {
     }
   },
 
-  // MainList.tsx
-  MainList: {
+  // DocumentCardList.tsx
+  DocumentCardList: {
     getDocuments: (path: string, err?: ErrorProps): void => {
       if (APP_CONFIG.debug) {
         if (!err) {
