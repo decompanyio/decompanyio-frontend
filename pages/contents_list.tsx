@@ -4,6 +4,7 @@ import ContentsList from '../components/body/list/ContentsList'
 import repos from '../utils/repos'
 import commonData from '../common/commonData'
 import { AUTH_APIS } from '../utils/auth'
+import { withApollo } from '../components/apollo'
 
 const getTag = (path: string[]): string =>
   path[1] && path[1] === 'tag' ? path[2] || '' : ''
@@ -66,4 +67,4 @@ Index.getInitialProps = async props => {
   return { documentList, tag: params.tag, path: params.path }
 }
 
-export default Index
+export default withApollo({ ssr: true })(Index)

@@ -1,5 +1,31 @@
 # Release Note
 
+## 2020.05.21-a
+- node_modules/ally.js/util/platform.js edit
+```
+// deep clone of original platform
+var platform = JSON.parse(
+  JSON.stringify(
+    _platform3.default || {
+      description: 'Node.js 13.11.0 on Darwin 64-bit',
+      layout: null,
+      manufacturer: null,
+      name: 'Node.js',
+      prerelease: null,
+      product: null,
+      ua: null,
+      version: '13.11.0',
+      os: {
+        architecture: 64,
+        family: 'Darwin',
+        version: null
+      }
+    }
+  )
+)
+```
+
+
 ## 2020.05.20-b
 - Add Apollo Client
 - SSR bugs fix

@@ -3,6 +3,7 @@ import repos from './repos'
 import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
 import { APP_CONFIG } from '../app.config'
+import common from '../common/common'
 
 export const AUTH_APIS = {
   login: (provider?: string, returnUrl?: string) => {
@@ -26,7 +27,7 @@ export const AUTH_APIS = {
     window.location.href = '/'
   },
   isAuthenticated: (): boolean => {
-    if (typeof window === 'undefined') return false
+    if (common.isServer()) return false
     const loginInfo = AUTH_APIS.getTokens()
     const expiresAt = JSON.parse(loginInfo.expiredAt)
     const userInfo = JSON.parse(loginInfo.userInfo)
@@ -34,6 +35,8 @@ export const AUTH_APIS = {
     return new Date().getTime() < expiresAt && userInfo.email
   },
   isLogin: (): boolean => {
+    if (common.isServer()) return false
+
     const loginInfo = AUTH_APIS.getTokens()
 
     return (
@@ -61,6 +64,8 @@ export const AUTH_APIS = {
     return params
   },
   getMyInfo(): UserInfo {
+    if (common.isServer()) return new UserInfo(null)
+
     let userInfo = localStorage.getItem('ps_ui')
     let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
     if (!userInfoWithJson && AUTH_APIS.isLogin()) {
@@ -69,8 +74,8 @@ export const AUTH_APIS = {
     }
     return new UserInfo(userInfoWithJson)
   },
-  // 계정 관련 토큰 로컬스토리지 저장
-  setTokens: (at: string, ea: any, ru: string) =>
+  // 계정 관련 token, localstorage 저장
+  setTokens: (at: string, ea: number, ru: string) =>
     new Promise(resolve => {
       if (at) localStorage.setItem('ps_at', at)
       if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
@@ -81,7 +86,7 @@ export const AUTH_APIS = {
           localStorage.setItem('ps_ui', JSON.stringify(res))
           resolve(res)
         })
-        .catch((err: any) => {
+        .catch(err => {
           console.log(err)
         })
     }),
@@ -113,19 +118,19 @@ export const AUTH_APIS = {
         reject()
       } else {
         const at = query.authorization_token || ''
-        const ea = query.expired_at || ''
+        const ea = query.expired_at || 0
         const ru = query.return_url || ''
 
         // console.log('쿼리 token : ', at)
 
-        AUTH_APIS.setTokens(at, ea, ru).then((userInfo: any) =>
+        AUTH_APIS.setTokens(at, ea, ru).then((userInfo: UserInfo) =>
           AUTH_APIS.syncAuthAndRest(userInfo, at).then(() =>
             resolve(userInfo.email)
           )
         )
       }
     }),
-  syncAuthAndRest: (ui: any, at: string) =>
+  syncAuthAndRest: (ui: UserInfo, at: string) =>
     new Promise(resolve => {
       if (at) {
         repos.Account.syncAuthAndRest(ui, at)
@@ -223,9 +228,8 @@ export const AUTH_APIS = {
         if (urlFromIframe && urlFromIframe !== 'about:blank') {
           let url = new URL(urlFromIframe)
           let at = url.searchParams.get('authorization_token') || ''
-          let ea = AUTH_APIS.getExpiredAt(
-            Number(url.searchParams.get('expired'))
-          )
+          let ea = Number(url.searchParams.get('expired'))
+
           AUTH_APIS.setTokens(at, ea, '')
 
           if (at) resolve(at)

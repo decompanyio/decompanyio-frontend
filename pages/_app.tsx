@@ -3,9 +3,8 @@ import 'babel-polyfill'
 import React, { ReactElement } from 'react'
 import store from 'redux/store'
 import { Provider } from 'react-redux'
-import { withApollo } from '../components/apollo';
 
-function App({ Component, pageProps }): ReactElement {
+export default function App({ Component, pageProps }): ReactElement {
   return (
     <Provider store={store}>
       <Component {...pageProps} />
@@ -23,5 +22,3 @@ App.getInitialProps = async ({ Component, ctx }) => {
 
   return { pageProps }
 }
-
-export default withApollo({ ssr: true })(App)

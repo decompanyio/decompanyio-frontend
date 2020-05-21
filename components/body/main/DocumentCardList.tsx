@@ -38,7 +38,9 @@ export default function({ path }: DocumentCardListProps): ReactElement {
       }[path]}
     `,
     {
-      variables: { userId: AUTH_APIS.getMyInfo().id },
+      variables: {
+        userId: AUTH_APIS.isLogin() ? AUTH_APIS.getMyInfo().id : ''
+      },
       notifyOnNetworkStatusChange: false
     }
   )

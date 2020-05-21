@@ -288,12 +288,11 @@ export default function(): ReactElement {
             D. Following directions will give a guidance to designate allowance
             of Cookie installation.
           </div>
-          ① Internet Explorer: Tool Menu on upper side of web-browser > Internet
-          Option > Personal Information > Setting
-          <br />
-          ② Chrome: Selection Menu on right side of web-browser > Selection of
-          Extended Setting on bottom of screen (wording may differ) > Personal
-          Information Contents Selection Button > Cookie
+          ① Internet Explorer: Tool Menu on upper side of web-browser {'>'}
+          Internet Option {'>'} Personal Information {'>'} Setting
+          <br />② Chrome: Selection Menu on right side of web-browser {'>'}
+          Selection of Extended Setting on bottom of screen (wording may differ)
+          {'>'} Personal Information Contents Selection Button {'>'} Cookie
           <br />
           <br />
           <div>
