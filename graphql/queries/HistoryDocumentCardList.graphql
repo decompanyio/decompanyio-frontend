@@ -1,10 +1,10 @@
-query UserDocumentHistory($userId: String) {
+query HistoryDocumentCardList($userId: String) {
     UserDocumentHistory {
         findMany(
             filter: { userId: $userId }
             skip: 0
             limit: 10
-            sort: USERID__UPDATED_ASC
+            sort: USERID__UPDATED_DESC
         ) {
             documentId
             userId

@@ -1,6 +1,6 @@
 query PopularDocumentCardList {
   DocumentPopular {
-    findMany(skip: 0, limit: 10, sort: LATESTPAGEVIEW_ASC) {
+    findMany(skip: 0, limit: 10, sort: LATESTPAGEVIEW_DESC) {
       _id
       accountId
     }

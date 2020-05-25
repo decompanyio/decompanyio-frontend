@@ -63,7 +63,7 @@ export default function(): ReactElement {
         result => {
           if (result.code && result.code === 'EXCEEDEDLIMIT') {
             let tmpMyInfo = myInfo
-            tmpMyInfo.privateDocumentCount = 5
+            tmpMyInfo.privateDocumentCount = 10
             setMyInfo(tmpMyInfo)
             setAlertCode(2072, {})
             reject()

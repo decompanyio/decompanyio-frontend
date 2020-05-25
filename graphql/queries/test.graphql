@@ -1,0 +1,28 @@
+query TagsDocumentList {
+    Document {
+        pagination(
+            filter: {
+                isPublic: true
+                isDeleted: false
+                isBlocked: false
+            }
+            page: 0
+            perPage: 10
+            sort: STATE__CREATED_DESC
+        ) {
+            count
+            items {
+                _id
+                accountId
+            }
+            pageInfo {
+                currentPage
+                hasNextPage
+                hasPreviousPage
+                itemCount
+                pageCount
+                perPage
+            }
+        }
+    }
+}

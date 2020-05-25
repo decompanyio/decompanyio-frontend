@@ -208,7 +208,7 @@ export default function({
                 </div>
               )}
 
-              {common.dateAgo(tmpDocumentData.created) > 0 && (
+              {common.timeAgo(tmpDocumentData.created) > 0 && (
                 <div
                   className={styles.puti_optionTableBtn}
                   onClick={() => handleDeleteBtnClick()}

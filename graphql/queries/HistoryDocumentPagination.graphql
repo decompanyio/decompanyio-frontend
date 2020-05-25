@@ -1,0 +1,23 @@
+query HistoryDocumentPagination {
+    UserDocumentHistory {
+        pagination(
+            page: 0
+            perPage: 10
+            sort: USERID__CREATED_DESC
+        ) {
+            count
+            items {
+                _id
+                userId
+            }
+            pageInfo {
+                currentPage
+                hasNextPage
+                hasPreviousPage
+                itemCount
+                pageCount
+                perPage
+            }
+        }
+    }
+}

@@ -7,8 +7,8 @@ import { AUTH_APIS } from '../../../utils/auth'
 import { DocumentCardListProps } from '../../../typings/interfaces'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import UserDocumentFavorite from '../../../graphql/queries/UserDocumentFavorite.graphql'
-import UserDocumentHistory from '../../../graphql/queries/UserDocumentHistory.graphql'
+import FavoriteDocumentCardList from '../../../graphql/queries/FavoriteDocumentCardList.graphql'
+import HistoryDocumentCardList from '../../../graphql/queries/HistoryDocumentCardList.graphql'
 import LatestDocumentCardList from '../../../graphql/queries/LatestDocumentCardList.graphql'
 import PopularDocumentCardList from '../../../graphql/queries/PopularDocumentCardList.graphql'
 import FeaturedDocumentCardList from '../../../graphql/queries/FeaturedDocumentCardList.graphql'
@@ -33,8 +33,8 @@ export default function({ path }: DocumentCardListProps): ReactElement {
         latest: LatestDocumentCardList,
         popular: PopularDocumentCardList,
         featured: FeaturedDocumentCardList,
-        mylist: UserDocumentFavorite,
-        history: UserDocumentHistory
+        mylist: FavoriteDocumentCardList,
+        history: HistoryDocumentCardList
       }[path]}
     `,
     {
