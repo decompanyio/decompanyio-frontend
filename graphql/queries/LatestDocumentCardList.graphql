@@ -5,6 +5,7 @@ query LatestDocumentCardList {
                 isPublic: true
                 isDeleted: false
                 isBlocked: false
+                state: CONVERT_COMPLETE
             }
             skip: 0
             limit: 10

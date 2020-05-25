@@ -5,6 +5,7 @@ query TagsDocumentList ($tags: [String]) {
                 isPublic: true
                 isDeleted: false
                 isBlocked: false
+                state: CONVERT_COMPLETE
                 tags: $tags
             }
             page: 0
