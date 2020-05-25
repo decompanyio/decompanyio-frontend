@@ -1,10 +1,10 @@
-query UserDocumentFavorite($userId: String) {
+query FavoriteDocumentCardList($userId: String) {
     UserDocumentFavorite {
         findMany(
             filter: { userId: $userId }
             skip: 0
             limit: 10
-            sort: USERID__CREATED_ASC
+            sort: USERID__CREATED_DESC
         ) {
             documentId
             userId

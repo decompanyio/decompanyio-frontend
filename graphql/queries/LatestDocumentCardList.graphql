@@ -8,7 +8,7 @@ query LatestDocumentCardList {
             }
             skip: 0
             limit: 10
-            sort: STATE__CREATED_ASC
+            sort: STATE__CREATED_DESC
         ) {
             documentId
             accountId

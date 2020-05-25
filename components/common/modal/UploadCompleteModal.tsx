@@ -65,7 +65,7 @@ export default function(): ReactElement {
         </div>
 
         <div className={styles.modal_content}>
-          {privateDocumentCount >= 5 ? (
+          {privateDocumentCount >= 10 ? (
             <div>{psString('upload-doc-desc-3')}</div>
           ) : (
             <div>

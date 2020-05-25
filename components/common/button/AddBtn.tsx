@@ -11,7 +11,7 @@ export default function(): ReactElement {
 
     // 비공개 문서 개수 체크
     setModal(
-      myInfo.privateDocumentCount >= 5 ? 'privateDocumentCount' : 'upload'
+      myInfo.privateDocumentCount >= 10 ? 'privateDocumentCount' : 'upload'
     )
   }
 

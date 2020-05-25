@@ -208,6 +208,12 @@ export default {
     let lastDate = Number(new Date(timestamp))
     return Math.floor((currentDate - lastDate) / (60 * 60 * 24 * 1000))
   },
+
+  timeAgo(timestamp: number): number {
+    let currentDate = Number(new Date())
+    let lastDate = Number(new Date(timestamp))
+    return currentDate - lastDate
+  },
   convertTimestampToString(timestamp: number): string {
     const options = {
       weekday: 'long',

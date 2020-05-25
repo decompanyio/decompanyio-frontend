@@ -8,12 +8,7 @@ import log from 'utils/log'
 import ContentsListItem from './ContentsListItem'
 import { AUTH_APIS } from '../../../utils/auth'
 import DocumentInfo from '../../../service/model/DocumentInfo'
-import {
-  ContentsListProps,
-  ContentsListResultListSet,
-  DocumentId,
-  ParamsGetDocumentList
-} from '../../../typings/interfaces'
+import { ContentsListProps, DocumentId } from '../../../typings/interfaces'
 import DocumentList from '../../../service/model/DocumentList'
 
 // document list GET API, parameter SET
@@ -39,14 +34,11 @@ export default function({
   })
 
   // GET API 응답 결과인 문서 리스트 데이터를 기존 오브젝트 표준에 맞게 셋팅 합니다.
-  const setResultList = (
-    listData: [],
-    resultList: []
-  ): Promise<ContentsListResultListSet> =>
+  const setResultList = (listData: [], resultList: []) =>
     new Promise(resolve => {
       log.ContentList.fetchDocuments()
 
-      let data: ContentsListResultListSet
+      let data
 
       data = {
         listData: listData.concat(resultList) as [],
@@ -56,17 +48,14 @@ export default function({
     })
 
   // 무한 스크롤 액션 시, 추가 데이터를 GET 하여 기존 목록에 덧붙입니다.
+
   const fetchData = async (): Promise<void> =>
     Promise.resolve(await setListLength(listLength + 1))
-      .then(
-        (): Promise<ParamsGetDocumentList> => setParams(listLength, tag, path)
-      )
+      .then(() => setParams(listLength, tag, path))
       .then((res): Promise<DocumentList> => repos.Document.getDocumentList(res))
-      .then(
-        (res): Promise<ContentsListResultListSet> =>
-          setResultList(state.list, res.resultList || [])
-      )
+      .then(res => setResultList(state.list, res.resultList || []))
       .then((res): void =>
+        // @ts-ignore
         setState({ list: res.listData, endPage: res.isEndPage })
       )
       .catch((err): void => {

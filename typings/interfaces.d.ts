@@ -15,17 +15,13 @@ export interface ContentsBookmarkProps {
   path: string
 }
 
+//TODO 나중에 빼야한다.
 export interface ContentsListProps {
   documentList: DocumentList
   tag: string
   path: string
 }
-
-export interface ContentsListResultListSet {
-  listData: []
-  isEndPage: boolean
-}
-
+//TODO 나중에 빼야한다.
 export interface ParamsGetDocumentList {
   pageNo?: number
   username?: string

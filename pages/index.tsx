@@ -11,4 +11,4 @@ function index(): ReactElement {
   )
 }
 
-export default withApollo({ ssr: true })(index)
+export default withApollo()(index)

@@ -1,0 +1,23 @@
+query FeaturedDocumentList {
+    DocumentFeatured {
+        pagination(
+            page: 0
+            perPage: 10
+            sort: LATESTVOTEAMOUNT_DESC
+        ) {
+            count
+            items {
+                _id
+                accountId
+            }
+            pageInfo {
+                currentPage
+                hasNextPage
+                hasPreviousPage
+                itemCount
+                pageCount
+                perPage
+            }
+        }
+    }
+}

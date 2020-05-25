@@ -44,9 +44,10 @@ type Document {
     isDeleted: Boolean
     isDownload: Boolean
     isPublic: Boolean
-    lang: String
+    locale: String
     seoTitle: String
     state: EnumDocumentState
+    tags: [String]
     title: String
     useTracking: Boolean
 }
@@ -1216,9 +1217,10 @@ input FilterDocumentInput {
     isDeleted: Boolean
     isDownload: Boolean
     isPublic: Boolean
-    lang: String
+    locale: String
     seoTitle: String
     state: EnumDocumentState
+    tags: [String]
     title: String
     useTracking: Boolean
 }
@@ -1280,9 +1282,10 @@ input FilterFindManyDocumentInput {
     isDeleted: Boolean
     isDownload: Boolean
     isPublic: Boolean
-    lang: String
+    locale: String
     seoTitle: String
     state: EnumDocumentState
+    tags: [String]
     title: String
     useTracking: Boolean
 }
@@ -1388,9 +1391,10 @@ input FilterFindOneDocumentInput {
     isDeleted: Boolean
     isDownload: Boolean
     isPublic: Boolean
-    lang: String
+    locale: String
     seoTitle: String
     state: EnumDocumentState
+    tags: [String]
     title: String
     useTracking: Boolean
 }
