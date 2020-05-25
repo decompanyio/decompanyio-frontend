@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import Layout from 'components/Layout'
-import ContentsList from '../components/body/list/ContentsList'
 import commonData from '../common/commonData'
 import { withApollo } from '../components/apollo'
 
@@ -11,7 +10,7 @@ function Index({ tag, path }, ...rest): ReactElement {
       path="contents_list"
       {...rest}
     >
-      <ContentsList tag={tag} path={path} />
+      {/*<ContentsList tag={tag} path={path} />*/}
     </Layout>
   )
 }

@@ -17,7 +17,6 @@ import FeaturedDocumentPagination from '../../../graphql/queries/FeaturedDocumen
 import FavoriteDocumentPagination from '../../../graphql/queries/FavoriteDocumentPagination.graphql'
 import HistoryDocumentCardList from '../../../graphql/queries/HistoryDocumentCardList.graphql'
 import ContentsListItemMock from '../../common/mock/ContentsListItemMock'
-import MainListMock from '../../common/mock/MainListMock'
 
 export default function({ tag, path }: ContentsListProps): ReactElement {
   const [bookmarkList, setBookmarkList] = useState([] as DocumentId[])
