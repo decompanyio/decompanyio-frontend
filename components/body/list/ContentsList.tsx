@@ -5,7 +5,7 @@ import NoDataIcon from '../../common/NoDataIcon'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
 import log from 'utils/log'
-import ContentsListItem from './ContentsListItem'
+// import ContentsListItem from './ContentsListItem'
 import { AUTH_APIS } from '../../../utils/auth'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 import { ContentsListProps, DocumentId } from '../../../typings/interfaces'
@@ -20,6 +20,7 @@ import ContentsListItemMock from '../../common/mock/ContentsListItemMock'
 
 export default function({ tag, path }: ContentsListProps): ReactElement {
   const [bookmarkList, setBookmarkList] = useState([] as DocumentId[])
+  console.log(bookmarkList)
 
   const { loading, error, data, fetchMore } = useQuery(
     gql`
@@ -39,11 +40,6 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
     }
   )
 
-  console.log(loading)
-  console.log(error)
-  console.log(data)
-  console.log(fetchMore)
-
   if (loading) return <ContentsListItemMock order={0} />
 
   if (error || !data) return <div />
@@ -52,12 +48,14 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
 
   if (dataList.count === 0) return <div />
 
+  const { perPage, currentPage } = dataList.pageInfo
+
   log.ContentList.init()
 
   const fetchMoreData = () =>
     fetchMore({
       variables: {
-        skip: data.allPosts.length
+        skip: perPage * currentPage
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
@@ -85,25 +83,25 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       <InfiniteScroll
         dataLength={dataList.pageInfo.perPage}
         next={fetchMoreData}
-        hasMore={!state.endPage}
+        hasMore={dataList.pageInfo.hasNextPage}
         loader={
           <div className={styles.cl_spinner}>
             <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
           </div>
         }
       >
-        {state.list.map(
+        {dataList.items.map(
           (result: DocumentInfo): ReactElement => (
             <div
               className={styles.cl_itemWrapper}
               key={result.documentId + result.accountId}
             >
-              <ContentsListItem
+              {/*<ContentsListItem
                 key={result.documentId + result.accountId}
                 documentData={result}
                 bookmarkList={bookmarkList}
                 path={path}
-              />
+              />*/}
             </div>
           )
         )}

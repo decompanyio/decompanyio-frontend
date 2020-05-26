@@ -1,4 +1,4 @@
-query TagsDocumentList ($tags: [String]) {
+query LatestDocumentPagination {
     Document {
         pagination(
             filter: {
@@ -6,7 +6,6 @@ query TagsDocumentList ($tags: [String]) {
                 isDeleted: false
                 isBlocked: false
                 state: CONVERT_COMPLETE
-                tags: $tags
             }
             page: 0
             perPage: 10

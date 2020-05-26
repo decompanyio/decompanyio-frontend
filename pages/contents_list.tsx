@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Layout from 'components/Layout'
 import commonData from '../common/commonData'
 import { withApollo } from '../components/apollo'
-import ContentsList from '../components/body/list/ContentsList';
+import ContentsList from '../components/body/list/ContentsList'
 
 function Index({ tag, path }, ...rest): ReactElement {
   return (
@@ -27,8 +27,8 @@ Index.getInitialProps = async props => {
 
   const params = {
     pageNo: 1,
-    tag: getTag(path),
-    path: getPath(path)
+    tag: getTag,
+    path: getPath
   }
 
   return { tag: params.tag, path: params.path }
