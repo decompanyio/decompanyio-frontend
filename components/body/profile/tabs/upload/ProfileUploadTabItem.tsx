@@ -96,6 +96,9 @@ export default function({
             clearInterval(interval)
             setStateDocumentData(res.document.state)
             setAlertCode(2075, { title: tmpDocumentData.title })
+          } else if (res && res.document.state === 'CONVERT_FAIL') {
+            clearInterval(interval)
+            setAlertCode(2001, {})
           }
         })
         .catch(() => {
