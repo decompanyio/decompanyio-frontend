@@ -45,7 +45,9 @@ function Index({ documentList, tag, path }, ...rest): ReactElement {
       path="contents_list"
       {...rest}
     >
-      <ContentsList documentList={list} tag={tag} path={path} />
+      {list && list.length > 0 && (
+        <ContentsList documentList={list} tag={tag} path={path} />
+      )}
     </Layout>
   )
 }

@@ -394,7 +394,7 @@ const repos = {
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"')
           let userData = await repos.Query.getUserByIds(ids)
-          return {
+          return new DocumentList({
             resultList: res.filter(v => {
               let idx = -1
               userData.map((u, i) =>
@@ -402,7 +402,7 @@ const repos = {
               )
               return idx !== -1 ? (v.author = userData[idx]) : v
             })
-          }
+          })
         })
         .catch(
           (err): DocumentList => {
@@ -458,7 +458,7 @@ const repos = {
         .then(async res => {
           let ids = res.map(v => '"' + v.accountId + '"')
           let userData = await repos.Query.getUserByIds(ids)
-          return {
+          return new DocumentList({
             resultList: res.filter(v => {
               let idx = -1
               userData.map((u, i) =>
@@ -466,7 +466,7 @@ const repos = {
               )
               return idx !== -1 ? (v.author = userData[idx]) : v
             })
-          }
+          })
         })
         .catch(
           (err): DocumentList => {

@@ -74,7 +74,7 @@ export default function({
   const setViewerWrapperHeight = (): void => {
     let ele = document.getElementById('pdfViewerWrapper')
     if (ele) {
-      let height = Number(ele.offsetWidth / ratio)
+      let height = Number(ele.offsetWidth / (ratio || 1.7))
       let path = window.location.pathname.split('/')[3]
       let page = Number(path ? path.split('-')[0] : 0)
 

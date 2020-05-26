@@ -1,27 +1,27 @@
-query TagsDocumentList {
+query DocumentCardInfo {
     Document {
-        pagination(
-            filter: {
-                isPublic: true
-                isDeleted: false
-                isBlocked: false
-            }
-            page: 0
-            perPage: 10
-            sort: STATE__CREATED_DESC
-        ) {
-            count
-            items {
-                _id
-                accountId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
+        findById(_id: "3db4bcdc3bd0439fb35cf146cb44e218") {
+            _id
+            created
+            state
+            accountId
+            documentId
+            documentName
+            documentSize
+            title
+            desc
+            seoTitle
+            useTracking
+            forceTracking
+            isDownload
+            cc
+            isPublic
+            isBlocked
+            isDeleted
+            dimensions {
+                width
+                height
+                type
             }
         }
     }

@@ -21,11 +21,10 @@ export interface ContentsListProps {
   tag: string
   path: string
 }
-//TODO 나중에 빼야한다.
+
 export interface ParamsGetDocumentList {
   pageNo?: number
   username?: string
-  email?: string
   tag?: string
   path?: string
   pageSize?: number

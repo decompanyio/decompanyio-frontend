@@ -52,7 +52,6 @@ export default function({
     let params = {
       pageNo: page,
       username: profileInfo.username || '',
-      email: profileInfo.email,
       pageSize: pageSize
     }
 

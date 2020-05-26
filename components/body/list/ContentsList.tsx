@@ -77,11 +77,13 @@ export default function({
     if (
       (path === 'mylist' || path === 'history') &&
       !state.endPage &&
-      documentList.resultList.length > 0
+      // @ts-ignore
+      documentList.length > 0
     ) {
-      setState({ list: documentList.resultList, endPage: true })
+      // @ts-ignore
+      setState({ list: documentList, endPage: true })
     }
-  }, [path, state.endPage, documentList.resultList])
+  }, [])
 
   return (
     <div className={styles.cl_container}>
