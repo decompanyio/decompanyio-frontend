@@ -15,9 +15,7 @@ export interface ContentsBookmarkProps {
   path: string
 }
 
-//TODO 나중에 빼야한다.
 export interface ContentsListProps {
-  documentList: DocumentList
   tag: string
   path: string
 }
