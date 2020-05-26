@@ -122,6 +122,10 @@ const getStatus = (
         myInfoFromRedux.privateDocumentCount +
         psString('alert-2074-sub-b')
       break
+    case 2078:
+      setStatusData(code, 'error') // 컴파일 실패
+      sub = alertData.title
+      break
 
     // 문서 관련 메세지 2091~
     case 2091:

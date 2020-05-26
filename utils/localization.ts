@@ -911,6 +911,13 @@ const strings = new Map([
     }
   ],
   [
+    'alert-2078',
+    {
+      KOR: '문서 컴파일 실패',
+      ENG: 'Document compile failed'
+    }
+  ],
+  [
     'alert-2091',
     {
       KOR: '다운로드 실패',
