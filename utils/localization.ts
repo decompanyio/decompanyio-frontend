@@ -1,3 +1,5 @@
+import commonData from '../common/commonData'
+
 const strings = new Map([
   // main
   [
@@ -857,8 +859,8 @@ const strings = new Map([
   [
     'alert-2072',
     {
-      KOR: '비공개 문서 업로드는 5개까지 허용됩니다.',
-      ENG: 'You can upload up to 5 private documents.'
+      KOR: `비공개 문서 업로드는 ${commonData.privateDocumentLimit}개까지 허용됩니다.`,
+      ENG: `You can upload up to ${commonData.privateDocumentLimit} private documents.`
     }
   ],
   [
@@ -878,7 +880,7 @@ const strings = new Map([
   [
     'alert-2074-sub-a',
     {
-      KOR: '5개 중 ',
+      KOR: `${commonData.privateDocumentLimit}개 중 `,
       ENG: ' '
     }
   ],
@@ -886,7 +888,7 @@ const strings = new Map([
     'alert-2074-sub-b',
     {
       KOR: ' 개',
-      ENG: ' out of 5'
+      ENG: ` out of ${commonData.privateDocumentLimit}`
     }
   ],
   [
@@ -1553,10 +1555,8 @@ const strings = new Map([
   [
     'upload-doc-desc-3',
     {
-      KOR:
-        '현재 5개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.',
-      ENG:
-        'You currently have 5 private documents. To upload your document later, please change it from Private to Public.'
+      KOR: `현재 ${commonData.privateDocumentLimit}개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.`,
+      ENG: `You currently have ${commonData.privateDocumentLimit} private documents. To upload your document later, please change it from Private to Public.`
     }
   ],
   [
@@ -1569,8 +1569,8 @@ const strings = new Map([
   [
     'upload-doc-desc-4-b',
     {
-      KOR: '개이며, 최대 5개까지만 업로드할 수 있습니다.',
-      ENG: ' private documents, and you can only upload up to 5 of them.'
+      KOR: `개이며, 최대 ${commonData.privateDocumentLimit}개까지만 업로드할 수 있습니다.`,
+      ENG: ` private documents, and you can only upload up to ${commonData.privateDocumentLimit} of them.`
     }
   ],
 
@@ -1579,9 +1579,9 @@ const strings = new Map([
     'private-doc-modal-desc',
     {
       KOR:
-        '현재 5개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.',
+        `현재 ${commonData.privateDocumentLimit}개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.`,
       ENG:
-        'You currently have 5 private documents. To upload your document later, please change it from Private to Public.'
+        `You currently have ${commonData.privateDocumentLimit} private documents. To upload your document later, please change it from Private to Public.`
     }
   ],
   [

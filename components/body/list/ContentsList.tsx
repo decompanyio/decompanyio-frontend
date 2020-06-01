@@ -2,117 +2,120 @@ import * as styles from 'public/static/styles/main.scss'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { ThreeBounce } from 'better-react-spinkit'
 import NoDataIcon from '../../common/NoDataIcon'
-import React, { ReactElement, useEffect, useState } from 'react'
-import repos from '../../../utils/repos'
+import React, { ReactElement } from 'react'
 import log from 'utils/log'
-// import ContentsListItem from './ContentsListItem'
-import { AUTH_APIS } from '../../../utils/auth'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import { ContentsListProps, DocumentId } from '../../../typings/interfaces'
+import {
+  ContentsListProps,
+  documentPagination
+} from '../../../typings/interfaces'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import LatestDocumentPagination from '../../../graphql/queries/LatestDocumentPagination.graphql'
+import TagDocumentPagination from '../../../graphql/queries/TagDocumentPagination.graphql'
 import PopularDocumentPagination from '../../../graphql/queries/PopularDocumentPagination.graphql'
 import FeaturedDocumentPagination from '../../../graphql/queries/FeaturedDocumentPagination.graphql'
 import FavoriteDocumentPagination from '../../../graphql/queries/FavoriteDocumentPagination.graphql'
-import HistoryDocumentCardList from '../../../graphql/queries/HistoryDocumentCardList.graphql'
-import ContentsListItemMock from '../../common/mock/ContentsListItemMock'
+import HistoryDocumentPagination from '../../../graphql/queries/HistoryDocumentPagination.graphql'
+import ContentsListMock from '../../common/mock/ContentsListMock'
+import ContentsListItem from './ContentsListItem'
+import { AUTH_APIS } from '../../../utils/auth'
 
 export default function({ tag, path }: ContentsListProps): ReactElement {
-  const [bookmarkList, setBookmarkList] = useState([] as DocumentId[])
-  console.log(bookmarkList)
-
   const { loading, error, data, fetchMore } = useQuery(
     gql`
       ${{
-        latest: LatestDocumentPagination,
+        latest: tag ? TagDocumentPagination : LatestDocumentPagination,
         popular: PopularDocumentPagination,
         featured: FeaturedDocumentPagination,
         mylist: FavoriteDocumentPagination,
-        history: HistoryDocumentCardList
-      }[path]}
+        history: HistoryDocumentPagination
+      }[path || 'latest']}
     `,
     {
       variables: {
-        tags: [tag || '']
+        tags: tag ? [tag] : null,
+        page: 1,
+        perPage: 10,
+        userId: AUTH_APIS.isLogin() ? AUTH_APIS.getMyInfo().id : ''
       },
       notifyOnNetworkStatusChange: false
     }
   )
 
-  if (loading) return <ContentsListItemMock order={0} />
+  log.ContentList.init()
 
-  if (error || !data) return <div />
+  if (loading || error || !data) return <ContentsListMock />
 
   const dataList = data[Object.keys(data)[0]].pagination
+  const { pageInfo, items, count } = dataList
+  const { perPage, currentPage, hasNextPage } = pageInfo
 
-  if (dataList.count === 0) return <div />
-
-  const { perPage, currentPage } = dataList.pageInfo
-
-  log.ContentList.init()
+  if (count === 0)
+    return (
+      <div className={styles.cl_noIconWrapper}>
+        <NoDataIcon />
+      </div>
+    )
 
   const fetchMoreData = () =>
     fetchMore({
       variables: {
-        skip: perPage * currentPage
+        page: currentPage + 1,
+        perPage
       },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult) {
-          return previousResult
-        }
+      updateQuery: (
+        previousResult: documentPagination,
+        { fetchMoreResult }
+      ) => {
+        if (!fetchMoreResult) return previousResult
+
         return Object.assign({}, previousResult, {
-          // Append the new posts results to the old one
-          // @ts-ignore
-          allPosts: [...previousResult.allPosts, ...fetchMoreResult.allPosts]
+          Document: {
+            ...previousResult[Object.keys(previousResult)[0]],
+            pagination: {
+              ...previousResult[Object.keys(previousResult)[0]].pagination,
+              items: [
+                ...previousResult[Object.keys(previousResult)[0]].pagination
+                  .items,
+                ...fetchMoreResult[Object.keys(fetchMoreResult)[0]].pagination
+                  .items
+              ],
+              pageInfo:
+                fetchMoreResult[Object.keys(fetchMoreResult)[0]].pagination
+                  .pageInfo
+            }
+          }
         })
       }
     })
 
-  const getBookmarkList = (): Promise<void> =>
-    repos.Query.getMyListFindMany({
-      userId: AUTH_APIS.getMyInfo().id
-    }).then((res): void => setBookmarkList(res))
-
-  useEffect((): void => {
-    if (AUTH_APIS.isLogin()) void getBookmarkList()
-  }, [])
-
   return (
     <div className={styles.cl_container}>
       <InfiniteScroll
-        dataLength={dataList.pageInfo.perPage}
+        dataLength={perPage * currentPage}
         next={fetchMoreData}
-        hasMore={dataList.pageInfo.hasNextPage}
+        hasMore={hasNextPage}
         loader={
           <div className={styles.cl_spinner}>
             <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
           </div>
         }
       >
-        {dataList.items.map(
-          (result: DocumentInfo): ReactElement => (
+        {items.map(
+          ({ documentId, _id, accountId, userId }, idx): ReactElement => (
             <div
               className={styles.cl_itemWrapper}
-              key={result.documentId + result.accountId}
+              key={(documentId || _id) + accountId + '_' + idx}
             >
-              {/*<ContentsListItem
-                key={result.documentId + result.accountId}
-                documentData={result}
-                bookmarkList={bookmarkList}
+              <ContentsListItem
+                documentId={documentId || _id}
+                accountId={accountId || userId}
                 path={path}
-              />*/}
+              />
             </div>
           )
         )}
       </InfiniteScroll>
-
-      <div className={styles.cl_spinner}>
-        <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
-      </div>
-      <div className={styles.cl_noIconWrapper}>
-        <NoDataIcon />
-      </div>
     </div>
   )
 }

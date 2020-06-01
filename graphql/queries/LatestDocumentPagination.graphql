@@ -1,4 +1,4 @@
-query LatestDocumentPagination {
+query LatestDocumentPagination ($page: Int, $perPage: Int){
     Document {
         pagination(
             filter: {
@@ -7,8 +7,8 @@ query LatestDocumentPagination {
                 isBlocked: false
                 state: CONVERT_COMPLETE
             }
-            page: 0
-            perPage: 10
+            page: $page
+            perPage: $perPage
             sort: STATE__CREATED_DESC
         ) {
             count

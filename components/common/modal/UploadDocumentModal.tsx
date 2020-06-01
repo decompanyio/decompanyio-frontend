@@ -8,6 +8,7 @@ import common from '../../../common/common'
 import DropZone from '../DropZone'
 import UploadProgressModal from './UploadProgressModal'
 import { useMain } from '../../../redux/main/hooks'
+import commonData from '../../../common/commonData'
 
 export default function(): ReactElement {
   const { myInfo, setMyInfo, setAlertCode, setModal } = useMain()
@@ -63,7 +64,7 @@ export default function(): ReactElement {
         result => {
           if (result.code && result.code === 'EXCEEDEDLIMIT') {
             let tmpMyInfo = myInfo
-            tmpMyInfo.privateDocumentCount = 10
+            tmpMyInfo.privateDocumentCount = commonData.privateDocumentLimit
             setMyInfo(tmpMyInfo)
             setAlertCode(2072, {})
             reject()

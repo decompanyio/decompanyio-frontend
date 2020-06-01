@@ -77,6 +77,7 @@ export default {
     }
   },
 
+  // TODO 리워드풀 변경시 값 변경 또는 추가 작업 필요 합니다.
   // 크리에이터 리워드 풀
   creatorDailyRewardPool: Number(115068493148000000000000),
 
@@ -94,6 +95,9 @@ export default {
 
   // My page 리스트 개수
   myPageListSize: 10,
+
+  // 비공개 문서 보유 개수
+  privateDocumentLimit: 10,
 
   style: {
     md: {

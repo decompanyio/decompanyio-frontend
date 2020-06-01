@@ -17,22 +17,9 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
-const showRewardInfo = (id: string): void => {
-  const el = document.getElementById(id) as HTMLElement
-  if (el) {
-    el.style.display = 'block'
-  }
-}
-
-const hideRewardInfo = (id: string): void => {
-  const el = document.getElementById(id) as HTMLElement
-  if (el) {
-    el.style.display = 'none'
-  }
-}
-
 export default function({ documentData }: ViewInfoBoxProps): ReactElement {
   const { myInfo, isMobile } = useMain()
+  const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)
 
   let vote = common.toEther(documentData.latestVoteAmount) || 0
@@ -45,7 +32,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
       setReward(res)
     })
-  })
+  }, [])
 
   return (
     <div className={styles.vib_container}>
@@ -88,8 +75,8 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
         <div className={styles.vib_info_2}>
           <span
             className={styles.vib_reward}
-            onMouseOver={() => showRewardInfo(documentData.seoTitle + 'reward')}
-            onMouseOut={() => hideRewardInfo(documentData.seoTitle + 'reward')}
+            onMouseOver={(): void => setRewardInfo(true)}
+            onMouseOut={(): void => setRewardInfo(false)}
           >
             $ {common.deckToDollarWithComma(reward)}
             <img
@@ -100,7 +87,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
               alt="arrow button"
             />
           </span>
-          {reward > 0 && (
+          {reward > 0 && rewardInfoOpen && (
             <RewardCard reward={reward} documentData={documentData} />
           )}
           <span className={styles.vib_view}>{view}</span>

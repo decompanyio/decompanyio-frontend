@@ -3,15 +3,41 @@ import DocumentList from '../service/model/DocumentList'
 import UserInfo from '../service/model/UserInfo'
 import { MainState } from '../redux/main/reducer'
 import { TrackingState } from '../redux/tracking/reducer'
-import TagListItem from '../service/model/TagListItem';
+import TagListItem from '../service/model/TagListItem'
 
 export interface DocumentId {
   documentId: string
 }
 
+export interface pagination {
+  pagination?: documentPaginationProps
+}
+
+
+export interface documentPagination {
+  Document?: pagination
+  DocumentPopular?: pagination
+  DocumentFeatured?: pagination
+  UserDocumentFavorite?: pagination
+  UserDocumentHistory?: pagination
+}
+
+export interface documentPaginationProps {
+  count: number
+  items: { _id: string; accountId: string }[]
+  pageInfo: {
+    currentPage: number
+    hasNextPage: boolean
+    hasPreviousPage: boolean
+    itemCount: number
+    pageCount: number
+    perPage: number
+  }
+}
+
 export interface ContentsBookmarkProps {
   documentData: DocumentInfo
-  bookmarkList: DocumentId[]
+  bookmarkFlagData: boolean
   path: string
 }
 
@@ -29,9 +55,9 @@ export interface ParamsGetDocumentList {
 }
 
 export interface ContentsListItemProps {
-  documentData: DocumentInfo
+  accountId: string
+  documentId: string
   path: string
-  bookmarkList: DocumentId[]
 }
 
 export interface DocumentCardListProps {
@@ -154,6 +180,18 @@ export interface ViewBookmarkProps {
 export interface ViewFullscreenBtnProps {
   documentData
   ratio: number
+  readPage: number
+}
+
+export interface ViewContainerProps {
+  documentData
+  ratio: number
+  readPage: number
+  text
+}
+
+export interface ViewContainerWrapper {
+  seoTitle: string
   readPage: number
 }
 

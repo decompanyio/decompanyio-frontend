@@ -51,16 +51,14 @@ export default function({
     let windowWidth = el.offsetWidth
     let widthMargin = isMobile ? 0 : commonData.style.common.margin * 2
 
-    if (windowWidth + widthMargin >= commonData.style.container.width) {
+    if (windowWidth + widthMargin >= commonData.style.container.width)
       return commonData.style.container.width - widthMargin
-    } else if (
+    else if (
       windowWidth < commonData.style.container.width &&
       windowWidth > commonData.style.md.max.width
-    ) {
+    )
       return windowWidth
-    } else {
-      return windowWidth
-    }
+    else return windowWidth
   }
 
   const setThumbnailUrlAddress = (): void => {
@@ -86,18 +84,15 @@ export default function({
   const handleUpdateProgress = (e): void => {
     let contentLength
 
-    if (e.lengthComputable) {
-      contentLength = e.total
-    } else {
+    if (e.lengthComputable) contentLength = e.total
+    else
       contentLength = parseInt(e.target.getResponseHeader('content-length'), 10)
-    }
 
     let scrollPercentage = Math.floor((e.loaded / contentLength) * 100)
     const el = document.getElementById('totalLoadingBar') as HTMLElement
 
-    if (el) {
+    if (el)
       el.style.width = (scrollPercentage > 100 ? 100 : scrollPercentage) + '%'
-    }
   }
 
   const handlePdfData = (pdfUrl: string): Promise<string> =>
@@ -108,15 +103,10 @@ export default function({
       xhtml.responseType = 'arraybuffer'
       xhtml.open('GET', url, true)
       xhtml.onreadystatechange = () => {
-        if (xhtml.readyState === 4) {
-          // Makes sure the document is ready to parse.
-          if (xhtml.status === 200) {
-            // Makes sure it's found the file.
+        if (xhtml.readyState === 4)
+          if (xhtml.status === 200)
             resolve(_arrayBufferToBase64(xhtml.response))
-          } else {
-            reject()
-          }
-        }
+          else reject()
       }
 
       xhtml.send(null)
@@ -139,6 +129,7 @@ export default function({
   const handleScrolling = (e): void => {
     let calcNum = e.target.scrollTop / e.target.offsetHeight
     let page = parseInt(String(calcNum), 10)
+
     if (presentPage !== page) {
       pageChange(page)
       setPresentPage(page)
@@ -213,9 +204,7 @@ export default function({
       for (let num = 1; num <= pdfDoc.numPages; num++) {
         await pdfDoc.getPage(num).then(renderPage)
 
-        if (num === pdfDoc.numPages) {
-          handlePdfViewerRendering()
-        }
+        if (num === pdfDoc.numPages) handlePdfViewerRendering()
       }
     }
 
@@ -233,9 +222,8 @@ export default function({
         'canvasLayer'
       ) as HTMLElement
 
-      if (canvasContainer && !canvasContainer.hasChildNodes()) {
+      if (canvasContainer && !canvasContainer.hasChildNodes())
         void (await renderPDF(pdfUrl))
-      }
     })()
 
     setThumbnailUrlAddress()

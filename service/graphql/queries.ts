@@ -189,19 +189,6 @@ export default {
       totalPageview
     }
   }`,
-  getCuratorRewards: data =>
-    `Curator  {
-    determineCuratorReward(
-      userId: "${data.userId}"
-      documentId: "${data.documentId}"
-    ) {
-      voteDate
-      activeDate
-      userId
-      documentId
-      reward
-    }
-  }`,
   getClaimableRoyalty: data =>
     `Creator  {
     getClaimableRoyalty(

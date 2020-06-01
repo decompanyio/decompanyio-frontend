@@ -62,7 +62,7 @@ export default class DocumentInfo {
       data && data.updated ? data.updated : common.timestampToDateTime(0)
     this.viewCount = data && data.viewCount ? data.viewCount : 0
     this.useTracking = data && data.useTracking ? data.useTracking : false
-    this.id = (data && (data.sub || data._id || data.id)) || ''
+    this.id = (data && data._id) || ''
     this.latestVoteAmount =
       data && data.latestVoteAmount ? data.latestVoteAmount : 0
     this.latestPageview = data && data.latestPageview ? data.latestPageview : 0

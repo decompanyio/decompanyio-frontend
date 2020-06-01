@@ -2,29 +2,16 @@ import { psString } from '../../../utils/localization'
 import * as styles from '../../../public/static/styles/main.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
-import { DocumentId, ContentsBookmarkProps } from '../../../typings/interfaces'
+import { ContentsBookmarkProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
 
 export default function({
-  bookmarkList,
+  bookmarkFlagData,
   documentData,
   path
 }: ContentsBookmarkProps): ReactElement {
   const { setAlertCode } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
-
-  const checkBookmarkList = (): void => {
-    let flag
-
-    if (bookmarkList.length > 0) {
-      flag =
-        bookmarkList.filter(
-          (value: DocumentId): boolean => value.documentId === documentData.id
-        ).length > 0
-    } else flag = false
-
-    setBookmarkFlag(flag)
-  }
 
   const handleBookmarkBtnClick = (): void => {
     setBookmarkFlag(true)
@@ -46,7 +33,7 @@ export default function({
   }
 
   useEffect(() => {
-    checkBookmarkList()
+    setBookmarkFlag(bookmarkFlagData)
   }, [])
 
   if (bookmarkFlag) {

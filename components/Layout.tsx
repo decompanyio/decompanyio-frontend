@@ -37,47 +37,42 @@ export default function(props): ReactElement {
         'headerCategoryWrapper'
       )
 
+      let isScrollAtTop = currentScrollPos <= 60
+      let isScrollUp = _prevScrollPos > currentScrollPos
+
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && headerMainNav) {
         headerMainNav.style.marginBottom = '0px'
-        if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
-          headerMainNav.style.top = '0px'
-        } else {
-          headerMainNav.style.top = '-61px'
-        }
+        headerMainNav.style.top = `${
+          isScrollUp || isScrollAtTop ? '0' : '-61'
+        }px`
       }
 
       // main 이외 페이지에서 로딩 숨길/표시 처리
-      if (path && totalLoadingBar) {
-        if (_prevScrollPos > currentScrollPos || currentScrollPos <= 60) {
-          totalLoadingBar.style.top = isMobile ? '55px' : '60px'
-        } else {
-          totalLoadingBar.style.top = '0px'
-        }
-      }
+      if (path && totalLoadingBar)
+        totalLoadingBar.style.top = `${
+          isScrollUp || isScrollAtTop ? `${isMobile ? '55' : '60'}` : '0'
+        }px`
 
       // main 페이지, 테그 헤더 위치 처리
       if (!path && headerCategoryWrapper && headerMainNav) {
         if (headerCategoryWrapper.offsetTop < currentScrollPos) {
-          if (headerCategoryWrapper.style.position !== 'fixed') {
+          if (headerCategoryWrapper.style.position !== 'fixed')
             headerCategoryWrapper.style.position = 'fixed'
-          }
-          if (
-            headerCategoryWrapper.style.borderBottom !== '1px solid #b3b3b3'
-          ) {
+
+          if (headerCategoryWrapper.style.borderBottom !== '1px solid #b3b3b3')
             headerCategoryWrapper.style.borderBottom = '1px solid #b3b3b3'
-          }
-          if (headerCategoryWrapper.style.marginBottom !== '45px') {
+
+          if (headerCategoryWrapper.style.marginBottom !== '45px')
             headerMainNav.style.marginBottom = '45px'
-          }
         }
+
         if (headerMainNav.offsetTop + 60 >= currentScrollPos) {
-          if (headerCategoryWrapper.style.position !== 'relative') {
+          if (headerCategoryWrapper.style.position !== 'relative')
             headerCategoryWrapper.style.position = 'relative'
-          }
-          if (headerCategoryWrapper.style.marginBottom !== '0px') {
+
+          if (headerCategoryWrapper.style.marginBottom !== '0px')
             headerMainNav.style.marginBottom = '0px'
-          }
         }
       }
 
@@ -95,11 +90,10 @@ export default function(props): ReactElement {
         res.privateDocumentCount = result.privateDocumentCount
         setMyInfo(res)
         log.Layout.setMyInfo()
+
         return Promise.resolve()
       })
-    } else {
-      return Promise.resolve()
-    }
+    } else return Promise.resolve()
   }
 
   // SET 태그 리스트
@@ -122,16 +116,12 @@ export default function(props): ReactElement {
   /*  // Check Away Time
   const setIntervalAwayTime = setInterval(() => {
     awayTime += t
-
     console.log('interval awaytime', awayTime, modalCode)
-
     if (awayTime >= t * 15 && modalCode !== 'away') {
       console.log('get in!!')
       setModal('away')
     }
   }, t)
-
-
       clearInterval(interval)
   */
 

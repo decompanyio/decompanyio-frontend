@@ -2,6 +2,7 @@ import * as styles from 'public/static/styles/main.scss'
 import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../../../utils/auth'
 import { useMain } from '../../../redux/main/hooks'
+import commonData from '../../../common/commonData'
 
 export default function(): ReactElement {
   const { myInfo, setModal } = useMain()
@@ -11,7 +12,9 @@ export default function(): ReactElement {
 
     // 비공개 문서 개수 체크
     setModal(
-      myInfo.privateDocumentCount >= 10 ? 'privateDocumentCount' : 'upload'
+      myInfo.privateDocumentCount >= commonData.privateDocumentLimit
+        ? 'privateDocumentCount'
+        : 'upload'
     )
   }
 
