@@ -1,8 +1,8 @@
-query PopularDocumentPagination {
+query PopularDocumentPagination ($page: Int, $perPage: Int) {
     DocumentPopular {
         pagination(
-            page: 0
-            perPage: 10
+            page: $page
+            perPage: $perPage
             sort: LATESTPAGEVIEW_DESC
         ) {
             count

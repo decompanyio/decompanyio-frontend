@@ -1,15 +1,15 @@
 import React, { ReactElement, useEffect } from 'react'
 import commonView from '../common/commonView'
-import { APP_CONFIG } from '../app.config'
 import repos from '../utils/repos'
 
 import Layout from 'components/Layout'
 import DocumentInfo from '../service/model/DocumentInfo'
-import UserInfo from '../service/model/UserInfo'
 import Router from 'next/router'
 import ViewContainer from '../components/body/view/ViewContainer'
+import { withApollo } from '../components/apollo'
+import Meta from '../graphql/models/Meta'
 
-export default function Index(
+function Index(
   { documentData, text, ratio, readPage, metaData, message },
   ...rest
 ): ReactElement {
@@ -35,72 +35,26 @@ export default function Index(
 }
 
 Index.getInitialProps = async props => {
-  let seoTitle = commonView.getPathFromPathname(props.asPath)
+  let seoTitle = encodeURIComponent(
+    commonView.getPathFromPathname(props.asPath)
+  )
+
   const {
     document,
-    featuredList,
     text,
     totalViewCountInfo,
     message
   } = await repos.Document.getDocument(seoTitle)
-  const documentData = new DocumentInfo(document)
-  const authorData = new UserInfo(documentData.author)
-  const textData = text || []
 
-  const metaData = {
-    title: documentData.title,
-    // @ts-ignore
-    tag: documentData.tags.length > 0 ? documentData.tags[0] : '',
-    extension: documentData.documentName.split('.')[1],
-    seoTitle: documentData.seoTitle,
-    description: documentData.desc,
-    twitter: {
-      card: 'summary_large_image',
-      site: '@Polarishre',
-      title: documentData.title,
-      description: documentData.desc || 'Sharing knowledge in new ways',
-      image:
-        APP_CONFIG.domain().image + '/' + documentData.documentId + '/1024/1',
-      url: documentData.shortUrl
-        ? documentData.shortUrl
-        : APP_CONFIG.domain().mainHost +
-          '/@' +
-          (authorData.username || authorData.email) +
-          '/' +
-          documentData.seoTitle
-    },
-    og: {
-      type: 'website',
-      title: documentData.title,
-      description: documentData.desc || 'Sharing knowledge in new ways',
-      /*eslint-disable @typescript-eslint/camelcase*/
-      site_name: 'Polaris Share',
-      image_width: '720',
-      image_height: documentData.dimensions
-        ? Math.floor(
-            Number(
-              (documentData.dimensions.height * 720) /
-                documentData.dimensions.width
-            )
-          )
-        : '498',
-      /*eslint-disable @typescript-eslint/camelcase*/
-      url: documentData.shortUrl
-        ? documentData.shortUrl
-        : APP_CONFIG.domain().mainHost +
-          '/@' +
-          (authorData.username || authorData.email) +
-          '/' +
-          documentData.seoTitle
-    }
-  }
+  const documentData = new DocumentInfo(document)
+  const metaData = new Meta(documentData)
+  const textData = text || []
 
   return {
     documentData: documentData,
     ratio: documentData.dimensions
       ? documentData.dimensions.width / documentData.dimensions.height
       : 1,
-    featuredList,
     text: textData,
     totalViewCountInfo,
     readPage: 0,
@@ -108,3 +62,5 @@ Index.getInitialProps = async props => {
     message
   }
 }
+
+export default withApollo({ ssr: true })(Index)

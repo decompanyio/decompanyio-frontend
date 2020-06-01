@@ -3800,15 +3800,6 @@ input[type='radio']:checked + label span i {
   @include mt(5);
 }
 
-.cl_spinner {
-  @include mb(4);
-  @include d-flex;
-  z-index: 1;
-  margin-top: 25px;
-  justify-content: center;
-  align-items: center;
-}
-
 .cl_itemWrapper {
   @include inner-container;
 
@@ -3817,6 +3808,11 @@ input[type='radio']:checked + label span i {
       display: inline-block !important;
     }
   }
+}
+
+.cl_spinner {
+  text-align: center;
+  margin: 3rem;
 }
 
 //======================================
@@ -4007,7 +4003,7 @@ input[type='radio']:checked + label span i {
 
 .clim_container {
   @include row;
-  padding: 1rem 1rem 1rem 0;
+  padding: 1rem;
   border-bottom: 1px solid #e8e8e8;
   position: relative;
 

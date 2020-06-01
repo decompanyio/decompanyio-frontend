@@ -11,7 +11,7 @@ query LatestDocumentCardList {
             limit: 10
             sort: STATE__CREATED_DESC
         ) {
-            documentId
+            _id
             accountId
         }
     }

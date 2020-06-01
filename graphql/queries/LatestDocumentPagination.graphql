@@ -1,4 +1,4 @@
-query TagsDocumentList ($tags: [String]) {
+query LatestDocumentPagination ($page: Int, $perPage: Int){
     Document {
         pagination(
             filter: {
@@ -6,10 +6,9 @@ query TagsDocumentList ($tags: [String]) {
                 isDeleted: false
                 isBlocked: false
                 state: CONVERT_COMPLETE
-                tags: $tags
             }
-            page: 0
-            perPage: 10
+            page: $page
+            perPage: $perPage
             sort: STATE__CREATED_DESC
         ) {
             count

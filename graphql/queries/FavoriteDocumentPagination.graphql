@@ -1,13 +1,14 @@
-query FavoriteDocumentPagination {
+query FavoriteDocumentPagination ($page: Int, $perPage: Int, $userId: String) {
     UserDocumentFavorite {
         pagination(
-            page: 0
-            perPage: 10
+            filter: { userId: $userId }
+            page: $page
+            perPage: $perPage
             sort: USERID__CREATED_DESC
         ) {
             count
             items {
-                _id
+                documentId
                 userId
             }
             pageInfo {

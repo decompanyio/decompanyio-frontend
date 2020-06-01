@@ -495,12 +495,6 @@ const repos = {
         return Number(totalRoyalty || 0)
       })
     },
-    async getCuratorRewards(documentId: string, userId: string) {
-      return repos.Query.getCuratorRewards({
-        documentId,
-        userId
-      }).then(res => Number(res.determineCreatorRoyalty || 0))
-    },
     async getClaimableRoyalty(documentId: string, userId: string) {
       return repos.Query.getClaimableRoyalty({ documentId, userId }).then(
         res => {
@@ -781,10 +775,6 @@ const repos = {
       graphql({
         query: queries.getNDaysRoyalty(data)
       }).then((res: { Creator }) => res.Creator),
-    getCuratorRewards: async data =>
-      graphql({
-        query: queries.getCuratorRewards(data)
-      }).then((res: { Curator }) => res.Curator),
     getClaimableRoyalty: async data =>
       graphql({
         query: queries.getClaimableRoyalty(data)

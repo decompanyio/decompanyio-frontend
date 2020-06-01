@@ -1,8 +1,8 @@
-query FeaturedDocumentList {
+query FeaturedDocumentList ($page: Int, $perPage: Int) {
     DocumentFeatured {
         pagination(
-            page: 0
-            perPage: 10
+            page: $page
+            perPage: $perPage
             sort: LATESTVOTEAMOUNT_DESC
         ) {
             count
