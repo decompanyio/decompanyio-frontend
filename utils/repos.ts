@@ -410,70 +410,6 @@ const repos = {
             return new DocumentList(null)
           }
         ),
-    getHistory: async data =>
-      repos.Query.getHistoryFindById(data)
-        .then(res => repos.Common.checkNone(res))
-        .then(res => res.map(v => v.documentId))
-        .then(res => repos.Query.getDocumentListByIdsMultiple(res))
-        .then(res => {
-          const resultData = Object({
-            Document: [],
-            DocumentFeatured: [],
-            DocumentPopular: []
-          })
-          let arrLength = Object.keys(res).length / 3
-          for (let i = 0; i < arrLength; ++i) {
-            if (res['latest_' + i].findOne) {
-              resultData.Document.push(res['latest_' + i].findOne)
-            }
-            if (res['featured_' + i].findOne) {
-              resultData.DocumentFeatured.push(res['featured_' + i].findOne)
-            }
-            if (res['popular_' + i].findOne) {
-              resultData.DocumentPopular.push(res['popular_' + i].findOne)
-            }
-          }
-          return resultData
-        })
-        .then(res => {
-          let resultData = res
-          resultData.Document = res.Document.filter(l => {
-            let latestArr = res.DocumentFeatured.filter(f => f._id === l._id)[0]
-            return latestArr
-              ? (l.latestVoteAmount = latestArr.latestVoteAmount)
-              : true
-          })
-          return resultData
-        })
-        .then(res => {
-          let resultData = res
-          resultData.Document = res.Document.filter(l => {
-            let latestArr = res.DocumentPopular.filter(p => p._id === l._id)[0]
-            return latestArr
-              ? (l.latestPageview = latestArr.latestPageview)
-              : true
-          })
-          return resultData.Document
-        })
-        .then(async res => {
-          let ids = res.map(v => '"' + v.accountId + '"')
-          let userData = await repos.Query.getUserByIds(ids)
-          return new DocumentList({
-            resultList: res.filter(v => {
-              let idx = -1
-              userData.map((u, i) =>
-                idx === -1 && u._id === v.accountId ? (idx = i) : -1
-              )
-              return idx !== -1 ? (v.author = userData[idx]) : v
-            })
-          })
-        })
-        .catch(
-          (err): DocumentList => {
-            console.log(err)
-            return new DocumentList(null)
-          }
-        ),
     async getCreatorRewards(documentId: string) {
       return repos.Query.getCreatorRewards({
         documentId
@@ -730,12 +666,6 @@ const repos = {
         query: queries.getMyListFindMany(data)
       }).then(
         (res: { UserDocumentFavorite }) => res.UserDocumentFavorite.findMany
-      ),
-    getHistoryFindById: async data =>
-      graphql({
-        query: queries.getHistoryFindById(data)
-      }).then(
-        (res: { UserDocumentHistory }) => res.UserDocumentHistory.findMany
       ),
     getDocumentListByIds: async data =>
       graphql({

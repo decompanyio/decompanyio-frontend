@@ -1,5 +1,14 @@
 # Release Note
 
+## 2020.06.01-a
+- Add alert : convert failed
+- Apply new Auth Server Endpoint
+- Apply GraphQL to contents_list.tsx, contents_view.tsx
+
+## 2020.05.21-b
+- Add Apollo Client
+- SSR bugs fix
+
 ## 2020.05.21-a
 - node_modules/ally.js/util/platform.js edit
 ```
@@ -24,7 +33,6 @@ var platform = JSON.parse(
   )
 )
 ```
-
 
 ## 2020.05.20-b
 - Add Apollo Client

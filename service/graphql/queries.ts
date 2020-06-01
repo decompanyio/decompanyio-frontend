@@ -11,18 +11,6 @@ export default {
       documentId
     }
   }`,
-  getHistoryFindById: data =>
-    `
-    UserDocumentHistory {
-    findMany(
-    filter: { userId: "${data.userId}"},
-    skip: ${data.skip || 0},
-    limit: 10,
-    sort: USERID__UPDATED_ASC
-    ) {
-      documentId
-    }
-  }`,
   getDocumentListByIds: data =>
     `Document {
     findByIds(_ids: [${data}]) {

@@ -1,4 +1,3 @@
-import commonData from '../common/commonData'
 import repos from './repos'
 import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
@@ -6,19 +5,17 @@ import { APP_CONFIG } from '../app.config'
 import common from '../common/common'
 
 export const AUTH_APIS = {
-  login: (provider?: string, returnUrl?: string) => {
+  login: (returnUrl?: string) => {
     window.location.href = `${
       APP_CONFIG.domain().auth
-    }/authentication/signin/${provider ||
-      commonData.defaultLoginPlatform}?redirectUrl=${
-      APP_CONFIG.domain().mainHost
-    }/callback${returnUrl ? '&returnUrl=' + returnUrl : ''}`
+    }/authentication?redirectUrl=${APP_CONFIG.domain().mainHost}/callback${
+      returnUrl ? '&returnUrl=' + returnUrl : ''
+    }`
   },
-  silentLogin: (email: string, provider?: string) => {
+  silentLogin: () => {
     window.location.href = `${
       APP_CONFIG.domain().auth
-    }/authentication/signin/${provider ||
-      commonData.defaultLoginPlatform}?prompt=none&login_hint=${email}&redirectUrl=${
+    }/authentication?prompt=none&redirectUrl=${
       APP_CONFIG.domain().mainHost
     }/callback&returnUrl=silent`
   },
@@ -180,7 +177,7 @@ export const AUTH_APIS = {
 
       return timeout > 0 ? resolve(at) : _renewSession()
     }),
-  iframeHandler: (provider?: string) =>
+  iframeHandler: () =>
     new Promise((resolve, reject) => {
       const callbackIframeContainer = document.getElementById(
         'callbackIframeContainer'
@@ -188,10 +185,11 @@ export const AUTH_APIS = {
 
       if (!callbackIframeContainer) reject()
 
-      let src = `${APP_CONFIG.domain().auth}/authentication/signin/${provider ||
-        commonData.defaultLoginPlatform}?prompt=none&login_hint=${
-        AUTH_APIS.getMyInfo().email
-      }&redirectUrl=${APP_CONFIG.domain().mainHost}/callback&returnUrl=silent`
+      let src = `${
+        APP_CONFIG.domain().auth
+      }/authentication?prompt=none&redirectUrl=${
+        APP_CONFIG.domain().mainHost
+      }/callback&returnUrl=silent`
 
       let randomNumber = Math.random()
 
