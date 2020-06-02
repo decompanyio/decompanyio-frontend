@@ -121,7 +121,7 @@ export interface ProfileTabProps {
 }
 
 export interface ProfileUploadProps {
-  profileInfo
+  profileInfo: UserInfo
   owner: boolean
 }
 
@@ -255,6 +255,11 @@ export interface QueryDocumentCardInfo {
 
 export interface TrackingExportBtnProps {
   documentData
+}
+
+export interface ProfileContainerProps {
+  identifier: string
+  owner: number
 }
 
 export interface ProfileCardProps {

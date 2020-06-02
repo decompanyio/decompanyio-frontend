@@ -71,12 +71,11 @@ const repos = {
         (result: { user }): UserInfo => new UserInfo(result.user)
       )
     },
-    async getAccountInfo() {
+    async getAccountInfo(at?: string) {
       const data = {
         header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
+          Authorization:
+            at || (await AUTH_APIS.scheduleRenewal().then(res => res))
         }
       }
 
@@ -256,28 +255,6 @@ const repos = {
           else throw new Error(res.message)
         })
         .catch(err => err)
-    },
-    async getDocuments(data) {
-      const params = {
-        header: {
-          Authorization: await AUTH_APIS.scheduleRenewal().then(
-            (res: string) => res
-          )
-        },
-        params: {
-          pageSize: data.pageSize,
-          pageNo: data.pageNo
-        }
-      }
-
-      return DocService.GET.documents(params)
-        .then((result): DocumentList => new DocumentList(result))
-        .catch(
-          (err): DocumentList => {
-            console.log(err)
-            return new DocumentList(null)
-          }
-        )
     },
     async getDocumentList(params: ParamsGetDocumentList) {
       return DocService.GET.documentList(params).then(

@@ -61,7 +61,7 @@ export const AUTH_APIS = {
     return params
   },
   getMyInfo(): UserInfo {
-    if (common.isServer()) return new UserInfo(null)
+    if (!AUTH_APIS.isLogin() && common.isServer()) return new UserInfo(null)
 
     let userInfo = localStorage.getItem('ps_ui')
     let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
@@ -78,9 +78,9 @@ export const AUTH_APIS = {
       if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
       if (ru) localStorage.setItem('ps_ru', ru)
 
-      repos.Account.getUserInfo(at)
+      repos.Account.getAccountInfo(at)
         .then(res => {
-          localStorage.setItem('ps_ui', JSON.stringify(res))
+          localStorage.setItem('ps_ui', JSON.stringify(res.user))
           resolve(res)
         })
         .catch(err => {

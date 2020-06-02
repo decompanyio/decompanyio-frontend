@@ -1,0 +1,52 @@
+query UploadDocumentPaginationOwner ($accountId: String, $page: Int, $perPage: Int){
+    Document {
+        pagination(
+            filter: {
+                isDeleted: false
+                isBlocked: false
+                accountId: $accountId
+            }
+            page: $page
+            perPage: $perPage
+            sort: STATE__CREATED_DESC
+        ) {
+            count
+            items {
+                _id
+                accountId
+                cc
+                created
+                desc
+                dimensions {
+                    _id
+                    height
+                    type
+                    width
+                }
+                documentId
+                documentName
+                documentSize
+                ext
+                forceTracking
+                isBlocked
+                isDeleted
+                isDownload
+                isPublic
+                locale
+                seoTitle
+                state
+                tags
+                title
+                useTracking
+            }
+            pageInfo {
+                currentPage
+                hasNextPage
+                hasPreviousPage
+                itemCount
+                pageCount
+                perPage
+            }
+        }
+    }
+}
