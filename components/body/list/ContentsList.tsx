@@ -19,6 +19,7 @@ import HistoryDocumentPagination from '../../../graphql/queries/HistoryDocumentP
 import ContentsListMock from '../../common/mock/ContentsListMock'
 import ContentsListItem from './ContentsListItem'
 import { AUTH_APIS } from '../../../utils/auth'
+import commonData from '../../../common/commonData'
 
 export default function({ tag, path }: ContentsListProps): ReactElement {
   const { loading, error, data, fetchMore } = useQuery(
@@ -35,7 +36,7 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       variables: {
         tags: tag ? [tag] : null,
         page: 1,
-        perPage: 10,
+        perPage: commonData.commonPageListSize,
         userId: AUTH_APIS.isLogin() ? AUTH_APIS.getMyInfo().id : ''
       },
       notifyOnNetworkStatusChange: false

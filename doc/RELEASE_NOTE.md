@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.06.02-a
+- Apply GraphQL to profile upload tab
+
 ## 2020.06.01-a
 - Add alert : convert failed
 - Apply new Auth Server Endpoint

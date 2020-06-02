@@ -1,0 +1,21 @@
+query UserProfileInfo($username: String) {
+  User {
+    findOne(filter: { username: $username }) {
+      _id
+      created
+      username
+      email
+      picture
+      local
+      nickname
+      family_name
+      croppedArea {
+        width
+        height
+        x
+        y
+        zoom
+      }
+    }
+  }
+}

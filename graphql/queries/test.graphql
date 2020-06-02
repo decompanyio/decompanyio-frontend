@@ -1,28 +1,20 @@
-query LatestDocumentPagination{
-    Document {
-        pagination(
-            filter: {
-                isPublic: true
-                isDeleted: false
-                isBlocked: false
-                state: CONVERT_COMPLETE
-            }
-            page: 1
-            perPage: 10
-            sort: STATE__CREATED_DESC
-        ) {
-            count
-            items {
-                _id
-                accountId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
+query UserProfileInfo {
+    User {
+        findOne(filter: { username: "jay123aaa1" }) {
+            _id
+            created
+            username
+            email
+            picture
+            local
+            nickname
+            family_name
+            croppedArea {
+                width
+                height
+                x
+                y
+                zoom
             }
         }
     }

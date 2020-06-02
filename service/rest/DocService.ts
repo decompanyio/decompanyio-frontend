@@ -7,7 +7,6 @@ let documentDownloadUrl = 'document/download'
 let registerDocumentInfoUrl = 'document/regist'
 let updateDocumentUrl = 'document/update'
 let documentPdfUrl = 'document/pdf'
-let getDocumentsUrl = 'account/documents'
 let getCuratorDocumentsUrl = 'curator/document/list'
 
 export default {
@@ -18,16 +17,6 @@ export default {
           getDocumentUrl + '/' + data,
           'GET',
           null,
-          data => resolve(data),
-          err => reject(err)
-        )
-      }),
-    documents: data =>
-      new Promise((resolve, reject) => {
-        AxiosService._requestGetWithHeader(
-          getDocumentsUrl,
-          'GET',
-          data,
           data => resolve(data),
           err => reject(err)
         )
