@@ -89,20 +89,20 @@ export interface ProfileAnalyticsTabProps {
 }
 
 export interface ProfileAvatarEditProps {
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileCreatorClaimProps {
   documentData: DocumentInfo
   validClaimAmount: number
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileCuratorClaimProps extends ProfileCreatorClaimProps {}
 
 export interface ProfileSummaryProps {
   profileInfo
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileSummaryRewardsProps {
@@ -113,17 +113,17 @@ export interface ProfileSummaryAuthorProps {
   balance
   reward
   profileInfo
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileTabProps {
   profileInfo
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileUploadProps {
   profileInfo: UserInfo
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileUploadTabItemProps {
@@ -132,7 +132,7 @@ export interface ProfileUploadTabItemProps {
   idx: number
   handleUploadSettings: () => void
   viewerOptionOpenedIdx: number
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileUploadOptionProps {
@@ -140,7 +140,7 @@ export interface ProfileUploadOptionProps {
   idx: number
   handleUploadSettings: () => void
   viewerOptionOpenedIdx: number
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileUploadThumbProps {
@@ -163,7 +163,7 @@ export interface ProfileUploadDescProps {
 
 export interface ProfileUploadInfoProps {
   documentData
-  owner: number
+  owner: boolean | number
   convertState: string
 }
 
@@ -174,12 +174,12 @@ export interface ProfilePublishBtnProps {
 
 export interface ProfileVoteTabProps {
   profileInfo
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileVoteTabItemProps {
   documentData
-  owner: number
+  owner: boolean | number
 }
 
 export interface TrackingAuthorProps {
@@ -298,7 +298,7 @@ export interface TrackingExportBtnProps {
 
 export interface ProfileContainerProps {
   identifier: string
-  owner: number
+  owner: boolean | number
 }
 
 export interface ProfileCardProps {
