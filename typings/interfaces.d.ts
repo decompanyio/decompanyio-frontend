@@ -95,7 +95,7 @@ export interface ProfileAvatarEditProps {
 export interface ProfileCreatorClaimProps {
   documentData: DocumentInfo
   validClaimAmount: number
-  owner: boolean | number
+  owner?: boolean | number
 }
 
 export interface ProfileCuratorClaimProps extends ProfileCreatorClaimProps {}

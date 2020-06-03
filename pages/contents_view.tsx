@@ -6,7 +6,6 @@ import Layout from 'components/Layout'
 import DocumentInfo from '../service/model/DocumentInfo'
 import Router from 'next/router'
 import ViewContainer from '../components/body/view/ViewContainer'
-import { withApollo } from '../components/apollo'
 import Meta from '../graphql/models/Meta'
 
 function Index(

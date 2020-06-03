@@ -21,10 +21,9 @@ export default function({
   const [validClaimAmount, setValidClaimAmount] = useState(0)
 
   const getCuratorRewards = () =>
-    repos.Document.getClaimableReward(
-      documentData.documentId,
-      myInfo.id
-    ).then((res): void => setValidClaimAmount(common.deckToDollar(res.reward)))
+    repos.Document.getClaimableReward(documentData.documentId, myInfo.id).then(
+      (res): void => setValidClaimAmount(common.deckToDollar(res.reward))
+    )
 
   const getNDaysRoyalty = () =>
     repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
