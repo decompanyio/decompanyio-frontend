@@ -165,7 +165,9 @@ const repos = {
         data: ui
       }
 
-      return AuthService.POST.syncAuthAndRest(_data).then(result => result)
+      return AuthService.POST.syncAuthAndRest(_data).then(
+        (result: { result }) => result.result
+      )
     }
   },
   Document: {

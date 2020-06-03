@@ -22,13 +22,13 @@ export default function(): ReactElement {
           commonView.setBodyStyleLock()
 
           AUTH_APIS.handleAuthentication(window.location)
-            .then((email: string) =>
+            .then((username: string) =>
               Router.push(
                 {
                   pathname: '/my_page',
-                  query: { identification: email }
+                  query: { identification: username }
                 },
-                '/@' + email
+                '/@' + username
               )
             )
             .catch((err): void => {

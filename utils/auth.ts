@@ -78,9 +78,8 @@ export const AUTH_APIS = {
       if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
       if (ru) localStorage.setItem('ps_ru', ru)
 
-      repos.Account.getAccountInfo(at)
+      repos.Account.getUserInfo(at)
         .then(res => {
-          localStorage.setItem('ps_ui', JSON.stringify(res.user))
           resolve(res)
         })
         .catch(err => {
@@ -121,9 +120,10 @@ export const AUTH_APIS = {
         // console.log('쿼리 token : ', at)
 
         AUTH_APIS.setTokens(at, ea, ru).then((userInfo: UserInfo) =>
-          AUTH_APIS.syncAuthAndRest(userInfo, at).then(() =>
-            resolve(userInfo.email)
-          )
+          AUTH_APIS.syncAuthAndRest(userInfo, at).then((res: UserInfo) => {
+            localStorage.setItem('ps_ui', JSON.stringify(res))
+            resolve(res.username)
+          })
         )
       }
     }),
@@ -131,10 +131,7 @@ export const AUTH_APIS = {
     new Promise(resolve => {
       if (at) {
         repos.Account.syncAuthAndRest(ui, at)
-          .then((res: any) => {
-            localStorage.setItem('user_sync', JSON.stringify(res))
-            resolve()
-          })
+          .then(res => resolve(new UserInfo(res)))
           .catch((): void => {
             console.error('Login failed because user sync failed.')
             AUTH_APIS.logout()
@@ -147,7 +144,7 @@ export const AUTH_APIS = {
   renewSession: (): Promise<string> =>
     new Promise((resolve, reject) => {
       AUTH_APIS.iframeHandler()
-        .then((at: any) => {
+        .then((at: string) => {
           resolve(at)
         })
         .catch(err => {
@@ -166,10 +163,7 @@ export const AUTH_APIS = {
 
       const _renewSession = () =>
         AUTH_APIS.renewSession()
-          .then(at => {
-            // console.log('_renewSession', at)
-            resolve(at)
-          })
+          .then(at => resolve(at))
           .catch(err => {
             console.log(err)
             reject(err)
