@@ -6,12 +6,7 @@ import Category from './category/Category'
 import React, { ReactElement, useEffect } from 'react'
 import HeaderLoadingBar from './HeaderLoadingBar'
 import log from '../../utils/log'
-
-interface HeaderProps {
-  title: string
-  path: string
-  metaData
-}
+import { HeaderProps } from '../../typings/interfaces'
 
 export default function({ title, path, metaData }: HeaderProps): ReactElement {
   useEffect(() => {

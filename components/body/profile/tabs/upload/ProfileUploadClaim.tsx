@@ -7,6 +7,7 @@ import { useMain } from '../../../../../redux/main/hooks'
 
 export default function({
   documentData,
+  owner,
   validClaimAmount
 }: ProfileCreatorClaimProps): ReactElement {
   const { setAlertCode } = useMain()
@@ -38,27 +39,29 @@ export default function({
     }
   }
 
-  if (btnText === '') {
+  if (btnText === '' || !owner || validClaimAmount <= 0) {
     return <div />
   }
 
   return (
-    <div
-      className={
-        styles.pcc_btn +
-        ' ' +
-        (btnText === psString('claim-btn-text-2') ||
+    <div className={styles.puti_claimWrapper}>
+      <div
+        className={
+          styles.pcc_btn +
+          ' ' +
+          (btnText === psString('claim-btn-text-2') ||
+          btnText === psString('claim-btn-text-1')
+            ? styles.pcc_btnDisabled
+            : '')
+        }
+        onClick={(): void => handelClaimBtnClick()}
+      >
+        {btnText}{' '}
+        {btnText === psString('claim-btn-text-2') ||
         btnText === psString('claim-btn-text-1')
-          ? styles.pcc_btnDisabled
-          : '')
-      }
-      onClick={(): void => handelClaimBtnClick()}
-    >
-      {btnText}{' '}
-      {btnText === psString('claim-btn-text-2') ||
-      btnText === psString('claim-btn-text-1')
-        ? ''
-        : '$ ' + validClaimAmount}
+          ? ''
+          : '$ ' + validClaimAmount}
+      </div>
     </div>
   )
 }

@@ -16,7 +16,6 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import UploadDocumentPagination from '../../../../../graphql/queries/UploadDocumentPagination.graphql'
 import UploadDocumentPaginationOwner from '../../../../../graphql/queries/UploadDocumentPaginationOwner.graphql'
-import { ApolloQueryResult } from 'apollo-client'
 
 export default function({
   profileInfo,
@@ -24,7 +23,6 @@ export default function({
 }: ProfileUploadProps): ReactElement {
   const { setAlertCode } = useMain()
   const [viewerOptionOpenedIdx, setViewerOptionOpenedIdx] = useState(-1)
-  const [page, setPage] = useState(1)
 
   // 업로드 탭의 설정창 표시 여부를 관리 합니다.
   const handleSettingVisible = (idx: number): void =>
@@ -83,7 +81,7 @@ export default function({
 
   const dataList = data[Object.keys(data)[0]].pagination
   const { pageInfo, items, count } = dataList
-  const { perPage } = pageInfo
+  const { perPage, currentPage } = pageInfo
 
   if (count === 0) return <NoDataIcon />
 
@@ -93,20 +91,9 @@ export default function({
         page: page,
         perPage
       },
-      updateQuery: (
-        previousResult: documentPagination,
-        { fetchMoreResult }
-      ) => {
-        if (!fetchMoreResult) return previousResult
-
-        return fetchMoreResult[Object.keys(fetchMoreResult)[0]].pagination
-      }
+      updateQuery: (previousResult: documentPagination, { fetchMoreResult }) =>
+        fetchMoreResult || previousResult
     })
-
-  const handlePageBtnClick = (page: number) =>
-    Promise.resolve()
-      .then((): void => setPage(page))
-      .then((): Promise<ApolloQueryResult<any>> => fetchMoreData(page))
 
   return (
     <div className={styles.put_container}>
@@ -118,6 +105,7 @@ export default function({
       {items.map((result, idx) => (
         <ProfileUploadTabItem
           documentData={result}
+          profileInfo={profileInfo}
           idx={idx}
           key={idx}
           owner={owner}
@@ -126,14 +114,12 @@ export default function({
         />
       ))}
 
-      {items.length > 0 && (
-        <Pagination
-          totalCount={count}
-          pageCount={perPage}
-          click={handlePageBtnClick}
-          selectedPage={page}
-        />
-      )}
+      <Pagination
+        totalCount={count}
+        pageCount={perPage}
+        click={fetchMoreData}
+        selectedPage={currentPage}
+      />
     </div>
   )
 }

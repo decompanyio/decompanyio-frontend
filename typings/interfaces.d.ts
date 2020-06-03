@@ -89,19 +89,20 @@ export interface ProfileAnalyticsTabProps {
 }
 
 export interface ProfileAvatarEditProps {
-  owner: boolean
+  owner: number
 }
 
 export interface ProfileCreatorClaimProps {
   documentData: DocumentInfo
   validClaimAmount: number
+  owner: number
 }
 
 export interface ProfileCuratorClaimProps extends ProfileCreatorClaimProps {}
 
 export interface ProfileSummaryProps {
   profileInfo
-  owner: boolean
+  owner: number
 }
 
 export interface ProfileSummaryRewardsProps {
@@ -112,35 +113,73 @@ export interface ProfileSummaryAuthorProps {
   balance
   reward
   profileInfo
-  owner
+  owner: number
 }
 
 export interface ProfileTabProps {
   profileInfo
-  owner: boolean
+  owner: number
 }
 
 export interface ProfileUploadProps {
   profileInfo: UserInfo
-  owner: boolean
+  owner: number
 }
 
 export interface ProfileUploadTabItemProps {
   documentData
+  profileInfo: UserInfo
   idx: number
   handleUploadSettings: () => void
   viewerOptionOpenedIdx: number
-  owner: boolean
+  owner: number
+}
+
+export interface ProfileUploadOptionProps {
+  documentData
+  idx: number
+  handleUploadSettings: () => void
+  viewerOptionOpenedIdx: number
+  owner: number
+}
+
+export interface ProfileUploadThumbProps {
+  documentData
+  convertState: string
+  username: string
+}
+
+export interface ProfileUploadTitleProps {
+  documentData
+  convertState: string
+  username: string
+}
+
+export interface ProfileUploadDescProps {
+  documentData
+  convertState: string
+  username: string
+}
+
+export interface ProfileUploadInfoProps {
+  documentData
+  owner: number
+  convertState: string
+}
+
+export interface ProfilePublishBtnProps {
+  documentData
+  convertState: string
 }
 
 export interface ProfileVoteTabProps {
   profileInfo
-  owner: boolean
+  owner: number
 }
 
 export interface ProfileVoteTabItemProps {
   documentData
-  owner: boolean
+  owner: number
 }
 
 export interface TrackingAuthorProps {

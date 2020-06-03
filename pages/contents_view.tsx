@@ -63,4 +63,4 @@ Index.getInitialProps = async props => {
   }
 }
 
-export default withApollo({ ssr: true })(Index)
+export default Index
