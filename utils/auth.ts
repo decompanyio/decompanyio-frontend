@@ -21,7 +21,9 @@ export const AUTH_APIS = {
   },
   logout: (): void => {
     AUTH_APIS.clearSession()
-    window.location.href = '/'
+    window.location.href = `${
+      APP_CONFIG.domain().auth
+    }/authentication/signout?returnUrl=${APP_CONFIG.domain().mainHost}`
   },
   isAuthenticated: (): boolean => {
     if (common.isServer()) return false
@@ -73,7 +75,7 @@ export const AUTH_APIS = {
   },
   // 계정 관련 token, localstorage 저장
   setTokens: (at: string, ea: number, ru: string) =>
-    new Promise(resolve => {
+    new Promise((resolve, reject) => {
       if (at) localStorage.setItem('ps_at', at)
       if (ea) localStorage.setItem('ps_ea', AUTH_APIS.getExpiredAt(ea))
       if (ru) localStorage.setItem('ps_ru', ru)
@@ -84,6 +86,7 @@ export const AUTH_APIS = {
         })
         .catch(err => {
           console.log(err)
+          reject(err)
         })
     }),
   getTokens: (): GetTokenProps => ({
@@ -120,10 +123,12 @@ export const AUTH_APIS = {
         // console.log('쿼리 token : ', at)
 
         AUTH_APIS.setTokens(at, ea, ru).then((userInfo: UserInfo) =>
-          AUTH_APIS.syncAuthAndRest(userInfo, at).then((res: UserInfo) => {
-            localStorage.setItem('ps_ui', JSON.stringify(res))
-            resolve(res.username)
-          })
+          AUTH_APIS.syncAuthAndRest(userInfo, at)
+            .then((res: UserInfo) => {
+              localStorage.setItem('ps_ui', JSON.stringify(res))
+              resolve(res.username)
+            })
+            .catch(err => reject(err))
         )
       }
     }),

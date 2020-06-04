@@ -1578,10 +1578,8 @@ const strings = new Map([
   [
     'private-doc-modal-desc',
     {
-      KOR:
-        `현재 ${commonData.privateDocumentLimit}개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.`,
-      ENG:
-        `You currently have ${commonData.privateDocumentLimit} private documents. To upload your document later, please change it from Private to Public.`
+      KOR: `현재 ${commonData.privateDocumentLimit}개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.`,
+      ENG: `You currently have ${commonData.privateDocumentLimit} private documents. To upload your document later, please change it from Private to Public.`
     }
   ],
   [

@@ -1,9 +1,14 @@
 # Release Note
 
+## 2020.06.04-a
+Bug fix  
+- Exception handling when login failure related to Google's callback
+- Redirect to Main page when sign out
+
 ## 2020.06.03-a
-- Bug fix  
-login failure
-profile page, pagination failure
+Bug fix  
+- login failure
+- profile page, pagination failure
 
 ## 2020.06.02-a
 - Apply GraphQL to profile upload tab
