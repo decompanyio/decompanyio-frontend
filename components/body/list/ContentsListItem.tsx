@@ -37,6 +37,9 @@ export default function({
       ${ContentsListItemInfo}
     `,
     {
+      context: {
+        clientName: 'query'
+      },
       variables: {
         userId: accountId || '',
         userId_scalar: accountId || '',

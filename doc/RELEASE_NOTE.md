@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.06.08-a
+- Add SNS links with icons
+- Add multiple endpoint Apollo Client
+
 ## 2020.06.04-a
 Bug fix  
 - Exception handling when login failure related to Google's callback

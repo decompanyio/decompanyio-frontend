@@ -2536,8 +2536,9 @@ input[type='radio']:checked + label span i {
 }
 
 .f_snsImgType_1 {
-  @include mr(3);
+  margin-right: 0.5rem;
   cursor: pointer;
+  margin-bottom: 0.2rem;
 }
 
 .f_snsImgType_2 {

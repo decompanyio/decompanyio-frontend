@@ -37,6 +37,9 @@ export default function({
       ${DocumentCardInfo}
     `,
     {
+      context: {
+        clientName: 'query'
+      },
       variables: {
         userId: userId || '',
         documentId_scalar: documentId,
