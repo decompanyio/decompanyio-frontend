@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { psString } from 'utils/localization'
 import { APP_CONFIG } from 'app.config'
 import React, { ReactElement } from 'react'
+import FooterSns from './FooterSns'
 
 export default function(): ReactElement {
   return (
@@ -35,60 +36,9 @@ export default function(): ReactElement {
             <div className={styles.f_navType_3}>{psString('footer-4')}</div>
           </Link>
         </div>
-        <div className={styles.f_sns}>
-          <div className={styles.f_snsWrapper}>
-            <a
-              target="_blank"
-              href={'https://www.facebook.com/polarishare/'}
-              rel="noopener noreferrer nofollow"
-            >
-              <img
-                className={styles.f_snsImgType_1}
-                src={
-                  APP_CONFIG.domain().static + '/image/sns/ic-sns-facebook.svg'
-                }
-                alt="Facebook Page"
-              />
-            </a>
-            <a
-              target="_blank"
-              href={'https://twitter.com/Polarishare'}
-              rel="noopener noreferrer nofollow"
-            >
-              <img
-                className={styles.f_snsImgType_1}
-                src={
-                  APP_CONFIG.domain().static + '/image/sns/ic-sns-twitter.svg'
-                }
-                alt="Twitter Page"
-              />
-            </a>
-            <a
-              target="_blank"
-              href={'https://www.instagram.com/polarishare.io/'}
-              rel="noopener noreferrer nofollow"
-            >
-              <img
-                className={styles.f_snsImgType_1}
-                src={APP_CONFIG.domain().static + '/image/sns/ic-sns-insta.svg'}
-                alt="Instagram Page"
-              />
-            </a>
-            <a
-              target="_blank"
-              href={'https://www.linkedin.com/in/decompany-io-720812178/'}
-              rel="noopener noreferrer nofollow"
-            >
-              <img
-                className={styles.f_snsImgType_2}
-                src={
-                  APP_CONFIG.domain().static + '/image/sns/ic-sns-linkedin.svg'
-                }
-                alt="Linkedin Page"
-              />
-            </a>
-          </div>
-        </div>
+
+        <FooterSns />
+
         <div className={styles.f_copyrightMobile}>
           Copyrightⓒ 2020 POLARIS SHARE
         </div>

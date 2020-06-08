@@ -33,6 +33,9 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       }[path || 'latest']}
     `,
     {
+      context: {
+        clientName: 'query'
+      },
       variables: {
         tags: tag ? [tag] : null,
         page: 1,

@@ -38,6 +38,9 @@ export default function({ path }: DocumentCardListProps): ReactElement {
       }[path]}
     `,
     {
+      context: {
+        clientName: 'query'
+      },
       variables: {
         userId: AUTH_APIS.isLogin() ? AUTH_APIS.getMyInfo().id : ''
       },
