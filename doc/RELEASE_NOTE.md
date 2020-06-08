@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.06.08-b
+Bug fix  
+- Infinite calling in Profile page
+
 ## 2020.06.08-a
 - Add SNS links with icons
 - Add multiple endpoint Apollo Client

@@ -36,7 +36,7 @@ export default function({
   useEffect(() => {
     void getNDaysRoyalty()
     if (owner) void getCreatorRewards()
-  })
+  }, [])
 
   const vote = common.toEther(documentData.latestVoteAmount) || 0
   let view = documentData.latestPageview || 0

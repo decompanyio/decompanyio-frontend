@@ -7,15 +7,13 @@ import fetch from 'isomorphic-unfetch'
 import { APP_CONFIG } from './app.config'
 import { AUTH_APIS } from './utils/auth'
 
-const authLink = setContext(async (_, { headers }) => {
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
-    }
+// return the headers to the context so httpLink can read them
+const authLink = setContext(async (_, { headers }) => ({
+  headers: {
+    ...headers,
+    Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
   }
-})
+}))
 
 const queryLink = new HttpLink({
   uri: APP_CONFIG.domain().graphql + 'api/graphql', // Server URL (must be absolute)

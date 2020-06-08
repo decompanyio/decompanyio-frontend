@@ -19,7 +19,7 @@ export default function(): ReactElement {
           </Link>
         </div>
         <div className={styles.f_legal}>
-          <Link href="/about_us" as="au">
+          <Link href="/about_us" as="/au">
             <div className={styles.f_navType_1}>{psString('footer-1')}</div>
           </Link>
           <Link href="/faq">
@@ -32,7 +32,7 @@ export default function(): ReactElement {
           <Link href="/terms" as="/t">
             <div className={styles.f_navType_1}>{psString('footer-3')}</div>
           </Link>
-          <Link href="/privacy_policy" as="pp">
+          <Link href="/privacy_policy" as="/pp">
             <div className={styles.f_navType_3}>{psString('footer-4')}</div>
           </Link>
         </div>

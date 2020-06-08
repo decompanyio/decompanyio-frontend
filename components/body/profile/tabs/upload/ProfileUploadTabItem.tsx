@@ -44,7 +44,7 @@ export default function({
           })
       }, 5000)
     }
-  })
+  }, [])
 
   return (
     <div className={styles.puti_container}>
