@@ -5,7 +5,6 @@ import commonView from 'common/commonView'
 import { psString } from 'utils/localization'
 import repos from '../../../utils/repos'
 import * as styles from '../../../public/static/styles/main.scss'
-import log from '../../../utils/log'
 import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 
@@ -58,13 +57,10 @@ export default function(): ReactElement {
 
     repos.Wallet.voteDocument(data)
       .then(() => {
-        log.VoteModal.voteDocument()
-
         setLoading(false)
         window.location.reload()
       })
-      .catch((err): void => {
-        log.VoteModal.voteDocument(err)
+      .catch((): void => {
         setLoading(false)
         setAlertCode(2093, {})
       })
@@ -115,8 +111,6 @@ export default function(): ReactElement {
   }
 
   useEffect(() => {
-    log.VoteModal.init()
-
     handleBalance()
     getDocumentVoteAmount()
 

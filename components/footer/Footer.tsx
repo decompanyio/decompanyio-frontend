@@ -11,29 +11,41 @@ export default function(): ReactElement {
       <div className={styles.f_container}>
         <div className={styles.f_logo}>
           <Link href="/">
-            <img
-              className={styles.f_logoImg}
-              src={APP_CONFIG.domain().static + '/image/logo-mono.png'}
-              alt="POLARIS SHARE"
-            />
+            <a>
+              <img
+                className={styles.f_logoImg}
+                src={APP_CONFIG.domain().static + '/image/logo-mono.png'}
+                alt="POLARIS SHARE"
+              />
+            </a>
           </Link>
         </div>
         <div className={styles.f_legal}>
           <Link href="/about_us" as="/au">
-            <div className={styles.f_navType_1}>{psString('footer-1')}</div>
+            <a>
+              <div className={styles.f_navType_1}>{psString('footer-1')}</div>
+            </a>
           </Link>
           <Link href="/faq">
-            <div className={styles.f_navType_1}>FAQ</div>
+            <a>
+              <div className={styles.f_navType_1}>FAQ</div>
+            </a>
           </Link>
           <Link href="/user_guide" as="/ug">
-            <div className={styles.f_navType_2}>{psString('footer-2')}</div>
+            <a>
+              <div className={styles.f_navType_2}>{psString('footer-2')}</div>
+            </a>
           </Link>
           <div className={styles.f_br} />
           <Link href="/terms" as="/t">
-            <div className={styles.f_navType_1}>{psString('footer-3')}</div>
+            <a>
+              <div className={styles.f_navType_1}>{psString('footer-3')}</div>
+            </a>
           </Link>
           <Link href="/privacy_policy" as="/pp">
-            <div className={styles.f_navType_3}>{psString('footer-4')}</div>
+            <a>
+              <div className={styles.f_navType_3}>{psString('footer-4')}</div>
+            </a>
           </Link>
         </div>
 

@@ -6,7 +6,6 @@ import { AUTH_APIS } from '../../../utils/auth'
 import MyAvatar from '../avatar/MyAvatar'
 import Link from 'next/link'
 import repos from '../../../utils/repos'
-import log from '../../../utils/log'
 import WalletBalance from '../../../service/model/WalletBalance'
 import common from '../../../common/common'
 import { ProfileCardProps } from '../../../typings/interfaces'
@@ -22,10 +21,8 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
       .then((res): void => {
         setLoading(false)
         setBalance(res)
-        log.Common.getBalance()
       })
-      .catch((err): void => {
-        log.Common.getBalance(err)
+      .catch((): void => {
         setLoading(false)
         setBalance(new WalletBalance(null))
       })
@@ -40,8 +37,6 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
   }
 
   useEffect(() => {
-    log.ProfileCard.init()
-
     window.addEventListener('click', handleClickEvent)
     void getBalance() // 잔액 조회
 
@@ -88,14 +83,16 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
         {AUTH_APIS.isLogin() ? (
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: identification }
             }}
             as={'/@' + identification}
           >
-            <div className={styles.pc_accountBtn} data-id={identification}>
-              {psString('profile-card-my-page')}
-            </div>
+            <a>
+              <div className={styles.pc_accountBtn} data-id={identification}>
+                {psString('profile-card-my-page')}
+              </div>
+            </a>
           </Link>
         ) : (
           <div

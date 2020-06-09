@@ -51,23 +51,28 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <div className={styles.pcti_thumb}>
-            <img
-              src={common.getThumbnail(
-                documentData.documentId,
-                isMobile ? 640 : 320,
-                1,
-                documentData.documentName
-              )}
-              alt={document.title ? document.title : documentData.documentName}
-              className={styles.pcti_cardImg}
-              onError={e => {
-                let element = e.target as HTMLImageElement
-                element.onerror = null
-                element.src = APP_CONFIG.domain().static + '/image/logo-cut.png'
-              }}
-            />
-          </div>
+          <a>
+            <div className={styles.pcti_thumb}>
+              <img
+                src={common.getThumbnail(
+                  documentData.documentId,
+                  isMobile ? 640 : 320,
+                  1,
+                  documentData.documentName
+                )}
+                alt={
+                  document.title ? document.title : documentData.documentName
+                }
+                className={styles.pcti_cardImg}
+                onError={e => {
+                  let element = e.target as HTMLImageElement
+                  element.onerror = null
+                  element.src =
+                    APP_CONFIG.domain().static + '/image/logo-cut.png'
+                }}
+              />
+            </div>
+          </a>
         </Link>
       </div>
       <div className={styles.pcti_contentWrapper}>
@@ -78,14 +83,16 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <div
-            className={styles.pcti_title}
-            onClick={() => commonView.scrollTop()}
-          >
-            {documentData.title
-              ? documentData.title
-              : documentData.documentName}
-          </div>
+          <a>
+            <div
+              className={styles.pcti_title}
+              onClick={() => commonView.scrollTop()}
+            >
+              {documentData.title
+                ? documentData.title
+                : documentData.documentName}
+            </div>
+          </a>
         </Link>
 
         <div className={styles.pcti_descWrapper}>
@@ -96,11 +103,13 @@ export default function({
             }}
             as={'/@' + identification + '/' + documentData.seoTitle}
           >
-            {documentData.desc && (
-              <Truncate lines={2} ellipsis={<span>...</span>}>
-                {<span className={styles.tdi_text}>{documentData.desc}</span>}
-              </Truncate>
-            )}
+            <a>
+              {documentData.desc && (
+                <Truncate lines={2} ellipsis={<span>...</span>}>
+                  {<span className={styles.tdi_text}>{documentData.desc}</span>}
+                </Truncate>
+              )}
+            </a>
           </Link>
         </div>
 

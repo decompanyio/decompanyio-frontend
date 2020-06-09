@@ -13,7 +13,6 @@ import LatestDocumentCardList from '../../../graphql/queries/LatestDocumentCardL
 import PopularDocumentCardList from '../../../graphql/queries/PopularDocumentCardList.graphql'
 import FeaturedDocumentCardList from '../../../graphql/queries/FeaturedDocumentCardList.graphql'
 import MainListMock from '../../common/mock/MainListMock'
-import log from '../../../utils/log'
 
 const DocumentCardWithoutSSR = dynamic(
   () => import('components/common/card/DocumentCard'),
@@ -49,22 +48,21 @@ export default function({ path }: DocumentCardListProps): ReactElement {
   )
 
   if (loading) return <MainListMock />
-
   if (error || !data) return <div />
 
   const dataList = data[Object.keys(data)[0]].findMany
 
   if (dataList.length === 0) return <div />
 
-  log.DocumentCardList.getDocuments(path)
-
   return (
     <div>
       <div className={styles.ml_subjectWrapper}>
         <Link href={'/contents_list'} as={path}>
-          <div className={styles.ml_subject}>
-            {psString('main-category-' + path)}
-          </div>
+          <a>
+            <div className={styles.ml_subject}>
+              {psString('main-category-' + path)}
+            </div>
+          </a>
         </Link>
         <div className={styles.ml_seeAll}>
           {psString('main-see-all')}

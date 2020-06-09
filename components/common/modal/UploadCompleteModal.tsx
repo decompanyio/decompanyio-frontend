@@ -31,7 +31,7 @@ export default function(): ReactElement {
     void handleClickClose()
     return Router.push(
       {
-        pathname: '/my_page',
+        pathname: '/profile_page',
         query: { identification: identifier }
       },
       '/@' + identifier

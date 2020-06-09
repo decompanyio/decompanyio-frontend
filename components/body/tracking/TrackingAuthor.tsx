@@ -35,19 +35,21 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <div className={styles.ta_tabThumb}>
-            <img
-              src={addr}
-              alt={
-                documentData.title
-                  ? documentData.title
-                  : documentData.documentName
-              }
-              className={
-                styles[ratio >= 1.8 ? 'ta_imgLandscape' : 'ta_imgPortrait']
-              }
-            />
-          </div>
+          <a>
+            <div className={styles.ta_tabThumb}>
+              <img
+                src={addr}
+                alt={
+                  documentData.title
+                    ? documentData.title
+                    : documentData.documentName
+                }
+                className={
+                  styles[ratio >= 1.8 ? 'ta_imgLandscape' : 'ta_imgPortrait']
+                }
+              />
+            </div>
+          </a>
         </Link>
       </div>
 

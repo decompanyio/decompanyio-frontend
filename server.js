@@ -96,7 +96,7 @@ app.prepare().then(() => {
     res.header('X-Robots-Tag', 'noindex')
 
     const params = { identifier: req.url.split('/')[1] }
-    return app.render(req, res, '/my_page', params)
+    return app.render(req, res, '/profile_page', params)
   })
 
   // 뷰어 페이지

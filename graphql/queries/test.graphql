@@ -1,21 +1,7 @@
-query UserProfileInfo {
-    User {
-        findOne(filter: { username: "jay123aaa1" }) {
-            _id
-            created
-            username
-            email
-            picture
-            local
-            nickname
-            family_name
-            croppedArea {
-                width
-                height
-                x
-                y
-                zoom
-            }
+query UploadDocumentConvertState {
+    Document {
+        findById(_id:"1fb0012674b442de9bc4e397f6e8dd62") {
+            state
         }
     }
 }

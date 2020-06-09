@@ -42,29 +42,33 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
         <div className={styles.vib_info_1}>
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: identification }
             }}
             as={'/@' + identification}
           >
-            <div>
-              <UserAvatarWithoutSSR
-                picture={profileUrl}
-                croppedArea={croppedArea}
-                size={isMobile ? 37 : 43}
-              />
-            </div>
+            <a>
+              <div>
+                <UserAvatarWithoutSSR
+                  picture={profileUrl}
+                  croppedArea={croppedArea}
+                  size={isMobile ? 37 : 43}
+                />
+              </div>
+            </a>
           </Link>
 
           <div className={styles.vib_infoIdWrapper}>
             <Link
               href={{
-                pathname: '/my_page',
+                pathname: '/profile_page',
                 query: { identification: identification }
               }}
               as={'/@' + identification}
             >
-              <div className={styles.vib_infoId}>{identification}</div>
+              <a>
+                <div className={styles.vib_infoId}>{identification}</div>
+              </a>
             </Link>
             <div className={styles.vib_date}>
               {common.timestampToDate(documentData.created)}

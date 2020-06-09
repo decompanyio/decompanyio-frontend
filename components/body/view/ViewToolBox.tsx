@@ -120,15 +120,17 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           }}
           as={'/t/@' + identification + '/' + documentData.seoTitle}
         >
-          <p
-            data-tip={psString('tooltip-tracking')}
-            className={styles.vtb_trackingBtn}
-          >
-            <span>
-              <i className="material-icons">bar_chart</i>
-              {psString('tracking-btn')}
-            </span>
-          </p>
+          <a>
+            <p
+              data-tip={psString('tooltip-tracking')}
+              className={styles.vtb_trackingBtn}
+            >
+              <span>
+                <i className="material-icons">bar_chart</i>
+                {psString('tracking-btn')}
+              </span>
+            </p>
+          </a>
         </Link>
       )}
       <div className={styles.common_hr} />

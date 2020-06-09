@@ -19,6 +19,7 @@ const getStayingTime = ({ viewTracking }): string => {
   let nextDt = viewTracking[viewTracking.length - 1].t
   let prevDt = viewTracking[0].t
   let rstTime = common.timestampToDurationJustTime(nextDt - prevDt)
+
   return rstTime === '0s ' ? '' : '( ' + rstTime + ')'
 }
 
@@ -89,23 +90,25 @@ export default function({
                         }}
                         as={'/@' + identification + '/' + documentData.seoTitle}
                       >
-                        <p
-                          className={styles.tdi_innerInfoBtn}
-                          data-html={true}
-                          data-place="right"
-                          data-tip={
-                            "<img src='" +
-                            getImgUrl(_result.n) +
-                            "' alt='thumbnail' className='" +
-                            styles.tdi_tooltipImg +
-                            "' />"
-                          }
-                        >
-                          <span className={styles.tdi_infoBtn}>
-                            {' '}
-                            {_result.n}
-                          </span>
-                        </p>
+                        <a>
+                          <p
+                            className={styles.tdi_innerInfoBtn}
+                            data-html={true}
+                            data-place="right"
+                            data-tip={
+                              "<img src='" +
+                              getImgUrl(_result.n) +
+                              "' alt='thumbnail' className='" +
+                              styles.tdi_tooltipImg +
+                              "' />"
+                            }
+                          >
+                            <span className={styles.tdi_infoBtn}>
+                              {' '}
+                              {_result.n}
+                            </span>
+                          </p>
+                        </a>
                       </Link>
                     </div>
                   )}

@@ -3,7 +3,6 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { ThreeBounce } from 'better-react-spinkit'
 import NoDataIcon from '../../common/NoDataIcon'
 import React, { ReactElement } from 'react'
-import log from 'utils/log'
 import {
   ContentsListProps,
   documentPagination
@@ -45,8 +44,6 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       notifyOnNetworkStatusChange: false
     }
   )
-
-  log.ContentList.init()
 
   if (loading || error || !data) return <ContentsListMock />
 

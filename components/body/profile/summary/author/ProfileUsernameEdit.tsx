@@ -7,6 +7,7 @@ import repos from '../../../../../utils/repos'
 import { psString } from 'utils/localization'
 import common from 'common/common'
 import { useMain } from '../../../../../redux/main/hooks'
+import { AUTH_APIS } from '../../../../../utils/auth'
 
 interface ProfileUsernameEditProps {
   done: (name) => void
@@ -39,6 +40,12 @@ export default function({
     setMyInfo(myInfo)
   }
 
+  const setMyInfoStorage = (name: string): void => {
+    const storageInfo = AUTH_APIS.getMyInfo()
+    storageInfo.username = name
+    AUTH_APIS.setMyInfo(storageInfo)
+  }
+
   const handleEditBtnClick = () => {
     setEditLoading(true)
 
@@ -49,12 +56,13 @@ export default function({
 
     validateUsername(name)
 
-    if (errMsg === '') {
+    if (errMsg === '')
       repos.Account.updateUsername(name)
         .then(() => {
           setAlertCode(2141, {})
           setEditLoading(true)
           setMyInfoInRedux(name)
+          setMyInfoStorage(name)
           window.history.replaceState(
             {},
             name + commonData.commonTitle,
@@ -63,7 +71,6 @@ export default function({
           done(name)
         })
         .catch(err => console.log(err))
-    }
   }
 
   useEffect(() => {

@@ -26,7 +26,7 @@ export default function(): ReactElement {
 
     return Router.push(
       {
-        pathname: '/my_page'
+        pathname: '/profile_page'
       },
       '/@' + username
     )

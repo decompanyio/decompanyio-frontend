@@ -32,6 +32,11 @@ export default function({
 }: DocumentCardApolloProps): ReactElement {
   const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
+
+  useEffect(() => {
+    commonView.lazyLoading()
+  }, [])
+
   const { loading, error, data } = useQuery(
     gql`
       ${DocumentCardInfo}
@@ -96,10 +101,6 @@ export default function({
   )
   let ratio = Number(commonView.getImgInfo(documentInfo))
 
-  useEffect(() => {
-    commonView.lazyLoading()
-  }, [])
-
   return (
     <div className={styles.dc_container}>
       <Link
@@ -109,26 +110,29 @@ export default function({
         }}
         as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
       >
-        <div
-          className={styles.dc_imgWrapper}
-          onClick={(): void => commonView.scrollTop()}
-        >
-          <img
-            src={commonData.dummyImage.gray}
-            data-src={imgUrl_1}
-            data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
-            alt={documentInfo.title}
-            className={
-              'lazy ' + (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
-            }
-            onError={e => {
-              console.log(e)
-              let element = e.target as HTMLImageElement
-              element.onerror = null
-              element.srcset = commonData.dummyImage.gray
-            }}
-          />
-        </div>
+        <a>
+          <div
+            className={styles.dc_imgWrapper}
+            onClick={(): void => commonView.scrollTop()}
+          >
+            <img
+              src={commonData.dummyImage.gray}
+              data-src={imgUrl_1}
+              data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
+              alt={documentInfo.title}
+              className={
+                'lazy ' +
+                (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
+              }
+              onError={e => {
+                console.log(e)
+                let element = e.target as HTMLImageElement
+                element.onerror = null
+                element.srcset = commonData.dummyImage.gray
+              }}
+            />
+          </div>
+        </a>
       </Link>
       <div className={styles.dc_content}>
         <div className={styles.dc_title}>
@@ -139,34 +143,38 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <Truncate lines={2} ellipsis={<span>...</span>}>
-              {documentInfo.title
-                ? documentInfo.title
-                : documentInfo.documentName}
-            </Truncate>
+            <a>
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                {documentInfo.title
+                  ? documentInfo.title
+                  : documentInfo.documentName}
+              </Truncate>
+            </a>
           </Link>
         </div>
 
         <div className={styles.dc_nameWrapper}>
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: documentInfo.author.username }
             }}
             as={`/@${documentInfo.author.username}`}
           >
-            <div className={styles.dc_avatarWrapper}>
-              <div>
-                <UserAvatarWithoutSSR
-                  picture={documentInfo.author.picture}
-                  croppedArea={documentInfo.author.croppedArea}
-                  size={30}
-                />
-                <span className={styles.dc_name}>
-                  {documentInfo.author.username}
-                </span>
+            <a>
+              <div className={styles.dc_avatarWrapper}>
+                <div>
+                  <UserAvatarWithoutSSR
+                    picture={documentInfo.author.picture}
+                    croppedArea={documentInfo.author.croppedArea}
+                    size={30}
+                  />
+                  <span className={styles.dc_name}>
+                    {documentInfo.author.username}
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
           </Link>
 
           {!isMobile && (

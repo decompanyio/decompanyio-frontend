@@ -7,7 +7,6 @@ import commonView from '../common/commonView'
 import ToTopBtn from './common/button/ToTopBtn'
 import repos from '../utils/repos'
 import { AUTH_APIS } from '../utils/auth'
-import log from '../utils/log'
 import LoadingModal from './common/modal/LoadingModal'
 import AlertList from './common/alert/AlertList'
 import ModalList from './common/modal/ModalList'
@@ -89,7 +88,6 @@ export default function(props): ReactElement {
 
         res.privateDocumentCount = result.privateDocumentCount
         setMyInfo(res)
-        log.Layout.setMyInfo()
 
         return Promise.resolve()
       })
@@ -98,10 +96,9 @@ export default function(props): ReactElement {
 
   // SET 태그 리스트
   const setTagListToStore = () =>
-    repos.Document.getTagList('latest')
-      .then(result => setTagList(result.tagList))
-      .catch(err => log.Layout.setTagList(err))
-      .then(() => log.Layout.setTagList(false))
+    repos.Document.getTagList('latest').then(result =>
+      setTagList(result.tagList)
+    )
 
   // TODO 트랙킹 자리비움 백엔드 로직 배포 시, 기능 추
   // 자리비움 시간 SET
@@ -130,7 +127,6 @@ export default function(props): ReactElement {
     if (commonView.getIsMobile() !== isMobileChecker) {
       isMobileChecker = !isMobileChecker
       setIsMobile(commonView.getIsMobile())
-      log.Layout.setIsMobile()
     }
   }
 
@@ -146,21 +142,12 @@ export default function(props): ReactElement {
   // SET 이벤트 리스너
   const handleEventListener = (): void => {
     window.addEventListener('scroll', handleScroll)
-    log.Layout.handleScroll()
-
     window.addEventListener('resize', handleResize)
-    log.Layout.handleResize()
-
     window.addEventListener('keydown', handleKeydown)
-    log.Layout.handleKeydown()
-
     window.addEventListener('mousemove', handleMousemove)
-    log.Layout.handleMousemove()
   }
 
   useEffect(() => {
-    log.Layout.init()
-
     repos.init().then(() => {
       // SET 모바일 유무
       void setTagListToStore()
@@ -177,16 +164,9 @@ export default function(props): ReactElement {
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      log.Layout.handleScrollEnd()
-
       window.removeEventListener('resize', handleResize)
-      log.Layout.handleResizeEnd()
-
       window.removeEventListener('keydown', handleKeydown)
-      log.Layout.handleKeydownEnd()
-
       window.removeEventListener('mousemove', handleMousemove)
-      log.Layout.handleMousemoveEnd()
     }
   }, [])
 

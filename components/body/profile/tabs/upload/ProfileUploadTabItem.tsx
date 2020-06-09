@@ -1,13 +1,15 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 import * as styles from '../../../../../public/static/styles/main.scss'
-import repos from '../../../../../utils/repos'
 import { ProfileUploadTabItemProps } from '../../../../../typings/interfaces'
-import { useMain } from '../../../../../redux/main/hooks'
 import ProfileUploadOption from './ProfileUploadOption'
 import ProfileUploadThumb from './ProfileUploadThumb'
 import ProfileUploadTitle from './ProfileUploadTitle'
 import ProfileUploadInfo from './ProfileUploadInfo'
 import ProfileUploadDesc from './ProfileUploadDesc'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import UploadDocumentConvertState from '../../../../../graphql/queries/UploadDocumentConvertState.graphql'
+import { useMain } from '../../../../../redux/main/hooks'
 
 export default function({
   documentData,
@@ -19,32 +21,41 @@ export default function({
 }: ProfileUploadTabItemProps): ReactElement {
   const { setAlertCode } = useMain()
   const [convertState, setConvertState] = useState(documentData.state)
-
-  useEffect(() => {
-    if (
-      owner &&
-      documentData.state &&
-      documentData.state !== 'CONVERT_COMPLETE'
-    ) {
-      let interval = setInterval(() => {
-        repos.Document.getDocument(documentData.seoTitle)
-          .then(res => {
-            if (res && res.document.state === 'CONVERT_COMPLETE') {
-              clearInterval(interval)
-              setConvertState(res.document.state)
-              setAlertCode(2075, { title: documentData.title })
-            } else if (res && res.document.state === 'CONVERT_FAIL') {
-              clearInterval(interval)
-              setAlertCode(2001, {})
-            }
-          })
-          .catch(() => {
-            clearInterval(interval)
-            setAlertCode(2001, {})
-          })
-      }, 5000)
+  const { loading, error, data, refetch } = useQuery(
+    gql`
+      ${UploadDocumentConvertState}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      variables: {
+        documentId_scalar: documentData.documentId
+      },
+      notifyOnNetworkStatusChange: false,
+      skip:
+        documentData.state === 'CONVERT_COMPLETE' ||
+        documentData.state === 'CONVERT_FAIL'
     }
-  }, [])
+  )
+
+  const _refetch = useCallback(() => {
+    setTimeout(() => refetch(), 0)
+  }, [refetch])
+
+  if (!error && !loading && data) {
+    const stateResult = data[Object.keys(data)[0]].findById.state || ''
+
+    if (stateResult && stateResult === 'CONVERT_COMPLETE')
+      setAlertCode(2075, { title: documentData.title })
+    else if (!stateResult || (stateResult && stateResult === 'CONVERT_FAIL'))
+      setAlertCode(2078, { title: documentData.title })
+
+    if (convertState !== stateResult)
+      setConvertState(stateResult || 'CONVERT_FAIL')
+    if (stateResult !== 'CONVERT_COMPLETE' && stateResult !== 'CONVERT_FAIL')
+      setTimeout(() => _refetch(), 5000)
+  }
 
   return (
     <div className={styles.puti_container}>

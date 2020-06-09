@@ -4,7 +4,6 @@ import { psString } from 'utils/localization'
 import commonView from '../../../common/commonView'
 import repos from 'utils/repos'
 import common from '../../../common/common'
-import log from '../../../utils/log'
 import * as styles from '../../../public/static/styles/main.scss'
 import WalletBalance from '../../../service/model/WalletBalance'
 import { useMain } from '../../../redux/main/hooks'
@@ -24,10 +23,8 @@ export default function(): ReactElement {
       .then((res): void => {
         setBalanceLoading(false)
         setBalance(res)
-        log.Common.getBalance()
       })
-      .catch((err): void => {
-        log.Common.getBalance(err)
+      .catch((): void => {
         setLoading(false)
         setBalance(new WalletBalance(null))
       })
@@ -68,13 +65,11 @@ export default function(): ReactElement {
       toAddress: '0x60D1a46018c84ece3D8fbf39a7aFf9Cde9cA5044'
     })
       .then(() => {
-        log.WithdrawModal.walletWithdraw()
-
         setLoading(false)
         return handleClickClose()
       })
       .catch((err): void => {
-        log.WithdrawModal.walletWithdraw(err)
+        console.log(err)
       })
   }
 
@@ -93,8 +88,6 @@ export default function(): ReactElement {
   }
 
   useEffect(() => {
-    log.WithdrawModal.init()
-
     void getBalance()
     commonView.setBodyStyleLock()
 

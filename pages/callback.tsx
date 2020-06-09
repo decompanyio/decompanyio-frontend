@@ -25,7 +25,7 @@ export default function(): ReactElement {
             .then((username: string) =>
               Router.push(
                 {
-                  pathname: '/my_page',
+                  pathname: '/profile_page',
                   query: { identification: username }
                 },
                 '/@' + username
