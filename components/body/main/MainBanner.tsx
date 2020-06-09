@@ -89,14 +89,15 @@ export default function(): ReactElement {
                       </div>
                     )}
                     <Link href="/faq">
-                      <div className={styles.mc_learnMoreBtn}>
-                        {psString('main-banner-btn-4')}
-                      </div>
+                      <a>
+                        <div className={styles.mc_learnMoreBtn}>
+                          {psString('main-banner-btn-4')}
+                        </div>
+                      </a>
                     </Link>
                   </div>
                 </div>
 
-                {/*<div className={styles['mc_img_' + (idx + 1)]} />*/}
                 <div className={styles.s_first_bg}>
                   <div className={styles.s_first_imageWrapper}>
                     <MainBannerImage idx={idx} />

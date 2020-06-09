@@ -18,11 +18,13 @@ export default function({
           }}
           as={'/@' + username + '/' + documentData.seoTitle}
         >
-          <div className={styles.puti_title}>
-            {documentData.title
-              ? documentData.title
-              : documentData.documentName}
-          </div>
+          <a>
+            <div className={styles.puti_title}>
+              {documentData.title
+                ? documentData.title
+                : documentData.documentName}
+            </div>
+          </a>
         </Link>
       ) : (
         <div className={styles.puti_title}>

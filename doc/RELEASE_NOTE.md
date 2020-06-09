@@ -1,5 +1,14 @@
 # Release Note
 
+## 2020.06.09-a
+- delete log util and code
+- delete some useEffect functions
+- add a tag in link tag 
+
+Bug fix  
+- main page render 
+- edit username
+
 ## 2020.06.08-b
 Bug fix  
 - Infinite calling in Profile page

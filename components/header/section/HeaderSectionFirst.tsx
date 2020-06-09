@@ -11,13 +11,11 @@ import { HeaderSectionFirstProps } from '../../../typings/interfaces'
 const getSubTitle = () => {
   const paths = commonView.getPaths() || []
 
-  if (paths.length === 2 && commonData.pathArr.includes(paths[1])) {
+  if (paths.length === 2 && commonData.pathArr.includes(paths[1]))
     return psString('main-category-' + paths[1])
-  } else if (paths.length === 2 && !commonData.pathArr.includes(paths[1])) {
+  else if (paths.length === 2 && !commonData.pathArr.includes(paths[1]))
     return null
-  } else if (paths.length > 2 && paths[1] === 'tag') {
-    return paths[2]
-  }
+  else if (paths.length > 2 && paths[1] === 'tag') return paths[2]
 }
 
 export default function({ path }: HeaderSectionFirstProps): ReactElement {
@@ -27,7 +25,11 @@ export default function({ path }: HeaderSectionFirstProps): ReactElement {
   return (
     <div className={styles.hst_section_1}>
       <Link href="/">
-        <div className={styles['hst_logo' + (path || isMobile ? 'Cut' : '')]} />
+        <a>
+          <div
+            className={styles['hst_logo' + (path || isMobile ? 'Cut' : '')]}
+          />
+        </a>
       </Link>
       {!isMobile && <div className={styles.hst_subTitle}>{subTitle}</div>}
     </div>

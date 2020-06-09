@@ -1,6 +1,5 @@
 import { ThreeBounce } from 'better-react-spinkit'
 import React, { ReactElement, useEffect, useState } from 'react'
-import log from 'utils/log'
 import { psString } from 'utils/localization'
 import * as styles from '../../../../../public/static/styles/main.scss'
 import NoDataIcon from 'components/common/NoDataIcon'
@@ -16,6 +15,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import UploadDocumentPagination from '../../../../../graphql/queries/UploadDocumentPagination.graphql'
 import UploadDocumentPaginationOwner from '../../../../../graphql/queries/UploadDocumentPaginationOwner.graphql'
+import { APP_CONFIG } from '../../../../../app.config'
 
 export default function({
   profileInfo,
@@ -42,8 +42,6 @@ export default function({
   }
 
   useEffect(() => {
-    log.ProfileUploadTab.init(false)
-
     window.addEventListener('click', handleClickEvent)
 
     return () => {
@@ -66,7 +64,8 @@ export default function({
   )
 
   if (error) {
-    console.error(error)
+    if (APP_CONFIG.debug) console.error(error)
+
     setAlertCode(2001, {})
   }
 

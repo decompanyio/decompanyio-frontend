@@ -56,28 +56,34 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
 
         <div className={styles.mn_contentList}>
           <Link href="/about_us" as="au">
-            <div
-              className={styles.mn_contentItem}
-              onClick={() => setMenuClose()}
-            >
-              {psString('menu-1')}
-            </div>
+            <a>
+              <div
+                className={styles.mn_contentItem}
+                onClick={() => setMenuClose()}
+              >
+                {psString('menu-1')}
+              </div>
+            </a>
           </Link>
           <Link href="/user_guide" as="ug">
-            <div
-              className={styles.mn_contentItem}
-              onClick={() => setMenuClose()}
-            >
-              {psString('menu-2')}
-            </div>
+            <a>
+              <div
+                className={styles.mn_contentItem}
+                onClick={() => setMenuClose()}
+              >
+                {psString('menu-2')}
+              </div>
+            </a>
           </Link>
           <Link href="/faq">
-            <div
-              className={styles.mn_contentItem}
-              onClick={() => setMenuClose()}
-            >
-              FAQ
-            </div>
+            <a>
+              <div
+                className={styles.mn_contentItem}
+                onClick={() => setMenuClose()}
+              >
+                FAQ
+              </div>
+            </a>
           </Link>
           <a
             href="http://www.decompany.io/"

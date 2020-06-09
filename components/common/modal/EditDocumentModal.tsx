@@ -10,7 +10,6 @@ import commonView from '../../../common/commonView'
 import common from '../../../common/common'
 import * as styles from '../../../public/static/styles/main.scss'
 import AutoCompleteRenderInput from '../input/AutoCompleteRenderInput'
-import log from '../../../utils/log'
 import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 
@@ -125,10 +124,7 @@ export default function(): ReactElement {
           '/@' + identification + '/' + result.seoTitle
         )
       })
-      .catch((err): void => {
-        setAlertCode(2092, {})
-        log.EditDocumentModal.updateDocument(err)
-      })
+      .catch(() => setAlertCode(2092, {}))
   }
 
   // 확인 버튼 관리
@@ -189,8 +185,6 @@ export default function(): ReactElement {
   const handleMoreOptions = (): void => setMoreOptions(!moreOptions)
 
   useEffect(() => {
-    log.EditDocumentModal.init()
-
     getCcDetailValue(documentData.cc)
     commonView.setBodyStyleLock()
 

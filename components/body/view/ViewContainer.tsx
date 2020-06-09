@@ -9,7 +9,6 @@ import commonData from '../../../common/commonData'
 import { AUTH_APIS } from '../../../utils/auth'
 import repos from '../../../utils/repos'
 import { APP_CONFIG } from '../../../app.config'
-import log from 'utils/log'
 import { useMain } from '../../../redux/main/hooks'
 import ViewPdfViewer from './ViewPdfViewer'
 import { ViewContainerProps } from '../../../typings/interfaces'
@@ -104,8 +103,6 @@ export default function({
   }
 
   useEffect(() => {
-    log.ViewContainer.init()
-
     const { documentId, totalPages } = documentData
 
     let page =

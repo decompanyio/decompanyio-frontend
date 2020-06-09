@@ -196,26 +196,28 @@ export default function({
                 }}
                 as={'/@' + identification + '/' + result.seoTitle}
               >
-                <div
-                  className={styles.pat_thumb}
-                  onClick={() => commonView.scrollTop()}
-                >
-                  <img
-                    src={common.getThumbnail(
-                      result.documentId,
-                      320,
-                      1,
-                      result.documentName
-                    )}
-                    alt={result.title ? result.title : result.documentName}
-                    onError={e => {
-                      let element = e.target as HTMLImageElement
-                      element.onerror = null
-                      element.src =
-                        APP_CONFIG.domain().static + '/image/logo-cut.png'
-                    }}
-                  />
-                </div>
+                <a>
+                  <div
+                    className={styles.pat_thumb}
+                    onClick={() => commonView.scrollTop()}
+                  >
+                    <img
+                      src={common.getThumbnail(
+                        result.documentId,
+                        320,
+                        1,
+                        result.documentName
+                      )}
+                      alt={result.title ? result.title : result.documentName}
+                      onError={e => {
+                        let element = e.target as HTMLImageElement
+                        element.onerror = null
+                        element.src =
+                          APP_CONFIG.domain().static + '/image/logo-cut.png'
+                      }}
+                    />
+                  </div>
+                </a>
               </Link>
             </div>
 
@@ -227,12 +229,14 @@ export default function({
                 }}
                 as={'/@' + identification + '/' + result.seoTitle}
               >
-                <div
-                  className={styles.pat_title}
-                  onClick={() => commonView.scrollTop()}
-                >
-                  {result.title ? result.title : result.documentName}
-                </div>
+                <a>
+                  <div
+                    className={styles.pat_title}
+                    onClick={() => commonView.scrollTop()}
+                  >
+                    {result.title ? result.title : result.documentName}
+                  </div>
+                </a>
               </Link>
             </div>
 

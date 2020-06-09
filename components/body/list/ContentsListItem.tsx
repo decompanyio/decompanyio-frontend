@@ -62,13 +62,12 @@ export default function({
     UserDocumentFavorite: {}
   }
 
-  if (!loading) {
+  if (!loading)
     _.chain(data)
       .forOwn((v, k) => {
         _data[k] = _.values(v)[0]
       })
       .value()
-  }
 
   const {
     Document,
@@ -149,11 +148,13 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <Truncate lines={2} ellipsis={<span>...</span>}>
-              {documentInfo.title
-                ? documentInfo.title
-                : documentInfo.documentName}
-            </Truncate>
+            <a>
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                {documentInfo.title
+                  ? documentInfo.title
+                  : documentInfo.documentName}
+              </Truncate>
+            </a>
           </Link>
         </div>
         <div className={styles.cl_identification}>
@@ -164,14 +165,16 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}`}
           >
-            <div className={styles.cl_avatar}>
-              <UserAvatarWithoutSSR
-                picture={documentInfo.author.picture}
-                croppedArea={documentInfo.author.croppedArea}
-                size={26}
-              />
-              <div>{documentInfo.author.username}</div>
-            </div>
+            <a>
+              <div className={styles.cl_avatar}>
+                <UserAvatarWithoutSSR
+                  picture={documentInfo.author.picture}
+                  croppedArea={documentInfo.author.croppedArea}
+                  size={26}
+                />
+                <div>{documentInfo.author.username}</div>
+              </div>
+            </a>
           </Link>
           <div className={styles.cl_date}>
             {commonView.dateTimeAgo(documentInfo.created, false)}
@@ -186,13 +189,13 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <div className={styles.cl_desc}>
+            <a>
               {documentInfo.desc && (
                 <Truncate lines={2} ellipsis={<span>...</span>}>
                   {documentInfo.desc}
                 </Truncate>
               )}
-            </div>
+            </a>
           </Link>
         </div>
 

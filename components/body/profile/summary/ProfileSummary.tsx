@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import * as styles from 'public/static/styles/main.scss'
 import repos from '../../../../utils/repos'
-import log from 'utils/log'
 import WalletBalance from '../../../../service/model/WalletBalance'
 import { ProfileSummaryProps } from '../../../../typings/interfaces'
 import ProfileSummaryRewards from './rewards/ProfileSummaryRewards'
@@ -21,14 +20,8 @@ export default function({
 
   const getBalance = () =>
     repos.Wallet.getWalletBalance({ userId: profileInfo.id })
-      .then((res): void => {
-        setBalance(res)
-        log.Common.getBalance()
-      })
-      .catch((err): void => {
-        setBalance(new WalletBalance(null))
-        log.Common.getBalance(err)
-      })
+      .then((res): void => setBalance(res))
+      .catch((): void => setBalance(new WalletBalance(null)))
 
   // 보상금 총액을 계산합니다.
   const getCalculatedReward = (value): number => {
@@ -44,11 +37,9 @@ export default function({
     else return 0
   }
 
-  const getRewards = (): void => {
+  const getRewards = () =>
     repos.Wallet.getProfileRewards(profileInfo.id)
       .then((res): void => {
-        log.Common.getReward()
-
         let last7DaysCreatorReward =
           getCalculatedRoyalty(res.last7CreatorReward) || 0
         let last7DaysCuratorReward =
@@ -65,20 +56,16 @@ export default function({
           todayEstimatedCurator: todayCuratorReward
         })
       })
-      .catch((err): void => {
-        log.Common.getReward(err)
+      .catch((): void =>
         setReward({
           last7Creator: 0,
           last7Curator: 0,
           todayEstimatedCreator: 0,
           todayEstimatedCurator: 0
         })
-      })
-  }
+      )
 
   useEffect(() => {
-    log.ProfileSummary.init()
-
     void getBalance()
     getRewards()
   }, [])

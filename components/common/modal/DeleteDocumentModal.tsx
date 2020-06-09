@@ -6,7 +6,6 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import common from '../../../common/common'
 import Router from 'next/router'
 import * as styles from '../../../public/static/styles/main.scss'
-import log from '../../../utils/log'
 import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 
@@ -54,21 +53,15 @@ export default function(): ReactElement {
       isDeleted: true,
       documentId: documentData.documentId
     })
-      .then((): void => {
-        log.DeleteDocumentModal.updateDocument()
-        setModal('')
-      })
+      .then(() => setModal(''))
       .then((): Promise<boolean> => handleDeleteAfter())
-      .catch((err): void => {
-        log.DeleteDocumentModal.updateDocument(err)
+      .catch((): void => {
         setLoading(false)
         setAlertCode(2003, {})
       })
   }
 
   useEffect(() => {
-    log.DeleteDocumentModal.init()
-
     void commonView.setBodyStyleLock()
     return () => {
       void commonView.setBodyStyleUnlock()

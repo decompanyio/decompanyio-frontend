@@ -2081,6 +2081,9 @@ input[type='radio']:checked + label span i {
   color: #585858;
   letter-spacing: -1px;
   transition: 0.5s all ease-in-out;
+  position: absolute;
+  left: 2.8rem;
+
   @media (max-width: $sm-max-width) {
     font-size: 1rem !important;
     font-weight: 400 !important;
@@ -2099,6 +2102,10 @@ input[type='radio']:checked + label span i {
   @include mt(1);
   align-items: center !important;
   display: flex !important;
+
+  a {
+    width: 100%;
+  }
 }
 
 //======================================
@@ -2892,22 +2899,6 @@ input[type='radio']:checked + label span i {
   background-position: center top;
   background-size: cover;
 }
-
-.mc_img_1 {
-  @extend .mc_imgWrapper;
-  background-image: url($image-url +'/banner/img-banner-01.png');
-}
-
-.mc_img_2 {
-  @extend .mc_imgWrapper;
-  background-image: url($image-url +'/banner/img-banner-02.png');
-}
-
-.mc_img_3 {
-  @extend .mc_imgWrapper;
-  background-image: url($image-url +'/banner/img-banner-03.png');
-}
-
 
 .s_first_bg {
   left: 0;
@@ -3888,6 +3879,11 @@ input[type='radio']:checked + label span i {
       color: #3d5afe !important;
     }
   }
+
+  a {
+    width: 100%;
+    display: block;
+  }
 }
 
 .cl_identification {
@@ -3940,11 +3936,24 @@ input[type='radio']:checked + label span i {
   @media all and (max-width: $sm-max-width) {
     max-height: 58px;
   }
+
+  a {
+    width: 100%;
+    display: block;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+
+    @media all and (max-width: $sm-max-width) {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 .cl_desc {
   cursor: pointer;
-  display: inline-block;
   font-size: 14px;
   font-weight: 300;
   line-height: normal;

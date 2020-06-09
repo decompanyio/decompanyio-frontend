@@ -3,16 +3,11 @@ import Meta from './Meta'
 import HeaderSectionFirst from './section/HeaderSectionFirst'
 import HeaderSectionSecond from './section/HeaderSectionSecond'
 import Category from './category/Category'
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import HeaderLoadingBar from './HeaderLoadingBar'
-import log from '../../utils/log'
 import { HeaderProps } from '../../typings/interfaces'
 
 export default function({ title, path, metaData }: HeaderProps): ReactElement {
-  useEffect(() => {
-    log.Header.init()
-  }, [])
-
   return (
     <header>
       <Meta title={title} metaData={metaData} />

@@ -23,13 +23,15 @@ export default function(): ReactElement {
             </div>
             <div className={styles.au_textAlign}>
               <Link href="/f">
-                <div
-                  className={styles.au_learnMoreBtn}
-                  onClick={() => commonView.scrollTop()}
-                  title="Link to FAQ"
-                >
-                  {psString('main-banner-btn-4')}
-                </div>
+                <a>
+                  <div
+                    className={styles.au_learnMoreBtn}
+                    onClick={() => commonView.scrollTop()}
+                    title="Link to FAQ"
+                  >
+                    {psString('main-banner-btn-4')}
+                  </div>
+                </a>
               </Link>
             </div>
           </div>

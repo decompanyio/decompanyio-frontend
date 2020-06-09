@@ -1,15 +1,10 @@
 import * as styles from 'public/static/styles/main.scss'
 import MainBanner from './MainBanner'
 import commonData from '../../../common/commonData'
-import React, { ReactElement, useEffect } from 'react'
-import log from '../../../utils/log'
+import React, { ReactElement } from 'react'
 import DocumentCardList from './DocumentCardList'
 
 export default function(): ReactElement {
-  useEffect(() => {
-    log.Main.init()
-  })
-
   return (
     <div>
       <MainBanner />

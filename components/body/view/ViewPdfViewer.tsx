@@ -5,7 +5,6 @@ import * as styles from 'public/static/styles/main.scss'
 import repos from '../../../utils/repos'
 import commonData from '../../../common/commonData'
 import common from '../../../common/common'
-import log from 'utils/log'
 import { useMain } from '../../../redux/main/hooks'
 
 interface ViewPdfViewerProps {
@@ -213,7 +212,6 @@ export default function({
   }
 
   useEffect(() => {
-    log.ViewPdfViewer.init()
     ;(async function() {
       const { pdfUrl } = await repos.Document.getDocumentPdfUrl(
         documentData.documentId

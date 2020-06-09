@@ -73,6 +73,9 @@ export const AUTH_APIS = {
     }
     return new UserInfo(userInfoWithJson)
   },
+  setMyInfo(userInfo: UserInfo) {
+    localStorage.setItem('ps_ui', JSON.stringify(userInfo))
+  },
   // 계정 관련 token, localstorage 저장
   setTokens: (at: string, ea: number, ru: string) =>
     new Promise((resolve, reject) => {

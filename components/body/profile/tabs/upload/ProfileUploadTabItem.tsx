@@ -39,10 +39,6 @@ export default function({
     }
   )
 
-  console.log(loading)
-  console.log(error)
-  console.log(data)
-
   const _refetch = useCallback(() => {
     setTimeout(() => refetch(), 0)
   }, [refetch])
@@ -57,13 +53,8 @@ export default function({
 
     if (convertState !== stateResult)
       setConvertState(stateResult || 'CONVERT_FAIL')
-    if (stateResult !== 'CONVERT_COMPLETE' && stateResult !== 'CONVERT_FAIL') {
-      console.log(stateResult)
-      setTimeout(() => {
-        console.log(123)
-        _refetch()
-      }, 5000)
-    }
+    if (stateResult !== 'CONVERT_COMPLETE' && stateResult !== 'CONVERT_FAIL')
+      setTimeout(() => _refetch(), 5000)
   }
 
   return (

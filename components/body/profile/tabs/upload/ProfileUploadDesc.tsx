@@ -19,11 +19,13 @@ export default function({
           }}
           as={'/@' + username + '/' + documentData.seoTitle}
         >
-          <div className={styles.puti_desc}>
-            <Truncate lines={2} ellipsis={<span>...</span>}>
-              {<span className={styles.tdi_text}>{documentData.desc}</span>}
-            </Truncate>
-          </div>
+          <a>
+            <div className={styles.puti_desc}>
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                {<span className={styles.tdi_text}>{documentData.desc}</span>}
+              </Truncate>
+            </div>
+          </a>
         </Link>
       </div>
     )
