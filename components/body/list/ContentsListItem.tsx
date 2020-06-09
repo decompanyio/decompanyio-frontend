@@ -159,7 +159,7 @@ export default function({
         <div className={styles.cl_identification}>
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: documentInfo.author.username }
             }}
             as={`/@${documentInfo.author.username}`}

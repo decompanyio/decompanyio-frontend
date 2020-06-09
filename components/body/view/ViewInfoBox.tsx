@@ -42,7 +42,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
         <div className={styles.vib_info_1}>
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: identification }
             }}
             as={'/@' + identification}
@@ -59,7 +59,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
           <div className={styles.vib_infoIdWrapper}>
             <Link
               href={{
-                pathname: '/my_page',
+                pathname: '/profile_page',
                 query: { identification: identification }
               }}
               as={'/@' + identification}

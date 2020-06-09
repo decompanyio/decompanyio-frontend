@@ -5,6 +5,7 @@ query UploadDocumentPaginationOwner ($accountId: String, $page: Int, $perPage: I
                 isDeleted: false
                 isBlocked: false
                 accountId: $accountId
+                OR: [{state: CONVERT_COMPLETE},{state: NOT_CONVERT},{state: UPLOAD_COMPLETE} ]
             }
             page: $page
             perPage: $perPage

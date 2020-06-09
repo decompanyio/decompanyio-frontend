@@ -2546,8 +2546,6 @@ input[type='radio']:checked + label span i {
 }
 
 .f_snsWrapper {
-  position: absolute;
-  right: 1rem;
   @media (max-width: 850px) {
     right: auto !important;
     position: relative !important;
@@ -6647,7 +6645,9 @@ input[type='radio']:checked + label span i {
     @include mt(2);
   }
   @media (min-width: $sm-min-width) {
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 

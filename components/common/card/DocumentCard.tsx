@@ -150,7 +150,7 @@ export default function({
         <div className={styles.dc_nameWrapper}>
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: documentInfo.author.username }
             }}
             as={`/@${documentInfo.author.username}`}

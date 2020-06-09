@@ -15,7 +15,7 @@ function Index({ identifier }, ...rest): ReactElement {
   return (
     <Layout
       title={identifier + commonData.commonTitle}
-      path="my_page"
+      path="profile_page"
       {...rest}
     >
       <ProfileContainer identifier={identifier} owner={owner} />

@@ -88,7 +88,7 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
         {AUTH_APIS.isLogin() ? (
           <Link
             href={{
-              pathname: '/my_page',
+              pathname: '/profile_page',
               query: { identification: identification }
             }}
             as={'/@' + identification}

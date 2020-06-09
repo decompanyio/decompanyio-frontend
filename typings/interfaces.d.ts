@@ -127,7 +127,7 @@ export interface ProfileUploadProps {
 }
 
 export interface ProfileUploadTabItemProps {
-  documentData
+  documentData: DocumentInfo
   profileInfo: UserInfo
   idx: number
   handleUploadSettings: () => void

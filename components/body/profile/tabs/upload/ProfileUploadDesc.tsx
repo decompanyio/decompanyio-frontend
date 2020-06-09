@@ -9,9 +9,9 @@ export default function({
   convertState,
   username
 }: ProfileUploadDescProps): ReactElement {
-  return (
-    <div className={styles.puti_descWrapper}>
-      {documentData.desc && convertState === 'CONVERT_COMPLETE' ? (
+  if (documentData.desc && convertState === 'CONVERT_COMPLETE')
+    return (
+      <div className={styles.puti_descWrapper}>
         <Link
           href={{
             pathname: '/contents_view',
@@ -25,13 +25,16 @@ export default function({
             </Truncate>
           </div>
         </Link>
-      ) : (
-        <div className={styles.puti_desc}>
-          <Truncate lines={2} ellipsis={<span>...</span>}>
-            {<span className={styles.tdi_text}>{documentData.desc}</span>}
-          </Truncate>
-        </div>
-      )}
+      </div>
+    )
+
+  return (
+    <div className={styles.puti_descWrapper}>
+      <div className={styles.puti_desc}>
+        <Truncate lines={2} ellipsis={<span>...</span>}>
+          {<span className={styles.tdi_text}>{documentData.desc}</span>}
+        </Truncate>
+      </div>
     </div>
   )
 }
