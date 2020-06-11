@@ -89,7 +89,7 @@ export default function(): ReactElement {
             alt="Blog Page"
           />
         </a>
-        <a target="_blank" href={'#'} rel="noopener noreferrer nofollow">
+        <a target="_blank" href="https://www.reddit.com/user/polarishare" rel="noopener noreferrer nofollow">
           <img
             className={styles.f_snsImgType_1}
             src={

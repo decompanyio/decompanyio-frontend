@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.06.11-a
+- add naver varification file
+- add sns link (blog, reddit)
+
 ## 2020.06.09-a
 - delete log util and code
 - delete some useEffect functions
