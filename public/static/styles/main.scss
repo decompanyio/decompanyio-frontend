@@ -2398,21 +2398,26 @@ input[type='radio']:checked + label span i {
   justify-content: center;
   z-index: 1;
   width: 100%;
-  top: 0;
-  left: 0;
   position: relative;
   overflow: hidden;
 }
 
-.c_tagsMenu {
+.c_tagsMenuContainer {
   @include container;
+  width:inherit;
+  height: inherit;
+}
+
+.c_tagsMenu {
   @include d-flex;
   margin: 5px 0;
   width: 100%;
   overflow: auto;
   position: absolute;
   top: 0;
+  left: 0;
   height: 65px;
+  padding: 0 16px;
 
   li {
     list-style: none;
@@ -4994,6 +4999,8 @@ input[type='radio']:checked + label span i {
     position: absolute;
     z-index: 1;
     max-width: 55px;
+    top: calc(50% - 25px);
+    left: calc(50% - 27px);
   }
 }
 
