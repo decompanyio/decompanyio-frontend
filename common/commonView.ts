@@ -236,7 +236,10 @@ export default {
         lazyImageObserver.observe(lazyImage)
       })
     } else {
-      // Possibly fall back to a others compatible method here
+      const script = document.createElement('script')
+      script.src =
+        'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver'
+      document.getElementsByTagName('head')[0].appendChild(script)
     }
   },
 

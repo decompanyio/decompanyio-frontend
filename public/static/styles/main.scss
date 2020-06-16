@@ -2083,6 +2083,7 @@ input[type='radio']:checked + label span i {
   transition: 0.5s all ease-in-out;
   position: absolute;
   left: 2.8rem;
+  top: calc(50% - 12px);
 
   @media (max-width: $sm-max-width) {
     font-size: 1rem !important;
