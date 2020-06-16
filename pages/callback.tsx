@@ -16,27 +16,24 @@ export default function(): ReactElement {
       if (returnUrl && returnUrl === 'silent') {
         // console.log('This page is made for Silent Login.')
       } else {
-        if (AUTH_APIS.isLogin()) Router.push('/')
-        else {
-          // 스크롤 숨김
-          commonView.setBodyStyleLock()
+        // 스크롤 숨김
+        commonView.setBodyStyleLock()
 
-          AUTH_APIS.handleAuthentication(window.location)
-            .then((username: string) =>
-              Router.push(
-                {
-                  pathname: '/profile_page',
-                  query: { identification: username }
-                },
-                '/@' + username
-              )
+        AUTH_APIS.handleAuthentication(window.location)
+          .then((username: string) =>
+            Router.push(
+              {
+                pathname: '/profile_page',
+                query: { identification: username }
+              },
+              '/@' + username
             )
-            .catch((err): void => {
-              console.log('err: ', err)
-              setAlertCode(2004, {})
-              Router.push('/')
-            })
-        }
+          )
+          .catch((err): void => {
+            console.log('err: ', err)
+            setAlertCode(2004, {})
+            Router.push('/')
+          })
       }
     }
 

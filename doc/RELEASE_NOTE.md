@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.06.16-c
+- bug fix 
+
 ## 2020.06.16-b
 - bug fix 
 
