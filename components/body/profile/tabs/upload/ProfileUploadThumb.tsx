@@ -32,7 +32,7 @@ export default function({
           }}
           as={'/@' + username + '/' + documentData.seoTitle}
         >
-          <a>
+          <a rel="nofollow" aria-label={documentData.seoTitle + ' thumb nail'}>
             <div className={styles.puti_thumb}>
               <img
                 src={common.getThumbnail(

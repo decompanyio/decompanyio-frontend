@@ -120,7 +120,7 @@ export default function({ documentData }: ViewToolBoxProps): ReactElement {
           }}
           as={'/t/@' + identification + '/' + documentData.seoTitle}
         >
-          <a>
+          <a rel="nofollow" aria-label="tracking page">
             <p
               data-tip={psString('tooltip-tracking')}
               className={styles.vtb_trackingBtn}

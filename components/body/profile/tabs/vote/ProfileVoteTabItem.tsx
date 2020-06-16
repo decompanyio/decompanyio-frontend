@@ -51,7 +51,7 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <a>
+          <a rel="nofollow" aria-label={documentData.seoTitle + ' thumb nail'}>
             <div className={styles.pcti_thumb}>
               <img
                 src={common.getThumbnail(
@@ -83,7 +83,7 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <a>
+          <a rel="nofollow" aria-label={documentData.title}>
             <div
               className={styles.pcti_title}
               onClick={() => commonView.scrollTop()}
@@ -103,7 +103,7 @@ export default function({
             }}
             as={'/@' + identification + '/' + documentData.seoTitle}
           >
-            <a>
+            <a rel="nofollow" aria-label={documentData.desc}>
               {documentData.desc && (
                 <Truncate lines={2} ellipsis={<span>...</span>}>
                   {<span className={styles.tdi_text}>{documentData.desc}</span>}

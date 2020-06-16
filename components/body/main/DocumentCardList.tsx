@@ -58,7 +58,7 @@ export default function({ path }: DocumentCardListProps): ReactElement {
     <div>
       <div className={styles.ml_subjectWrapper}>
         <Link href={'/contents_list'} as={path}>
-          <a>
+          <a aria-label={psString('main-category-' + path)}>
             <div className={styles.ml_subject}>
               {psString('main-category-' + path)}
             </div>

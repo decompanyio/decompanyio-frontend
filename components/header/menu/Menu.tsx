@@ -56,7 +56,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
 
         <div className={styles.mn_contentList}>
           <Link href="/about_us" as="au">
-            <a>
+            <a rel="nofollow" aria-label="About Us">
               <div
                 className={styles.mn_contentItem}
                 onClick={() => setMenuClose()}
@@ -66,7 +66,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
             </a>
           </Link>
           <Link href="/user_guide" as="ug">
-            <a>
+            <a rel="nofollow" aria-label="User Guide">
               <div
                 className={styles.mn_contentItem}
                 onClick={() => setMenuClose()}
@@ -76,7 +76,7 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
             </a>
           </Link>
           <Link href="/faq">
-            <a>
+            <a rel="nofollow" aria-label="FAQ">
               <div
                 className={styles.mn_contentItem}
                 onClick={() => setMenuClose()}
@@ -89,15 +89,9 @@ export default function({ setMenuClose }: MenuProps): ReactElement {
             href="http://www.decompany.io/"
             target="_blank"
             rel="noopener noreferrer nofollow"
+            aria-label="Decompany.io"
           >
             <div className={styles.mn_contentItem}>{psString('menu-5')}</div>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/decompany-io-720812178/"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-          >
-            <div className={styles.mn_contentItemSub}>{psString('menu-3')}</div>
           </a>
           <div className={styles.mn_contentItemSub}>{psString('menu-4')}</div>
           <div

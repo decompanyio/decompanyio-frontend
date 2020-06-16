@@ -49,6 +49,7 @@ module.exports = withPlugins(
     },
     cssModules: true,
     sassLoaderOptions: {
+      prependData: '$env: ' + process.env.NODE_ENV + ';',
       sourceMap: true
     },
     cssLoaderOptions: {

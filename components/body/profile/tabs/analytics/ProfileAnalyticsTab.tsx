@@ -196,7 +196,7 @@ export default function({
                 }}
                 as={'/@' + identification + '/' + result.seoTitle}
               >
-                <a>
+                <a rel="nofollow" aria-label={result.seoTitle + ' thumb nail'}>
                   <div
                     className={styles.pat_thumb}
                     onClick={() => commonView.scrollTop()}
@@ -229,7 +229,10 @@ export default function({
                 }}
                 as={'/@' + identification + '/' + result.seoTitle}
               >
-                <a>
+                <a
+                  rel="nofollow"
+                  aria-label={result.title ? result.title : result.documentName}
+                >
                   <div
                     className={styles.pat_title}
                     onClick={() => commonView.scrollTop()}

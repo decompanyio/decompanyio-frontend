@@ -18,7 +18,14 @@ export default function({
           }}
           as={'/@' + username + '/' + documentData.seoTitle}
         >
-          <a>
+          <a
+            rel="nofollow"
+            aria-label={
+              documentData.title
+                ? documentData.title
+                : documentData.documentName
+            }
+          >
             <div className={styles.puti_title}>
               {documentData.title
                 ? documentData.title

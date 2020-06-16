@@ -7,6 +7,7 @@ export default function(): ReactElement {
     <div className={styles.f_sns}>
       <div className={styles.f_snsWrapper}>
         <a
+          aria-label="Facebook"
           target="_blank"
           href={'https://www.facebook.com/polarishare/'}
           rel="noopener noreferrer nofollow"
@@ -24,6 +25,7 @@ export default function(): ReactElement {
           target="_blank"
           href={'https://twitter.com/Polarishare'}
           rel="noopener noreferrer nofollow"
+          aria-label="Twitter"
         >
           <img
             className={styles.f_snsImgType_1}
@@ -38,6 +40,7 @@ export default function(): ReactElement {
           target="_blank"
           href={'https://open.kakao.com/tm/sent/g8JceZec'}
           rel="noopener noreferrer nofollow"
+          aria-label="Kakaotalk"
         >
           <img
             className={styles.f_snsImgType_1}
@@ -52,6 +55,7 @@ export default function(): ReactElement {
           target="_blank"
           href={'https://t.me/polarishare'}
           rel="noopener noreferrer nofollow"
+          aria-label="Telegram"
         >
           <img
             className={styles.f_snsImgType_1}
@@ -66,6 +70,7 @@ export default function(): ReactElement {
           target="_blank"
           href={'https://medium.com/@polarishare'}
           rel="noopener noreferrer nofollow"
+          aria-label="Medium"
         >
           <img
             className={styles.f_snsImgType_1}
@@ -80,6 +85,7 @@ export default function(): ReactElement {
           target="_blank"
           href={'https://blog.naver.com/polarishare'}
           rel="noopener noreferrer nofollow"
+          aria-label="Blog"
         >
           <img
             className={styles.f_snsImgType_1}
@@ -89,7 +95,12 @@ export default function(): ReactElement {
             alt="Blog Page"
           />
         </a>
-        <a target="_blank" href="https://www.reddit.com/user/polarishare" rel="noopener noreferrer nofollow">
+        <a
+          target="_blank"
+          href="https://www.reddit.com/user/polarishare"
+          rel="noopener noreferrer nofollow"
+          aria-label="Reddit"
+        >
           <img
             className={styles.f_snsImgType_1}
             src={

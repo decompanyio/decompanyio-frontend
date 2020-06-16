@@ -110,7 +110,7 @@ export default function({
         }}
         as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
       >
-        <a>
+        <a aria-label="viewer page">
           <div
             className={styles.dc_imgWrapper}
             onClick={(): void => commonView.scrollTop()}
@@ -118,7 +118,8 @@ export default function({
             <img
               src={commonData.dummyImage.gray}
               data-src={imgUrl_1}
-              data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
+              data-srcset={imgUrl_1 + ' 320w, ' + imgUrl_2 + ' 640w'}
+              sizes="320w"
               alt={documentInfo.title}
               className={
                 'lazy ' +
@@ -143,7 +144,7 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <a>
+            <a aria-label="viewer page">
               <Truncate lines={2} ellipsis={<span>...</span>}>
                 {documentInfo.title
                   ? documentInfo.title
@@ -161,7 +162,7 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}`}
           >
-            <a>
+            <a rel="nofollow" aria-label="profile page">
               <div className={styles.dc_avatarWrapper}>
                 <div>
                   <UserAvatarWithoutSSR

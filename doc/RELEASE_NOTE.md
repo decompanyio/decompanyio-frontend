@@ -1,5 +1,10 @@
 # Release Note
 
+## 2020.06.16-a
+- add 512 size icon
+- add maskable icon
+- add aria-label
+
 ## 2020.06.11-a
 - add naver verification file
 - add sns link (blog, reddit)
@@ -44,7 +49,7 @@ Bug fix
 - SSR bugs fix
 
 ## 2020.05.21-a
-- node_modules/ally.js/util/platform.js edit
+- node_modules/ally.js/util/platform.js edit  (Next js bug)
 ```
 // deep clone of original platform
 var platform = JSON.parse(

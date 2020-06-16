@@ -35,7 +35,14 @@ export default function({
           }}
           as={'/@' + identification + '/' + documentData.seoTitle}
         >
-          <a>
+          <a
+            rel="nofollow"
+            aria-label={
+              documentData.title
+                ? documentData.title
+                : documentData.documentName
+            }
+          >
             <div className={styles.ta_tabThumb}>
               <img
                 src={addr}
@@ -56,7 +63,9 @@ export default function({
       <div className={styles.ta_detailInfoWrapper}>
         <dl className={styles.ta_detailInfo}>
           <Link href={'/@' + identification + '/' + documentData.seoTitle}>
-            <a className={styles.ta_infoTitle}>{documentData.title}</a>
+            <a className={styles.ta_infoTitle} aria-label={documentData.title}>
+              {documentData.title}
+            </a>
           </Link>
 
           <div className={styles.ta_item}>

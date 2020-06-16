@@ -25,7 +25,7 @@ export default function({ path }: HeaderSectionFirstProps): ReactElement {
   return (
     <div className={styles.hst_section_1}>
       <Link href="/">
-        <a>
+        <a aria-label="Main">
           <div
             className={styles['hst_logo' + (path || isMobile ? 'Cut' : '')]}
           />

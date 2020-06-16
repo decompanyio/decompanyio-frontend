@@ -178,6 +178,7 @@ export default function(): ReactElement {
               target="_blank"
               href={'/legal/policy.html'}
               rel="noopener noreferrer"
+              aria-label="policy page"
             >
               {psString('email-modal-explain-3')}
             </a>

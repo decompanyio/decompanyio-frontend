@@ -19,7 +19,7 @@ export default function({
           }}
           as={'/@' + username + '/' + documentData.seoTitle}
         >
-          <a>
+          <a rel="nofollow" aria-label={styles.puti_desc}>
             <div className={styles.puti_desc}>
               <Truncate lines={2} ellipsis={<span>...</span>}>
                 {<span className={styles.tdi_text}>{documentData.desc}</span>}

@@ -15,7 +15,7 @@ export default function({ identification }: MenuAvatarProps): ReactElement {
       }}
       as={'/@' + identification}
     >
-      <a className={styles.ma_avatarWrapper}>
+      <a className={styles.ma_avatarWrapper}  aria-label="Profile page">
         {myInfo.picture.length > 0 ? (
           <img
             src={myInfo.picture}

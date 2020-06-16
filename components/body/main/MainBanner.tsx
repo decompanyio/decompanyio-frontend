@@ -89,7 +89,7 @@ export default function(): ReactElement {
                       </div>
                     )}
                     <Link href="/faq">
-                      <a>
+                      <a rel="nofollow" aria-label="faq">
                         <div className={styles.mc_learnMoreBtn}>
                           {psString('main-banner-btn-4')}
                         </div>

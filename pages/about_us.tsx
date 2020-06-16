@@ -23,7 +23,7 @@ export default function(): ReactElement {
             </div>
             <div className={styles.au_textAlign}>
               <Link href="/f">
-                <a>
+                <a rel="nofollow" aria-label="FAQ">
                   <div
                     className={styles.au_learnMoreBtn}
                     onClick={() => commonView.scrollTop()}
@@ -139,6 +139,7 @@ export default function(): ReactElement {
                     href="https://www.linkedin.com/in/dalsam/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Linkedin"
                   >
                     <img
                       src={
@@ -177,6 +178,7 @@ export default function(): ReactElement {
                     href="https://www.linkedin.com/in/eddie-kwak/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Linkedin"
                   >
                     <img
                       src={
@@ -215,6 +217,7 @@ export default function(): ReactElement {
                     href="https://www.linkedin.com/in/chris-lee-sw/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Linkedin"
                   >
                     <img
                       src={
@@ -250,6 +253,7 @@ export default function(): ReactElement {
                     href="https://www.linkedin.com/in/richard-yoon"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Linkedin"
                   >
                     <img
                       src={

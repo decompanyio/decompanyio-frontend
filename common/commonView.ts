@@ -20,30 +20,21 @@ export default {
       psString('common-ago')
 
     if (y > 0) {
-      return (
-        y + ' ' + (isMobile ? 'y' : psString('common-year')) + checkMultiple(y)
-      )
+      return y + (isMobile ? 'y' : psString('common-year')) + checkMultiple(y)
     } else {
       if (m > 0) {
         return (
-          m +
-          ' ' +
-          (isMobile ? 'm' : psString('common-month')) +
-          checkMultiple(m)
+          m + (isMobile ? 'm' : psString('common-month')) + checkMultiple(m)
         )
       } else {
         if (d > 0) {
           return (
-            d +
-            ' ' +
-            (isMobile ? 'd' : psString('common-day')) +
-            checkMultiple(d)
+            d + (isMobile ? 'd' : psString('common-day')) + checkMultiple(d)
           )
         } else {
           if (hh > 0) {
             return (
               hh +
-              ' ' +
               (isMobile ? 'h' : psString('common-hour')) +
               checkMultiple(hh)
             )
@@ -51,7 +42,6 @@ export default {
             if (mm > 0) {
               return (
                 mm +
-                ' ' +
                 (isMobile ? 'm' : psString('common-minute')) +
                 checkMultiple(mm)
               )
@@ -59,7 +49,6 @@ export default {
               if (ss > 0) {
                 return (
                   ss +
-                  ' ' +
                   (isMobile ? 's' : psString('common-second')) +
                   checkMultiple(ss)
                 )

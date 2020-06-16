@@ -348,7 +348,12 @@ export default function(): ReactElement {
           <br />
           ▶ Data Protection Officer (DPO):
           <br />- Email address:{' '}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a
+            href="mailto: connect@decompany.io"
+            aria-label="connect@decompany.io"
+          >
+            connect@decompany.io
+          </a>
           <br />
           Please do not hesitate to contact us should you have any concerns or
           questions regarding privacy issues. The Company will endeavor to
@@ -393,9 +398,19 @@ export default function(): ReactElement {
           websites:
           <br />
           <br />
-          <a href="https://www.decompany.io">https://www.decompany.io</a>
+          <a
+            href="https://www.decompany.io"
+            aria-label="https://www.decompany.io"
+          >
+            https://www.decompany.io
+          </a>
           <br />
-          <a href="https://www.polarishare.com">https://www.polarishare.com</a>
+          <a
+            href="https://www.polarishare.com"
+            aria-label="https://www.polarishare.com"
+          >
+            https://www.polarishare.com
+          </a>
           <br />
           <br />
           Polaris Share provides a link to this privacy statement on all pages
@@ -503,8 +518,13 @@ export default function(): ReactElement {
           their Polaris Share account, to have their private information
           returned to them please email, have questions, or need help should
           contact Polaris Share by sending an email to
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>,
-          Should you decline to receive mail or email from Polaris Share that
+          <a
+            href="mailto: connect@decompany.io"
+            aria-label="connect@decompany.io"
+          >
+            connect@decompany.io
+          </a>
+          , Should you decline to receive mail or email from Polaris Share that
           does not relate directly to your access to or use of Polaris Share
           permission-based services, please visit our
           <a href="privacy_policy">unsubscribe page</a> and fill out the form.

@@ -18,7 +18,7 @@ export default function(): ReactElement {
       <ul className={styles.c_tagsMenu}>
         <li>
           <Link href="/">
-            <a>home</a>
+            <a aria-label="Main">home</a>
           </Link>
         </li>
 
@@ -28,14 +28,14 @@ export default function(): ReactElement {
               href={{ pathname: '/contents_list', query: { tag: arr } }}
               as={'tag/' + arr}
             >
-              <a>{arr}</a>
+              <a aria-label={arr}>{arr}</a>
             </Link>
           </li>
         ))}
 
         <li>
           <Link href="/others">
-            <a>others</a>
+            <a aria-label="others">others</a>
           </Link>
         </li>
       </ul>

@@ -39,7 +39,7 @@ export default function({ documentData }: ViewDescBoxProps): ReactElement {
                 as={'tag/' + tag}
                 key={index}
               >
-                <a className={styles.vdb_tag} key={index}>
+                <a className={styles.vdb_tag} key={index} aria-label={tag}>
                   {tag}
                 </a>
               </Link>
@@ -106,6 +106,7 @@ export default function({ documentData }: ViewDescBoxProps): ReactElement {
               className={styles.vdb_ccWrapper}
               href="http://creativecommons.org/licenses/by-nc-nd/2.0/kr/"
               target="_blank"
+              aria-label={documentData.cc}
               rel="license noopener noreferrer"
             >
               <img

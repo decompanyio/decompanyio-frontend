@@ -90,7 +90,10 @@ export default function({
                         }}
                         as={'/@' + identification + '/' + documentData.seoTitle}
                       >
-                        <a>
+                        <a
+                          rel="nofollow"
+                          aria-label={documentData.seoTitle + ' thumb nail'}
+                        >
                           <p
                             className={styles.tdi_innerInfoBtn}
                             data-html={true}

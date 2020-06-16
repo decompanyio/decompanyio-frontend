@@ -13,7 +13,9 @@ export default function({ tagList }: OthersProps): ReactElement {
           tagList.sort().map(
             (result, idx): ReactElement => (
               <Link href="/contents_list" as={'/tag/' + result._id} key={idx}>
-                <a className={styles.more_item}># {result._id}</a>
+                <a className={styles.more_item} aria-label={result._id}>
+                  # {result._id}
+                </a>
               </Link>
             )
           )}

@@ -2,7 +2,7 @@
 //              SCSS CONFIG
 // =====================================
 
-$env: 'development' !default;
+$env: 'production' !default;
 
 /*URL SET*/
 $image-url: 'https://res.share.decompany.io/static/image' !default;
@@ -2458,6 +2458,20 @@ input[type='radio']:checked + label span i {
   }
 }
 
+.l_skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $primary-color;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+
+  &:focus {
+    top: 0;
+  }
+}
+
 //======================================
 //             FOOTER CSS
 // =====================================
@@ -2539,6 +2553,7 @@ input[type='radio']:checked + label span i {
     max-width: 100%;
     flex: 0 0 100%;
     margin-top: 1rem;
+    padding: 0;
   }
 }
 
@@ -3016,24 +3031,29 @@ input[type='radio']:checked + label span i {
   @include d-flex;
   align-items: center;
   font-size: 16px;
-  height: 45px;
   font-weight: bold;
+  height: 45px;
   line-height: 1.38;
   letter-spacing: -0.2px;
   color: #4d4d4d !important;
 
-  span > span {
-    width: 100%;
-    cursor: pointer;
-  }
-
-  span > span:hover {
-    color: $second-color;
-  }
-
   @media (max-width: $sm-max-width) {
     min-height: auto !important;
     margin-bottom: 10px;
+  }
+
+  span > span {
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      color: $second-color;
+    }
+  }
+
+  a {
+    width: 100%;
+    display: block;
   }
 }
 
@@ -7150,6 +7170,7 @@ input[type='radio']:checked + label span i {
   min-height: 44px;
   padding: 10px 0;
   border-bottom: 1px solid #a3d2f9;
+  z-index: 0;
 }
 
 .cpn_container {
@@ -7165,7 +7186,7 @@ input[type='radio']:checked + label span i {
   letter-spacing: -0.2px;
   color: #2173b9;
   display: inline-block;
-  padding-right: 50px;
+  padding-right: 90px;
 
   @media all and (max-width: $sm-max-width) {
     padding-right: 0 !important;
@@ -7222,6 +7243,7 @@ input[type='radio']:checked + label span i {
   min-height: 44px;
   padding: 10px 0;
   border-bottom: 1px solid #f2dc9d;
+  z-index: 0;
 }
 
 .dpn_container {

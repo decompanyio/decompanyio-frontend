@@ -36,7 +36,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
 
   return (
     <div className={styles.vib_container}>
-      <div className={styles.vib_title}>{documentData.title}</div>
+      <h1 className={styles.vib_title}>{documentData.title}</h1>
 
       <div className={styles.vib_infoContainer}>
         <div className={styles.vib_info_1}>
@@ -47,7 +47,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
             }}
             as={'/@' + identification}
           >
-            <a>
+            <a rel="nofollow" aria-label="profile page">
               <div>
                 <UserAvatarWithoutSSR
                   picture={profileUrl}
@@ -66,7 +66,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
               }}
               as={'/@' + identification}
             >
-              <a>
+              <a rel="nofollow" aria-label="profile page">
                 <div className={styles.vib_infoId}>{identification}</div>
               </a>
             </Link>

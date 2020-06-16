@@ -120,7 +120,10 @@ export default function({
           }}
           as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
         >
-          <a className={styles.cl_imageWrapper}>
+          <a
+            className={styles.cl_imageWrapper}
+            aria-label={documentInfo.seoTitle + ' thumb nail'}
+          >
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
               data-src={imgUrl_1}
@@ -148,7 +151,7 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <a>
+            <a aria-label={documentInfo.title}>
               <Truncate lines={2} ellipsis={<span>...</span>}>
                 {documentInfo.title
                   ? documentInfo.title
@@ -165,7 +168,7 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}`}
           >
-            <a>
+            <a rel="nofollow" aria-label={documentInfo.author.username}>
               <div className={styles.cl_avatar}>
                 <UserAvatarWithoutSSR
                   picture={documentInfo.author.picture}
@@ -189,7 +192,7 @@ export default function({
             }}
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
-            <a>
+            <a aria-label={documentInfo.desc}>
               {documentInfo.desc && (
                 <Truncate lines={2} ellipsis={<span>...</span>}>
                   {documentInfo.desc}

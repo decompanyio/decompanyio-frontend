@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from 'react'
 import commonView from '../../../common/commonView'
+import { APP_CONFIG } from '../../../app.config'
 
 export default function({ idx }): ReactElement {
   useEffect(() => {
@@ -10,7 +11,8 @@ export default function({ idx }): ReactElement {
     <img
       src={'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'}
       data-src={
-        'https://res.share.decompany.io/static/image/banner/img-banner-0' +
+        APP_CONFIG.domain().static +
+        '/image/banner/img-banner-0' +
         (idx + 1) +
         '.png'
       }

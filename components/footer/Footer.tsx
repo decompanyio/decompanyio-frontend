@@ -11,7 +11,7 @@ export default function(): ReactElement {
       <div className={styles.f_container}>
         <div className={styles.f_logo}>
           <Link href="/">
-            <a>
+            <a rel="nofollow" aria-label="Main Logo">
               <img
                 className={styles.f_logoImg}
                 src={APP_CONFIG.domain().static + '/image/logo-mono.png'}
@@ -22,28 +22,28 @@ export default function(): ReactElement {
         </div>
         <div className={styles.f_legal}>
           <Link href="/about_us" as="/au">
-            <a>
+            <a rel="nofollow" aria-label="About Us">
               <div className={styles.f_navType_1}>{psString('footer-1')}</div>
             </a>
           </Link>
           <Link href="/faq">
-            <a>
+            <a rel="nofollow" aria-label="FAQ">
               <div className={styles.f_navType_1}>FAQ</div>
             </a>
           </Link>
           <Link href="/user_guide" as="/ug">
-            <a>
+            <a rel="nofollow" aria-label="User Guide">
               <div className={styles.f_navType_2}>{psString('footer-2')}</div>
             </a>
           </Link>
           <div className={styles.f_br} />
           <Link href="/terms" as="/t">
-            <a>
+            <a rel="nofollow" aria-label="Terms">
               <div className={styles.f_navType_1}>{psString('footer-3')}</div>
             </a>
           </Link>
           <Link href="/privacy_policy" as="/pp">
-            <a>
+            <a rel="nofollow" aria-label="Privacy Policy">
               <div className={styles.f_navType_3}>{psString('footer-4')}</div>
             </a>
           </Link>

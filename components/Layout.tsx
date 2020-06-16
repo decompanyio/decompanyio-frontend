@@ -172,6 +172,10 @@ export default function(props): ReactElement {
 
   return (
     <div>
+      <a className={styles.l_skipLink} href="#main">
+        Skip to main
+      </a>
+
       <Header
         title={props.title}
         path={path}
@@ -183,9 +187,9 @@ export default function(props): ReactElement {
       <DollarPolicyNotice />
 
       {common.isServer() || init ? (
-        <article className={styles.l_articleContainer}>
+        <main className={styles.l_articleContainer} id="main">
           {props.children}
-        </article>
+        </main>
       ) : (
         <LoadingModal />
       )}

@@ -88,7 +88,7 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
             }}
             as={'/@' + identification}
           >
-            <a>
+            <a rel="nofollow" aria-label="profile page">
               <div className={styles.pc_accountBtn} data-id={identification}>
                 {psString('profile-card-my-page')}
               </div>
