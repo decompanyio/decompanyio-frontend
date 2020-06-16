@@ -222,6 +222,12 @@
     border: 0
 }
 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .carousel .slide img {
+        margin-left: 0;
+    }
+}
+
 .carousel .slide iframe {
     display: inline-block;
     width: calc(100% - 80px);
