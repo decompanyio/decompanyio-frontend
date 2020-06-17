@@ -51,7 +51,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "./",
+  "start_url": "https://polarishare.com",
   "display": "standalone",
   "theme_color": "#3d5afe",
   "background_color": "#3d5afe",
