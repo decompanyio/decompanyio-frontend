@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import UserProfileInfo from '../../../graphql/queries/UserProfileInfo.graphql'
 import UserInfo from '../../../service/model/UserInfo'
+import NotFoundPage from '../../common/page/NotFoundPage'
 
 export default function({
   identifier,
@@ -26,6 +27,8 @@ export default function({
   if (loading || error || !data) return <div />
 
   const profileInfo = new UserInfo(data[Object.keys(data)[0]].findOne)
+
+  if (!profileInfo.email) return <NotFoundPage />
 
   return (
     <div>
