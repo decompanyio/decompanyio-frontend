@@ -1,12 +1,10 @@
 # Release Note
 
+## 2020.06.17-a
+- add vote amount to clamable reward
+
 ## 2020.06.16-c
 - bug fix 
-
-## 2020.06.16-b
-- bug fix 
-
-## 2020.06.16-a
 - add 512 size icon
 - add maskable icon
 - add aria-label

@@ -60,7 +60,7 @@ export default function({
       {btnText === psString('claim-btn-text-2') ||
       btnText === psString('claim-btn-text-1')
         ? ''
-        : validClaimAmount}
+        : '$ ' + validClaimAmount}
     </div>
   )
 }

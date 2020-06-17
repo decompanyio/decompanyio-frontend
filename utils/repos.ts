@@ -1,6 +1,7 @@
 import { AUTH_APIS } from './auth'
 import axios from 'axios'
 import ReactGA from 'react-ga'
+import _ from 'lodash'
 
 import AuthService from 'service/rest/AuthService'
 import DocService from 'service/rest/DocService'
@@ -31,8 +32,8 @@ import WalletBalance from '../service/model/WalletBalance'
 import WalletCreate from '../service/model/WalletCreate'
 import ProfileRewards from 'service/model/ProfileRewards'
 import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
-import ClaimableReward from '../service/model/ClaimableReward'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
+import ClaimableReward from '../service/model/ClaimableReward'
 import {
   getDocumentListByIdsMultipleQuery,
   getDocumentListByIdsQuery,
@@ -422,12 +423,25 @@ const repos = {
     },
     async getClaimableReward(documentId: string, userId: string) {
       return repos.Query.getClaimableReward({ documentId, userId }).then(
-        (res): ClaimableReward =>
-          new ClaimableReward(
+        res => {
+          const result = res[Object.keys(res)[0]]
+          const rewardSum = _.sumBy(
+            result,
+            (item: ClaimableReward): number => item.reward
+          )
+
+          const voteAmountSum = _.chain(result)
+            .uniqBy('voteDate')
+            .sumBy((item: ClaimableReward): number => Number(item.voteAmount))
+            .value()
+
+          return rewardSum + voteAmountSum
+        }
+        /*  new ClaimableReward(
             res.getClaimableReward && res.getClaimableReward.length > 0
               ? res.getClaimableReward[0]
               : null
-          )
+          )*/
       )
     },
     async getDocumentPdfUrl(data) {

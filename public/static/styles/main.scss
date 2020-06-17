@@ -2045,7 +2045,6 @@ input[type='radio']:checked + label span i {
 
 .hst_logo {
   @include mr(2);
-  width: inherit;
   background: {
     image: url($image-url +'/logo.png');
     repeat: no-repeat;
@@ -2058,6 +2057,8 @@ input[type='radio']:checked + label span i {
   font-size: 1.125rem;
   line-height: 2rem;
   cursor: pointer;
+  width: 250px;
+  height: 50px;
 }
 
 .hst_logoCut {
@@ -2103,10 +2104,6 @@ input[type='radio']:checked + label span i {
   @include mt(1);
   align-items: center !important;
   display: flex !important;
-
-  a {
-    width: 100%;
-  }
 }
 
 //======================================
@@ -7120,6 +7117,11 @@ input[type='radio']:checked + label span i {
 .pcti_date {
   @extend .puti_date;
 }
+
+.pcti_claimBtnWrapper {
+  float: right;
+}
+
 
 //======================================
 //       IMAGE CROP MODAL CSS

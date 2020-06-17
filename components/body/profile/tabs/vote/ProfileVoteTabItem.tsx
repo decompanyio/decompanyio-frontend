@@ -22,7 +22,10 @@ export default function({
 
   const getCuratorRewards = () =>
     repos.Document.getClaimableReward(documentData.documentId, myInfo.id).then(
-      (res): void => setValidClaimAmount(common.deckToDollar(res.reward))
+      (res: number): void =>
+        setValidClaimAmount(
+          common.deckToDollar(res)
+        )
     )
 
   const getNDaysRoyalty = () =>
@@ -140,7 +143,7 @@ export default function({
           </div>
 
           {owner && validClaimAmount > 0 && (
-            <div className={isMobile ? 'mt-2' : 'float-right'}>
+            <div className={isMobile ? 'mt-2' : styles.pcti_claimBtnWrapper}>
               <ProfileVoteClaim
                 documentData={documentData}
                 validClaimAmount={validClaimAmount}

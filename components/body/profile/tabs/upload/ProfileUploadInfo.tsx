@@ -25,7 +25,7 @@ export default function({
       setReward(res)
     })
 
-  const getCreatorRewards = () =>
+  const getClaimableRoyalty = () =>
     repos.Document.getClaimableRoyalty(documentData.documentId, myInfo.id).then(
       res => {
         if (res.royalty > 0)
@@ -35,7 +35,7 @@ export default function({
 
   useEffect(() => {
     void getNDaysRoyalty()
-    if (owner) void getCreatorRewards()
+    if (owner) void getClaimableRoyalty()
   }, [])
 
   const vote = common.toEther(documentData.latestVoteAmount) || 0
