@@ -68,7 +68,7 @@ export default function(): ReactElement {
         </a>
         <a
           target="_blank"
-          href={'https://medium.com/@polarishare'}
+          href={'https://medium.com/polaris-share'}
           rel="noopener noreferrer nofollow"
           aria-label="Medium"
         >

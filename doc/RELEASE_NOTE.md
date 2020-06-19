@@ -1,6 +1,8 @@
 # Release Note
 
-## 2020.06.19-a
+## 2020.06.19-b
+- changed medium link
+
 Bug fix
 - reward, vote, pageview not showing
 
