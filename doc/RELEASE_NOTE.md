@@ -5,10 +5,10 @@ Bug fix
 - reward, vote, pageview not showing
 
 ## 2020.06.17-a
-- add vote amount to clamable reward
+- add vote amount to claimable reward
 
 ## 2020.06.16-c
-- add 512 size icon
+- add 512 size icons
 - add maskable icon
 - add aria-label
 Bug fix 
