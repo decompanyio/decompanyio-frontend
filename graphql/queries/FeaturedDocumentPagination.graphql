@@ -1,23 +1,19 @@
-query FeaturedDocumentList ($page: Int, $perPage: Int) {
-    DocumentFeatured {
-        pagination(
-            page: $page
-            perPage: $perPage
-            sort: LATESTVOTEAMOUNT_DESC
-        ) {
-            count
-            items {
-                _id
-                accountId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
-            }
-        }
+query FeaturedDocumentList($page: Int, $perPage: Int) {
+  DocumentFeatured {
+    pagination(page: $page, perPage: $perPage, sort: LATESTVOTEAMOUNT_DESC) {
+      count
+      items {
+        _id
+        accountId
+      }
+      pageInfo {
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        itemCount
+        pageCount
+        perPage
+      }
     }
+  }
 }

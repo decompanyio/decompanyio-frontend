@@ -1,23 +1,19 @@
-query PopularDocumentPagination ($page: Int, $perPage: Int) {
-    DocumentPopular {
-        pagination(
-            page: $page
-            perPage: $perPage
-            sort: LATESTPAGEVIEW_DESC
-        ) {
-            count
-            items {
-                _id
-                accountId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
-            }
-        }
+query PopularDocumentPagination($page: Int, $perPage: Int) {
+  DocumentPopular {
+    pagination(page: $page, perPage: $perPage, sort: LATESTPAGEVIEW_DESC) {
+      count
+      items {
+        _id
+        accountId
+      }
+      pageInfo {
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        itemCount
+        pageCount
+        perPage
+      }
     }
+  }
 }

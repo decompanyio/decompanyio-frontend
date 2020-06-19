@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import * as styles from '../../../../../public/static/styles/main.scss'
 import common from '../../../../../common/common'
 import { APP_CONFIG } from '../../../../../app.config'
@@ -6,40 +6,70 @@ import RewardCard from '../../../../common/card/RewardCard'
 import commonView from '../../../../../common/commonView'
 import ProfileUploadClaim from './ProfileUploadClaim'
 import { useMain } from '../../../../../redux/main/hooks'
-import repos from '../../../../../utils/repos'
 import { ProfileUploadInfoProps } from '../../../../../typings/interfaces'
 import ProfilePublishBtn from './ProfilePublishBtn'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import UploadDocumentInfo from '../../../../../graphql/queries/UploadDocumentInfo.graphql'
+import DocumentInfoWithClaimableRoyalty from '../../../../../graphql/queries/DocumentInfoWithClaimableRoyalty.graphql'
+import DocumentFeaturedModel from '../../../../../graphql/models/DocumentFeatured'
+import DocumentPopularModel from '../../../../../graphql/models/DocumentPopular'
+import CreatorRoyalty from '../../../../../graphql/models/CreatorRoyalty'
+import _ from 'lodash'
 
 export default function({
   documentData,
   owner,
   convertState
 }: ProfileUploadInfoProps): ReactElement {
-  const { isMobile, myInfo } = useMain()
-  const [reward, setReward] = useState(0)
+  const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
-  const [validClaimAmount, setValidClaimAmount] = useState(0)
 
-  const getNDaysRoyalty = () =>
-    repos.Document.getNDaysRoyalty(documentData.documentId, 7).then(res => {
-      setReward(res)
-    })
+  const { loading, error, data } = useQuery(
+    gql`
+      ${owner ? DocumentInfoWithClaimableRoyalty : UploadDocumentInfo}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      variables: {
+        documentId_scalar: documentData.documentId,
+        documentId: documentData.documentId,
+        days: 7
+      },
+      notifyOnNetworkStatusChange: false
+    }
+  )
 
-  const getClaimableRoyalty = () =>
-    repos.Document.getClaimableRoyalty(documentData.documentId, myInfo.id).then(
-      res => {
-        if (res.royalty > 0)
-          setValidClaimAmount(Number(common.deckToDollar(res.royalty)))
-      }
-    )
+  if (error) return <div />
 
-  useEffect(() => {
-    void getNDaysRoyalty()
-    if (owner) void getClaimableRoyalty()
-  }, [])
+  let _data = {
+    Creator: {},
+    DocumentFeatured: {},
+    DocumentPopular: {}
+  }
 
-  const vote = common.toEther(documentData.latestVoteAmount) || 0
-  let view = documentData.latestPageview || 0
+  if (!loading)
+    _.chain(data)
+      .forOwn((v, k) => {
+        let arr = _.values(v)
+        _data[k] =
+          arr[arr.length - 1] === 'QueryCreator' ? [arr[0], arr[1]] : arr[0]
+      })
+      .value()
+
+  const { Creator, DocumentFeatured, DocumentPopular } = _data
+
+  const { latestVoteAmount } = new DocumentFeaturedModel(DocumentFeatured)
+  const documentPopular = new DocumentPopularModel(DocumentPopular)
+  const { royalty } = new CreatorRoyalty(Creator[0])
+  const claimableRoyalty = Number(
+    common.deckToDollar(_.sumBy(Creator[1], ({ royalty }) => royalty))
+  )
+
+  const vote = common.toEther(latestVoteAmount) || 0
+  let view = documentPopular.latestPageview || 0
 
   return (
     <div className={styles.puti_infoWrapper}>
@@ -48,7 +78,7 @@ export default function({
         onMouseOver={() => setRewardInfo(true)}
         onMouseOut={() => setRewardInfo(false)}
       >
-        $ {common.deckToDollarWithComma(reward)}
+        $ {common.deckToDollarWithComma(royalty)}
         <img
           className={styles.puti_arrow}
           src={APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'}
@@ -56,8 +86,8 @@ export default function({
         />
       </span>
 
-      {reward > 0 && rewardInfoOpen && (
-        <RewardCard reward={reward} documentData={documentData} />
+      {royalty > 0 && rewardInfoOpen && (
+        <RewardCard reward={royalty} documentData={documentData} />
       )}
       <span className={styles.puti_view}>{view}</span>
       <span className={styles.puti_vote}>{common.deckStr(vote)}</span>
@@ -67,7 +97,7 @@ export default function({
 
       <ProfileUploadClaim
         documentData={documentData}
-        validClaimAmount={validClaimAmount}
+        validClaimAmount={claimableRoyalty}
         owner={owner}
       />
 

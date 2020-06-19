@@ -278,12 +278,9 @@ export interface ToTopBtnProps {
 }
 
 export interface DocumentCardProps {
-  documentData
-}
-
-export interface DocumentCardApolloProps {
   userId: string
   documentId: string
+  authRequired: boolean
 }
 
 export interface QueryDocumentCardInfo {

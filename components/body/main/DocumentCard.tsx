@@ -8,7 +8,7 @@ import { psString } from '../../../utils/localization'
 import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { DocumentCardApolloProps } from '../../../typings/interfaces'
+import { DocumentCardProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -19,6 +19,7 @@ import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
 import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
 import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
 import commonData from '../../../common/commonData'
+import DocumentInfoQuery from '../../../graphql/queries/DocumentInfo.graphql'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -28,14 +29,33 @@ const UserAvatarWithoutSSR = dynamic(
 
 export default function({
   userId,
-  documentId
-}: DocumentCardApolloProps): ReactElement {
+  documentId,
+  authRequired
+}: DocumentCardProps): ReactElement {
   const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
 
   useEffect(() => {
     commonView.lazyLoading()
   }, [])
+
+  // documentFavorite, history 는 해당 문서 저자의 user id를 갖지 않습니다.
+  // 때문에 해당 경우에 한하여, user id를 get 하는 query 를 실행 합니다.
+  const { data: data_document } = useQuery(
+    gql`
+      ${DocumentInfoQuery}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      skip: !authRequired,
+      variables: {
+        documentId_scalar: documentId || ''
+      },
+      notifyOnNetworkStatusChange: false
+    }
+  )
 
   const { loading, error, data } = useQuery(
     gql`
@@ -45,8 +65,12 @@ export default function({
       context: {
         clientName: 'query'
       },
+      skip: authRequired && !data_document,
       variables: {
-        userId: userId || '',
+        userId: authRequired
+          ? data_document &&
+            data_document[Object.keys(data_document)[0]].findById.accountId
+          : userId || '',
         documentId_scalar: documentId,
         documentId: documentId,
         days: 7

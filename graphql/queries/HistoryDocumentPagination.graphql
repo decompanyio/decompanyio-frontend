@@ -1,23 +1,19 @@
-query HistoryDocumentPagination ($page: Int, $perPage: Int) {
-    UserDocumentHistory {
-        pagination(
-            page: $page
-            perPage: $perPage
-            sort: USERID__CREATED_DESC
-        ) {
-            count
-            items {
-                documentId
-                userId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
-            }
-        }
+query HistoryDocumentPagination($page: Int, $perPage: Int) {
+  UserDocumentHistory {
+    pagination(page: $page, perPage: $perPage, sort: USERID__CREATED_DESC) {
+      count
+      items {
+        documentId
+        userId
+      }
+      pageInfo {
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        itemCount
+        pageCount
+        perPage
+      }
     }
+  }
 }

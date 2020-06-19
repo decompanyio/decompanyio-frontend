@@ -1,6 +1,6 @@
-query DocumentCardInfo {
+query DocumentCardInfo($documentId_scalar: MongoID!) {
   Document {
-    findById(_id: "3db4bcdc3bd0439fb35cf146cb44e218") {
+    findById(_id: $documentId_scalar) {
       _id
       created
       state

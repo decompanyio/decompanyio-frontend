@@ -177,19 +177,6 @@ export default {
       totalPageview
     }
   }`,
-  getClaimableRoyalty: data =>
-    `Creator  {
-    getClaimableRoyalty(
-      documentId: "${data.documentId}"
-    ) {
-      activeDate
-      userId
-      documentId
-      pageview
-      totalPageview
-      royalty
-    }
-  }`,
   getClaimableReward: data =>
     `Curator {
     getClaimableReward(

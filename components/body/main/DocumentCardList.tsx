@@ -15,16 +15,14 @@ import FeaturedDocumentCardList from '../../../graphql/queries/FeaturedDocumentC
 import MainListMock from '../../common/mock/MainListMock'
 
 const DocumentCardWithoutSSR = dynamic(
-  () => import('components/common/card/DocumentCard'),
+  () => import('components/body/main/DocumentCard'),
   { ssr: false }
 )
 
 export default function({ path }: DocumentCardListProps): ReactElement {
-  if (
-    (!AUTH_APIS.isLogin() && path === 'mylist') ||
-    (!AUTH_APIS.isLogin() && path === 'history')
-  )
-    return <div />
+  const checkAuthComponent = () => path === 'mylist' || path === 'history'
+
+  if (!AUTH_APIS.isLogin() && checkAuthComponent()) return <div />
 
   const { loading, error, data } = useQuery(
     gql`
@@ -79,6 +77,7 @@ export default function({ path }: DocumentCardListProps): ReactElement {
                 key={idx}
                 userId={userId || accountId}
                 documentId={documentId || _id}
+                authRequired={checkAuthComponent()}
               />
             )
           )

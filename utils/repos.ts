@@ -31,7 +31,6 @@ import UserProfile from 'service/model/UserProfile'
 import WalletBalance from '../service/model/WalletBalance'
 import WalletCreate from '../service/model/WalletCreate'
 import ProfileRewards from 'service/model/ProfileRewards'
-import ClaimableRoyalty from '../service/model/ClaimableRoyalty'
 import DocumentPdfUrl from '../service/model/DocumentPdfUrl'
 import ClaimableReward from '../service/model/ClaimableReward'
 import {
@@ -410,17 +409,6 @@ const repos = {
         return Number(totalRoyalty || 0)
       })
     },
-    async getClaimableRoyalty(documentId: string, userId: string) {
-      return repos.Query.getClaimableRoyalty({ documentId, userId }).then(
-        res => {
-          return new ClaimableRoyalty(
-            res.getClaimableRoyalty && res.getClaimableRoyalty.length > 0
-              ? res.getClaimableRoyalty[0]
-              : null
-          )
-        }
-      )
-    },
     async getClaimableReward(documentId: string, userId: string) {
       return repos.Query.getClaimableReward({ documentId, userId }).then(
         res => {
@@ -696,10 +684,6 @@ const repos = {
     getNDaysRoyalty: async data =>
       graphql({
         query: queries.getNDaysRoyalty(data)
-      }).then((res: { Creator }) => res.Creator),
-    getClaimableRoyalty: async data =>
-      graphql({
-        query: queries.getClaimableRoyalty(data)
       }).then((res: { Creator }) => res.Creator),
     getClaimableReward: async data =>
       graphql({

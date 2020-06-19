@@ -1,29 +1,29 @@
-query LatestDocumentPagination ($page: Int, $perPage: Int){
-    Document {
-        pagination(
-            filter: {
-                isPublic: true
-                isDeleted: false
-                isBlocked: false
-                state: CONVERT_COMPLETE
-            }
-            page: $page
-            perPage: $perPage
-            sort: STATE__CREATED_DESC
-        ) {
-            count
-            items {
-                _id
-                accountId
-            }
-            pageInfo {
-                currentPage
-                hasNextPage
-                hasPreviousPage
-                itemCount
-                pageCount
-                perPage
-            }
-        }
+query LatestDocumentPagination($page: Int, $perPage: Int) {
+  Document {
+    pagination(
+      filter: {
+        isPublic: true
+        isDeleted: false
+        isBlocked: false
+        state: CONVERT_COMPLETE
+      }
+      page: $page
+      perPage: $perPage
+      sort: STATE__CREATED_DESC
+    ) {
+      count
+      items {
+        _id
+        accountId
+      }
+      pageInfo {
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        itemCount
+        pageCount
+        perPage
+      }
     }
+  }
 }

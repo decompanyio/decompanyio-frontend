@@ -1,4 +1,10 @@
-query ContentsListItemInfo($userId_scalar: MongoID!, $userId: String!, $documentId_scalar: MongoID!, $documentId: String!, $days: Int!) {
+query ContentsListItemInfo(
+  $userId_scalar: MongoID!
+  $userId: String!
+  $documentId_scalar: MongoID!
+  $documentId: String!
+  $days: Int!
+) {
   Document {
     findById(_id: $documentId_scalar) {
       _id
@@ -66,9 +72,7 @@ query ContentsListItemInfo($userId_scalar: MongoID!, $userId: String!, $document
     }
   }
   UserDocumentFavorite {
-    findOne(
-      filter: { userId: $userId,  documentId: $documentId}
-    ) {
+    findOne(filter: { userId: $userId, documentId: $documentId }) {
       documentId
     }
   }

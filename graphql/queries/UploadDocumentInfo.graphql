@@ -1,0 +1,27 @@
+query DocumentCardInfo(
+  $documentId_scalar: MongoID!
+  $documentId: String!
+  $days: Int!
+) {
+  Creator {
+    getNDaysRoyalty(documentId: $documentId, days: $days) {
+      activeDate
+      documentId
+      royalty
+      pageview
+      totalPageview
+    }
+  }
+  DocumentFeatured {
+    findById(_id: $documentId_scalar) {
+      _id
+      latestVoteAmount
+    }
+  }
+  DocumentPopular {
+    findById(_id: $documentId_scalar) {
+      _id
+      latestPageview
+    }
+  }
+}

@@ -1,13 +1,17 @@
 # Release Note
 
+## 2020.06.19-a
+Bug fix
+- reward, vote, pageview not showing
+
 ## 2020.06.17-a
 - add vote amount to clamable reward
 
 ## 2020.06.16-c
-- bug fix 
 - add 512 size icon
 - add maskable icon
 - add aria-label
+Bug fix 
 
 ## 2020.06.11-a
 - add naver verification file

@@ -4,6 +4,7 @@ import repos from '../../../../../utils/repos'
 import * as styles from '../../../../../public/static/styles/main.scss'
 import { ProfileCreatorClaimProps } from '../../../../../typings/interfaces'
 import { useMain } from '../../../../../redux/main/hooks'
+import common from '../../../../../common/common';
 
 export default function({
   documentData,
@@ -60,7 +61,7 @@ export default function({
         {btnText === psString('claim-btn-text-2') ||
         btnText === psString('claim-btn-text-1')
           ? ''
-          : '$ ' + validClaimAmount}
+          : '$ ' + common.withComma(validClaimAmount)}
       </div>
     </div>
   )

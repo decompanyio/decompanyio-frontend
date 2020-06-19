@@ -1,18 +1,18 @@
 query LatestDocumentCardList {
-    Document {
-        findMany(
-            filter: {
-                isPublic: true
-                isDeleted: false
-                isBlocked: false
-                state: CONVERT_COMPLETE
-            }
-            skip: 0
-            limit: 10
-            sort: STATE__CREATED_DESC
-        ) {
-            _id
-            accountId
-        }
+  Document {
+    findMany(
+      filter: {
+        isPublic: true
+        isDeleted: false
+        isBlocked: false
+        state: CONVERT_COMPLETE
+      }
+      skip: 0
+      limit: 10
+      sort: STATE__CREATED_DESC
+    ) {
+      _id
+      accountId
     }
+  }
 }

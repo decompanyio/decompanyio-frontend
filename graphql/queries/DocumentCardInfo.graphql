@@ -1,4 +1,9 @@
-query DocumentCardInfo($userId: MongoID!, $documentId_scalar: MongoID!, $documentId: String!, $days: Int!) {
+query DocumentCardInfo(
+  $userId: MongoID!
+  $documentId_scalar: MongoID!
+  $documentId: String!
+  $days: Int!
+) {
   Document {
     findById(_id: $documentId_scalar) {
       _id
