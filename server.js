@@ -76,6 +76,7 @@ const makeTrackingCookieResponse = (req, res) => {
 app.prepare().then(() => {
   const server = express()
   server.use(cookieParser())
+
   // Service Worker
   server.get('/service-worker.js', (req, res) => {
     res.set(
@@ -87,6 +88,8 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname } = parsedUrl
     const filePath = join(__dirname, '.next', pathname)
+
+    console.log(filePath)
 
     return app.serveStatic(req, res, filePath)
   })
@@ -243,7 +246,7 @@ app.prepare().then(() => {
   })
 
   server.listen(port, err => {
-    console.log('[Polaris Share]\n')
+    console.log('\n\n[Polaris Share]\n')
 
     console.log('Project Version : ' + version)
     console.log('NODE_ENV : ' + env)
