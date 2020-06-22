@@ -59,7 +59,7 @@
     "nanoid": "2.1.11",
     "next": "9.4.4",
     "next-compose-plugins": "2.2.0",
-    "next-offline": "4.0.6",
+    "next-offline": "^5.0.2",
     "next-optimized-images": "2.6.0",
     "node-sass": "4.13.1",
     "path": "0.12.7",
