@@ -89,8 +89,6 @@ app.prepare().then(() => {
     const { pathname } = parsedUrl
     const filePath = join(__dirname, '.next', pathname)
 
-    console.log(filePath)
-
     return app.serveStatic(req, res, filePath)
   })
 
