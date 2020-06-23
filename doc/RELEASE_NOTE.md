@@ -1,5 +1,12 @@
 # Release Note
 
+## 2020.06.23-a
+- edit css
+
+Bug fix
+- service worker not registered
+- graphql error
+
 ## 2020.06.19-b
 - changed medium link
 

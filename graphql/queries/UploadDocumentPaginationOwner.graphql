@@ -27,7 +27,6 @@ query UploadDocumentPaginationOwner(
         created
         desc
         dimensions {
-          _id
           height
           type
           width

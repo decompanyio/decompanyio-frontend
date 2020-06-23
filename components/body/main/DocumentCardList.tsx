@@ -60,12 +60,12 @@ export default function({ path }: DocumentCardListProps): ReactElement {
             <div className={styles.ml_subject}>
               {psString('main-category-' + path)}
             </div>
+            <div className={styles.ml_seeAll}>
+              {psString('main-see-all')}
+              <i className="material-icons">keyboard_arrow_right</i>
+            </div>
           </a>
         </Link>
-        <div className={styles.ml_seeAll}>
-          {psString('main-see-all')}
-          <i className="material-icons">keyboard_arrow_right</i>
-        </div>
       </div>
 
       <div className={styles.ml_documentCardWrapper}>

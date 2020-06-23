@@ -2399,7 +2399,7 @@ input[type='radio']:checked + label span i {
 
 .c_tagsMenuContainer {
   @include container;
-  width:inherit;
+  width: inherit;
   height: inherit;
 }
 
@@ -2638,6 +2638,10 @@ input[type='radio']:checked + label span i {
   @include inner-container;
   @include pb-sm(3);
   @include d-flex;
+
+  a {
+    display: flex;
+  }
 }
 
 .ml_subject {
@@ -2658,6 +2662,7 @@ input[type='radio']:checked + label span i {
     max-height: 33px;
     opacity: 1 !important;
   }
+
 
   @media (max-width: $sm-max-width) {
     @include m(3);
