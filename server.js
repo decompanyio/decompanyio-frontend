@@ -76,6 +76,7 @@ const makeTrackingCookieResponse = (req, res) => {
 app.prepare().then(() => {
   const server = express()
   server.use(cookieParser())
+  server.use(express.static('.next'))
 
   // Service Worker
   server.get('/service-worker.js', (req, res) => {
@@ -88,6 +89,8 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname } = parsedUrl
     const filePath = join(__dirname, '.next', pathname)
+
+    console.log(filePath)
 
     return app.serveStatic(req, res, filePath)
   })
