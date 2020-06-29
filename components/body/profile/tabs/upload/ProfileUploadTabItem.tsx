@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import * as styles from '../../../../../public/static/styles/main.scss'
 import { ProfileUploadTabItemProps } from '../../../../../typings/interfaces'
 import ProfileUploadOption from './ProfileUploadOption'
@@ -21,7 +21,7 @@ export default function({
 }: ProfileUploadTabItemProps): ReactElement {
   const { setAlertCode } = useMain()
   const [convertState, setConvertState] = useState(documentData.state)
-  const { loading, error, data, refetch } = useQuery(
+  const { loading, error, data } = useQuery(
     gql`
       ${UploadDocumentConvertState}
     `,
@@ -34,14 +34,13 @@ export default function({
       },
       notifyOnNetworkStatusChange: false,
       skip:
-        documentData.state === 'CONVERT_COMPLETE' ||
-        documentData.state === 'CONVERT_FAIL'
+        convertState === 'CONVERT_COMPLETE' || convertState === 'CONVERT_FAIL',
+      pollInterval:
+        convertState === 'CONVERT_COMPLETE' || convertState === 'CONVERT_FAIL'
+          ? 0
+          : 5000
     }
   )
-
-  const _refetch = useCallback(() => {
-    setTimeout(() => refetch(), 0)
-  }, [refetch])
 
   if (!error && !loading && data) {
     const stateResult = data[Object.keys(data)[0]].findById.state || ''
@@ -53,8 +52,6 @@ export default function({
 
     if (convertState !== stateResult)
       setConvertState(stateResult || 'CONVERT_FAIL')
-    if (stateResult !== 'CONVERT_COMPLETE' && stateResult !== 'CONVERT_FAIL')
-      setTimeout(() => _refetch(), 5000)
   }
 
   return (

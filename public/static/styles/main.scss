@@ -2503,6 +2503,10 @@ input[type='radio']:checked + label span i {
     max-width: 100%;
     flex: 0 0 100%;
   }
+
+  a {
+    display: inline-table;
+  }
 }
 
 .f_copyrightMobile {

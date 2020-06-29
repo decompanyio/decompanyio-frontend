@@ -150,7 +150,7 @@ export default function({
                 (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
               }
               onError={e => {
-                console.log(e)
+                // console.log(e)
                 let element = e.target as HTMLImageElement
                 element.onerror = null
                 element.srcset = commonData.dummyImage.gray

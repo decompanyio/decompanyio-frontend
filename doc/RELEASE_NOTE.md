@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.06.29-a
+Bug fix
+- interval check compiling uploaded document  
+
 ## 2020.06.23-a
 - edit css
 
