@@ -20,7 +20,6 @@ query UploadDocumentPagination($accountId: String, $page: Int, $perPage: Int) {
         created
         desc
         dimensions {
-          _id
           height
           type
           width

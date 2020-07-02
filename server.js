@@ -20,8 +20,7 @@ const dev = env !== 'production'
 const port = !dev ? 80 : 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const profileRegEx =
-  '(@(\\w)+|@(\\w)+[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3})'
+const profileRegEx = '(^[@][A-Za-z0-9\\-]+)'
 
 const makeTrackingCookieResponse = (req, res) => {
   /*
@@ -96,6 +95,8 @@ app.prepare().then(() => {
   // 프로필 페이지
   server.get('/' + profileRegEx, (req, res) => {
     res.header('X-Robots-Tag', 'noindex')
+
+    console.log(1)
 
     const params = { identifier: req.url.split('/')[1] }
     return app.render(req, res, '/profile_page', params)
