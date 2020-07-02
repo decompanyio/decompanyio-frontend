@@ -20,7 +20,6 @@ const dev = env !== 'production'
 const port = !dev ? 80 : 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const profileRegEx = '(^[@][A-Za-z0-9\\-]+)'
 
 const makeTrackingCookieResponse = (req, res) => {
   /*
@@ -92,18 +91,22 @@ app.prepare().then(() => {
     return app.serveStatic(req, res, filePath)
   })
 
-  // 프로필 페이지
-  server.get('/' + profileRegEx, (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
-
-    console.log(1)
-
-    const params = { identifier: req.url.split('/')[1] }
-    return app.render(req, res, '/profile_page', params)
+  // 뷰어 페이지 + 페이지 넘버
+  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\/[a-zA-Z0-9-]/, (req, res) => {
+    const params = {
+      identifier: req.url.split('/')[1],
+      seoTitle: req.url.split('/')[2]
+    }
+    return app.render(
+      req,
+      makeTrackingCookieResponse(req, res),
+      '/contents_view',
+      params
+    )
   })
 
   // 뷰어 페이지
-  server.get('/' + profileRegEx + '/:seoTitle', (req, res) => {
+  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+/, (req, res) => {
     const params = {
       identifier: req.url.split('/')[1],
       seoTitle: req.url.split('/')[2]
@@ -116,18 +119,12 @@ app.prepare().then(() => {
     )
   })
 
-  // 뷰어 페이지 + 페이지 넘버
-  server.get('/' + profileRegEx + '/:seoTitle/:pageNum', (req, res) => {
-    const params = {
-      identifier: req.url.split('/')[1],
-      seoTitle: req.url.split('/')[2]
-    }
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_view',
-      params
-    )
+  // 프로필 페이지
+  server.get(/\/@[a-zA-Z0-9-]+\/?/, (req, res) => {
+    res.header('X-Robots-Tag', 'noindex')
+
+    const params = { identifier: req.url.split('/')[1] }
+    return app.render(req, res, '/profile_page', params)
   })
 
   // 트랙킹 페이지

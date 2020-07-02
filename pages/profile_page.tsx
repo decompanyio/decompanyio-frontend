@@ -22,7 +22,7 @@ function Index({ identifier }, ...rest): ReactElement {
 }
 
 Index.getInitialProps = async props => {
-  return { identifier: props.asPath.substr(2, props.asPath.length) }
+  return { identifier: props.asPath.split('/')[1].split('@')[1] }
 }
 
 export default withApollo()(Index)
