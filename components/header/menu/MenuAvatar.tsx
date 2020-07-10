@@ -15,7 +15,7 @@ export default function({ identification }: MenuAvatarProps): ReactElement {
       }}
       as={'/@' + identification}
     >
-      <a className={styles.ma_avatarWrapper}  aria-label="Profile page">
+      <a className={styles.ma_avatarWrapper} aria-label="Profile page">
         {myInfo.picture.length > 0 ? (
           <img
             src={myInfo.picture}
@@ -24,12 +24,12 @@ export default function({ identification }: MenuAvatarProps): ReactElement {
             onError={e => {
               let element = e.target as HTMLImageElement
               element.onerror = null
-              element.src = require('public/static/image/icon/i_profile-default.png')
+              element.src = '/static/image/icon/i_profile-default.png'
             }}
           />
         ) : (
           <img
-            src={require('public/static/image/icon/i_profile-default.png')}
+            src='/static/image/icon/i_profile-default.png'
             className={styles.ma_defaultAvatar}
             alt="Link to my profile"
           />

@@ -2600,20 +2600,20 @@ input[type='radio']:checked + label span i {
   cursor: pointer;
   position: relative !important;
   margin-right: 10px;
-  width: 45px;
-  height: 45px;
+  width: 33px;
+  height: 33px;
   border: 1px solid #cccccc;
   transition: 0.2s all ease-in-out;
 }
 
 .ma_avatar_big {
   border-radius: 67%;
+  border: 1px solid #cccccc;
   cursor: pointer;
   position: relative !important;
   margin-right: 10px;
   width: 89px;
   height: 89px;
-  border: none;
   transition: 0.2s all ease-in-out;
 }
 
@@ -4220,7 +4220,6 @@ input[type='radio']:checked + label span i {
   overflow: hidden;
   border-radius: 60px;
   cursor: pointer;
-  border: 1px solid #dadada;
 
   &:hover {
     border-color: $second-color;
@@ -4703,6 +4702,7 @@ input[type='radio']:checked + label span i {
   @include container;
   margin-bottom: 50px;
   position: relative;
+  overflow: hidden;
 }
 
 .ps_dummy {
