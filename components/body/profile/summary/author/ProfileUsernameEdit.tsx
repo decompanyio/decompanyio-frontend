@@ -24,15 +24,24 @@ export default function({
   const [errMsg, setErrMsg] = useState('')
   const [editLoading, setEditLoading] = useState(false)
 
-  const validateUsername = (value): void => {
-    if (!value || value.length < 1) setErrMsg(psString('profile-error-1'))
+  const validateUsername = (value): boolean => {
+    if (!value || value.length < 1) {
+      setErrMsg(psString('profile-error-1'))
+      return false
+    }
 
-    if (!common.checkUsernameForm(value)) setErrMsg(psString('profile-error-2'))
+    if (!common.checkUsernameForm(value)) {
+      setErrMsg(psString('profile-error-2'))
+      return false
+    }
 
-    if (value.length < 4 || value.length > 20)
+    if (value.length < 4 || value.length > 20) {
       setErrMsg(psString('profile-error-3'))
+      return false
+    }
 
     if (errMsg !== '') setErrMsg(psString(''))
+    return true
   }
 
   const setMyInfoInRedux = (name: string): void => {
@@ -47,16 +56,14 @@ export default function({
   }
 
   const handleEditBtnClick = () => {
-    setEditLoading(true)
-
     let element = document.getElementById(
       'usernameEditInput'
     ) as HTMLInputElement
     let name = element.value
 
-    validateUsername(name)
+    if (validateUsername(name)) {
+      setEditLoading(true)
 
-    if (errMsg === '')
       repos.Account.updateUsername(name)
         .then(() => {
           setAlertCode(2141, {})
@@ -71,6 +78,7 @@ export default function({
           done(name)
         })
         .catch(err => console.log(err))
+    }
   }
 
   useEffect(() => {

@@ -72,7 +72,6 @@ export default function({
 
   return (
     <div className={styles.ps_container}>
-      <div className={styles.ps_dummy} />
 
       <ProfileSummaryAuthor
         reward={reward}

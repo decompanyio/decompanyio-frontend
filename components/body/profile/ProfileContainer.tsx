@@ -7,6 +7,7 @@ import gql from 'graphql-tag'
 import UserProfileInfo from '../../../graphql/queries/UserProfileInfo.graphql'
 import UserInfo from '../../../service/model/UserInfo'
 import NotFoundPage from '../../common/page/NotFoundPage'
+import * as styles from '../../../public/static/styles/main.scss'
 
 export default function({
   identifier,
@@ -32,6 +33,8 @@ export default function({
 
   return (
     <div>
+      <div className={styles.ps_dummy} />
+
       {owner !== -1 && (
         <ProfileSummary profileInfo={profileInfo} owner={owner === 1} />
       )}

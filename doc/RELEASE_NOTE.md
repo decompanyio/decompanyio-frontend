@@ -1,7 +1,10 @@
 # Release Note
 
-## 2020.07.10-a
+## 2020.07.10-b
 - edit css
+Bug fix
+- profile avatar not edit
+
 
 ## 2020.06.29-a
 Bug fix
