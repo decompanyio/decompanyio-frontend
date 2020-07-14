@@ -36,12 +36,15 @@ export default function({
     let binary = ''
     let bytes = new Uint8Array(buffer)
     let len = bytes.byteLength
+
     for (let i = 0; i < len; i++) {
       binary += String.fromCharCode(bytes[i])
     }
+
     return binary
   }
 
+  // 현재 디바이스 화면에 맞는 화면 가로폭을 불러옵니다.
   const getCanvasWidth = (): number => {
     const el = document.getElementById('canvasLayer') as HTMLElement
 
@@ -52,11 +55,6 @@ export default function({
 
     if (windowWidth + widthMargin >= commonData.style.container.width)
       return commonData.style.container.width - widthMargin
-    else if (
-      windowWidth < commonData.style.container.width &&
-      windowWidth > commonData.style.md.max.width
-    )
-      return windowWidth
     else return windowWidth
   }
 
@@ -151,25 +149,31 @@ export default function({
     textContainer.style.display = 'block'
   }
 
-  const renderPDF = async (pdfUrl: string) => {
-    const canvasContainer = document.getElementById(
-      'canvasLayer'
-    ) as HTMLElement
-    const textContainer = document.getElementById('textLayer') as HTMLElement
-    let pdfData = await handlePdfData(pdfUrl)
-    let _pdfData = atob(pdfData)
+  const PDFRenderer = {
+    // 렌더링
+    render: async (pdfUrl: string) => {
+      let pdfData = await handlePdfData(pdfUrl)
+      let _pdfData = atob(pdfData)
+
+      pdfjs.disableWorker = false
+      await pdfjs
+        .getDocument({ data: _pdfData })
+        .promise.then(PDFRenderer.pages)
+    },
 
     // 텍스트 렌더링
-    const textRender = async (page, viewport) =>
+    text: (page, viewport) =>
       page.getTextContent().then((textContent: any) => {
         if (!document.getElementById('textLayer')) return false
 
+        const textContainer = document.getElementById(
+          'textLayer'
+        ) as HTMLElement
         const textLayerDiv = document.createElement('div')
         textLayerDiv.setAttribute('class', 'textRender')
         textLayerDiv.style.zIndex = '2'
         textLayerDiv.style.height = Math.floor(viewport.height) + 'px'
         textLayerDiv.style.width = Math.floor(viewport.width) + 'px'
-
         textContainer.appendChild(textLayerDiv)
 
         return pdfjs.renderTextLayer({
@@ -179,10 +183,13 @@ export default function({
           viewport,
           textDivs: []
         })
-      })
+      }),
 
-    // 특정 페이지 렌더링
-    const renderPage = page => {
+    // 단일 페이지 렌더링
+    page: page => {
+      const canvasContainer = document.getElementById(
+        'canvasLayer'
+      ) as HTMLElement
       let unscaledViewport = page.getViewport(1)
       let scale = getCanvasWidth() / unscaledViewport.width
       let viewport = page.getViewport({ scale: scale })
@@ -191,24 +198,27 @@ export default function({
         .getOperatorList()
         .then(opList => {
           let svgGfx = new pdfjs.SVGGraphics(page.commonObjs, page.objs)
-          return svgGfx
-            .getSVG(opList, viewport)
-            .then(svg => canvasContainer.appendChild(svg))
+
+          try {
+            svgGfx
+              .getSVG(opList, viewport)
+              .then(svg => canvasContainer.appendChild(svg))
+          } catch (e) {
+            console.log(page, e)
+          }
         })
-        .then(() => textRender(page, viewport))
-    }
+        .then(() => PDFRenderer.text(page, viewport))
+    },
 
     // 다수 페이지 렌더링
-    const renderPages = async pdfDoc => {
+    pages: async pdfDoc => {
       for (let num = 1; num <= pdfDoc.numPages; num++) {
-        await pdfDoc.getPage(num).then(renderPage)
+        console.log(num + '/' + pdfDoc.numPages)
+        await pdfDoc.getPage(num).then(PDFRenderer.page)
 
         if (num === pdfDoc.numPages) handlePdfViewerRendering()
       }
     }
-
-    pdfjs.disableWorker = false
-    await pdfjs.getDocument({ data: _pdfData }).promise.then(renderPages)
   }
 
   useEffect(() => {
@@ -221,7 +231,7 @@ export default function({
       ) as HTMLElement
 
       if (canvasContainer && !canvasContainer.hasChildNodes())
-        void (await renderPDF(pdfUrl))
+        void (await PDFRenderer.render(pdfUrl))
     })()
 
     setThumbnailUrlAddress()

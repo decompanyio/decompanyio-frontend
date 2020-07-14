@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.07.14-a
+Bug fix
+- pdf not compiled issue
+
 ## 2020.07.10-b
 - edit css
 Bug fix
