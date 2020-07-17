@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 import { psString } from '../utils/localization'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
 

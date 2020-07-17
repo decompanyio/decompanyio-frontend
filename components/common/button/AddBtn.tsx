@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../../../utils/auth'
 import { useMain } from '../../../redux/main/hooks'

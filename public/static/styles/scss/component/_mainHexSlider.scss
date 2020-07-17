@@ -1,0 +1,69 @@
+.mos_swipe {
+  position: absolute !important;
+  width: 510px;
+  height: 510px;
+  background: url($image-url +'/main/hexagon-bg.png') no-repeat 0 0 / contain;
+  top: 345px;
+  right: 180px;
+  padding: 44px 30px 0;
+}
+
+.mos_container {
+  width: 100%;
+  margin: 0 auto;
+  height: 437px;
+  -webkit-clip-path: url(#my-clip-path);
+  clip-path: url(#my-clip-path);
+}
+
+.mos_arrow_right,
+.mos_arrow_left {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background: url($image-url +'/main/main-swiper-arrow.png') no-repeat 0 0 / cover;
+  top: 226px;
+  left: 19px;
+  cursor: pointer;
+
+  &:after {
+    display: none
+  }
+
+  @media (max-width: 1024px) {
+    width: 7vw;
+    height: 12vw;
+    top: auto;
+    bottom: 45.5vw;
+    left: 3vw;
+  }
+}
+
+.mos_arrow_right {
+  background-position: 100% 0;
+  left: auto;
+  right: 19px;
+}
+
+@media (max-width: 1024px) {
+
+  .mos_swipe {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    background: none;
+    top: 0;
+    margin-top: -50vw;
+    right: 0;
+    padding: 0;
+  }
+  .mos_container {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    padding-top: 50vw
+  }
+
+}

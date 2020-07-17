@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { APP_CONFIG } from '../../../app.config'
 import TrackingDetailItem from './TrackingDetailItem'
 import { psString } from 'utils/localization'

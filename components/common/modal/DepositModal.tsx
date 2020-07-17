@@ -3,7 +3,7 @@ import { psString } from '../../../utils/localization'
 import React, { ReactElement, useEffect, useState } from 'react'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {

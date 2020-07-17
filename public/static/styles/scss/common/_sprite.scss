@@ -1,0 +1,106 @@
+
+/*    SPRITE MIXIN   */
+@mixin sprite-image($width: 40, $height: 40, $position-x: 0, $position-y:  0, $isMobile: false) {
+  width: $width + px;
+  height: $height + px;
+  background-position: $position-x + px + ' ' + $position-y + px;
+  display: inline-block;
+  background-repeat: no-repeat;
+
+  @if ($isMobile) {
+    background-image: url($image-url +'/sprite/sp_ico-m.png');
+  } @else {
+    background-image: url($image-url +'/sprite/sp_ico.png');
+  }
+}
+
+
+/*    SPRITE STYLE   */
+.sprite_a {
+  @include sprite-image(20, 20, 0, 0);
+
+  @media (max-width: 1024px) {
+    @include sprite-image(40, 40, 0, 0, true);
+  }
+
+  @media (max-width: 768px) {
+    @include sprite-image(20, 20, 0, 0, true);
+    background-size: 400px auto;
+  }
+}
+
+.sprite_b {
+  @include sprite-image(20, 20, -20, 0);
+
+  @media (max-width: 1024px) {
+    @include sprite-image(40, 40, -40, 0, true);
+  }
+
+  @media (max-width: 768px) {
+    @include sprite-image(20, 20, -20, 0, true);
+    background-size: 400px auto;
+  }
+}
+
+.sprite_c {
+  @include sprite-image(20, 20, -40, 0);
+
+  @media (max-width: 1024px) {
+    @include sprite-image(40, 40, -80, 0, true);
+  }
+
+  @media (max-width: 768px) {
+    @include sprite-image(20, 20, -40, 0, true);
+    background-size: 400px auto;
+  }
+}
+
+.sprite_d {
+  @include sprite-image(30, 30, -90, -20);
+
+  @media (max-width: 1024px) {
+    @include sprite-image(40, 40, -120, 0, true);
+  }
+
+  @media (max-width: 768px) {
+    @include sprite-image(20, 20, -60, 0, true);
+    background-size: 400px auto;
+  }
+}
+
+@for $i from 1 through 9 {
+  .sprite_sns_#{$i} {
+    @include sprite-image(40, 40, #{(($i * 40) - 40) * -1}, -60);
+
+    @media (max-width: 1024px) {
+      @if ($i == 9) {
+        @include sprite-image(100, 100, 0, -160, true);
+      } @else {
+        @include sprite-image(100, 100, #{(($i * 100) - 100) * -1}, -60, true);
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      @if ($i == 9) {
+        @include sprite-image(50, 50, 0, -80, true);
+      } @else {
+        @include sprite-image(50, 50, #{(($i * 50) - 50) * -1}, -30, true);
+      }
+      background-size: 400px auto;
+    }
+  }
+}
+
+.sprite_logo {
+  @include sprite-image(224, 50, 0, -100);
+
+  @media (max-width: 1024px) {
+    @include sprite-image(447, 101, -100, -160, true);
+  }
+
+  @media (max-width: 768px) {
+    @include sprite-image(224, 51, -50, -80, true);
+    background-size: 400px auto;
+  }
+}

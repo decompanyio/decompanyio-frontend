@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import * as styles from '../../public/static/styles/main.scss'
+import * as styles from '../../public/static/styles/scss/index.scss'
 import { psString } from '../../utils/localization'
 import { PaginationProps } from '../../typings/interfaces'
 

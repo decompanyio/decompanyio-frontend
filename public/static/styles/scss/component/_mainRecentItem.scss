@@ -1,0 +1,356 @@
+
+.title-recent {
+  font-size: 45px;
+  color: #000;
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.sprite_d {
+  vertical-align: middle;
+  margin-left: 8px
+}
+
+.recent-list {
+  width: 1248px;
+  margin: 0 auto 100px
+}
+
+.recent-list:after {
+  content: '';
+  display: block;
+  clear: both
+}
+
+.recent-list .recent-item {
+  float: left
+}
+
+.recent-list .recent-item ~ .recent-item {
+  margin-left: 196px
+}
+
+.recent-list .recent-item:nth-child(n+4) {
+  margin-top: -110px
+}
+
+.recent-list .recent-item:nth-child(5n-1) {
+  margin-left: 233px
+}
+
+.recent-list .recent-item:nth-child(5n+1) {
+  clear: both;
+  margin-left: 0
+}
+
+.mri_container {
+  position: relative;
+  width: 269px;
+  height: 243px;
+  background-color: transparent;
+  background-size: cover;
+  -webkit-clip-path: url(#my-clip-path);
+  clip-path: url(#my-clip-path)
+}
+
+.mri_container:hover .mri_content {
+  opacity: 1
+}
+
+.mri_content {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .4));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity ease .3s;
+  -webkit-transition: opacity ease .3s
+}
+
+.mri_thumb {
+  background: white;
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.mri_tag span {
+  display: inline-block;
+  font-size: 14px;
+  color: #fff;
+  height: 24px;
+  line-height: 22px;
+  min-width: 56px;
+  text-align: center;
+  border: 1px solid #fff;
+  background-color: #0065e4;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0
+}
+
+.mri_title {
+  font-size: 26px;
+  line-height: 31px;
+  color: #fff;
+  font-weight: 500
+}
+
+.mri_money {
+  margin-top: 16px
+}
+
+.mri_money * {
+  vertical-align: middle
+}
+
+.mri_money i {
+  margin-right: 4px
+}
+
+.mri_money span {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0
+}
+
+.mri_fileName {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 300
+}
+
+.file-type {
+  padding-left: 4px;
+  font-size: 16px;
+  color: #81dafe
+}
+
+.mri_day {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #fff
+}
+
+@media (max-width: 1024px) {
+  .title-recent {
+    display: block;
+    font-size: 60px
+  }
+  .sprite_d {
+    min-width: 156px;
+    height: 64px;
+    line-height: 60px;
+    border-radius: 32px;
+    font-size: 32px;
+    margin-top: 16px;
+    margin-left: 0
+  }
+
+  .recent-list {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 720px;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+  }
+  .recent-list .recent-item {
+    float: none;
+    display: inline-block;
+    margin: 0 !important
+  }
+  .recent-list .recent-item ~ .recent-item {
+    margin-left: 30px !important
+  }
+  .recent-list::-webkit-scrollbar {
+    width: 5px
+  }
+  .recent-list::-webkit-scrollbar-track {
+    background-color: transparent
+  }
+  .recent-list::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: #1f82ff;
+    border: 0 solid #fff;
+  }
+  .recent-list::-webkit-scrollbar-button {
+    width: 0;
+    height: 0
+  }
+
+  .mri_container {
+    position: relative;
+    -webkit-clip-path: none;
+    clip-path: none;
+    width: 495px;
+    height: 694px;
+    background-color: #fff;
+    border-radius: 72px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden
+  }
+  .mri_content {
+    opacity: 1;
+    position: relative;
+    background-image: none;
+    height: calc(100% - 308px);
+    display: block
+  }
+  .mri_tag {
+    position: absolute;
+    top: -58px;
+    left: 10px
+  }
+  .mri_tag span {
+    height: 48px;
+    line-height: 46px;
+    border-radius: 12px;
+    font-size: 28px;
+    min-width: 112px
+  }
+  .mri_thumb {
+    height: 308px;
+    overflow: hidden;
+    position: relative
+  }
+  .mri_thumb img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%)
+  }
+  .mri_title {
+    font-size: 40px;
+    line-height: 52px;
+    min-height: 114px;
+    text-align: center;
+    white-space: normal;
+    padding: 30px;
+    color: #000
+  }
+  .mri_group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #f6f6f6
+  }
+  .mri_money {
+    margin-top: 0
+  }
+  .mri_money i {
+    margin-right: 24px
+  }
+  .mri_money span {
+    font-size: 32px;
+    color: #0071ff;
+    font-weight: 600
+  }
+  .mri_fileName {
+    font-size: 28px;
+    color: #696969;
+    margin-top: 0;
+    font-weight: 400
+  }
+  .file-type {
+    font-size: 32px;
+    color: #262626
+  }
+  .mri_day {
+    font-size: 28px;
+    margin-top: 0;
+    color: #818181
+  }
+
+}
+
+@media (max-width: 768px) {
+  .title-recent {
+    font-size: 30px
+  }
+  .sprite_d {
+    min-width: 78px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    margin-top: 8px
+  }
+
+  .recent-list {
+    height: 375px
+  }
+  .recent-list .recent-item ~ .recent-item {
+    margin-left: 10px !important
+  }
+
+  .mri_container {
+    width: 250px;
+    height: 347px;
+    border-radius: 36px
+  }
+  .mri_content {
+    height: calc(100% - 154px)
+  }
+  .mri_tag {
+    top: -48px
+  }
+  .mri_tag span {
+    height: 24px;
+    line-height: 23px;
+    border-radius: 6px;
+    font-size: 14px;
+    min-width: 56px
+  }
+  .mri_thumb {
+    height: 154px
+  }
+  .mri_title {
+    font-size: 20px;
+    line-height: 26px;
+    min-height: 57px;
+    padding: 15px
+  }
+  .mri_group {
+    padding: 10px
+  }
+  .mri_money {
+    margin-top: 0
+  }
+  .mri_money i {
+    margin-right: 12px
+  }
+  .mri_money span {
+    font-size: 16px
+  }
+  .mri_fileName {
+    font-size: 14px
+  }
+  .file-type {
+    font-size: 16px
+  }
+  .mri_day {
+    font-size: 14px
+  }
+
+}

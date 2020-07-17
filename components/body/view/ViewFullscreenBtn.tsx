@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { useMain } from '../../../redux/main/hooks'
 import { ViewFullscreenBtnProps } from '../../../typings/interfaces'
 

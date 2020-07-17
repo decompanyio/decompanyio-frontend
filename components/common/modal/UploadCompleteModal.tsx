@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { psString } from 'utils/localization'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import commonView from 'common/commonView'
 import common from 'common/common'
 import Router from 'next/router'
@@ -93,7 +93,7 @@ export default function(): ReactElement {
             >
               {psString('common-modal-confirm')}
             </div>
-            <div onClick={() => handleLinkBtn()} className={styles.uc_okBtn_2}>
+            <div onClick={() => handleLinkBtn()} className={styles.ucm_okBtn_2}>
               {psString('private-doc-modal-btn')}
             </div>
           </div>

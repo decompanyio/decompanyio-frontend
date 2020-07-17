@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
 import commonView from 'common/commonView'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import common from '../../../common/common'
 import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'

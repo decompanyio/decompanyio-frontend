@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import commonView from '../../../common/commonView'
 import { APP_CONFIG } from '../../../app.config'
 import React, { ReactElement } from 'react'

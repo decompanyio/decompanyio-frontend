@@ -1,0 +1,42 @@
+.fm_fullscreenWrapper {
+  @include d-flex;
+  position: fixed;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  top: 0;
+  left: 0;
+}
+
+.fm_onWrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+
+.fm_thumbnailWrapper {
+  width: 100%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fm_thumbnailWrapper_landscape {
+  @extend .fm_thumbnailWrapper;
+
+  img {
+    width: 100vw;
+  }
+}
+
+.fm_thumbnailWrapper_portrait {
+  @extend .fm_thumbnailWrapper;
+
+  img {
+    height: 100vh;
+  }
+}

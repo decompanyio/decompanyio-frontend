@@ -1,0 +1,87 @@
+.pm_moreBtnWrapper {
+  margin: 2rem 0 0 0;
+  position: relative;
+  height: 20px;
+}
+
+.pm_moreBtnLine {
+  height: 1px;
+  position: absolute;
+  background: #d0d0d0;
+  left: 0;
+  top: 9px;
+  width: 100%;
+}
+
+.pm_moreBtn {
+  position: absolute;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-size: 13px;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+  margin: auto;
+  left: calc(50% - 75px);
+  background: white;
+  width: 150px;
+  text-align: center;
+  color: #888888;
+}
+
+.pm_moreContainer_1 {
+  @include row;
+
+  div {
+    @include col(12);
+
+    &:first-child {
+      padding-left: 1rem !important;
+    }
+  }
+}
+
+.pm_moreContainer_2 {
+  @include row;
+
+  div {
+    @include col(12);
+    @include col-sm(6);
+
+    &:first-child {
+      padding-left: 1rem !important;
+    }
+  }
+}
+
+.pm_loadingWrapper {
+  position: absolute;
+  background: white;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  top: 0;
+}
+
+.pm_tagInputWarning,
+.pm_tagInputWarning:hover,
+.pm_tagInputWarning:focus-within {
+  border: 1px solid red !important;
+  box-shadow: 0 0 0 1px red;
+
+  & + span {
+    color: red;
+    font-size: 11px;
+  }
+}
+
+.pm_desc {
+  font-size: 13px;
+}
+
+.pm_rewardArrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}

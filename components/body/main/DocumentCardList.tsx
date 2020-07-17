@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { psString } from '../../../utils/localization'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { AUTH_APIS } from '../../../utils/auth'
 import { DocumentCardListProps } from '../../../typings/interfaces'
 import { useQuery } from '@apollo/react-hooks'
@@ -54,13 +54,13 @@ export default function({ path }: DocumentCardListProps): ReactElement {
 
   return (
     <div>
-      <div className={styles.ml_subjectWrapper}>
+      <div className={styles.mcl_subjectWrapper}>
         <Link href={'/contents_list'} as={path}>
           <a aria-label={psString('main-category-' + path)}>
-            <div className={styles.ml_subject}>
+            <div className={styles.mcl_subject}>
               {psString('main-category-' + path)}
             </div>
-            <div className={styles.ml_seeAll}>
+            <div className={styles.mcl_seeAll}>
               {psString('main-see-all')}
               <i className="material-icons">keyboard_arrow_right</i>
             </div>
@@ -68,7 +68,7 @@ export default function({ path }: DocumentCardListProps): ReactElement {
         </Link>
       </div>
 
-      <div className={styles.ml_documentCardWrapper}>
+      <div className={styles.mcl_documentCardWrapper}>
         {dataList.map(({ userId, documentId, _id, accountId }, idx) => {
           return (
             idx < 4 &&

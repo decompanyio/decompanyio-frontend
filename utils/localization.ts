@@ -120,6 +120,247 @@ const strings = new Map([
       ENG: 'history'
     }
   ],
+  [
+    'main-event-1',
+    {
+      KOR: '2020년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-event-2',
+    {
+      KOR:
+        '지금 베타시즌에 업로드하시는 사용자에게는 본 시즌 전 에어드랍을 통해',
+      ENG: ''
+    }
+  ],
+  [
+    'main-event-3',
+    {
+      KOR: '어마어마한 혜택',
+      ENG: ''
+    }
+  ],
+  [
+    'main-event-4',
+    {
+      KOR: '을 제공할 예정이오니 많은 이용 바랍니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-event-5',
+    {
+      KOR:
+        '* 폴라리스오피스를 사용하시는 유저분은 폴라리스오피스를 통해서도 라이브러리를 업로드 하실 수 있습니다',
+      ENG: ''
+    }
+  ],
+  [
+    'main-header-search',
+    {
+      KOR: '검색',
+      ENG: 'Search'
+    }
+  ],
+  [
+    'main-visual-1',
+    {
+      KOR: 'PC에서 잠자고 있는 ',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-2',
+    {
+      KOR: '라이브러리',
+      ENG: 'Library'
+    }
+  ],
+  [
+    'main-visual-3',
+    {
+      KOR: '의 가치는 얼마일까요',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-4',
+    {
+      KOR: '하러가기',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-5',
+    {
+      KOR: '나의 ',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-6',
+    {
+      KOR: '당신이 잠든 순간에도',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-7',
+    {
+      KOR: '라이브러리',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-8',
+    {
+      KOR: '는 전세계에서',
+      ENG: ''
+    }
+  ],
+  [
+    'main-visual-9',
+    {
+      KOR: '구독됩니다',
+      ENG: ''
+    }
+  ],
+  [
+    'main-second-section',
+    {
+      KOR: '라이브러리를 손쉽게 공유하는 방법',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-1',
+    {
+      KOR: '업로드',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-2',
+    {
+      KOR:
+        'Upload 를 통해 PC 또는 클라우드와 같은 저장매체에 있는 모든 형식의 문서 등을 업로드하고 해당 파일은 라이브러리로 부릅니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-3',
+    {
+      KOR: '라이브러리는 일정기간 동안 공개되며',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-4',
+    {
+      KOR: '해당 기간동안은 다운로드를 지원하지 않습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-5',
+    {
+      KOR: '오픈 라이브러리로 공유하기',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-6',
+    {
+      KOR: '일정기간 이후 오픈 라이브러리로',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-7',
+    {
+      KOR: '변경할 수 있습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-8',
+    {
+      KOR: '오픈 라이브러리로 변경 한 후에는 다운로드, 투표, 펀딩, 판매 등 리워드를 제공 받을 수 있습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-9',
+    {
+      KOR: '보상 및 판매',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-10',
+    {
+      KOR: '오픈 라이브러리는 폴라리스쉐어 사용자들로',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-11',
+    {
+      KOR: '인해 더 많이 공유되고 사용되어',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-12',
+    {
+      KOR: '해당하는 가치만큼 보상을 지급 받거나',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-13',
+    {
+      KOR: '판매를 하실 수 있습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-insight-slider-14',
+    {
+      KOR: '해당하는 가치만큼 보상을 지급 받거나 판매를 하실 수 있습니다.',
+      ENG: ''
+    }
+  ],
+  [
+    'main-library-1',
+    {
+      KOR: '필요한 라이브러리를 사용하시고 평가해 주세요',
+      ENG: ''
+    }
+  ],
+  [
+    'main-tag-1',
+    {
+      KOR: '실시간',
+      ENG: ''
+    }
+  ],
+  [
+    'main-tag-2',
+    {
+      KOR: '추천',
+      ENG: ''
+    }
+  ],
+  [
+    'main-tag-3',
+    {
+      KOR: '태그',
+      ENG: ''
+    }
+  ],
 
   // viewer page
   [
@@ -2032,15 +2273,15 @@ const strings = new Map([
   [
     'auto-placeholder-1',
     {
-      KOR: '태그 검색 . . .',
-      ENG: 'Tag Search . . .'
+      KOR: '태그 검색',
+      ENG: 'Tag Search'
     }
   ],
   [
     'auto-placeholder-2',
     {
-      KOR: '이름 검색 . . .',
-      ENG: 'Name Search . . .'
+      KOR: '이름 검색',
+      ENG: 'Name Search'
     }
   ],
 

@@ -1,0 +1,49 @@
+$env: 'production' !default;
+
+/*URL SET*/
+$image-url: 'https://res.share.decompany.io/static/image' !default;
+$font-url: 'https://res.share.decompany.io/static/font' !default;
+
+@if ($env == 'production') {
+  $image-url: 'https://res.polarishare.com/static/image';
+  $font-url: 'https://res.polarishare.com/static/font';
+}
+
+/*DEBUG*/
+/*@debug ("SCSS ENV : [" + $env + "]");
+@debug ("SCSS image URL : [" + $image-url + "]");
+@debug ("SCSS font URL : [" + $font-url + "]");*/
+
+
+//======================================
+//              SCSS COMMON STYLE
+// =====================================
+
+/*Color SET*/
+$primary-color: #3681fe;
+$second-color: #0d73f8;
+$hr-color: #e8e8e8;
+
+/*Font SET*/
+$primary-fonts: 'Poppins', 'Noto Sans KR', sans-serif;
+
+/*Size*/
+$container-max-size: 1280px;
+
+/*Size per each device*/
+$sm-min-width: 576px;
+$sm-max-width: 575px;
+$md-min-width: 768px;
+$md-max-width: 767px;
+$lg-min-width: 992px;
+$lg-max-width: 991px;
+$xl-min-width: 1200px;
+$xl-max-width: 1199px;
+
+/*Size gutter*/
+$gutter-0: 0;
+$gutter-1: 0.25rem;
+$gutter-2: 0.5rem;
+$gutter-3: 1rem;
+$gutter-4: 1.5rem;
+$gutter-5: 3rem;

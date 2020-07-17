@@ -1,0 +1,327 @@
+.au_container {
+  @include container;
+}
+
+.au_sectionWrapper_1 {
+  @include col(12);
+  @include row;
+  padding: 105px 0 20px;
+  @media all and (max-width: $md-max-width) {
+    padding: {
+      top: 20px;
+      bottom: 0;
+    }
+  }
+}
+
+.au_sectionWrapper_2 {
+  @include row;
+  @include col(12);
+  @include col(12);
+  padding: 70px 0;
+  @media all and (max-width: $md-max-width) {
+    padding: 35px 0;
+  }
+}
+
+.au_sectionWrapper_3 {
+  @include row;
+  @include col(12);
+  padding: 70px 0 90px;
+  position: relative;
+  @media all and (max-width: $md-max-width) {
+    padding: 35px 0 90px 0;
+  }
+}
+
+.au_sectionWrapper_4 {
+  @extend .au_sectionWrapper_1;
+  padding: 70px 0 !important;
+  @media all and (max-width: $md-max-width) {
+    padding: 35px 0 !important;
+  }
+}
+
+.au_sectionWrapper_5 {
+  @extend .au_sectionWrapper_3;
+}
+
+.au_sectionDummy_1 {
+  background-image: linear-gradient(to right, #5494ff, #307eff);
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 200%;
+}
+
+.au_sectionDummy_3 {
+  background: #f5f5f5;
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 200%;
+}
+
+.au_sectionDummy_5 {
+  background: #f5f5f5;
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 200%;
+}
+
+.au_section_1 {
+  @include col(12);
+  @include col-md(6);
+  @include order-last;
+  @include order-md-first;
+  @include pl(0);
+}
+
+.au_section_3 {
+  @include col(12);
+  @include col-md(6);
+  @include p(0);
+}
+
+.au_section_4 {
+  @include row;
+}
+
+.au_mainTitle {
+  line-height: 1.24;
+  letter-spacing: -0.2px;
+  color: #ffffff;
+  margin-bottom: 28px;
+  font: {
+    family: $primary-fonts;
+    size: 50px;
+    weight: 500;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 2rem !important;
+  }
+}
+
+.au_mainContent {
+  color: #ffffff;
+  margin-bottom: 28px;
+  font: {
+    size: 20px;
+    weight: 300;
+  }
+  @media all and (max-width: $md-max-width) {
+    letter-spacing: normal;
+    margin-bottom: 20px;
+    text-align: center;
+    font: {
+      size: 16px;
+      weight: 300;
+    }
+  }
+}
+
+.au_textAlign {
+  text-align: left;
+  @media all and (max-width: $md-max-width) {
+    text-align: center;
+  }
+}
+
+.au_learnMoreBtn {
+  cursor: pointer;
+  background: #00000029;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid white;
+  color: white;
+  width: 235px;
+  padding-top: 11px;
+  height: 50px;
+  z-index: 1;
+  position: relative;
+  transition: 0.2s all ease-in-out;
+  margin-bottom: 45px;
+  text-align: center;
+  @media all and (max-width: $lg-max-width) {
+    width: 200px !important;
+    padding-top: 10px !important;
+    height: 45px !important;
+  }
+  @media all and (max-width: $md-max-width) {
+    width: 100% !important;
+    max-width: 300px;
+  }
+  @media (max-width: 480px) {
+    width: 200px !important;
+    padding-top: 7px !important;
+    height: 40px !important;
+  }
+
+  &:hover {
+    background: #ffffff1c;
+  }
+}
+
+.au_mainImg {
+  text-align: center;
+  @include col(12);
+  @include col-md(6);
+  @include order-first;
+  @include order-md-last;
+
+  img {
+    width: inherit !important;
+  }
+}
+
+.au_subTitle {
+  @include col(12);
+  @include pl(0);
+  color: $primary-color;
+  margin-bottom: 36px;
+  position: relative;
+  font: {
+    family: $primary-fonts;
+    size: 36px;
+    weight: 500;
+  }
+  @media all and (max-width: $md-max-width) {
+    letter-spacing: normal;
+    margin-bottom: 2rem;
+    font: {
+      size: 26px;
+      weight: 600;
+    }
+  }
+}
+
+.au_subContent {
+  @include row;
+  @include col(12);
+  @include pl(0);
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  font: {
+    size: 20px;
+    weight: 300;
+  }
+
+  div:first-child {
+    @include col(12);
+    @include col-lg(6);
+    @include p(0);
+    @include mb(5);
+  }
+
+  div:last-child {
+    @include col(12);
+    @include col-lg(6);
+    text-align: right;
+    padding-right: 0 !important;
+    @media all and (max-width: $lg-max-width) {
+      text-align: center !important;
+      padding: 0;
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  @media all and (max-width: $md-max-width) {
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    font: {
+      size: 16px;
+      weight: 300;
+    }
+  }
+}
+
+.au_subContent_5 {
+  @include col(12);
+  @include row;
+  @include pl(0);
+}
+
+.au_visionWrapper {
+  @include col(12);
+  @include col-md(4);
+  @include mt(5);
+  text-align: center;
+}
+
+.au_visionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 14px;
+  margin-top: 2rem;
+  @media all and (max-width: $md-max-width) {
+    margin-top: 1rem;
+    margin-bottom: 10px;
+  }
+}
+
+.au_visionContent {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #4d4d4d;
+  @media all and (max-width: $md-max-width) {
+    margin-bottom: 2rem;
+  }
+}
+
+.au_teamWrapper {
+  @include col(12);
+  @include col-md(6);
+  @include pl(0);
+  @include pr(0);
+  margin-bottom: 50px;
+}
+
+.au_teamProfileWrapper {
+  @include mb(3);
+  position: relative;
+}
+
+.au_teamNameWrapper {
+  @include ml(5);
+}
+
+.au_teamName {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  color: #4d4d4d;
+}
+
+.au_teamPosition {
+  font-size: 14px;
+  font-weight: 300;
+  color: #666666;
+}
+
+.au_teamInfo {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+}
+
+.au_linkedin {
+  position: absolute;
+  left: 0;
+  top: 3px;
+}

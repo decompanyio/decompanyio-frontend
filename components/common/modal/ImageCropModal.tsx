@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Cropper from 'react-easy-crop'
 import { FadingCircle } from 'better-react-spinkit'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import commonView from 'common/commonView'
 import repos from 'utils/repos'
 import { APP_CONFIG } from '../../../app.config'

@@ -1,0 +1,125 @@
+@-webkit-keyframes mock-gradient-animation {
+  0% {
+    background-position: 0 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0 52%;
+  }
+}
+
+@-moz-keyframes mock-gradient-animation {
+  0% {
+    background-position: 0 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0 52%;
+  }
+}
+
+@keyframes mock-gradient-animation {
+  0% {
+    background-position: 0 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0 52%;
+  }
+}
+
+@keyframes circle-chart-progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes scroll-out {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+@keyframes scroll-up {
+  0% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+@-webkit-keyframes scroll-out {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+@-webkit-keyframes scroll-up {
+  0% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+@keyframes hsi-spread {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 200px;
+    opacity: 1;
+  }
+}
+
+@keyframes hsi-roll {
+  0% {
+    width: 200px;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes kf-custom-modal {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes kf-custom-hide {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

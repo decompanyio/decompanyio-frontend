@@ -1,0 +1,110 @@
+.mss_container {
+  background: url($image-url +'/main/main-bg.png') no-repeat -10vw 0 / contain;
+  padding-top: 130px;
+  height: 870px;
+  position: relative;
+  text-align: center;
+}
+
+.mss_title {
+  font-weight: 300;
+  text-align: center;
+  font-size: 50px;
+  color: #4678b7;
+  line-height: 100%
+}
+
+.mss_point {
+  color: #00459b;
+  font-weight: 600
+}
+
+.mss_text {
+  font-size: 24px;
+  color: #454545;
+  margin-top: 16px;
+  font-weight: 300;
+  text-align: center
+}
+
+
+.mss_uploadBtn {
+  margin: 50px auto 0;
+  width: 400px;
+  height: 100px;
+  background: #0032a2;
+  color: #fff;
+  border-radius: 50px;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+
+  span {
+    font-weight: 200;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mss_container {
+    background: url($image-url +'/main/main-bg.png') no-repeat -120vw 30vw / 190vw;
+    padding-top: 130px;
+    height: auto
+  }
+  .mss_title {
+    font-size: 50px
+  }
+  .mss_point {
+    font-size: 90px;
+    display: block;
+    margin-top: 16px
+  }
+  .mss_text {
+    font-size: 32px;
+    margin-top: 32px
+  }
+
+  .mss_uploadBtn {
+    margin: 5vw auto 0;
+    width: 110px;
+    height: 110px;
+    background: #0032a2;
+    color: #fff;
+    border-radius: 50%;
+    border: 7px solid #215ce1;
+    font-size: 14px;
+    transition: border .4s ease-in;
+    z-index: 10;
+
+    span {
+      display: none;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 60px;
+      background: url($image-url +'/main/ico-docinfo.png') no-repeat 0 -30px;
+      margin: -5px auto;
+    }
+
+    &:hover,
+    &:focus {
+      border-width: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mss_title {
+    font-size: 25px
+  }
+  .mss_point {
+    font-size: 45px;;
+    margin-top: 8px
+  }
+  .mss_text {
+    font-size: 16px;
+    margin-top: 16px
+  }
+}

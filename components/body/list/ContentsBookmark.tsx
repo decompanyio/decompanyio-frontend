@@ -1,5 +1,5 @@
 import { psString } from '../../../utils/localization'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
 import { ContentsBookmarkProps } from '../../../typings/interfaces'

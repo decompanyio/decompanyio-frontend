@@ -1,6 +1,6 @@
 import Alert from './Alert'
 import React, { ReactElement, useEffect, useState } from 'react'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { useMain } from '../../../redux/main/hooks'
 
 let arr: { html: string; code: number; serial: number }[] = [

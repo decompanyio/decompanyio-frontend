@@ -4,7 +4,7 @@ import { psString } from 'utils/localization'
 import commonView from '../../../common/commonView'
 import repos from 'utils/repos'
 import common from '../../../common/common'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import WalletBalance from '../../../service/model/WalletBalance'
 import { useMain } from '../../../redux/main/hooks'
 

@@ -1,0 +1,125 @@
+.mis_swipe {
+  max-width: 1200px;
+  width: 100%;
+  margin: 60px auto 0;
+
+  @media (max-width: 1024px) {
+    margin: 10vw auto 0;
+  }
+}
+
+.mis_container_mobile {
+  display: none;
+
+  @media (max-width: 1024px) {
+    padding: 2rem 50px;
+    display: block;
+  }
+}
+
+.mis_container {
+  display: flex;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.insight-box {
+  position: relative;
+  height: 430px;
+  background: #25aef4;
+  border-radius: 50px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+
+  @media (min-width: 1025px) {
+    width: 340px !important;
+    margin: 0 2.3rem;
+  }
+
+  dt {
+    font-weight: 500;
+    margin-bottom: 15px;
+
+    @media (max-width: 1024px) {
+      font-size: 4vw;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 260px;
+      height: 200px;
+      background: url($image-url +'/main/insight-bg.png') no-repeat 0 0;
+      margin: 0 auto 20px auto;
+    }
+  }
+
+  dd {
+    word-break: keep-all;
+  }
+}
+
+.mis_card_1,
+.mis_card_2,
+.mis_card_3 {
+  @extend .insight-box
+}
+
+.mis_card_2:after,
+.mis_card_1:after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 42px;
+  background: url($image-url +'/main/insight-arrow.png') no-repeat 0 0 / contain;
+  position: absolute;
+  top: 45%;
+  right: -52px;
+}
+
+.mis_card_2 dt::before {
+  background-position: -260px 0;
+}
+
+.mis_card_3 dt::before {
+  background-position: -520px 0;
+}
+
+@media (max-width: 1024px) {
+  .insight-box {
+    width: 80vw;
+    height: auto;
+    border-radius: 10vw;
+    padding: 5vw;
+    font-size: 3.5vw;
+    line-height: 1.6;
+
+    dt::before {
+      content: "";
+      display: block;
+      width: 70vw;
+      height: 54vw;
+      background: url($image-url +'/main/insight-bg1.png') no-repeat 0 0 / contain;
+      margin: 0 auto;
+    }
+  }
+
+  .mis_card_2 dt::before {
+    background: url($image-url +'/main/insight-bg2.png') no-repeat 0 0 / contain;
+  }
+
+  .mis_card_3 dt::before {
+    background: url($image-url +'/main/insight-bg3.png') no-repeat 0 0 / contain;
+  }
+
+  .mis_card_2:after,
+  .mis_card_1:after {
+    display: none;
+  }
+}

@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import common from '../../../common/common'
 import AutoSuggest from 'react-autosuggest'
 import { psString } from 'utils/localization'

@@ -1,0 +1,28 @@
+.p_container {
+  @include d-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 40px;
+  color: #4d4d4d;
+
+  div {
+    @include d-flex;
+    @include m(2);
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      @extend .p_selectedPage;
+    }
+  }
+}
+
+.p_selectedPage {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.p_arrow {
+  margin-top: 5px !important;
+  color: darkgrey;
+}

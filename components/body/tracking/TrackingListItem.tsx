@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { psString } from '../../../utils/localization'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'
 import CustomChart from '../../common/chart/CustomChart'

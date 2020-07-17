@@ -1,0 +1,13 @@
+.sb_wrapper {
+  @include ml(1);
+  @include d-flex;
+  width: 34px;
+  height: 34px;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.5s all ease-in-out;
+
+  &:hover {
+    background-color: #d6e6ff;
+  }
+}

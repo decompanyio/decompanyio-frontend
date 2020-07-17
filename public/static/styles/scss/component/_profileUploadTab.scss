@@ -1,0 +1,27 @@
+.put_container {
+  @include col(12);
+}
+
+.put_totalNum {
+  color: #4d4d4d;
+  font-size: 14px;
+
+  @media all and (max-width: $sm-max-width) {
+    margin-bottom: 0 !important;
+  }
+
+  span {
+    @include ml(1);
+    color: $primary-color;
+    font-weight: bold;
+  }
+}
+
+.put_spinner {
+  @include mb(4);
+  @include d-flex;
+  z-index: 1;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+}

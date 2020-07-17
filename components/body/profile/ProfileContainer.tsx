@@ -7,7 +7,7 @@ import gql from 'graphql-tag'
 import UserProfileInfo from '../../../graphql/queries/UserProfileInfo.graphql'
 import UserInfo from '../../../service/model/UserInfo'
 import NotFoundPage from '../../common/page/NotFoundPage'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 
 export default function({
   identifier,

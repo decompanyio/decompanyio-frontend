@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import common from 'common/common'
 import { psString } from 'utils/localization'
 import { ThreeBounce } from 'better-react-spinkit'

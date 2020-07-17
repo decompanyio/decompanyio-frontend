@@ -1,0 +1,68 @@
+.vdb_container {
+  @include inner-container;
+  @include mb(4);
+  position: relative;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 70px;
+  white-space: pre-wrap;
+
+  @media all and (max-width: $sm-max-width) {
+    margin-top: 1rem !important;
+  }
+}
+
+.vdb_tagWrapper {
+  @include mt(5);
+  @include mb(3);
+  display: block;
+  margin-top: 12px;
+}
+
+.vdb_tag {
+  display: inline-block;
+  margin-right: 10px;
+  color: #666666;
+  font: {
+    weight: bold;
+    size: 14px;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:before {
+    @include mr(1);
+    content: '#';
+    display: inline-block;
+    font-size: 14px;
+  }
+}
+
+.vdb_ccWrapper {
+  float: right;
+
+  img {
+    width: 90px;
+  }
+}
+
+.vdb_snsShareIconWrapper {
+  @include mr(3);
+  display: inline-block;
+
+  p {
+    @include m(0);
+  }
+}
+
+.vdb_snsShareIcon {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

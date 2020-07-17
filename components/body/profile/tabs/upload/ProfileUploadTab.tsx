@@ -1,7 +1,7 @@
 import { ThreeBounce } from 'better-react-spinkit'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { psString } from 'utils/localization'
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import NoDataIcon from 'components/common/NoDataIcon'
 import ProfileUploadTabItem from './ProfileUploadTabItem'
 import Pagination from '../../../../common/Pagination'

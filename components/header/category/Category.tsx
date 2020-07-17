@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
 
@@ -9,7 +9,8 @@ const categoryRanked = [
   'health',
   'food',
   'education',
-  'design'
+  'design',
+  'programming'
 ]
 
 export default function(): ReactElement {

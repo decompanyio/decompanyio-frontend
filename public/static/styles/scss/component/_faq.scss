@@ -1,0 +1,47 @@
+.faq_container {
+  @include container;
+  @include mb(5);
+  @include pb(5);
+  @include mt(5);
+}
+
+.faq_subject {
+  @include mb(5);
+  @include mt(3);
+  font-size: 45px;
+  text-align: left;
+  font-family: $primary-fonts;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: lowercase;
+
+  &:first-letter {
+    font-weight: bold;
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 2rem !important;
+  }
+}
+
+.faq_content {
+  font-size: 16px;
+
+  a {
+    color: $primary-color;
+
+    &:hover {
+      border-bottom: 1px solid $primary-color;
+    }
+  }
+
+  div {
+    @include mt(5);
+    @include mb(2);
+    font-weight: bold;
+  }
+}

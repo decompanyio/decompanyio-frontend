@@ -1,0 +1,33 @@
+.fs_snsList {
+  flex: 1;
+  display: flex;
+
+  @media (max-width: 1024px) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: 620px;
+    margin: 70px auto;
+    justify-content: center
+  }
+
+  @media (max-width: 768px) {
+    max-width: 300px;
+    margin: 35px auto
+  }
+
+  li {
+    margin-right: 10px
+  }
+}
+
+.fs_forA11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  text-indent: -99em
+}

@@ -1,0 +1,46 @@
+.upm_progressWrapper {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.3;
+  display: none;
+}
+
+.upm_progress {
+  position: fixed;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  display: none;
+  pointer-events: none;
+}
+
+.upm_progressSecond {
+  border-radius: 100px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+
+  img {
+    position: relative;
+    left: -325px;
+    top: -224px;
+  }
+}
+
+.upm_percent {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  z-index: 4;
+  top: 35px;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+}

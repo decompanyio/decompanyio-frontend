@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Router from 'next/router'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { DeletedPageProps } from '../../../typings/interfaces'
 
 export default function({ errMessage }: DeletedPageProps): ReactElement {

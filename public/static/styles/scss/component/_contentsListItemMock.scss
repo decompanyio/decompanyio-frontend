@@ -1,0 +1,123 @@
+.clim_container {
+  @include row;
+  padding: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    padding: 1rem !important;
+  }
+}
+
+.clim_mock_2 {
+  opacity: 0.6;
+}
+
+.clim_mock_3 {
+  opacity: 0.4;
+}
+
+.clim_mock_4 {
+  opacity: 0.2;
+}
+
+.clim_imageWrapper {
+  @extend .cli_imgWrapper;
+}
+
+.clim_image {
+  @include mock-gradient-animation;
+  @include d-flex;
+  align-items: center;
+  width: 100px;
+  height: 131px;
+}
+
+.clim_infoWrapper {
+  @extend .cli_infoWrapper;
+  @include pl(3);
+}
+
+.clim_info {
+  @include mock-gradient-animation;
+  @include mb(1);
+  border-radius: 3px;
+  width: 100%;
+  height: 22px;
+  min-width: 200px;
+  max-width: 500px;
+}
+
+.clim_thumbnail {
+  @extend .dcm_imgThumbnailMock;
+}
+
+.clim_name {
+  @include mock-gradient-animation;
+  display: inline-block;
+  margin-left: 6px;
+  top: -3px;
+  border-radius: 3px;
+  position: relative;
+  width: 80px;
+  height: 20px;
+}
+
+.clim_date {
+  @include mock-gradient-animation;
+  display: inline-block;
+  float: right;
+  position: relative;
+  border-radius: 3px;
+  height: 20px;
+  width: 80px;
+  top: 4px;
+}
+
+.clim_desc {
+  @include mock-gradient-animation;
+  @include mb(2);
+  height: 36px;
+  border-radius: 3px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 500px;
+}
+
+.clim_subInfo {
+  @include mt(1);
+}
+
+.clim_reward {
+  @extend .dcm_rewardMock;
+  @include mr(2);
+}
+
+.clim_vote {
+  @include mock-gradient-animation;
+  @include mr(2);
+  content: '';
+  display: inline-block;
+  width: 40px;
+  position: relative;
+  height: 19px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.clim_view {
+  @include mock-gradient-animation;
+  @include mr(2);
+  content: '';
+  display: inline-block;
+  width: 40px;
+  position: relative;
+  height: 19px;
+  margin-right: 20px;
+  border-radius: 3px;
+  vertical-align: middle;
+}

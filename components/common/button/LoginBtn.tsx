@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import { AUTH_APIS } from '../../../utils/auth'
 import React, { ReactElement } from 'react'

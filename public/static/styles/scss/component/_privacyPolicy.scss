@@ -1,0 +1,25 @@
+.pp_container {
+  @extend .faq_container;
+}
+
+.pp_subject {
+  @extend .faq_subject;
+}
+
+.pp_content {
+  @extend .faq_content;
+
+  div {
+    &:last-child {
+      text-align: center;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+
+  a {
+    @include ml(1);
+  }
+}
