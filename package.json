@@ -54,7 +54,7 @@
     "imagemin-svgo": "7.1.0",
     "isomorphic-unfetch": "3.0.0",
     "jimp": "0.10.3",
-    "lodash": "^4.17.12",
+    "lodash": "^4.17.19",
     "lqip-loader": "2.2.0",
     "nanoid": "2.1.11",
     "next": "^9.4.4",
