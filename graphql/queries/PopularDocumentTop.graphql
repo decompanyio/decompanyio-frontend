@@ -1,0 +1,8 @@
+query PopularDocumentTop {
+  DocumentPopular {
+    findMany(skip: 0, limit: 5, sort: LATESTPAGEVIEW_DESC) {
+      _id
+      accountId
+    }
+  }
+}

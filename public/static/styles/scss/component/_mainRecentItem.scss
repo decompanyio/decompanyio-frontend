@@ -8,11 +8,6 @@
   vertical-align: middle
 }
 
-.sprite_d {
-  vertical-align: middle;
-  margin-left: 8px
-}
-
 .recent-list {
   width: 1248px;
   margin: 0 auto 100px
@@ -79,10 +74,10 @@
   background: white;
   width: 100%;
   height: 100%;
+}
 
-  img {
-    width: 100%;
-  }
+.mri_tag {
+  margin-bottom: 5px;
 }
 
 .mri_tag span {
@@ -104,7 +99,8 @@
   font-size: 26px;
   line-height: 31px;
   color: #fff;
-  font-weight: 500
+  font-weight: 500;
+  padding: 0 40px;
 }
 
 .mri_money {
@@ -126,38 +122,64 @@
   letter-spacing: 0
 }
 
-.mri_fileName {
+.mri_fileNameWrapper {
   margin-top: 10px;
   font-size: 13px;
   color: #fff;
-  font-weight: 300
+  font-weight: 300;
+
+  @media (max-width: 1024px) {
+    font-size: 28px;
+    color: #696969;
+    margin-top: 0;
+    font-weight: 400
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px
+  }
 }
 
-.file-type {
+.mri_fileName {
+  display: inline-block;
+  max-width: 70%;
+}
+
+.mri_fileType {
   padding-left: 4px;
   font-size: 16px;
-  color: #81dafe
+  color: #81dafe;
+
+  @media (max-width: 1024px) {
+    font-size: 32px;
+    color: #262626;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 .mri_day {
   font-size: 13px;
   margin-top: 4px;
-  color: #fff
+  color: #fff;
+
+  @media (max-width: 1024px) {
+    font-size: 28px;
+    margin-top: 0;
+    color: #b1b1b1;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1024px) {
   .title-recent {
     display: block;
     font-size: 60px
-  }
-  .sprite_d {
-    min-width: 156px;
-    height: 64px;
-    line-height: 60px;
-    border-radius: 32px;
-    font-size: 32px;
-    margin-top: 16px;
-    margin-left: 0
   }
 
   .recent-list {
@@ -230,14 +252,6 @@
     overflow: hidden;
     position: relative
   }
-  .mri_thumb img {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%)
-  }
   .mri_title {
     font-size: 40px;
     line-height: 52px;
@@ -266,35 +280,11 @@
     color: #0071ff;
     font-weight: 600
   }
-  .mri_fileName {
-    font-size: 28px;
-    color: #696969;
-    margin-top: 0;
-    font-weight: 400
-  }
-  .file-type {
-    font-size: 32px;
-    color: #262626
-  }
-  .mri_day {
-    font-size: 28px;
-    margin-top: 0;
-    color: #818181
-  }
-
 }
 
 @media (max-width: 768px) {
   .title-recent {
     font-size: 30px
-  }
-  .sprite_d {
-    min-width: 78px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 16px;
-    font-size: 16px;
-    margin-top: 8px
   }
 
   .recent-list {
@@ -343,14 +333,4 @@
   .mri_money span {
     font-size: 16px
   }
-  .mri_fileName {
-    font-size: 14px
-  }
-  .file-type {
-    font-size: 16px
-  }
-  .mri_day {
-    font-size: 14px
-  }
-
 }

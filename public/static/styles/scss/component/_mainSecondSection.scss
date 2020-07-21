@@ -27,23 +27,6 @@
   text-align: center
 }
 
-
-.mss_uploadBtn {
-  margin: 50px auto 0;
-  width: 400px;
-  height: 100px;
-  background: #0032a2;
-  color: #fff;
-  border-radius: 50px;
-  border: 0;
-  font-size: 30px;
-  cursor: pointer;
-
-  span {
-    font-weight: 200;
-  }
-}
-
 @media (max-width: 1024px) {
   .mss_container {
     background: url($image-url +'/main/main-bg.png') no-repeat -120vw 30vw / 190vw;
@@ -61,37 +44,6 @@
   .mss_text {
     font-size: 32px;
     margin-top: 32px
-  }
-
-  .mss_uploadBtn {
-    margin: 5vw auto 0;
-    width: 110px;
-    height: 110px;
-    background: #0032a2;
-    color: #fff;
-    border-radius: 50%;
-    border: 7px solid #215ce1;
-    font-size: 14px;
-    transition: border .4s ease-in;
-    z-index: 10;
-
-    span {
-      display: none;
-    }
-
-    &:before {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 60px;
-      background: url($image-url +'/main/ico-docinfo.png') no-repeat 0 -30px;
-      margin: -5px auto;
-    }
-
-    &:hover,
-    &:focus {
-      border-width: 0;
-    }
   }
 }
 

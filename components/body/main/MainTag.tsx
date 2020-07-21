@@ -40,9 +40,11 @@ export default function(): ReactElement {
           <span>{psString('main-tag-3')}</span>
         </div>
         <div>
-          <a href="#" className={styles.mt_btnMore}>
-            more
-          </a>
+          <Link href="/others">
+            <a className={styles.mt_btnMore} aria-label="others">
+              more
+            </a>
+          </Link>
         </div>
       </div>
 

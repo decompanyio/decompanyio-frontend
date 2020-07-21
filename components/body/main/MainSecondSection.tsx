@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import MainInsightSlider from './MainInsightSlider'
+import MainInsightUploadBtn from './MainInsightUploadBtn'
 
 export default function(): ReactElement {
   return (
@@ -13,9 +14,7 @@ export default function(): ReactElement {
 
       <MainInsightSlider />
 
-      <button type="button" className={styles.mss_uploadBtn}>
-        <b>UPLOAD</b> <span>{psString('main-visual-4')}</span>
-      </button>
+      <MainInsightUploadBtn />
     </div>
   )
 }

@@ -63,7 +63,7 @@
   }
 
   @media (max-width: 768px) {
-    @include sprite-image(20, 20, -60, 0, true);
+    @include sprite-image(30, 30, -60, 0, true);
     background-size: 400px auto;
   }
 }

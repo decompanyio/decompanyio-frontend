@@ -411,7 +411,19 @@ export interface DropdownProps {
   onChange
 }
 
-export interface MainHexSliderItem {
+export interface MainHexSliderItemProps {
   activeIndex: number
   slideIndex: number
+  userId: string
+  documentId: string
+}
+
+export interface MainRecentItemProps {
+  userId: string
+  documentId: string
+}
+
+export interface MainTopListItemProps {
+  userId: string
+  documentId: string
 }

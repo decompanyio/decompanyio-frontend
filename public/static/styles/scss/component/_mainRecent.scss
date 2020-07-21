@@ -7,6 +7,38 @@
     display: block;
     clear: both
   }
+
+  @media (max-width: 1024px) {
+    width: calc(100% - 2rem);
+    white-space: nowrap;
+    font-size: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 720px;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      //border-radius: 30px;
+      background-color: #1f82ff;
+      border: 0 solid #fff;
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
 }
 
 .mr_ListItemContainer ~ .mr_ListItemContainer {
@@ -32,36 +64,7 @@
 
 
 @media (max-width: 1024px) {
-  .mr_container {
-    width: 100%;
-    white-space: nowrap;
-    font-size: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 720px;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
 
-    &::-webkit-scrollbar {
-      width: 5px
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: transparent
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 30px;
-      background-color: #1f82ff;
-      border: 0 solid #fff;
-    }
-
-    &::-webkit-scrollbar-button {
-      width: 0;
-      height: 0
-    }
-  }
   .mr_ListItemContainer {
     float: none;
     display: inline-block;

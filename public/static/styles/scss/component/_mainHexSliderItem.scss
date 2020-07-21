@@ -12,14 +12,37 @@
     padding: 9vw 20vw 0;
     letter-spacing: 0.07em;
   }
+}
 
-  h3 {
+.mhsi_title {
+  margin-top: 1rem;
+  min-height: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a > h3 {
     font-size: 2rem;
     font-weight: 500;
     line-height: 1.2;
-    margin-top: 1rem;
-    min-height: 5.5rem;
     margin-bottom: 0;
+    color: #fff;
+  }
+}
+
+.mhsi_tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    &:last-child {
+      margin-left: 5px;
+      &:before {
+        margin-right: 3px;
+        content: '#';
+      }
+    }
   }
 }
 
@@ -83,6 +106,7 @@
   color: #81dafe;
   font-size: 18px;
   font-weight: 700;
+  margin-left: 5px;
 
   @media (max-width: 1024px) {
     font-size: 3vw;
@@ -94,6 +118,9 @@
   opacity: 0.8;
   line-height: 1.3;
   min-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 1024px) {
     font-size: 2.5vw;
@@ -139,6 +166,7 @@
       span {
         font-size: 16px;
         color: #81dafe;
+        margin-left: 5px;
 
         @media (max-width: 1024px) {
           font-size: 2.8vw
@@ -177,11 +205,16 @@
   div {
     flex: 1;
 
+    &:first-child {
+      position: relative;
+    }
+
     span {
       display: inline-block;
       vertical-align: middle;
       font-size: 13px;
       font-weight: 300;
+      cursor: default;
     }
 
     i {
@@ -286,6 +319,13 @@
   border-radius: 50%;
   background: #4095ff;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    a > div:first-child {
+      width: 14vw !important;
+      height: 14vw !important;
+    }
+  }
 }
 
 .mhsi_btnFollow {
@@ -303,3 +343,29 @@
   margin-bottom: 5px;
 }
 
+.mhsi_rewardInfo {
+  position: absolute;
+  min-height: 45px;
+  margin-top: 12px;
+  left: 0;
+  background: #ffffff;
+  z-index: 1;
+  width: 310px;
+  color: #4d4d4d;
+  font-size: 14px;
+  padding: 10px 1rem;
+  border-radius: 10px;
+  top: 37px;
+
+  @media (max-width: $sm-max-width) {
+    width: 100% !important;
+    bottom: -40px;
+  }
+
+  span {
+    @include ml(1);
+    @include mr(1);
+    font-weight: bold;
+    color: #1273ee;
+  }
+}

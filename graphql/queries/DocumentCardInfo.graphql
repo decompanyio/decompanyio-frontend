@@ -13,6 +13,7 @@ query DocumentCardInfo(
       documentId
       documentName
       documentSize
+      tags
       title
       desc
       seoTitle

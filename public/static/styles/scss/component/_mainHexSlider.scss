@@ -6,6 +6,17 @@
   top: 345px;
   right: 180px;
   padding: 44px 30px 0;
+
+  @media (max-width: 1024px) {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    background: none;
+    top: 0;
+    margin-top: -15vh;
+    right: 0;
+    padding: 0;
+  }
 }
 
 .mos_container {
@@ -14,10 +25,19 @@
   height: 437px;
   -webkit-clip-path: url(#my-clip-path);
   clip-path: url(#my-clip-path);
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+  }
 }
 
 .mos_arrow_right,
 .mos_arrow_left {
+  z-index: 2;
   position: absolute;
   width: 50px;
   height: 70px;
@@ -43,27 +63,4 @@
   background-position: 100% 0;
   left: auto;
   right: 19px;
-}
-
-@media (max-width: 1024px) {
-
-  .mos_swipe {
-    position: relative !important;
-    width: 100%;
-    height: auto;
-    background: none;
-    top: 0;
-    margin-top: -50vw;
-    right: 0;
-    padding: 0;
-  }
-  .mos_container {
-    width: 100%;
-    margin: 0 auto;
-    height: auto;
-    -webkit-clip-path: none;
-    clip-path: none;
-    padding-top: 50vw
-  }
-
 }

@@ -1,6 +1,7 @@
 .fs_snsList {
   flex: 1;
   display: flex;
+  justify-content: center;
 
   @media (max-width: 1024px) {
     display: inline-flex;

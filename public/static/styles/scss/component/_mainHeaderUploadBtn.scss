@@ -1,0 +1,56 @@
+.mhub_button {
+  position: absolute;
+  top: 640px;
+  right: 0;
+  width: 110px;
+  height: 110px;
+  background: #0032a2;
+  color: #fff;
+  border-radius: 50%;
+  border: 7px solid #215ce1;
+  font-size: 14px;
+  transition: border .4s ease-in;
+  z-index: 10;
+  cursor: pointer;
+
+  span {
+    display: none;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: url($image-url +'/main/ico-docinfo.png') no-repeat 0 -30px;
+    margin: -5px auto;
+  }
+
+  &:hover,
+  &:focus {
+    border-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    position: absolute;
+    top: 70vw;
+    left: 20vw;
+    right: auto;
+    width: 60vw;
+    height: 15vw;
+    background: #3ec6ff;
+    color: #fff;
+    border-radius: 8vw;
+    border: 0;
+    font-size: 6vw;
+    transition: border .4s ease-in;
+
+    &:before {
+      display: none;
+    }
+
+    span {
+      display: inline;
+    }
+  }
+}

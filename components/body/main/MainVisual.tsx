@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import MainHexSlider from './MainHexSlider'
+import MainHeaderUploadBtn from './MainHeaderUploadBtn'
 
 export default function(): ReactElement {
   return (
@@ -25,10 +26,7 @@ export default function(): ReactElement {
           </div>
         </div>
 
-        <button type="button" className={styles.mv_button}>
-          <b>UPLOAD</b>
-          <span>{psString('main-visual-4')}</span>
-        </button>
+        <MainHeaderUploadBtn />
 
         <MainHexSlider />
       </div>

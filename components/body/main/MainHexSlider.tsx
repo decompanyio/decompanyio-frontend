@@ -2,17 +2,37 @@ import React, { ReactElement, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import ReactSwipe from 'react-swipe'
 import MainHexSliderItem from './MainHexSliderItem'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import LatestDocumentCardTop from '../../../graphql/queries/LatestDocumentCardTop.graphql'
 
 export default function(): ReactElement {
   const [slideIndex, setSlideIndex] = useState(0)
-
-  let tmpArr = [1, 2, 3, 4, 5]
   let reactSwipeEl
+
+  const { loading, error, data } = useQuery(
+    gql`
+      ${LatestDocumentCardTop}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      notifyOnNetworkStatusChange: false
+    }
+  )
+
+  if (loading) return <div />
+  if (error || !data) return <div />
+
+  const dataList = data[Object.keys(data)[0]].findMany
+
+  if (dataList.length === 0) return <div />
 
   const onClickNextBtn = () => {
     reactSwipeEl.next()
 
-    if (slideIndex === tmpArr.length - 1) return
+    if (slideIndex === dataList.length - 1) return
 
     let index = slideIndex + 1
     setSlideIndex(index)
@@ -37,13 +57,18 @@ export default function(): ReactElement {
           }}
           ref={el => (reactSwipeEl = el)}
         >
-          {tmpArr.map((_value, index) => (
-            <MainHexSliderItem
-              activeIndex={slideIndex}
-              slideIndex={index}
-              key={index}
-            />
-          ))}
+          {dataList.map(
+            ({ userId, documentId, _id, accountId }, index) =>
+              (documentId || _id) && (
+                <MainHexSliderItem
+                  activeIndex={slideIndex}
+                  slideIndex={index}
+                  key={index}
+                  userId={userId || accountId}
+                  documentId={documentId || _id}
+                />
+              )
+          )}
         </ReactSwipe>
 
         <div

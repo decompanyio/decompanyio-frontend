@@ -1,15 +1,38 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import MainRecentItem from './MainRecentItem'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import LatestDocumentCardHex from '../../../graphql/queries/LatestDocumentCardHex.graphql'
 
 export default function(): ReactElement {
-  const arrList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const { loading, error, data } = useQuery(
+    gql`
+      ${LatestDocumentCardHex}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      notifyOnNetworkStatusChange: false
+    }
+  )
+
+  if (loading) return <div />
+  if (error || !data) return <div />
+
+  const dataList = data[Object.keys(data)[0]].findMany
+
+  if (dataList.length === 0) return <div />
 
   return (
     <div className={styles.mr_container}>
-      {arrList.map((_value, index) => (
+      {dataList.map(({ userId, documentId, _id, accountId }, index) => (
         <div className={styles.mr_ListItemContainer} key={index}>
-          <MainRecentItem />
+          <MainRecentItem
+            userId={userId || accountId}
+            documentId={documentId || _id}
+          />
         </div>
       ))}
     </div>
