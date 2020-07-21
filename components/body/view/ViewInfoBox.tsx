@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { APP_CONFIG } from '../../../app.config'
 import common from 'common/common'
 import Link from 'next/link'

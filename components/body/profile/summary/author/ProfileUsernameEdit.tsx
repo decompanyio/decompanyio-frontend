@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { APP_CONFIG } from '../../../../../app.config'
 import commonData from '../../../../../common/commonData'
 import repos from '../../../../../utils/repos'

@@ -1,0 +1,98 @@
+.pc_container {
+  text-align: center;
+  width: 245px;
+  height: 330px;
+  position: absolute;
+  background: white;
+  right: 45px;
+  top: 0;
+  z-index: 1;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+}
+
+.pc_avatarWrapper {
+  @include mt(4);
+  @include mb(4);
+}
+
+.pc_username {
+  @include mt(2);
+  color: #4d4d4d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pc_balanceWrapper {
+  @include mb(4);
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d73f8;
+    letter-spacing: -1px;
+
+    span {
+      @include ml(1);
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
+
+.pc_balance {
+  color: #4d4d4d;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.pc_loadingWrapper {
+  @include d-flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.pc_accountBtn {
+  @include d-flex;
+  @include mb(2);
+  margin: auto;
+  border-radius: 2px;
+  font-weight: 400;
+  color: #666666;
+  border: solid 1px #666666;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+  width: 134px;
+  height: 33px;
+  align-items: center;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+  justify-content: center;
+
+  &:hover {
+    color: $second-color;
+    border-color: $second-color;
+  }
+}
+
+.pc_logoutBtn {
+  @include d-flex;
+  margin: auto;
+  border-radius: 2px;
+  font-weight: 400;
+  color: #999999;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+  width: 134px;
+  height: 33px;
+  align-items: center;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+  justify-content: center;
+
+  &:hover {
+    color: #f80d0d;
+  }
+}

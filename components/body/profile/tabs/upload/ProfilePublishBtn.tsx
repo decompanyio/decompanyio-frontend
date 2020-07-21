@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import { psString } from '../../../../../utils/localization'
 import { useMain } from '../../../../../redux/main/hooks'
 import { ProfilePublishBtnProps } from '../../../../../typings/interfaces'

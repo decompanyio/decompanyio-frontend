@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import common from 'common/common'
 import { psString } from 'utils/localization'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import commonView from '../../../common/commonView'
 import { useMain } from '../../../redux/main/hooks'
 

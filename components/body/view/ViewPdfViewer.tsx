@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import repos from '../../../utils/repos'
 import commonData from '../../../common/commonData'
 import common from '../../../common/common'

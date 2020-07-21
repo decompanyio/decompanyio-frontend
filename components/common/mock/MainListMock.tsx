@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import DocumentCardMock from './DocumentCardMock'
 import React, { ReactElement } from 'react'
 

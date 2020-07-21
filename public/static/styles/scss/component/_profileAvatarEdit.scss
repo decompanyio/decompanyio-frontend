@@ -1,0 +1,26 @@
+.pae_wrapper {
+  cursor: pointer;
+  z-index: 1;
+  top: 0;
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  color: white;
+  font-weight: 500;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 18px;
+  transition: 0.2s all ease-in-out;
+  opacity: 0;
+
+  &:hover {
+    background: $primary-color;
+    opacity: 0.8;
+    transition: 0.2s all ease-in-out;
+  }
+
+  i {
+    position: relative;
+    top: 38%;
+  }
+}

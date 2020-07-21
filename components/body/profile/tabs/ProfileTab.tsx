@@ -1,5 +1,5 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import * as styles from '../../../../public/static/styles/main.scss'
+import * as styles from '../../../../public/static/styles/scss/index.scss'
 import { psString } from '../../../../utils/localization'
 import ProfileUploadTab from './upload/ProfileUploadTab'
 import ProfileVoteTab from './vote/ProfileVoteTab'

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import common from '../../../../../common/common'
 import { APP_CONFIG } from '../../../../../app.config'
 import RewardCard from '../../../../common/card/RewardCard'

@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import AddBtn from 'components/common/button/AddBtn'
 import LoginBtn from '../../common/button/LoginBtn'
 import SearchBtn from 'components/common/button/SearchBtn'

@@ -1,0 +1,11 @@
+.pcc_btn {
+  @extend .common_claimBtn;
+
+  @media all and (max-width: $sm-max-width) {
+    width: 100%;
+  }
+}
+
+.pcc_btnDisabled {
+  @extend .common_disabledBtn;
+}

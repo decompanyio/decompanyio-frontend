@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { AUTH_APIS } from '../../../utils/auth'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import repos from '../../../utils/repos'
 import { useMain } from '../../../redux/main/hooks'

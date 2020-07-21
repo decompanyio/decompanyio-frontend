@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import Meta from './Meta'
 import HeaderSectionFirst from './section/HeaderSectionFirst'
 import HeaderSectionSecond from './section/HeaderSectionSecond'

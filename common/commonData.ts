@@ -121,5 +121,8 @@ export default {
 
   dummyImage: {
     gray: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
-  }
+  },
+
+  familySite: ['Polaris Share IR', 'Polaris Office'],
+  familySiteUrl: ['https://polarishare.io', 'https://www.polarisoffice.com']
 }

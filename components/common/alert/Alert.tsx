@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { psString } from '../../../utils/localization'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import commonData from '../../../common/commonData'
 import { AlertProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'

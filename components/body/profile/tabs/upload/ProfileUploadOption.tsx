@@ -1,4 +1,4 @@
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import { psString } from '../../../../../utils/localization'
 import common from '../../../../../common/common'
 import React, { ReactElement } from 'react'

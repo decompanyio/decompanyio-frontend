@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import { psString } from 'utils/localization'
 import repos from '../../../../../utils/repos'
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import { ProfileCreatorClaimProps } from '../../../../../typings/interfaces'
 import { useMain } from '../../../../../redux/main/hooks'
 import common from '../../../../../common/common';

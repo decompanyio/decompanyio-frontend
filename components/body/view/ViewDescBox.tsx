@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import Linkify from 'react-linkify'
 import Link from 'next/link'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import { APP_CONFIG } from '../../../app.config'
 import {

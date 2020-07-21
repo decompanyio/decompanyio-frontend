@@ -1,0 +1,19 @@
+.ua_container {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 60px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $second-color;
+  }
+
+  &:after {
+    background: none !important;
+  }
+
+  img {
+    position: absolute;
+  }
+}

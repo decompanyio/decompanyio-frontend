@@ -401,3 +401,29 @@ export interface getDocumentListByIdsMultipleQuery {
 export interface getProfileRewardsQuery {
   ProfileSummary
 }
+
+export interface DropdownProps {
+  options: string[]
+  placeholder: string
+  className: string
+  arrowClassName?: string
+  menuClassName?: string
+  onChange
+}
+
+export interface MainHexSliderItemProps {
+  activeIndex: number
+  slideIndex: number
+  userId: string
+  documentId: string
+}
+
+export interface MainRecentItemProps {
+  userId: string
+  documentId: string
+}
+
+export interface MainTopListItemProps {
+  userId: string
+  documentId: string
+}

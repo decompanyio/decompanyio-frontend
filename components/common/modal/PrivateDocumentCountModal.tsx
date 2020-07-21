@@ -3,7 +3,7 @@ import commonView from 'common/commonView'
 import common from 'common/common'
 import React, { ReactElement, useEffect, useState } from 'react'
 import Router from 'next/router'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import { useMain } from '../../../redux/main/hooks'
 
 export default function(): ReactElement {

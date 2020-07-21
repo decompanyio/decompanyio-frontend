@@ -1,0 +1,35 @@
+.em_checkboxContainer {
+  @include mt(3);
+  position: relative;
+  padding: 0 24px;
+}
+
+.em_checkboxWarning {
+  label > span {
+    border: 1px solid #f92121 !important;
+  }
+}
+
+.em_policyLink {
+  @include ml(2);
+  display: contents;
+  font-weight: bold;
+  color: $primary-color !important;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
+
+.em_loadingWrapper {
+  position: absolute;
+  background: white;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  top: 0;
+}

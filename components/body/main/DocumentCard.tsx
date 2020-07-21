@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import _ from 'lodash'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import Truncate from 'react-truncate'
 import commonView from '../../../common/commonView'
 import common from '../../../common/common'

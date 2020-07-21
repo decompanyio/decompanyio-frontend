@@ -1,116 +1,98 @@
 import React, { ReactElement } from 'react'
-import * as styles from '../../public/static/styles/main.scss'
-import { APP_CONFIG } from '../../app.config'
+import * as styles from '../../public/static/styles/scss/index.scss'
 
 export default function(): ReactElement {
   return (
-    <div className={styles.f_sns}>
-      <div className={styles.f_snsWrapper}>
+    <ul className={styles.fs_snsList}>
+      <li>
         <a
           aria-label="Facebook"
           target="_blank"
           href={'https://www.facebook.com/polarishare/'}
           rel="noopener noreferrer nofollow"
         >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_facebook.png'
-            }
-            alt="Facebook Page"
-          />
+          <i className={styles.sprite_sns_1} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>facebook</span>
         </a>
+      </li>
+      <li>
         <a
           target="_blank"
           href={'https://twitter.com/Polarishare'}
           rel="noopener noreferrer nofollow"
           aria-label="Twitter"
         >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_twitter.png'
-            }
-            alt="Twitter Page"
-          />
+          <i className={styles.sprite_sns_2} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>twitter</span>
         </a>
-        <a
-          target="_blank"
-          href={'https://open.kakao.com/tm/sent/g8JceZec'}
-          rel="noopener noreferrer nofollow"
-          aria-label="Kakaotalk"
-        >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_kakaotalk.png'
-            }
-            alt="Kakaotalk Page"
-          />
+      </li>
+      {/* <li>
+        <a href="">
+          <i className={styles.sprite_sns_3} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>instagram</span>
         </a>
-        <a
-          target="_blank"
-          href={'https://t.me/polarishare'}
-          rel="noopener noreferrer nofollow"
-          aria-label="Telegram"
-        >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_telegram.png'
-            }
-            alt="Telegram Page"
-          />
+      </li>*/}
+      {/* <li>
+        <a href="">
+          <i className={styles.sprite_sns_4} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>linkedin</span>
         </a>
-        <a
-          target="_blank"
-          href={'https://medium.com/polaris-share'}
-          rel="noopener noreferrer nofollow"
-          aria-label="Medium"
-        >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_medium.png'
-            }
-            alt="Medium Page"
-          />
-        </a>
+      </li>*/}
+      <li>
         <a
           target="_blank"
           href={'https://blog.naver.com/polarishare'}
           rel="noopener noreferrer nofollow"
           aria-label="Blog"
         >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static + '/image/sns/white/ic_sns_w_blog.png'
-            }
-            alt="Blog Page"
-          />
+          <i className={styles.sprite_sns_5} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>blog</span>
         </a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href={'https://open.kakao.com/tm/sent/g8JceZec'}
+          rel="noopener noreferrer nofollow"
+          aria-label="Kakaotalk"
+        >
+          <i className={styles.sprite_sns_6} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>kakaotalk</span>
+        </a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href={'https://medium.com/polaris-share'}
+          rel="noopener noreferrer nofollow"
+          aria-label="Medium"
+        >
+          <i className={styles.sprite_sns_7} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>medium</span>
+        </a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href={'https://t.me/polarishare'}
+          rel="noopener noreferrer nofollow"
+          aria-label="Telegram"
+        >
+          <i className={styles.sprite_sns_8} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>telegram</span>
+        </a>
+      </li>
+      <li>
         <a
           target="_blank"
           href="https://www.reddit.com/user/polarishare"
           rel="noopener noreferrer nofollow"
           aria-label="Reddit"
         >
-          <img
-            className={styles.f_snsImgType_1}
-            src={
-              APP_CONFIG.domain().static +
-              '/image/sns/white/ic_sns_w_reddit.png'
-            }
-            alt="Reddit Page"
-          />
+          <i className={styles.sprite_sns_9} />
+          <span className={styles.fs_forA11y + ' for-a11y'}>reddit</span>
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   )
 }

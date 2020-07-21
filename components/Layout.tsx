@@ -1,5 +1,5 @@
 import ReactTooltip from 'react-tooltip'
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import React, { ReactElement, useEffect, useState } from 'react'
@@ -32,9 +32,9 @@ export default function(props): ReactElement {
       let currentScrollPos = window.pageYOffset
       let headerMainNav = document.getElementById('headerMainNav')
       let totalLoadingBar = document.getElementById('totalLoadingBar')
-      let headerCategoryWrapper = document.getElementById(
+      /*let headerCategoryWrapper = document.getElementById(
         'headerCategoryWrapper'
-      )
+      )*/
 
       let isScrollAtTop = currentScrollPos <= 60
       let isScrollUp = _prevScrollPos > currentScrollPos
@@ -54,7 +54,7 @@ export default function(props): ReactElement {
         }px`
 
       // main 페이지, 테그 헤더 위치 처리
-      if (!path && headerCategoryWrapper && headerMainNav) {
+      /*if (!path && headerCategoryWrapper && headerMainNav) {
         if (headerCategoryWrapper.offsetTop < currentScrollPos) {
           if (headerCategoryWrapper.style.position !== 'fixed')
             headerCategoryWrapper.style.position = 'fixed'
@@ -73,7 +73,7 @@ export default function(props): ReactElement {
           if (headerCategoryWrapper.style.marginBottom !== '0px')
             headerMainNav.style.marginBottom = '0px'
         }
-      }
+      }*/
 
       resolve(currentScrollPos)
     })
@@ -176,15 +176,17 @@ export default function(props): ReactElement {
         Skip to main
       </a>
 
-      <Header
-        title={props.title}
-        path={path}
-        metaData={new Meta(props.metaData || null)}
-      />
+      {path && (
+        <Header
+          title={props.title}
+          path={path}
+          metaData={new Meta(props.metaData || null)}
+        />
+      )}
 
-      <CookiePolicyNotice />
+      {path && <CookiePolicyNotice />}
 
-      <DollarPolicyNotice />
+      {path && <DollarPolicyNotice />}
 
       {common.isServer() || init ? (
         <article className={styles.l_articleContainer} id="article">

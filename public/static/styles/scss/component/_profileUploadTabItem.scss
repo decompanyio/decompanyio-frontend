@@ -1,0 +1,252 @@
+.puti_container {
+  @include row;
+  padding: 1rem 0;
+  border-bottom: 1px solid #cecece;
+  position: relative;
+}
+
+.puti_thumbWrapper {
+  @include d-flex;
+  align-items: center;
+  width: 100px;
+  height: 131px;
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #f5f5f5;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.puti_thumb {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.puti_thumbLoading {
+  @extend .puti_thumb;
+  width: 100%;
+  height: 100%;
+}
+
+.puti_notConvertContainer {
+  width: 100%;
+  max-width: 163px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  @media all and (max-width: $sm-max-width) {
+    max-width: 100%;
+  }
+}
+
+.puti_notConvert {
+  @include d-flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.puti_cardImg {
+  width: 100%;
+}
+
+.puti_notConvertBackground {
+  opacity: 0;
+}
+
+.puti_contentsContainer {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 100px - 1rem);
+  margin: 0 0 0 1rem;
+
+  &:hover {
+    .puti_optionBtn > i {
+      display: inline-block;
+    }
+  }
+}
+
+.puti_optionBtn {
+  @extend .common_optionBtn;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @media (min-width: $sm-min-width) {
+    i {
+      display: none;
+    }
+  }
+}
+
+.puti_optionShow {
+  display: inline-block !important;
+}
+
+.puti_optionTable {
+  @extend .common_optionTable;
+}
+
+.puti_optionTableHide {
+  @extend .common_optionTable;
+  display: none;
+}
+
+.puti_optionTableBtn {
+  @extend .common_optionTableBtn;
+
+  i {
+    display: inline-block !important;
+  }
+}
+
+.puti_title,
+.puti_title > i {
+  @include mb(1);
+  margin-right: 25px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  font: {
+    size: 16px;
+    weight: bold;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.puti_descWrapper {
+  height: 44px;
+  overflow: hidden;
+
+  @media all and (max-width: $sm-max-width) {
+    max-height: 58px;
+  }
+}
+
+.puti_desc {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 13px;
+  }
+}
+
+.puti_infoWrapper {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.puti_reward {
+  @include mr(3);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  top: 1px;
+  letter-spacing: -1px;
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.puti_arrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.puti_view {
+  @include mr(3);
+  @extend .common_view;
+}
+
+.puti_vote {
+  @include mr(3);
+  @extend .common_vote;
+}
+
+.puti_date {
+  @include ml(0);
+  @include ml-sm(3);
+  font-size: 14px;
+  color: #b3b3b3;
+  position: relative;
+  height: 25px;
+  display: inline-block;
+}
+
+.puti_publishBtnWrapper {
+  @media all and (max-width: $sm-max-width) {
+    @include mt(2);
+  }
+  @media (min-width: $sm-min-width) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.puti_publishBtn {
+  @include d-flex;
+  @include mb(0);
+  cursor: pointer;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-weight: 300;
+  font-size: 12px;
+  color: #4d4d4d;
+  border: 1px solid #b3b3b3;
+  border-radius: 2px;
+  width: 140px;
+  height: 2rem;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+
+  i {
+    font-size: 13px;
+  }
+
+  &:hover {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    width: 100%;
+  }
+}
+
+.puti_claimWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  @media all and (max-width: $sm-max-width) {
+    @include mt(2);
+    position: relative;
+  }
+}

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Truncate from 'react-truncate'
 import Link from 'next/link'
 import { ProfileUploadDescProps } from '../../../../../typings/interfaces'
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 
 export default function({
   documentData,

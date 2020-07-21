@@ -3,7 +3,7 @@ import { APP_CONFIG } from '../../../app.config'
 import common from 'common/common'
 import commonView from 'common/commonView'
 import { psString } from 'utils/localization'
-import * as styles from '../../../public/static/styles/main.scss'
+import * as styles from '../../../public/static/styles/scss/index.scss'
 import { useMain } from '../../../redux/main/hooks'
 import DocumentInfo from '../../../service/model/DocumentInfo'
 

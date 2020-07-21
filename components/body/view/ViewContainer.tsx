@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import React, { ReactElement, useEffect } from 'react'
 import ViewFullscreenBtn from './ViewFullscreenBtn'
 import ViewInfoBox from './ViewInfoBox'

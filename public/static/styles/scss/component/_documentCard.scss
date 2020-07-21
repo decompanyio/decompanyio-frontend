@@ -1,0 +1,266 @@
+.dc_container {
+  @include mb(3);
+  @include mr(0);
+  @include mr-sm(3);
+  width: 290px;
+  height: 315px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  position: relative;
+  overflow: initial;
+
+  &:last-child {
+    @include mr-lg(0);
+  }
+
+  &:hover {
+    border-color: #86b9fa;
+    box-shadow: 0 0 0 1px #86b9fa;
+  }
+
+  @media (max-width: $sm-max-width) {
+    width: 100% !important;
+    height: auto !important;
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.dc_content {
+  padding: 12px 12px 8px 12px;
+  border-radius: 0 0 4px 4px;
+  background: white;
+  position: relative;
+
+  @media (max-width: $sm-max-width) {
+    padding: 1rem 1rem 25px 1rem !important;
+  }
+}
+
+.dc_imgWrapper {
+  width: auto;
+  position: relative;
+  height: 168px;
+  overflow: hidden;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+
+  @media (max-width: $sm-max-width) {
+    width: 100% !important;
+    height: auto !important;
+    outline: none;
+    box-shadow: none !important;
+    border: {
+      left: none !important;
+      right: none !important;
+      top: 1px solid #e8e8e8;
+      radius: 0 !important;
+      color: #e8e8e8 !important;
+    }
+  }
+}
+
+.dc_img {
+  width: 100%;
+}
+
+.dc_imgLandscape {
+  height: 100%;
+  left: -50%;
+  position: absolute;
+  @media (max-width: $sm-max-width) {
+    left: 0 !important;
+    position: relative !important;
+    width: 100%;
+  }
+}
+
+.dc_title {
+  @include d-flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  height: 45px;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d !important;
+
+  @media (max-width: $sm-max-width) {
+    min-height: auto !important;
+    margin-bottom: 10px;
+  }
+
+  span > span {
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      color: $second-color;
+    }
+  }
+
+  a {
+    width: 100%;
+    display: block;
+  }
+}
+
+.dc_name {
+  font-size: 14px;
+  margin-left: 6px;
+  color: #4d4d4d;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    color: $second-color;
+  }
+
+  @media (max-width: $sm-max-width) {
+    margin-left: 3px !important;
+  }
+}
+
+.dc_avatarWrapper {
+  @include mb(1);
+  @include pb(2);
+  @include mt(1);
+  @include pt(1);
+  border-bottom: 1px solid #dadada;
+  position: relative;
+
+  @media (max-width: $sm-max-width) {
+    @include mb(0);
+    border: none;
+  }
+
+  div {
+    @include d-flex;
+    align-items: center;
+    width: max-content;
+
+    &:hover {
+      div {
+        border-color: $primary-color;
+      }
+
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.dc_date {
+  font-size: 13px;
+  color: #b3b3b3;
+  right: 0;
+  position: absolute;
+  bottom: 10px;
+
+  @media (max-width: $sm-max-width) {
+    top: 3px;
+  }
+}
+
+.dc_count {
+  @include mt(2);
+  font-size: 12px;
+  color: #b3b3b3;
+  position: relative;
+}
+
+.dc_infoWrapper {
+  position: absolute;
+  right: 10px;
+}
+
+.dc_view {
+  @include mr(2);
+  display: inline-block;
+  font-size: 14px;
+  color: #666666;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    position: relative;
+    height: 19px;
+    margin-right: 5px;
+    top: -4px;
+    background-image: url($image-url +'/icon/i_hit.svg');
+    vertical-align: middle;
+  }
+}
+
+.dc_vote {
+  display: inline-block;
+  font-size: 14px;
+  color: #666666;
+  margin-right: 5px;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    position: relative;
+    height: 19px;
+    margin-right: 5px;
+    top: -4px;
+    background-image: url($image-url +'/icon/i_thumb.svg');
+    vertical-align: middle;
+  }
+}
+
+.dc_reward {
+  @include mr(2);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  color: $second-color;
+  letter-spacing: -1px;
+}
+
+.dc_rewardInfo {
+  position: absolute;
+  min-height: 40px;
+  margin-top: 12px;
+  left: 0;
+  background: $second-color;
+  z-index: 1;
+  width: 300px;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  padding: 10px 1rem;
+
+  @media (max-width: $sm-max-width) {
+    width: 100% !important;
+    bottom: -40px;
+  }
+
+  span {
+    @include ml(1);
+    font-weight: bold;
+  }
+}
+
+.dc_rewardArrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.dc_deletedImg {
+  @include monotone-grey;
+}
+
+.dc_nameWrapper {
+  position: relative;
+}

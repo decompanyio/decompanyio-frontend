@@ -1,4 +1,4 @@
-import * as styles from '../../../../../public/static/styles/main.scss'
+import * as styles from '../../../../../public/static/styles/scss/index.scss'
 import CustomChart from '../../../../common/chart/CustomChart'
 import NoDataIcon from '../../../../common/NoDataIcon'
 import React, { ReactElement } from 'react'

@@ -1,4 +1,4 @@
-import * as styles from 'public/static/styles/main.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import Menu from '../../header/menu/Menu'
 import React, { ReactElement, useState } from 'react'
 

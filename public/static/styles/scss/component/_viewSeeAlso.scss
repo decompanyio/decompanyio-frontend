@@ -1,0 +1,22 @@
+.vsa_container {
+  @include inner-container;
+  margin-top: 2rem;
+  margin-bottom: 50px;
+  background-color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+
+  @media all and (max-width: $lg-max-width) {
+    margin: 20px 0;
+  }
+}
+
+.vsa_mainTitle {
+  font-family: $primary-fonts;
+  font-weight: 500;
+}
