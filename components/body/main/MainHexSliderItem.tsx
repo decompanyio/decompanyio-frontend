@@ -178,9 +178,9 @@ export default function({
               </a>
             </Link>
           </span>
-          <button type="button" className={styles.mhsi_btnFollow}>
+          {/*<button type="button" className={styles.mhsi_btnFollow}>
             <span>+ Follow</span>
-          </button>
+          </button>*/}
           <div>chrislee</div>
         </div>
       </div>

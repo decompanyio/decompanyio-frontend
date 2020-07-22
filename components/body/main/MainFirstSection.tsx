@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import MainVisual from './MainVisual'
-import MainClopPath from './MainClopPath'
+import MainClopPath from './MainClipPath'
 import MainTag from './MainTag'
 
 export default function(): ReactElement {

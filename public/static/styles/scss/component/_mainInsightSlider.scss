@@ -12,8 +12,12 @@
   display: none;
 
   @media (max-width: 1024px) {
-    padding: 2rem 50px;
+    padding: 0;
     display: block;
+  }
+
+  > div > div {
+    padding-top: 0 !important;
   }
 }
 
@@ -25,101 +29,147 @@
   }
 }
 
-.insight-box {
+.mis_cardWrapper {
+  &:first-child {
+    width: 60%;
+    padding-right: 2rem;
+    height: inherit;
+
+    @media (max-width: 1024px) {
+      padding-right: 0;
+    }
+  }
+
+  &:last-child {
+    width: 40%;
+  }
+
+}
+
+.mis_card {
   position: relative;
-  height: 430px;
   background: #25aef4;
-  border-radius: 50px;
-  padding: 20px;
+  height: calc(50% - 1rem);
+  border-radius: 35px;
+  padding: 2rem;
   color: #fff;
   text-align: center;
   font-size: 15px;
   font-weight: 400;
   margin: 0;
+  display: flex;
+  width: 100%;
 
-  @media (min-width: 1025px) {
-    width: 340px !important;
-    margin: 0 2.3rem;
-  }
-
-  dt {
-    font-weight: 500;
-    margin-bottom: 15px;
+  &:first-child {
+    margin-bottom: 2rem;
 
     @media (max-width: 1024px) {
-      font-size: 4vw;
-    }
-
-    &:before {
-      content: "";
-      display: block;
-      width: 260px;
-      height: 200px;
-      background: url($image-url +'/main/insight-bg.png') no-repeat 0 0;
-      margin: 0 auto 20px auto;
+      margin-bottom: 0;
     }
   }
 
-  dd {
-    word-break: keep-all;
+
+  @media (max-width: 1024px) {
+    padding: 1rem;
+    margin: 0 1rem;
+    width: calc(100% - 2rem);
+    display: block;
+    min-height: 514.16px;
   }
 }
 
-.mis_card_1,
-.mis_card_2,
-.mis_card_3 {
-  @extend .insight-box
+.mis_cardVertical {
+  @extend .mis_card;
+  height: 100%;
 }
 
-.mis_card_2:after,
-.mis_card_1:after {
+.mis_imageWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    margin-top: 2rem;
+  }
+}
+
+.mis_uploadImage {
   content: "";
   display: block;
-  width: 24px;
-  height: 42px;
-  background: url($image-url +'/main/insight-arrow.png') no-repeat 0 0 / contain;
-  position: absolute;
-  top: 45%;
-  right: -52px;
+  width: 250px;
+  height: 145px;
+  background: url($image-url +'/main/insight-bg1.png') no-repeat 0 0 / contain;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    width: 210px;
+  }
 }
 
-.mis_card_2 dt::before {
-  background-position: -260px 0;
+.mis_openLibraryImage {
+  content: "";
+  display: block;
+  width: 250px;
+  height: 145px;
+  background: url($image-url +'/main/insight-bg2.png') no-repeat 0 0 / contain;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    width: 210px;
+  }
 }
 
-.mis_card_3 dt::before {
-  background-position: -520px 0;
-}
+.mis_uploadContents,
+.mis_openLibraryContents {
+  text-align: left;
+  margin-left: 1rem;
+  width: 80%;
 
-@media (max-width: 1024px) {
-  .insight-box {
-    width: 80vw;
-    height: auto;
-    border-radius: 10vw;
-    padding: 5vw;
-    font-size: 3.5vw;
-    line-height: 1.6;
+  div:first-child {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #224390;
 
-    dt::before {
-      content: "";
-      display: block;
-      width: 70vw;
-      height: 54vw;
-      background: url($image-url +'/main/insight-bg1.png') no-repeat 0 0 / contain;
-      margin: 0 auto;
+    @media (max-width: 1024px) {
+      text-align: center;
     }
   }
 
-  .mis_card_2 dt::before {
-    background: url($image-url +'/main/insight-bg2.png') no-repeat 0 0 / contain;
+  div:last-child {
+    color: white;
+    font-weight: 500;
+
+    @media (max-width: 1024px) {
+      margin-top: 2rem;
+    }
+
+    div {
+      margin-top: 1rem;
+      font-size: .9rem;
+
+      @media (max-width: 1024px) {
+        text-align: left;
+      }
+    }
   }
 
-  .mis_card_3 dt::before {
-    background: url($image-url +'/main/insight-bg3.png') no-repeat 0 0 / contain;
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin-left: 0;
   }
+}
 
-  .mis_card_2:after,
-  .mis_card_1:after {
-    display: none;
+.mis_rewardContents {
+  @extend .mis_uploadContents;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    img {
+      width: 100%;
+    }
   }
 }

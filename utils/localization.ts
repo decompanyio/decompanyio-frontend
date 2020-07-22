@@ -237,99 +237,59 @@ const strings = new Map([
   [
     'main-insight-slider-1',
     {
-      KOR: '업로드',
+      KOR:
+        'PC 또는 클라우드와 같은 저장매체에 묵혀있는 파일을 업로드하고 보상 받을 수 있어요.',
       ENG: ''
     }
   ],
   [
     'main-insight-slider-2',
     {
-      KOR:
-        'Upload 를 통해 PC 또는 클라우드와 같은 저장매체에 있는 모든 형식의 문서 등을 업로드하고 해당 파일은 라이브러리로 부릅니다.',
+      KOR: "업로드한 파일을 '라이브러리'라고 불러요.",
       ENG: ''
     }
   ],
   [
     'main-insight-slider-3',
     {
-      KOR: '라이브러리는 일정기간 동안 공개되며',
+      KOR:
+        "라이브러리를 공개하는게 고민되시면 '비공개'로 업로드 하시고 나중에 공개로 변경하셔도 돼요.",
       ENG: ''
     }
   ],
   [
     'main-insight-slider-4',
     {
-      KOR: '해당 기간동안은 다운로드를 지원하지 않습니다.',
+      KOR: '라이브러리를 공개하면 좋은 점!',
       ENG: ''
     }
   ],
   [
     'main-insight-slider-5',
     {
-      KOR: '오픈 라이브러리로 공유하기',
+      KOR: '하나. 투표하거나 유료공개를 통해서 수익을 얻을 수 있어요.',
       ENG: ''
     }
   ],
   [
     'main-insight-slider-6',
     {
-      KOR: '일정기간 이후 오픈 라이브러리로',
+      KOR: '두울. 구글과 같은 검색서비스에도 공개되어 유명세를 누릴 수 있어요.',
       ENG: ''
     }
   ],
   [
     'main-insight-slider-7',
     {
-      KOR: '변경할 수 있습니다.',
+      KOR:
+        '세엣. 독자들의 투표를 받거나 조회 등의 뜨거운 반응으로 추가 보상을 받을 수 있어요',
       ENG: ''
     }
   ],
   [
     'main-insight-slider-8',
     {
-      KOR: '오픈 라이브러리로 변경 한 후에는 다운로드, 투표, 펀딩, 판매 등 리워드를 제공 받을 수 있습니다.',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-9',
-    {
-      KOR: '보상 및 판매',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-10',
-    {
-      KOR: '오픈 라이브러리는 폴라리스쉐어 사용자들로',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-11',
-    {
-      KOR: '인해 더 많이 공유되고 사용되어',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-12',
-    {
-      KOR: '해당하는 가치만큼 보상을 지급 받거나',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-13',
-    {
-      KOR: '판매를 하실 수 있습니다.',
-      ENG: ''
-    }
-  ],
-  [
-    'main-insight-slider-14',
-    {
-      KOR: '해당하는 가치만큼 보상을 지급 받거나 판매를 하실 수 있습니다.',
+      KOR: '"주식보다 뿌듯한 내 문서 보상"',
       ENG: ''
     }
   ],

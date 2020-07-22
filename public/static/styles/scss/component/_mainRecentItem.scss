@@ -47,11 +47,29 @@
   background-color: transparent;
   background-size: cover;
   -webkit-clip-path: url(#my-clip-path);
-  clip-path: url(#my-clip-path)
-}
+  clip-path: url(#my-clip-path);
 
-.mri_container:hover .mri_content {
-  opacity: 1
+  &:hover .mri_content {
+    opacity: 1
+  }
+
+  @media (max-width: 1024px) {
+    position: relative;
+    -webkit-clip-path: none;
+    clip-path: none;
+    width: 495px;
+    height: 694px;
+    background-color: #fff;
+    border-radius: 72px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden
+  }
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 347px;
+    border-radius: 36px
+  }
 }
 
 .mri_content {
@@ -216,18 +234,6 @@
     width: 0;
     height: 0
   }
-
-  .mri_container {
-    position: relative;
-    -webkit-clip-path: none;
-    clip-path: none;
-    width: 495px;
-    height: 694px;
-    background-color: #fff;
-    border-radius: 72px;
-    border: 1px solid #e0e0e0;
-    overflow: hidden
-  }
   .mri_content {
     opacity: 1;
     position: relative;
@@ -292,12 +298,6 @@
   }
   .recent-list .recent-item ~ .recent-item {
     margin-left: 10px !important
-  }
-
-  .mri_container {
-    width: 250px;
-    height: 347px;
-    border-radius: 36px
   }
   .mri_content {
     height: calc(100% - 154px)

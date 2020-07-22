@@ -29,6 +29,7 @@ export default function(): ReactElement {
     <div className={styles.mr_container}>
       {dataList.map(({ userId, documentId, _id, accountId }, index) => (
         <div className={styles.mr_ListItemContainer} key={index}>
+          <div className={styles.mr_dummy} />
           <MainRecentItem
             userId={userId || accountId}
             documentId={documentId || _id}

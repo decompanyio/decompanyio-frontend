@@ -56,6 +56,7 @@
 .mhsi_active {
   @media (max-width: 1024px) {
     transform: scale(1) !important;
+    z-index: 1;
     top: 0;
 
     .mhsi_wrapper {

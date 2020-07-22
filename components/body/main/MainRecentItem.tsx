@@ -138,7 +138,7 @@ export default function({
               <p className={styles.mri_day}>
                 {common
                   .dateString(new Date(documentInfo.created))
-                  .replace('-', '.')}
+                  .replace('-', '.').replace('-', '.')}
               </p>
             </div>
           </div>

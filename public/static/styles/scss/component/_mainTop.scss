@@ -44,8 +44,7 @@
 @media (max-width: 1024px) {
   .mfrs_container {
     width: 1024px;
-    padding-left: 40px;
-    padding-bottom: 200px;
+    padding: 0 0 200px 40px;
 
     h3 {
       font-size: 59px;
@@ -65,13 +64,13 @@
     -ms-overflow-style: none;
   }
   .mfrs_list::-webkit-scrollbar {
-    width: 5px
+    width: 5px;
+    height: 2px;
   }
   .mfrs_list::-webkit-scrollbar-track {
     background-color: transparent
   }
   .mfrs_list::-webkit-scrollbar-thumb {
-    border-radius: 30px;
     background-color: #1f82ff;
     border: 0 solid #fff;
   }
@@ -92,8 +91,7 @@
 @media (max-width: 768px) {
   .mfrs_container {
     width: 100%;
-    padding-left: 15px;
-    padding-bottom: 100px;
+    padding: 0 15px 100px 15px;
 
     h3 {
       font-size: 30px

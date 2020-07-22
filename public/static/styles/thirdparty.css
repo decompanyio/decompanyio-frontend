@@ -359,7 +359,7 @@ pdf 뷰어*/
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    border: 1px solid #c9c9c9;
+    border: 1px solid #5e5e5e;
     font-size: 14px;
     cursor: pointer;
     color: black;
@@ -370,11 +370,7 @@ pdf 뷰어*/
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: .8rem;
-}
-
-.dropdown_footer:hover {
-    border-color: #3681fe !important;
+    padding-left: 1rem;
 }
 
 .dropdown_footerArrow {
@@ -390,23 +386,23 @@ pdf 뷰어*/
 }
 
 .dropdown_footerMenu {
-    width: 100%;
+    width: calc(100% + 2px);
     position: absolute;
-    bottom: 3rem;
-    background: white;
-    left: 0;
-    color: black;
-    border: 1px solid #c9c9c9;
+    bottom: 38px;
+    background: #f3f3f3;
+    left: -1px;
+    color: #737373;
+    border: 1px solid #5f5f5f;
 }
 
 .dropdown_footerMenu > div {
-    padding: .5rem;
+    padding: .5rem 1rem;
 }
 
 .dropdown_footerMenu > div:hover {
     color: #3681fe;
 }
 
-.dropdown_footerMenu > div:first-child {
-    border-bottom: 1px solid #c9c9c9;
+.is-open > div:first-child > div:last-child > span {
+    transform: rotate(-180deg);
 }
