@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.07.23-a
+- add new main page
+
 ## 2020.07.14-a
 Bug fix
 - pdf not compiled issue

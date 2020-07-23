@@ -1,7 +1,7 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { MyAvatarProps } from '../../../typings/interfaces'
-import commonView from '../../../common/commonView';
+import commonView from '../../../common/commonView'
 
 /*일반 유저 아바타
 picture, croppedArea, size, (click) 지정하여 사용*/
@@ -62,7 +62,7 @@ export default function({
     >
       {picture.length > 0 ? (
         <img
-          src={'/static/image/icon/i_profile-default.png'}
+          src="/static/image/icon/empty-user.png"
           data-src={picture}
           data-srcset={picture + ' 1x'}
           alt="profile"
@@ -71,7 +71,7 @@ export default function({
           onError={e => {
             let element = e.target as HTMLImageElement
             element.onerror = null
-            element.srcset = '/static/image/icon/i_profile-default.png'
+            element.srcset = '/static/image/icon/empty-user.png'
           }}
         />
       ) : (

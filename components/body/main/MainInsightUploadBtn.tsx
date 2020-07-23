@@ -25,7 +25,7 @@ export default function(): ReactElement {
       className={styles.miub_uploadBtn}
       onClick={() => handleAddBtnClick()}
     >
-      <b>UPLOAD</b>
+      <b>UPLOAD </b>
       <span>{psString('main-visual-4')}</span>
     </button>
   )

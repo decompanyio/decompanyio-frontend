@@ -12,14 +12,13 @@ export default function({
   menuClassName,
   onChange
 }: DropdownProps): ReactElement {
-  const defaultOption = options.length > 0 ? options[0] : ''
+  //const defaultOption = options.length > 0 ? options[0] : ''
 
   return (
     <Dropdown
       className={className}
       options={options}
       onChange={onChange}
-      value={defaultOption}
       placeholder={placeholder}
       arrowClassName={arrowClassName}
       menuClassName={menuClassName}

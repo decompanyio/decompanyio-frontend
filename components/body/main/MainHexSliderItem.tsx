@@ -181,7 +181,19 @@ export default function({
           {/*<button type="button" className={styles.mhsi_btnFollow}>
             <span>+ Follow</span>
           </button>*/}
-          <div>chrislee</div>
+          <Link
+            href={{
+              pathname: '/profile_page',
+              query: { identification: documentInfo.author.username }
+            }}
+            as={`/@${documentInfo.author.username}`}
+          >
+            <a rel="nofollow" aria-label="profile page">
+              <div className={styles.mhsi_username}>
+                {documentInfo.author.username}
+              </div>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
