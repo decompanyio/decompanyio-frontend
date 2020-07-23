@@ -14,6 +14,7 @@ import common from '../../../common/common'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { psString } from '../../../utils/localization'
+import Truncate from 'react-truncate'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -116,11 +117,17 @@ export default function({
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
             <a aria-label="viewer page">
-              <h3>{documentInfo.title}</h3>
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                <h3>{documentInfo.title}</h3>
+              </Truncate>
             </a>
           </Link>
         </div>
-        <div className={styles.mhsi_desc}>{documentInfo.desc}</div>
+        <div className={styles.mhsi_desc}>
+          <Truncate lines={2} ellipsis={<span>...</span>}>
+            {documentInfo.desc}
+          </Truncate>
+        </div>
         <div className={styles.mhsi_date}>
           {common.timestampToDate(documentInfo.created)}
         </div>
