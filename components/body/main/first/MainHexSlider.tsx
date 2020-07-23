@@ -4,7 +4,7 @@ import ReactSwipe from 'react-swipe'
 import MainHexSliderItem from './MainHexSliderItem'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import LatestDocumentCardTop from '../../../graphql/queries/LatestDocumentCardTop.graphql'
+import LatestDocumentCardTop from '../../../../graphql/queries/LatestDocumentCardTop.graphql'
 
 export default function(): ReactElement {
   const [slideIndex, setSlideIndex] = useState(0)

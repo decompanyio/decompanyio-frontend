@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import ReactSwipe from 'react-swipe'
-import { psString } from '../../../utils/localization'
-import { APP_CONFIG } from '../../../app.config'
+import { psString } from '../../../../utils/localization'
+import { APP_CONFIG } from '../../../../app.config'
 
 export default function(): ReactElement {
   return (
@@ -52,6 +52,8 @@ export default function(): ReactElement {
                   <div>
                     {psString('main-insight-slider-5')}
                     <br />
+                    {psString('main-insight-slider-5-b')}
+                    <br />
                     <br />
                     {psString('main-insight-slider-6')}
                     <br />
@@ -96,6 +98,8 @@ export default function(): ReactElement {
                 {psString('main-insight-slider-4')}
                 <div>
                   {psString('main-insight-slider-5')}
+                  <br />
+                  {psString('main-insight-slider-5-b')}
                   <br />
                   <br />
                   {psString('main-insight-slider-6')}

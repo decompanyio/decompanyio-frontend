@@ -122,22 +122,47 @@
 }
 
 .mri_money {
-  margin-top: 16px
-}
+  margin-top: 16px;
 
-.mri_money * {
-  vertical-align: middle
-}
+  * {
+    vertical-align: middle
+  }
 
-.mri_money i {
-  margin-right: 4px
-}
+  i {
+    margin-right: 4px
+  }
 
-.mri_money span {
-  font-size: 15px;
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0
+  span {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 0;
+
+    i {
+      margin-right: 24px
+    }
+    span {
+      font-size: 32px;
+      color: #0071ff;
+      font-weight: 600
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+
+    i {
+      margin-right: 12px
+    }
+    span {
+      font-size: 16px
+    }
+  }
 }
 
 .mri_fileNameWrapper {
@@ -275,17 +300,6 @@
     padding: 20px;
     background-color: #f6f6f6
   }
-  .mri_money {
-    margin-top: 0
-  }
-  .mri_money i {
-    margin-right: 24px
-  }
-  .mri_money span {
-    font-size: 32px;
-    color: #0071ff;
-    font-weight: 600
-  }
 }
 
 @media (max-width: 768px) {
@@ -323,14 +337,5 @@
   }
   .mri_group {
     padding: 10px
-  }
-  .mri_money {
-    margin-top: 0
-  }
-  .mri_money i {
-    margin-right: 12px
-  }
-  .mri_money span {
-    font-size: 16px
   }
 }

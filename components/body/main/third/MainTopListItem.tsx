@@ -1,20 +1,20 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
-import { APP_CONFIG } from '../../../app.config'
-import commonData from '../../../common/commonData'
+import { APP_CONFIG } from '../../../../app.config'
+import commonData from '../../../../common/commonData'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import DocumentCardInfo from '../../../graphql/queries/DocumentCardInfo.graphql'
+import DocumentCardInfo from '../../../../graphql/queries/DocumentCardInfo.graphql'
 import _ from 'lodash'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../service/model/UserInfo'
-import common from '../../../common/common'
-import commonView from '../../../common/commonView'
+import DocumentInfo from '../../../../service/model/DocumentInfo'
+import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
+import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
+import CreatorRoyalty from '../../../../graphql/models/CreatorRoyalty'
+import UserInfo from '../../../../service/model/UserInfo'
+import common from '../../../../common/common'
+import commonView from '../../../../common/commonView'
 import dynamic from 'next/dynamic'
-import { useMain } from '../../../redux/main/hooks'
+//import { useMain } from '../../../../redux/main/hooks'
 import Link from 'next/link'
 
 // UserAvatar - No SSR
@@ -24,7 +24,7 @@ const UserAvatarWithoutSSR = dynamic(
 )
 
 export default function({ userId, documentId }): ReactElement {
-  const { isMobile } = useMain()
+  //const { isMobile } = useMain()
   const { loading, error, data } = useQuery(
     gql`
       ${DocumentCardInfo}
@@ -173,11 +173,11 @@ export default function({ userId, documentId }): ReactElement {
               </div>
             </a>
           </Link>
-          <p className={styles.mtli_time}>
+          {/*<p className={styles.mtli_time}>
             {commonView.dateTimeAgo(documentInfo.created, isMobile)}
             <br />
             (for 4 weeks)
-          </p>
+          </p>*/}
         </div>
       </div>
     </div>

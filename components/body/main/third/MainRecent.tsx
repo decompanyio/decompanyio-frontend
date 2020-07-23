@@ -3,7 +3,7 @@ import * as styles from 'public/static/styles/scss/index.scss'
 import MainRecentItem from './MainRecentItem'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import LatestDocumentCardHex from '../../../graphql/queries/LatestDocumentCardHex.graphql'
+import LatestDocumentCardHex from '../../../../graphql/queries/LatestDocumentCardHex.graphql'
 
 export default function(): ReactElement {
   const { loading, error, data } = useQuery(

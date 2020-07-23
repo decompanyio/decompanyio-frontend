@@ -272,6 +272,13 @@ const strings = new Map([
     }
   ],
   [
+    'main-insight-slider-5-b',
+    {
+      KOR: '(향후 적용 예정)',
+      ENG: ''
+    }
+  ],
+  [
     'main-insight-slider-6',
     {
       KOR: '두울. 구글과 같은 검색서비스에도 공개되어 유명세를 누릴 수 있어요.',
@@ -1202,6 +1209,13 @@ const strings = new Map([
     {
       KOR: '이미지 파일로 업로드 부탁드립니다.',
       ENG: 'Please upload image file.'
+    }
+  ],
+  [
+    'alert-2151',
+    {
+      KOR: '검색 할 태그가 없습니다.',
+      ENG: 'There are no tags to search.'
     }
   ],
 

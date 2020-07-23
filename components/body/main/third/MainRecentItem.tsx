@@ -1,19 +1,18 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
-import { APP_CONFIG } from '../../../app.config'
-import { MainRecentItemProps } from '../../../typings/interfaces'
+import { APP_CONFIG } from '../../../../app.config'
+import { MainRecentItemProps } from '../../../../typings/interfaces'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import DocumentCardInfo from '../../../graphql/queries/DocumentCardInfo.graphql'
+import DocumentCardInfo from '../../../../graphql/queries/DocumentCardInfo.graphql'
 import _ from 'lodash'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../service/model/UserInfo'
-import common from '../../../common/common'
-import commonData from '../../../common/commonData'
-import commonView from '../../../common/commonView'
+import DocumentInfo from '../../../../service/model/DocumentInfo'
+import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
+import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
+import UserInfo from '../../../../service/model/UserInfo'
+import common from '../../../../common/common'
+import commonData from '../../../../common/commonData'
+import commonView from '../../../../common/commonView'
 import Link from 'next/link'
 import Truncate from 'react-truncate'
 
@@ -57,12 +56,11 @@ export default function({
       .value()
   }
 
-  const { Document, User, Creator, DocumentFeatured, DocumentPopular } = _data
+  const { Document, User, DocumentFeatured, DocumentPopular } = _data
 
   const documentInfo = new DocumentInfo(Document)
   const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
   const documentPopular = new DocumentPopularModel(DocumentPopular)
-  const creatorRoyalty = new CreatorRoyalty(Creator[0])
 
   documentInfo.author = new UserInfo(User)
   documentInfo.latestPageview = documentPopular.latestPageview
@@ -81,7 +79,6 @@ export default function({
     documentInfo.documentName
   )
   let splitedNameArray = documentInfo.documentName.split('.')
-  let documentName = splitedNameArray[0]
   let extension = _.reverse(splitedNameArray)[0]
   let ratio = Number(commonView.getImgInfo(documentInfo))
 
@@ -119,26 +116,24 @@ export default function({
             <p className={styles.mri_tag}>
               <span>KOR</span>
             </p>
-            <p className={styles.mri_title}>{documentInfo.title}</p>
+            <p className={styles.mri_title}>
+              <Truncate lines={1} ellipsis={<span>...</span>}>
+                {documentInfo.title}
+              </Truncate>
+            </p>
             <p className={styles.mri_money}>
               <i className={styles.sprite_d} />
-              <span>
-                {common.deckToDollarWithComma(creatorRoyalty.royalty)}
-              </span>
+              <span>free</span>
             </p>
             <div className={styles.mri_group}>
               <p className={styles.mri_fileNameWrapper}>
-                <div className={styles.mri_fileName}>
-                  <Truncate lines={1} ellipsis={<span>...</span>}>
-                    {documentName}
-                  </Truncate>
-                </div>
                 <span className={styles.mri_fileType}>.{extension}</span>
               </p>
               <p className={styles.mri_day}>
                 {common
                   .dateString(new Date(documentInfo.created))
-                  .replace('-', '.').replace('-', '.')}
+                  .replace('-', '.')
+                  .replace('-', '.')}
               </p>
             </div>
           </div>

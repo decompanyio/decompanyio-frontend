@@ -3,7 +3,7 @@ import * as styles from 'public/static/styles/scss/index.scss'
 import MainTopListItem from './MainTopListItem'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import PopularDocumentTop from '../../../graphql/queries/PopularDocumentTop.graphql'
+import PopularDocumentTop from '../../../../graphql/queries/PopularDocumentTop.graphql'
 export default function(): ReactElement {
   const { loading, error, data } = useQuery(
     gql`

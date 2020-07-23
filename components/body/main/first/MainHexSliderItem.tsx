@@ -1,19 +1,19 @@
 import React, { ReactElement, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
-import { MainHexSliderItemProps } from '../../../typings/interfaces'
+import { MainHexSliderItemProps } from '../../../../typings/interfaces'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import DocumentCardInfo from '../../../graphql/queries/DocumentCardInfo.graphql'
+import DocumentCardInfo from '../../../../graphql/queries/DocumentCardInfo.graphql'
 import _ from 'lodash'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../service/model/UserInfo'
-import common from '../../../common/common'
+import DocumentInfo from '../../../../service/model/DocumentInfo'
+import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
+import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
+import CreatorRoyalty from '../../../../graphql/models/CreatorRoyalty'
+import UserInfo from '../../../../service/model/UserInfo'
+import common from '../../../../common/common'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { psString } from '../../../utils/localization'
+import { psString } from '../../../../utils/localization'
 import Truncate from 'react-truncate'
 
 // UserAvatar - No SSR
@@ -81,7 +81,7 @@ export default function({
   )
   // @ts-ignore
   let tag = documentInfo.tags.length > 0 ? documentInfo.tags[0] : ''
-  let documentName = documentInfo.documentName.split('.')[0]
+  // let documentName = documentInfo.documentName.split('.')[0]
   let extension = documentInfo.documentName.split('.')[1]
 
   return (
@@ -134,7 +134,7 @@ export default function({
 
         <div className={styles.mhsi_fileInfo}>
           <span>
-            {documentName}
+            {/*documentName*/}
             <span>.{extension}</span>
           </span>
           <span>{documentInfo.latestPageview} views</span>

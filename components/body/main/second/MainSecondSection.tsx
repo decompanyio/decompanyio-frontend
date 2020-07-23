@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
-import { psString } from '../../../utils/localization'
+import { psString } from '../../../../utils/localization'
 import MainInsightSlider from './MainInsightSlider'
 import MainInsightUploadBtn from './MainInsightUploadBtn'
 

@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
-import * as styles from '../../../public/static/styles/scss/index.scss'
-import { psString } from '../../../utils/localization'
-import { AUTH_APIS } from '../../../utils/auth'
-import commonData from '../../../common/commonData'
-import { useMain } from '../../../redux/main/hooks'
+import * as styles from '../../../../public/static/styles/scss/index.scss'
+import { psString } from '../../../../utils/localization'
+import { AUTH_APIS } from '../../../../utils/auth'
+import commonData from '../../../../common/commonData'
+import { useMain } from '../../../../redux/main/hooks'
 
 export default function(): ReactElement {
   const { myInfo, setModal } = useMain()
@@ -22,10 +22,10 @@ export default function(): ReactElement {
   return (
     <button
       type="button"
-      className={styles.miub_uploadBtn}
+      className={styles.mhub_button}
       onClick={() => handleAddBtnClick()}
     >
-      <b>UPLOAD </b>
+      <b>UPLOAD</b>
       <span>{psString('main-visual-4')}</span>
     </button>
   )

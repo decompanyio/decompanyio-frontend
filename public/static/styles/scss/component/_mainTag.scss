@@ -55,6 +55,7 @@
     word-break: keep-all;
     position: absolute;
     cursor: pointer;
+    overflow: hidden;
 
     &:hover {
       animation-name: dungdung;
