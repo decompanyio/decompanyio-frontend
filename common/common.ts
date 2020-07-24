@@ -356,5 +356,9 @@ export default {
         break
     }
     return country
+  },
+
+  getRatio(width: number, height: number): number {
+    return (width || 1) / (height || 1)
   }
 }

@@ -12,7 +12,6 @@ import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
 import CreatorRoyalty from '../../../../graphql/models/CreatorRoyalty'
 import UserInfo from '../../../../service/model/UserInfo'
 import common from '../../../../common/common'
-import commonView from '../../../../common/commonView'
 import dynamic from 'next/dynamic'
 //import { useMain } from '../../../../redux/main/hooks'
 import Link from 'next/link'
@@ -87,7 +86,10 @@ export default function({ userId, documentId }): ReactElement {
   let vote = common.deckStr(
     common.toEther(documentFeatured.latestVoteAmount) || 0
   )
-  let ratio = Number(commonView.getImgInfo(documentInfo))
+  let ratio = common.getRatio(
+    documentInfo.dimensions.width,
+    documentInfo.dimensions.height
+  )
 
   return (
     <div className={styles.mtli_container}>
@@ -108,7 +110,7 @@ export default function({ userId, documentId }): ReactElement {
               alt={documentInfo.title}
               className={
                 'lazy ' +
-                (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
+                (ratio >= 1.6 ? styles.dc_imgLandscape : styles.dc_img)
               }
               onError={e => {
                 // console.log(e)

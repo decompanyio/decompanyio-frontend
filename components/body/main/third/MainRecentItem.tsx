@@ -12,7 +12,6 @@ import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
 import UserInfo from '../../../../service/model/UserInfo'
 import common from '../../../../common/common'
 import commonData from '../../../../common/commonData'
-import commonView from '../../../../common/commonView'
 import Link from 'next/link'
 import Truncate from 'react-truncate'
 
@@ -80,7 +79,10 @@ export default function({
   )
   let splitedNameArray = documentInfo.documentName.split('.')
   let extension = _.reverse(splitedNameArray)[0]
-  let ratio = Number(commonView.getImgInfo(documentInfo))
+  let ratio = common.getRatio(
+    documentInfo.dimensions.width,
+    documentInfo.dimensions.height
+  )
 
   return (
     <div className={styles.mri_container}>
@@ -100,8 +102,7 @@ export default function({
               sizes="320w"
               alt={documentInfo.title}
               className={
-                'lazy ' +
-                (ratio >= 1.8 ? styles.dc_imgLandscape : styles.dc_img)
+                'lazy ' + (ratio >= 1 ? styles.dc_imgLandscape : styles.dc_img)
               }
               onError={e => {
                 // console.log(e)
