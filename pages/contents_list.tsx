@@ -25,7 +25,7 @@ Index.getInitialProps = async props => {
       ? path[1] || 'latest' // path 기본값은 'latest'로 정의 합니다.
       : 'latest'
 
-  return { tag: getTag, path: getPath }
+  return { tag: decodeURI(getTag), path: getPath }
 }
 
 export default withApollo({ ssr: true })(Index)

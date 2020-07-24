@@ -232,8 +232,8 @@ const strings = new Map([
   [
     'main-visual-10',
     {
-      KOR: 'Your',
-      ENG: ' '
+      KOR: ' ',
+      ENG: 'Your '
     }
   ],
   [

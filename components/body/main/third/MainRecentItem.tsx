@@ -114,7 +114,7 @@ export default function({
           </div>
           <div className={styles.mri_content}>
             <p className={styles.mri_tag}>
-              <span>KOR</span>
+              <span>{common.localeToCountry(documentInfo.locale)}</span>
             </p>
             <p className={styles.mri_title}>
               <Truncate lines={1} ellipsis={<span>...</span>}>

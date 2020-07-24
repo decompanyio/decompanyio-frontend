@@ -344,5 +344,17 @@ export default {
 
   isServer(): boolean {
     return typeof window === 'undefined'
+  },
+
+  localeToCountry(locale: string): string {
+    let country = ''
+
+    switch (locale) {
+      default:
+      case 'ko-kr':
+        country = 'kor'
+        break
+    }
+    return country
   }
 }

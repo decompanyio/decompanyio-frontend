@@ -10,6 +10,7 @@ export default class DocumentInfo {
   public dimensions: { height: number; width: number }
   public documentId: string
   public documentName: string
+  public locale: string
   public documentSize: number
   public forceTracking: boolean
   public isBlocked: boolean
@@ -55,6 +56,7 @@ export default class DocumentInfo {
     this.seoTitle = data && data.seoTitle ? data.seoTitle : ''
     this.shortUrl = data && data.shortUrl ? data.shortUrl : ''
     this.state = data && data.state ? data.state : ''
+    this.locale = data && data.locale ? data.locale : ''
     this.tags = data && data.tags ? data.tags : []
     this.title = data && data.title ? data.title : ''
     this.totalPages = data && data.totalPages ? data.totalPages : 0

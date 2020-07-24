@@ -10,12 +10,15 @@ import { HeaderSectionFirstProps } from '../../../typings/interfaces'
 // GET subtitle
 const getSubTitle = () => {
   const paths = commonView.getPaths() || []
+  let subTitle = ''
 
   if (paths.length === 2 && commonData.pathArr.includes(paths[1]))
-    return psString('main-category-' + paths[1])
+    subTitle = psString('main-category-' + paths[1])
   else if (paths.length === 2 && !commonData.pathArr.includes(paths[1]))
-    return null
-  else if (paths.length > 2 && paths[1] === 'tag') return paths[2]
+    subTitle = ''
+  else if (paths.length > 2 && paths[1] === 'tag') subTitle = paths[2]
+
+  return decodeURI(subTitle)
 }
 
 export default function({ path }: HeaderSectionFirstProps): ReactElement {

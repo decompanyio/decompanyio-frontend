@@ -98,7 +98,9 @@ export default function({
     >
       <div className={styles.mhsi_wrapper}>
         <div className={styles.mhsi_tag}>
-          <span className={styles.mhsi_badge}>KOR</span>
+          <span className={styles.mhsi_badge}>
+            {common.localeToCountry(documentInfo.locale)}
+          </span>
           <Link
             href={{ pathname: '/contents_list', query: { tag: tag } }}
             as={'tag/' + tag}

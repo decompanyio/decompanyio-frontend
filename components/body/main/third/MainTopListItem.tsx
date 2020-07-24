@@ -118,7 +118,7 @@ export default function({ userId, documentId }): ReactElement {
                   APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
             />
-            <span>KOR</span>
+            <span>{common.localeToCountry(documentInfo.locale)}</span>
           </div>
         </a>
       </Link>
