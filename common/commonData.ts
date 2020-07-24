@@ -5,6 +5,9 @@ export default {
   // 공통 타이틀
   commonTitle: ' | Polaris Share',
 
+  // 공식 메일
+  commonMail: 'connect@polarishare.com',
+
   // 메인 페이지 카테고리 리스트
   pathArr: ['mylist', 'popular', 'featured', 'latest', 'history'],
 
@@ -123,6 +126,13 @@ export default {
     gray: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
   },
 
-  familySite: ['Polaris Share IR', 'Polaris Office'],
-  familySiteUrl: ['https://polarishare.io', 'https://www.polarisoffice.com']
+  familySite: ['www.polarishare.io', 'www.polarisoffice.com'],
+  familySiteUrl: ['https://polarishare.io', 'https://www.polarisoffice.com'],
+
+  whitepaperURL: {
+    ko:
+      'https://s3.ap-northeast-2.amazonaws.com/about.polarishare.com/POLARIS+SHARE+1.1_whitepaper_KOR.pdf',
+    en:
+      'https://s3.ap-northeast-2.amazonaws.com/about.polarishare.com/POLARIS+SHARE+1.1_whitepaper_ENG.pdf'
+  }
 }

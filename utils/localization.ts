@@ -124,7 +124,7 @@ const strings = new Map([
     'main-event-1',
     {
       KOR: '2020년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
-      ENG: ''
+      ENG: 'As of 2020, Polaris Share is operated during the Beta Season.'
     }
   ],
   [
@@ -132,21 +132,22 @@ const strings = new Map([
     {
       KOR:
         '지금 베타시즌에 업로드하시는 사용자에게는 본 시즌 전 에어드랍을 통해',
-      ENG: ''
+      ENG: 'We are planning to offer'
     }
   ],
   [
     'main-event-3',
     {
       KOR: '어마어마한 혜택',
-      ENG: ''
+      ENG: 'tremendous benefits'
     }
   ],
   [
     'main-event-4',
     {
       KOR: '을 제공할 예정이오니 많은 이용 바랍니다.',
-      ENG: ''
+      ENG:
+        'to users who upload Beta Season through AirDrop, so please use it a lot.'
     }
   ],
   [
@@ -154,7 +155,8 @@ const strings = new Map([
     {
       KOR:
         '* 폴라리스오피스를 사용하시는 유저분은 폴라리스오피스를 통해서도 라이브러리를 업로드 하실 수 있습니다',
-      ENG: ''
+      ENG:
+        '* Polaris Office users can upload their Library through Polaris Office.'
     }
   ],
   [
@@ -168,7 +170,7 @@ const strings = new Map([
     'main-visual-1',
     {
       KOR: 'PC에서 잠자고 있는 ',
-      ENG: ''
+      ENG: 'What is the value of'
     }
   ],
   [
@@ -182,56 +184,63 @@ const strings = new Map([
     'main-visual-3',
     {
       KOR: '의 가치는 얼마일까요',
-      ENG: ''
+      ENG: ' that I was sleeping on my PC'
     }
   ],
   [
     'main-visual-4',
     {
-      KOR: '하러가기',
-      ENG: ''
+      KOR: ' 하러가기',
+      ENG: ' '
     }
   ],
   [
     'main-visual-5',
     {
       KOR: '나의 ',
-      ENG: ''
+      ENG: 'my '
     }
   ],
   [
     'main-visual-6',
     {
       KOR: '당신이 잠든 순간에도',
-      ENG: ''
+      ENG: 'Even the moment you fall asleep, '
     }
   ],
   [
     'main-visual-7',
     {
       KOR: '라이브러리',
-      ENG: ''
+      ENG: 'Library'
     }
   ],
   [
     'main-visual-8',
     {
       KOR: '는 전세계에서',
-      ENG: ''
+      ENG: ' is subscribed worldwide'
     }
   ],
   [
     'main-visual-9',
     {
       KOR: '구독됩니다',
-      ENG: ''
+      ENG: ' '
+    }
+  ],
+  [
+    'main-visual-10',
+    {
+      KOR: 'Your',
+      ENG: ' '
     }
   ],
   [
     'main-second-section',
     {
       KOR: '라이브러리를 손쉽게 공유하는 방법',
-      ENG: ''
+      ENG: 'Easily Share'
     }
   ],
   [
@@ -239,50 +248,54 @@ const strings = new Map([
     {
       KOR:
         'PC 또는 클라우드와 같은 저장매체에 묵혀있는 파일을 업로드하고 보상 받을 수 있어요.',
-      ENG: ''
+      ENG:
+        'Upload your files here from your PC, cloud, and other storage media for rewards.'
     }
   ],
   [
     'main-insight-slider-2',
     {
       KOR: "업로드한 파일을 '라이브러리'라고 불러요.",
-      ENG: ''
+      ENG: 'The uploaded file is called a Library.'
     }
   ],
   [
     'main-insight-slider-3',
     {
       KOR:
-        "라이브러리를 공개하는게 고민되시면 '비공개'로 업로드 하시고 나중에 공개로 변경하셔도 돼요.",
-      ENG: ''
+        "라이브러리를 공개하는게 고민되시면, '비공개'로 업로드 하시고 나중에 공개로 변경하셔도 돼요.",
+      ENG:
+        "If you're concerned about releasing your Library, \n" +
+        'you can upload it as a "private" and change it to a public one later.'
     }
   ],
   [
     'main-insight-slider-4',
     {
       KOR: '라이브러리를 공개하면 좋은 점!',
-      ENG: ''
+      ENG: 'Open Library Advantage!'
     }
   ],
   [
     'main-insight-slider-5',
     {
       KOR: '하나. 투표하거나 유료공개를 통해서 수익을 얻을 수 있어요.',
-      ENG: ''
+      ENG: 'One. You can make a profit by voting or public relations.'
     }
   ],
   [
     'main-insight-slider-5-b',
     {
       KOR: '(향후 적용 예정)',
-      ENG: ''
+      ENG: '( Coming soon)'
     }
   ],
   [
     'main-insight-slider-6',
     {
       KOR: '두울. 구글과 같은 검색서비스에도 공개되어 유명세를 누릴 수 있어요.',
-      ENG: ''
+      ENG:
+        'Two. You can enjoy fame by being exposed to search services like Google.'
     }
   ],
   [
@@ -290,42 +303,43 @@ const strings = new Map([
     {
       KOR:
         '세엣. 독자들의 투표를 받거나 조회 등의 뜨거운 반응으로 추가 보상을 받을 수 있어요',
-      ENG: ''
+      ENG:
+        'Three. You can get additional rewards for voting by users or for enthusiastic responses.'
     }
   ],
   [
     'main-insight-slider-8',
     {
       KOR: '"주식보다 뿌듯한 내 문서 보상"',
-      ENG: ''
+      ENG: '"My Library show better profits than stocks"'
     }
   ],
   [
     'main-library-1',
     {
       KOR: '필요한 라이브러리를 사용하시고 평가해 주세요',
-      ENG: ''
+      ENG: 'Use the required Library and evaluate'
     }
   ],
   [
     'main-tag-1',
     {
       KOR: '실시간',
-      ENG: ''
+      ENG: ' '
     }
   ],
   [
     'main-tag-2',
     {
       KOR: '추천',
-      ENG: ''
+      ENG: 'HOT'
     }
   ],
   [
     'main-tag-3',
     {
       KOR: '태그',
-      ENG: ''
+      ENG: 'Tag'
     }
   ],
 
@@ -775,8 +789,8 @@ const strings = new Map([
   [
     'faq-question-15',
     {
-      KOR: '덱(Deck)은 무엇인가요?',
-      ENG: 'What is Deck?'
+      KOR: '폴라(POLA)는 무엇인가요?',
+      ENG: 'What is POLA?'
     }
   ],
   [
@@ -785,7 +799,7 @@ const strings = new Map([
       KOR:
         '폴라리스 쉐어에서 사용할 수 있는 디지털 화폐로서 이더리움 네트워크와 여러 거래소에서 거래할 수 있는 ERC20 규격의 암호화폐입니다. ',
       ENG:
-        'Deck is an ERC20 digital currency designed for use on the Ethereum platform and other exchanges.'
+        'POLA is an ERC20 digital currency designed for use on the Ethereum platform and other exchanges.'
     }
   ],
   [
@@ -1436,17 +1450,17 @@ const strings = new Map([
   [
     'approve-title',
     {
-      KOR: 'Deck 승인',
-      ENG: 'Approve DECK'
+      KOR: 'POLA 승인',
+      ENG: 'Approve POLA'
     }
   ],
   [
     'approve-explain-1',
     {
       KOR:
-        'DECK을 사용하여 투표하려면, Polaris Share 컨트랙트가 당신을 대신해서 DECK을 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
+        'POLA를 사용하여 투표하려면, Polaris Share 컨트랙트가 당신을 대신해서 POLA를 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
       ENG:
-        'To vote on a document using your DECK, you must approve the Polaris Share Contract to transfer your DECK on your behalf for the first time. You will not be able to vote on documents until approved.'
+        'To vote on a document using your POLA, you must approve the Polaris Share Contract to transfer your POLA on your behalf for the first time. You will not be able to vote on documents until approved.'
     }
   ],
   [
@@ -1474,26 +1488,26 @@ const strings = new Map([
   [
     'dollar-learn-others-subj',
     {
-      KOR: 'DECK 테스트 토큰에 대한 중요 공지',
-      ENG: 'Important notice about the DECK test token'
+      KOR: 'POLA 테스트 토큰에 대한 중요 공지',
+      ENG: 'Important notice about the POLA test token'
     }
   ],
   [
     'dollar-learn-others-explain-1',
     {
       KOR:
-        'Polaris Share 알파 버전에서는 DECK 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
+        'Polaris Share 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
       ENG:
-        'In the alpha version, DECK tokens are tested to ensure that the application program works as desired.'
+        'In the alpha version, POLA tokens are tested to ensure that the application program works as desired.'
     }
   ],
   [
     'dollar-learn-others-explain-2',
     {
       KOR:
-        '무료 DECK 테스트 토큰으로 Polaris Share 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 DECK 테스트 토큰도 만료됩니다.',
+        '무료 POLA 테스트 토큰으로 Polaris Share 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 POLA 테스트 토큰도 만료됩니다.',
       ENG:
-        'It is recommended to use free DECK test tokens to get a hands-on experience of the Polaris Share service. Test tokens expire at the end of the test.'
+        'It is recommended to use free POLA test tokens to get a hands-on experience of the Polaris Share service. Test tokens expire at the end of the test.'
     }
   ],
   [
@@ -2024,7 +2038,7 @@ const strings = new Map([
     'header-login',
     {
       KOR: '로그인',
-      ENG: 'Sign in'
+      ENG: 'Log in'
     }
   ],
 
@@ -2086,7 +2100,7 @@ const strings = new Map([
     'profile-card-logout',
     {
       KOR: '로그아웃',
-      ENG: 'Sign out'
+      ENG: 'Log out'
     }
   ],
 
@@ -2317,7 +2331,7 @@ const strings = new Map([
     'menu-sign-out',
     {
       KOR: '로그아웃',
-      ENG: 'Sign out'
+      ENG: 'Log out'
     }
   ],
   [
@@ -2355,6 +2369,13 @@ const strings = new Map([
     {
       KOR: '개인정보처리방침',
       ENG: 'Privacy Policy'
+    }
+  ],
+  [
+    'footer-5',
+    {
+      KOR: '백서',
+      ENG: 'Whitepaper'
     }
   ],
 
@@ -3165,10 +3186,10 @@ const strings = new Map([
     'terms-5-desc-1',
     {
       KOR:
-        '5.1. 귀하는 인터넷 기반 DECK 블록 체인 계정 서비스 이용과 관련된 위험이 있음을 인정하고 이에 동의합니다. 여기에는 하드웨어, 소프트웨어 및 인터넷 연결의 실패 위험, 악성 소프트웨어 도입 위험 및 제 3의 위험 - 귀하의 개인 키 ("개인 키")를 포함하되 이에 국한되지 않는 귀하의 계정에 저장되거나 연결된 개인 정보에 무단으로 액세스 할 수 있습니다. 귀하는 서비스 사용시 발생할 수 있는 통신 실패, 중단, 오류, 왜곡 또는 지연에 대해 당사가 책임지지 않음을 인정하고 인정합니다.',
+        '5.1. 귀하는 인터넷 기반 POLA 블록 체인 계정 서비스 이용과 관련된 위험이 있음을 인정하고 이에 동의합니다. 여기에는 하드웨어, 소프트웨어 및 인터넷 연결의 실패 위험, 악성 소프트웨어 도입 위험 및 제 3의 위험 - 귀하의 개인 키 ("개인 키")를 포함하되 이에 국한되지 않는 귀하의 계정에 저장되거나 연결된 개인 정보에 무단으로 액세스 할 수 있습니다. 귀하는 서비스 사용시 발생할 수 있는 통신 실패, 중단, 오류, 왜곡 또는 지연에 대해 당사가 책임지지 않음을 인정하고 인정합니다.',
       ENG:
         '5.1. You accept and acknowledge that there are risks associated with' +
-        'utilizing an Internet-based DECK blockchain account service including,' +
+        'utilizing an Internet-based POLA blockchain account service including,' +
         'but not limited to, the risk of failure of hardware, software and' +
         'Internet connections, the risk of malicious software introduction, and' +
         'the risk that third-parties may obtain unauthorized access to' +
@@ -3199,7 +3220,7 @@ const strings = new Map([
       KOR:
         '5.3. 우리는 다음과 같은 사항으로 인해 발생하는 손실, 손해 및 클레임을 포함하여 (단, 이에 국한되지는 않음) ' +
         '당사의 서비스 이용에 대한 손실에 대해 귀하에게 책임을 지지 않으며 그에 대해 책임을 지지 않습니다. ' +
-        '잊어버린 암호, 잘못 구성된 거래 또는 잘못 입력 된 DECK 블록 체인 주소 (b) 서버 오류 또는 데이터 손실. ' +
+        '잊어버린 암호, 잘못 구성된 거래 또는 잘못 입력 된 POLA 블록 체인 주소 (b) 서버 오류 또는 데이터 손실. ' +
         '(c) 손상된 계정 파일. (d) 애플리케이션에 대한 무단 액세스. ' +
         '(e) 바이러스, 피싱, 무차별 공격 또는 서비스 또는 서비스에 대한 기타 공격 수단의 사용을 포함하되 이에 국한되지 않는 ' +
         '제 3 자의 허가되지 않은 제 3 자 활동등.',
@@ -3208,7 +3229,7 @@ const strings = new Map([
         'no responsibility for and will not be liable to you for any use of our' +
         'Services, including but not limited to any losses, damages or claims' +
         'arising from: (a) User error such as forgotten passwords, incorrectly' +
-        'constructed transactions, or mistyped DECK blockchain addresses; (b)' +
+        'constructed transactions, or mistyped POLA blockchain addresses; (b)' +
         'Server failure or data loss; (c) Corrupted Account files; (d)' +
         'Unauthorized access to applications; (e) Any unauthorized third-party' +
         'activities, including without limitation the use of viruses, phishing,' +
@@ -3301,14 +3322,14 @@ const strings = new Map([
     {
       KOR:
         '7.1. polarisshare.com에게 무료로 계정을 만들 수 있습니다. ' +
-        '서비스의 일부를 사용하려면 DECK 블록 체인(“추후 서비스 예정”) 계정("계정")을 만들어야 합니다. ' +
+        '서비스의 일부를 사용하려면 POLA 블록 체인(“추후 서비스 예정”) 계정("계정")을 만들어야 합니다. ' +
         '귀하가 계정을 만들 때 귀하는 귀하의 계정에 대한 액세스 및 또는 통제를 상실 할 수 있으므로 다음주의 사항을 지켜야합니다. ' +
         '(b) 정확하고 정보를 제공하십시오. (c) 귀하의 계정 암호 및 귀하의 컴퓨터 및 계정에 대한 액세스를 보호하여 계정의 보안을 유지해야합니다. ' +
         '(e) 귀하의 계정과 관련된 보안 위반을 발견하거나 의심되는 경우 즉시 알려주십시오.',
       ENG:
-        '7.1. You need not use a DECK blockchain account provided by us, and' +
+        '7.1. You need not use a POLA blockchain account provided by us, and' +
         'you can create an account independently of the Service. If you would' +
-        'like to use part of the Service, you must create a DECK blockchain' +
+        'like to use part of the Service, you must create a POLA blockchain' +
         'account (“Account”). When you create an Account, you are strongly' +
         'advised to take the following precautions, as failure to do so may' +
         'result in loss of access to, and/or control over, your Account: (b)' +
@@ -3359,12 +3380,12 @@ const strings = new Map([
     'terms-8-desc-1',
     {
       KOR:
-        '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 DECK 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 DECK에 통제가 상실 될 수 있습니다.',
+        '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 POLA 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 POLA에 통제가 상실 될 수 있습니다.',
       ENG:
         '8.1. As described in others detail below, the Services, among other' +
-        'things, provide software that facilitates the submission of DECK' +
-        'blockchain transaction data to the DECK blockchain without requiring' +
-        'you to access the DECK blockchain command line interface.'
+        'things, provide software that facilitates the submission of POLA' +
+        'blockchain transaction data to the POLA blockchain without requiring' +
+        'you to access the POLA blockchain command line interface.'
     }
   ],
   [
@@ -3379,7 +3400,7 @@ const strings = new Map([
         'Account password retrieval, reset, or recovery. You are solely' +
         'responsible for remembering your Account password. If you have not' +
         'safely stored a backup of any Account and password pairs maintained in' +
-        'your Account, you accept and acknowledge that any DECK you have' +
+        'your Account, you accept and acknowledge that any POLA you have' +
         'associated with such Account will become permanently inaccessible if' +
         'you do not have your Account password.'
     }
@@ -3388,31 +3409,31 @@ const strings = new Map([
     'terms-8-desc-3',
     {
       KOR:
-        '8.3. 업무. 제안 된 모든 DECK 블록 체인 거래는 DECK 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 DECK 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. DECK 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 DECK 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 DECK 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
+        '8.3. 업무. 제안 된 모든 POLA 블록 체인 거래는 POLA 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 POLA 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. POLA 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 POLA 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 POLA 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
       ENG:
-        '8.3. Transactions. All proposed DECK blockchain transactions must be' +
-        'confirmed and recorded in the DECK blockchain via the Polaris Share' +
+        '8.3. Transactions. All proposed POLA blockchain transactions must be' +
+        'confirmed and recorded in the POLA blockchain via the Polaris Share' +
         'distributed consensus network (a peer-to-peer network), which is not' +
-        'owned, controlled, or operated by us. The DECK blockchain is operated' +
+        'owned, controlled, or operated by us. The POLA blockchain is operated' +
         'by a decentralized network of independent third parties. We have no' +
-        'control over the DECK blockchain and therefore cannot and will not' +
+        'control over the POLA blockchain and therefore cannot and will not' +
         'ensure that any transaction details you submit via the Services will' +
-        'be confirmed on the DECK blockchain.'
+        'be confirmed on the POLA blockchain.'
     }
   ],
   [
     'terms-8-desc-4',
     {
       KOR:
-        '8.4. DECK의 저장 또는 운송 금지. DECK 귀하가 관리하는 무형의 디지털 자산입니다. 이러한 자산은 DECK 블록 체인에서 유지 관리되는 소유권 레코드에 의해서만 존재합니다. 서비스는 DECK를 저장, 보내거나 받지 않습니다. DECK에서 발생할 수 있는 제목 이전은 서비스가 아닌 DECK 블록 체인에서 발생합니다. 당사는 DECK에서 서비스가 제목 또는 권리 이전에 영향을 미칠 수 있다고 보장하지 않습니다.',
+        '8.4. POLA의 저장 또는 운송 금지. POLA 귀하가 관리하는 무형의 디지털 자산입니다. 이러한 자산은 POLA 블록 체인에서 유지 관리되는 소유권 레코드에 의해서만 존재합니다. 서비스는 POLA를 저장, 보내거나 받지 않습니다. POLA에서 발생할 수 있는 제목 이전은 서비스가 아닌 POLA 블록 체인에서 발생합니다. 당사는 POLA에서 서비스가 제목 또는 권리 이전에 영향을 미칠 수 있다고 보장하지 않습니다.',
       ENG:
-        '8.4. No Storage or Transmission of DECK. DECK, in any of its forms' +
-        '(DECK) is an intangible, digital asset controlled by you. These assets' +
-        'exist only by virtue of the ownership record maintained on the DECK' +
-        'blockchain. The Service does not store, send, or receive DECK. Any' +
-        'transfer of title that might occur in any DECK, occurs on the DECK' +
+        '8.4. No Storage or Transmission of POLA. POLA, in any of its forms' +
+        '(POLA) is an intangible, digital asset controlled by you. These assets' +
+        'exist only by virtue of the ownership record maintained on the POLA' +
+        'blockchain. The Service does not store, send, or receive POLA. Any' +
+        'transfer of title that might occur in any POLA, occurs on the POLA' +
         'blockchain and not within the Services. We do not guarantee that the' +
-        'Service can affect the transfer of title or right in any DECK.'
+        'Service can affect the transfer of title or right in any POLA.'
     }
   ],
   [
@@ -3430,12 +3451,12 @@ const strings = new Map([
     'terms-8-desc-6',
     {
       KOR:
-        '8.6. 정보의 정확성. 귀하는 서비스를 통해 귀하가 제공하는 모든 정보가 정확하고 완전 함을 진술하고 보증합니다. 귀하는 서비스를 통해 시작된 DECK blockchain 거래와 관련하여 귀하가 계정 이름을 잘못 입력하거나 잘못된 정보를 제공 한 경우와 같은 실수 나 누락에 대해 책임을 지지 않습니다. 서비스를 통해 거래 정보를 작성하기 전에 거래 세부 정보를 신중하게 검토하는 것이 좋습니다.',
+        '8.6. 정보의 정확성. 귀하는 서비스를 통해 귀하가 제공하는 모든 정보가 정확하고 완전 함을 진술하고 보증합니다. 귀하는 서비스를 통해 시작된 POLA blockchain 거래와 관련하여 귀하가 계정 이름을 잘못 입력하거나 잘못된 정보를 제공 한 경우와 같은 실수 나 누락에 대해 책임을 지지 않습니다. 서비스를 통해 거래 정보를 작성하기 전에 거래 세부 정보를 신중하게 검토하는 것이 좋습니다.',
       ENG:
         '8.6. Accuracy of Information. You represent and warrant that any' +
         'information you provide via the Services is accurate and complete. You' +
         'accept and acknowledge that we are not responsible for any errors or' +
-        'omissions that you make in connection with any DECK blockchain' +
+        'omissions that you make in connection with any POLA blockchain' +
         'transaction initiated via the Services, for instance, if you mistype' +
         'an Account name or otherwise provide incorrect information. We' +
         'strongly encourage you to review your transaction details carefully' +
@@ -3446,12 +3467,12 @@ const strings = new Map([
     'terms-8-desc-7',
     {
       KOR:
-        '8.7. 취소 또는 변경 금지. 일단 서비스 세부 사항이 서비스를 통해 DECK 블록 체인에 제출되면 서비스는 귀하가 거래 세부 사항을 취소하거나 달리 수정할 수 있도록 도와줄 수 없습니다. 우리는 DECK 블록 체인을 제어 할 수 없으며 취소 또는 수정 요청을 쉽게 할 수 없습니다.',
+        '8.7. 취소 또는 변경 금지. 일단 서비스 세부 사항이 서비스를 통해 POLA 블록 체인에 제출되면 서비스는 귀하가 거래 세부 사항을 취소하거나 달리 수정할 수 있도록 도와줄 수 없습니다. 우리는 POLA 블록 체인을 제어 할 수 없으며 취소 또는 수정 요청을 쉽게 할 수 없습니다.',
       ENG:
         '8.7. No Cancellations or Modifications. Once transaction details have' +
-        'been submitted to the DECK blockchain via the Services, The Services' +
+        'been submitted to the POLA blockchain via the Services, The Services' +
         'cannot assist you to cancel or otherwise modify your transaction' +
-        'details. We have no control over the DECK blockchain and do not have' +
+        'details. We have no control over the POLA blockchain and do not have' +
         'the ability to facilitate any cancellation or modification requests.'
     }
   ],
@@ -3459,15 +3480,15 @@ const strings = new Map([
     'terms-8-desc-8',
     {
       KOR:
-        '8.8. 구실. 귀하가 서비스를 통해 거래 내역을 제출 한 거래에 대해 세금이 부과되는지 여부를 결정하는 것은 귀하의 책임이며 적절한 세무 기관에 보고하고 정확한 세금을 송금하는 것은 귀하의 책임입니다. 귀하는 DECK blockchain 거래에 세금이 적용되는지 또는 DECK blockchain 거래로 인해 발생하는 세금 징수, 보고, 원천 징수 또는 양도 여부에 대한 당사의 책임이 없음에 동의합니다.',
+        '8.8. 구실. 귀하가 서비스를 통해 거래 내역을 제출 한 거래에 대해 세금이 부과되는지 여부를 결정하는 것은 귀하의 책임이며 적절한 세무 기관에 보고하고 정확한 세금을 송금하는 것은 귀하의 책임입니다. 귀하는 POLA blockchain 거래에 세금이 적용되는지 또는 POLA blockchain 거래로 인해 발생하는 세금 징수, 보고, 원천 징수 또는 양도 여부에 대한 당사의 책임이 없음에 동의합니다.',
       ENG:
         '8.8. Taxes. It is your responsibility to determine what, if any, taxes' +
         'apply to the transactions you for which you have submitted transaction' +
         'details via the Services, and it is your responsibility to report and' +
         'remit the correct tax to the appropriate tax authority. You agree that' +
         'the we are not responsible for determining whether taxes apply to your' +
-        'DECK blockchain transactions or for collecting, reporting,' +
-        'withholding, or remitting any taxes arising from any DECK blockchain' +
+        'POLA blockchain transactions or for collecting, reporting,' +
+        'withholding, or remitting any taxes arising from any POLA blockchain' +
         'transactions.'
     }
   ],
@@ -3495,11 +3516,11 @@ const strings = new Map([
     'terms-9-desc-2',
     {
       KOR:
-        '9.2. 귀하가 서비스 외부에서 귀하의 계정 데이터를 백업하지 않는다면 귀하가 서비스를 중단하거나 폐지 할 경우 귀하의 계정에 유지 관리되는 모든 계좌와 관련된 DECK에 액세스하지 못할 수 있습니다.',
+        '9.2. 귀하가 서비스 외부에서 귀하의 계정 데이터를 백업하지 않는다면 귀하가 서비스를 중단하거나 폐지 할 경우 귀하의 계정에 유지 관리되는 모든 계좌와 관련된 POLA에 액세스하지 못할 수 있습니다.',
       ENG:
         '9.2. If you do not maintain a backup of your Account data outside of' +
-        'the Services, you will be may not be able to access DECK, DECK Dollars' +
-        'and DECK Power associated with any Account maintained in your Account' +
+        'the Services, you will be may not be able to access POLA, POLA Dollars' +
+        'and POLA Power associated with any Account maintained in your Account' +
         'if we discontinue or deprecate the Services.'
     }
   ],
@@ -3525,13 +3546,13 @@ const strings = new Map([
     'terms-10-desc-2',
     {
       KOR:
-        '계정 및 모든 관련 정보와 파일을 비용없이 무료로 삭제하거나 비활성화 할 수 있습니다. 본 계약의 어떠한 조항도 위반할 수 없습니다. 계정 해지 시 귀하의 계정에 있는 금액에 액세스하려면 명령 행 API 또는 제 3 자 도구를 통해 DECK 블록 체인에 액세스 해야 하며 귀하의 계정 및 계정을 포함한 계정 데이터의 백업에 액세스 해야 합니다.',
+        '계정 및 모든 관련 정보와 파일을 비용없이 무료로 삭제하거나 비활성화 할 수 있습니다. 본 계약의 어떠한 조항도 위반할 수 없습니다. 계정 해지 시 귀하의 계정에 있는 금액에 액세스하려면 명령 행 API 또는 제 3 자 도구를 통해 POLA 블록 체인에 액세스 해야 하며 귀하의 계정 및 계정을 포함한 계정 데이터의 백업에 액세스 해야 합니다.',
       ENG:
         'account and' +
         'all related information and files in such without cost to you,' +
         'including, for instance, if you breach any term of this Agreement. In' +
         'the event of termination, your access to the funds in your account' +
-        'will require you access to the DECK blockchain via the command line' +
+        'will require you access to the POLA blockchain via the command line' +
         'API or third party tool, and will require you to have access to your' +
         'backup of your Account data including your Account and Private Keys.'
     }

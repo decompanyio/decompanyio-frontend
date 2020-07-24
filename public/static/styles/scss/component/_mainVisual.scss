@@ -66,24 +66,6 @@
   line-height: 1.1;
 
   @media (max-width: 1024px) {
-    display: none;
-  }
-
-  strong {
-    color: #3dc6ff;
-    font-weight: bold;
-  }
-}
-
-.mv_subject_m {
-  z-index: 1;
-  color: white;
-  font-size: 2.7rem;
-  line-height: 1.1;
-  display: none;
-  word-break: keep-all;
-
-  @media (max-width: 1024px) {
     display: block;
     text-align: center;
     font-size: 7vw;
@@ -93,10 +75,17 @@
   @media (max-width: 768px) {
     margin-top: 8vw;
   }
+}
 
+.mv_text1 {
   strong {
     color: #3dc6ff;
     font-weight: bold;
   }
+}
+
+.mv_text2 {
+  @extend .mv_text1;
+  display: none;
 }
 

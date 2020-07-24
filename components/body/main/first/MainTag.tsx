@@ -52,18 +52,19 @@ export default function(): ReactElement {
         <ol className={styles.mt_tagGroup}>
           {tagList.map(({ _id }, index) => {
             if (index < 10) {
+              let tagId = index === 0 ? 'marketing' : _id
               return (
                 <li key={index}>
                   <Link
-                    href={{ pathname: '/contents_list', query: { tag: _id } }}
-                    as={'tag/' + _id}
+                    href={{ pathname: '/contents_list', query: { tag: tagId } }}
+                    as={'tag/' + tagId}
                   >
                     <a aria-label={_id}>
                       <button
                         type="button"
                         className={styles['mt_tag_' + getTagNum(index)]}
                       >
-                        <span>{_id}</span>
+                        <span>{tagId}</span>
                       </button>
                     </a>
                   </Link>

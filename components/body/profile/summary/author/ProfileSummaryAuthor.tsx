@@ -76,7 +76,7 @@ export default function({
               common.withComma(balance.dollar) +
               ' (' +
               (balance.deck || 0) +
-              ' DECK)'}
+              ' POLA)'}
           </span>
           <br />
           {psString('profile-estimated-earnings')}

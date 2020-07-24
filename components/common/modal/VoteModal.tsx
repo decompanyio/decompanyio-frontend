@@ -40,7 +40,7 @@ export default function(): ReactElement {
       resolve(errMsg)
     })
 
-  // Deck 예금 값 입력 캐치
+  // POLA 예금 값 입력 캐치
   const onChangeDeposit = e => {
     setDeposit(e.target.value)
     return validateDeposit(e.target.value)
@@ -146,11 +146,11 @@ export default function(): ReactElement {
           <ul className={styles.vm_list}>
             <li>
               <strong>{psString('vote-modal-you')} : </strong>
-              {voteAmount.myVoteAmount} DECK
+              {voteAmount.myVoteAmount} POLA
             </li>
             <li>
               <strong>{psString('vote-modal-total')} : </strong>
-              {voteAmount.totalVoteAmount} DECK
+              {voteAmount.totalVoteAmount} POLA
             </li>
           </ul>
 
@@ -162,7 +162,7 @@ export default function(): ReactElement {
               <span className={styles.vm_deckAmount}>
                 {common.toDeck(balance).toFixed(2)}
               </span>
-              DECK ($
+              POLA ($
               <span className={styles.vm_dollarAmount}>
                 {common
                   .weiToDollar(balance)
@@ -178,7 +178,7 @@ export default function(): ReactElement {
           </div>
           <input
             type="number"
-            placeholder="DECK"
+            placeholder="POLA"
             autoComplete="off"
             id="deposit"
             className={

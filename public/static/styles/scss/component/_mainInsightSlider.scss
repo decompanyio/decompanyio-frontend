@@ -125,7 +125,7 @@
   margin-left: 1rem;
   width: 80%;
 
-  div:first-child {
+  > div:first-child {
     text-transform: uppercase;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -148,6 +148,7 @@
     div {
       margin-top: 1rem;
       font-size: .9rem;
+      line-height: 1;
 
       @media (max-width: 1024px) {
         text-align: left;

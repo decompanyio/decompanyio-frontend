@@ -98,7 +98,6 @@ export default function(): ReactElement {
                 {psString('main-insight-slider-4')}
                 <div>
                   {psString('main-insight-slider-5')}
-                  <br />
                   {psString('main-insight-slider-5-b')}
                   <br />
                   <br />
@@ -126,28 +125,6 @@ export default function(): ReactElement {
           </div>
         </div>
       </div>
-      {/*{arr.map((value, index) => (
-          <div className={styles['mis_card_' + value]} key={index}>
-            <dl>
-              <dt>
-                {psString('main-insight-slider-' + Number(value + 3 * index))}
-              </dt>
-              <dd>
-                {psString(
-                  'main-insight-slider-' + Number(value + 1 + 3 * index)
-                )}
-                <br />
-                {psString(
-                  'main-insight-slider-' + Number(value + 2 + 3 * index)
-                )}
-                <br />
-                {psString(
-                  'main-insight-slider-' + Number(value + 3 + 3 * index)
-                )}
-              </dd>
-            </dl>
-          </div>
-        ))}*/}
     </div>
   )
 }

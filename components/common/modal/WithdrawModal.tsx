@@ -124,7 +124,7 @@ export default function(): ReactElement {
             ) : (
               <span>
                 {'$ ' + common.withComma(balance.dollar)}
-                <span>{'(' + balance.deck + ' DECK)'}</span>
+                <span>{'(' + balance.deck + ' POLA)'}</span>
               </span>
             )}
           </div>
@@ -133,7 +133,7 @@ export default function(): ReactElement {
           </div>
           <input
             type="number"
-            placeholder="DECK"
+            placeholder="POLA"
             autoComplete="off"
             id="withdraw"
             className={

@@ -1,6 +1,6 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
-import { psString } from 'utils/localization'
+import { psGetLang, psString } from 'utils/localization'
 //import { APP_CONFIG } from 'app.config'
 import React, { ReactElement } from 'react'
 import FooterSns from './FooterSns'
@@ -29,18 +29,25 @@ export default function(): ReactElement {
             </Link>
           </li>
           <li>
-            <Link href="/faq">
-              <a rel="nofollow" aria-label="FAQ">
-                <div className={styles.f_navType_1}>FAQ</div>
-              </a>
-            </Link>
-          </li>
-          <li>
             <Link href="/user_guide" as="/ug">
               <a rel="nofollow" aria-label="User Guide">
                 <div className={styles.f_navType_2}>{psString('footer-2')}</div>
               </a>
             </Link>
+          </li>
+          <li>
+            <a
+              rel="nofollow"
+              aria-label="Whitepaper"
+              target="_blank"
+              href={
+                psGetLang() === 'KO'
+                  ? commonData.whitepaperURL.ko
+                  : commonData.whitepaperURL.en
+              }
+            >
+              <div className={styles.f_navType_1}>{psString('footer-5')}</div>
+            </a>
           </li>
           <li>
             <Link href="/terms" as="/t">
@@ -65,7 +72,12 @@ export default function(): ReactElement {
             <span className="for-a11y">POLARIS SHARE</span>
           </p>
           <div className={styles.f_copy}>
-            <p>EMAIL: connect@polarishare.com</p>
+            <p>
+              EMAIL:{' '}
+              <a href={'mailto: ' + commonData.commonMail}>
+                {commonData.commonMail}
+              </a>
+            </p>
             <p>Copyrightⓒ 2020 POLARIS SHARE</p>
           </div>
 

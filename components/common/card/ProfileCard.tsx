@@ -70,7 +70,7 @@ function ProfileCard({ click }: ProfileCardProps): ReactElement {
         {!loading ? (
           <span>
             {'$ ' + common.withComma(balance.dollar)}
-            <span>{'(' + balance.deck + ' DECK)'}</span>
+            <span>{'(' + balance.deck + ' POLA)'}</span>
           </span>
         ) : (
           <div className={styles.pc_loadingWrapper}>

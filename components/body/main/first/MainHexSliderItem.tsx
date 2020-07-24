@@ -145,13 +145,21 @@ export default function({
             onMouseOut={(): void => setRewardInfo(false)}
           >
             <i className={styles.mhsi_iconMoney} aria-label="sum" />
-            <span>{common.deckToDollarWithComma(creatorRoyalty.royalty)}</span>
-            <i className={styles.mhsi_iconDown} aria-label="down" />
+            <span>
+              {creatorRoyalty.royalty === 0
+                ? 'FREE'
+                : common.deckToDollarWithComma(creatorRoyalty.royalty)}
+            </span>
+
+            {creatorRoyalty.royalty !== 0 && (
+              <i className={styles.mhsi_iconDown} aria-label="down" />
+            )}
+
             {creatorRoyalty.royalty > 0 && rewardInfoOpen && (
               <div className={styles.mhsi_rewardInfo}>
                 {psString('profile-payout-txt-1')}
                 <span>
-                  {!creatorRoyalty.royalty ? 0 : creatorRoyalty.royalty} DECK
+                  {!creatorRoyalty.royalty ? 0 : creatorRoyalty.royalty} POLA
                 </span>
                 {psString('profile-payout-txt-2')}
               </div>
