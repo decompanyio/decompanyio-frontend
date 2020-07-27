@@ -4338,7 +4338,7 @@ function checkLocale(): Lang {
   }
 
   // 없을 때
-  return Lang.EN
+  return Lang.KO
 }
 
 // let currentLang: Lang = Lang.EN;

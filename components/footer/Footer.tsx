@@ -1,13 +1,15 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
-import { psGetLang, psString } from 'utils/localization'
-//import { APP_CONFIG } from 'app.config'
-import React, { ReactElement } from 'react'
+import { Lang, psGetLang, psSetLang, psString } from 'utils/localization'
+import React, { ReactElement, useEffect, useState } from 'react'
 import FooterSns from './FooterSns'
 import Dropdown from '../common/Dropdown'
 import commonData from '../../common/commonData'
+import { string } from 'prop-types'
 
 export default function(): ReactElement {
+  const [dropdownList, setDropdownList] = useState(string[''])
+
   const watchChangeValue = v => {
     let site = v.value
 
@@ -15,7 +17,15 @@ export default function(): ReactElement {
       window.open(commonData.familySiteUrl[0], '_blank')
     else if (site === commonData.familySite[1])
       window.open(commonData.familySiteUrl[1], '_blank')
+    else if (site === commonData.familySite[2])
+      psSetLang(commonData.familySite[2] === 'Korean' ? Lang.KO : Lang.EN)
   }
+
+  useEffect(() => {
+    let arr = commonData.familySite
+    arr[2] = psGetLang() === 'KO' ? 'English' : 'Korean'
+    setDropdownList(arr)
+  })
 
   return (
     <footer>
@@ -88,7 +98,7 @@ export default function(): ReactElement {
               <option value="">FAMILY SITE</option>
             </select>*/}
             <Dropdown
-              options={commonData.familySite}
+              options={dropdownList}
               placeholder={'FAMILY SITE'}
               className={'dropdown_footer'}
               arrowClassName={'dropdown_footerArrow'}

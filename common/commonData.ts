@@ -126,7 +126,7 @@ export default {
     gray: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D'
   },
 
-  familySite: ['www.polarishare.io', 'www.polarisoffice.com'],
+  familySite: ['www.polarishare.io', 'www.polarisoffice.com', 'English'],
   familySiteUrl: ['https://polarishare.io', 'https://www.polarisoffice.com'],
 
   whitepaperURL: {

@@ -1,6 +1,6 @@
 .mr_container {
   width: 1248px;
-  margin: 0 auto 100px;
+  margin: auto 40px;
 
   &:after {
     content: '';
@@ -9,7 +9,7 @@
   }
 
   @media (max-width: 1024px) {
-    width: calc(100% - 2rem);
+    width: 100%;
     white-space: nowrap;
     font-size: 0;
     white-space: nowrap;
