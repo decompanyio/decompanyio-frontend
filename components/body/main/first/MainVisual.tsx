@@ -3,8 +3,11 @@ import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../../utils/localization'
 import MainHexSlider from './MainHexSlider'
 import MainHeaderUploadBtn from '../header/MainHeaderUploadBtn'
+import { useMain } from '../../../../redux/main/hooks'
 
 export default function(): ReactElement {
+  const { isMobile } = useMain()
+
   useEffect(() => {
     let styleFlag = false
 
@@ -38,14 +41,14 @@ export default function(): ReactElement {
           <div className={styles.mv_subject}>
             <div className={styles.mv_text1} id="mainVisualText_1">
               {psString('main-visual-1')}
-              <br />
+              {!isMobile && <br />}
               {psString('main-visual-5')}
               <strong>{psString('main-visual-2')}</strong>
               {psString('main-visual-3')}
             </div>
             <div className={styles.mv_text2} id="mainVisualText_2">
               {psString('main-visual-6')}
-              <br />
+              {!isMobile && <br />}
               {psString('main-visual-10')}
               <strong>{psString('main-visual-7')}</strong>
               {psString('main-visual-8')}

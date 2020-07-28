@@ -46,6 +46,7 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
   )
 
   if (loading || error || !data) return <ContentsListMock />
+  //  if (true) return <ContentsListMock />
 
   const dataList = data[Object.keys(data)[0]].pagination
   const { pageInfo, items, count } = dataList
