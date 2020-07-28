@@ -5,6 +5,7 @@ const express = require('express')
 const next = require('next')
 const { join } = require('path')
 const { parse } = require('url')
+const morgan = require('morgan')
 const nanoidGen = require('nanoid/generate')
 let cookieParser = require('cookie-parser')
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -20,6 +21,11 @@ const dev = env !== 'production'
 const port = !dev ? 80 : 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const morganFunction = morgan('combined', {
+  skip: function(req, res) {
+    return res.statusCode < 400 || res.statusCode === 404
+  }
+})
 
 const makeTrackingCookieResponse = (req, res) => {
   /*
@@ -73,6 +79,7 @@ const makeTrackingCookieResponse = (req, res) => {
 
 app.prepare().then(() => {
   const server = express()
+  server.use(morganFunction)
   server.use(cookieParser())
   server.use(express.static('.next'))
 

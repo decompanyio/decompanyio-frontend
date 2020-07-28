@@ -57,6 +57,7 @@
     "jimp": "0.10.3",
     "lodash": "^4.17.19",
     "lqip-loader": "2.2.0",
+    "morgan": "^1.10.0",
     "nanoid": "2.1.11",
     "next": "^9.4.4",
     "next-compose-plugins": "2.2.0",
