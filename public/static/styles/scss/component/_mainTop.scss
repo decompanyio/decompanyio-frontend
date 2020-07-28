@@ -1,6 +1,6 @@
 .mfrs_container {
   width: 1200px;
-  margin: 0 auto;
+  margin: 155px auto 0 auto;
   padding-bottom: 155px;
 
   h3 {
@@ -8,7 +8,26 @@
     color: #000;
     letter-spacing: 3px;
     font-weight: 600;
-    text-align: center
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    width: 1024px;
+    padding: 0 0 200px 40px;
+
+    h3 {
+      font-size: 59px;
+      line-height: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 15px 100px 15px;
+
+    h3 {
+      font-size: 30px;
+    }
   }
 }
 
@@ -17,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 430px
+  height: 430px;
 }
 
 .mfrs_item {
@@ -27,31 +46,19 @@
   flex-grow: 1;
   min-width: 0;
   max-width: 232px;
-  transition: all ease .3s
+  transition: all ease 0.3s;
 }
 
 .mfrs_item ~ .mfrs_item {
-  margin-left: 10px
+  margin-left: 10px;
 }
-
 
 .mfrs_item:hover {
   flex: 0 0 310px;
-  max-width: 310px
+  max-width: 310px;
 }
 
-
 @media (max-width: 1024px) {
-  .mfrs_container {
-    width: 1024px;
-    padding: 0 0 200px 40px;
-
-    h3 {
-      font-size: 59px;
-      line-height: 100%
-    }
-  }
-
   .mfrs_list {
     margin: 64px 0 0;
     display: block;
@@ -68,7 +75,7 @@
     height: 2px;
   }
   .mfrs_list::-webkit-scrollbar-track {
-    background-color: transparent
+    background-color: transparent;
   }
   .mfrs_list::-webkit-scrollbar-thumb {
     background-color: #1f82ff;
@@ -76,35 +83,26 @@
   }
   .mfrs_list::-webkit-scrollbar-button {
     width: 0;
-    height: 0
+    height: 0;
   }
   .mfrs_item:hover,
   .mfrs_item {
     width: 495px;
-    max-width: 495px
+    max-width: 495px;
   }
   .mfrs_item {
-    display: inline-block
+    display: inline-block;
   }
 }
 
 @media (max-width: 768px) {
-  .mfrs_container {
-    width: 100%;
-    padding: 0 15px 100px 15px;
-
-    h3 {
-      font-size: 30px
-    }
-  }
-
   .mfrs_list {
     margin: 35px 0 0;
-    height: 375px
+    height: 375px;
   }
   .mfrs_item:hover,
   .mfrs_item {
     width: 250px;
-    max-width: 250px
+    max-width: 250px;
   }
 }

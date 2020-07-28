@@ -26,16 +26,18 @@ export default function(): ReactElement {
   if (dataList.length === 0) return <div />
 
   return (
-    <div className={styles.mr_container}>
-      {dataList.map(({ userId, documentId, _id, accountId }, index) => (
-        <div className={styles.mr_ListItemContainer} key={index}>
-          <div className={styles.mr_dummy} />
-          <MainRecentItem
-            userId={userId || accountId}
-            documentId={documentId || _id}
-          />
-        </div>
-      ))}
+    <div className={styles.mr_wrapper}>
+      <div className={styles.mr_container}>
+        {dataList.map(({ userId, documentId, _id, accountId }, index) => (
+          <div className={styles.mr_ListItemContainer} key={index}>
+            <div className={styles.mr_dummy} />
+            <MainRecentItem
+              userId={userId || accountId}
+              documentId={documentId || _id}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

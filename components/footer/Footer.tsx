@@ -1,6 +1,6 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
-import { Lang, psGetLang, psSetLang, psString } from 'utils/localization'
+import { Lang, psGetLang, psSetLang } from 'utils/localization'
 import React, { ReactElement, useEffect, useState } from 'react'
 import FooterSns from './FooterSns'
 import Dropdown from '../common/Dropdown'
@@ -32,16 +32,20 @@ export default function(): ReactElement {
       <div className={styles.f_menu}>
         <ul>
           <li>
-            <Link href="/about_us" as="/au">
-              <a rel="nofollow" aria-label="About Us">
-                {psString('footer-1')}
-              </a>
-            </Link>
+            <a
+              aria-label="About Us"
+              href="https://www.polarishare.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Polaris Share IR"
+            >
+              About us
+            </a>
           </li>
           <li>
             <Link href="/user_guide" as="/ug">
               <a rel="nofollow" aria-label="User Guide">
-                <div className={styles.f_navType_2}>{psString('footer-2')}</div>
+                <div className={styles.f_navType_2}>User Guide</div>
               </a>
             </Link>
           </li>
@@ -56,20 +60,20 @@ export default function(): ReactElement {
                   : commonData.whitepaperURL.en
               }
             >
-              <div className={styles.f_navType_1}>{psString('footer-5')}</div>
+              <div className={styles.f_navType_1}>Whitepaper</div>
             </a>
           </li>
           <li>
             <Link href="/terms" as="/t">
               <a rel="nofollow" aria-label="Terms">
-                <div className={styles.f_navType_1}>{psString('footer-3')}</div>
+                <div className={styles.f_navType_1}>Terms of Service</div>
               </a>
             </Link>
           </li>
           <li>
             <Link href="/privacy_policy" as="/pp">
               <a rel="nofollow" aria-label="Privacy Policy">
-                <div className={styles.f_navType_3}>{psString('footer-4')}</div>
+                <div className={styles.f_navType_3}>Privacy Policy</div>
               </a>
             </Link>
           </li>

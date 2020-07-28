@@ -49,7 +49,6 @@ export default function(): ReactElement {
               {psString('main-visual-10')}
               <strong>{psString('main-visual-7')}</strong>
               {psString('main-visual-8')}
-              <br />
               {psString('main-visual-9')}
             </div>
           </div>

@@ -14,20 +14,21 @@
   }
 }
 
-.mhsi_title {
+.mhsi_titleWrapper {
   margin-top: 1rem;
-  min-height: 5.5rem;
+  height: 5.5rem;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  a span {
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 0;
-    color: #fff;
-  }
+.mhsi_title {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0;
+  color: #fff;
 }
 
 .mhsi_tag {
@@ -119,10 +120,11 @@
   font-size: 13px;
   opacity: 0.8;
   line-height: 1.3;
-  min-height: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   @media (max-width: 1024px) {
     font-size: 2.5vw;

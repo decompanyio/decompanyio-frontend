@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import ReactSwipe from 'react-swipe'
-import { psString } from '../../../../utils/localization'
+import { psGetLang, psString } from '../../../../utils/localization'
 import { APP_CONFIG } from '../../../../app.config'
 
 export default function(): ReactElement {
@@ -116,9 +116,9 @@ export default function(): ReactElement {
               <div>Reward</div>
               <div>{psString('main-insight-slider-8')}</div>
               <img
-                src={
-                  APP_CONFIG.domain().static + '/image/main/insight_reward.png'
-                }
+                src={`${APP_CONFIG.domain().static}/image/main/insight_reward${
+                  psGetLang() === 'EN' ? '_en' : ''
+                }.png`}
                 alt="reward kakaotalk"
               />
             </div>

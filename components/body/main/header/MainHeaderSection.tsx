@@ -48,11 +48,7 @@ export default function(): ReactElement {
 
         {profileCardShow && <ProfileCard click={handleProfileCardClick} />}
 
-        {!myInfo.email &&
-          ((commonView.getWindowWidth() <= 830 && !isMobile) ||
-            (!isMobile && commonView.getWindowWidth() > 830)) && (
-            <MainHeaderLoginBtn />
-          )}
+        {!myInfo.email && <MainHeaderLoginBtn />}
       </div>
     </div>
   )

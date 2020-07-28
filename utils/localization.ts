@@ -218,7 +218,7 @@ const strings = new Map([
   [
     'main-visual-8',
     {
-      KOR: '는 전세계에서',
+      KOR: '는 전세계에서 ',
       ENG: ' is subscribed worldwide'
     }
   ],
@@ -286,8 +286,8 @@ const strings = new Map([
   [
     'main-insight-slider-5-b',
     {
-      KOR: '(향후 적용 예정)',
-      ENG: '( Coming soon)'
+      KOR: ' (향후 적용 예정)',
+      ENG: ' (Coming soon)'
     }
   ],
   [
@@ -2339,43 +2339,6 @@ const strings = new Map([
     {
       KOR: '연락처',
       ENG: 'Connect With Us'
-    }
-  ],
-
-  // Footer
-  [
-    'footer-1',
-    {
-      KOR: '회사소개',
-      ENG: 'About us'
-    }
-  ],
-  [
-    'footer-2',
-    {
-      KOR: '유저 가이드',
-      ENG: 'User Guide'
-    }
-  ],
-  [
-    'footer-3',
-    {
-      KOR: '이용약관',
-      ENG: 'Terms of Service'
-    }
-  ],
-  [
-    'footer-4',
-    {
-      KOR: '개인정보처리방침',
-      ENG: 'Privacy Policy'
-    }
-  ],
-  [
-    'footer-5',
-    {
-      KOR: '백서',
-      ENG: 'Whitepaper'
     }
   ],
 

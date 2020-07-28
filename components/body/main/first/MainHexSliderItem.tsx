@@ -110,7 +110,7 @@ export default function({
             </a>
           </Link>
         </div>
-        <div className={styles.mhsi_title}>
+        <div className={styles.mhsi_titleWrapper}>
           <Link
             href={{
               pathname: '/contents_view',
@@ -119,9 +119,7 @@ export default function({
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
             <a aria-label="viewer page">
-              <Truncate lines={2} ellipsis={<span>...</span>}>
-                <h3>{documentInfo.title}</h3>
-              </Truncate>
+              <h3 className={styles.mhsi_title}>{documentInfo.title}</h3>
             </a>
           </Link>
         </div>
