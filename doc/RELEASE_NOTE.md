@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.07.28-c
+- add healthcheck page
+
 ## 2020.07.23-a
 - add new main page
 
