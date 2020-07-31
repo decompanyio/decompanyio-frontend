@@ -141,14 +141,21 @@ export default function({
             onMouseOver={(): void => setRewardInfo(true)}
             onMouseOut={(): void => setRewardInfo(false)}
           >
-            $ {common.deckToDollarWithComma(creatorRoyalty)}
-            <img
-              className={styles.cl_rewardArrow}
-              src={
-                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
-              }
-              alt="arrow button"
-            />
+            ${' '}
+            {creatorRoyalty === 0
+              ? 'FREE'
+              : common.deckToDollarWithComma(creatorRoyalty)}
+
+            {creatorRoyalty !== 0 && (
+              <img
+                className={styles.cl_rewardArrow}
+                src={
+                  APP_CONFIG.domain().static +
+                  '/image/icon/i_arrow_down_blue.svg'
+                }
+                alt="arrow button"
+              />
+            )}
           </span>
           <span className={styles.cl_view}>{documentData.latestPageview}</span>
           <span className={styles.cl_vote}>{vote}</span>

@@ -1,4 +1,4 @@
-query DocumentCardInfo($documentId_scalar: MongoID!) {
+query DocumentInfo($documentId_scalar: MongoID!) {
   Document {
     findById(_id: $documentId_scalar) {
       _id

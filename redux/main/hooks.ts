@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 import UserInfo from '../../service/model/UserInfo'
 import { actions } from './actions'
 import { StateProps } from '../../typings/interfaces'
+import TagListItem from '../../service/model/TagListItem'
 
 export const useMain = () => {
   const initComplete = useSelector(({ main }: StateProps) => main.initComplete)
@@ -38,7 +39,7 @@ export const useMain = () => {
   )
 
   const setTagList = useCallback(
-    (tagList: []) => dispatch(actions.tagList(tagList)),
+    (tagList: TagListItem[]) => dispatch(actions.tagList(tagList)),
     [dispatch]
   )
 

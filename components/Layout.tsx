@@ -15,6 +15,7 @@ import DollarPolicyNotice from './common/notice/DollarPolicyNotice'
 import Meta from '../service/model/Meta'
 import { useMain } from '../redux/main/hooks'
 import common from '../common/common'
+import _ from 'lodash'
 
 export default function(props): ReactElement {
   const { myInfo, isMobile, setMyInfo, setTagList, setIsMobile } = useMain()
@@ -72,7 +73,12 @@ export default function(props): ReactElement {
   // SET 태그 리스트
   const setTagListToStore = () =>
     repos.Document.getTagList('latest').then(result =>
-      setTagList(result.tagList)
+      setTagList(
+        _.chain(result.tagList)
+          .sortBy([({ value }) => value])
+          .reverse()
+          .value()
+      )
     )
 
   // TODO 트랙킹 자리비움 백엔드 로직 배포 시, 기능 추

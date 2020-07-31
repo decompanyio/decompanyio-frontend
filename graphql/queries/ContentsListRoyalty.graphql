@@ -1,4 +1,4 @@
-query ContentsListItemInfo(
+query ContentsListRoyalty(
   $userId: String!
   $documentId: String!
   $days: Int!

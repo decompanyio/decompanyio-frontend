@@ -1,19 +1,33 @@
-query TagDocumentPagination {
-    Creator {
-        a : getNDaysRoyalty(documentId: "880adddd736b47b3ada6863c14fce90b", days: 7) {
-            activeDate
+query ContentsListItemInfoFindmany {
+    Document {
+        findMany(filter: { _ids: ["d797bf730900431699cc0fa971e4044a"
+        ,"c00c120425ab4af9a1f2d4b7254c62c7"
+        ,"fc620a831aaf47a7b0b2d05e0da97a1e"
+        ,"0a5455b24e7c48aaa76e3d48bbb7cac0"
+        ,"0948457d2ba545ebb00f60c615b79cf8"
+        ,"fb758f45c7054ccf9df48b8b54e4d299"] }, sort: STATE__CREATED_DESC) {
+            _id
+            created
+            state
+            accountId
             documentId
-            royalty
-            pageview
-            totalPageview
-        }
-
-        b : getNDaysRoyalty(documentId: "880adddd736b47b3ada6863c14fce90b", days: 6) {
-            activeDate
-            documentId
-            royalty
-            pageview
-            totalPageview
+            documentName
+            documentSize
+            title
+            desc
+            seoTitle
+            useTracking
+            forceTracking
+            isDownload
+            cc
+            isPublic
+            isBlocked
+            isDeleted
+            dimensions {
+                width
+                height
+                type
+            }
         }
     }
 }

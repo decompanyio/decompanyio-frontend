@@ -3,6 +3,7 @@ import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../../utils/localization'
 import { useMain } from '../../../../redux/main/hooks'
 import Link from 'next/link'
+import TagListItem from '../../../../service/model/TagListItem'
 
 export default function(): ReactElement {
   const { tagList } = useMain()
@@ -50,27 +51,27 @@ export default function(): ReactElement {
 
       <div className={styles.mt_tagContainer}>
         <ol className={styles.mt_tagGroup}>
-          {tagList.map(({ _id }, index) => {
+          {(tagList as TagListItem[]).map(({ _id }, index) => {
             if (index < 10) {
-              let tagId = index === 0 ? 'marketing' : _id
               return (
                 <li key={index}>
                   <Link
-                    href={{ pathname: '/contents_list', query: { tag: tagId } }}
-                    as={'tag/' + tagId}
+                    href={{ pathname: '/contents_list', query: { tag: _id } }}
+                    as={'tag/' + _id}
                   >
                     <a aria-label={_id}>
                       <button
                         type="button"
                         className={styles['mt_tag_' + getTagNum(index)]}
                       >
-                        <span>{tagId}</span>
+                        <span>{_id}</span>
                       </button>
                     </a>
                   </Link>
                 </li>
               )
             }
+            return <div></div>
           })}
         </ol>
       </div>

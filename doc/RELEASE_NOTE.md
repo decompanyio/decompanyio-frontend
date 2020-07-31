@@ -1,11 +1,14 @@
 # Release Note
 
-## 2020.07.31-a
+## 2020.07.31-b
 - optimized logic in contents list page
 - add korean ver. policy
 
+Bug fix
+- the order of tags is displayed incorrectly
+
 ## 2020.07.28-c
-- add healthcheck page
+- add health check page
 
 ## 2020.07.23-a
 - add new main page
@@ -16,6 +19,7 @@ Bug fix
 
 ## 2020.07.10-b
 - edit css
+
 Bug fix
 - profile avatar not edit
 

@@ -7,6 +7,7 @@ import {
   SET_MY_INFO,
   SET_TAG_LIST
 } from './types'
+import TagListItem from '../../service/model/TagListItem'
 
 export const actions = {
   initComplete: (initComplete: boolean) => ({
@@ -23,7 +24,7 @@ export const actions = {
     alertCode,
     alertData
   }),
-  tagList: (tagList: []) => ({ type: SET_TAG_LIST, tagList }),
+  tagList: (tagList: TagListItem[]) => ({ type: SET_TAG_LIST, tagList }),
   modal: (modalCode: any, modalData?: any) => ({
     type: SET_MODAL,
     modalCode,
