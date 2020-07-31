@@ -3,7 +3,7 @@ import _ from 'lodash'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { ThreeBounce } from 'better-react-spinkit'
 import NoDataIcon from '../../common/NoDataIcon'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import {
   contentsListIDList,
   ContentsListProps,
@@ -28,6 +28,7 @@ import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
 import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
 
 export default function({ tag, path }: ContentsListProps): ReactElement {
+  const [documentRoyaltyList, setDocumentRoyaltyList] = useState([])
   // 1. 해당 페이지에 표시될 문서들의 ID 리스트를 불러옵니다.
   const { data, fetchMore } = useQuery(
     gql`
@@ -99,55 +100,7 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
     }
   )
 
-  /*  let royaltyQuery = ''
-
-  // 4. getNDaysRoyalty를 통하여 문서 정보를 불러오기 위해 인자로 사용될, 문서 ID 별 쿼리를 작성합니다.
-  if (idList.document.length > 0) {
-    royaltyQuery += `query DocumentRoyalty {
-    Creator {`
-
-    _(
-      idList.document.forEach(value => {
-        royaltyQuery += `
-    ${value} : getNDaysRoyalty(documentId: ${value}, days: ${commonData.royaltyCalculatedDate}) {
-      activeDate
-      documentId
-      royalty
-      pageview
-      totalPageview
-    }
-  `
-      })
-    )
-
-    royaltyQuery += `}
-    }`
-  }
-
-  console.log(royaltyQuery)
-
-  const GET_ROYALTY = gql(`
-    ${royaltyQuery}
-  `)*/
-
-  // 5. 위에 셋팅된 쿼리로 각 문서의 royalty 정보를 불러옵니다.
-  /*  const { data: dataRoyalty } = useQuery(GET_ROYALTY, {
-    context: {
-      clientName: 'query'
-    },
-    skip:
-      !data ||
-      (data.Document.pagination.pageInfo.currentPage - 1) * 10 ===
-        idList.account.length,
-    notifyOnNetworkStatusChange: false,
-    onCompleted: data => {
-      console.log(data)
-    }
-  })
-
-  if (dataRoyalty) console.log(dataRoyalty)*/
-
-  // 6. findmany를 통하여 불러와진 정보를 ContentsListItem에 props으로 넘길수 있도록 셋팅합니다.
+  // 4. findmany를 통하여 불러와진 정보를 ContentsListItem에 props으로 넘길수 있도록 셋팅합니다.
   if (dataDocument) {
     _.mergeWith(
       dataObj,
@@ -190,6 +143,59 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       documentList[index] = __DOCUMENT_INFO__
     })
   }
+
+  let royaltyQuery = ''
+
+  // 5. 위에 셋팅된 쿼리로 각 문서의 royalty 정보를 불러옵니다.
+  idList.document.forEach((value, index) => {
+    royaltyQuery += `
+    ${'id_' + index} : getNDaysRoyalty(documentId: "${value}", days: ${
+      commonData.royaltyCalculatedDate
+    }) {
+      activeDate
+      documentId
+      royalty
+      pageview
+      totalPageview
+    }
+  `
+  })
+
+  if (royaltyQuery !== '')
+    useQuery(
+      gql`
+        query {
+            Creator {
+                ${royaltyQuery}
+            }
+        }
+    `,
+      {
+        context: {
+          clientName: 'query'
+        },
+        skip:
+          idList.document.length === 0 ||
+          royaltyQuery === '' ||
+          !data ||
+          (data.Document.pagination.pageInfo.currentPage - 1) * 10 ===
+            idList.account.length,
+        notifyOnNetworkStatusChange: false,
+        onCompleted: data => {
+          let royaltyArr = []
+
+          _.forIn(data.Creator, (value, key) => {
+            let idArr = key.split('_')
+
+            if (idArr[0] !== 'id') return
+
+            royaltyArr[key.split('_')[1]] =
+              value.length === 0 ? 0 : value[0].royalty
+          })
+          setDocumentRoyaltyList(royaltyArr)
+        }
+      }
+    )
 
   if (documentList.length === 0) return <ContentsListMock />
 
@@ -254,7 +260,11 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
               className={styles.cl_itemWrapper}
               key={data.documentId + '_' + idx}
             >
-              <ContentsListItem documentData={data} path={path} />
+              <ContentsListItem
+                documentData={data}
+                path={path}
+                documentRoyalty={documentRoyaltyList[idx]}
+              />
             </div>
           )
         )}

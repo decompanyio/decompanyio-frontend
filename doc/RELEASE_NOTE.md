@@ -1,6 +1,6 @@
 # Release Note
 
-## 2020.07.31-b
+## 2020.07.31-c
 - optimized logic in contents list page
 - add korean ver. policy
 

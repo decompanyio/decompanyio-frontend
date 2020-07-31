@@ -82,7 +82,7 @@ export default function({ documentData }: ViewInfoBoxProps): ReactElement {
             onMouseOver={(): void => setRewardInfo(true)}
             onMouseOut={(): void => setRewardInfo(false)}
           >
-            $ {common.deckToDollarWithComma(reward)}
+            $ {reward === 0 ? 'FREE' : common.deckToDollarWithComma(reward)}
             <img
               className={styles.vib_rewardArrow}
               src={

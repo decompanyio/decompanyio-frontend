@@ -18,7 +18,8 @@ const UserAvatarWithoutSSR = dynamic(
 
 export default function({
   documentData,
-  path
+  path,
+  documentRoyalty
 }: ContentsListItemProps): ReactElement {
   const [rewardInfoOpen, setRewardInfo] = useState(false)
 
@@ -37,7 +38,6 @@ export default function({
   let vote = common.deckStr(common.toEther(documentData.latestVoteAmount) || 0)
 
   let bookmarkFlag = false
-  let creatorRoyalty = 0
 
   useEffect(() => {
     commonView.lazyLoading()
@@ -142,11 +142,10 @@ export default function({
             onMouseOut={(): void => setRewardInfo(false)}
           >
             ${' '}
-            {creatorRoyalty === 0
+            {documentRoyalty === 0
               ? 'FREE'
-              : common.deckToDollarWithComma(creatorRoyalty)}
-
-            {creatorRoyalty !== 0 && (
+              : common.deckToDollarWithComma(documentRoyalty)}
+            {documentRoyalty !== 0 && (
               <img
                 className={styles.cl_rewardArrow}
                 src={
@@ -168,8 +167,8 @@ export default function({
           )}
         </div>
 
-        {creatorRoyalty > 0 && rewardInfoOpen && (
-          <RewardCard reward={creatorRoyalty} documentData={documentData} />
+        {documentRoyalty > 0 && rewardInfoOpen && (
+          <RewardCard reward={documentRoyalty} documentData={documentData} />
         )}
       </div>
     </div>

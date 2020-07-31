@@ -271,5 +271,13 @@ export default {
       img.src = picture
       img.onload = () => resolve(Boolean(img.height > img.width))
     })
+  },
+
+  convertToEllipsis(text: string, maxLength: number) {
+    if (text.length <= maxLength) return text
+
+    if (maxLength > 3 && text.length > maxLength)
+      return text.substr(0, maxLength - 3) + '...'
+    return text.substr(0, 3)
   }
 }

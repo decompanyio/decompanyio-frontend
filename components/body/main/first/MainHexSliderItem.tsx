@@ -15,6 +15,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { psString } from '../../../../utils/localization'
 import Truncate from 'react-truncate'
+import commonView from '../../../../common/commonView'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -119,7 +120,9 @@ export default function({
             as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
           >
             <a aria-label="viewer page">
-              <h3 className={styles.mhsi_title}>{documentInfo.title}</h3>
+              <h3 className={styles.mhsi_title}>
+                {commonView.convertToEllipsis(documentInfo.title, 30)}
+              </h3>
             </a>
           </Link>
         </div>

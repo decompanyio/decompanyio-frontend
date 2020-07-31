@@ -56,6 +56,7 @@ export interface ParamsGetDocumentList {
 
 export interface ContentsListItemProps {
   documentData: DocumentInfo
+  documentRoyalty
   path: string
 }
 
