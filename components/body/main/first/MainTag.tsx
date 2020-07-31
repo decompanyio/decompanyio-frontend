@@ -51,28 +51,23 @@ export default function(): ReactElement {
 
       <div className={styles.mt_tagContainer}>
         <ol className={styles.mt_tagGroup}>
-          {(tagList as TagListItem[]).map(({ _id }, index) => {
-            if (index < 10) {
-              return (
-                <li key={index}>
-                  <Link
-                    href={{ pathname: '/contents_list', query: { tag: _id } }}
-                    as={'tag/' + _id}
+          {(tagList as TagListItem[]).slice(0, 10).map(({ _id }, index) => (
+            <li key={index}>
+              <Link
+                href={{ pathname: '/contents_list', query: { tag: _id } }}
+                as={'tag/' + _id}
+              >
+                <a aria-label={_id}>
+                  <button
+                    type="button"
+                    className={styles['mt_tag_' + getTagNum(index)]}
                   >
-                    <a aria-label={_id}>
-                      <button
-                        type="button"
-                        className={styles['mt_tag_' + getTagNum(index)]}
-                      >
-                        <span>{_id}</span>
-                      </button>
-                    </a>
-                  </Link>
-                </li>
-              )
-            }
-            return <div></div>
-          })}
+                    <span>{_id}</span>
+                  </button>
+                </a>
+              </Link>
+            </li>
+          ))}
         </ol>
       </div>
 
