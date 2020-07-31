@@ -244,7 +244,7 @@ USER GUIDE
 ========
 */
 
-@import "./component/faq";
+@import "./component/userGuide";
 
 
 /*
@@ -276,6 +276,12 @@ CONTENTS
 
 // LIST ITEM
 @import "./component/contentsListItem";
+
+// LIST ITEM MOCK
+@import "./component/contentsListItemMock";
+
+// LIST ITEM
+@import "./component/contentsListMock";
 
 // LIST ITEM MOCK
 @import "./component/contentsListItemMock";

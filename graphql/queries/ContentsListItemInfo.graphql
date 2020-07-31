@@ -1,55 +1,8 @@
 query ContentsListItemInfo(
-  $userId_scalar: MongoID!
   $userId: String!
-  $documentId_scalar: MongoID!
   $documentId: String!
   $days: Int!
 ) {
-  Document {
-    findById(_id: $documentId_scalar) {
-      _id
-      created
-      state
-      accountId
-      documentId
-      documentName
-      documentSize
-      title
-      desc
-      seoTitle
-      useTracking
-      forceTracking
-      isDownload
-      cc
-      isPublic
-      isBlocked
-      isDeleted
-      dimensions {
-        width
-        height
-        type
-      }
-    }
-  }
-  User {
-    findById(_id: $userId_scalar) {
-      _id
-      created
-      username
-      email
-      picture
-      local
-      nickname
-      family_name
-      croppedArea {
-        width
-        height
-        x
-        y
-        zoom
-      }
-    }
-  }
   Creator {
     getNDaysRoyalty(documentId: $documentId, days: $days) {
       activeDate
@@ -57,18 +10,6 @@ query ContentsListItemInfo(
       royalty
       pageview
       totalPageview
-    }
-  }
-  DocumentFeatured {
-    findById(_id: $documentId_scalar) {
-      _id
-      latestVoteAmount
-    }
-  }
-  DocumentPopular {
-    findById(_id: $documentId_scalar) {
-      _id
-      latestPageview
     }
   }
   UserDocumentFavorite {

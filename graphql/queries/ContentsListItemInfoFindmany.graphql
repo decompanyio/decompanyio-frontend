@@ -1,0 +1,62 @@
+query ContentsListItemInfoFindmany(
+    $userId_scalar: [MongoID]
+    $documentId_scalar: [MongoID]
+) {
+    Document {
+        findMany(filter: { _ids: $documentId_scalar }, sort: STATE__CREATED_DESC) {
+            _id
+            created
+            state
+            accountId
+            documentId
+            documentName
+            documentSize
+            title
+            desc
+            seoTitle
+            useTracking
+            forceTracking
+            isDownload
+            cc
+            isPublic
+            isBlocked
+            isDeleted
+            dimensions {
+                width
+                height
+                type
+            }
+        }
+    }
+    User {
+        findMany(filter: { _ids: $userId_scalar }) {
+            _id
+            created
+            username
+            email
+            picture
+            local
+            nickname
+            family_name
+            croppedArea {
+                width
+                height
+                x
+                y
+                zoom
+            }
+        }
+    }
+    DocumentFeatured {
+        findMany(filter: { _ids: $documentId_scalar }) {
+            _id
+            latestVoteAmount
+        }
+    }
+    DocumentPopular {
+        findMany(filter: { _ids: $documentId_scalar }) {
+            _id
+            latestPageview
+        }
+    }
+}

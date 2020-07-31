@@ -185,7 +185,7 @@ export default function(): ReactElement {
           <br />
           <br />
           {psString('terms-17-desc-5')}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href="mailto: connect@polarishare.com">connect@polarishare.com</a>
           {psString('terms-17-desc-6')}
           <br />
           <br />
@@ -217,7 +217,7 @@ export default function(): ReactElement {
           <br />
           <div>{psString('terms-22-title')}</div>
           {psString('terms-22-desc-1')}
-          <a href="mailto: connect@decompany.io">connect@decompany.io</a>
+          <a href="mailto: connect@polarishare.com">connect@polarishare.com</a>
           {psString('terms-22-desc-2')}
           <br />
           <br />

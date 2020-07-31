@@ -113,11 +113,10 @@
 
 .mri_imgLandscape {
   height: 100%;
-  left: -50%;
+  left: 0;
   position: absolute;
 
   @media (max-width: 1024px) {
-    left: 0 !important;
     position: relative !important;
     width: 100%;
   }

@@ -32,9 +32,6 @@ export default function(props): ReactElement {
       let currentScrollPos = window.pageYOffset
       let headerMainNav = document.getElementById('headerMainNav')
       let totalLoadingBar = document.getElementById('totalLoadingBar')
-      /*let headerCategoryWrapper = document.getElementById(
-        'headerCategoryWrapper'
-      )*/
 
       let isScrollAtTop = currentScrollPos <= 60
       let isScrollUp = _prevScrollPos > currentScrollPos
@@ -52,28 +49,6 @@ export default function(props): ReactElement {
         totalLoadingBar.style.top = `${
           isScrollUp || isScrollAtTop ? `${isMobile ? '55' : '60'}` : '0'
         }px`
-
-      // main 페이지, 테그 헤더 위치 처리
-      /*if (!path && headerCategoryWrapper && headerMainNav) {
-        if (headerCategoryWrapper.offsetTop < currentScrollPos) {
-          if (headerCategoryWrapper.style.position !== 'fixed')
-            headerCategoryWrapper.style.position = 'fixed'
-
-          if (headerCategoryWrapper.style.borderBottom !== '1px solid #b3b3b3')
-            headerCategoryWrapper.style.borderBottom = '1px solid #b3b3b3'
-
-          if (headerCategoryWrapper.style.marginBottom !== '45px')
-            headerMainNav.style.marginBottom = '45px'
-        }
-
-        if (headerMainNav.offsetTop + 60 >= currentScrollPos) {
-          if (headerCategoryWrapper.style.position !== 'relative')
-            headerCategoryWrapper.style.position = 'relative'
-
-          if (headerCategoryWrapper.style.marginBottom !== '0px')
-            headerMainNav.style.marginBottom = '0px'
-        }
-      }*/
 
       resolve(currentScrollPos)
     })

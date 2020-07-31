@@ -110,7 +110,7 @@ export default function({ userId, documentId }): ReactElement {
               alt={documentInfo.title}
               className={
                 'lazy ' +
-                (ratio >= 1.6 ? styles.dc_imgLandscape : styles.dc_img)
+                (ratio >= 1.6 ? styles.mtli_imgLandscape : styles.mtli_img)
               }
               onError={e => {
                 // console.log(e)
@@ -140,7 +140,9 @@ export default function({ userId, documentId }): ReactElement {
           <div>
             <i className={styles.sprite_a} />
             <span className={styles.mtli_money}>
-              {common.deckToDollarWithComma(creatorRoyalty.royalty)}
+              {creatorRoyalty.royalty === 0
+                ? 'FREE'
+                : common.deckToDollarWithComma(creatorRoyalty.royalty)}
             </span>
           </div>
           <div>

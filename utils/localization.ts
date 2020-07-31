@@ -219,7 +219,7 @@ const strings = new Map([
     'main-visual-8',
     {
       KOR: '는 전세계에서 ',
-      ENG: ' is subscribed worldwide'
+      ENG: ' is subscribed worldwide'
     }
   ],
   [
@@ -862,7 +862,7 @@ const strings = new Map([
     {
       KOR: '오직 소문자와 숫자만 허용됩니다.',
       ENG:
-        'Your username must be a combination of lowercase letters and numbers.'
+        'Your username must be a combination of lowercase letters and numbers.'
     }
   ],
   [
@@ -2961,10 +2961,10 @@ const strings = new Map([
     'terms-desc-1',
     {
       KOR:
-        'Polaris Share에 오신 것을 환영합니다! 귀하와 Polaris Share, Inc. ' +
-        '(이하 "우리", "당사") 간의 본 계약 ("계약")은',
+        'Polaris Share에 오신 것을 환영합니다! 귀하와 Decompany, Inc. ' +
+        '(이하 "우리", "당사") 간의 본 계약 ("계약")은',
       ENG:
-        'Welcome to Polaris Share! This agreement (the “Agreement”) between you and Polaris Share, ' +
+        'Welcome to Polaris Share! This agreement (the “Agreement”) between you and Decompany, ' +
         'Inc.(“we”, “us”, “our”) sets out your rights to access and use of'
     }
   ],
@@ -2972,10 +2972,10 @@ const strings = new Map([
     'terms-desc-2',
     {
       KOR:
-        '및 당사가 제공하는 기타 제품 또는 서비스에 대한 액세스 및 사용에 대한 귀하의 권리를 명시합니다. 서비스"). ' +
-        '본 계약을 수락하고 회사, 조직, 정부 또는 기타 법인을 대신하여 서비스를 사용하는 경우, ' +
-        '귀하는 귀하가 그렇게 할 권한이 있음을 진술하고 보증하며 그러한 단체를 본 계약에 구속 할 권한이 있습니다. ' +
-        '서비스에 액세스함으로써 귀하는 본 계약을 읽고, 이해하고 수락한다는 데 동의합니다.',
+        '및 당사가 제공하는 기타 제품 또는 서비스에 대한 액세스 및 사용에 대한 귀하의 권리를 명시합니다. 서비스"). ' +
+        '본 계약을 수락하고 회사, 조직, 정부 또는 기타 법인을 대신하여 서비스를 사용하는 경우, ' +
+        '귀하는 귀하가 그렇게 할 권한이 있음을 진술하고 보증하며 그러한 단체를 본 계약에 구속 할 권한이 있습니다. ' +
+        '서비스에 액세스함으로써 귀하는 본 계약을 읽고, 이해하고 수락한다는 데 동의합니다.',
       ENG:
         'and any other products or services provided by us (the “Service”). ' +
         'If you are accepting this Agreement and using the Services on behalf of a company, ' +
@@ -2988,7 +2988,7 @@ const strings = new Map([
     'terms-desc-3',
     {
       KOR:
-        '본 계약을 변경하기로 결정한 경우, 위의 "최종 업데이트"날짜를 업데이트하거나 ',
+        '본 계약을 변경하기로 결정한 경우, 위의 "최종 업데이트"날짜를 업데이트하거나 ',
       ENG:
         'If we decide to make changes to this Agreement,' +
         'we will provide notice of those changes by updating the “Last Updated” date above or posting notice on '
@@ -2998,8 +2998,8 @@ const strings = new Map([
     'terms-desc-4',
     {
       KOR:
-        '에 공지함으로써 변경 사항에 대한 통지를 제공합니다. ' +
-        '서비스를 계속 사용하면 변경 사항에 대한 수락 여부를 확인할 수 있습니다.',
+        '에 공지함으로써 변경 사항에 대한 통지를 제공합니다. ' +
+        '서비스를 계속 사용하면 변경 사항에 대한 수락 여부를 확인할 수 있습니다.',
       ENG:
         'Your continued use of the Service will confirm your acceptance of the changes.'
     }
@@ -3015,7 +3015,7 @@ const strings = new Map([
     'terms-1-desc',
     {
       KOR:
-        '당사가 귀하에 관한 정보를 수집, 사용 및 공개하는 방법에 대한 정보는 개인 정보 보호 정책을 참조하십시오.',
+        '당사가 귀하에 관한 정보를 수집, 사용 및 공개하는 방법에 대한 정보는 개인 정보 보호 정책을 참조하십시오.',
       ENG:
         'Please refer to our Privacy Policy for information about how we' +
         'collect, use, and disclose information about you.'
@@ -3024,7 +3024,7 @@ const strings = new Map([
   [
     'terms-2-title',
     {
-      KOR: '1. 자',
+      KOR: '1. 자격',
       ENG: '2. Eligibility'
     }
   ],
@@ -3032,9 +3032,9 @@ const strings = new Map([
     'terms-2-desc',
     {
       KOR:
-        '본 서비스는 13 세 미만의 사용자를 대상으로 하지 않으며 사용 대상이 아닙니다. ' +
-        '본 서비스에 액세스하거나 사용하려면 13 세 이상이어야 합니다. 만 13 세에서 18 세 사이 (또는 귀하가 거주하는 법적 성년) 인 경우 ' +
-        '본 계약에 구속되는 데 동의하는 부모 또는 법적 보호자의 감독하에 서비스에 액세스하거나 사용할 수 있습니다.',
+        '본 서비스는 13 세 미만의 사용자를 대상으로 하지 않으며 사용 대상이 아닙니다. ' +
+        '본 서비스에 액세스하거나 사용하려면 13 세 이상이어야 합니다. 만 13 세에서 18 세 사이 (또는 귀하가 거주하는 법적 성년) 인 경우 ' +
+        '본 계약에 구속되는 데 동의하는 부모 또는 법적 보호자의 감독하에 서비스에 액세스하거나 사용할 수 있습니다.',
       ENG:
         'The Service is not targeted toward, nor intended for use by, anyone' +
         'under the age of 13. You must be at least 13 years of age to access or' +
@@ -3047,7 +3047,7 @@ const strings = new Map([
   [
     'terms-3-title',
     {
-      KOR: '3. 저작권 및 제한된 라이센스',
+      KOR: '3. 저작권 및 제한된 라이센스',
       ENG: '3. Copyright and Limited License'
     }
   ],
@@ -3055,9 +3055,9 @@ const strings = new Map([
     'terms-3-desc-1',
     {
       KOR:
-        '당사는 당사가 제공하는 데이터, 텍스트, 사진, 이미지, 비디오, 오디오, 그래픽, 기사, 주석, 소프트웨어, 코드, 스크립트 및 ' +
-        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris Share 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
-        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris Share Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
+        '당사는 당사가 제공하는 데이터, 텍스트, 사진, 이미지, 비디오, 오디오, 그래픽, 기사, 주석, 소프트웨어, 코드, 스크립트 및 ' +
+        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris Share 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
+        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris Share Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
       ENG:
         'We may retain data, text, photographs, images, video, audio, graphics,' +
         'articles, comments, software, code, scripts, and other content' +
@@ -3069,7 +3069,7 @@ const strings = new Map([
     'terms-3-desc-2',
     {
       KOR:
-        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris Share 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
+        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris Share 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
       ENG:
         'You are granted a limited, non-exclusive, non-transferable, and' +
         'non-sublicensable license to access and use the Service and Polaris' +
@@ -3085,7 +3085,7 @@ const strings = new Map([
   [
     'terms-4-title',
     {
-      KOR: '4. 상표권 정책',
+      KOR: '4. 상표권 정책',
       ENG: '4. Trademark Policy'
     }
   ],
@@ -3093,14 +3093,14 @@ const strings = new Map([
     'terms-4-desc-1',
     {
       KOR:
-        '"Polaris Share", Polaris Share 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
-        '슬로건은 Polaris Share, Inc.의 상표이며, ' +
-        '전부 또는 일부를 복사, 모방 또는 사용해서는 안됩니다. ' +
-        '명시 적으로 허용되지 않거나 처음에 당사로부터 서면 허가를 받지 않은 경우. ',
+        '"Polaris Share", Polaris Share 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
+        '슬로건은 당사의 상표이며, ' +
+        '전부 또는 일부를 복사, 모방 또는 사용해서는 안됩니다. ' +
+        '명시 적으로 허용되지 않거나 처음에 당사로부터 서면 허가를 받지 않은 경우. ',
       ENG:
         '“Polaris Share,”, the Polaris Share logo and any other product or' +
         'service names, logos, slogans that may appear on the Service are' +
-        'trademarks of Polaris Share, Inc., and, may not be copied, imitated,' +
+        'trademarks of the company, and, may not be copied, imitated,' +
         'or used, in whole or in part, unless explicitly permitted or without' +
         'first receiving written permission from us to do so. The look and feel' +
         'of '
@@ -3110,10 +3110,10 @@ const strings = new Map([
     'terms-4-desc-2',
     {
       KOR:
-        '및 서비스의 모양과 느낌은 저작권 © Polaris Share, Inc.에 의해 보호됩니다. 명시 적 서면 허가없이 HTML, CSS, Javascript 또는 시각적 디자인 요소 또는 개념의 일부를 복제, 복사 또는 재사용 할 수 없습니다.',
+        '및 서비스의 모양과 느낌은 저작권 당사에 의해 보호됩니다. 명시 적 서면 허가없이 HTML, CSS, Javascript 또는 시각적 디자인 요소 또는 개념의 일부를 복제, 복사 또는 재사용 할 수 없습니다.',
       ENG:
         'and the' +
-        'Service is protected by copyright © Polaris Share, Inc. All rights' +
+        'Service is protected by copyright © Decompany, Inc. All rights' +
         'reserved. You may not duplicate, copy, or reuse any portion of the' +
         'HTML/CSS, Javascript, or visual design elements or concepts without' +
         'express written permission.'
@@ -3123,10 +3123,10 @@ const strings = new Map([
     'terms-4-desc-3',
     {
       KOR:
-        '당사 서비스에서 언급되거나 사용 된 기타 모든 상표, ' +
-        '등록 상표, 제품 이름 및 회사 이름 또는 로고는 해당 소유자의 자산이며 해당 내용의 허가없이 전체 또는 부분적으로 복사, ' +
-        '모방 또는 사용될 수 없습니다. 상표권자. 이름, 상표, 제조업체, 공급 업체 또는 다른 방법으로 제품, ' +
-        '서비스, 프로세스 또는 기타 정보를 언급했다고 해서 우리에 의한 보증, 후원 또는 추천을 의미하지는 않습니다.',
+        '당사 서비스에서 언급되거나 사용 된 기타 모든 상표, ' +
+        '등록 상표, 제품 이름 및 회사 이름 또는 로고는 해당 소유자의 자산이며 해당 내용의 허가없이 전체 또는 부분적으로 복사, ' +
+        '모방 또는 사용될 수 없습니다. 상표권자. 이름, 상표, 제조업체, 공급 업체 또는 다른 방법으로 제품, ' +
+        '서비스, 프로세스 또는 기타 정보를 언급했다고 해서 우리에 의한 보증, 후원 또는 추천을 의미하지는 않습니다.',
       ENG:
         'All other trademarks, registered trademarks, product names and company' +
         'names or logos mentioned or used on our Service are the property of' +
@@ -3141,7 +3141,7 @@ const strings = new Map([
   [
     'terms-5-title',
     {
-      KOR: '5. 위험의 가정, 책임의 한계.',
+      KOR: '5. 위험의 가정, 책임의 한계.',
       ENG: '5. Assumption of Risk, Limitations on Liability.'
     }
   ],
@@ -3149,7 +3149,7 @@ const strings = new Map([
     'terms-5-desc-1',
     {
       KOR:
-        '5.1. 귀하는 인터넷 기반 POLA 블록 체인 계정 서비스 이용과 관련된 위험이 있음을 인정하고 이에 동의합니다. 여기에는 하드웨어, 소프트웨어 및 인터넷 연결의 실패 위험, 악성 소프트웨어 도입 위험 및 제 3의 위험 - 귀하의 개인 키 ("개인 키")를 포함하되 이에 국한되지 않는 귀하의 계정에 저장되거나 연결된 개인 정보에 무단으로 액세스 할 수 있습니다. 귀하는 서비스 사용시 발생할 수 있는 통신 실패, 중단, 오류, 왜곡 또는 지연에 대해 당사가 책임지지 않음을 인정하고 인정합니다.',
+        '5.1. 귀하는 인터넷 기반 POLA 블록 체인 계정 서비스 이용과 관련된 위험이 있음을 인정하고 이에 동의합니다. 여기에는 하드웨어, 소프트웨어 및 인터넷 연결의 실패 위험, 악성 소프트웨어 도입 위험 및 제 3의 위험 - 귀하의 개인 키 ("개인 키")를 포함하되 이에 국한되지 않는 귀하의 계정에 저장되거나 연결된 개인 정보에 무단으로 액세스 할 수 있습니다. 귀하는 서비스 사용시 발생할 수 있는 통신 실패, 중단, 오류, 왜곡 또는 지연에 대해 당사가 책임지지 않음을 인정하고 인정합니다.',
       ENG:
         '5.1. You accept and acknowledge that there are risks associated with' +
         'utilizing an Internet-based POLA blockchain account service including,' +
@@ -3167,7 +3167,7 @@ const strings = new Map([
     'terms-5-desc-2',
     {
       KOR:
-        '5.2. 우리는 서비스의 내용, 서비스를 통해 액세스 할 수있는 정보 및 기능, 제 3 자 웹 사이트에 대한 하이퍼 링크 또는 관련된 보안 위반에 대해 어떠한 종류의 명시 적 또는 묵시적, 법정 또는 기타 어떠한 형태의 진술이나 보증도하지 않습니다. 서비스 또는 서비스와 연결된 모든 웹 사이트를 통한 정보의 전송.',
+        '5.2. 우리는 서비스의 내용, 서비스를 통해 액세스 할 수있는 정보 및 기능, 제 3 자 웹 사이트에 대한 하이퍼 링크 또는 관련된 보안 위반에 대해 어떠한 종류의 명시 적 또는 묵시적, 법정 또는 기타 어떠한 형태의 진술이나 보증도하지 않습니다. 서비스 또는 서비스와 연결된 모든 웹 사이트를 통한 정보의 전송.',
       ENG:
         '5.2. We make no representation or warranty of any kind, express or' +
         'implied, statutory, or otherwise, regarding the contents of the' +
@@ -3181,12 +3181,12 @@ const strings = new Map([
     'terms-5-desc-3',
     {
       KOR:
-        '5.3. 우리는 다음과 같은 사항으로 인해 발생하는 손실, 손해 및 클레임을 포함하여 (단, 이에 국한되지는 않음) ' +
-        '당사의 서비스 이용에 대한 손실에 대해 귀하에게 책임을 지지 않으며 그에 대해 책임을 지지 않습니다. ' +
-        '잊어버린 암호, 잘못 구성된 거래 또는 잘못 입력 된 POLA 블록 체인 주소 (b) 서버 오류 또는 데이터 손실. ' +
-        '(c) 손상된 계정 파일. (d) 애플리케이션에 대한 무단 액세스. ' +
-        '(e) 바이러스, 피싱, 무차별 공격 또는 서비스 또는 서비스에 대한 기타 공격 수단의 사용을 포함하되 이에 국한되지 않는 ' +
-        '제 3 자의 허가되지 않은 제 3 자 활동등.',
+        '5.3. 우리는 다음과 같은 사항으로 인해 발생하는 손실, 손해 및 클레임을 포함하여 (단, 이에 국한되지는 않음) ' +
+        '당사의 서비스 이용에 대한 손실에 대해 귀하에게 책임을 지지 않으며 그에 대해 책임을 지지 않습니다. ' +
+        '잊어버린 암호, 잘못 구성된 거래 또는 잘못 입력 된 POLA 블록 체인 주소 (b) 서버 오류 또는 데이터 손실. ' +
+        '(c) 손상된 계정 파일. (d) 애플리케이션에 대한 무단 액세스. ' +
+        '(e) 바이러스, 피싱, 무차별 공격 또는 서비스 또는 서비스에 대한 기타 공격 수단의 사용을 포함하되 이에 국한되지 않는 ' +
+        '제 3 자의 허가되지 않은 제 3 자 활동등.',
       ENG:
         '5.3. We will not be responsible or liable to you for any loss and take' +
         'no responsibility for and will not be liable to you for any use of our' +
@@ -3203,10 +3203,10 @@ const strings = new Map([
     'terms-5-desc-4',
     {
       KOR:
-        '5.4. 우리는 서비스 또는 이를 사용할 수 있는 서버가 바이러스 나 오류가 없고, 내용이 정확하고, ' +
-        '중단되지 않거나, 결함이 수정 될 것이라는 보증을 하지 않습니다. ' +
-        '우리는 서비스에 포함 된 내용이나 정보에 의존하여 취한 조치 또는 모든 종류의 손실에 대해 귀하에게 어떠한 ' +
-        '책임이나 의무도지지 않습니다.',
+        '5.4. 우리는 서비스 또는 이를 사용할 수 있는 서버가 바이러스 나 오류가 없고, 내용이 정확하고, ' +
+        '중단되지 않거나, 결함이 수정 될 것이라는 보증을 하지 않습니다. ' +
+        '우리는 서비스에 포함 된 내용이나 정보에 의존하여 취한 조치 또는 모든 종류의 손실에 대해 귀하에게 어떠한 ' +
+        '책임이나 의무도지지 않습니다.',
       ENG:
         '5.4. We make no warranty that the Service or the server that makes it' +
         'available, are free of viruses or errors, that its content is' +
@@ -3220,8 +3220,8 @@ const strings = new Map([
     'terms-5-desc-5',
     {
       KOR:
-        '5.5. 아래 6.1 조항에 의거하여 모든 면책, 보증, 조건 및 조건 (명시 적이든 묵시적이든)이 ' +
-        '뉴욕 법에 따라 허용되는 한도까지 배제됩니다.',
+        '5.5. 아래 6.1 조항에 의거하여 모든 면책, 보증, 조건 및 조건 (명시 적이든 묵시적이든)이 ' +
+        '뉴욕 법에 따라 허용되는 한도까지 배제됩니다.',
       ENG:
         '5.5. We will not be liable, in contract, or tort (including, without' +
         'limitation, negligence), other than where we have been fraudulent or' +
@@ -3232,8 +3232,8 @@ const strings = new Map([
     'terms-5-desc-6',
     {
       KOR:
-        '5.6. 우리는 사기성 또는 과실로 허위 진술 한 경우를 제외하고는 책임을 지지 않으며, ' +
-        '계약 또는 불법 행위 (과실 포함)를 하지 않습니다.',
+        '5.6. 우리는 사기성 또는 과실로 허위 진술 한 경우를 제외하고는 책임을 지지 않으며, ' +
+        '계약 또는 불법 행위 (과실 포함)를 하지 않습니다.',
       ENG:
         '5.6. Nothing in this Agreement excludes or limits liability for death' +
         'or personal injury caused by negligence, fraudulent misrepresentation,' +
@@ -3244,7 +3244,7 @@ const strings = new Map([
   [
     'terms-6-title',
     {
-      KOR: '6. 제 3 자 서비스 및 컨텐츠에 대한 책임 없음',
+      KOR: '6. 제 3 자 서비스 및 컨텐츠에 대한 책임 없음',
       ENG: '6. No Liability for Third-Party Services and Content'
     }
   ],
@@ -3252,12 +3252,12 @@ const strings = new Map([
     'terms-6-desc',
     {
       KOR:
-        '6.1. 서비스 사용시, 귀하는 웹 페이지 및 해당 당사자의 서비스 ("제 3 자 콘텐츠")에 대한 링크를 포함하여 제 3자가 제공하는 서비스를 사용하거나 콘텐츠를 볼 수 있습니다. ' +
-        '우리는 제 3 자 콘텐츠를 통제, 보증 또는 채택하지 않으며 귀하의 관할 지역에서 오도 된 정보, 불완전 정보, ' +
-        '오류, 불쾌감, 외설적 인 내용 또는 기타 불쾌한 내용을 포함하여 제 3 자 콘텐츠에 대한 책임을 지지 않습니다. ' +
-        '또한 그러한 제 3 자와의 거래 또는 서신은 전적으로 귀하와 제 3 자 사이에 있습니다. ' +
-        '당사는 그러한 거래로 인해 발생하는 모든 유형의 손실이나 손해에 대해 책임을 지지 않으며 귀하는 ' +
-        '제 3 자 콘텐츠 사용 및 제 3 자와의 상호 작용에 따른 위험 부담을 이해합니다.',
+        '6.1. 서비스 사용시, 귀하는 웹 페이지 및 해당 당사자의 서비스 ("제 3 자 콘텐츠")에 대한 링크를 포함하여 제 3자가 제공하는 서비스를 사용하거나 콘텐츠를 볼 수 있습니다. ' +
+        '우리는 제 3 자 콘텐츠를 통제, 보증 또는 채택하지 않으며 귀하의 관할 지역에서 오도 된 정보, 불완전 정보, ' +
+        '오류, 불쾌감, 외설적 인 내용 또는 기타 불쾌한 내용을 포함하여 제 3 자 콘텐츠에 대한 책임을 지지 않습니다. ' +
+        '또한 그러한 제 3 자와의 거래 또는 서신은 전적으로 귀하와 제 3 자 사이에 있습니다. ' +
+        '당사는 그러한 거래로 인해 발생하는 모든 유형의 손실이나 손해에 대해 책임을 지지 않으며 귀하는 ' +
+        '제 3 자 콘텐츠 사용 및 제 3 자와의 상호 작용에 따른 위험 부담을 이해합니다.',
       ENG:
         '6.1. In using our Services, you may view content or utilize services' +
         'provided by third parties, including links to web pages and services' +
@@ -3276,7 +3276,7 @@ const strings = new Map([
   [
     'terms-7-title',
     {
-      KOR: '7. 계정 등록',
+      KOR: '7. 계정 등록',
       ENG: '7. Account Registration'
     }
   ],
@@ -3284,11 +3284,11 @@ const strings = new Map([
     'terms-7-desc-1',
     {
       KOR:
-        '7.1. polarisshare.com에게 무료로 계정을 만들 수 있습니다. ' +
-        '서비스의 일부를 사용하려면 POLA 블록 체인(“추후 서비스 예정”) 계정("계정")을 만들어야 합니다. ' +
-        '귀하가 계정을 만들 때 귀하는 귀하의 계정에 대한 액세스 및 또는 통제를 상실 할 수 있으므로 다음주의 사항을 지켜야합니다. ' +
-        '(b) 정확하고 정보를 제공하십시오. (c) 귀하의 계정 암호 및 귀하의 컴퓨터 및 계정에 대한 액세스를 보호하여 계정의 보안을 유지해야합니다. ' +
-        '(e) 귀하의 계정과 관련된 보안 위반을 발견하거나 의심되는 경우 즉시 알려주십시오.',
+        '7.1. polarisshare.com에게 무료로 계정을 만들 수 있습니다. ' +
+        '서비스의 일부를 사용하려면 POLA 블록 체인(“추후 서비스 예정”) 계정("계정")을 만들어야 합니다. ' +
+        '귀하가 계정을 만들 때 귀하는 귀하의 계정에 대한 액세스 및 또는 통제를 상실 할 수 있으므로 다음주의 사항을 지켜야합니다. ' +
+        '(b) 정확하고 정보를 제공하십시오. (c) 귀하의 계정 암호 및 귀하의 컴퓨터 및 계정에 대한 액세스를 보호하여 계정의 보안을 유지해야합니다. ' +
+        '(e) 귀하의 계정과 관련된 보안 위반을 발견하거나 의심되는 경우 즉시 알려주십시오.',
       ENG:
         '7.1. You need not use a POLA blockchain account provided by us, and' +
         'you can create an account independently of the Service. If you would' +
@@ -3306,8 +3306,8 @@ const strings = new Map([
     'terms-7-desc-2',
     {
       KOR:
-        '7.2. 귀하는 귀하의 계정 하에서 발생하는 모든 활동에 대한 책임을 지고 법이 허용하는 한도 내에서 ' +
-        '귀하의 계정에 대한 허가 된 또는 허가되지 않은 액세스의 모든 위험을 수락한다는 것을 수락하고 인정합니다.',
+        '7.2. 귀하는 귀하의 계정 하에서 발생하는 모든 활동에 대한 책임을 지고 법이 허용하는 한도 내에서 ' +
+        '귀하의 계정에 대한 허가 된 또는 허가되지 않은 액세스의 모든 위험을 수락한다는 것을 수락하고 인정합니다.',
       ENG:
         '7.2. You hereby accept and acknowledge that you take responsibility' +
         'for all activities that occur under your Account and accept all risks' +
@@ -3319,10 +3319,10 @@ const strings = new Map([
     'terms-7-desc-3',
     {
       KOR:
-        '7.3. 귀하는 암호가 진행되는 분야임을 인정하고 이해합니다. ' +
-        '코드 크래킹이나 양자 컴퓨터 개발과 같은 기술 발전의 진전은 귀하가 사용하는 서비스 및 귀하의 계정에 위험을 초래할 수 있으며 ' +
-        '이로 인해 귀하의 재산이 도난 또는 분실 될 수 있습니다. ' +
-        '서비스를 사용하거나 Polaris share Content에 액세스함으로써 귀하는 이러한 내재 된 위험을 인정합니다.',
+        '7.3. 귀하는 암호가 진행되는 분야임을 인정하고 이해합니다. ' +
+        '코드 크래킹이나 양자 컴퓨터 개발과 같은 기술 발전의 진전은 귀하가 사용하는 서비스 및 귀하의 계정에 위험을 초래할 수 있으며 ' +
+        '이로 인해 귀하의 재산이 도난 또는 분실 될 수 있습니다. ' +
+        '서비스를 사용하거나 Polaris share Content에 액세스함으로써 귀하는 이러한 내재 된 위험을 인정합니다.',
       ENG:
         '7.3. You acknowledge and understand that cryptography is a progressing' +
         'field. Advances in code cracking or technical advances such as the' +
@@ -3343,7 +3343,7 @@ const strings = new Map([
     'terms-8-desc-1',
     {
       KOR:
-        '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 POLA 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 POLA에 통제가 상실 될 수 있습니다.',
+        '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 POLA 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 POLA에 통제가 상실 될 수 있습니다.',
       ENG:
         '8.1. As described in others detail below, the Services, among other' +
         'things, provide software that facilitates the submission of POLA' +
@@ -3355,7 +3355,7 @@ const strings = new Map([
     'terms-8-desc-2',
     {
       KOR:
-        '8.2. 암호 검색이 없습니다. 우리는 귀하의 계정 암호 또는 개인 키를 받거나 저장하지 않습니다. 귀하의 개인 키는 귀하의 개인 키이며 귀하는 귀하의 개인 키를 안전하게 보관할 책임이 있습니다. 계정 암호 검색, 재설정 또는 복구를 지원할 수는 없습니다. 계정 암호를 기억하는 것은 전적으로 귀하의 책임입니다. 계정에 저장된 계정 및 암호 쌍의 백업을 안전하게 저장하지 않은 경우 계정 암호가 없는 경우 해당 계정과 연결된 DECL가 영구적으로 액세스 할 수 없게 됩니다.',
+        '8.2. 암호 검색이 없습니다. 우리는 귀하의 계정 암호 또는 개인 키를 받거나 저장하지 않습니다. 귀하의 개인 키는 귀하의 개인 키이며 귀하는 귀하의 개인 키를 안전하게 보관할 책임이 있습니다. 계정 암호 검색, 재설정 또는 복구를 지원할 수는 없습니다. 계정 암호를 기억하는 것은 전적으로 귀하의 책임입니다. 계정에 저장된 계정 및 암호 쌍의 백업을 안전하게 저장하지 않은 경우 계정 암호가 없는 경우 해당 계정과 연결된 DECL가 영구적으로 액세스 할 수 없게 됩니다.',
       ENG:
         '8.2. No Password Retrieval. We do not receive or store your Account' +
         'password or Private Keys. Your Private Key is your own and you are' +
@@ -3372,7 +3372,7 @@ const strings = new Map([
     'terms-8-desc-3',
     {
       KOR:
-        '8.3. 업무. 제안 된 모든 POLA 블록 체인 거래는 POLA 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 POLA 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. POLA 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 POLA 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 POLA 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
+        '8.3. 업무. 제안 된 모든 POLA 블록 체인 거래는 POLA 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 POLA 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. POLA 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 POLA 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 POLA 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
       ENG:
         '8.3. Transactions. All proposed POLA blockchain transactions must be' +
         'confirmed and recorded in the POLA blockchain via the Polaris Share' +
@@ -3388,7 +3388,7 @@ const strings = new Map([
     'terms-8-desc-4',
     {
       KOR:
-        '8.4. POLA의 저장 또는 운송 금지. POLA 귀하가 관리하는 무형의 디지털 자산입니다. 이러한 자산은 POLA 블록 체인에서 유지 관리되는 소유권 레코드에 의해서만 존재합니다. 서비스는 POLA를 저장, 보내거나 받지 않습니다. POLA에서 발생할 수 있는 제목 이전은 서비스가 아닌 POLA 블록 체인에서 발생합니다. 당사는 POLA에서 서비스가 제목 또는 권리 이전에 영향을 미칠 수 있다고 보장하지 않습니다.',
+        '8.4. POLA의 저장 또는 운송 금지. POLA 귀하가 관리하는 무형의 디지털 자산입니다. 이러한 자산은 POLA 블록 체인에서 유지 관리되는 소유권 레코드에 의해서만 존재합니다. 서비스는 POLA를 저장, 보내거나 받지 않습니다. POLA에서 발생할 수 있는 제목 이전은 서비스가 아닌 POLA 블록 체인에서 발생합니다. 당사는 POLA에서 서비스가 제목 또는 권리 이전에 영향을 미칠 수 있다고 보장하지 않습니다.',
       ENG:
         '8.4. No Storage or Transmission of POLA. POLA, in any of its forms' +
         '(POLA) is an intangible, digital asset controlled by you. These assets' +
@@ -3403,7 +3403,7 @@ const strings = new Map([
     'terms-8-desc-5',
     {
       KOR:
-        '8.5. 관계. 본 계약서의 어떠한 내용도 귀하와 당사 사이의 파트너십, 합작 투자, 대행사, 컨설팅 또는 신탁 통치를 의도하지도 않으며 작성하지도 않습니다.',
+        '8.5. 관계. 본 계약서의 어떠한 내용도 귀하와 당사 사이의 파트너십, 합작 투자, 대행사, 컨설팅 또는 신탁 통치를 의도하지도 않으며 작성하지도 않습니다.',
       ENG:
         '8.5. Relationship. Nothing in this Agreement is intended to nor shall' +
         'create any partnership, joint venture, agency, consultancy, or' +
@@ -3414,7 +3414,7 @@ const strings = new Map([
     'terms-8-desc-6',
     {
       KOR:
-        '8.6. 정보의 정확성. 귀하는 서비스를 통해 귀하가 제공하는 모든 정보가 정확하고 완전 함을 진술하고 보증합니다. 귀하는 서비스를 통해 시작된 POLA blockchain 거래와 관련하여 귀하가 계정 이름을 잘못 입력하거나 잘못된 정보를 제공 한 경우와 같은 실수 나 누락에 대해 책임을 지지 않습니다. 서비스를 통해 거래 정보를 작성하기 전에 거래 세부 정보를 신중하게 검토하는 것이 좋습니다.',
+        '8.6. 정보의 정확성. 귀하는 서비스를 통해 귀하가 제공하는 모든 정보가 정확하고 완전 함을 진술하고 보증합니다. 귀하는 서비스를 통해 시작된 POLA blockchain 거래와 관련하여 귀하가 계정 이름을 잘못 입력하거나 잘못된 정보를 제공 한 경우와 같은 실수 나 누락에 대해 책임을 지지 않습니다. 서비스를 통해 거래 정보를 작성하기 전에 거래 세부 정보를 신중하게 검토하는 것이 좋습니다.',
       ENG:
         '8.6. Accuracy of Information. You represent and warrant that any' +
         'information you provide via the Services is accurate and complete. You' +
@@ -3430,7 +3430,7 @@ const strings = new Map([
     'terms-8-desc-7',
     {
       KOR:
-        '8.7. 취소 또는 변경 금지. 일단 서비스 세부 사항이 서비스를 통해 POLA 블록 체인에 제출되면 서비스는 귀하가 거래 세부 사항을 취소하거나 달리 수정할 수 있도록 도와줄 수 없습니다. 우리는 POLA 블록 체인을 제어 할 수 없으며 취소 또는 수정 요청을 쉽게 할 수 없습니다.',
+        '8.7. 취소 또는 변경 금지. 일단 서비스 세부 사항이 서비스를 통해 POLA 블록 체인에 제출되면 서비스는 귀하가 거래 세부 사항을 취소하거나 달리 수정할 수 있도록 도와줄 수 없습니다. 우리는 POLA 블록 체인을 제어 할 수 없으며 취소 또는 수정 요청을 쉽게 할 수 없습니다.',
       ENG:
         '8.7. No Cancellations or Modifications. Once transaction details have' +
         'been submitted to the POLA blockchain via the Services, The Services' +
@@ -3443,7 +3443,7 @@ const strings = new Map([
     'terms-8-desc-8',
     {
       KOR:
-        '8.8. 구실. 귀하가 서비스를 통해 거래 내역을 제출 한 거래에 대해 세금이 부과되는지 여부를 결정하는 것은 귀하의 책임이며 적절한 세무 기관에 보고하고 정확한 세금을 송금하는 것은 귀하의 책임입니다. 귀하는 POLA blockchain 거래에 세금이 적용되는지 또는 POLA blockchain 거래로 인해 발생하는 세금 징수, 보고, 원천 징수 또는 양도 여부에 대한 당사의 책임이 없음에 동의합니다.',
+        '8.8. 구실. 귀하가 서비스를 통해 거래 내역을 제출 한 거래에 대해 세금이 부과되는지 여부를 결정하는 것은 귀하의 책임이며 적절한 세무 기관에 보고하고 정확한 세금을 송금하는 것은 귀하의 책임입니다. 귀하는 POLA blockchain 거래에 세금이 적용되는지 또는 POLA blockchain 거래로 인해 발생하는 세금 징수, 보고, 원천 징수 또는 양도 여부에 대한 당사의 책임이 없음에 동의합니다.',
       ENG:
         '8.8. Taxes. It is your responsibility to determine what, if any, taxes' +
         'apply to the transactions you for which you have submitted transaction' +
@@ -3458,7 +3458,7 @@ const strings = new Map([
   [
     'terms-9-title',
     {
-      KOR: '9. 서비스의 중단.',
+      KOR: '9. 서비스의 중단.',
       ENG: '9. Discontinuation of Services.'
     }
   ],
@@ -3466,7 +3466,7 @@ const strings = new Map([
     'terms-9-desc-1',
     {
       KOR:
-        '9.1. 우리는 단독 재량으로 비용없이 사전 통지 여부에 상관없이 언제든지 서비스의 일부를 일시적 또는 영구적으로 수정 또는 중단 할 수 있습니다. 서비스 외부에서 귀하가 귀하의 계정에서 유지 관리하는 계정 및 개인 키의 백업을 저장하는 것은 전적으로 귀하의 책임입니다.',
+        '9.1. 우리는 단독 재량으로 비용없이 사전 통지 여부에 상관없이 언제든지 서비스의 일부를 일시적 또는 영구적으로 수정 또는 중단 할 수 있습니다. 서비스 외부에서 귀하가 귀하의 계정에서 유지 관리하는 계정 및 개인 키의 백업을 저장하는 것은 전적으로 귀하의 책임입니다.',
       ENG:
         '9.1. We may, in our sole discretion and without cost to you, with or' +
         'without prior notice and at any time, modify or discontinue,' +
@@ -3479,7 +3479,7 @@ const strings = new Map([
     'terms-9-desc-2',
     {
       KOR:
-        '9.2. 귀하가 서비스 외부에서 귀하의 계정 데이터를 백업하지 않는다면 귀하가 서비스를 중단하거나 폐지 할 경우 귀하의 계정에 유지 관리되는 모든 계좌와 관련된 POLA에 액세스하지 못할 수 있습니다.',
+        '9.2. 귀하가 서비스 외부에서 귀하의 계정 데이터를 백업하지 않는다면 귀하가 서비스를 중단하거나 폐지 할 경우 귀하의 계정에 유지 관리되는 모든 계좌와 관련된 POLA에 액세스하지 못할 수 있습니다.',
       ENG:
         '9.2. If you do not maintain a backup of your Account data outside of' +
         'the Services, you will be may not be able to access POLA, POLA Dollars' +
@@ -3490,7 +3490,7 @@ const strings = new Map([
   [
     'terms-10-title',
     {
-      KOR: '10. 서비스의 일시 중지 또는 해지.',
+      KOR: '10. 서비스의 일시 중지 또는 해지.',
       ENG: '10. Suspension or Termination of Service.'
     }
   ],
@@ -3498,7 +3498,7 @@ const strings = new Map([
     'terms-10-desc-1',
     {
       KOR:
-        '10.1. 당사는 단독 재량으로 귀하의 서비스 이용을 예고없이 즉시 중단하거나 종료 할 수 있으며,',
+        '10.1. 당사는 단독 재량으로 귀하의 서비스 이용을 예고없이 즉시 중단하거나 종료 할 수 있으며,',
       ENG:
         '10.1. We may suspend or terminate your access to the Services in our' +
         'sole discretion, immediately and without prior notice, and delete or' +
@@ -3509,7 +3509,7 @@ const strings = new Map([
     'terms-10-desc-2',
     {
       KOR:
-        '계정 및 모든 관련 정보와 파일을 비용없이 무료로 삭제하거나 비활성화 할 수 있습니다. 본 계약의 어떠한 조항도 위반할 수 없습니다. 계정 해지 시 귀하의 계정에 있는 금액에 액세스하려면 명령 행 API 또는 제 3 자 도구를 통해 POLA 블록 체인에 액세스 해야 하며 귀하의 계정 및 계정을 포함한 계정 데이터의 백업에 액세스 해야 합니다.',
+        '계정 및 모든 관련 정보와 파일을 비용없이 무료로 삭제하거나 비활성화 할 수 있습니다. 본 계약의 어떠한 조항도 위반할 수 없습니다. 계정 해지 시 귀하의 계정에 있는 금액에 액세스하려면 명령 행 API 또는 제 3 자 도구를 통해 POLA 블록 체인에 액세스 해야 하며 귀하의 계정 및 계정을 포함한 계정 데이터의 백업에 액세스 해야 합니다.',
       ENG:
         'account and' +
         'all related information and files in such without cost to you,' +
@@ -3523,7 +3523,7 @@ const strings = new Map([
   [
     'terms-11-title',
     {
-      KOR: '11. 사용자 행동',
+      KOR: '11. 사용자 행동',
       ENG: '11. User Conduct'
     }
   ],
@@ -3531,7 +3531,7 @@ const strings = new Map([
     'terms-11-desc-1',
     {
       KOR:
-        '11.1. 서비스에 액세스하거나 사용할 때 귀하는 불법 행위를 저 지르지 않으며 본 서비스를 사용하는 동안 귀하의 행위에 대한 전적인 책임이 있음에 동의합니다. 전술 한 내용의 일반성을 제한하지 않고 귀하는 다음과 같은 행위를 하지 않을 것에 동의합니다.',
+        '11.1. 서비스에 액세스하거나 사용할 때 귀하는 불법 행위를 저 지르지 않으며 본 서비스를 사용하는 동안 귀하의 행위에 대한 전적인 책임이 있음에 동의합니다. 전술 한 내용의 일반성을 제한하지 않고 귀하는 다음과 같은 행위를 하지 않을 것에 동의합니다.',
       ENG:
         '11.1. When accessing or using the Services, you agree that you will' +
         'not commit any unlawful act, and that you are solely responsible for' +
@@ -3543,7 +3543,7 @@ const strings = new Map([
     'terms-11-desc-2',
     {
       KOR:
-        '11.1.1. 다른 사용자가 당사 서비스를 완전히 즐기지 못하게 방해하거나 부정적인 영향을 미칠 수있는 방식으로 서비스를 사용하거나 어떤 방식으로 든 서비스의 손상, 사용 불능, 과부하 또는 손상을 초래할 수 있는 방식으로 서비스를 사용하는 행위',
+        '11.1.1. 다른 사용자가 당사 서비스를 완전히 즐기지 못하게 방해하거나 부정적인 영향을 미칠 수있는 방식으로 서비스를 사용하거나 어떤 방식으로 든 서비스의 손상, 사용 불능, 과부하 또는 손상을 초래할 수 있는 방식으로 서비스를 사용하는 행위',
       ENG:
         '11.1.1. Use of our Services in any manner that could interfere with,' +
         'disrupt, negatively affect, or inhibit other users from fully enjoying' +
@@ -3555,7 +3555,7 @@ const strings = new Map([
     'terms-11-desc-3',
     {
       KOR:
-        '11.1.2. Google의 서비스를 사용하여 불법 도박, 사기, 돈세탁 또는 테러 자금 조달 활동을 포함하여 (이에 국한되지 않음) 법률로 금지 된 활동에 대해 비용을 지불하거나 지원하거나 달리 참여하게 하십시오.',
+        '11.1.2. Google의 서비스를 사용하여 불법 도박, 사기, 돈세탁 또는 테러 자금 조달 활동을 포함하여 (이에 국한되지 않음) 법률로 금지 된 활동에 대해 비용을 지불하거나 지원하거나 달리 참여하게 하십시오.',
       ENG:
         '11.1.2. Use our Services to pay for, support or otherwise engage in' +
         'any activity prohibited by law, including, but not limited to illegal' +
@@ -3566,7 +3566,7 @@ const strings = new Map([
     'terms-11-desc-4',
     {
       KOR:
-        '11.1.3. 허가없이 다른 사용자의 계정을 사용하거나 사용하려고 시도하십시오.',
+        '11.1.3. 허가없이 다른 사용자의 계정을 사용하거나 사용하려고 시도하십시오.',
       ENG:
         '11.1.3. Use or attempt to use another user’s Account without' +
         'authorization;'
@@ -3576,7 +3576,7 @@ const strings = new Map([
     'terms-11-desc-5',
     {
       KOR:
-        '11.1.4. 우리가 고용 한 컨텐츠 필터링 기술을 우회하거나 액세스 권한이 없는 서비스 또는 서비스 영역에 액세스하려고 시도하십시오.',
+        '11.1.4. 우리가 고용 한 컨텐츠 필터링 기술을 우회하거나 액세스 권한이 없는 서비스 또는 서비스 영역에 액세스하려고 시도하십시오.',
       ENG:
         '11.1.4. Attempt to circumvent any content filtering techniques we' +
         'employ, or attempt to access any service or area of our Services that' +
@@ -3587,7 +3587,7 @@ const strings = new Map([
     'terms-11-desc-6',
     {
       KOR:
-        '11.1.5. 바이러스, 트로이 목마, 웜, 논리 폭탄 또는 기타 유해한 물질을 서비스에 소개하십시오.',
+        '11.1.5. 바이러스, 트로이 목마, 웜, 논리 폭탄 또는 기타 유해한 물질을 서비스에 소개하십시오.',
       ENG:
         '11.1.5. Introduce to the Services any virus, Trojan, worms, logic' +
         'bombs or other harmful material;'
@@ -3597,7 +3597,7 @@ const strings = new Map([
     'terms-11-desc-7',
     {
       KOR:
-        '11.1.6. 제 3 자에게 본 절에 의거하여 금지 된 활동을 하도록 권장하거나 유도하십시오.',
+        '11.1.6. 제 3 자에게 본 절에 의거하여 금지 된 활동을 하도록 권장하거나 유도하십시오.',
       ENG:
         '11.1.6. Encourage or induce any third-party to engage in any of the' +
         'activities prohibited under this Section.'
@@ -3606,7 +3606,7 @@ const strings = new Map([
   [
     'terms-12-title',
     {
-      KOR: '12. 저작권 침해 신고, DMCA 및 게시 중단',
+      KOR: '12. 저작권 침해 신고, DMCA 및 게시 중단',
       ENG: '12. Copyright Complaints, the DMCA, and Takedowns'
     }
   ],
@@ -3614,7 +3614,7 @@ const strings = new Map([
     'terms-12-desc-1',
     {
       KOR:
-        '12.1 디지털 밀레니엄 저작권법 (Digital Millennium Copyright Act, "DMCA")에 따른 합법적 인 요청에 응답하고, 우리는 타인의 저작권을 침해한다고 판단되는 서비스를 통해 제공된 사용자 콘텐츠에 대한 액세스를 제거 할 권리를 보유합니다. 귀하가 귀하의 저작권 권한을 침해하는 귀하의 서비스 내용을 알고 있다면 적절하게 포맷 된 DMCA 요청서 (17 USC § 512 참조)를 Polaris Share, Inc.에 제출할 수 있습니다',
+        '12.1 디지털 밀레니엄 저작권법 (Digital Millennium Copyright Act, "DMCA")에 따른 합법적 인 요청에 응답하고, 우리는 타인의 저작권을 침해한다고 판단되는 서비스를 통해 제공된 사용자 콘텐츠에 대한 액세스를 제거 할 권리를 보유합니다. 귀하가 귀하의 저작권 권한을 침해하는 귀하의 서비스 내용을 알고 있다면 적절하게 포맷 된 DMCA 요청서 (17 USC § 512 참조)를 당사에 제출할 수 있습니다',
       ENG:
         '12.1 We will respond to legitimate requests under the Digital' +
         'Millennium Copyright Act ("DMCA"), and we retain the right to remove' +
@@ -3622,14 +3622,14 @@ const strings = new Map([
         'infringing the copyright of others. If you become aware of user' +
         'content on the Service that infringes your copyright rights, you may' +
         'submit a properly formatted DMCA request (see 17 U.S.C. § 512) to' +
-        'Polaris Share, Inc.'
+        'the company'
     }
   ],
   [
     'terms-12-desc-2',
     {
       KOR:
-        '침해에 대한 허위 진술은 금전적 손해에 대한 책임을 초래할 수 있습니다. 귀하는 DMCA에 따라 조치를 취하기 전에 변호사와 상담할 수 있습니다. DMCA 요청은 아래 연락처 정보를 통해 Google에 전송 될 수 있습니다.',
+        '침해에 대한 허위 진술은 금전적 손해에 대한 책임을 초래할 수 있습니다. 귀하는 DMCA에 따라 조치를 취하기 전에 변호사와 상담할 수 있습니다. DMCA 요청은 아래 연락처 정보를 통해 Google에 전송 될 수 있습니다.',
       ENG:
         'Misrepresentations of infringement can result in liability for' +
         'monetary damages. You may want to consult an attorney before taking' +
@@ -3640,7 +3640,7 @@ const strings = new Map([
   [
     'terms-12-desc-3',
     {
-      KOR: '저작권 에이전트',
+      KOR: '저작권 에이전트',
       ENG: 'Copyright Agent'
     }
   ],
@@ -3648,7 +3648,7 @@ const strings = new Map([
     'terms-12-desc-4',
     {
       KOR:
-        '주소가 위치한 사법 구역에 대한 연방 지방 법원의 관할권에 또는 귀하의 주소가 미국 이외의 지역에 있는 경우, 서비스 제공 업체가있을 수있는 모든 사법 구역에 대해 귀하가 DMCA 512 (c) (1) (c) 항에 의거하여 통보를 한 사람 또는 그 사람의 대리인으로부터의 절차.',
+        '주소가 위치한 사법 구역에 대한 연방 지방 법원의 관할권에 또는 귀하의 주소가 미국 이외의 지역에 있는 경우, 서비스 제공 업체가있을 수있는 모든 사법 구역에 대해 귀하가 DMCA 512 (c) (1) (c) 항에 의거하여 통보를 한 사람 또는 그 사람의 대리인으로부터의 절차.',
       ENG:
         'consent to the jurisdiction of federal district court for the judicial' +
         'district in which the address is located, or if your address is' +
@@ -3662,7 +3662,7 @@ const strings = new Map([
     'terms-12-desc-5',
     {
       KOR:
-        '이의 제기 신청서를 받으면 불만 당사자에게 전달하고 영업일 기준 10 일 이내에 귀하의 콘텐츠를 복원할 것이라고 말합니다. 해당 당사자가 해당 기간이 만료되기 전에 귀하가 해당 콘텐츠를 귀하의 서비스 사용을 제한하라는 조치를 취했다는 것을 당사에 통보하지 않으면 당사는 사용자 콘텐츠를 사이트로 복원하는 것을 고려할 것입니다.',
+        '이의 제기 신청서를 받으면 불만 당사자에게 전달하고 영업일 기준 10 일 이내에 귀하의 콘텐츠를 복원할 것이라고 말합니다. 해당 당사자가 해당 기간이 만료되기 전에 귀하가 해당 콘텐츠를 귀하의 서비스 사용을 제한하라는 조치를 취했다는 것을 당사에 통보하지 않으면 당사는 사용자 콘텐츠를 사이트로 복원하는 것을 고려할 것입니다.',
       ENG:
         'Upon receiving a counter-notice we will forward it to the complaining' +
         'party and tell them we will restore your content within 10 business' +
@@ -3675,7 +3675,7 @@ const strings = new Map([
     'terms-12-desc-6',
     {
       KOR:
-        '반복적 인 저작권 침해로 판단하는 사용자에게 서비스 사용을 거부하는 것이 Google의 정책입니다. Google은 재량에 따라 사용자가 다른 사람의 저작권 또는 기타 지적 재산권을 침해했다고 반복적으로 고소당한 경우와 같은 적절한 상황에서 이 정책을 적용합니다.',
+        '반복적 인 저작권 침해로 판단하는 사용자에게 서비스 사용을 거부하는 것이 Google의 정책입니다. Google은 재량에 따라 사용자가 다른 사람의 저작권 또는 기타 지적 재산권을 침해했다고 반복적으로 고소당한 경우와 같은 적절한 상황에서 이 정책을 적용합니다.',
       ENG:
         'It is our policy to deny use of the Service to users we identify as' +
         'repeat infringers. We apply this policy at our discretion and in' +
@@ -3687,7 +3687,7 @@ const strings = new Map([
   [
     'terms-13-title',
     {
-      KOR: '13. 손해 배상',
+      KOR: '13. 손해 배상',
       ENG: '13. Indemnity'
     }
   ],
@@ -3695,7 +3695,7 @@ const strings = new Map([
     'terms-13-desc-1',
     {
       KOR:
-        '귀하가 하는 모든 일과 귀하가 서비스에 제출하거나 게시하는 모든 정보는 귀하의 책임입니다. 면책은 기본적으로 법이나 제 3 자 또는 개인의 권리를 침해하는 콘텐츠 또는 행위에 대해 법적으로 책임을 지지 않는다고 말하는 방식입니다.',
+        '귀하가 하는 모든 일과 귀하가 서비스에 제출하거나 게시하는 모든 정보는 귀하의 책임입니다. 면책은 기본적으로 법이나 제 3 자 또는 개인의 권리를 침해하는 콘텐츠 또는 행위에 대해 법적으로 책임을 지지 않는다고 말하는 방식입니다.',
       ENG:
         'All the things you do and all the information you submit or post to' +
         'the Service remain your responsibility. Indemnity is basically a way' +
@@ -3708,7 +3708,7 @@ const strings = new Map([
     'terms-13-desc-2',
     {
       KOR:
-        '특히 귀하는 당사, 계열사, 임원, 이사, 직원, 대리인 및 제 3 자 서비스 공급자를 변호인의 권리를 포함하여 청구, 비용, 손해, 손실, 경비 및 기타 책임으로부터 무해하고 방어하기로 동의합니다. 귀하의 서비스 액세스 또는 사용, 귀하의 본 이용 약관 위반 및 또는 제 3 자 또는 개인의 권리 침해로 인해 발생하는 비용, 비용 및 비용.',
+        '특히 귀하는 당사, 계열사, 임원, 이사, 직원, 대리인 및 제 3 자 서비스 공급자를 변호인의 권리를 포함하여 청구, 비용, 손해, 손실, 경비 및 기타 책임으로부터 무해하고 방어하기로 동의합니다. 귀하의 서비스 액세스 또는 사용, 귀하의 본 이용 약관 위반 및 또는 제 3 자 또는 개인의 권리 침해로 인해 발생하는 비용, 비용 및 비용.',
       ENG:
         'Specifically, you agree to hold us, our affiliates, officers,' +
         'directors, employees, agents, and third-party service providers' +
@@ -3722,7 +3722,7 @@ const strings = new Map([
   [
     'terms-14-title',
     {
-      KOR: '14. 면책 조항',
+      KOR: '14. 면책 조항',
       ENG: '14. Disclaimers'
     }
   ],
@@ -3730,7 +3730,7 @@ const strings = new Map([
     'terms-14-desc',
     {
       KOR:
-        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris Share 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris Share 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris Share 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
+        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris Share 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris Share 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris Share 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
       ENG:
         'To the fullest extent permitted by applicable law, the Service and the' +
         'Polaris Share Content are provided on an “as is” and “as available”' +
@@ -3752,7 +3752,7 @@ const strings = new Map([
   [
     'terms-15-title',
     {
-      KOR: '15. 책임의 한계',
+      KOR: '15. 책임의 한계',
       ENG: '15. Limitation of liability'
     }
   ],
@@ -3760,11 +3760,11 @@ const strings = new Map([
     'terms-15-desc-1',
     {
       KOR:
-        'Polaris Share, Inc. 는 해당 법률에서 허용하는 최대 한도 내에서 어떠한 특수한 간접적 인 책임도지지 않습니다. , 우발적, 결과적, 모범적 또는 징벌 적 손해, 계약 손실, 손해의 손실 또는 이익 손실 또는 데이터 손실을 포함하되 이에 국한되지 않는 모든 종류의 손해 제한적, 과실) 또는 달리 서비스 또는 콘텐츠의 사용 또는 사용 불가능으로 인해 발생하는 모든 손해에 대해 책임을 지지 않습니다. 해당 법률이 허용하는 최대 한도 내에서, 어떠한 경우에도 Polaris Share, Inc. 또는 관련 당사자의 계약 상 책임, 보증, 불법 행위 (과실 포함, 능동, 수동 또는 귀속 여부)',
+        '당사는 해당 법률에서 허용하는 최대 한도 내에서 어떠한 특수한 간접적 인 책임도지지 않습니다. , 우발적, 결과적, 모범적 또는 징벌 적 손해, 계약 손실, 손해의 손실 또는 이익 손실 또는 데이터 손실을 포함하되 이에 국한되지 않는 모든 종류의 손해 제한적, 과실) 또는 달리 서비스 또는 콘텐츠의 사용 또는 사용 불가능으로 인해 발생하는 모든 손해에 대해 책임을 지지 않습니다. 해당 법률이 허용하는 최대 한도 내에서, 어떠한 경우에도 당사 또는 관련 당사자의 계약 상 책임, 보증, 불법 행위 (과실 포함, 능동, 수동 또는 귀속 여부)',
       ENG:
         'To the fullest extent permitted by applicable law, in no event shall' +
-        'Polaris Share, Inc. or the any related party to Polaris Share,' +
-        'Inc., that includes but is not limited to, subsidiaries, vendors, or' +
+        'the company. or the any related party to the company' +
+        'that includes but is not limited to, subsidiaries, vendors, or' +
         'contractors, be liable for any special, indirect, incidental,' +
         'consequential, exemplary or punitive damages, or any other damages of' +
         'any kind, including, but not limited to, loss of use, loss of profits' +
@@ -3783,7 +3783,7 @@ const strings = new Map([
     'terms-15-desc-2',
     {
       KOR:
-        '일부 관할지에서는 특정 손해의 배제 나 제한을 허용하지 않으므로 이 섹션의 일부 또는 전부가 귀하에게 적용되지 않을 수도 있습니다.',
+        '일부 관할지에서는 특정 손해의 배제 나 제한을 허용하지 않으므로 이 섹션의 일부 또는 전부가 귀하에게 적용되지 않을 수도 있습니다.',
       ENG:
         'Some jurisdictions do not allow the exclusion or limitation of certain' +
         'damages, so some or all of the exclusions and limitations in this' +
@@ -3793,7 +3793,7 @@ const strings = new Map([
   [
     'terms-16-title',
     {
-      KOR: '16. 서비스 변경',
+      KOR: '16. 서비스 변경',
       ENG: '16. Modifications to the Service'
     }
   ],
@@ -3801,7 +3801,7 @@ const strings = new Map([
     'terms-16-desc',
     {
       KOR:
-        '우리는 사전 통지없이 서비스 또는 서비스의 기능 또는 부분을 일시적으로 또는 영구적으로 수정하거나 중단할 수 있는 권리를 보유합니다. 귀하는 서비스의 수정, 일시 중지 또는 중단에 대해 당사가 책임지지 않는다는 데 동의합니다.',
+        '우리는 사전 통지없이 서비스 또는 서비스의 기능 또는 부분을 일시적으로 또는 영구적으로 수정하거나 중단할 수 있는 권리를 보유합니다. 귀하는 서비스의 수정, 일시 중지 또는 중단에 대해 당사가 책임지지 않는다는 데 동의합니다.',
       ENG:
         'We reserve the right to modify or discontinue, temporarily or' +
         'permanently, the Service, or any features or portions of the Service,' +
@@ -3820,11 +3820,11 @@ const strings = new Map([
     'terms-17-desc-1',
     {
       KOR:
-        'Polaris Share, Inc.와의 특정 분쟁을 중재해야 하며 Polaris Share, Inc.로부터 구제 방법을 제한하기 때문에 다음 섹션을 주의 깊게 읽으십시오. 이 섹션 20에 동의하지 않으면 서비스 사용을 중단하십시오.',
+        '당사와의 특정 분쟁을 중재해야 하며 당사로부터 구제 방법을 제한하기 때문에 다음 섹션을 주의 깊게 읽으십시오. 이 섹션 20에 동의하지 않으면 서비스 사용을 중단하십시오.',
       ENG:
         'Please read the following section carefully because it requires you to' +
-        'arbitrate certain disputes with Polaris Share, Inc. and limits the way' +
-        'you can seek relief from Polaris Share, Inc. If you do not agree' +
+        'arbitrate certain disputes with the company and limits the way' +
+        'you can seek relief from the company. If you do not agree' +
         'with this Section 20, please discontinue using the Service.'
     }
   ],
@@ -3832,17 +3832,17 @@ const strings = new Map([
     'terms-17-desc-2',
     {
       KOR:
-        '17.1. 중재 구속력. 일방 당사자가 소액 배상 청구 소송에서 개인 소송을 제기하거나 소송, 상표, 상호, 로고, 영업 비밀 또는 특허의 불법적 사용에 대한 금지 명령 또는 기타 공평한 구제를 요구하는 분쟁을 제외하고 귀하와 Polaris Share, Inc. (a) 법원에서이 계약 또는 Polaris Share, Inc. ( "분쟁"으로 통칭)에서 발생하는 모든 분쟁 또는 청구를 제기 할 권리를 포기합니다. (b) 귀하의 배심 재판을받을 권리를 포기하십시오. 대신, 귀하와 Polaris Share, Inc.는 법적 분쟁을 결정하기보다는 분쟁을 검토하고 해결하기위한 최종적인 구속력 있는 결정을 내린 한 명 이상의 사람에게 분쟁을 위탁하는 구속력 있는 중재를 통해 분쟁을 중재합니다. 판사 또는 배심원).',
+        '17.1. 중재 구속력. 일방 당사자가 소액 배상 청구 소송에서 개인 소송을 제기하거나 소송, 상표, 상호, 로고, 영업 비밀 또는 특허의 불법적 사용에 대한 금지 명령 또는 기타 공평한 구제를 요구하는 분쟁을 제외하고 귀하와 당사 (a) 법원에서이 계약 또는 당사 ( "분쟁"으로 통칭)에서 발생하는 모든 분쟁 또는 청구를 제기 할 권리를 포기합니다. (b) 귀하의 배심 재판을받을 권리를 포기하십시오. 대신, 귀하와 당사는 법적 분쟁을 결정하기보다는 분쟁을 검토하고 해결하기위한 최종적인 구속력 있는 결정을 내린 한 명 이상의 사람에게 분쟁을 위탁하는 구속력 있는 중재를 통해 분쟁을 중재합니다. 판사 또는 배심원).',
       ENG:
         '17.1. Binding Arbitration. Except for disputes in which either party' +
         'seeks to bring an individual action in small claims court or seeks' +
         'injunctive or other equitable relief for the alleged unlawful use of' +
         'copyrights, trademarks, trade names, logos, trade secrets or patents,' +
-        'you and Polaris Share, Inc.: (a) waive your right to have any and' +
+        'you and the company.: (a) waive your right to have any and' +
         'all disputes or Claims arising from this Agreement or DECOMPANY' +
         'GLOBAL, Inc. (collectively, “Disputes”) resolved in a court; and (b)' +
-        'waive your right to a jury trial. Instead, you and Polaris Share,' +
-        'Inc. will arbitrate Disputes through binding arbitration (which is the' +
+        'waive your right to a jury trial. Instead, you and the company ' +
+        'will arbitrate Disputes through binding arbitration (which is the' +
         'referral of a Dispute to one or others persons charged with reviewing' +
         'the Dispute and making a final and binding determination to resolve' +
         'it, instead of having the Dispute decided by a judge or jury in' +
@@ -3853,17 +3853,17 @@ const strings = new Map([
     'terms-17-desc-3',
     {
       KOR:
-        '17.2. 클래스 중재, 집단 소송 또는 대표 행동 금지. 귀하는 모든 분쟁이 귀하와 Polaris Share, Inc.에게 개인적인 것이며 그러한 분쟁은 개별 중재를 통해서만 해결되며 계급 중재, 집단 소송 또는 기타 대표적인 소송으로 제기되지 않을 것에 동의합니다. 어느 당사자도 집단 중재 또는 다른 개인 또는 개인 집단의 대표로서 분쟁을 만들고 해결하려는 중재에 동의하지 않습니다. 또한, 귀하와 Polaris Share, Inc.는 중재 내부 또는 외부, 또는 다른 개인 또는 개인 집단을 대표하여 분쟁을 계급 또는 다른 유형의 대표적 행동으로 제기할 수 없다는 데 동의합니다.',
+        '17.2. 클래스 중재, 집단 소송 또는 대표 행동 금지. 귀하는 모든 분쟁이 귀하와 당사에게 개인적인 것이며 그러한 분쟁은 개별 중재를 통해서만 해결되며 계급 중재, 집단 소송 또는 기타 대표적인 소송으로 제기되지 않을 것에 동의합니다. 어느 당사자도 집단 중재 또는 다른 개인 또는 개인 집단의 대표로서 분쟁을 만들고 해결하려는 중재에 동의하지 않습니다. 또한, 귀하와 당사는 중재 내부 또는 외부, 또는 다른 개인 또는 개인 집단을 대표하여 분쟁을 계급 또는 다른 유형의 대표적 행동으로 제기할 수 없다는 데 동의합니다.',
       ENG:
         '17.2. No Class Arbitrations, Class Actions or Representative Actions.' +
-        'You agree that any dispute is personal to you and Polaris Share,' +
-        'Inc. and that any such dispute will be resolved solely through' +
+        'You agree that any dispute is personal to you and the company ' +
+        'and that any such dispute will be resolved solely through' +
         'individual arbitration and will not be brought as a class arbitration,' +
         'class action or any other type of representative proceeding. Neither' +
         'party agrees to class arbitration or to an arbitration in which an' +
         'individual makes and attempt to resolve a dispute as a representative' +
         'of another individual or group of individuals. Further, you and' +
-        'Polaris Share, Inc. agree that a dispute cannot be brought as a' +
+        'the company agree that a dispute cannot be brought as a' +
         'class, or other type of representative action, whether within or' +
         'outside of arbitration, or on behalf of any other individual or group' +
         'of individuals.'
@@ -3873,7 +3873,7 @@ const strings = new Map([
     'terms-17-desc-4',
     {
       KOR:
-        '17.3. 연방 중재 법. 귀하는 본 계약이 주간 거래에 영향을 미치고 본 제 18 조의 집행 가능성이 연방 중재 법 (Federal Arbitration Act) 9 USC § 1 이하에 따라 실질적으로 및 절차 적으로 모두 해석되고 해석되며 시행 및 집행될 것에 동의합니다. (이하 "FAA")를 해당 법률에서 허용하는 최대한의 범위 내에서 준수해야합니다.',
+        '17.3. 연방 중재 법. 귀하는 본 계약이 주간 거래에 영향을 미치고 본 제 18 조의 집행 가능성이 연방 중재 법 (Federal Arbitration Act) 9 USC § 1 이하에 따라 실질적으로 및 절차 적으로 모두 해석되고 해석되며 시행 및 집행될 것에 동의합니다. (이하 "FAA")를 해당 법률에서 허용하는 최대한의 범위 내에서 준수해야합니다.',
       ENG:
         '17.3. Federal Arbitration Act. You agree that this Agreement affects' +
         'interstate commerce and that the enforceability of this Section 20' +
@@ -3886,7 +3886,7 @@ const strings = new Map([
     'terms-17-desc-5',
     {
       KOR:
-        '17.4. 방법. 귀하는 당사자가 논쟁을 비공식적으로 해결할 수 있도록 당사자가 발생한지 30 일 이내에 서면으로 분쟁을 서면으로 통보한다는 데 동의합니다. 법률 고문은 ',
+        '17.4. 방법. 귀하는 당사자가 논쟁을 비공식적으로 해결할 수 있도록 당사자가 발생한지 30 일 이내에 서면으로 분쟁을 서면으로 통보한다는 데 동의합니다. 법률 고문은 ',
       ENG:
         '17.4. Process. You agree that you will notify us in writing of any' +
         'Dispute within thirty (30) days of when it arises so that the parties' +
@@ -3898,13 +3898,13 @@ const strings = new Map([
     'terms-17-desc-6',
     {
       KOR:
-        '으로 전자 메일을 보내주십시오. 귀하의 통지에는 반드시 (1) 귀하의 이름, 우편 주소 및 이메일 주소; (2) 분쟁의 성격 또는 근거에 대한 설명; (3) 귀하가 찾고자 하는 구체적인 구제책. 통지를 받은 날로부터 30 일 이내에 분쟁을 해결하는 방법에 동의하지 않을 경우, 귀하 또는 Polaris Share, Inc.는 본 제 20 조에 따라 적절한 경우 중재 절차를 시작하거나 법원에 청구할 수 있습니다. 귀하는 분쟁 발생 후 일 (1) 년 이내에 당사에 대한 중재 또는 청구가 시작되거나 제기되어야 한다는 데 동의합니다. 그렇지 않으면, 귀하는 청구가 영구적으로 금지된다는 것에 동의합니다 (귀하가 더 이상 분쟁과 관련한 클레임을 주장할 권리가 없음을 의미). 귀하는 다음을 읽고 이해했으며 동의합니다: (a) 뉴욕 주 뉴욕 카운티에서 중재가 이루어질 것입니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야 합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다.',
+        '으로 전자 메일을 보내주십시오. 귀하의 통지에는 반드시 (1) 귀하의 이름, 우편 주소 및 이메일 주소; (2) 분쟁의 성격 또는 근거에 대한 설명; (3) 귀하가 찾고자 하는 구체적인 구제책. 통지를 받은 날로부터 30 일 이내에 분쟁을 해결하는 방법에 동의하지 않을 경우, 귀하 또는 당사는 본 제 20 조에 따라 적절한 경우 중재 절차를 시작하거나 법원에 청구할 수 있습니다. 귀하는 분쟁 발생 후 일 (1) 년 이내에 당사에 대한 중재 또는 청구가 시작되거나 제기되어야 한다는 데 동의합니다. 그렇지 않으면, 귀하는 청구가 영구적으로 금지된다는 것에 동의합니다 (귀하가 더 이상 분쟁과 관련한 클레임을 주장할 권리가 없음을 의미). 귀하는 다음을 읽고 이해했으며 동의합니다: (a) 뉴욕 주 뉴욕 카운티에서 중재가 이루어질 것입니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야 합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. 이해하고 동의해야합니다. (a) 중재는 New York County, New York에서 발생합니다. (b) 중재는 JAMS의 규칙에 따라 단일 중재자가 기밀로 수행합니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다. (c) 뉴욕의 주 법원 또는 연방 법원은 중재 판정의 집행과 중재의 대상이 아닌 당사자 간의 분쟁에 대한 배타적 인 관할권을 갖습니다. 분쟁이 소액 배상 청구 법정에서 요구되는 요건을 충족하는 경우 거주하는 카운티에 위치한 소액 배상 법원에서 분쟁을 소송할 수도 있습니다.',
       ENG:
         '. Your notice must include: (1) your name, postal address, and email' +
         'address; (2) a description of the nature or basis of the Dispute; and' +
         '(3) the specific relief that you are seeking. If we cannot agree how' +
         'to resolve the Dispute within thirty (30) days of the us receiving the' +
-        'notice, either you or Polaris Share, Inc. may, as appropriate pursuant' +
+        'notice, either you or the company. may, as appropriate pursuant' +
         'to this Section 20, commence an arbitration proceeding or file a claim' +
         'in court. You agree that any arbitration or claim against us must be' +
         'commenced or filed within one (1) year after the Dispute arose;' +
@@ -3925,7 +3925,7 @@ const strings = new Map([
     'terms-17-desc-7',
     {
       KOR:
-        '17.5. 중재인 권한. FAA, 본 계약 및 적용 가능한 JAMS 규칙에 의해 제한되는 바와 같이, 중재자는 다음을 갖습니다: (a) 분쟁에 관한 모든 절차 적 및 실질적인 결정을 내리는 독점적 권한 및 관할권; (b) 법원에서 달리 구할 수있는 구제책을 부여할 권한. 중재인은 개인 중재를 실시할 수 있으며 둘 이상의 개인의 클레임을 통합하거나, 어떤 종류의 클래스 또는 대표 진행을 관장하거나 둘 이상의 개인이 관련된 모든 진행을 관장할 수 없습니다.',
+        '17.5. 중재인 권한. FAA, 본 계약 및 적용 가능한 JAMS 규칙에 의해 제한되는 바와 같이, 중재자는 다음을 갖습니다: (a) 분쟁에 관한 모든 절차 적 및 실질적인 결정을 내리는 독점적 권한 및 관할권; (b) 법원에서 달리 구할 수있는 구제책을 부여할 권한. 중재인은 개인 중재를 실시할 수 있으며 둘 이상의 개인의 클레임을 통합하거나, 어떤 종류의 클래스 또는 대표 진행을 관장하거나 둘 이상의 개인이 관련된 모든 진행을 관장할 수 없습니다.',
       ENG:
         '17.5. Authority of Arbitrator. As limited by the FAA, this Agreement' +
         'and applicable JAMS rules, the arbitrator will have: (a) the exclusive' +
@@ -3941,7 +3941,7 @@ const strings = new Map([
   [
     'terms-17-desc-8',
     {
-      KOR: '17.6. JAMS의 규칙. JAMS의 규칙 및 추가 정보는 JAMS 웹 사이트 ',
+      KOR: '17.6. JAMS의 규칙. JAMS의 규칙 및 추가 정보는 JAMS 웹 사이트 ',
       ENG:
         '17.6. Rules of JAMS. The rules of, and additional information about,' +
         'JAMS are available on the JAMS website at'
@@ -3951,7 +3951,7 @@ const strings = new Map([
     'terms-17-desc-9',
     {
       KOR:
-        '에서 볼 수 있으며 수시로 업데이트 될 수 있습니다. 본 계약의 준수에 동의함으로써 귀하는 다음 중 하나를 수행합니다. (a) 귀하가 JAMS 규칙을 읽고 이해했음을 인정하고 동의합니다. (b) JAMS의 규칙을 읽는 기회를 포기하고 JAMS의 규칙이 불공정하거나 어떠한 이유로도 적용해서는 안된다는 주장.',
+        '에서 볼 수 있으며 수시로 업데이트 될 수 있습니다. 본 계약의 준수에 동의함으로써 귀하는 다음 중 하나를 수행합니다. (a) 귀하가 JAMS 규칙을 읽고 이해했음을 인정하고 동의합니다. (b) JAMS의 규칙을 읽는 기회를 포기하고 JAMS의 규칙이 불공정하거나 어떠한 이유로도 적용해서는 안된다는 주장.',
       ENG:
         ', as may be updated from time to time. By agreeing to be bound by this' +
         'Agreement, you either: (a) acknowledge and agree that you have read' +
@@ -3964,7 +3964,7 @@ const strings = new Map([
     'terms-17-desc-10',
     {
       KOR:
-        '17.7. 분리 가능성. 이 제 18조의 조항, 조항 또는 조항이 유효하지 않거나 시행이 불가능할 경우 법률에서 요구하는 최소한의 범위 내에서 유지되어야 하며 기타 모든 조항, 조항 또는 조항은 유효하고 시행 가능합니다. 또한 18.2 항에 명시된 권리 포기는 본 계약의 다른 조항과 분리되며 해당 법률에서 금지하는 경우를 제외하고는 유효하고 시행 가능합니다.',
+        '17.7. 분리 가능성. 이 제 18조의 조항, 조항 또는 조항이 유효하지 않거나 시행이 불가능할 경우 법률에서 요구하는 최소한의 범위 내에서 유지되어야 하며 기타 모든 조항, 조항 또는 조항은 유효하고 시행 가능합니다. 또한 18.2 항에 명시된 권리 포기는 본 계약의 다른 조항과 분리되며 해당 법률에서 금지하는 경우를 제외하고는 유효하고 시행 가능합니다.',
       ENG:
         '17.7. Severability. If any term, clause, or provision of this Section' +
         '20 is held invalid or unenforceable, it will be so held to the minimum' +
@@ -3978,7 +3978,7 @@ const strings = new Map([
   [
     'terms-18-title',
     {
-      KOR: '18. 적용 법률 및 장소',
+      KOR: '18. 적용 법률 및 장소',
       ENG: '18. Applicable Law and Venue'
     }
   ],
@@ -3986,7 +3986,7 @@ const strings = new Map([
     'terms-18-desc',
     {
       KOR:
-        '본 계약 및 서비스 및 Polaris Share 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
+        '본 계약 및 서비스 및 Polaris Share 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
       ENG:
         'This Agreement and your access to and use of the Service and the' +
         'Polaris Share Content will be governed by, and construed in accordance' +
@@ -4011,7 +4011,7 @@ const strings = new Map([
   [
     'terms-19-desc-1',
     {
-      KOR: '당사는 사전 통보없이 ',
+      KOR: '당사는 사전 통보없이 ',
       ENG:
         'We reserve the right, without notice and in our sole discretion, to' +
         'terminate your license to access and use of the Service, which' +
@@ -4022,7 +4022,7 @@ const strings = new Map([
     'terms-19-desc-2',
     {
       KOR:
-        '을 포함하여 서비스에 액세스하고 이를 사용하기 위한 귀하의 라이센스를 해지할 수 있는 권리를 당사의 재량에 따라 보유 할 권리를 보유하며, 귀하가 향후 서비스에 액세스하고 사용하는 것을 차단 또는 방지 할 권리를 보유합니다. 제공하십시오.',
+        '을 포함하여 서비스에 액세스하고 이를 사용하기 위한 귀하의 라이센스를 해지할 수 있는 권리를 당사의 재량에 따라 보유 할 권리를 보유하며, 귀하가 향후 서비스에 액세스하고 사용하는 것을 차단 또는 방지 할 권리를 보유합니다. 제공하십시오.',
       ENG:
         'and to block or prevent your future access to, and use of, the Service' +
         'that we provide.'
@@ -4031,7 +4031,7 @@ const strings = new Map([
   [
     'terms-20-title',
     {
-      KOR: '20. 분리 가능성',
+      KOR: '20. 분리 가능성',
       ENG: '20. Severability'
     }
   ],
@@ -4039,7 +4039,7 @@ const strings = new Map([
     'terms-20-desc',
     {
       KOR:
-        '본 계약의 조항, 조항 또는 조항이 불법이거나 효력이 없거나 시행 할 수 없는 이유로 간주되는 경우 해당 조항, 조항 또는 조항은 본 계약에서 분리 될 수 있는 것으로 간주되며 나머지 조항의 유효성 및 집행 가능성에는 영향을 미치지 않습니다.',
+        '본 계약의 조항, 조항 또는 조항이 불법이거나 효력이 없거나 시행 할 수 없는 이유로 간주되는 경우 해당 조항, 조항 또는 조항은 본 계약에서 분리 될 수 있는 것으로 간주되며 나머지 조항의 유효성 및 집행 가능성에는 영향을 미치지 않습니다.',
       ENG:
         'If any term, clause, or provision of this Agreement is deemed to be' +
         'unlawful, void or for any reason unenforceable, then that term, clause' +
@@ -4051,7 +4051,7 @@ const strings = new Map([
   [
     'terms-21-title',
     {
-      KOR: '21. 변경 사항',
+      KOR: '21. 변경 사항',
       ENG: '21. Changes'
     }
   ],
@@ -4059,7 +4059,7 @@ const strings = new Map([
     'terms-21-desc-1',
     {
       KOR:
-        '본 계약은 본 서비스에 관한 귀하와 당사 간의 완전한 합의입니다. 이는 귀하와 당사 사이의 모든 이전 또는 현재 계약을 대체합니다. 우리는 언제든지이 사용자 계약을 수정할 수 있습니다. 귀하의 권리에 중대한 영향을 미치는 본 계약을 변경하는 경우, 우리는 통지를 제공하고이 개정판을 ',
+        '본 계약은 본 서비스에 관한 귀하와 당사 간의 완전한 합의입니다. 이는 귀하와 당사 사이의 모든 이전 또는 현재 계약을 대체합니다. 우리는 언제든지이 사용자 계약을 수정할 수 있습니다. 귀하의 권리에 중대한 영향을 미치는 본 계약을 변경하는 경우, 우리는 통지를 제공하고이 개정판을 ',
       ENG:
         'This Agreement is the entire agreement between you and us concerning' +
         'the Service. It supersedes all prior or contemporaneous agreements' +
@@ -4073,7 +4073,7 @@ const strings = new Map([
     'terms-21-desc-2',
     {
       KOR:
-        '의 아카이브로 보관할 것입니다. 본 계약을 변경한 후에도 서비스를 계속 사용함으로써 귀하는 그러한 변경에 동의하는 것입니다.',
+        '의 아카이브로 보관할 것입니다. 본 계약을 변경한 후에도 서비스를 계속 사용함으로써 귀하는 그러한 변경에 동의하는 것입니다.',
       ENG:
         'By' +
         'continuing to use the Services after a change to this agreement, you' +
@@ -4083,152 +4083,1521 @@ const strings = new Map([
   [
     'terms-22-title',
     {
-      KOR: '22. 연락처 정보',
+      KOR: '22. 연락처 정보',
       ENG: '22. Contact Information'
     }
   ],
   [
     'terms-22-desc-1',
     {
-      KOR: 'Polaris Share, Inc.에 대한 통지는 ',
-      ENG: 'Notices to Polaris Share, Inc. should be directed to'
+      KOR: '당사에 대한 통지는 ',
+      ENG: 'Notices to the company. should be directed to'
     }
   ],
   [
     'terms-22-desc-2',
     {
-      KOR: '로 보내야합니다.',
+      KOR: '로 보내야합니다.',
       ENG: ' '
     }
   ],
+
+  // Privacy policy
   [
-    '',
+    'privacy-desc',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        'DECOMPANY Inc. (이하 "회사")는 Polaris Share Service (이하 "서비스")에 저장된 개인 정보의 보호가 중요하다고 생각하기 때문에 항상 사용자의 개인 정보를 보호하기 위해 최선의 노력을 다합니다. 이 서비스는 2019 년 5 월 31 일부터 이 서비스가 정보를 수집하는 이유와 사용자 데이터의 수집 및 내용을 처리하기 위해 취해야 할 조치에 대해 설명합니다.',
+      ENG:
+        'DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts to protect the personal information of its users as it considers the protection of personal information saved under Polaris Share Service (hereinafter "Service") is significant. This Privacy Policy, effective from May 31, 2019 explains why this service collects information as well as what measures are taken to handle the collection and contents of user data.'
     }
   ],
   [
-    '',
+    'privacy-1-title',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '1. 개인 정보 수집 항목 및 수집 조치',
+      ENG: '1. Personal Information Collection Items and Collection Measures'
     }
   ],
   [
-    '',
+    'privacy-1-desc-1',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '회사는 사용자에게 더 나은 서비스를 제공하기 위해 정보를 수집하고 저장합니다.',
+      ENG:
+        'The company collects and saves information to provide a better service to the users.'
     }
   ],
   [
-    '',
+    'privacy-1-desc-2',
     {
-      KOR: '',
-      ENG: ''
+      KOR: 'A. 사용자가 제공 한 정보.',
+      ENG: 'A. Information provided by users.'
     }
   ],
   [
-    '',
+    'privacy-1-desc-3',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '회원 가입시 다음 개인 정보를 수집하고 개인 및 회사 서비스를 위해 다음 항목을 수집합니다.',
+      ENG:
+        'When joining as a member, the following personal information is collected and also the following items are collected for personal and company services.'
     }
   ],
   [
-    '',
+    'privacy-1-desc-4',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '① 제작자 / 투표자 / 청중',
+      ENG: '① Creator/Voter/Audiences'
     }
   ],
   [
-    '',
+    'privacy-1-desc-5',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '- 필수 : 이메일 주소, 비밀번호',
+      ENG: '- Required: email address, password'
     }
   ],
   [
-    '',
+    'privacy-1-desc-6',
     {
-      KOR: '',
-      ENG: ''
+      KOR: 'B. 서비스 이용 중 수집 된 정보.',
+      ENG: 'B. Information collected during use of service.'
     }
   ],
   [
-    '',
+    'privacy-1-desc-7',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '① 장치 정보',
+      ENG: '① Device information'
     }
   ],
   [
-    '',
+    'privacy-1-desc-8',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '회원의 장치 (모바일 / PC), OS 유형 및 버전, 브라우저 유형, 사용 내역, IP 주소, 쿠키, 액세스 토큰, 세션 ID, 국가, 언어, 입장 경로가 수집됩니다.',
+      ENG:
+        "A member's device (mobile/PC), OS type and version, browser type, usage history, IP address, cookies, access token, session ID, country, language, route of entry are collected."
     }
   ],
   [
-    '',
+    'privacy-1-desc-9',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '② 내용 정보',
+      ENG: '② Contents information'
     }
   ],
   [
-    '',
+    'privacy-1-desc-10',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '사용자의 Polaris Office 저장소에있는 파일과 내용은 사용자가 선택한 서비스를 위해 수집되며 다른 서비스 나 사용자에게 사용되거나 제 3 자에게 제공되지 않습니다.',
+      ENG:
+        "Files and their content in the user's Polaris Office storage are collected, which is intended for the service selected by the user, and will not be used for any other services or users or be provided to any third parties."
     }
   ],
   [
-    '',
+    'privacy-1-desc-11',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '③ 제 3 자 파트너 계정 정보',
+      ENG: '③ A third party partner account information'
     }
   ],
   [
-    '',
+    'privacy-1-desc-12',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '사용자가 다른 사람이 Google, 링크드 인 또는 기타 서비스 제공 업체를 통해 자신의 개인 정보에 액세스하도록 허용하는 경우 서비스는 해당 정보를 서버에 저장하여 나중에 해당 정보에 액세스 할 수 있습니다.',
+      ENG:
+        'If the user allows others to access to their own personal information via Google, Linkedin, or any other service provider, the service stores such information in the server, so that the user may access the information later.'
     }
   ],
   [
-    '',
+    'privacy-2-title',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '2. 개인 정보 수집의 목적 및 법적 근거',
+      ENG:
+        '2. Objectives of Personal Information Collection and its Legal Basis'
     }
   ],
   [
-    '',
+    'privacy-2-desc-1',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '회사는 다음과 같은 법적 배경을 바탕으로 사용자의 개인 정보를 처리합니다.',
+      ENG:
+        "The company processes the user's personal information based on the following legal backgrounds."
     }
   ],
   [
-    '',
+    'privacy-2-desc-2',
     {
-      KOR: '',
-      ENG: ''
+      KOR: 'A. 데이터 주체의 동의',
+      ENG: 'A. Consent by the data subject'
     }
   ],
   [
-    '',
+    'privacy-2-desc-3',
     {
-      KOR: '',
-      ENG: ''
+      KOR:
+        '회사는 그러한 조항에 동의하는 사용자에게 제품 제안 또는 마케팅 정보를 제공 할 수 있습니다. 이러한 정보는 이벤트 정보를 제공하거나 광고를 게시하기 위해 참조 될 수 있습니다. 사용자는 서비스 계정 설정의 서비스 / 이벤트 알림 옵션에서 이러한 정보의 수신을 거부 할 수 있습니다.',
+      ENG:
+        'The company may provide product offer or marketing information to users who agree to such provisions. Such information can be referred to for delivering event information or posting ads. User may opt to deny reception of such information in the service/event notification option in the account setup of service.'
     }
   ],
   [
-    '',
+    'privacy-2-desc-4',
+    {
+      KOR: 'B. 계약 이행',
+      ENG: 'B. Contract execution'
+    }
+  ],
+  [
+    'privacy-2-desc-5',
+    {
+      KOR:
+        '회사는 사용자와의 계약 실행에 필요한 개인 정보를 처리 할 수 있습니다.',
+      ENG:
+        'The company can process the necessary personal information for contract execution with the user.'
+    }
+  ],
+  [
+    'privacy-2-desc-6',
+    {
+      KOR: '① 사용자 확인 의도 확인을 요청하고 새 계정을 만듭니다.',
+      ENG:
+        '① Request confirmation of user confirmation intention and create a new account.'
+    }
+  ],
+  [
+    'privacy-2-desc-7',
+    {
+      KOR:
+        '② 권한이있는 사용자를 식별하고 불법 사용자 및 권한이없는 사용으로 인한 부정직 한 사용을 방지하기 위해 사용합니다.',
+      ENG:
+        '② Utilize to identify authorized users and prevent from a dishonest use by illegal users and unauthorized utilization.'
+    }
+  ],
+  [
+    'privacy-2-desc-8',
+    {
+      KOR:
+        '③ 서비스 이용시 요청 된 문의 및 불만 처리 문제를 처리 한 후 사용자에게 다양한 서비스를 제공하고 알림을 배포하는 데 활용합니다.',
+      ENG:
+        '③ Utilize to provide various services to users and disseminate a notification after dealing with matters of inquiry and processing complaints requested during experience of the services.'
+    }
+  ],
+  [
+    'privacy-2-desc-9',
+    {
+      KOR:
+        '④ 사용중인 특정 장치 또는 특정 액세스 경로의 파트너 관계로 인해 특별한 문제가있는 경우 파트너 서비스의 유효한 사용자임을 확인하는 데 사용합니다.\n',
+      ENG:
+        "④ Uses it to confirm that it is the valid user for the partner's service in case that there exists some special issues due to partnerships in a specific device in use or a specific route of access."
+    }
+  ],
+  [
+    'privacy-2-desc-10',
+    {
+      KOR: 'C. 회사의 법적 이익',
+      ENG: 'C. Legal profits of the company'
+    }
+  ],
+  [
+    'privacy-2-desc-11',
+    {
+      KOR:
+        '회사는 회사의 합법적 이익을 위해 필요한 개인 정보를 처리 할 수 있습니다.',
+      ENG:
+        'The company can process the necessary personal information for lawful profits of the company.'
+    }
+  ],
+  [
+    'privacy-2-desc-12',
+    {
+      KOR:
+        '① 회사는 맞춤형 서비스 제공 및 신규 서비스 개발을 포함한 참고 자료로 패턴, 접근 빈도 및 서비스 이용을 분석하여 개인 정보를 이용하여 통계를 작성합니다.',
+      ENG:
+        '① The company uses personal information to create statistics by analyzing patterns, frequency of access, and use of service for a reference including provision of customized services and development of new services.'
+    }
+  ],
+  [
+    'privacy-2-desc-13',
+    {
+      KOR:
+        '② 회사는 무료 서비스를 제공 할 때 서비스 회사 화면에 제휴사 또는 회사의 서비스와 관련된 다양한 광고를 게시 할 권리가 있습니다.',
+      ENG:
+        '② When providing free service, the company has the right to post various ads related to service of the partner company or the company on the service screen.'
+    }
+  ],
+  [
+    'privacy-3-title',
+    {
+      KOR: '3. 개인 정보의 보유 및 이용 기간',
+      ENG: '3. Retention and Use Period of Personal Information'
+    }
+  ],
+  [
+    'privacy-3-desc-1',
+    {
+      KOR:
+        'A. 회사는 서비스를 제공하면서 제한된 용량의 개인 정보를 사용합니다. 개인 정보는 i) 이용자가 개인 정보의 수집 및 이용에 대한 취소를 요구하고 동의를 철회 한 경우, ii) 개인 정보의 수집 및 이용 목적이 달성 된 시점, iii) 또는 이용 기간에 지체없이 삭제됩니다. 만료됩니다.',
+      ENG:
+        'A. The company uses personal information in a limited capacity while providing service. The personal information will be deleted without delay i) if users request for the cancellation and withdraw consent to the collection and use of personal information, ii) when the purpose of collection and use of personal information is accomplished, iii) or the period of use expires.'
+    }
+  ],
+  [
+    'privacy-3-desc-2',
+    {
+      KOR:
+        'B. 회사는 개인 정보를 관련법이 허용하는 기간 동안 만 저장하며 저장된 정보를 다른 목적으로 사용하지 않습니다.',
+      ENG:
+        'B. The company stores the personal data only for the time period allowed by the relevant laws and never uses the stored information for ' +
+        ' any other purposes.'
+    }
+  ],
+  [
+    'privacy-3-desc-3',
+    {
+      KOR: '① 전자 상거래에서의 소비자 보호 행위',
+      ENG: '① The act of consumer protection in electronic commerce'
+    }
+  ],
+  [
+    'privacy-3-desc-4',
+    {
+      KOR: '- 계약 및 해지 기록 : 5 년',
+      ENG: '- Contract and revocation records: 5 years'
+    }
+  ],
+  [
+    'privacy-3-desc-5',
+    {
+      KOR: '- 지불 및 자금 공급 기록 : 5 년',
+      ENG: '- Payment and fund supply record: 5 years'
+    }
+  ],
+  [
+    'privacy-3-desc-6',
+    {
+      KOR: '- 소비자의 불만 또는 법적 분쟁 기록 : 3 년',
+      ENG: "- Consumer's complaint or legal disputes record: 3 years"
+    }
+  ],
+  [
+    'privacy-3-desc-7',
+    {
+      KOR: '② 전자 상거래 법',
+      ENG: '② Electronic commerce transaction act'
+    }
+  ],
+  [
+    'privacy-3-desc-8',
+    {
+      KOR: '- 전자 상거래 : 5 년',
+      ENG: '- Electronic commerce record: 5 years'
+    }
+  ],
+  [
+    'privacy-3-desc-9',
+    {
+      KOR: '③ 통신 비밀 보호법',
+      ENG: '③ Communication secret protection act'
+    }
+  ],
+  [
+    'privacy-3-desc-10',
+    {
+      KOR: '- 로그인 : 3 개월',
+      ENG: '- Login record: 3 months'
+    }
+  ],
+  [
+    'privacy-4-title',
+    {
+      KOR: '4. 개인 정보 처리 절차 및 조치',
+      ENG: '4. Personal Information Disposal Procedures and Measures'
+    }
+  ],
+  [
+    'privacy-4-desc-1',
+    {
+      KOR: '개인 정보의 처분 절차 및 조치는 다음과 같습니다.',
+      ENG:
+        'The disposal procedures and measures of personal information are follows.'
+    }
+  ],
+  [
+    'privacy-4-desc-2',
+    {
+      KOR: 'A. 폐기 절차',
+      ENG: 'A. Disposal procedures'
+    }
+  ],
+  [
+    'privacy-4-desc-3',
+    {
+      KOR:
+        '내부 정책 또는 기타 법률에 따라 정보 보호 사유로 인해 사용자의 개인 정보가 일정 기간 동안 저장되고 목표가 달성되면 폐기됩니다.',
+      ENG:
+        "A user's personal information is stored for a certain time period due to the information protection reason according to the internal policy or other laws and then disposed once the goals are achieved."
+    }
+  ],
+  [
+    'privacy-4-desc-4',
+    {
+      KOR: 'B. 폐기 방법',
+      ENG: 'B. Disposal measures'
+    }
+  ],
+  [
+    'privacy-4-desc-5',
+    {
+      KOR:
+        '종이에 인쇄 된 개인 데이터는 파기 또는 소각으로 폐기 할 수 있으며 데이터의 복원을 방지하는 기술적 조치를 사용하여 개인 데이터의 전기적 형식을 삭제할 수 있습니다.',
+      ENG:
+        'The personal data printed on paper can be disposed by destruction or incineration and an electrical format of personal data can be deleted by using a technical measure that prevents restoration of data.'
+    }
+  ],
+  [
+    'privacy-5-title',
+    {
+      KOR: '5. 사용자의 권리',
+      ENG: "5. User's Rights"
+    }
+  ],
+  [
+    'privacy-5-desc-1',
+    {
+      KOR:
+        '모든 사용자에게는 다음과 같은 권리가 있습니다 (14 세 미만의 어린이에 대한 법적 보호자).',
+      ENG:
+        'Every user has the following rights (legal guardian for a child below the age of 14)'
+    }
+  ],
+  [
+    'privacy-5-desc-2',
+    {
+      KOR: 'A. 정보를받을 권리',
+      ENG: 'A. Rights to receive information'
+    }
+  ],
+  [
+    'privacy-5-desc-3',
+    {
+      KOR:
+        '회사는 개인 정보를 처리하기 전에 법적 문제를 사용자에게 알리고 동의를 얻습니다.',
+      ENG:
+        'The company will notify the user of legal issues and obtain consent\n' +
+        '          before processing the personal information.'
+    }
+  ],
+  [
+    'privacy-5-desc-4',
+    {
+      KOR:
+        '개인 정보 처리의 전반적인 측면은 개인 정보 보호 정책에서 즉시 확인할 수 있습니다.',
+      ENG:
+        'The overall aspects of the personal data processing can be immediately\n' +
+        '          checked on the privacy policy.'
+    }
+  ],
+  [
+    'privacy-5-desc-5',
+    {
+      KOR: 'B.보고 수정할 권리',
+      ENG: 'B. Rights to view and correct'
+    }
+  ],
+  [
+    'privacy-5-desc-6',
+    {
+      KOR:
+        '사용자는 『계정 설정』을 통해 개인 정보를 보거나 수정할 수 있습니다.',
+      ENG:
+        'A user can view or correct their personal information through 『account setting』.'
+    }
+  ],
+  [
+    'privacy-5-desc-7',
+    {
+      KOR: 'C. 동의 삭제 및 철회 권리',
+      ENG: 'C. Rights to delete and revoke consents'
+    }
+  ],
+  [
+    'privacy-5-desc-8',
+    {
+      KOR:
+        '① 이용자는 언제든지 『계정 설정』에서 개인 정보를 삭제하거나 개인 정보 수집 및 이용에 대한 동의를 철회 할 수 있습니다. 동의가 철회 될 때까지 동의에 따라 처리 된 모든 항목은 합법적 인 것으로 간주됩니다.',
+      ENG:
+        '① A user can delete their personal information in 『account setting』\n' +
+        '          anytime or revoke consent on the personal information collection and\n' +
+        '          use. Until the consent is revoked, all the items processed based on\n' +
+        '          the consent are deemed to be lawful.'
+    }
+  ],
+  [
+    'privacy-5-desc-9',
+    {
+      KOR:
+        '② 『계정 설정』에서 회원 탈퇴 메뉴를 이용하여 회원 탈퇴를 할 수 있습니다. 회원 탈퇴 후, 개인 정보는 ". 개인 정보의 보유 및 이용 기간"에 따라 처리됩니다.',
+      ENG:
+        '② A user can use the membership withdrawal menu in 『account setting』\n' +
+        '          to withdraw their membership. Once the membership is withdrawn, the\n' +
+        '          personal information is processed according to ". Retention and Use\n' +
+        '          Period of Personal Information."'
+    }
+  ],
+  [
+    'privacy-5-desc-10',
+    {
+      KOR: 'D. 데이터 전송 권한',
+      ENG: 'D. Rights to transfer data'
+    }
+  ],
+  [
+    'privacy-5-desc-11',
+    {
+      KOR:
+        '사용자는 『데이터 저장 및 전송』에서 자신의 데이터를 다운로드하여 다른 서비스 제공 업체에 전송할 수 있습니다.',
+      ENG:
+        'A user can download their own data in 『data saving and transfer』 and transfer it to other service provider.'
+    }
+  ],
+  [
+    'privacy-5-desc-12',
+    {
+      KOR: 'E. 이의 제기 권리',
+      ENG: 'E. Rights to object'
+    }
+  ],
+  [
+    'privacy-5-desc-13',
+    {
+      KOR:
+        "사용자는 직접 마케팅에 반대 할 권리가 있으며``계정 설정 ''에서 마케팅 이메일 수신 거부를 설정할 수 있습니다.",
+      ENG:
+        'A user has the right to object against direct marketing and can set rejection of marketing email receiving in 『account setting』.'
+    }
+  ],
+  [
+    'privacy-5-desc-14',
+    {
+      KOR:
+        'F. EU 국가에 거주하는 경우 개인 데이터 처리와 관련하여 개인 정보 보호 감독 기관에 불만을 제기 할 권리.',
+      ENG:
+        'F. Rights to raise complaints to the privacy supervision authority in relation to personal data processing if they reside in EU countries.'
+    }
+  ],
+  [
+    'privacy-6-title',
+    {
+      KOR: '6. 개인 정보의 제 3 자 제공',
+      ENG: '6. Provision of Personal Information to Third Parties'
+    }
+  ],
+  [
+    'privacy-6-desc-1',
+    {
+      KOR: '회사는 다음과 같은 경우에 개인 정보를 제 3 자에게 제공합니다.',
+      ENG:
+        'The company supplies the personal information to a third party in the following cases of exceptions.'
+    }
+  ],
+  [
+    'privacy-6-desc-2',
+    {
+      KOR: 'A. 사용자에 의한 사전 계약',
+      ENG: 'A. Agreement made by the users in advance'
+    }
+  ],
+  [
+    'privacy-6-desc-3',
+    {
+      KOR:
+        '개인 정보가 제 3 자에게 제공 될 경우, 회사는 개인 정보, 목적, 품목, 소유 및 사용 기간을 사전에 수령 한 사람에게 통지 한 후 명시 적 및 개별적 계약을 요청합니다.',
+      ENG:
+        'When the personal data is provided for a third party, the company requests explicit and individual agreements after notifying a person who receives personal information, purpose, items, possession, and period of use in advance.'
+    }
+  ],
+  [
+    'privacy-6-desc-4',
+    {
+      KOR: 'B. 관련 법률에 특별한 규정이있는 경우.',
+      ENG: 'B. In case that the relevant laws have special provisions for it.'
+    }
+  ],
+  [
+    'privacy-7-title',
+    {
+      KOR: '7. 개인 정보의 위탁 처리',
+      ENG: '7. Commissioned Processing of Personal Information'
+    }
+  ],
+  [
+    'privacy-7-desc-1',
+    {
+      KOR:
+        '고객 서비스는 모든 고객 지원 관련 문제의 품질과 신속성을 보장하기 위해 타사 회사에 위탁됩니다.',
+      ENG:
+        'Customer service is entrusted to a third party company to ensure the quality and promptness of all customer support related issues.'
+    }
+  ],
+  [
+    'privacy-7-desc-2',
+    {
+      KOR:
+        '개인 정보에 관한 기관 및 위탁 업무는 다음과 같으며 위탁 계약이 만료 될 때까지 개인 정보를 보유합니다.',
+      ENG:
+        'The agencies and their entrusted tasks about personal information are as follows, and they retain personal information until the entrustment contract expires.'
+    }
+  ],
+  [
+    'privacy-7-desc-3',
+    {
+      KOR: 'A. 서비스',
+      ENG: 'A. service'
+    }
+  ],
+  [
+    'privacy-7-desc-4',
+    {
+      KOR:
+        '① Amazon Web Services, Inc. : 고객의 개인 정보 및 컨텐츠 저장을위한 퍼블릭 클라우드 서비스를 제공합니다.',
+      ENG:
+        "① Amazon Web Services, Inc. : Provide the public cloud service for customer's personal information and contents storage."
+    }
+  ],
+  [
+    'privacy-8-title',
+    {
+      KOR: '8. 자녀의 개인 정보',
+      ENG: "8. Child's Personal Information"
+    }
+  ],
+  [
+    'privacy-8-desc-1',
+    {
+      KOR: '이 서비스는 14 세 미만의 어린이를 위한 것이 아닙니다.',
+      ENG: 'The service is not intended for a child below 14 years old.'
+    }
+  ],
+  [
+    'privacy-8-desc-2',
+    {
+      KOR:
+        '회사에서 14 세 미만 아동의 개인 정보가 수집 된 것을 발견하거나 법정 후견인이 해당 아동의 회원 탈퇴 (취소)를 요청하는 경우 회사는 즉시 이를 삭제하려고 시도합니다.',
+      ENG:
+        'If the company finds out that the personal information of a child below 14 years old is collected or if the legal guardian requests membership withdrawal(cancellation) of that child, then the company will immediately try to delete it.'
+    }
+  ],
+  [
+    'privacy-9-title',
+    {
+      KOR: '9. 자동화 된 개인 정보 수집 장비의 설치 및 고용 및 거부',
+      ENG:
+        '9. Installation/Employment of Automated Personal Information Collection Equipment and Refusal'
+    }
+  ],
+  [
+    'privacy-9-desc-1',
+    {
+      KOR:
+        '회사는 개인화되고 맞춤화 된 서비스를 제공하기 위해 사용자 정보를 저장하고 제공하는 "쿠키"를 사용합니다.',
+      ENG:
+        'The company uses "Cookie" which saves and brings out user information in order to provide personalized and customized services.'
+    }
+  ],
+  [
+    'privacy-9-desc-2',
+    {
+      KOR:
+        '회사에서 14 세 미만의 아동의 개인 정보가 수집 된 것을 발견하거나 법적 보호자가 해당 아동의 회원 탈퇴 (취소)를 요청하는 경우 회사는 즉시이를 삭제하려고 시도합니다.',
+      ENG:
+        'If the company finds out that the personal information of a child below 14 years old is collected or if the legal guardian requests membership withdrawal(cancellation) of that child, then the company will immediately try to delete it.'
+    }
+  ],
+  [
+    'privacy-9-desc-3',
+    {
+      KOR: 'A. 쿠키 란 무엇입니까?',
+      ENG: 'A. What is a cookie?'
+    }
+  ],
+  [
+    'privacy-9-desc-4',
+    {
+      KOR:
+        '쿠키는 웹 사이트가 운영하는 서버에서 사용자 브라우저로 보내는 텍스트 파일로 컴퓨터의 하드 디스크에 저장됩니다. 따라서 사용자가 웹 사이트를 방문하면 웹 사이트의 서버는 사용자의 하드 디스크에 저장된 쿠키 데이터를 읽고 사용자 환경 설정을 유지하고 사용자 지정된 서비스를 제공합니다. 쿠키는 개인을 자동 또는 능동적으로 식별하는 정보를 수집하지 않으므로 쿠키를 항상 삭제하거나 거부 할 수 있습니다.\n',
+      ENG:
+        'Cookie are diminutive text files - sending to user browser from the\n' +
+        '          servers operated by the websites - saved in the computer’s hard-disk.\n' +
+        "          So, if the users visit websites, the websites' servers read cookie\n" +
+        "          data saved in users' hard-disks to maintain users' environment\n" +
+        '          settings and provide customized services. The users can always deletes\n' +
+        '          or denies to save cookie since the cookie does not collect information\n' +
+        '          which identify individuals automatically nor actively.'
+    }
+  ],
+  [
+    'privacy-9-desc-5',
+    {
+      KOR: 'B. 쿠키 사용 목적',
+      ENG: 'B. Purpose of using Cookie'
+    }
+  ],
+  [
+    'privacy-9-desc-6',
+    {
+      KOR:
+        '이 회사는 쿠키를 통해 사용자가 선호하는 설정을 저장하여 사용자를 위해 더 빠른 웹 환경을 지원하고 편의성을 높이기 위해 서비스 개선에 사용합니다. 이 사고로 인해 사용자는 서비스를 쉽게 사용할 수 있습니다. 또한 쿠키를 통해 회사는 사용자의 웹 사이트 방문, 패턴 및 관심사를 이해함으로써 광고를 포함한 개인 맞춤형 서비스를 제공 할 수 있습니다.',
+      ENG:
+        'The company supports a faster Web environment for users by saving settings preferred by users via cookies and uses them for service improvements for increased convenience. Because of this incident, the users are able to use the service easily. In addition, cookies allow the company to provide a personal customized service, including advertisements, by understanding the users website visits, patterns, and interests.'
+    }
+  ],
+  [
+    'privacy-9-desc-7',
+    {
+      KOR: 'C. 쿠키 설치 및 고용 및 거부',
+      ENG: 'C. Installation/employment of Cookie and denial'
+    }
+  ],
+  [
+    'privacy-9-desc-8',
+    {
+      KOR:
+        '사용자는 쿠키 설치를 선택할 권리가 있습니다. 따라서 사용자는 웹 브라우저에서 옵션을 설정하여 모든 쿠키를 허용하거나 쿠키가 저장 될 때마다 확인을 수행하거나 쿠키 저장을 거부 할 수 있습니다. 그러나 쿠키 저장을 거부하면 웹 사용이 어려워지고 로그인이 필요한 일부 서비스를 사용하지 못할 수 있습니다.',
+      ENG:
+        'A user has the right to select cookie installation. Thus, a user can set the option on the web browser to allow every cookie or, perform confirmation each time a cookie is saved or reject saving of any cookie. But if they reject saving of any cookie, then the web use will become difficult and some of service requiring a log in may be unavailable.'
+    }
+  ],
+  [
+    'privacy-9-desc-9',
+    {
+      KOR: 'D. 다음 지침은 쿠키 설치 허용을 지정하는 지침을 제공합니다.',
+      ENG:
+        'D. Following directions will give a guidance to designate allowance of Cookie installation.'
+    }
+  ],
+  [
+    'privacy-9-desc-10',
+    {
+      KOR:
+        '① Internet Explorer : 웹 브라우저 상단의 도구 메뉴 > 인터넷 옵션 > 개인 정보 > 설정',
+      ENG:
+        '① Internet Explorer: Tool Menu on upper side of web-browser > Internet Option > Personal Information > Setting'
+    }
+  ],
+  [
+    'privacy-9-desc-11',
+    {
+      KOR:
+        '② Chrome : 웹 브라우저 오른쪽의 선택 메뉴 > 화면 하단의 확장 설정 선택 (단어가 다를 수 있음) > 개인 정보 내용 선택 버튼 > 쿠키',
+      ENG:
+        '② Chrome: Selection Menu on right side of web-browser > Selection of Extended Setting on bottom of screen (wording may differ) > Personal Information Contents Selection Button > Cookie'
+    }
+  ],
+  [
+    'privacy-10-title',
+    {
+      KOR: '10. 해외로의 개인 정보 전송 관련 문제',
+      ENG: '10. Issues Related to Personal Information Transfer to Abroad'
+    }
+  ],
+  [
+    'privacy-10-desc-1',
+    {
+      KOR:
+        'A. 회사가 수집 한 개인 정보는 다음 구역 내에서 처리 또는 저장되며 개인 정보 보호 정책에 지정된 목표에 대해서만 처리됩니다.',
+      ENG:
+        'A. The personal information collected by the company is processed or saved within the following districts and processed only for the goals specified in the privacy policy.'
+    }
+  ],
+  [
+    'privacy-10-desc-2',
+    {
+      KOR: '① 본사, 계열사 및 IT 서버 위치 : 한국',
+      ENG: '① Location of main office, affiliates and IT server: Korea'
+    }
+  ],
+  [
+    'privacy-10-desc-3',
+    {
+      KOR: '② 위탁 업체 위치 (퍼블릭 클라우드 서비스 공급) : 미국',
+      ENG:
+        '② Location of consignment company (Public Cloud Service supply): USA'
+    }
+  ],
+  [
+    'privacy-10-desc-4',
+    {
+      KOR: 'B. 다음 EU 사용자의 개인 정보는 EU 외부로 전송됩니다.',
+      ENG:
+        "B. The following EU user's personal information is transferred out of EU."
+    }
+  ],
+  [
+    'privacy-10-desc-5',
+    {
+      KOR: '① 제작자 / 투표자 / 청중',
+      ENG: '① Creator/Voter/Audiences'
+    }
+  ],
+  [
+    'privacy-10-desc-6',
+    {
+      KOR: '- 필수 : 이메일 주소, 비밀번호',
+      ENG: '- Required: email address, password'
+    }
+  ],
+  [
+    'privacy-10-desc-7',
+    {
+      KOR:
+        '다. 회사가 이용자의 개인 정보를 EU 외부로 이전하는 경우에는 개인 정보가 보호되며 EU의 일반 개인 정보 보호 규정 (GDPR)은 다음 기준에 따릅니다.',
+      ENG:
+        "C. In case that the company transfer the user's personal information out of EU, then the personal information is protected and the EU's general personal data protection regulation(GDPR) is complied with on the following basis."
+    }
+  ],
+  [
+    'privacy-10-desc-8',
+    {
+      KOR:
+        '① EU와 미국, 스위스와 미국 사이의 개인 정보 보호 프레임 워크에서 인증 된 데이터 수신자를 지정합니다.',
+      ENG:
+        '① Designate the data recipient certified in the privacy shield framework between EU and USA and Swiss and USA.'
+    }
+  ],
+  [
+    'privacy-10-desc-9',
+    {
+      KOR:
+        '효율적이고 안전한 데이터 관리를 위해 회사는 개인 정보 보호 인증을받은 회사를 사용하여 고객의 개인 정보와 데이터를 저장합니다.',
+      ENG:
+        "For efficient and safe data management, the company uses a company with privacy shield certifications to store the customer's personal information and data."
+    }
+  ],
+  [
+    'privacy-10-desc-10',
+    {
+      KOR: '② 데이터 주체와 계약 체결',
+      ENG: '② Contract execution with the data subject'
+    }
+  ],
+  [
+    'privacy-10-desc-11',
+    {
+      KOR:
+        '회사는 본사가있는 한국에서 서비스를 제공하며 EU에서는 지점을 운영하지 않습니다. 따라서 한국으로 개인 정보를 양도하는 것은 불가피하며, 동의하지 않으면 서비스가 제공되지 않습니다.',
+      ENG:
+        'The company provide service in Korea where the main office is located, and operates no branch in EU. Thus, transfer of personal information to Korea is unavoidable for service, and if you do not accept it, no service will be provided for you.'
+    }
+  ],
+  [
+    'privacy-10-desc-12',
+    {
+      KOR:
+        '이 회사는 국제 표준 개인 정보 (ISO / IEC 27001) 인증을 받았으며 이를 바탕으로 한 정보 보호 관리 시스템에 따라 고객의 개인 정보와 내용을 안전하게 관리하고 있습니다.',
+      ENG:
+        "The company is certified with the international standard of personal information(ISO/IEC 27001) and the company is safely managing the customer's personal information and contents according to the information protection management system based on it."
+    }
+  ],
+  [
+    'privacy-11-title',
+    {
+      KOR: '11. 개인 정보 문의 고객 서비스',
+      ENG: '11. Customer Service for Privacy Inquiries'
+    }
+  ],
+  [
+    'privacy-11-desc-1',
+    {
+      KOR:
+        '개인 정보 보호에 대한 질문이나 문의 사항이 있으면 아래 정보를 사용하여 당사에 문의하십시오.',
+      ENG:
+        'If you have any questions or inquiries about privacy, contact us using the information below.'
+    }
+  ],
+  [
+    'privacy-11-desc-2',
+    {
+      KOR: '▶ DPO (Data Protection Officer) : ',
+      ENG: '▶ DPO (Data Protection Officer) : '
+    }
+  ],
+  [
+    'privacy-11-desc-3',
+    {
+      KOR: '- 이메일 주소',
+      ENG: '- Email address:'
+    }
+  ],
+  [
+    'privacy-11-desc-4',
+    {
+      KOR:
+        '프라이버시 문제와 관련하여 궁금한 점이 있으면 언제든지 문의하십시오. 회사는 사용자의 주장, 우려 또는 질문에 대한 솔루션을 제공하기 위해 노력할 것입니다.',
+      ENG:
+        'Please do not hesitate to contact us should you have any concerns or questions regarding privacy issues. The Company will endeavor to provide solutions to any claims, concerns, or questions from users.'
+    }
+  ],
+  [
+    'privacy-12-title',
+    {
+      KOR: '12. 개인 정보 보호 정책 변경',
+      ENG: '12. Privacy Policy Changes'
+    }
+  ],
+  [
+    'privacy-12-desc-1',
+    {
+      KOR:
+        '회사는 서비스 또는 법률의 변경 사항을 반영하기 위해 개인 정보 보호 정책을 수정할 수 있습니다. 현재 개인 정보 보호 정책에서 추가, 삭제 또는 수정하는 경우 회사는 필요한 경우 웹 사이트 또는 이메일에 이유와 세부 정보를 게시합니다.',
+      ENG:
+        'To reflect the changes in the service or the laws, the company can modify its privacy policy, In case of addition, deletion or modification in the current privacy policy, the company will post the reason and details on the web site or emails if necessary.'
+    }
+  ],
+  [
+    'privacy-13-title',
+    {
+      KOR: '13. 보안',
+      ENG: '13. Security'
+    }
+  ],
+  [
+    'privacy-13-desc-1',
+    {
+      KOR:
+        '이 회사는 서비스 사용자의 불법 액세스, 변경, 노출 또는 삭제로부터 정보를 보호하기 위해 노력하고 있습니다.',
+      ENG:
+        'The company devotes its effort to protect information from illegal\n' +
+        '          access, change, exposure, or deletion for the service users.'
+    }
+  ],
+  [
+    'privacy-13-desc-2',
+    {
+      KOR:
+        '서비스의 사용자 데이터에 액세스하기 위해 비밀번호를 의무화하고 유료 서비스를 지불하기 위해 입력 한 민감한 데이터 (신용 카드 정보 등)는 SSL로 암호화됩니다.',
+      ENG:
+        'The passwords are mandated to access user data for the service, and sensitive data (credit card information etc.) inputted to pay a charged service will be encrypted by SSL.'
+    }
+  ],
+  [
+    'privacy-13-desc-3',
+    {
+      KOR:
+        '그럼에도 유무선 네트워크가 완벽한 보안을 제공하지 않기 때문에 사용자가 선택한 다른 사람에게 전송 된 정보가 완전히 안전하다는 보장은 없습니다. 따라서 물리적, 기술적 또는 관리적 안전 장치가 공격 및 파괴 될 수 있기 때문에 정보가 액세스, 노출, 변경 또는 손상 될 수 있습니다.',
+      ENG:
+        'Nevertheless, it is not guaranteed that the information sent to others by your choice is completely safe because wired and wireless networks do not provide complete security. Accordingly, information being accessed, exposed, changed, or damaged is possible because physical, technical, or management safety devices may be attacked and destroyed.'
+    }
+  ],
+  [
+    'policy-1-title',
+    {
+      KOR: '개인 정보 정책',
+      ENG: 'PRIVACY POLICY'
+    }
+  ],
+  [
+    'policy-1-desc-1',
+    {
+      KOR:
+        'Polaris Share ( "Polaris Share")로 사업을하는 DECOMPANY Corporation은 귀하의 개인 정보를 보호하기 위해 노력합니다. 본 개인 정보 보호 정책은 Polaris Share가 관리하는 공개 웹 사이트 또는이 개인 정보 보호 정책에 연결된 권한 기반 서비스의 정보 관리 관행을 다루고 있습니다. 여기에는 다음 웹 사이트가 포함됩니다.',
+      ENG:
+        ' At DECOMPANY Corporation, doing business as Polaris Share ("Polaris Share"), we strive to protect the privacy of your information. This privacy statement covers the information management practices of Polaris Share controlled public web sites or permission-based services that link to this privacy statement. These include the following websites:'
+    }
+  ],
+  [
+    'policy-1-desc-2',
+    {
+      KOR:
+        'Polaris Share는 개인 정보를 요청하거나 제어하는 ​​모든 페이지에서이 개인 정보 보호 정책에 대한 링크를 제공합니다\n',
+      ENG:
+        'Polaris Share provides a link to this privacy statement on all pages\n' +
+        '          requesting or controlling personal information'
+    }
+  ],
+  [
+    'policy-1-desc-3',
+    {
+      KOR: '정보 : 우리가 수집하고 사용하는 방법',
+      ENG: 'INFORMATION: WHAT WE COLLECT AND HOW IT IS USED'
+    }
+  ],
+  [
+    'policy-1-desc-4',
+    {
+      KOR:
+        '웹 사이트 방문자 또는 고객이 Polaris Share 서비스 또는 Polaris Share 서비스를 사용하기위한 등록에 대한 추가 정보를 얻는 데 관심이있는 경우, Polaris Share는 당사자에게 이름 및 이메일 주소와 같은 연락처 정보를 제공하도록 요구할 수 있습니다.',
+      ENG:
+        "When a web site visitor or customer expresses interest in obtaining additional information about Polaris Share's services or registers to use a Polaris Share service, Polaris Share may require the party to provide contact information, such as name, and email address."
+    }
+  ],
+  [
+    'policy-1-desc-5',
+    {
+      KOR:
+        'Polaris Share의 권한 기반 서비스는 서비스에 의존하는 여러 비즈니스 트랜잭션에 참여한 참가자가 반복적으로 사용할 수 있도록 설계되었습니다. 이러한 서비스의 보안과 그 안에 포함 된 비즈니스 데이터의 핵심은 사용자의 가상 신원을 확인하는 것이이 서비스를 사용하는 데 필수적입니다. 서비스를 활용하고 보호하려면 참가자는 프로필 정보 (이름, 이메일 주소)를 제공해야합니다.',
+      ENG:
+        "Polaris Share's permission-based services are designed to facilitate repeat use by participants involved in multiple business transactions relying upon the services. Key to the security of these services and the business data contained therein, verification of user’s virtual identity is fundamental to using this service. Participants must provide profile information (name, email address) in order to utilize and secure the services."
+    }
+  ],
+  [
+    'policy-1-desc-6',
+    {
+      KOR:
+        '위에서 설명한대로 수집 된 프로필 정보 외에도 Polaris Share는 방문자의 IP 주소, 방문자가 Polaris Share 웹 사이트에 액세스하는 웹 사이트 유형을 포함하되 이에 국한되지 않는 공개 웹 사이트 사용에 대한 익명 정보를 수집합니다. 웹 사이트에 액세스하는 데 사용되는 웹 브라우저, 방문 시간 및 조회 한 페이지 수 이 수집 된 정보는 개인을 개인적으로 식별하지 않으며 보안을 위해 특정 법적 요구 사항 및 웹 사이트 방문 통계 분석을 수행하기 위해 서비스를 운영해야합니다.',
+      ENG:
+        "In addition to the profile information collected as described above, Polaris Share also collects anonymous information about the use of our public web site, including but not limited to a visitor's IP address, the websites from which visitors access the Polaris Share web site, the type of web browsers used to access the website, the time of the visit, and the pages viewed. This collected information does not personally identify individuals and is required to operate the service, for security, to fulfill certain legal requirements and statistical analysis of web site visits."
+    }
+  ],
+  [
+    'policy-1-desc-7',
+    {
+      KOR: '쿠키',
+      ENG: 'Cookies'
+    }
+  ],
+  [
+    'policy-1-desc-8',
+    {
+      KOR:
+        '위에서 설명한 익명의 데이터를 수집하거나 권한 기반 서비스의 반복 사용자에게 더 나은 사용자 경험을 제공하기 위해 귀하의 선택에 따라 브라우저의 쿠키 파일에 남아있는 "쿠키"를 사용할 수 있습니다. 쿠키는 최신 브라우저가 웹 사이트와 상호 작용하는 데 사용하는 작은 텍스트 조각을 저장하는 데 널리 사용되는 메커니즘입니다. 귀하의 IP 주소는 귀하가 웹 사이트의 어떤 형태로든 정보를 제공하지 않으면 개인 정보와 연결되지 않습니다.',
+      ENG:
+        'In order to collect the anonymous data described above, or to provide a better user experience for repeat users of our permission-based services, we may use "cookies" that remain in the cookies file of your browser at your option. Cookies are a widely utilized mechanism for storing small pieces of text which modern browsers use to interact with web sites. Your IP address will not be linked to any personal information unless you provide that information through any form on the website.'
+    }
+  ],
+  [
+    'policy-1-desc-9',
+    {
+      KOR:
+        'Google은 Google과 함께 웹 사이트를 방문하는 동안 사용자를 식별하고 보호하며 사용자의 행동을 강화하는 데 주력하는 쿠키를 사용합니다. Google은 지난 방문 정보를 사용하여 Google 및 Google 파트너 사이트에서의 광고 경험을 조정합니다.',
+      ENG:
+        'We, together with Google, also use cookies whose main objective is to identify and secure users and augment their behavior while on our website. We use information from past visits to tailor the advertisement experience on Google and Google partner sites.'
+    }
+  ],
+  [
+    'policy-1-desc-10',
+    {
+      KOR: 'Polaris 공유 서비스 사용',
+      ENG: 'Polaris Share Services Usage'
+    }
+  ],
+  [
+    'policy-1-desc-11',
+    {
+      KOR:
+        '권한 기반 서비스를 제공함에 따라 Polaris Share는 참여한 서비스 및 작업에 대한 참가자의 액세스 기록을 유지하며, 자세한 사용자 활동보고 / 공유 분석 기능의 일부로 해당 볼트의 소유자가이를 이용할 수 있도록합니다. . Polaris Share는 또한 사용자를 보호하기 위해 사용자가 서비스에 액세스 할 수있는 IP 주소의 로그를 유지할 수 있습니다.',
+      ENG:
+        'In the provision of our permission-based services, Polaris Share will maintain a history of participant access to the services and actions taken therein and make this available to the owner of a respective vault accordingly as part of our detailed user activity reporting / sharing analytics capabilities. Polaris Share also may maintain a log of IP addresses from which users access the services to help secure our users.'
+    }
+  ],
+  [
+    'policy-1-desc-12',
+    {
+      KOR: '개인 정보의 이용',
+      ENG: 'Use of Personal Information'
+    }
+  ],
+  [
+    'policy-1-desc-13',
+    {
+      KOR:
+        'Polaris Share는 위의 수집 된 정보를 사용하여 제품 고객과 예비 고객에게 솔루션에 대해 알리고 고객이 요청한 서비스를 제공하며 고객이 서비스를 이용할 때 고객을 지원합니다. 예를 들어, 당사 웹 사이트에서 "연락처"양식을 당사 서비스에 대한 정보와 함께 작성하면 Polaris Share가 귀하에게 응답 할 수 있습니다. Polaris Share는 제품 업그레이드, 사용자 모범 사례, 업계 뉴스, 프로모션 또는 이벤트에 대한 정보를 제공하기 위해 자체 마케팅 목적으로 Polaris Share 고객에 대한 데이터를 사용할 수도 있습니다.',
+      ENG:
+        'Polaris Share uses the above collected information to inform our product customers and prospective customers about our solutions, to provide services requested by our customers, and to support our customers as they utilize our services. For example, Polaris Share may respond to you, if you fill out a "Contact" form on our website, with information about our services. Polaris Share may also use data about Polaris Share customers for its own marketing purposes, in order to provide information about product upgrades, user best practices, industry news, promotions or events.'
+    }
+  ],
+  [
+    'policy-1-desc-14',
+    {
+      KOR: '정보 공유',
+      ENG: 'Sharing Information'
+    }
+  ],
+  [
+    'policy-1-desc-15',
+    {
+      KOR:
+        'Polaris Share는 귀하의 개인 데이터를 관련없는 제 3 자와 공유, 판매 또는 배포하지 않습니다. 모든 개인 데이터는 위에 요약 된 개인 데이터의 사용 사례를 직접 지원하는 제 3 자에게만 공개 될 수 있습니다. 각 볼트의 소유자는 자신의 데이터에 대한 액세스 제어를 유지해야하며 볼트와 관련된 개인 사용자 정보 및 사용자 활동에 액세스 할 수 있습니다. 이 정보는 Polaris Share 서비스에 액세스하고 사용하는 데 필요하지만 각 볼트의 소유자가 관리합니다.',
+      ENG:
+        'Polaris Share will not share, sell or distribute your personal data to unrelated third parties. All personal data may be disclosed only to third parties who directly support the use cases for personal data as summarized above. Owners of respective vaults are responsible for maintaining the access controls over their data and have access to personal user information and user activity related to their vault. This information is required to access and use the Polaris Share services but is administered by the owner of each respective vault.'
+    }
+  ],
+  [
+    'policy-1-desc-16',
+    {
+      KOR: '데이터 보존',
+      ENG: 'Data Retention'
+    }
+  ],
+  [
+    'policy-1-desc-17',
+    {
+      KOR:
+        '서비스 사용과 관련된 다양한 데이터는 각 서비스 계약 기간 동안 Polaris Share에 의해 무기한 보유됩니다. Polaris Share 소유자는 자체 관리 관행의 일부로 액세스 데이터 사본을 만들었을 수 있으며이 정책의 범위를 벗어납니다. 금융 거래와 관련된 추가 정보는 7 년 동안 유지됩니다.',
+      ENG:
+        'Various data related to the use of the service is retained indefinitely by Polaris Share for the duration of each respective service contract. The Polaris Share owner may have made copies of access data as part of their own respective management practices and are outside the purview of this policy. Additional information related to financial transactions is retained for a period of seven years.'
+    }
+  ],
+  [
+    'policy-1-desc-18',
+    {
+      KOR: '데이터 보안에 대한 헌신',
+      ENG: 'Commitment to Data Security'
+    }
+  ],
+  [
+    'policy-1-desc-19',
+    {
+      KOR:
+        '무단 액세스를 방지하고 데이터 무결성을 유지하며 정보를 올바르게 사용하기 위해 Polaris Share는 온라인으로 수집하거나 처리하는 정보를 보호하고 보호하기위한 광범위한 관리 및 기술 메커니즘을 마련했습니다. Polaris Share는 적용 가능한 모든 글로벌 보안 및 개인 정보 보호 규정을 준수하며 다양한 글로벌 및 산업 보안 및 개인 정보 인증, 프레임 워크 및 레지스트리에 자발적으로 참여합니다. 여기에는 Polaris Share를 지원하는 다양한 소프트웨어 및 서비스를 제공하는 공급 업체가 포함됩니다. 당사는 신중하게 선택하고 본 개인 정보 보호 정책, 보안 정책 및 동일한 높은 보안 및 개인 정보 보호 표준의 조항을 준수 할 계약 상 책임을집니다. 데이터 보안에 대한 추가 세부 사항은 Polaris 공유 보안 정책에 있습니다.',
+      ENG:
+        'To prevent unauthorized access, maintain data integrity, and ensure the correct use of information, Polaris Share has instituted a wide array of administrative and technical mechanisms to secure and protect the information we collect or process online. Polaris Share complies with all applicable global security and privacy regulations and voluntarily participates in various global and industry security and privacy certifications, frameworks and registries. This includes the vendors which provide various software and services that support Polaris Share, whom we select carefully and hold them contractually responsible to adhere to the terms within this privacy policy, our security policy, and the same high security and privacy standards. Additional details regarding data security are found in the Polaris Share Security Policy.'
+    }
+  ],
+  [
+    'policy-1-desc-20',
+    {
+      KOR: '정보 수정 및 업데이트',
+      ENG: 'Correcting and Updating Your Information'
+    }
+  ],
+  [
+    'policy-1-desc-21',
+    {
+      KOR:
+        'Polaris Share 권한 기반 서비스 사용자는 서비스에 로그인하여 "기본 설정 : 프로파일"페이지를 선택하고 온라인 인터페이스를 사용하여 정보를 업데이트하여 프로파일 정보를 업데이트하거나 변경할 수 있습니다.  정보 업데이트, Polaris Share 계정 중단, 개인 정보 반환을 원하는 조직은 이메일을 보내거나 질문을하거나 ',
+      ENG:
+        'Users of Polaris Share permission-based services may update or change their profile information by logging into the service, selecting the "Preferences: Profile" page, and updating information using the online interface. Organizations seeking to update information, to discontinue their Polaris Share account, to have their private information returned to them please email, have questions, or need help should contact Polaris Share by sending an email to'
+    }
+  ],
+  [
+    'policy-1-desc-22',
+    {
+      KOR:
+        '로 이메일을 보내서 Polaris Share에 연락 해야합니다. Polaris Share 권한 기반 서비스에 대한 액세스 또는 사용과 직접 관련이없는 Polaris Share의 메일 또는 이메일은',
+      ENG:
+        ', Should you decline to receive mail or email from Polaris Share that does not relate directly to your access to or use of Polaris Share permission-based services, please visit our'
+    }
+  ],
+  [
+    'policy-1-desc-23',
+    {
+      KOR: '구독 취소 페이지',
+      ENG: 'unsubscribe page'
+    }
+  ],
+  [
+    'policy-1-desc-24',
+    {
+      KOR: ' 를 방문 하여 양식을 작성하십시오.',
+      ENG: ' and fill out the form.'
+    }
+  ],
+  [
+    'policy-1-desc-25',
+    {
+      KOR: '당신의 수락',
+      ENG: 'Your Acceptance'
+    }
+  ],
+  [
+    'policy-1-desc-26',
+    {
+      KOR:
+        '당사 웹 사이트 및 / 또는 서비스를 사용함으로써 위에서 설명한 개인 정보 보호 정책에 동의한다는 의미입니다. 이 개인 정보 보호 정책에 대해 궁금한 점이 있으면 ',
+      ENG:
+        'By using our websites and/or services, you signify your agreement to the privacy polices described above. If you have any questions about this privacy statement, please email us at'
+    }
+  ],
+  [
+    'policy-1-desc-27',
+    {
+      KOR: '로 전자 메일을 보내주십시오',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-28',
+    {
+      KOR: '캘리포니아 주민',
+      ENG: 'For California Residents'
+    }
+  ],
+  [
+    'policy-1-desc-29',
+    {
+      KOR:
+        '캘리포니아 주민은 1 년에 한 번 Polaris Share가 제 3 자의 직접 마케팅 목적으로 전년도 동안 특정 정보를 공개 한 모든 제 3 자 목록을 요청하고 입수 할 수 있습니다. 캘리포니아 거주자이고 그러한 목록을 원하는 경우 ',
+      ENG:
+        'California residents can request and obtain from us once a year a list of all third parties to which Polaris Share has disclosed certain information during the preceding calendar year for the third parties direct marketing purposes. If you are a California resident and want such a list, please contact us by email to'
+    }
+  ],
+  [
+    'policy-1-desc-30',
+    {
+      KOR: '로 이메일을 보내 문의하십시오.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-31',
+    {
+      KOR: '미국 이외의 사용자에게 고지',
+      ENG: 'Notice to Users Outside the U.S.'
+    }
+  ],
+  [
+    'policy-1-desc-32',
+    {
+      KOR:
+        '우리의 서비스는 미국 내에서 통제되고 운영됩니다. 귀하가 미국 이외의 지역에서 당사 서비스에 액세스하는 경우, 당사는 귀하로부터 수집 한 정보를 귀하의 모국 또는 관할 지역 이외의 데이터 센터로 전송할 수 있습니다. 특히, 귀하 또는 귀하의 서비스 제공 업체가 운영하는 미국에서 귀하의 정보가 전송되고 처리 될 것이며, 여기서 데이터 보호 및 기타 법률은 귀하의 관할 지역의 법률과 동일하지 않을 수 있습니다. Polaris Share Services를 사용함으로써 귀하는 귀하의 정보가 미국으로 전송 및 사용되어 본 개인 정보 보호 정책에 명시된대로 처리 될 수 있다는 데 동의합니다.',
+      ENG:
+        'Our Services are controlled and operated within the United States. If you access our Services outside of the United States, we may transfer the information collected from you to data centers outside of your home country or jurisdiction. In particular, your information will be transferred to and processed in the United States where we or our service providers operate, where data protection and other laws may not be equivalent to those in your jurisdiction. By using the Polaris Share Services, you agree that your information can be transferred to and used in the United States and handled as set forth in this Privacy Policy.'
+    }
+  ],
+  [
+    'policy-1-desc-33',
+    {
+      KOR: '일반 데이터 보호 규정 (GDPR)',
+      ENG: 'GENERAL DATA PROTECTION REGULATION (GDPR)'
+    }
+  ],
+  [
+    'policy-1-desc-34',
+    {
+      KOR:
+        'EU의 시민 또는 거주자로서 귀하의 개인 정보는 GDPR의 조건에 의해 보호됩니다. Polaris Share 및 Polaris Share의 고객이 GDPR을 준수하려면 Polaris Share에 액세스하고 추가 개인 정보 보호 권한을 행사하기 위해 동의해야합니다. GDPR에 따라 확장 된 대부분의 조항은 아래 설명에 추가 옵션 및 기능과 함께 위의 설명에 설명되어 있습니다.',
+      ENG:
+        "As a citizen or resident of the EU, your personal data are protected by the terms of the GDPR. In order for Polaris Share and Polaris Share's customers to comply with the GDPR, you are required to grant consent in order to gain access to Polaris Share and to exercise additional privacy rights. Most provisions extended under the GDPR are described in the statements above with additional options and features described below."
+    }
+  ],
+  [
+    'policy-1-desc-35',
+    {
+      KOR: 'GDPR 데이터 권리',
+      ENG: 'GDPR Data Rights'
+    }
+  ],
+  [
+    'policy-1-desc-36',
+    {
+      KOR:
+        'GDPR은 EU의 개인 또는 거주자에게 다음과 같은 데이터 권한을 제공합니다.',
+      ENG:
+        'The GDPR provides the following data rights for individual citizens or residents of the EU:'
+    }
+  ],
+  [
+    'policy-1-desc-37',
+    {
+      KOR: '1. 통보받을 권리',
+      ENG: '1. The Right to Be Informed'
+    }
+  ],
+  [
+    'policy-1-desc-38',
+    {
+      KOR:
+        '개인 정보를 위반 한 경우 사용자 프로필의 연락처 정보를 사용하여 알림을받습니다. 우리는 또한 귀하의 모국에 대한 적절한 개인 정보 보호 당국에 통지합니다.',
+      ENG:
+        'Should there be a breach of private information, you will be notified using the contact information in your user profile. We will also notify the appropriate privacy authority for your home country.'
+    }
+  ],
+  [
+    'policy-1-desc-39',
+    {
+      KOR: '2. 접근 권한',
+      ENG: '2. The Right of Access'
+    }
+  ],
+  [
+    'policy-1-desc-40',
+    {
+      KOR:
+        '사용자 프로필 정보 (위 참조)에 액세스하는 것 외에도 액세스 권한이있는 각 볼트의 소유자에게 연락하여 사용 이벤트를 얻을 수 있습니다. 이러한 액세스 이벤트 활성화와 관련된 기술 메커니즘에 대한 자세한 기록은 일반적으로 액세스 할 수 없습니다.',
+      ENG:
+        'In addition to accessing user profile information (see above), your use events may be obtained by contacting the owner of the respective vaults you have access to. Detailed records of technical mechanisms related to enabling those access events are not generally accessible.'
+    }
+  ],
+  [
+    'policy-1-desc-41',
+    {
+      KOR: '3. 정류의 권리',
+      ENG: '3. The Right to Rectification'
+    }
+  ],
+  [
+    'policy-1-desc-42',
+    {
+      KOR:
+        '사용자는 위의 정보 수정 및 업데이트에 설명 된대로 개인 정보에 액세스하고 업데이트 할 수 있습니다.',
+      ENG:
+        'Users may access and update personal information as detailed above\n' +
+        '          under Correcting and Updating Your Information.'
+    }
+  ],
+  [
+    'policy-1-desc-43',
+    {
+      KOR: '4. 삭제할 권리',
+      ENG: '4. The Right to Erasure'
+    }
+  ],
+  [
+    'policy-1-desc-44',
+    {
+      KOR:
+        '사용자는 언제든지 Polaris Share 서비스에서 자신을 제거하도록 선택할 수 있습니다. 사용자는 먼저 삭제 권한을 행사하기 위해 Polaris Share 소유자 / 관리자에게 문의해야합니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는',
+      ENG:
+        'Users may at any time chose to remove themselves from the Polaris Share service. Users should first contact the Polaris Share owner / administrator in order to exercise the right to erasure. In the eventthat the Polaris Share owner / administrator cannot be reached, users can send an email to'
+    }
+  ],
+  [
+    'policy-1-desc-45',
+    {
+      KOR: ' 로 이메일을 보낼 수 있습니다.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-46',
+    {
+      KOR: '5. 데이터 이식성에 대한 권리',
+      ENG: '5. The Right to Data Portability'
+    }
+  ],
+  [
+    'policy-1-desc-47',
+    {
+      KOR:
+        '사용자는 Polaris Share 소유자 / 관리자에게 자신의 개인 정보 사본을 요청할 수 있지만 해당 요청은 해당 Polaris Share에 대해 공개 한 개인 정보 보호 정책에 명시된대로 해당 소유자의 각 권리 및 통제 대상이됩니다.',
+      ENG:
+        'Users may request copies of their personal information from a Polaris Share owner / administrator but such requests are subject to the respective rights and control of that owner as may be stated within the privacy policy they have published for that Polaris Share.'
+    }
+  ],
+  [
+    'policy-1-desc-48',
+    {
+      KOR: '6. 이의 제기 권리',
+      ENG: '6. The Right to Object'
+    }
+  ],
+  [
+    'policy-1-desc-49',
+    {
+      KOR:
+        '사용자는 먼저 Polaris Share 소유자 / 관리자에게 연락하여 개인 정보 수집 및 사용에 반대 할 수 있습니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는 ',
+      ENG:
+        'Users may object to the collection and use of personal information by first contacting the Polaris Share owner / administrator. In the event that the Polaris Share owner / administrator cannot be reached, users can send an email to'
+    }
+  ],
+  [
+    'policy-1-desc-50',
+    {
+      KOR: ' 로 이메일을 보낼 수 있습니다.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-51',
+    {
+      KOR: '7. 자동화 된 의사 결정 및 프로파일 링과 관련된 권리',
+      ENG: '7. Rights in Relation to Automated Decision Making and Profiling'
+    }
+  ],
+  [
+    'policy-1-desc-52',
+    {
+      KOR:
+        '자동 의사 결정 및 프로파일 링은 Polaris Share Services 사용에는 적용되지 않습니다.',
+      ENG:
+        'Automated decision making and profiling is not applicable to the use\n' +
+        '          of Polaris Share Services.'
+    }
+  ],
+  [
+    'policy-1-desc-53',
+    {
+      KOR: '8. 독립 중재 권',
+      ENG: '8. Right to Independent Arbitration'
+    }
+  ],
+  [
+    'policy-1-desc-54',
+    {
+      KOR: '다른 방법으로 이의가 해결되지 않은 사용자는 ',
+      ENG:
+        'Users whose objections are not resolved by any other means, may contact'
+    }
+  ],
+  [
+    'policy-1-desc-55',
+    {
+      KOR: '국제 분쟁 해결 센터',
+      ENG: 'the International Centre For Dispute Resolution'
+    }
+  ],
+  [
+    'policy-1-desc-56',
+    {
+      KOR:
+        '에 연락 하여 구속력있는 중재를 불러와 Polaris Share가 개인에 대한 의무를 위반했는지 여부와 그러한 위반이 완전히 또는 부분적으로 해결되지 않은지 여부를 확인할 수 있습니다.',
+      ENG:
+        ' to invoke binding arbitration to determine whether Polaris Share has violated its obligations to an individual and whether any such violation remains fully or partially un-remedied.'
+    }
+  ],
+  [
+    'policy-1-desc-57',
+    {
+      KOR: '운동 권리',
+      ENG: 'Exercising Rights'
+    }
+  ],
+  [
+    'policy-1-desc-58',
+    {
+      KOR: '사용자는 위의 진술에 따라 또는 ',
+      ENG:
+        'Users may exercise rights related to the collection and use of personal information per the statements above or by email at'
+    }
+  ],
+  [
+    'policy-1-desc-59',
+    {
+      KOR:
+        '로 이메일을 통해 개인 정보의 수집 및 사용과 관련된 권리를 행사할 수 있습니다.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-60',
+    {
+      KOR: '동의 변경 / 철회',
+      ENG: 'Changing / Withdrawing Consent'
+    }
+  ],
+  [
+    'policy-1-desc-61',
+    {
+      KOR: '사용자는 동의를 부여한 후 ',
+      ENG:
+        'After granting consent, users can subsequently change / withdraw their consent to the collection, use and storage of personal information by emailing'
+    }
+  ],
+  [
+    'policy-1-desc-62',
+    {
+      KOR:
+        ' 로 이메일을 보내 개인 정보의 수집, 사용 및 저장에 대한 동의를 변경 / 철회 할 수 있습니다.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-63',
+    {
+      KOR: '법적 근거',
+      ENG: 'Legal Basis'
+    }
+  ],
+  [
+    'policy-1-desc-64',
+    {
+      KOR:
+        '개인 정보의 수집 및 사용에 대한 법적 근거는 위의 진술에 자세히 설명되어 있으며 일반적으로 사용자의 명시적인 동의로 시작하여 Polaris Share 서비스 계약 조건을 지원하고 Polaris Share 서비스의 보안 기능을 지원하기위한 추가 요구 사항이 따릅니다. 법적인 이유로, 특히 GDPR 및 다양한 미국의 법령을 준수하기 위해 필요합니다.',
+      ENG:
+        'Legal basis for the collection and use of personal information is detailed in the above statements and generally starts with explicit consent by a user, followed by additional requirements to support the terms of the Polaris Share service contracts, support the secure function of the Polaris Share service, and as required for legal reasons, specifically to comply with the requirements of the GDPR and various US legal statutes.'
+    }
+  ],
+  [
+    'policy-1-desc-65',
+    {
+      KOR: '데이터 컨트롤러 / 프로세서',
+      ENG: 'Data Controllers/Processors'
+    }
+  ],
+  [
+    'policy-1-desc-66',
+    {
+      KOR:
+        'Polaris Share는 이러한 서비스를 사용하는 고객에게 개별 비즈니스 기능을 지원하는 서비스를 제공합니다. 이러한 Polaris Share 소유자 / 관리자는이 서비스에 대한 사용자를 생성하여 해당 볼트와 관련된 특정 유형의 사용자 데이터에 대한 데이터 컨트롤러로 간주됩니다. 따라서 Polaris Share는 해당 데이터의 프로세서입니다. Polaris Share 고객 (소유자 / 관리자)은이 범주의 데이터에 대한 책임을 공유하며 추가 GDPR 개인 정보 보호 자격이있는 사용자에 대한 의무를 이행 할 수있는 도구가 제공됩니다.',
+      ENG:
+        'Polaris Share provides services to customers who use these services to in turn support their own individual business functions. These Polaris Share owners / administrators create users for these services are considered data controllers for certain types of user data related to their respective vaults. Polaris Share is thus the processor for that data. Polaris Share customers (owners / administrators) share the responsibility for this category of data and are provided the tools to fulfill that obligation for their users who are eligible for the additional GDPR privacy rights.'
+    }
+  ],
+  [
+    'policy-1-desc-67',
+    {
+      KOR:
+        'Polaris Share 고객은 서비스를 설정하고 유지하기 위해 Polaris Share와 개인 정보를 공유하며,이 정보를 위해 Polaris Share는 컨트롤러이며 서비스 계약의 일부로 계약 상 구속됩니다.',
+      ENG:
+        'Polaris Share customers share personal information with Polaris Share to establish and maintain services, and for this information Polaris Share is the Controller and is bound contractually as part of the contract for services.'
+    }
+  ],
+  [
+    'policy-1-desc-68',
+    {
+      KOR:
+        'Polaris Share 서비스를 지원하는 제 3 자 제공 업체도 비슷한 방식으로 프로세서 및 하위 프로세서로서 책임을 공유합니다.',
+      ENG:
+        'Affiliated third party providers who in turn support the Polaris Share service also share responsibility as Processors and Sub-Processors in a similar manner.'
+    }
+  ],
+  [
+    'policy-1-desc-69',
+    {
+      KOR:
+        '지원 역할이 있거나 Polaris Share 내에서 적용 가능한 개인 정보에 액세스 할 수있는 모든 당사자는 GDPR 원칙을 준수하도록 계약에 따라 적절하게 구속됩니다.',
+      ENG:
+        'All parties with support roles or access to applicable personal information within Polaris Share, are appropriately bound by contract to be compliant with the GDPR principles.'
+    }
+  ],
+  [
+    'policy-1-desc-70',
+    {
+      KOR: 'GDPR 규정 준수 관리자 / 소유자를위한 도움말',
+      ENG: 'Help for Admins / Owners with GDPR Compliance'
+    }
+  ],
+  [
+    'policy-1-desc-71',
+    {
+      KOR:
+        'GDPR 규정 준수는 Polaris Share 고객 (소유자 / 관리자)과 Polaris Share 간의 공동 책임입니다. 소유자 / 관리자는 ',
+      ENG:
+        'GDPR compliance is a shared responsibility between Polaris Share customers (owners / administrators) and Polaris Share. Owners / administrators can request help from Polaris Share for complying with GDPR compliance, including support for users who wish to exercise any of their rights under the GDPR, by sending an email to'
+    }
+  ],
+  [
+    'policy-1-desc-72',
+    {
+      KOR:
+        ' 로 이메일을 보내서 GDPR에 따라 권리를 행사하려는 사용자에 대한 지원을 포함하여 GDPR 준수를 준수하기 위해 Polaris Share의 도움을 요청할 수 있습니다.',
+      ENG: '.'
+    }
+  ],
+  [
+    'policy-1-desc-73',
+    {
+      KOR: 'Changes to This Privacy Statement',
+      ENG: '본 개인 정보 보호 정책의 변경'
+    }
+  ],
+  [
+    'policy-1-desc-74',
+    {
+      KOR:
+        '당사가 수집 및 유지 관리하는 모든 개인 정보 (해당 정보가 속한 사람을 식별하거나 식별하는 데 사용될 수있는 정보로 정의 됨)는 때때로 개정되는 본 개인 정보 보호 정책의 적용을받습니다. Polaris Share는 단독 재량에 따라 때때로 본 개인 정보 보호 정책을 변경할 수 있으며이 온라인 문서의 모든 변경 사항과이 문서에 대한 링크가있는 웹 페이지 바닥 글을 통해 통지 할 것입니다. 그러한 변경의 결과로 Polaris Share가 귀하의 개인 정보를 사용하도록 허용되는 방식을 변경하려는 경우, 위의 정보 수정 및 업데이트에 설명 된 절차에 따라 변경할 수 있습니다.',
+      ENG:
+        'All personal information (defined as any information that identifies or can be used to identify the person to whom such information pertains) that we collect and maintain will be subject to this privacy statement, as amended from time to time. Polaris Share may change this privacy statement from time to time at its sole discretion and will provide notice of all changes in this online document and via the footer of the web pages with authorized links to this document. If as the result of such changes you want to alter the ways in which Polaris Share is allowed to use your personal information, you can do so by following the procedure described under Correcting and updating your information, above.'
+    }
+  ],
+  [
+    'policy-1-desc-60',
     {
       KOR: '',
       ENG: ''

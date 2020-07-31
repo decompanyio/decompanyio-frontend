@@ -8,16 +8,6 @@ import { APP_CONFIG } from '../../../app.config'
 import RewardCard from 'components/common/card/RewardCard'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { ContentsListItemProps } from '../../../typings/interfaces'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import ContentsListItemInfo from '../../../graphql/queries/ContentsListItemInfo.graphql'
-import _ from 'lodash'
-import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../service/model/UserInfo'
-import DocumentInfo from '../../../service/model/DocumentInfo'
-import UserDocumentFavoriteFindOne from '../../../graphql/models/UserDocumentFavoriteFindOne'
 import { AUTH_APIS } from '../../../utils/auth'
 import ContentsBookmark from './ContentsBookmark'
 
@@ -27,108 +17,51 @@ const UserAvatarWithoutSSR = dynamic(
 )
 
 export default function({
-  documentId,
-  accountId,
+  documentData,
   path
 }: ContentsListItemProps): ReactElement {
   const [rewardInfoOpen, setRewardInfo] = useState(false)
-  const { loading, error, data } = useQuery(
-    gql`
-      ${ContentsListItemInfo}
-    `,
-    {
-      context: {
-        clientName: 'query'
-      },
-      variables: {
-        userId: accountId || '',
-        userId_scalar: accountId || '',
-        documentId_scalar: documentId || '',
-        documentId: documentId || '',
-        days: 7
-      },
-      notifyOnNetworkStatusChange: false
-    }
-  )
-
-  if (error) return <div />
-
-  let _data = {
-    Document: {},
-    User: {},
-    Creator: {},
-    DocumentFeatured: {},
-    DocumentPopular: {},
-    UserDocumentFavorite: {}
-  }
-
-  if (!loading)
-    _.chain(data)
-      .forOwn((v, k) => {
-        _data[k] = _.values(v)[0]
-      })
-      .value()
-
-  const {
-    Document,
-    User,
-    Creator,
-    DocumentFeatured,
-    DocumentPopular,
-    UserDocumentFavorite
-  } = _data
-
-  const documentInfo = new DocumentInfo(Document)
-  const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
-  const documentPopular = new DocumentPopularModel(DocumentPopular)
-  const creatorRoyalty = new CreatorRoyalty(Creator[0])
-  const userDocumentFavorite = new UserDocumentFavoriteFindOne(
-    UserDocumentFavorite
-  )
-
-  documentInfo.author = new UserInfo(User)
-  documentInfo.latestPageview = documentPopular.latestPageview
-  documentInfo.latestVoteAmount = documentFeatured.latestVoteAmount
 
   let imgUrl_1 = common.getThumbnail(
-    documentId,
+    documentData.id,
     320,
     1,
-    documentInfo.documentName
+    documentData.documentName
   )
   let imgUrl_2 = common.getThumbnail(
-    documentId,
+    documentData.id,
     640,
     1,
-    documentInfo.documentName
+    documentData.documentName
   )
-  let vote = common.deckStr(
-    common.toEther(documentFeatured.latestVoteAmount) || 0
-  )
+  let vote = common.deckStr(common.toEther(documentData.latestVoteAmount) || 0)
+
+  let bookmarkFlag = false
+  let creatorRoyalty = 0
 
   useEffect(() => {
     commonView.lazyLoading()
   }, [])
 
   return (
-    <div className={styles.cli_container} key={documentInfo.seoTitle}>
+    <div className={styles.cli_container} key={documentData.seoTitle}>
       <div>
         <Link
           href={{
             pathname: '/contents_view',
-            query: { seoTitle: documentInfo.seoTitle }
+            query: { seoTitle: documentData.seoTitle }
           }}
-          as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+          as={`/@${documentData.author.username}/${documentData.seoTitle}`}
         >
           <a
             className={styles.cl_imageWrapper}
-            aria-label={documentInfo.seoTitle + ' thumb nail'}
+            aria-label={documentData.seoTitle + ' thumb nail'}
           >
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
               data-src={imgUrl_1}
               data-srcset={imgUrl_1 + ' 1x, ' + imgUrl_2 + ' 2x'}
-              alt={documentInfo.title}
+              alt={documentData.title}
               className={'lazy ' + styles.cl_image}
               onError={e => {
                 let element = e.target as HTMLImageElement
@@ -147,15 +80,15 @@ export default function({
           <Link
             href={{
               pathname: '/contents_view',
-              query: { seoTitle: documentInfo.seoTitle }
+              query: { seoTitle: documentData.seoTitle }
             }}
-            as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+            as={`/@${documentData.author.username}/${documentData.seoTitle}`}
           >
-            <a aria-label={documentInfo.title}>
+            <a aria-label={documentData.title}>
               <Truncate lines={2} ellipsis={<span>...</span>}>
-                {documentInfo.title
-                  ? documentInfo.title
-                  : documentInfo.documentName}
+                {documentData.title
+                  ? documentData.title
+                  : documentData.documentName}
               </Truncate>
             </a>
           </Link>
@@ -164,23 +97,23 @@ export default function({
           <Link
             href={{
               pathname: '/profile_page',
-              query: { identification: documentInfo.author.username }
+              query: { identification: documentData.author.username }
             }}
-            as={`/@${documentInfo.author.username}`}
+            as={`/@${documentData.author.username}`}
           >
-            <a rel="nofollow" aria-label={documentInfo.author.username}>
+            <a rel="nofollow" aria-label={documentData.author.username}>
               <div className={styles.cl_avatar}>
                 <UserAvatarWithoutSSR
-                  picture={documentInfo.author.picture}
-                  croppedArea={documentInfo.author.croppedArea}
+                  picture={documentData.author.picture}
+                  croppedArea={documentData.author.croppedArea}
                   size={26}
                 />
-                <div>{documentInfo.author.username}</div>
+                <div>{documentData.author.username}</div>
               </div>
             </a>
           </Link>
           <div className={styles.cl_date}>
-            {commonView.dateTimeAgo(documentInfo.created, false)}
+            {commonView.dateTimeAgo(documentData.created, false)}
           </div>
         </div>
 
@@ -188,14 +121,14 @@ export default function({
           <Link
             href={{
               pathname: '/contents_view',
-              query: { seoTitle: documentInfo.seoTitle }
+              query: { seoTitle: documentData.seoTitle }
             }}
-            as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+            as={`/@${documentData.author.username}/${documentData.seoTitle}`}
           >
-            <a aria-label={documentInfo.desc}>
-              {documentInfo.desc && (
+            <a aria-label={documentData.desc}>
+              {documentData.desc && (
                 <Truncate lines={2} ellipsis={<span>...</span>}>
-                  {documentInfo.desc}
+                  {documentData.desc}
                 </Truncate>
               )}
             </a>
@@ -208,7 +141,7 @@ export default function({
             onMouseOver={(): void => setRewardInfo(true)}
             onMouseOut={(): void => setRewardInfo(false)}
           >
-            $ {common.deckToDollarWithComma(creatorRoyalty.royalty)}
+            $ {common.deckToDollarWithComma(creatorRoyalty)}
             <img
               className={styles.cl_rewardArrow}
               src={
@@ -217,22 +150,19 @@ export default function({
               alt="arrow button"
             />
           </span>
-          <span className={styles.cl_view}>{documentInfo.latestPageview}</span>
+          <span className={styles.cl_view}>{documentData.latestPageview}</span>
           <span className={styles.cl_vote}>{vote}</span>
           {AUTH_APIS.isLogin() && (
             <ContentsBookmark
-              bookmarkFlagData={!!userDocumentFavorite.documentId}
-              documentData={documentInfo}
+              bookmarkFlagData={bookmarkFlag}
+              documentData={documentData}
               path={path}
             />
           )}
         </div>
 
-        {creatorRoyalty.royalty > 0 && rewardInfoOpen && (
-          <RewardCard
-            reward={creatorRoyalty.royalty}
-            documentData={documentInfo}
-          />
+        {creatorRoyalty > 0 && rewardInfoOpen && (
+          <RewardCard reward={creatorRoyalty} documentData={documentData} />
         )}
       </div>
     </div>

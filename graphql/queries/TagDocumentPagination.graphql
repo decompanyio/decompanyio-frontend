@@ -1,4 +1,4 @@
-query TagDocumentPagination($page: Int, $perPage: Int, $tags: [String]) {
+query TagDocumentPagination($page: Int, $perPage: Int, $tags: MongoID) {
   Document {
     pagination(
       filter: {

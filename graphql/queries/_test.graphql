@@ -1,28 +1,19 @@
-query DocumentCardInfo {
-  Document {
-    findById(_id: "3db4bcdc3bd0439fb35cf146cb44e218") {
-      _id
-      created
-      state
-      accountId
-      documentId
-      documentName
-      documentSize
-      title
-      desc
-      seoTitle
-      useTracking
-      forceTracking
-      isDownload
-      cc
-      isPublic
-      isBlocked
-      isDeleted
-      dimensions {
-        width
-        height
-        type
-      }
+query TagDocumentPagination {
+    Creator {
+        a : getNDaysRoyalty(documentId: "880adddd736b47b3ada6863c14fce90b", days: 7) {
+            activeDate
+            documentId
+            royalty
+            pageview
+            totalPageview
+        }
+
+        b : getNDaysRoyalty(documentId: "880adddd736b47b3ada6863c14fce90b", days: 6) {
+            activeDate
+            documentId
+            royalty
+            pageview
+            totalPageview
+        }
     }
-  }
 }

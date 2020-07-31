@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.07.31-a
+- optimized logic in contents list page
+- add korean ver. policy
+
 ## 2020.07.28-c
 - add healthcheck page
 

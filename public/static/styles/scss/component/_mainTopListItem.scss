@@ -13,15 +13,6 @@
   height: 132px;
   overflow: hidden;
 
-  img {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-  }
-
   span {
     text-transform: uppercase;
     position: absolute;
@@ -112,6 +103,16 @@
     width: 100%;
     vertical-align: top;
   }
+}
+
+.mtli_img {
+  width: 100%;
+}
+
+.mtli_imgLandscape {
+  height: 100%;
+  left: -50%;
+  position: absolute;
 }
 
 .mtli_id {

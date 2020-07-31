@@ -103,7 +103,7 @@ export default function({
               alt={documentInfo.title}
               className={
                 'lazy ' +
-                (ratio > 1.6 ? styles.mri_imgLandscape : styles.mri_img)
+                (ratio > 1 ? styles.mri_imgLandscape : styles.mri_img)
               }
               onError={e => {
                 // console.log(e)

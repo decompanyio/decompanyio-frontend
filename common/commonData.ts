@@ -105,6 +105,9 @@ export default {
   // 비공개 문서 보유 개수
   privateDocumentLimit: 10,
 
+  // royalty 계산 기준일
+  royaltyCalculatedDate: 7,
+
   style: {
     md: {
       max: {

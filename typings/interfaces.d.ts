@@ -55,8 +55,7 @@ export interface ParamsGetDocumentList {
 }
 
 export interface ContentsListItemProps {
-  accountId: string
-  documentId: string
+  documentData: DocumentInfo
   path: string
 }
 
@@ -426,4 +425,9 @@ export interface MainRecentItemProps {
 export interface MainTopListItemProps {
   userId: string
   documentId: string
+}
+
+export interface contentsListIDList {
+  account: string[]
+  document: string[]
 }
