@@ -121,7 +121,7 @@ export default function({
           >
             <a aria-label="viewer page">
               <h3 className={styles.mhsi_title}>
-                {commonView.convertToEllipsis(documentInfo.title, 30)}
+                {commonView.convertToEllipsis(documentInfo.title, 20)}
               </h3>
             </a>
           </Link>
