@@ -144,14 +144,15 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
     })
   }
 
-  let royaltyQuery = ''
+  const temp = () => {
+    let royaltyQuery = ''
 
-  // 5. 위에 셋팅된 쿼리로 각 문서의 royalty 정보를 불러옵니다.
-  idList.document.forEach((value, index) => {
-    royaltyQuery += `
+    // 5. 위에 셋팅된 쿼리로 각 문서의 royalty 정보를 불러옵니다.
+    idList.document.forEach((value, index) => {
+      royaltyQuery += `
     ${'id_' + index} : getNDaysRoyalty(documentId: "${value}", days: ${
-      commonData.royaltyCalculatedDate
-    }) {
+        commonData.royaltyCalculatedDate
+      }) {
       activeDate
       documentId
       royalty
@@ -159,31 +160,30 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
       totalPageview
     }
   `
-  })
+    })
 
-  if (royaltyQuery !== '')
-    useQuery(
-      gql`
-        query {
-            Creator {
-                ${royaltyQuery}
-            }
-        }
-    `,
-      {
-        context: {
-          clientName: 'query'
-        },
-        skip:
-          idList.document.length === 0 ||
-          royaltyQuery === '' ||
-          !data ||
-          (data.Document.pagination.pageInfo.currentPage - 1) * 10 ===
-            idList.account.length,
-        notifyOnNetworkStatusChange: false,
-        onCompleted: data => {
-          let royaltyArr = []
+    return royaltyQuery
+  }
 
+  useQuery(
+    gql`
+          query {
+              Creator {
+                  ${temp() ||
+                    'getNDaysRoyalty(documentId: "test", days: 7) {activeDate}'}
+              }
+          }
+      `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      notifyOnNetworkStatusChange: false,
+      skip: documentRoyaltyList.length === idList.account.length && !temp(),
+      onCompleted: data => {
+        let royaltyArr = []
+
+        if (data) {
           _.forIn(data.Creator, (value, key) => {
             let idArr = key.split('_')
 
@@ -195,7 +195,8 @@ export default function({ tag, path }: ContentsListProps): ReactElement {
           setDocumentRoyaltyList(royaltyArr)
         }
       }
-    )
+    }
+  )
 
   if (documentList.length === 0) return <ContentsListMock />
 

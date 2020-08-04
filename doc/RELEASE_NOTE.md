@@ -1,5 +1,11 @@
 # Release Note
 
+## 2020.08.04-a
+
+Bug fix
+- issue occurred when link to list page by clicking tag button on main page 
+
+
 ## 2020.07.31-c
 - optimized logic in contents list page
 - add korean ver. policy
