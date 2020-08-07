@@ -1,0 +1,59 @@
+
+.fs_snsList {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: 620px;
+    margin: 70px auto;
+    justify-content: center
+  }
+
+  @media (max-width: 768px) {
+    max-width: 300px;
+    margin: 35px auto
+  }
+
+  li {
+    margin-right: 10px
+  }
+}
+
+.fs_forA11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  text-indent: -99em
+}
+
+@for $i from 1 through 9 {
+  .sprite_sns_#{$i} {
+    @include sprite-image(40, 40, #{(($i * 40) - 40) * -1}, -60);
+
+    @media (max-width: 1024px) {
+      @if ($i == 9) {
+        @include sprite-image(100, 100, 0, -160, true);
+      } @else {
+        @include sprite-image(100, 100, #{(($i * 100) - 100) * -1}, -60, true);
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      @if ($i == 9) {
+        @include sprite-image(50, 50, 0, -80, true);
+      } @else {
+        @include sprite-image(50, 50, #{(($i * 50) - 50) * -1}, -30, true);
+      }
+      background-size: 400px auto;
+    }
+  }
+}

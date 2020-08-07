@@ -1,7 +1,7 @@
 import AxiosService from './AxiosService'
 
-let getAnalyticsExportUrl = 'analytics/export'
-let getAnalyticsListUrl = 'analytics/list'
+let getAnalyticsExportUrl = 'ProfileAnalytics/export'
+let getAnalyticsListUrl = 'ProfileAnalytics/list'
 
 export default {
   GET: {

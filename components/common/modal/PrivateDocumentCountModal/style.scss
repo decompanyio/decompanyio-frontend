@@ -1,0 +1,5 @@
+
+.pdc_okBtn {
+  @extend .modal_okBtn;
+  @include ml(3);
+}

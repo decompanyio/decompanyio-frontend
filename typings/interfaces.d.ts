@@ -54,7 +54,7 @@ export interface ParamsGetDocumentList {
   pageSize?: number
 }
 
-export interface ContentsListItemProps {
+export interface ContentsItemProps {
   documentData: DocumentInfo
   documentRoyalty
   path: string
@@ -322,10 +322,6 @@ export interface UploadProgressModalProps {
 }
 
 export interface DeletedPageProps {
-  errMessage?: string
-}
-
-export interface NotFoundPageProps {
   errMessage?: string
 }
 

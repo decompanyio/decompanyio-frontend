@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { APP_CONFIG } from '../../app.config'
 
-export default params => {
+export default function Graphql(params) {
   let _header = { 'Content-Type': 'application/json' }
 
   // 헤더에 JWT 추가

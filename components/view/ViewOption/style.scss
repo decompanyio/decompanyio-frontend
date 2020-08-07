@@ -1,0 +1,20 @@
+
+.vib_optionBtn {
+  @include common_optionBtn;
+  @include ml(4);
+  display: flex;
+
+  @media all and (max-width: $sm-max-width) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.vib_optionTable {
+  @include common_optionTable;
+}
+
+.vib_optionTableBtn {
+  @include common_optionTableBtn;
+}

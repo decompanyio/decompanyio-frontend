@@ -1,0 +1,398 @@
+
+.mhsi_wrapper {
+  width: 310px;
+  margin: 20px auto 0;
+  text-align: center;
+  color: #fff;
+
+  @media (max-width: 1024px) {
+    width: 100vw;
+    height: 100vw;
+    background: url($image-url +'/main/hexagon2-bg-m.png') no-repeat 50% 0 / 100%;
+    margin: 0;
+    padding: 9vw 20vw 0;
+    letter-spacing: 0.07em;
+  }
+}
+
+.mhsi_titleWrapper {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  height: 5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: inherit;
+  }
+}
+
+.mhsi_title {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0;
+  color: #fff;
+  word-break: break-all;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem;
+  }
+}
+
+.mhsi_tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    &:last-child {
+      margin-left: 5px;
+      &:before {
+        margin-right: 3px;
+        content: '#';
+      }
+    }
+  }
+}
+
+.mhsi_container {
+  @media (max-width: 1024px) {
+    top: -45vw;
+    transition: left 0.1s ease-in, top 0.2s ease-in, transform 0.4s;
+  }
+}
+
+.mhsi_active {
+  @media (max-width: 1024px) {
+    transform: scale(1) !important;
+    z-index: 1;
+    top: 0;
+
+    .mhsi_wrapper {
+      background-image: url($image-url +'/main/hexagon-bg-m.png');
+    }
+  }
+}
+
+
+@for $i from 0 through 4 {
+  .mhsi_prev_#{$i} {
+    @media (max-width: 1024px) {
+      transform: scale(0.5) !important;
+      left: #{-(($i - 1)*100)-55}vw !important;
+    }
+  }
+
+  .mhsi_next_#{$i} {
+    @media (max-width: 1024px) {
+      transform: scale(0.5) !important;
+      left: #{-($i*100)-42}vw !important;
+    }
+  }
+}
+
+
+.mhsi_badge {
+  font-size: 12px;
+  font-weight: 700;
+  background: #0065e4;
+  display: inline-block;
+  padding: 3px 10px 2px;
+  letter-spacing: 0.07em;
+  border-radius: 4px;
+  margin-right: 5px;
+  text-transform: uppercase;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5vw;
+    padding: 0.2vw 2vw 0.2vw;
+    letter-spacing: 0.07em;
+    border-radius: 1vw;
+    margin-right: 0.5vw;
+    font-weight: 400;
+  }
+}
+
+.mhsi_hash {
+  color: #81dafe;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 5px;
+
+  @media (max-width: 1024px) {
+    font-size: 3vw;
+  }
+}
+
+.mhsi_desc {
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 1.3;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5vw;
+    opacity: 0.8;
+    line-height: 1.3;
+    margin-top: 0;
+    min-height: 7vw;
+  }
+}
+
+.mhsi_date {
+  color: #8bbeff;
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 300;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5vw;
+    margin-top: 0;
+  }
+}
+
+.mhsi_fileInfo {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 5px;
+
+  @media (max-width: 1024px) {
+    margin-top: 0.2vw
+  }
+
+  span {
+    &:first-child {
+      display: flex;
+      align-items: center;
+      float: left;
+      font-size: 13px;
+
+      @media (max-width: 1024px) {
+        font-size: 2.2vw
+      }
+
+      span {
+        font-size: 16px;
+        color: #81dafe;
+        margin-left: 5px;
+
+        @media (max-width: 1024px) {
+          font-size: 2.8vw
+        }
+
+        @media (max-width: 768px) {
+          font-size: 3vw
+        }
+      }
+    }
+
+    &:last-child {
+      display: block;
+      float: right;
+      font-size: 16px;
+      color: #0032a2;
+      font-weight: 700;
+
+      @media (max-width: 1024px) {
+        font-size: 2.8vw
+      }
+    }
+  }
+}
+
+.mhsi_infoGroup {
+  width: 100%;
+  background: rgba(14, 110, 230, 0.7);
+  height: 45px;
+  border-radius: 23px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 7px;
+
+  div {
+    flex: 1;
+
+    &:first-child {
+      position: relative;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 13px;
+      font-weight: 300;
+      cursor: default;
+    }
+
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      background-image: url($image-url +'/main/ico-docinfo.png');
+    }
+
+    &:first-child {
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    height: 8vw;
+    border-radius: 4vw;
+    margin-top: 2vw;
+    padding-top: 1.8vw;
+    line-height: 1;
+
+    div > span {
+      font-size: 2.5vw;
+      font-weight: 300;
+    }
+
+    div > i {
+      width: 4vw;
+      height: 4vw;
+      background-size: 13vw
+    }
+
+    div:first-child > span {
+      font-weight: 700;
+    }
+  }
+
+  @media (max-width: 768px) {
+    div > span {
+      font-size: 3vw;
+    }
+  }
+}
+
+.mhsi_iconDown {
+  background-position: -90px 0;
+  width: 10px !important;
+  height: 10px !important;
+
+  @media (max-width: 1024px) {
+    background-position: -11.7vw 0;
+    width: 1.4vw !important;
+    height: 1.4vw !important;
+  }
+}
+
+.mhsi_iconMoney {
+  background-position: 0 0;
+}
+
+.mhsi_download {
+  background-position: -30px 0;
+
+  @media (max-width: 1024px) {
+    background-position: -4vw 0
+  }
+}
+
+.mhsi_like {
+  background-position: -60px 0;
+
+  @media (max-width: 1024px) {
+    background-position: -8vw 0
+  }
+}
+
+.mhsi_user {
+  margin-top: 22px;
+
+  @media (max-width: 1024px) {
+    margin-top: 4vw;
+    font-size: 2.8vw;
+    span {
+      width: 14vw;
+      height: 14vw;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.mhsi_userAvatar {
+  display: block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #4095ff;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    a > div:first-child {
+      width: 14vw !important;
+      height: 14vw !important;
+    }
+  }
+}
+
+.mhsi_username {
+  color: white;
+}
+
+.mhsi_btnFollow {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0 10px;
+  width: auto;
+  color: #fff;
+  height: 20px;
+  background: #0032a2;
+  font-size: 12px;
+  margin: -10px auto 0;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.mhsi_rewardInfo {
+  position: absolute;
+  min-height: 45px;
+  margin-top: 12px;
+  left: 0;
+  background: #ffffff;
+  z-index: 1;
+  width: 310px;
+  color: #4d4d4d;
+  font-size: 14px;
+  padding: 10px 1rem;
+  border-radius: 10px;
+  top: 37px;
+
+  @media (max-width: $sm-max-width) {
+    width: 100% !important;
+    bottom: -40px;
+  }
+
+  span {
+    @include ml(1);
+    @include mr(1);
+    font-weight: bold;
+    color: #1273ee;
+  }
+}

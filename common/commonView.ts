@@ -55,7 +55,7 @@ export default {
               if (ss > 0) {
                 return (
                   ss +
-                  (isMobile ? 's' : ' ' + psString('common-second')) +
+                  (isMobile ? 's' : ' ' + psString('common-sectionSecond')) +
                   checkMultiple(ss)
                 )
               } else return 'now'
@@ -72,7 +72,7 @@ export default {
       d.setTime(d.getTime() + expire * 24 * 60 * 60 * 1000)
       let expires = 'expires=' + d.toUTCString()
       document.cookie =
-        name + '=' + value + '; ' + expires + '; path=/;samesite=strict'
+        name + '=' + value + '; ' + expires + '; path=/;samesite=strict;'
     }
   },
 
@@ -163,7 +163,7 @@ export default {
     })
   },
 
-  // Scroll to author
+  // Scroll to ProfileAuthor
   scrollTop(): void {
     if (typeof window !== 'undefined') window.scrollTo(0, 0)
   },

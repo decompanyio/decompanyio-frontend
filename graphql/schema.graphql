@@ -109,7 +109,7 @@ type DocumentFeaturedEdge {
     node: DocumentFeatured!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type DocumentFeaturedPagination {
     "Total object count."
     count: Int
@@ -119,7 +119,7 @@ type DocumentFeaturedPagination {
     pageInfo: PaginationInfo!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type DocumentPagination {
     "Total object count."
     count: Int
@@ -160,7 +160,7 @@ type DocumentPopularEdge {
     node: DocumentPopular!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type DocumentPopularPagination {
     "Total object count."
     count: Int
@@ -228,13 +228,13 @@ type QueryCurator {
 
 type QueryDocument {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyDocumentInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -263,7 +263,7 @@ type QueryDocument {
     pagination(
         "Filter by fields"
         filter: FilterFindManyDocumentInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyDocumentInput
@@ -272,13 +272,13 @@ type QueryDocument {
 
 type QueryDocumentFeatured {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyDocumentFeaturedInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -307,7 +307,7 @@ type QueryDocumentFeatured {
     pagination(
         "Filter by fields"
         filter: FilterFindManyDocumentFeaturedInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyDocumentFeaturedInput
@@ -316,13 +316,13 @@ type QueryDocumentFeatured {
 
 type QueryDocumentPopular {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyDocumentPopularInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -351,7 +351,7 @@ type QueryDocumentPopular {
     pagination(
         "Filter by fields"
         filter: FilterFindManyDocumentPopularInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyDocumentPopularInput
@@ -371,13 +371,13 @@ type QueryProfileSummary {
 
 type QueryUser {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyUserInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -406,7 +406,7 @@ type QueryUser {
     pagination(
         "Filter by fields"
         filter: FilterFindManyUserInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyUserInput
@@ -415,13 +415,13 @@ type QueryUser {
 
 type QueryUserDocumentFavorite {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyUserDocumentFavoriteInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -450,7 +450,7 @@ type QueryUserDocumentFavorite {
     pagination(
         "Filter by fields"
         filter: FilterFindManyUserDocumentFavoriteInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyUserDocumentFavoriteInput
@@ -459,13 +459,13 @@ type QueryUserDocumentFavorite {
 
 type QueryUserDocumentHistory {
     connection(
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         after: String,
         "Backward pagination argument for returning at most last edges"
         before: String,
         "Filter by fields"
         filter: FilterFindManyUserDocumentHistoryInput,
-        "Forward pagination argument for returning at most first edges"
+        "Forward pagination argument for returning at most sectionFirst edges"
         first: Int,
         "Backward pagination argument for returning at most last edges"
         last: Int,
@@ -494,7 +494,7 @@ type QueryUserDocumentHistory {
     pagination(
         "Filter by fields"
         filter: FilterFindManyUserDocumentHistoryInput,
-        "Page number for displaying"
+        "page number for displaying"
         page: Int,
         perPage: Int = 20,
         sort: SortFindManyUserDocumentHistoryInput
@@ -567,7 +567,7 @@ type UserDocumentFavoriteEdge {
     node: UserDocumentFavorite!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type UserDocumentFavoritePagination {
     "Total object count."
     count: Int
@@ -605,7 +605,7 @@ type UserDocumentHistoryEdge {
     node: UserDocumentHistory!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type UserDocumentHistoryPagination {
     "Total object count."
     count: Int
@@ -623,7 +623,7 @@ type UserEdge {
     node: User!
 }
 
-"List of items with pagination."
+"AlertList of items with pagination."
 type UserPagination {
     "Total object count."
     count: Int
@@ -1197,7 +1197,7 @@ input FilterDocumentFeaturedInput {
     OR: [FilterDocumentFeaturedInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterDocumentFeaturedInput
     accountId: String
     created: Float
@@ -1215,7 +1215,7 @@ input FilterDocumentInput {
     OR: [FilterDocumentInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterDocumentInput
     accountId: String
     cc: String
@@ -1245,7 +1245,7 @@ input FilterDocumentPopularInput {
     OR: [FilterDocumentPopularInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterDocumentPopularInput
     accountId: String
     created: Float
@@ -1263,7 +1263,7 @@ input FilterFindManyDocumentFeaturedInput {
     OR: [FilterFindManyDocumentFeaturedInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyDocumentFeaturedInput
     accountId: String
     created: Float
@@ -1281,7 +1281,7 @@ input FilterFindManyDocumentInput {
     OR: [FilterFindManyDocumentInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyDocumentInput
     accountId: String
     cc: String
@@ -1301,7 +1301,7 @@ input FilterFindManyDocumentInput {
     locale: String
     seoTitle: String
     state: EnumDocumentState
-    "Search by $in operator"
+    "SearchButton by $in operator"
     tags: MongoID
     title: String
     useTracking: Boolean
@@ -1312,7 +1312,7 @@ input FilterFindManyDocumentPopularInput {
     OR: [FilterFindManyDocumentPopularInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyDocumentPopularInput
     accountId: String
     created: Float
@@ -1330,7 +1330,7 @@ input FilterFindManyUserDocumentFavoriteInput {
     OR: [FilterFindManyUserDocumentFavoriteInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyUserDocumentFavoriteInput
     created: Float
     createdAt: Date
@@ -1343,7 +1343,7 @@ input FilterFindManyUserDocumentHistoryInput {
     OR: [FilterFindManyUserDocumentHistoryInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyUserDocumentHistoryInput
     created: Float
     createdAt: Date
@@ -1358,7 +1358,7 @@ input FilterFindManyUserInput {
     OR: [FilterFindManyUserInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindManyUserInput
     created: Float
     createdAt: Date
@@ -1377,7 +1377,7 @@ input FilterFindOneDocumentFeaturedInput {
     OR: [FilterFindOneDocumentFeaturedInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneDocumentFeaturedInput
     accountId: String
     created: Float
@@ -1395,7 +1395,7 @@ input FilterFindOneDocumentInput {
     OR: [FilterFindOneDocumentInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneDocumentInput
     accountId: String
     cc: String
@@ -1425,7 +1425,7 @@ input FilterFindOneDocumentPopularInput {
     OR: [FilterFindOneDocumentPopularInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneDocumentPopularInput
     accountId: String
     created: Float
@@ -1443,7 +1443,7 @@ input FilterFindOneUserDocumentFavoriteInput {
     OR: [FilterFindOneUserDocumentFavoriteInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneUserDocumentFavoriteInput
     created: Float
     createdAt: Date
@@ -1456,7 +1456,7 @@ input FilterFindOneUserDocumentHistoryInput {
     OR: [FilterFindOneUserDocumentHistoryInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneUserDocumentHistoryInput
     created: Float
     createdAt: Date
@@ -1471,7 +1471,7 @@ input FilterFindOneUserInput {
     OR: [FilterFindOneUserInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterFindOneUserInput
     created: Float
     createdAt: Date
@@ -1490,7 +1490,7 @@ input FilterUserDocumentFavoriteInput {
     OR: [FilterUserDocumentFavoriteInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterUserDocumentFavoriteInput
     created: Float
     createdAt: Date
@@ -1503,7 +1503,7 @@ input FilterUserDocumentHistoryInput {
     OR: [FilterUserDocumentHistoryInput!]
     _id: MongoID
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterUserDocumentHistoryInput
     created: Float
     createdAt: Date
@@ -1518,7 +1518,7 @@ input FilterUserInput {
     OR: [FilterUserInput!]
     _id: String
     _ids: [MongoID]
-    "List of *indexed* fields that can be filtered via operators."
+    "AlertList of *indexed* fields that can be filtered via operators."
     _operators: OperatorsFilterUserInput
     created: Float
     createdAt: Date
@@ -2188,5 +2188,5 @@ scalar MongoID
 
 scalar Date
 
-"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+"The `JSON` scalar type represents JSON values as specified by [ECMA-error](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-error.pdf)."
 scalar JSON

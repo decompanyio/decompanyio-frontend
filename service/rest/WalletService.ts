@@ -3,7 +3,7 @@ import AxiosService from './AxiosService'
 let walletBalance = 'account/balance'
 let walletCreate = 'account/create'
 let walletWithdraw = 'account/withdraw'
-let voteDocument = 'document/vote'
+let voteDocument = 'document/VoteModal'
 let claimCreator = 'claim/royalty'
 let claimCurator = 'claim/reward'
 

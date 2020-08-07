@@ -1,0 +1,185 @@
+
+
+.ta_container {
+  @include row;
+  @include container;
+  @include mt(3);
+
+  @media (max-width: $sm-max-width) {
+    @include mt(3);
+  }
+}
+
+.ta_thumbWrapper {
+  @include col(12);
+  @include col-sm(3);
+  @include col-lg(2);
+  @include mt(2);
+
+  @media (max-width: $sm-max-width) {
+    @include mb(4);
+
+    div {
+      width: 180px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.ta_tabThumb {
+  max-width: 163px;
+  max-height: 92px;
+  min-height: 90px;
+  overflow: hidden;
+  text-align: center;
+  background: #fdfdfd;
+  border: 1px solid #e2e2e2;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.ta_imgLandscape {
+  height: 100%;
+  left: -50%;
+  position: absolute;
+
+  @media (max-width: $sm-max-width) {
+    left: 0 !important;
+    position: relative !important;
+    width: 100%;
+  }
+}
+
+.ta_imgPortrait {
+  width: 100%;
+}
+
+.ta_detailInfoWrapper {
+  @include col(12);
+  @include col-sm(9);
+  @include col-lg(10);
+  @include p-sm(2);
+  position: relative;
+  width: 100%;
+
+  @media (max-width: $sm-max-width) {
+    margin: 0 0 0 1rem;
+  }
+}
+
+.ta_infoTitle,
+.ta_infoTitle > i {
+  @include mb(2);
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.ta_item {
+  @include d-flex;
+  @include mr(4);
+  position: relative;
+  font-weight: bold;
+  align-content: center;
+
+  @media (max-width: 1024px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.ta_reward {
+  @include mr(1);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  letter-spacing: -1px;
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+
+  @media (min-width: $sm-min-width) {
+    font-size: 17px;
+  }
+}
+
+.ta_rewardArrow {
+  @include ml(1);
+  @include mr(2);
+  margin-bottom: 3px;
+}
+
+/*
+.tracking-item .info_date {
+  ProfileAuthor: 1px;
+  float: none;
+}
+}*/
+
+.ta_view {
+  @include common_view;
+  @include mr(3);
+  @include d-flex;
+  align-items: center;
+}
+
+.ta_vote {
+  @include mr(4);
+  @include d-flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666666;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    margin-right: 3px;
+    position: relative;
+    height: 19px;
+    top: -3px;
+    background-image: url($image-url +'/icon/i_thumb.svg');
+    vertical-align: middle;
+  }
+
+  @media (min-width: $sm-min-width) {
+    font-size: 13px;
+  }
+}
+
+.ta_date {
+  @include ml(4);
+  font-size: 13px;
+  color: #b3b3b3;
+  position: relative;
+  top: 1px;
+  float: none;
+  height: 25px;
+
+  @media (min-width: $sm-min-width) {
+    right: 0;
+    float: inherit;
+    top: 5px !important;
+    font-size: 12px;
+  }
+}

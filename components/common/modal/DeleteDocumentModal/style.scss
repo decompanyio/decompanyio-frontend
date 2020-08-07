@@ -1,0 +1,16 @@
+
+.edm_loadingWrapper {
+  position: absolute;
+  background: white;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  top: 0;
+}
+
+.edm_common_disabledBtn {
+  @include common_disabledBtn;
+}

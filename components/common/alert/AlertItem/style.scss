@@ -1,0 +1,65 @@
+
+.a_container {
+  margin-bottom: 16px;
+  max-height: 150px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  padding: 6px 24px;
+}
+
+.a_success {
+  @extend .a_container;
+  background-color: $primary-color;
+}
+
+.a_warning {
+  @extend .a_container;
+  background-color: #ffa000;
+}
+
+.a_error {
+  @extend .a_container;
+  background: #d32f2f;
+}
+
+.a_wrapper {
+  @include d-flex;
+  font-size: 14px;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  span {
+    padding: 5px 1rem 5px 0;
+    color: white;
+
+    &:first-child {
+      @include mr(2);
+    }
+
+    i {
+      font-size: 17px;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+.a_explain {
+  @include mb(2);
+  color: white;
+  font-size: 13px;
+}
+
+.a_close {
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  right: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

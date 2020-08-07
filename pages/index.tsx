@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
-import Main from 'components/body/main/Main'
+import Main from 'components/main/MainContainer'
 import Layout from 'components/Layout'
-import { withApollo } from '../components/apollo'
+import { withApollo } from '../components/Apollo'
 
 function index(): ReactElement {
   return (

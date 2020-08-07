@@ -98,8 +98,25 @@ app.prepare().then(() => {
     return app.serveStatic(req, res, filePath)
   })
 
-  // 뷰어 페이지 + 페이지 넘버
-  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\/[a-zA-Z0-9-]/, (req, res) => {
+  // viewer page + page 넘버
+  server.get(
+    /\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+\/[a-zA-Z0-9-]/,
+    (req, res) => {
+      const params = {
+        identifier: req.url.split('/')[1],
+        seoTitle: req.url.split('/')[2]
+      }
+      return app.render(
+        req,
+        makeTrackingCookieResponse(req, res),
+        '/contents_view',
+        params
+      )
+    }
+  )
+
+  // viewer page
+  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/, (req, res) => {
     const params = {
       identifier: req.url.split('/')[1],
       seoTitle: req.url.split('/')[2]
@@ -112,31 +129,17 @@ app.prepare().then(() => {
     )
   })
 
-  // 뷰어 페이지
-  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+/, (req, res) => {
-    const params = {
-      identifier: req.url.split('/')[1],
-      seoTitle: req.url.split('/')[2]
-    }
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_view',
-      params
-    )
-  })
-
-  // 프로필 페이지
+  // profile page
   server.get(/\/@[a-zA-Z0-9-]+\/?/, (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
     const params = { identifier: req.url.split('/')[1] }
     return app.render(req, res, '/profile_page', params)
   })
 
-  // 트랙킹 페이지
+  // tracking page
   server.get('/t/:identifier/:seoTitle', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
     let pathname = req.url.split('/')
 
@@ -148,9 +151,9 @@ app.prepare().then(() => {
     return app.render(req, res, '/tracking', params)
   })
 
-  // 트랙킹 디테일 페이지
+  // tracking detail page
   server.get('/td/:identifier/:seoTitle', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
     let pathname = req.url.split('/')
 
@@ -162,9 +165,9 @@ app.prepare().then(() => {
     return app.render(req, res, '/tracking_detail', params)
   })
 
-  // 태그 문서 목록 페이지
+  // document list searched by tags page
   server.get('/tag/:tag', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
     if (!req.params.tag)
       return app.render(req, res, '/not_found_page', req.query)
@@ -173,75 +176,75 @@ app.prepare().then(() => {
     return app.render(req, res, '/contents_list', params)
   })
 
-  // 최신 문서 목록 페이지
+  // latest page
   server.get('/latest', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/contents_list', req.query)
   })
 
-  // 추천 문서 목록 페이지
+  // featured page
   server.get('/featured', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/contents_list', req.query)
   })
 
-  // 인기 문서 목록 페이지
+  // popular page
   server.get('/popular', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/contents_list', req.query)
   })
 
-  // 찜 문서 목록 페이지
+  // bookmark page
   server.get('/mylist', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/contents_list', req.query)
   })
 
-  // 내가 본 문서 목록 페이지
+  // 내가 본 문서 목록 page
   server.get('/history', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, '/contents_list', req.query)
   })
 
-  // 회사소개 페이지
+  // about us page
   server.get('/au', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/about_us', req.query)
   })
 
-  // FAQ 페이지
+  // FAQ page
   server.get('/faq', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/faq', req.query)
   })
 
-  // 태그 목록 페이지
+  // more tags page
   server.get('/others', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/others', req.query)
   })
 
-  // 개인정보정책 페이지
+  // privacy policy page
   server.get('/pp', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/privacy_policy', req.query)
   })
 
-  // 이용약관 페이지
+  // terms of service page
   server.get('/t', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/terms', req.query)
   })
 
-  // 유저 가이드 페이지
+  // user guide page
   server.get('/ug', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/user_guide', req.query)
   })
 
-  // 유저 가이드 페이지
+  // callback page
   server.get('/callback', (req, res) => {
-    res.header('X-Robots-Tag', 'noindex')
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
     return app.render(req, res, '/callback', req.query)
   })
 
@@ -265,7 +268,7 @@ app.prepare().then(() => {
   })
 
   server.listen(port, err => {
-    console.log('\n\n[Polaris Share]\n')
+    console.log('\n\n[Polaris ShareModal]\n')
 
     console.log('Project Version : ' + version)
     console.log('NODE_ENV : ' + env)

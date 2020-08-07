@@ -5,10 +5,10 @@ import repos from '../utils/repos'
 import Layout from 'components/Layout'
 import DocumentInfo from '../service/model/DocumentInfo'
 import Router from 'next/router'
-import ViewContainer from '../components/body/view/ViewContainer'
+import ViewContainer from '../components/view/ViewContainer'
 import Meta from '../graphql/models/Meta'
 
-function Index(
+function PageContentsView(
   { documentData, text, ratio, readPage, metaData, message },
   ...rest
 ): ReactElement {
@@ -33,7 +33,7 @@ function Index(
   )
 }
 
-Index.getInitialProps = async props => {
+PageContentsView.getInitialProps = async props => {
   let seoTitle = encodeURIComponent(
     commonView.getPathFromPathname(props.asPath)
   )
@@ -62,4 +62,4 @@ Index.getInitialProps = async props => {
   }
 }
 
-export default Index
+export default PageContentsView

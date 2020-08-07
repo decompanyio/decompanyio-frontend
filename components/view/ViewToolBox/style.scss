@@ -1,0 +1,38 @@
+
+.vtb_container {
+  @include inner-container;
+}
+
+.vtb_shareBtn {
+  @include mb(1);
+  @include common_toolBtn;
+}
+
+.vtb_publishBtn {
+  @include mb(1);
+  @include common_toolBtn;
+}
+
+.vtb_voteBtn {
+  @include mb(1);
+  @include common_toolBtn;
+}
+
+.vtb_downloadBtn {
+  @include mb(1);
+  @include common_toolBtn;
+}
+
+.vtb_trackingBtn {
+  @include mb(1);
+  @include common_toolBtn;
+}
+
+.vtb_downloadBtnDisabled {
+  @extend .vtb_downloadBtn;
+  @include common_disabledBtn;
+}
+
+.vtb_hr {
+  @include common_hr;
+}

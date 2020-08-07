@@ -1,0 +1,33 @@
+
+.puti_optionBtn {
+  @include common_optionBtn;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @media (min-width: $sm-min-width) {
+    i {
+      display: none;
+    }
+  }
+}
+
+.puti_optionShow {
+  display: inline-block !important;
+}
+
+.puti_optionTableHide {
+  @include common_optionTable;
+  display: none;
+}
+
+.puti_optionTable {
+  @include common_optionTable;
+}
+
+.puti_optionTableBtn {
+  @include common_optionTableBtn;
+
+  i {
+    display: inline-block !important;
+  }
+}

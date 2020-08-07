@@ -1,5 +1,13 @@
 # Release Note
 
+## 2020.08.07-a
+- add notice bar on main page
+- optimized structure of project for distributing the workspace of developer and designer 
+- add 404 page
+
+Bug fix
+- link to 404 page when refreshing page with korean title
+
 ## 2020.08.04-a
 
 Bug fix

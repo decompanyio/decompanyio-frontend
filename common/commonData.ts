@@ -54,27 +54,27 @@ export default {
 
   // 메타 데이터 기본값
   metaData: {
-    title: 'Polaris Share',
+    title: 'Polaris ShareModal',
     extension: '',
     tag: '',
-    seoTitle: 'Polaris Share',
+    seoTitle: 'Polaris ShareModal',
     description: 'Sharing knowledge in new ways',
     twitter: {
       card: 'summary_large_image',
-      site: '@Polaris Share',
-      title: 'Polaris Share',
+      site: '@Polaris ShareModal',
+      title: 'Polaris ShareModal',
       description: 'Sharing knowledge in new ways',
       image: 'https://www.polarishare.com/logo.png',
       url: 'https://www.polarishare.com'
     },
     og: {
       /*eslint-disable @typescript-eslint/camelcase*/
-      site_name: 'Polaris Share',
+      site_name: 'Polaris ShareModal',
       image_width: '720',
       image_height: '498',
       /*eslint-disable @typescript-eslint/camelcase*/
       type: 'website',
-      title: 'Polaris Share',
+      title: 'Polaris ShareModal',
       description: 'Sharing knowledge in new ways',
       url: 'https://www.polarishare.com'
     }
@@ -93,10 +93,10 @@ export default {
   // 자리비움 체크 시간: 1분
   awayCheckTime: 1000, // 60000,
 
-  // Alert 창 종료 시간: 7초
+  // alert 창 종료 시간: 7초
   alertRemainTime: 7000,
 
-  // My page 리스트 개수
+  // MyAvatar page 리스트 개수
   myPageListSize: 10,
 
   // common 리스트 개수

@@ -3,6 +3,7 @@ import { GetTokenProps, GetQueryParams } from './types'
 import UserInfo from '../service/model/UserInfo'
 import { APP_CONFIG } from '../app.config'
 import common from '../common/common'
+import Router from 'next/router'
 
 export const AUTH_APIS = {
   login: (returnUrl?: string) => {
@@ -21,12 +22,14 @@ export const AUTH_APIS = {
   },
   logout: (): void => {
     AUTH_APIS.clearSession()
+
     window.location.href = `${
       APP_CONFIG.domain().auth
     }/authentication/signout?returnUrl=${APP_CONFIG.domain().mainHost}`
   },
   isAuthenticated: (): boolean => {
     if (common.isServer()) return false
+
     const loginInfo = AUTH_APIS.getTokens()
     const expiresAt = JSON.parse(loginInfo.expiredAt)
     const userInfo = JSON.parse(loginInfo.userInfo)
@@ -48,13 +51,13 @@ export const AUTH_APIS = {
   getParamsFromAuthUrlQuery: (qs: string): GetQueryParams => {
     const _qs = qs.split('+').join(' ')
     const re = /[?&]?([^=]+)=([^&]*)/g
+    let tokens
     let params = {
       error: '',
       authorization_token: '',
       return_url: '',
       expired_at: 0
     }
-    let tokens
 
     while ((tokens = re.exec(_qs))) {
       // @ts-ignore
@@ -105,7 +108,7 @@ export const AUTH_APIS = {
     localStorage.removeItem('ps_ru')
     localStorage.removeItem('ps_ui')
 
-    // Tracking API
+    // tracking API
     localStorage.removeItem('tracking_info')
 
     // Content Editor
@@ -141,7 +144,7 @@ export const AUTH_APIS = {
         repos.Account.syncAuthAndRest(ui, at)
           .then(res => resolve(new UserInfo(res)))
           .catch((): void => {
-            console.error('Login failed because user sync failed.')
+            console.error('LoginButton failed because user sync failed.')
             AUTH_APIS.logout()
           })
       } else {
@@ -158,26 +161,21 @@ export const AUTH_APIS = {
         .catch(err => {
           AUTH_APIS.clearSession()
           console.log('renewSession error')
+          console.error(err)
           reject(err)
+          return Router.push('/')
         })
     }),
   scheduleRenewal: () =>
     new Promise((resolve, reject) => {
-      let expiresAt = JSON.parse(localStorage.getItem('ps_ea') || '{}')
-      let at = localStorage.getItem('ps_at') || ''
-      let timeout = expiresAt - Date.now() // mms
+      let timeout =
+        JSON.parse(localStorage.getItem('ps_ea') || '{}') - Date.now() // mms
 
-      //console.log('timeout : ', timeout)
-
-      const _renewSession = () =>
-        AUTH_APIS.renewSession()
-          .then(at => resolve(at))
-          .catch(err => {
-            console.log(err)
-            reject(err)
-          })
-
-      return timeout > 0 ? resolve(at) : _renewSession()
+      return timeout > 0
+        ? resolve(localStorage.getItem('ps_at') || '')
+        : AUTH_APIS.renewSession()
+            .then(at => resolve(at))
+            .catch(err => reject(err))
     }),
   iframeHandler: () =>
     new Promise((resolve, reject) => {

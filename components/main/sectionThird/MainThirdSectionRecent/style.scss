@@ -1,0 +1,107 @@
+
+.mr_wrapper {
+  margin: 0 1rem;
+}
+
+.mr_container {
+  width: 1248px;
+  margin: auto;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 720px;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      //border-radius: 30px;
+      background-color: #1f82ff;
+      border: 0 solid #fff;
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 375px
+  }
+}
+
+.mr_ListItemContainer ~ .mr_ListItemContainer {
+  margin-left: 196px;
+
+  @media (max-width: 1024px) {
+    margin-left: 30px !important
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 10px !important
+  }
+}
+
+.mr_ListItemContainer {
+  float: left;
+  position: relative;
+  min-width: 270px;
+  min-height: 240px;
+
+  &:nth-child(n+4) {
+    margin-top: -110px
+  }
+
+  &:nth-child(5n-1) {
+    margin-left: 233px
+  }
+
+  &:nth-child(5n+1) {
+    clear: both;
+    margin-left: 0
+  }
+
+  @media (max-width: 1024px) {
+    float: none;
+    display: inline-block;
+    margin: 0 !important;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+.mr_dummy {
+  position: absolute;
+  width: 271px;
+  height: 245px;
+  left: -1px;
+  top: -1px;
+  background-color: #b2d4e1;
+  background-size: cover;
+  -webkit-clip-path: url(#my-clip-path);
+  clip-path: url(#my-clip-path);
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}

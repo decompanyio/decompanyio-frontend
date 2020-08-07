@@ -1,0 +1,197 @@
+
+.cli_imgWrapper {
+  max-width: 100px;
+}
+
+.cli_infoWrapper {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 100px - 1rem);
+  margin: 0 0 0 1rem;
+
+  .rc_container {
+    @include mt(4);
+  }
+}
+
+.cli_container {
+  @include row;
+  padding: 1rem 0;
+  border-bottom: 1px solid #cecece;
+  position: relative;
+  overflow: hidden;
+
+  @media all and (max-width: $sm-max-width) {
+    padding: 1rem;
+  }
+}
+
+.cl_imageWrapper {
+  @include d-flex;
+  align-items: center;
+  width: 100px;
+  height: 131px;
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #f5f5f5;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.cl_image {
+  width: 100%;
+}
+
+.cl_title {
+  @include mb(1);
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  font: {
+    size: 17px;
+    weight: bold;
+    style: normal;
+    stretch: normal;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 14px;
+  }
+
+  span > span {
+    cursor: pointer;
+
+    &:hover {
+      color: #3d5afe !important;
+    }
+  }
+
+  a {
+    width: 100%;
+    display: block;
+  }
+}
+
+.cl_identification {
+  @include mb(1);
+  position: relative;
+}
+
+.cl_avatar {
+  @include d-flex;
+  width: max-content;
+  cursor: pointer;
+  align-items: center;
+  font-size: 14px;
+
+  &:hover {
+    color: #3d5afe !important;
+
+    div {
+      border-color: $second-color;
+    }
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 12px;
+  }
+
+  div {
+    @include mr(2);
+  }
+}
+
+.cl_date {
+  font-size: 13px;
+  color: #b3b3b3;
+  right: 5px;
+  position: absolute;
+  top: 4px;
+  float: right;
+  display: inline-block;
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 12px;
+  }
+}
+
+.cl_descWrapper {
+  height: 44px;
+  overflow: hidden;
+
+  @media all and (max-width: $sm-max-width) {
+    max-height: 58px;
+  }
+
+  a {
+    width: 100%;
+    display: block;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+
+    @media all and (max-width: $sm-max-width) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.cl_desc {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 0.8rem;
+  }
+}
+
+.cl_infoDetailWrapper {
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
+}
+
+.cl_infoDetailReward {
+  @include mr(3);
+  display: inline-block;
+  cursor: default;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  top: 1px;
+  letter-spacing: -1px;
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 14px;
+  }
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.cl_rewardArrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.cl_view {
+  @include mr(3);
+  @include common_view;
+}
+
+.cl_vote {
+  @include mr(3);
+  @include common_vote;
+}

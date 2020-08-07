@@ -1,0 +1,21 @@
+
+.ta_optionBtn {
+  @include common_optionBtn;
+  @include inner-container;
+  width: 100%;
+
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.ta_optionTable {
+  @include common_optionTable;
+}
+
+.ta_optionTableBtn {
+  @include common_optionTableBtn;
+}
+

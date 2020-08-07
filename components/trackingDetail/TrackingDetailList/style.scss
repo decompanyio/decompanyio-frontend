@@ -1,0 +1,74 @@
+
+.tdl_container {
+  @include container;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.tdl_title {
+  @include col(12);
+  @include mr(5);
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  vertical-align: middle;
+}
+
+.tdl_email {
+  @include mr(3);
+}
+
+.tdl_time {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+
+  @media (min-width: $sm-min-width) {
+    display: inline-block;
+  }
+}
+
+.tdl_backBtnWrapper {
+  float: right;
+  cursor: pointer;
+  position: relative;
+  font-weight: 400;
+  color: #4d4d4d;
+  font-size: 14px;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  img {
+    top: -1px;
+    position: relative;
+    margin-right: 5px;
+  }
+}
+
+.tdl_foldedList {
+  margin-top: 7px;
+  padding-bottom: 5px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    &:first-child {
+      border-top: 1px solid #b3b3b3;
+    }
+  }
+
+  li {
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+  }
+}

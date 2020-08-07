@@ -1,0 +1,22 @@
+
+.puti_claimWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  @media all and (max-width: $sm-max-width) {
+    @include mt(2);
+    position: relative;
+  }
+}
+
+.pcc_btn {
+  @include common_claimBtn;
+
+  @media all and (max-width: $sm-max-width) {
+    width: 100%;
+  }
+}
+
+.pcc_btnDisabled {
+  @include common_disabledBtn;
+}

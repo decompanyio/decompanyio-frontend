@@ -1,15 +1,15 @@
 import repos from '../utils/repos'
-import TrackingAuthor from '../components/body/tracking/TrackingAuthor'
+import TrackingAuthor from '../components/tracking/TrackingAuthor'
 import Layout from 'components/Layout'
-import TrackingList from '../components/body/tracking/TrackingList'
+import TrackingList from '../components/tracking/TrackingList'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
 import { AUTH_APIS } from '../utils/auth'
 import Router from 'next/router'
 import DocumentInfo from '../service/model/DocumentInfo'
-import TrackingOption from '../components/body/tracking/TrackingOption'
+import TrackingOption from '../components/tracking/TrackingOption'
 
-export default function Index(
+export default function PageTracking(
   { documentData, ratio },
   ...rest
 ): ReactElement | Promise<boolean> {
@@ -19,7 +19,7 @@ export default function Index(
 
   return (
     <Layout
-      title={'Tracking List' + commonData.commonTitle}
+      title={'tracking AlertList' + commonData.commonTitle}
       path="tracking"
       {...rest}
     >
@@ -30,7 +30,7 @@ export default function Index(
   )
 }
 
-Index.getInitialProps = async props => {
+PageTracking.getInitialProps = async props => {
   let seoTitle = decodeURI(props.asPath.split('/')[3])
 
   const {

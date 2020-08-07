@@ -9,11 +9,11 @@ import dynamic from 'next/dynamic'
 
 // DocumentCard - No SSR
 const TrackingDetailListWithoutSSR = dynamic(
-  () => import('components/body/trackingDetail/TrackingDetailList'),
+  () => import('components/trackingDetail/TrackingDetailList'),
   { ssr: false }
 )
 
-export default function Index(
+export default function PageTrackingDetail(
   { document, text, cid, user },
   ...rest
 ): ReactElement | Promise<boolean> {
@@ -23,7 +23,7 @@ export default function Index(
 
   return (
     <Layout
-      title={'Tracking Detail' + commonData.commonTitle}
+      title={'tracking Detail' + commonData.commonTitle}
       path="tracking_detail"
       {...rest}
     >
@@ -37,7 +37,7 @@ export default function Index(
   )
 }
 
-Index.getInitialProps = async props => {
+PageTrackingDetail.getInitialProps = async props => {
   let seoTitle = decodeURI(props.asPath.split('/')[3])
   let url = new URL(APP_CONFIG.domain().mainHost + props.asPath)
   let cid = url.searchParams.get('cid')

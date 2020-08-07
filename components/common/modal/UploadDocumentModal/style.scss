@@ -1,0 +1,33 @@
+
+.udm_textarea {
+  @include mt(4);
+  background: white;
+  border: 1px solid #d2d2d2;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px;
+  min-height: 120px !important;
+  outline: none;
+
+  &::placeholder {
+    font-size: 14px;
+    color: #a5a5a5 !important;
+    font-weight: 100;
+  }
+
+  &:not(#copyEmbedInput):hover,
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+.udm_input {
+  @include common_input;
+}
+
+.udm_inputWarning,
+.udm_inputWarning:hover,
+.udm_inputWarning:focus {
+  @include common_inputWarning;
+}

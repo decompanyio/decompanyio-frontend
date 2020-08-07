@@ -1,0 +1,120 @@
+
+.tli_tr_2 {
+  @include row;
+  border-bottom: 1px solid #ccc;
+
+  &:hover {
+    background: #fdfdfd;
+  }
+  cursor: pointer;
+}
+
+.tl_td {
+  padding: 10px 1rem;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.tli_td_1 {
+  @extend .tl_td;
+  @include col(4);
+
+  span {
+    @include ml(3);
+  }
+}
+
+.tli_td_2 {
+  @extend .tl_td;
+  @include col(3);
+  @include col_sm(2);
+  text-align: center;
+}
+
+.tli_td_3 {
+  @extend .tl_td;
+  @include col(3);
+  text-align: right;
+}
+
+.tli_td_4 {
+  @extend .tl_td;
+  @include col(2);
+  @include col_sm(3);
+  position: relative;
+}
+
+.tli_durationWrapper {
+  position: relative;
+  display: none;
+
+  @media (min-width: $sm-min-width) {
+    @include d-flex;
+  }
+}
+
+.tli_duration {
+  font-weight: 500;
+  color: #868686;
+  position: absolute;
+  display: inline-block;
+  font-size: 12px;
+  font-family: $primary-fonts;
+  right: 120px;
+  top: 3px;
+}
+
+.tli_durationDisabled {
+  @extend .tli_duration;
+  @include common_disabledBtn;
+}
+
+.tli_anonymous {
+  color: #d2d2d2 !important;
+}
+
+.tli_circularChartWrapper {
+  display: inline-block;
+  position: absolute;
+  right: 73px;
+}
+
+.tli_circularChart {
+  display: inline-block;
+  height: auto;
+  border-radius: 50%;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  fill: #e6e6e6;
+}
+
+.tli_circle {
+  stroke: $primary-color;
+  stroke-width: 15;
+  animation: circle-chart-progress 1s ease-out forwards;
+}
+
+.tli_circleSub {
+  fill: white;
+}
+
+.tli_chartBtnWrapper {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+.tli_chartBtn {
+  @include common_chartBtn;
+}
+
+.tli_chartBtnDisabled {
+  @include common_chartBtn;
+  @include common_disabledBtn;
+}
+
+.tli_chartWrapper {
+  @include col(12);
+}

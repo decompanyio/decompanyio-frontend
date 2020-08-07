@@ -1,0 +1,35 @@
+
+.sm_title {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.sm_inputWrapper {
+  @include mb(4);
+  @include d-flex;
+  position: relative;
+}
+
+.sm_copy {
+  @include d-flex;
+  @include ml(2);
+  font-weight: 400;
+  color: #666666;
+  cursor: pointer;
+  padding-top: 10px;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  i {
+    font-size: 25px;
+  }
+}
+
+.sm_input {
+  @include common_input;
+}

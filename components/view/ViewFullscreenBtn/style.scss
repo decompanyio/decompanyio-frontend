@@ -1,0 +1,20 @@
+
+.vfb_container {
+  @include container;
+  position: absolute;
+  height: 2rem;
+  width: 100%;
+}
+
+.vfb_wrapper {
+  @include common_viewerBtn;
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  z-index: 2;
+
+  @media all and (max-width: $sm-max-width) {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}

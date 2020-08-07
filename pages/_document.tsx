@@ -20,10 +20,6 @@ export default class MyDocument extends Document<{
       <Html lang={psGetLang().toLowerCase()}>
         <Head>
           <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width,minimum-scale=1,initial-scale=1"
-          />
           <meta name="theme-color" content="#3d5afe" />
           <meta
             name="msapplication-TileImage"

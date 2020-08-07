@@ -1,0 +1,22 @@
+
+.l_articleContainer {
+  position: relative;
+  min-height: calc(100vh - 190px);
+  @media (max-width: $md-max-width) {
+    margin-bottom: 0;
+  }
+}
+
+.l_skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $primary-color;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+
+  &:focus {
+    top: 0;
+  }
+}

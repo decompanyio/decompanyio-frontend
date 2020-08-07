@@ -27,7 +27,7 @@ const strings = new Map([
     'main-banner-btn-1',
     {
       KOR: '지금 검색해보세요',
-      ENG: 'Search now!'
+      ENG: 'SearchButton now!'
     }
   ],
   [
@@ -41,7 +41,7 @@ const strings = new Map([
     'main-banner-btn-3',
     {
       KOR: '지금 업로드하세요',
-      ENG: 'Upload now!'
+      ENG: 'profileUpload now!'
     }
   ],
   [
@@ -75,7 +75,7 @@ const strings = new Map([
       KOR:
         '귀하의 슬라이드를 업로드하고 이를 외부 채널에도 공유하십시요. \n 잠재 고객들을 추적하고 연락처를 수집할 수 있습니다. ',
       ENG:
-        'Upload your slides and share them through external channels.\n Connect with your prospects and track their activities.\n'
+        'profileUpload your slides and share them through external channels.\n Connect with your prospects and track their activities.\n'
     }
   ],
   [
@@ -86,35 +86,35 @@ const strings = new Map([
     }
   ],
   [
-    'main-category-latest',
+    'main-Category-latest',
     {
       KOR: '최신문서',
       ENG: 'latest'
     }
   ],
   [
-    'main-category-featured',
+    'main-Category-featured',
     {
       KOR: '추천문서',
       ENG: 'featured'
     }
   ],
   [
-    'main-category-popular',
+    'main-Category-popular',
     {
       KOR: '인기문서',
       ENG: 'popular'
     }
   ],
   [
-    'main-category-mylist',
+    'main-Category-mylist',
     {
       KOR: '내가 찜한 문서',
       ENG: 'my list'
     }
   ],
   [
-    'main-category-history',
+    'main-Category-history',
     {
       KOR: '내가 본 문서',
       ENG: 'history'
@@ -124,7 +124,7 @@ const strings = new Map([
     'main-event-1',
     {
       KOR: '2020년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
-      ENG: 'As of 2020, Polaris Share is operated during the Beta Season.'
+      ENG: 'As of 2020, Polaris ShareModal is operated during the Beta Season.'
     }
   ],
   [
@@ -147,7 +147,7 @@ const strings = new Map([
     {
       KOR: '을 제공할 예정이오니 많은 이용 바랍니다.',
       ENG:
-        'to users who upload Beta Season through AirDrop, so please use it a lot.'
+        'to users who profileUpload Beta Season through AirDrop, so please use it a lot.'
     }
   ],
   [
@@ -156,14 +156,14 @@ const strings = new Map([
       KOR:
         '* 폴라리스오피스를 사용하시는 유저분은 폴라리스오피스를 통해서도 라이브러리를 업로드 하실 수 있습니다',
       ENG:
-        '* Polaris Office users can upload their Library through Polaris Office.'
+        '* Polaris Office users can profileUpload their MainThirdSectionLibrary through Polaris Office.'
     }
   ],
   [
-    'main-header-search',
+    'main-sectionTop-search',
     {
       KOR: '검색',
-      ENG: 'Search'
+      ENG: 'SearchButton'
     }
   ],
   [
@@ -177,7 +177,7 @@ const strings = new Map([
     'main-visual-2',
     {
       KOR: '라이브러리',
-      ENG: 'Library'
+      ENG: 'MainThirdSectionLibrary'
     }
   ],
   [
@@ -212,7 +212,7 @@ const strings = new Map([
     'main-visual-7',
     {
       KOR: '라이브러리',
-      ENG: 'Library'
+      ENG: 'MainThirdSectionLibrary'
     }
   ],
   [
@@ -237,10 +237,10 @@ const strings = new Map([
     }
   ],
   [
-    'main-second-section',
+    'main-sectionSecond-section',
     {
       KOR: '라이브러리를 손쉽게 공유하는 방법',
-      ENG: 'Easily Share'
+      ENG: 'Easily ShareModal'
     }
   ],
   [
@@ -249,14 +249,14 @@ const strings = new Map([
       KOR:
         'PC 또는 클라우드와 같은 저장매체에 묵혀있는 파일을 업로드하고 보상 받을 수 있어요.',
       ENG:
-        'Upload your files here from your PC, cloud, and other storage media for rewards.'
+        'profileUpload your files here from your PC, cloud, and other storage media for RewardCard.'
     }
   ],
   [
     'main-insight-slider-2',
     {
       KOR: "업로드한 파일을 '라이브러리'라고 불러요.",
-      ENG: 'The uploaded file is called a Library.'
+      ENG: 'The uploaded file is called a MainThirdSectionLibrary.'
     }
   ],
   [
@@ -265,15 +265,15 @@ const strings = new Map([
       KOR:
         "라이브러리를 공개하는게 고민되시면, '비공개'로 업로드 하시고 나중에 공개로 변경하셔도 돼요.",
       ENG:
-        "If you're concerned about releasing your Library, \n" +
-        'you can upload it as a "private" and change it to a public one later.'
+        "If you're concerned about releasing your MainThirdSectionLibrary, \n" +
+        'you can profileUpload it as a "private" and change it to a public one later.'
     }
   ],
   [
     'main-insight-slider-4',
     {
       KOR: '라이브러리를 공개하면 좋은 점!',
-      ENG: 'Open Library Advantage!'
+      ENG: 'Open MainThirdSectionLibrary Advantage!'
     }
   ],
   [
@@ -304,21 +304,21 @@ const strings = new Map([
       KOR:
         '세엣. 독자들의 투표를 받거나 조회 등의 뜨거운 반응으로 추가 보상을 받을 수 있어요',
       ENG:
-        'Three. You can get additional rewards for voting by users or for enthusiastic responses.'
+        'Three. You can get additional RewardCard for voting by users or for enthusiastic responses.'
     }
   ],
   [
     'main-insight-slider-8',
     {
       KOR: '"주식보다 뿌듯한 내 문서 보상"',
-      ENG: '"My Library show better profits than stocks"'
+      ENG: '"MyAvatar MainThirdSectionLibrary show better profits than stocks"'
     }
   ],
   [
     'main-library-1',
     {
       KOR: '필요한 라이브러리를 사용하시고 평가해 주세요',
-      ENG: 'Use the required Library and evaluate'
+      ENG: 'Use the required MainThirdSectionLibrary and evaluate'
     }
   ],
   [
@@ -339,7 +339,7 @@ const strings = new Map([
     'main-tag-3',
     {
       KOR: '태그',
-      ENG: 'Tag'
+      ENG: 'MainFirstSectionTag'
     }
   ],
 
@@ -355,21 +355,21 @@ const strings = new Map([
     'viewer-page-sns-linkedin',
     {
       KOR: '링크드인 공유하기',
-      ENG: 'Share with Linkedin'
+      ENG: 'ShareModal with Linkedin'
     }
   ],
   [
     'viewer-page-sns-fb',
     {
       KOR: '페이스북 공유하기',
-      ENG: 'Share with Facebook'
+      ENG: 'ShareModal with Facebook'
     }
   ],
   [
     'viewer-page-sns-twitter',
     {
       KOR: '트위터 공유하기',
-      ENG: 'Share with Twitter'
+      ENG: 'ShareModal with Twitter'
     }
   ],
   [
@@ -399,7 +399,7 @@ const strings = new Map([
     'viewer-page-carousel-slide-mode-auto',
     {
       KOR: '자동 전환 모드로 변경',
-      ENG: 'Switch to Auto Slide Mode'
+      ENG: 'Switch to AutoCompleteInput Slide Mode'
     }
   ],
 
@@ -417,23 +417,23 @@ const strings = new Map([
       KOR:
         '폴라리스 쉐어에서 문서를 공유하여 잠재 고객을 발굴하고, 공유한 문서의 유효 조회수에 따른 보상도 받으세요.',
       ENG:
-        "'Share your documents on Polaris Share, find new prospects, and get rewards based on views."
+        "'ShareModal your documents on Polaris ShareModal, find new prospects, and get RewardCard based on views."
     }
   ],
   [
-    'about-first-section-subj',
+    'about-sectionFirst-section-subj',
     {
       KOR: '왜 폴라리스 쉐어를 사용해야 하는가?',
-      ENG: 'Why Polaris Share?'
+      ENG: 'Why Polaris ShareModal?'
     }
   ],
   [
-    'about-first-section-explain',
+    'about-sectionFirst-section-explain',
     {
       KOR:
         '우리는 수년간 전세계 고객들을 대상으로 Polaris Office 를 서비스하면서 수많은 문서와 지식들이 활용되지 못하고 있음을 발견했습니다. 이 문제를 해결하기 위해서 우리는 Polaris Share를 만들 것입니다. Polaris Share는 지식 생산자와 소비자를 연결하여 탈중앙화된 인센티브 기반의 지식 거래 시스템을 구축합니다. 우리는 회사에서 전문가를 고용하지 않고도 전세계에서 가장 필요한 기술을 가진 사람과 일할 수 있는 환경을 제공하고, 동시에 개인이 특정 회사에 고용되지 않고도 원하는만큼 일하고 정당한 보수를 받을 수 있는 일하는 환경을 만들어 나가고자 합니다. ',
       ENG:
-        "While providing the Polaris Office solution around the world over the years, we realized that there are so much knowledge and documents that haven't send the light of day. To tap into this potential, we decided to create Polaris Share, a decentralized and incentive-based knowledge trading system, by connecting creators and consumers. The platform is designed to create an environment where not only where corporates can still work with experts all over the world without hiring them but individuals can also be fairly compensated for what they offer without being committed to a particular employer."
+        "While providing the Polaris Office solution around the world over the years, we realized that there are so much knowledge and documents that haven't send the light of day. To tap into this potential, we decided to create Polaris ShareModal, a decentralized and incentive-based knowledge trading system, by connecting creators and consumers. The platform is designed to create an environment where not only where corporates can still work with experts all over the world without hiring them but individuals can also be fairly compensated for what they offer without being committed to a particular employer."
     }
   ],
   [
@@ -444,12 +444,12 @@ const strings = new Map([
     }
   ],
   [
-    'about-second-section-explain',
+    'about-sectionSecond-section-explain',
     {
       KOR:
         '폴라리스 쉐어는 단순한 문서 공유 서비스를 넘어서서 전문가들에 의한 큐레이션과 거래 시스템을 제공합니다. 서비스 내의 다양한 기여 활동에 대해서 적절한 보상을 지급함으로써 자발적인 참여를 유도하여 탈중앙화된 지속 가능한 시스템을 구축했습니다. 이와 같은 지식 거래 생태계에서 지식 생산자는 자유롭게 일하고 적절한 대가를 받을 수 있으며, 지식 소비자는 고품질의 지식을 저렴한 비용으로 소비할 수 있습니다.',
       ENG:
-        'Beyond a simple document sharing service, Polaris Share offers a specialized curation and trading service. By compensating various types of contributions to the service, we have built a decentralized and sustainable system that promotes user engagement. Based on this knowledge training ecosystem, creators can work freely and get fair compensation for their contributions while consumers can access an extensive knowledge base at a low cost.'
+        'Beyond a simple document sharing service, Polaris ShareModal offers a specialized curation and trading service. By compensating various types of contributions to the service, we have built a decentralized and sustainable system that promotes user engagement. Based on this knowledge training ecosystem, creators can work freely and get fair compensation for their contributions while consumers can access an extensive knowledge base at a low cost.'
     }
   ],
   [
@@ -460,7 +460,7 @@ const strings = new Map([
     }
   ],
   [
-    'about-third-section-explain',
+    'about-sectionThird-section-explain',
     {
       KOR: '탈중앙화되고 인센티브가 주어지는 전문가 지식 거래 시스템',
       ENG:
@@ -468,46 +468,46 @@ const strings = new Map([
     }
   ],
   [
-    'about-third-section-chap-subj-1',
+    'about-sectionThird-section-chap-subj-1',
     {
       KOR: '지식의 가치',
       ENG: 'Value of knowledge'
     }
   ],
   [
-    'about-third-section-chap-explain-1',
+    'about-sectionThird-section-chap-explain-1',
     {
       KOR:
         '폴라리스 쉐어는 문서 및 네트워크에 저장된 지식의 가치를 지식의 생산자와 우리 생태계를 유지하는 활동에 기여한 사용자들에게 돌려드립니다.',
       ENG:
-        'Polaris Share returns value created from sharing knowledge stored in documents and the network with creators and users who contribute to maintaining our ecosystem.'
+        'Polaris ShareModal returns value created from sharing knowledge stored in documents and the network with creators and users who contribute to maintaining our ecosystem.'
     }
   ],
   [
-    'about-third-section-chap-subj-2',
+    'about-sectionThird-section-chap-subj-2',
     {
       KOR: '무료 또는 저렴한 수수료',
       ENG: 'Free or small fee'
     }
   ],
   [
-    'about-third-section-chap-explain-2',
+    'about-sectionThird-section-chap-explain-2',
     {
       KOR:
         '지식 생산자는 폴라리스 쉐어에서 문서를 공유하거나 판매함으로써 무료 또는 매우 적은 수수료만으로 수익을 얻을 수 있습니다. ',
       ENG:
-        'Knowledge creators generate revenue by sharing their documents for free or with a small fee through Polaris Share.'
+        'Knowledge creators generate revenue by sharing their documents for free or with a small fee through Polaris ShareModal.'
     }
   ],
   [
-    'about-third-section-chap-subj-3',
+    'about-sectionThird-section-chap-subj-3',
     {
       KOR: '고품질의 컨텐츠',
       ENG: 'High quality content'
     }
   ],
   [
-    'about-third-section-chap-explain-3',
+    'about-sectionThird-section-chap-explain-3',
     {
       KOR:
         '일반 대중들은 지식 생산자들에 의해서 공유된 고품질의 다양한 컨텐츠를 소비하고 활용할 수 있습니다. ',
@@ -519,7 +519,7 @@ const strings = new Map([
     'about-ps-team',
     {
       KOR: '폴라리스 쉐어 팀',
-      ENG: 'Polaris Share Team'
+      ENG: 'Polaris ShareModal Team'
     }
   ],
 
@@ -528,7 +528,7 @@ const strings = new Map([
     'faq-question-1',
     {
       KOR: '폴라리스 쉐어란 무엇인가요?',
-      ENG: 'What is Polaris Share?'
+      ENG: 'What is Polaris ShareModal?'
     }
   ],
   [
@@ -537,14 +537,14 @@ const strings = new Map([
       KOR:
         '폴라리스 쉐어는 활용되지 않고 저장되어 있는 수만은 문서와 지식들을 활용하여, 미래의 고객을 발굴하고, 전문가 네트워크를 구축하여 새로운 비즈니스 기회 창출에 기여하는 플랫폼입니다.',
       ENG:
-        'Polaris Share is a platform that creates new business opportunities by sharing idle documents stored in your PC, helping you find new prospects, and establish your own network of experts.'
+        'Polaris ShareModal is a platform that creates new business opportunities by sharing idle documents stored in your PC, helping you find new prospects, and establish your own network of experts.'
     }
   ],
   [
     'faq-question-2',
     {
       KOR: '폴라리스 쉐어는 어떻게 동작하나요?',
-      ENG: 'How does Polaris Share work?'
+      ENG: 'How does Polaris ShareModal work?'
     }
   ],
   [
@@ -560,7 +560,7 @@ const strings = new Map([
     'faq-question-3',
     {
       KOR: '게시물에 대해 투표하는 데 비용이 들지 않나요?',
-      ENG: 'Does it cost anything to vote on a post?'
+      ENG: 'Does it cost anything to VoteModal on a post?'
     }
   ],
   [
@@ -569,14 +569,14 @@ const strings = new Map([
       KOR:
         '투표 활동에는 비용이 들지 않습니다. 투표에 사용한 토큰은 투표 기간이 끝나면 보상과 함께 돌려받습니다. (다만, 블록체인에 투표 기록을 저장하는 경우 가스비가 발생할 수 있습니다)',
       ENG:
-        'No, voting is free. The tokens used for voting will be returned to you with rewards when the voting ends. (However, it may cost you gas if you wish to record your voting history in the blockchain.)'
+        'No, voting is free. The tokens used for voting will be returned to you with RewardCard when the voting ends. (However, it may cost you gas if you wish to record your voting history in the blockchain.)'
     }
   ],
   [
     'faq-question-4',
     {
       KOR: '폴라리스 쉐어에서 토큰을 받을 수 있는 방법이 있나요?',
-      ENG: 'Can I get digital tokens from Polaris Share? If so, how?'
+      ENG: 'Can I get digital tokens from Polaris ShareModal? If so, how?'
     }
   ],
   [
@@ -594,7 +594,7 @@ const strings = new Map([
       KOR:
         '큐레이터 : 토큰을 사용하여 고품질의 문서에 투표하면 해당 문서의 페이지뷰 수에 따라서 토큰으로 보상이 지급되며, 투표 기간이 끝나면 보상과 투표한 토큰을 함께 지급받습니다. ',
       ENG:
-        'Curator: If you vote on documents with your tokens, you will get tokens based on their page views as well as the tokens you used to vote.'
+        'Curator: If you VoteModal on documents with your tokens, you will get tokens based on their page views as well as the tokens you used to VoteModal.'
     }
   ],
   [
@@ -628,14 +628,14 @@ const strings = new Map([
       KOR:
         '크리에이터 보상을 받거나 투표를 하거나 투표를 받으려면 메타마스크를 통해서 사용자 계정에 이더리움 계정을 연결하면 됩니다.',
       ENG:
-        'To receive rewards as a creator, or vote or get voted on, link your Ethereum account to your user account via MetaMask.'
+        'To receive RewardCard as a creator, or VoteModal or get voted on, link your Ethereum account to your user account via MetaMask.'
     }
   ],
   [
     'faq-question-6',
     {
       KOR: '내 계정 메뉴에서 사용할 수 있는 정보는 무엇인가요?',
-      ENG: 'What kind of information can I access from My Account?'
+      ENG: 'What kind of information can I access from MyAvatar Account?'
     }
   ],
   [
@@ -697,7 +697,7 @@ const strings = new Map([
     'faq-question-9',
     {
       KOR: '폴라리스 쉐어에 게시 할 수 있는 항목은 무엇인가요?',
-      ENG: 'What can I post on Polaris Share?'
+      ENG: 'What can I post on Polaris ShareModal?'
     }
   ],
   [
@@ -720,7 +720,7 @@ const strings = new Map([
       KOR:
         '현재는 제한이 없지만 향후 1주일에 문서 1개로 제한할 계획입니다. 일정량의 토큰을 예치하면 더 많은 문서를 등록할 수 있습니다. ',
       ENG:
-        'There is currently no limit on the number of posts. However, we plan to set a limit of one document per week and to allow others posts to be updated when the user deposits a set of tokens.'
+        'There is currently no limit on the number of posts. However, we plan to set a limit of one document per week and to allow Others posts to be updated when the user deposits a set of tokens.'
     }
   ],
   [
@@ -806,7 +806,7 @@ const strings = new Map([
     'faq-question-16',
     {
       KOR: '크리에이터는 실시간으로 보상을 받나요?',
-      ENG: 'Do creators receive their rewards in real time?'
+      ENG: 'Do creators receive their RewardCard in real time?'
     }
   ],
   [
@@ -820,7 +820,7 @@ const strings = new Map([
     'faq-question-17',
     {
       KOR: '큐레이터는 언제 보상을 받을 수 있나요?',
-      ENG: 'When do curators receive their rewards?'
+      ENG: 'When do curators receive their RewardCard?'
     }
   ],
   [
@@ -829,14 +829,14 @@ const strings = new Map([
       KOR:
         '큐레이터 보상은 투표일로 부터 1주+2일 후에 투표에 사용한 토큰과 함께 지급받을 수 있습니다. ',
       ENG:
-        'Curators receive rewards along with the tokens they used to vote after one week and two days from the vote.'
+        'Curators receive RewardCard along with the tokens they used to VoteModal after one week and two days from the VoteModal.'
     }
   ],
   [
     'faq-question-18',
     {
       KOR: '크리에이터와 큐레이터의 보상은 어떠한 차이가 있나요?',
-      ENG: 'How do the rewards for creators differ from those for curators?'
+      ENG: 'How do the RewardCard for creators differ from those for curators?'
     }
   ],
   [
@@ -845,7 +845,7 @@ const strings = new Map([
       KOR:
         '크리에이터와 큐레이터들은 각각 문서 별로 매일 발생한 보상의 70%와 30%를 지급받습니다.',
       ENG:
-        'Creators and curators receive 70% and 30% of the daily rewards generated for each document respectively.'
+        'Creators and curators receive 70% and 30% of the daily RewardCard generated for each document respectively.'
     }
   ],
 
@@ -902,17 +902,17 @@ const strings = new Map([
     }
   ],
   [
-    'profile-author-rewards',
+    'profile-ProfileAuthor-RewardCard',
     {
       KOR: '크리에이터 보상',
-      ENG: 'Creator rewards'
+      ENG: 'Creator RewardCard'
     }
   ],
   [
-    'profile-curator-rewards',
+    'profile-curator-RewardCard',
     {
       KOR: '큐레이터 보상',
-      ENG: 'Curator rewards'
+      ENG: 'Curator RewardCard'
     }
   ],
   [
@@ -930,7 +930,7 @@ const strings = new Map([
     }
   ],
   [
-    'profile-analytics',
+    'profile-ProfileAnalytics',
     {
       KOR: '통계분석',
       ENG: 'Analytics'
@@ -972,7 +972,7 @@ const strings = new Map([
     }
   ],
 
-  // Alert
+  // alert
   [
     'alert-2001',
     {
@@ -991,14 +991,14 @@ const strings = new Map([
     'alert-2003',
     {
       KOR: '로그인이 필요합니다.',
-      ENG: 'You need to login first.'
+      ENG: 'You need to login sectionFirst.'
     }
   ],
   [
     'alert-2004',
     {
       KOR: '로그인 실패',
-      ENG: 'Login failed'
+      ENG: 'LoginButton failed'
     }
   ],
   [
@@ -1054,7 +1054,7 @@ const strings = new Map([
     'alert-2031',
     {
       KOR: '클레임 가능한 보상액이 0 원입니다.',
-      ENG: 'Not enough rewards to Claim.'
+      ENG: 'Not enough RewardCard to ProfileUploadClaim.'
     }
   ],
   [
@@ -1075,7 +1075,7 @@ const strings = new Map([
     'alert-2071',
     {
       KOR: '업로드 실패',
-      ENG: 'Upload failed'
+      ENG: 'profileUpload failed'
     }
   ],
   [
@@ -1142,6 +1142,13 @@ const strings = new Map([
     }
   ],
   [
+    'alert-2079',
+    {
+      KOR: '허용되지 않는 확장자 입니다.',
+      ENG: 'This extension is not allowed.'
+    }
+  ],
+  [
     'alert-2091',
     {
       KOR: '다운로드 실패',
@@ -1152,14 +1159,14 @@ const strings = new Map([
     'alert-2092',
     {
       KOR: '다운로드 실패',
-      ENG: 'Document Upload failed'
+      ENG: 'Document profileUpload failed'
     }
   ],
   [
     'alert-2093',
     {
       KOR: '투표 실패',
-      ENG: 'Document Vote failed'
+      ENG: 'Document VoteModal failed'
     }
   ],
   [
@@ -1222,7 +1229,7 @@ const strings = new Map([
     'alert-2145',
     {
       KOR: '이미지 파일로 업로드 부탁드립니다.',
-      ENG: 'Please upload image file.'
+      ENG: 'Please profileUpload image file.'
     }
   ],
   [
@@ -1249,17 +1256,17 @@ const strings = new Map([
     }
   ],
   [
-    'common-modal-upload',
+    'common-modal-profileUpload',
     {
       KOR: '업로드',
-      ENG: 'Upload'
+      ENG: 'profileUpload'
     }
   ],
   [
     'common-modal-title',
     {
       KOR: '제목',
-      ENG: 'Title'
+      ENG: 'ProfileUploadTitle'
     }
   ],
   [
@@ -1336,7 +1343,7 @@ const strings = new Map([
     'common-modal-publish',
     {
       KOR: '출판',
-      ENG: 'Publish'
+      ENG: 'PublishModal'
     }
   ],
 
@@ -1344,14 +1351,14 @@ const strings = new Map([
     'common-modal-deposit',
     {
       KOR: '입금',
-      ENG: 'Deposit'
+      ENG: 'DepositModal'
     }
   ],
   [
     'common-modal-withdraw',
     {
       KOR: '출금',
-      ENG: 'Withdraw'
+      ENG: 'WithdrawModal'
     }
   ],
   [
@@ -1362,7 +1369,7 @@ const strings = new Map([
     }
   ],
   [
-    'common-modal-others-option',
+    'common-modal-Others-option',
     {
       KOR: '추가 옵션',
       ENG: 'More Options'
@@ -1404,7 +1411,7 @@ const strings = new Map([
     }
   ],
   [
-    'common-second',
+    'common-sectionSecond',
     {
       KOR: '초',
       ENG: 'second'
@@ -1428,7 +1435,7 @@ const strings = new Map([
     'title-placeholder',
     {
       KOR: '업로드 문서 제목',
-      ENG: 'Title of the uploading document'
+      ENG: 'ProfileUploadTitle of the uploading document'
     }
   ],
   [
@@ -1442,11 +1449,11 @@ const strings = new Map([
     'file-placeholder',
     {
       KOR: '문서를 업로드 하려면 클릭하세요',
-      ENG: 'Click here to upload document'
+      ENG: 'Click here to profileUpload document'
     }
   ],
 
-  // Approve Modal
+  // Approve modal
   [
     'approve-title',
     {
@@ -1458,9 +1465,9 @@ const strings = new Map([
     'approve-explain-1',
     {
       KOR:
-        'POLA를 사용하여 투표하려면, Polaris Share 컨트랙트가 당신을 대신해서 POLA를 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
+        'POLA를 사용하여 투표하려면, Polaris ShareModal 컨트랙트가 당신을 대신해서 POLA를 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
       ENG:
-        'To vote on a document using your POLA, you must approve the Polaris Share Contract to transfer your POLA on your behalf for the first time. You will not be able to vote on documents until approved.'
+        'To VoteModal on a document using your POLA, you must approve the Polaris ShareModal Contract to transfer your POLA on your behalf for the sectionFirst time. You will not be able to VoteModal on documents until approved.'
     }
   ],
   [
@@ -1469,11 +1476,11 @@ const strings = new Map([
       KOR:
         "'Approve'를 클릭하고 나면, 투표를 완료하기 위해서 트랜잭션에 사인하라는 요청이 한 번 더 표시될 것입니다. ",
       ENG:
-        "After clicking 'Approve,' you will be asked to sign a transaction to complete the vote once again. "
+        "After clicking 'Approve,' you will be asked to sign a transaction to complete the VoteModal once again. "
     }
   ],
 
-  // Cookie Policy Modal
+  // Cookie Policy modal
   [
     'cookie-policy-content',
     {
@@ -1484,34 +1491,34 @@ const strings = new Map([
     }
   ],
 
-  // Dollor Learn More Modal
+  // Dollor Learn More modal
   [
-    'dollar-learn-others-subj',
+    'dollar-learn-Others-subj',
     {
       KOR: 'POLA 테스트 토큰에 대한 중요 공지',
       ENG: 'Important notice about the POLA test token'
     }
   ],
   [
-    'dollar-learn-others-explain-1',
+    'dollar-learn-Others-explain-1',
     {
       KOR:
-        'Polaris Share 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
+        'Polaris ShareModal 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
       ENG:
         'In the alpha version, POLA tokens are tested to ensure that the application program works as desired.'
     }
   ],
   [
-    'dollar-learn-others-explain-2',
+    'dollar-learn-Others-explain-2',
     {
       KOR:
-        '무료 POLA 테스트 토큰으로 Polaris Share 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 POLA 테스트 토큰도 만료됩니다.',
+        '무료 POLA 테스트 토큰으로 Polaris ShareModal 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 POLA 테스트 토큰도 만료됩니다.',
       ENG:
-        'It is recommended to use free POLA test tokens to get a hands-on experience of the Polaris Share service. Test tokens expire at the end of the test.'
+        'It is recommended to use free POLA test tokens to get a hands-on experience of the Polaris ShareModal service. Test tokens expire at the end of the test.'
     }
   ],
   [
-    'dollar-learn-others-explain-3',
+    'dollar-learn-Others-explain-3',
     {
       KOR:
         '테스트에 적극적으로 참여하는 사용자는 상용 버전의 Polaris Share를 열 때 적절한 보상을 제공할 예정입니다.',
@@ -1520,19 +1527,19 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-learn-others-btn',
+    'dollar-learn-Others-btn',
     {
       KOR: '알겠습니다',
       ENG: 'I got it.'
     }
   ],
 
-  // Edit Document Modal
+  // Edit Document modal
   [
     'edit-doc-error-1',
     {
       KOR: '제목은 한 글자 보다 길어야 합니다.',
-      ENG: 'Title must be longer than 1 character.'
+      ENG: 'ProfileUploadTitle must be longer than 1 character.'
     }
   ],
   [
@@ -1593,7 +1600,7 @@ const strings = new Map([
     }
   ],
 
-  // RegBlockchain Button
+  // RegBlockchain button
   [
     'register-btn',
     {
@@ -1602,7 +1609,7 @@ const strings = new Map([
     }
   ],
 
-  // Email modal - basic
+  // EmailModal modal - basic
   [
     'email-modal-basic-subj',
     {
@@ -1620,7 +1627,7 @@ const strings = new Map([
     }
   ],
 
-  // Email modal - request
+  // EmailModal modal - request
   [
     'email-modal-request-subj',
     {
@@ -1643,7 +1650,7 @@ const strings = new Map([
       KOR:
         '입력하신 이메일은 폴라리스쉐어의 개인정보 처리 정책에 따라서 수집되고 활용됩니다.',
       ENG:
-        "The email address you provided is collected and used in accordance with the Polaris Share's Privacy Policy."
+        "The email address you provided is collected and used in accordance with the Polaris ShareModal's Privacy Policy."
     }
   ],
   [
@@ -1654,7 +1661,7 @@ const strings = new Map([
     }
   ],
 
-  // Email modal - force
+  // EmailModal modal - force
   [
     'email-modal-force-subj',
     {
@@ -1672,7 +1679,7 @@ const strings = new Map([
     }
   ],
 
-  // Email modal
+  // EmailModal modal
   [
     'email-modal-subj-1',
     {
@@ -1709,7 +1716,7 @@ const strings = new Map([
     'email-modal-explain-3',
     {
       KOR: ' 폴라리스 쉐어의 개인정보 처리 정책 ',
-      ENG: 'Polaris Share’s privacy policy.'
+      ENG: 'Polaris ShareModal’s privacy policy.'
     }
   ],
   [
@@ -1718,7 +1725,7 @@ const strings = new Map([
       KOR:
         '이 문서의 저자에게 귀하의 연락처를 남겨보세요. 저자로부터 새로운 소식을 받을 수 있습니다.',
       ENG:
-        'Please leave your contact information to the author of this documents. You can receive new news from the author.'
+        'Please leave your contact information to the ProfileAuthor of this documents. You can receive new news from the ProfileAuthor.'
     }
   ],
   [
@@ -1750,30 +1757,30 @@ const strings = new Map([
     }
   ],
 
-  // Upload Document Modal
+  // profileUpload Document modal
   [
-    'upload-doc-subj',
+    'profileUpload-doc-subj',
     {
       KOR: '문서 업로드',
-      ENG: 'Upload document'
+      ENG: 'profileUpload document'
     }
   ],
   [
-    'upload-doc-check',
+    'profileUpload-doc-check',
     {
       KOR: '문서 파일을 업로드 해주세요.',
-      ENG: 'Please upload a document file.'
+      ENG: 'Please profileUpload a document file.'
     }
   ],
   [
-    'upload-doc-subj-2',
+    'profileUpload-doc-subj-2',
     {
       KOR: '문서 업로드 성공',
       ENG: 'Successfully uploaded'
     }
   ],
   [
-    'upload-doc-desc-2',
+    'profileUpload-doc-desc-2',
     {
       KOR:
         '현재 업로드된 문서는 Private(비공개) 상태입니다. 문서를 공개하려고 하신다면, Public(공개) 상태로 변경해 주시기 바랍니다.',
@@ -1782,21 +1789,21 @@ const strings = new Map([
     }
   ],
   [
-    'upload-doc-desc-3',
+    'profileUpload-doc-desc-3',
     {
       KOR: `현재 ${commonData.privateDocumentLimit}개의 비공개 문서를 보유중 입니다. 이후에 문서를 업로드하시려면, 보유하신 비공개 문서를 Public(공개) 상태로 변경해 주시기 바랍니다.`,
       ENG: `You currently have ${commonData.privateDocumentLimit} private documents. To upload your document later, please change it from Private to Public.`
     }
   ],
   [
-    'upload-doc-desc-4-a',
+    'profileUpload-doc-desc-4-a',
     {
       KOR: '현재 고객님의 비공개 문서는 ',
       ENG: 'You currently have '
     }
   ],
   [
-    'upload-doc-desc-4-b',
+    'profileUpload-doc-desc-4-b',
     {
       KOR: `개이며, 최대 ${commonData.privateDocumentLimit}개까지만 업로드할 수 있습니다.`,
       ENG: ` private documents, and you can only upload up to ${commonData.privateDocumentLimit} of them.`
@@ -1822,97 +1829,98 @@ const strings = new Map([
     'private-doc-modal-btn',
     {
       KOR: '마이페이지로 이동',
-      ENG: 'Link to My page'
+      ENG: 'Link to MyAvatar page'
     }
   ],
 
-  // Vote Document Modal
+  // VoteModal Document modal
   [
-    'vote-modal-title',
+    'VoteModal-modal-title',
     {
       KOR: '문서에 투표하기',
-      ENG: 'Vote on document'
+      ENG: 'VoteModal on document'
     }
   ],
   [
-    'vote-modal-err-1',
+    'VoteModal-modal-err-1',
     {
       KOR: '투표액은 0보다 큰 값이어야 합니다.',
       ENG: 'The amount for voting must be greater than zero.'
     }
   ],
   [
-    'vote-modal-err-2',
+    'VoteModal-modal-err-2',
     {
       KOR: '투표액은 잔고보다 작은 값이어야 합니다.',
       ENG: 'The amount for voting must be less than the balance.'
     }
   ],
   [
-    'vote-modal-subj-1',
+    'VoteModal-modal-subj-1',
     {
       KOR: '1. 투표된 총 토큰량',
       ENG: '1. Total amount of tokens voted'
     }
   ],
   [
-    'vote-modal-subj-2',
+    'VoteModal-modal-subj-2',
     {
       KOR: '2. 사용 가능한 토큰량',
       ENG: '2. Amount of tokens available'
     }
   ],
   [
-    'vote-modal-subj-3',
+    'VoteModal-modal-subj-3',
     {
       KOR: '3. 투표로 예치할 토큰량을 입력하세요',
-      ENG: '3. Enter the amount of tokens to vote'
+      ENG: '3. Enter the amount of tokens to VoteModal'
     }
   ],
   [
-    'vote-modal-note',
+    'VoteModal-modal-note',
     {
       KOR: '알림: 투표에 사용된 토큰은 8일 후에 인출할 수 있습니다.',
-      ENG: 'Note: The tokens you used to vote can be withdrawn after 8 days.'
+      ENG:
+        'Note: The tokens you used to VoteModal can be withdrawn after 8 days.'
     }
   ],
   [
-    'vote-modal-tooltip-1',
+    'VoteModal-modal-tooltip-1',
     {
       KOR: '이 문서에 투표하기',
-      ENG: 'Vote on this document'
+      ENG: 'VoteModal on this document'
     }
   ],
   [
-    'vote-modal-tooltip-2',
+    'VoteModal-modal-tooltip-2',
     {
       KOR: '로그인 부탁드립니다',
       ENG: 'Please, login'
     }
   ],
   [
-    'vote-modal-tooltip-3',
+    'VoteModal-modal-tooltip-3',
     {
       KOR: '메타마스트 사용 부탁드립니다',
       ENG: 'Please, work with MetaMask'
     }
   ],
   [
-    'vote-modal-btn',
+    'VoteModal-modal-btn',
     {
       KOR: '투표',
-      ENG: 'Vote'
+      ENG: 'VoteModal'
     }
   ],
   [
-    'vote-modal-you',
+    'VoteModal-modal-you',
     {
       KOR: '나',
       ENG: 'You'
     }
   ],
   [
-    'vote-modal-total',
+    'VoteModal-modal-total',
     {
       KOR: '총액',
       ENG: 'Total'
@@ -1924,14 +1932,14 @@ const strings = new Map([
     'share-modal-btn',
     {
       KOR: '공유',
-      ENG: 'Share'
+      ENG: 'ShareModal'
     }
   ],
   [
     'share-modal-title',
     {
       KOR: '공유하기',
-      ENG: 'Share'
+      ENG: 'ShareModal'
     }
   ],
   [
@@ -1952,13 +1960,13 @@ const strings = new Map([
     'tooltip-copy',
     {
       KOR: '문서 공유하기',
-      ENG: 'Share this document'
+      ENG: 'ShareModal this document'
     }
   ],
 
-  // Analytics modal
+  // ProfileAnalytics modal
   [
-    'analytics-modal-title',
+    'ProfileAnalytics-modal-title',
     {
       KOR: '분석하기',
       ENG: 'Analytics'
@@ -1966,17 +1974,17 @@ const strings = new Map([
   ],
 
   [
-    'analytics-modal-btn',
+    'ProfileAnalytics-modal-btn',
     {
       KOR: '분석',
       ENG: 'Analytics'
     }
   ],
   [
-    'tooltip-analytics',
+    'tooltip-ProfileAnalytics',
     {
       KOR: '문서 분석하기',
-      ENG: 'Analytics this document'
+      ENG: 'ProfileAnalytics this document'
     }
   ],
 
@@ -1996,7 +2004,7 @@ const strings = new Map([
     }
   ],
 
-  // Tracking button
+  // tracking button
   [
     'tracking-btn',
     {
@@ -2012,37 +2020,37 @@ const strings = new Map([
     }
   ],
 
-  // Header
+  // header
   [
-    'header-category-1',
+    'sectionTop-Category-1',
     {
       KOR: '최신',
       ENG: 'LATEST'
     }
   ],
   [
-    'header-category-2',
+    'sectionTop-Category-2',
     {
       KOR: '추천',
       ENG: 'FEATURED'
     }
   ],
   [
-    'header-category-3',
+    'sectionTop-Category-3',
     {
       KOR: '인기',
       ENG: 'POPULAR'
     }
   ],
   [
-    'header-login',
+    'sectionTop-login',
     {
       KOR: '로그인',
       ENG: 'Log in'
     }
   ],
 
-  // Content View Right
+  // Content view Right
   [
     'see-also-text',
     {
@@ -2074,7 +2082,7 @@ const strings = new Map([
     }
   ],
 
-  // Profile card
+  // profile card
   [
     'profile-card-total-balance',
     {
@@ -2086,14 +2094,14 @@ const strings = new Map([
     'profile-card-my-page',
     {
       KOR: '마이 페이지',
-      ENG: 'My page'
+      ENG: 'MyAvatar page'
     }
   ],
   [
     'profile-card-login',
     {
       KOR: '로그인',
-      ENG: 'Login'
+      ENG: 'LoginButton'
     }
   ],
   [
@@ -2104,44 +2112,44 @@ const strings = new Map([
     }
   ],
 
-  // Custom Chart
+  // Custom ProfileAnalyticsChart
   [
-    'chart-tracking-option-title',
+    'CustomChart-tracking-option-title',
     {
       KOR: '페이지당 총 소요시간',
       ENG: 'TOTAL TIME PER PAGE'
     }
   ],
   [
-    'chart-date',
+    'CustomChart-date',
     {
       KOR: '날짜',
       ENG: 'Date'
     }
   ],
   [
-    'chart-visit-count',
+    'CustomChart-visit-count',
     {
       KOR: '방문자 수',
       ENG: 'Visit Count'
     }
   ],
   [
-    'chart-page',
+    'CustomChart-page',
     {
       KOR: '페이지',
-      ENG: 'Page'
+      ENG: 'page'
     }
   ],
   [
-    'chart-time-spend-min',
+    'CustomChart-time-spend-min',
     {
       KOR: '소요 시간 (분)',
       ENG: 'Time Spend (Min)'
     }
   ],
 
-  // Tracking List
+  // tracking AlertList
   [
     'tracking-list-option-hide',
     {
@@ -2223,7 +2231,7 @@ const strings = new Map([
     'tracking-list-view-count',
     {
       KOR: '조회수',
-      ENG: 'View count'
+      ENG: 'view count'
     }
   ],
   [
@@ -2248,7 +2256,7 @@ const strings = new Map([
     }
   ],
 
-  // Tracking detail
+  // tracking detail
   [
     'tracking-detail-back',
     {
@@ -2257,23 +2265,23 @@ const strings = new Map([
     }
   ],
 
-  // Auto Suggest Input
+  // AutoCompleteInput AutoSuggestInput input
   [
     'auto-placeholder-1',
     {
       KOR: '태그 검색',
-      ENG: 'Tag Search'
+      ENG: 'MainFirstSectionTag SearchButton'
     }
   ],
   [
     'auto-placeholder-2',
     {
       KOR: '이름 검색',
-      ENG: 'Name Search'
+      ENG: 'Name SearchButton'
     }
   ],
 
-  // Dollar Policy Modal
+  // Dollar Policy modal
   [
     'dollar-policy-content',
     {
@@ -2284,58 +2292,37 @@ const strings = new Map([
     }
   ],
   [
-    'dollar-policy-learn-others',
+    'dollar-policy-learn-Others',
     {
       KOR: '상세 보기',
-      ENG: 'View details'
+      ENG: 'view details'
     }
   ],
 
-  // Menu
+  // MenuAvatar
   [
-    'menu-1',
-    {
-      KOR: '회사소개',
-      ENG: 'About Us'
-    }
-  ],
-  [
-    'menu-2',
-    {
-      KOR: '유저 가이드',
-      ENG: 'User Guide'
-    }
-  ],
-  [
-    'menu-3',
+    'MenuAvatar-3',
     {
       KOR: 'Linkedin 공식계정',
       ENG: 'Official Linkedin'
     }
   ],
   [
-    'menu-4',
-    {
-      KOR: '백서',
-      ENG: 'Whitepaper'
-    }
-  ],
-  [
-    'menu-login',
+    'MenuAvatar-login',
     {
       KOR: '로그인',
-      ENG: 'Login'
+      ENG: 'LoginButton'
     }
   ],
   [
-    'menu-sign-out',
+    'MenuAvatar-sign-out',
     {
       KOR: '로그아웃',
       ENG: 'Log out'
     }
   ],
   [
-    'menu-5',
+    'MenuAvatar-5',
     {
       KOR: '연락처',
       ENG: 'Connect With Us'
@@ -2347,14 +2334,14 @@ const strings = new Map([
     'guide-subj-main',
     {
       KOR: '유저 가이드',
-      ENG: 'User Guide'
+      ENG: 'UserAvatar Guide'
     }
   ],
   [
     'guide-subj-1',
     {
       KOR: '문서업로드 하기',
-      ENG: 'Upload documents'
+      ENG: 'profileUpload documents'
     }
   ],
   [
@@ -2362,7 +2349,8 @@ const strings = new Map([
     {
       KOR:
         '문서의 제목, 설명, 태그 등의 정보를 입력하고 업로드하면 문서가 공유됩니다.',
-      ENG: 'Add a title, description and tag, and upload a document to share.'
+      ENG:
+        'AddButton a title, description and tag, and profileUpload a document to share.'
     }
   ],
   [
@@ -2378,14 +2366,14 @@ const strings = new Map([
       KOR:
         '소셜 + 지갑 로그인 후 문서를 업로드하면 자동으로 문서 등록 절차를 진행하며, 문서가 등록되면 저자보상과 투표를 받을 수 있음 (7일간 투표량에 따라서 featured 탭 순위가 결정됨)',
       ENG:
-        'Log into your social and wallet account, and upload a document. It will be registered automatically and you will receive creator rewards and votes. (The ranking in the Featured tap is determined based on the votes received for the last 7 days.)'
+        'Log into your social and wallet account, and profileUpload a document. It will be registered automatically and you will receive creator RewardCard and votes. (The ranking in the Featured tap is determined based on the votes received for the last 7 days.)'
     }
   ],
   [
     'guide-subj-3',
     {
       KOR: '크리에이터 보상금 산정하기',
-      ENG: 'Calculate creator rewards'
+      ENG: 'Calculate creator RewardCard'
     }
   ],
   [
@@ -2394,23 +2382,23 @@ const strings = new Map([
       KOR:
         '등록된 문서들에 대해서 매일 0시(GMT+0) 당일 전체 보상금의 70%를 문서 별 이전 하루 동안의 페이지뷰에 비례해서 배분 됩니다.',
       ENG:
-        '70% of the total rewards is distributed per document based on its page views at 00:00 (GMT+0) on a daily basis.'
+        '70% of the total RewardCard is distributed per document based on its page views at 00:00 (GMT+0) on a daily basis.'
     }
   ],
   [
     'guide-subj-4',
     {
       KOR: '크리에이터 보상금 청구하기',
-      ENG: 'Claim creator rewards'
+      ENG: 'ProfileUploadClaim creator RewardCard'
     }
   ],
   [
     'guide-content-4',
     {
       KOR:
-        '마이 페이지의 uploaded 탭에서 문서 별로 Claim 버튼을 클릭하면 지금까지 일별로 산정된 누적 보상금을 수령할 수 있습니다.',
+        '마이 페이지의 uploaded 탭에서 문서 별로 ProfileUploadClaim 버튼을 클릭하면 지금까지 일별로 산정된 누적 보상금을 수령할 수 있습니다.',
       ENG:
-        'Click on the Claim button for each document in the Uploaded tab of the My Profile page to receive your rewards settled on a daily basis.'
+        'Click on the ProfileUploadClaim button for each document in the Uploaded tab of the MyAvatar profile page to receive your RewardCard settled on a daily basis.'
     }
   ],
   [
@@ -2425,14 +2413,15 @@ const strings = new Map([
     {
       KOR:
         '마이 페이지 또는 메타마스크 등의 지갑에서 토큰 보유량을 확인할 수 있습니다.',
-      ENG: 'Check your token balance on My Profile page or MetaMask wallet.'
+      ENG:
+        'Check your token balance on MyAvatar profile page or MetaMask wallet.'
     }
   ],
   [
     'guide-subj-6',
     {
       KOR: '투표하기',
-      ENG: 'Vote'
+      ENG: 'VoteModal'
     }
   ],
   [
@@ -2441,7 +2430,7 @@ const strings = new Map([
       KOR:
         '문서 뷰어 페이지에서 투표하기 버튼을 클릭하고 해당 문서에 투표할 토큰수를 입력하여 투표하면 됩니다.',
       ENG:
-        'Click on the Vote button on the document viewer page and enter the amount of tokens to vote.'
+        'Click on the VoteModal button on the document viewer page and enter the amount of tokens to VoteModal.'
     }
   ],
   [
@@ -2464,7 +2453,7 @@ const strings = new Map([
     'guide-subj-8',
     {
       KOR: '큐레이터 보상금 산정하기',
-      ENG: 'Calculate curator rewards'
+      ENG: 'Calculate curator RewardCard'
     }
   ],
   [
@@ -2473,23 +2462,23 @@ const strings = new Map([
       KOR:
         '당일 페이지 뷰가 발생한 문서들에 대해서 매일 0시(GMT+0) 당일 전체 보상금의 30%를 문서 별 이전 하루 동안의 페이지뷰의 제곱에 비례해서 배분하고, 이를 다시 투표한 토큰수에 비례하여 배분됩니다.',
       ENG:
-        '30% of the total rewards is distributed per document based on the square of its page views a day before, and is also distributed based on the tokens voted. '
+        '30% of the total RewardCard is distributed per document based on the square of its page views a day before, and is also distributed based on the tokens voted. '
     }
   ],
   [
     'guide-subj-9',
     {
       KOR: '큐레이터 보상금 청구하기',
-      ENG: 'Claim curator rewards'
+      ENG: 'ProfileUploadClaim curator RewardCard'
     }
   ],
   [
     'guide-content-9',
     {
       KOR:
-        '내 프로필 페이지의 voted 탭에서 문서 별로 Claim 버튼을 클릭하면, 예치기간이 만료된 투표에 대해서 지금까지 정산 완료된 누적 보상금과 예치금을 수령할 수 있습니다.',
+        '내 프로필 페이지의 voted 탭에서 문서 별로 ProfileUploadClaim 버튼을 클릭하면, 예치기간이 만료된 투표에 대해서 지금까지 정산 완료된 누적 보상금과 예치금을 수령할 수 있습니다.',
       ENG:
-        'Click on the Claim button in the Voted tab of the My Profile page to receive the total rewards you have earned through voting of which deposit period has expired.'
+        'Click on the ProfileUploadClaim button in the Voted tab of the MyAvatar profile page to receive the total RewardCard you have earned through voting of which deposit period has expired.'
     }
   ],
   [
@@ -2543,8 +2532,8 @@ const strings = new Map([
   [
     'guide-subj-13',
     {
-      KOR: 'SNS 공유하기',
-      ENG: 'Share on social media'
+      KOR: 'FooterSNS 공유하기',
+      ENG: 'ShareModal on social media'
     }
   ],
   [
@@ -2560,7 +2549,7 @@ const strings = new Map([
     'guide-subj-14',
     {
       KOR: '문서 링크 공유하기',
-      ENG: 'Share document link'
+      ENG: 'ShareModal document link'
     }
   ],
   [
@@ -2569,7 +2558,7 @@ const strings = new Map([
       KOR:
         '문서 뷰어 페이지에서 공유 버튼을 클릭하면 문서 공유창이 표시되며, 여기서 문서의 공유 링크를 복사한 후, 이메일 또는 메신저 등에 공유하시면 됩니다.',
       ENG:
-        'Click on the Share button on the document viewer page to open the window where you can copy the link to share it via email or messenger.'
+        'Click on the ShareModal button on the document viewer page to open the window where you can copy the link to share it via email or messenger.'
     }
   ],
   [
@@ -2585,30 +2574,30 @@ const strings = new Map([
       KOR:
         '문서 뷰어 페이지에서 공유 버튼을 클릭하면 문서 공유창이 표시되며, 여기서 Embed Code를 복사한 후, 공유할 사이트에 붙여넣기를 하시면 됩니다.',
       ENG:
-        'Click on the Share button on the document viewer page to open the window where you can copy the embedded code and paste it on the website to share it.'
+        'Click on the ShareModal button on the document viewer page to open the window where you can copy the embedded code and paste it on the website to share it.'
     }
   ],
 
-  // Publish Modal
+  // PublishModal modal
   [
     'tooltip-publish',
     {
       KOR: '출판하기',
-      ENG: 'Publish this documents'
+      ENG: 'PublishModal this documents'
     }
   ],
   [
     'tooltip-deposit',
     {
       KOR: '입금하기',
-      ENG: 'Deposit'
+      ENG: 'DepositModal'
     }
   ],
   [
     'publish-modal-title',
     {
       KOR: '문서 출판하기',
-      ENG: 'Publish documents'
+      ENG: 'PublishModal documents'
     }
   ],
   [
@@ -2617,7 +2606,7 @@ const strings = new Map([
       KOR:
         '현재 문서는 Public(공개) 상태로 전환 될것입니다. 문서를 블록체인에 등록해보세요. 전문가들이 당신의 문서를 투표하고, 조회수에 따라 크리에이터 보상도 받을 수 있습니다.',
       ENG:
-        'This documents will be transitioned to the Public state. Register the documents in the block chain. Experts can vote on your documents and receive creator rewards based on views.'
+        'This documents will be transitioned to the Public state. Register the documents in the block chain. Experts can VoteModal on your documents and receive creator RewardCard based on views.'
     }
   ],
   [
@@ -2633,18 +2622,18 @@ const strings = new Map([
     'publish-modal-confirm-btn',
     {
       KOR: '공개 및 등록하기',
-      ENG: 'Publish and Register'
+      ENG: 'PublishModal and Register'
     }
   ],
   [
     'publish-modal-publish-btn',
     {
       KOR: '출판하기',
-      ENG: 'Publish'
+      ENG: 'PublishModal'
     }
   ],
 
-  // Publish Modal Complete
+  // PublishModal modal Complete
   [
     'publish-modal-complete-title',
     {
@@ -2658,14 +2647,14 @@ const strings = new Map([
       KOR:
         '이제 몇 시간 후부터는 검색엔진에서 당신의 문서가 검색될 것입니다. 외부에서 당신의 문서를 참조하는 링크가 많아지면 검색 결과의 상단에 노출되는데 도움이 됩니다.',
       ENG:
-        'After a few hours, your document will be retrieved from the search engine. More links to your documents from outside can help you reach the author of your search results.'
+        'After a few hours, your document will be retrieved from the search engine. More links to your documents from outside can help you reach the ProfileAuthor of your search results.'
     }
   ],
   [
     'publish-modal-complete-subject',
     {
       KOR: '당신의 문서를 세상에 공유해보세요.',
-      ENG: 'Share your document with the world.'
+      ENG: 'ShareModal your document with the world.'
     }
   ],
   [
@@ -2683,12 +2672,12 @@ const strings = new Map([
     }
   ],
 
-  // Deposit Modal
+  // DepositModal modal
   [
     'deposit-modal-title',
     {
       KOR: '입금하기',
-      ENG: 'Deposit'
+      ENG: 'DepositModal'
     }
   ],
   [
@@ -2699,12 +2688,12 @@ const strings = new Map([
     }
   ],
 
-  // Withdraw Modal
+  // WithdrawModal modal
   [
     'withdraw-modal-title',
     {
       KOR: '출금하기',
-      ENG: 'Withdraw'
+      ENG: 'WithdrawModal'
     }
   ],
   [
@@ -2736,7 +2725,7 @@ const strings = new Map([
     }
   ],
 
-  // Delete Document Modal
+  // Delete Document modal
   [
     'delete-modal-title',
     {
@@ -2753,12 +2742,12 @@ const strings = new Map([
     }
   ],
 
-  // Creator Claim
+  // Creator ProfileUploadClaim
   [
     'claim-text',
     {
       KOR: '클레임',
-      ENG: 'Claim'
+      ENG: 'ProfileUploadClaim'
     }
   ],
   [
@@ -2795,14 +2784,14 @@ const strings = new Map([
     'helmet-title-guide',
     {
       KOR: '유저 가이드',
-      ENG: 'User Guide'
+      ENG: 'UserAvatar Guide'
     }
   ],
   [
     'helmet-title-mylist',
     {
       KOR: '내가 찜한 문서',
-      ENG: 'My List'
+      ENG: 'MyAvatar AlertList'
     }
   ],
   [
@@ -2853,7 +2842,7 @@ const strings = new Map([
     'away-modal-desc-1',
     {
       KOR: '',
-      ENG: 'You will change to Away mode after'
+      ENG: 'You will change to AwayModal mode after'
     }
   ],
   [
@@ -2876,18 +2865,18 @@ const strings = new Map([
     'bookmark-add',
     {
       KOR: '내가 찜한 문서에 추가',
-      ENG: 'Add to My List'
+      ENG: 'AddButton to MyAvatar AlertList'
     }
   ],
   [
     'bookmark-remove',
     {
       KOR: '내가 찜한 문서에서 삭제',
-      ENG: 'Remove from My List'
+      ENG: 'Remove from MyAvatar AlertList'
     }
   ],
 
-  // Content Add
+  // Content AddButton
   [
     'content-add-publish-btn',
     {
@@ -2899,14 +2888,14 @@ const strings = new Map([
     'content-add-drag-drop',
     {
       KOR: '드래그 앤 드롭 또는 클릭하여 파일 선택',
-      ENG: 'Drag & Drop or Click to upload document'
+      ENG: 'Drag & Drop or Click to profileUpload document'
     }
   ],
   [
     'content-add-click',
     {
       KOR: '클릭하여 파일 선택',
-      ENG: 'Click to upload document'
+      ENG: 'Click to profileUpload document'
     }
   ],
   [
@@ -2920,11 +2909,11 @@ const strings = new Map([
     'content-add-post-add',
     {
       KOR: '새 글 작성',
-      ENG: 'Add Post'
+      ENG: 'AddButton Post'
     }
   ],
 
-  // Image Crop Modal
+  // Image Crop modal
   [
     'image-crop-modal-subject',
     {
@@ -2964,7 +2953,7 @@ const strings = new Map([
         'Polaris Share에 오신 것을 환영합니다! 귀하와 Decompany, Inc. ' +
         '(이하 "우리", "당사") 간의 본 계약 ("계약")은',
       ENG:
-        'Welcome to Polaris Share! This agreement (the “Agreement”) between you and Decompany, ' +
+        'Welcome to Polaris ShareModal! This agreement (the “Agreement”) between you and Decompany, ' +
         'Inc.(“we”, “us”, “our”) sets out your rights to access and use of'
     }
   ],
@@ -3056,29 +3045,29 @@ const strings = new Map([
     {
       KOR:
         '당사는 당사가 제공하는 데이터, 텍스트, 사진, 이미지, 비디오, 오디오, 그래픽, 기사, 주석, 소프트웨어, 코드, 스크립트 및 ' +
-        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris Share 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
-        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris Share Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
+        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris ShareModal 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
+        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris ShareModal Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
       ENG:
         'We may retain data, text, photographs, images, video, audio, graphics,' +
         'articles, comments, software, code, scripts, and other content' +
         'supplied by us. Except as explicitly stated in this Agreement, we do' +
-        'not grant any express or implied rights to use Polaris Share Content.'
+        'not grant any express or implied rights to use Polaris ShareModal Content.'
     }
   ],
   [
     'terms-3-desc-2',
     {
       KOR:
-        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris Share 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
+        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris ShareModal 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
       ENG:
         'You are granted a limited, non-exclusive, non-transferable, and' +
         'non-sublicensable license to access and use the Service and Polaris' +
-        'Share Content for your personal use. You retain ownership of and' +
+        'ShareModal Content for your personal use. You retain ownership of and' +
         'responsibility for Content you create or own ("Your Content"). If' +
         "you're posting anything you did not create yourself or do not own the" +
         'rights to, you agree that you are responsible for any Content you' +
         'post; that you will only submit Content that you have the right to' +
-        'post; and that you will fully comply with any third-party licenses' +
+        'post; and that you will fully comply with any sectionThird-party licenses' +
         'relating to Content you post.'
     }
   ],
@@ -3093,16 +3082,16 @@ const strings = new Map([
     'terms-4-desc-1',
     {
       KOR:
-        '"Polaris Share", Polaris Share 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
+        '"Polaris ShareModal", Polaris ShareModal 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
         '슬로건은 당사의 상표이며, ' +
         '전부 또는 일부를 복사, 모방 또는 사용해서는 안됩니다. ' +
         '명시 적으로 허용되지 않거나 처음에 당사로부터 서면 허가를 받지 않은 경우. ',
       ENG:
-        '“Polaris Share,”, the Polaris Share logo and any other product or' +
+        '“Polaris ShareModal,”, the Polaris ShareModal logo and any other product or' +
         'service names, logos, slogans that may appear on the Service are' +
         'trademarks of the company, and, may not be copied, imitated,' +
         'or used, in whole or in part, unless explicitly permitted or without' +
-        'first receiving written permission from us to do so. The look and feel' +
+        'sectionFirst receiving written permission from us to do so. The look and feel' +
         'of '
     }
   ],
@@ -3155,7 +3144,7 @@ const strings = new Map([
         'utilizing an Internet-based POLA blockchain account service including,' +
         'but not limited to, the risk of failure of hardware, software and' +
         'Internet connections, the risk of malicious software introduction, and' +
-        'the risk that third-parties may obtain unauthorized access to' +
+        'the risk that sectionThird-parties may obtain unauthorized access to' +
         'information stored within or associated with your Account, including,' +
         'but not limited to your private key(s) (“Private Key”). You accept and' +
         'acknowledge that we will not be responsible for any communication' +
@@ -3172,7 +3161,7 @@ const strings = new Map([
         '5.2. We make no representation or warranty of any kind, express or' +
         'implied, statutory, or otherwise, regarding the contents of the' +
         'Service, information and functions made accessible through the' +
-        'Service, any hyperlinks to third-party websites, nor for any breach of' +
+        'Service, any hyperlinks to sectionThird-party websites, nor for any breach of' +
         'security associated with the transmission of information through the' +
         'Service or any website linked to by the Service.'
     }
@@ -3191,10 +3180,10 @@ const strings = new Map([
         '5.3. We will not be responsible or liable to you for any loss and take' +
         'no responsibility for and will not be liable to you for any use of our' +
         'Services, including but not limited to any losses, damages or claims' +
-        'arising from: (a) User error such as forgotten passwords, incorrectly' +
+        'arising from: (a) UserAvatar error such as forgotten passwords, incorrectly' +
         'constructed transactions, or mistyped POLA blockchain addresses; (b)' +
         'Server failure or data loss; (c) Corrupted Account files; (d)' +
-        'Unauthorized access to applications; (e) Any unauthorized third-party' +
+        'Unauthorized access to applications; (e) Any unauthorized sectionThird-party' +
         'activities, including without limitation the use of viruses, phishing,' +
         'brute forcing or other means of attack against the Service or Services.'
     }
@@ -3245,7 +3234,7 @@ const strings = new Map([
     'terms-6-title',
     {
       KOR: '6. 제 3 자 서비스 및 컨텐츠에 대한 책임 없음',
-      ENG: '6. No Liability for Third-Party Services and Content'
+      ENG: '6. No Liability for sectionThird-Party Services and Content'
     }
   ],
   [
@@ -3260,17 +3249,17 @@ const strings = new Map([
         '제 3 자 콘텐츠 사용 및 제 3 자와의 상호 작용에 따른 위험 부담을 이해합니다.',
       ENG:
         '6.1. In using our Services, you may view content or utilize services' +
-        'provided by third parties, including links to web pages and services' +
-        'of such parties (“Third-Party Content”). We do not control, endorse,' +
-        'or adopt any Third-Party Content and will have no responsibility for' +
-        'Third-Party Content including, without limitation, material that may' +
+        'provided by sectionThird parties, including links to web pages and services' +
+        'of such parties (“sectionThird-Party Content”). We do not control, endorse,' +
+        'or adopt any sectionThird-Party Content and will have no responsibility for' +
+        'sectionThird-Party Content including, without limitation, material that may' +
         'be misleading, incomplete, erroneous, offensive, indecent, or' +
         'otherwise objectionable in your jurisdiction. In addition, your' +
-        'dealings or correspondence with such third parties are solely between' +
-        'you and the third parties. We are not responsible or liable for any' +
+        'dealings or correspondence with such sectionThird parties are solely between' +
+        'you and the sectionThird parties. We are not responsible or liable for any' +
         'loss or damage of any sort incurred because of any such dealings and' +
-        'you understand that your use of Third-Party Content, and your' +
-        'interactions with third parties, is at your own risk.'
+        'you understand that your use of sectionThird-Party Content, and your' +
+        'interactions with sectionThird parties, is at your own risk.'
     }
   ],
   [
@@ -3328,7 +3317,7 @@ const strings = new Map([
         'field. Advances in code cracking or technical advances such as the' +
         'development of quantum computers may present risks to the Services' +
         'that you use and your Account, which could result in the theft or loss' +
-        'of your property. By using the Service or accessing Polaris Share' +
+        'of your property. By using the Service or accessing Polaris ShareModal' +
         'Content, you acknowledge these inherent risks.'
     }
   ],
@@ -3345,7 +3334,7 @@ const strings = new Map([
       KOR:
         '8.1. 계정 및 개인 키. 서비스를 통해 계정을 만드는 데 동의하는 경우, 귀하에게 전적으로 제공되고 귀하가 전적으로 소유 한 암호화 개인 및 공개 키 쌍을 생성합니다. 단, 귀하의 비밀번호 나 비공개 키는 저장하지 마십시오. 우리는 결코 귀하의 개인 키에 접근 할 수 없으며 귀하를 대신하여 어떤 개인 키를 양육하지 않습니다. 그러므로 귀하의 계정에 연결된 개인 키 관리에 대한 책임을 지지 않습니다. 개인 키는 계정 이름과 고유하게 일치하며 해당 계정에서 POLA 이전을 승인하기 위해 계정과 관련하여 사용해야 합니다. 개인 키의 보안을 유지 관리하는 것은 전적으로 귀하의 책임입니다. 개인 키 액세스 정보는 안전하게 보관해야 합니다. 그렇게 하지 않으면 POLA에 통제가 상실 될 수 있습니다.',
       ENG:
-        '8.1. As described in others detail below, the Services, among other' +
+        '8.1. As described in Others detail below, the Services, among other' +
         'things, provide software that facilitates the submission of POLA' +
         'blockchain transaction data to the POLA blockchain without requiring' +
         'you to access the POLA blockchain command line interface.'
@@ -3375,10 +3364,10 @@ const strings = new Map([
         '8.3. 업무. 제안 된 모든 POLA 블록 체인 거래는 POLA 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 POLA 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. POLA 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 POLA 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 POLA 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
       ENG:
         '8.3. Transactions. All proposed POLA blockchain transactions must be' +
-        'confirmed and recorded in the POLA blockchain via the Polaris Share' +
+        'confirmed and recorded in the POLA blockchain via the Polaris ShareModal' +
         'distributed consensus network (a peer-to-peer network), which is not' +
         'owned, controlled, or operated by us. The POLA blockchain is operated' +
-        'by a decentralized network of independent third parties. We have no' +
+        'by a decentralized network of independent sectionThird parties. We have no' +
         'control over the POLA blockchain and therefore cannot and will not' +
         'ensure that any transaction details you submit via the Services will' +
         'be confirmed on the POLA blockchain.'
@@ -3516,7 +3505,7 @@ const strings = new Map([
         'including, for instance, if you breach any term of this Agreement. In' +
         'the event of termination, your access to the funds in your account' +
         'will require you access to the POLA blockchain via the command line' +
-        'API or third party tool, and will require you to have access to your' +
+        'API or sectionThird party tool, and will require you to have access to your' +
         'backup of your Account data including your Account and Private Keys.'
     }
   ],
@@ -3524,7 +3513,7 @@ const strings = new Map([
     'terms-11-title',
     {
       KOR: '11. 사용자 행동',
-      ENG: '11. User Conduct'
+      ENG: '11. UserAvatar Conduct'
     }
   ],
   [
@@ -3599,8 +3588,8 @@ const strings = new Map([
       KOR:
         '11.1.6. 제 3 자에게 본 절에 의거하여 금지 된 활동을 하도록 권장하거나 유도하십시오.',
       ENG:
-        '11.1.6. Encourage or induce any third-party to engage in any of the' +
-        'activities prohibited under this Section.'
+        '11.1.6. Encourage or induce any sectionThird-party to engage in any of the' +
+        'activities prohibited under this FooterContainer.'
     }
   ],
   [
@@ -3619,7 +3608,7 @@ const strings = new Map([
         '12.1 We will respond to legitimate requests under the Digital' +
         'Millennium Copyright Act ("DMCA"), and we retain the right to remove' +
         'access to user content provided via the Service that we deem to be' +
-        'infringing the copyright of others. If you become aware of user' +
+        'infringing the copyright of Others. If you become aware of user' +
         'content on the Service that infringes your copyright rights, you may' +
         'submit a properly formatted DMCA request (see 17 U.S.C. § 512) to' +
         'the company'
@@ -3681,7 +3670,7 @@ const strings = new Map([
         'repeat infringers. We apply this policy at our discretion and in' +
         'appropriate circumstances, such as when a user has repeatedly been' +
         'charged with infringing the copyrights or other intellectual property' +
-        'rights of others.'
+        'rights of Others.'
     }
   ],
   [
@@ -3700,7 +3689,7 @@ const strings = new Map([
         'All the things you do and all the information you submit or post to' +
         'the Service remain your responsibility. Indemnity is basically a way' +
         'of saying that you will not hold us legally liable for any of your' +
-        'content or actions that infringe the law or the rights of a third' +
+        'content or actions that infringe the law or the rights of a sectionThird' +
         'party or person in any way.'
     }
   ],
@@ -3711,12 +3700,12 @@ const strings = new Map([
         '특히 귀하는 당사, 계열사, 임원, 이사, 직원, 대리인 및 제 3 자 서비스 공급자를 변호인의 권리를 포함하여 청구, 비용, 손해, 손실, 경비 및 기타 책임으로부터 무해하고 방어하기로 동의합니다. 귀하의 서비스 액세스 또는 사용, 귀하의 본 이용 약관 위반 및 또는 제 3 자 또는 개인의 권리 침해로 인해 발생하는 비용, 비용 및 비용.',
       ENG:
         'Specifically, you agree to hold us, our affiliates, officers,' +
-        'directors, employees, agents, and third-party service providers' +
+        'directors, employees, agents, and sectionThird-party service providers' +
         'harmless from and defend them against any claims, costs, damages,' +
         'losses, expenses, and any other liabilities, including attorneys’ fees' +
         'and costs, arising out of or related to your access to or use of the' +
         'Service, your violation of this user agreement, and/or your violation' +
-        'of the rights of any third-party or person.'
+        'of the rights of any sectionThird-party or person.'
     }
   ],
   [
@@ -3730,22 +3719,22 @@ const strings = new Map([
     'terms-14-desc',
     {
       KOR:
-        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris Share 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris Share 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris Share 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
+        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris ShareModal 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris ShareModal 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris ShareModal 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
       ENG:
         'To the fullest extent permitted by applicable law, the Service and the' +
-        'Polaris Share Content are provided on an “as is” and “as available”' +
+        'Polaris ShareModal Content are provided on an “as is” and “as available”' +
         'basis, without warranties of any kind, either express or implied,' +
         'including, without limitation, implied warranties of merchantability,' +
         'fitness for a particular purpose, title and non-infringement and any' +
         'warranties implied by any course of performance or usage of trade. The' +
         'company does not represent or warrant that the Service and the Polaris' +
-        'Share Content: (a) will be secure or available at any time or' +
+        'ShareModal Content: (a) will be secure or available at any time or' +
         'location; (b) are accurate, complete, reliable, current, or error-free' +
         'or that any defects or errors will be corrected; and (c) are free of' +
         'viruses or other harmful components. Your use of the Service and' +
-        'Polaris Share Content is solely at your own risk. Some jurisdictions' +
+        'Polaris ShareModal Content is solely at your own risk. Some jurisdictions' +
         'do not allow the disclaimer of implied terms in contracts with' +
-        'consumers, so some or all of the disclaimers in this Section may not' +
+        'consumers, so some or all of the disclaimers in this FooterContainer may not' +
         'apply to you.'
     }
   ],
@@ -3771,7 +3760,7 @@ const strings = new Map([
         'or loss of data, whether in an action in contract, tort (including,' +
         'but not limited to, negligence) or otherwise, arising out of, or in' +
         'any way connected with, the use of, or inability to use, the Service' +
-        'or the Polaris Share Content. To the fullest extent permitted by' +
+        'or the Polaris ShareModal Content. To the fullest extent permitted by' +
         'applicable law, in no event shall the aggregate liability of DECOMPANY' +
         'GLOBAL, Inc. or any related party, whether in contract, warranty, tort' +
         '(including negligence, whether active, passive or imputed), product' +
@@ -3787,7 +3776,7 @@ const strings = new Map([
       ENG:
         'Some jurisdictions do not allow the exclusion or limitation of certain' +
         'damages, so some or all of the exclusions and limitations in this' +
-        'Section may not apply to you.'
+        'FooterContainer may not apply to you.'
     }
   ],
   [
@@ -3825,7 +3814,7 @@ const strings = new Map([
         'Please read the following section carefully because it requires you to' +
         'arbitrate certain disputes with the company and limits the way' +
         'you can seek relief from the company. If you do not agree' +
-        'with this Section 20, please discontinue using the Service.'
+        'with this FooterContainer 20, please discontinue using the Service.'
     }
   ],
   [
@@ -3843,7 +3832,7 @@ const strings = new Map([
         'GLOBAL, Inc. (collectively, “Disputes”) resolved in a court; and (b)' +
         'waive your right to a jury trial. Instead, you and the company ' +
         'will arbitrate Disputes through binding arbitration (which is the' +
-        'referral of a Dispute to one or others persons charged with reviewing' +
+        'referral of a Dispute to one or Others persons charged with reviewing' +
         'the Dispute and making a final and binding determination to resolve' +
         'it, instead of having the Dispute decided by a judge or jury in' +
         'court).'
@@ -3876,7 +3865,7 @@ const strings = new Map([
         '17.3. 연방 중재 법. 귀하는 본 계약이 주간 거래에 영향을 미치고 본 제 18 조의 집행 가능성이 연방 중재 법 (Federal Arbitration Act) 9 USC § 1 이하에 따라 실질적으로 및 절차 적으로 모두 해석되고 해석되며 시행 및 집행될 것에 동의합니다. (이하 "FAA")를 해당 법률에서 허용하는 최대한의 범위 내에서 준수해야합니다.',
       ENG:
         '17.3. Federal Arbitration Act. You agree that this Agreement affects' +
-        'interstate commerce and that the enforceability of this Section 20' +
+        'interstate commerce and that the enforceability of this FooterContainer 20' +
         'shall be governed by, construed, and enforced, both substantively and' +
         'procedurally, by the Federal Arbitration Act, 9 U.S.C. § 1 et seq.' +
         '(the “FAA”) to the maximum extent permitted by applicable law.'
@@ -3890,7 +3879,7 @@ const strings = new Map([
       ENG:
         '17.4. Process. You agree that you will notify us in writing of any' +
         'Dispute within thirty (30) days of when it arises so that the parties' +
-        'can attempt, in good faith, to resolve the Dispute informally. Notice' +
+        'can attempt, in good faith, to resolve the Dispute informally. notice' +
         'to the us shall be provided by sending an email to'
     }
   ],
@@ -3905,7 +3894,7 @@ const strings = new Map([
         '(3) the specific relief that you are seeking. If we cannot agree how' +
         'to resolve the Dispute within thirty (30) days of the us receiving the' +
         'notice, either you or the company. may, as appropriate pursuant' +
-        'to this Section 20, commence an arbitration proceeding or file a claim' +
+        'to this FooterContainer 20, commence an arbitration proceeding or file a claim' +
         'in court. You agree that any arbitration or claim against us must be' +
         'commenced or filed within one (1) year after the Dispute arose;' +
         'otherwise, you agree that the claim is permanently barred (which means' +
@@ -3932,10 +3921,10 @@ const strings = new Map([
         'authority and jurisdiction to make all procedural and substantive' +
         'decisions regarding a Dispute; and (b) the authority to grant any' +
         'remedy that would otherwise be available in court. The arbitrator may' +
-        'only conduct an individual arbitration and may not consolidate others' +
+        'only conduct an individual arbitration and may not consolidate Others' +
         'than one individual’ s claims, preside over any type of class or' +
         'representative proceeding or preside over any proceeding involving' +
-        'others than one individual.'
+        'Others than one individual.'
     }
   ],
   [
@@ -3966,11 +3955,11 @@ const strings = new Map([
       KOR:
         '17.7. 분리 가능성. 이 제 18조의 조항, 조항 또는 조항이 유효하지 않거나 시행이 불가능할 경우 법률에서 요구하는 최소한의 범위 내에서 유지되어야 하며 기타 모든 조항, 조항 또는 조항은 유효하고 시행 가능합니다. 또한 18.2 항에 명시된 권리 포기는 본 계약의 다른 조항과 분리되며 해당 법률에서 금지하는 경우를 제외하고는 유효하고 시행 가능합니다.',
       ENG:
-        '17.7. Severability. If any term, clause, or provision of this Section' +
+        '17.7. Severability. If any term, clause, or provision of this FooterContainer' +
         '20 is held invalid or unenforceable, it will be so held to the minimum' +
         'extent required by law and all other terms, clauses or provisions will' +
         'remain valid and enforceable. Further, the waivers set forth in' +
-        'Section 20.2 are severable from the other provisions of this Agreement' +
+        'FooterContainer 20.2 are severable from the other provisions of this Agreement' +
         'and will remain valid and enforceable, except as prohibited by' +
         'applicable law.'
     }
@@ -3986,12 +3975,12 @@ const strings = new Map([
     'terms-18-desc',
     {
       KOR:
-        '본 계약 및 서비스 및 Polaris Share 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
+        '본 계약 및 서비스 및 Polaris ShareModal 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
       ENG:
         'This Agreement and your access to and use of the Service and the' +
-        'Polaris Share Content will be governed by, and construed in accordance' +
+        'Polaris ShareModal Content will be governed by, and construed in accordance' +
         'with, the laws of New York, without resort to its conflict of law' +
-        'provisions. To the extent the arbitration provision in Section 20 does' +
+        'provisions. To the extent the arbitration provision in FooterContainer 20 does' +
         'not apply and the Dispute cannot be heard in small claims court, you' +
         'agree that any action at law or in equity arising out of, or relating' +
         'to, this Agreement shall be filed only in the state and federal courts' +
@@ -4107,9 +4096,9 @@ const strings = new Map([
     'privacy-desc',
     {
       KOR:
-        'DECOMPANY Inc. (이하 "회사")는 Polaris Share Service (이하 "서비스")에 저장된 개인 정보의 보호가 중요하다고 생각하기 때문에 항상 사용자의 개인 정보를 보호하기 위해 최선의 노력을 다합니다. 이 서비스는 2019 년 5 월 31 일부터 이 서비스가 정보를 수집하는 이유와 사용자 데이터의 수집 및 내용을 처리하기 위해 취해야 할 조치에 대해 설명합니다.',
+        'DECOMPANY Inc. (이하 "회사")는 Polaris ShareModal Service (이하 "서비스")에 저장된 개인 정보의 보호가 중요하다고 생각하기 때문에 항상 사용자의 개인 정보를 보호하기 위해 최선의 노력을 다합니다. 이 서비스는 2019 년 5 월 31 일부터 이 서비스가 정보를 수집하는 이유와 사용자 데이터의 수집 및 내용을 처리하기 위해 취해야 할 조치에 대해 설명합니다.',
       ENG:
-        'DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts to protect the personal information of its users as it considers the protection of personal information saved under Polaris Share Service (hereinafter "Service") is significant. This Privacy Policy, effective from May 31, 2019 explains why this service collects information as well as what measures are taken to handle the collection and contents of user data.'
+        'DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts to protect the personal information of its users as it considers the protection of personal information saved under Polaris ShareModal Service (hereinafter "Service") is significant. This Privacy Policy, effective from May 31, 2019 explains why this service collects information as well as what measures are taken to handle the collection and contents of user data.'
     }
   ],
   [
@@ -4185,7 +4174,7 @@ const strings = new Map([
     'privacy-1-desc-9',
     {
       KOR: '② 내용 정보',
-      ENG: '② Contents information'
+      ENG: '② contents information'
     }
   ],
   [
@@ -4194,14 +4183,14 @@ const strings = new Map([
       KOR:
         '사용자의 Polaris Office 저장소에있는 파일과 내용은 사용자가 선택한 서비스를 위해 수집되며 다른 서비스 나 사용자에게 사용되거나 제 3 자에게 제공되지 않습니다.',
       ENG:
-        "Files and their content in the user's Polaris Office storage are collected, which is intended for the service selected by the user, and will not be used for any other services or users or be provided to any third parties."
+        "Files and their content in the user's Polaris Office storage are collected, which is intended for the service selected by the user, and will not be used for any other services or users or be provided to any sectionThird parties."
     }
   ],
   [
     'privacy-1-desc-11',
     {
       KOR: '③ 제 3 자 파트너 계정 정보',
-      ENG: '③ A third party partner account information'
+      ENG: '③ A sectionThird party partner account information'
     }
   ],
   [
@@ -4210,7 +4199,7 @@ const strings = new Map([
       KOR:
         '사용자가 다른 사람이 Google, 링크드 인 또는 기타 서비스 제공 업체를 통해 자신의 개인 정보에 액세스하도록 허용하는 경우 서비스는 해당 정보를 서버에 저장하여 나중에 해당 정보에 액세스 할 수 있습니다.',
       ENG:
-        'If the user allows others to access to their own personal information via Google, Linkedin, or any other service provider, the service stores such information in the server, so that the user may access the information later.'
+        'If the user allows Others to access to their own personal information via Google, Linkedin, or any other service provider, the service stores such information in the server, so that the user may access the information later.'
     }
   ],
   [
@@ -4243,7 +4232,7 @@ const strings = new Map([
       KOR:
         '회사는 그러한 조항에 동의하는 사용자에게 제품 제안 또는 마케팅 정보를 제공 할 수 있습니다. 이러한 정보는 이벤트 정보를 제공하거나 광고를 게시하기 위해 참조 될 수 있습니다. 사용자는 서비스 계정 설정의 서비스 / 이벤트 알림 옵션에서 이러한 정보의 수신을 거부 할 수 있습니다.',
       ENG:
-        'The company may provide product offer or marketing information to users who agree to such provisions. Such information can be referred to for delivering event information or posting ads. User may opt to deny reception of such information in the service/event notification option in the account setup of service.'
+        'The company may provide product offer or marketing information to users who agree to such provisions. Such information can be referred to for delivering event information or posting ads. UserAvatar may opt to deny reception of such information in the service/event notification option in the account setup of service.'
     }
   ],
   [
@@ -4410,7 +4399,7 @@ const strings = new Map([
     'privacy-3-desc-10',
     {
       KOR: '- 로그인 : 3 개월',
-      ENG: '- Login record: 3 months'
+      ENG: '- LoginButton record: 3 months'
     }
   ],
   [
@@ -4464,7 +4453,7 @@ const strings = new Map([
     'privacy-5-title',
     {
       KOR: '5. 사용자의 권리',
-      ENG: "5. User's Rights"
+      ENG: "5. UserAvatar's Rights"
     }
   ],
   [
@@ -4544,7 +4533,7 @@ const strings = new Map([
       KOR:
         '② 『계정 설정』에서 회원 탈퇴 메뉴를 이용하여 회원 탈퇴를 할 수 있습니다. 회원 탈퇴 후, 개인 정보는 ". 개인 정보의 보유 및 이용 기간"에 따라 처리됩니다.',
       ENG:
-        '② A user can use the membership withdrawal menu in 『account setting』\n' +
+        '② A user can use the membership withdrawal MenuAvatar in 『account setting』\n' +
         '          to withdraw their membership. Once the membership is withdrawn, the\n' +
         '          personal information is processed according to ". Retention and Use\n' +
         '          Period of Personal Information."'
@@ -4595,7 +4584,7 @@ const strings = new Map([
     'privacy-6-title',
     {
       KOR: '6. 개인 정보의 제 3 자 제공',
-      ENG: '6. Provision of Personal Information to Third Parties'
+      ENG: '6. Provision of Personal Information to sectionThird Parties'
     }
   ],
   [
@@ -4603,7 +4592,7 @@ const strings = new Map([
     {
       KOR: '회사는 다음과 같은 경우에 개인 정보를 제 3 자에게 제공합니다.',
       ENG:
-        'The company supplies the personal information to a third party in the following cases of exceptions.'
+        'The company supplies the personal information to a sectionThird party in the following cases of exceptions.'
     }
   ],
   [
@@ -4619,7 +4608,7 @@ const strings = new Map([
       KOR:
         '개인 정보가 제 3 자에게 제공 될 경우, 회사는 개인 정보, 목적, 품목, 소유 및 사용 기간을 사전에 수령 한 사람에게 통지 한 후 명시 적 및 개별적 계약을 요청합니다.',
       ENG:
-        'When the personal data is provided for a third party, the company requests explicit and individual agreements after notifying a person who receives personal information, purpose, items, possession, and period of use in advance.'
+        'When the personal data is provided for a sectionThird party, the company requests explicit and individual agreements after notifying a person who receives personal information, purpose, items, possession, and period of use in advance.'
     }
   ],
   [
@@ -4642,7 +4631,7 @@ const strings = new Map([
       KOR:
         '고객 서비스는 모든 고객 지원 관련 문제의 품질과 신속성을 보장하기 위해 타사 회사에 위탁됩니다.',
       ENG:
-        'Customer service is entrusted to a third party company to ensure the quality and promptness of all customer support related issues.'
+        'Customer service is entrusted to a sectionThird party company to ensure the quality and promptness of all customer support related issues.'
     }
   ],
   [
@@ -4787,7 +4776,7 @@ const strings = new Map([
       KOR:
         '① Internet Explorer : 웹 브라우저 상단의 도구 메뉴 > 인터넷 옵션 > 개인 정보 > 설정',
       ENG:
-        '① Internet Explorer: Tool Menu on upper side of web-browser > Internet Option > Personal Information > Setting'
+        '① Internet Explorer: Tool MenuAvatar on upper side of web-browser > Internet TrackingOption > Personal Information > Setting'
     }
   ],
   [
@@ -4796,7 +4785,7 @@ const strings = new Map([
       KOR:
         '② Chrome : 웹 브라우저 오른쪽의 선택 메뉴 > 화면 하단의 확장 설정 선택 (단어가 다를 수 있음) > 개인 정보 내용 선택 버튼 > 쿠키',
       ENG:
-        '② Chrome: Selection Menu on right side of web-browser > Selection of Extended Setting on bottom of screen (wording may differ) > Personal Information Contents Selection Button > Cookie'
+        '② Chrome: Selection MenuAvatar on right side of web-browser > Selection of Extended Setting on bottom of screen (wording may differ) > Personal Information contents Selection button > Cookie'
     }
   ],
   [
@@ -4931,7 +4920,7 @@ const strings = new Map([
     'privacy-11-desc-3',
     {
       KOR: '- 이메일 주소',
-      ENG: '- Email address:'
+      ENG: '- EmailModal address:'
     }
   ],
   [
@@ -4991,7 +4980,7 @@ const strings = new Map([
       KOR:
         '그럼에도 유무선 네트워크가 완벽한 보안을 제공하지 않기 때문에 사용자가 선택한 다른 사람에게 전송 된 정보가 완전히 안전하다는 보장은 없습니다. 따라서 물리적, 기술적 또는 관리적 안전 장치가 공격 및 파괴 될 수 있기 때문에 정보가 액세스, 노출, 변경 또는 손상 될 수 있습니다.',
       ENG:
-        'Nevertheless, it is not guaranteed that the information sent to others by your choice is completely safe because wired and wireless networks do not provide complete security. Accordingly, information being accessed, exposed, changed, or damaged is possible because physical, technical, or management safety devices may be attacked and destroyed.'
+        'Nevertheless, it is not guaranteed that the information sent to Others by your choice is completely safe because wired and wireless networks do not provide complete security. Accordingly, information being accessed, exposed, changed, or damaged is possible because physical, technical, or management safety devices may be attacked and destroyed.'
     }
   ],
   [
@@ -5005,9 +4994,9 @@ const strings = new Map([
     'policy-1-desc-1',
     {
       KOR:
-        'Polaris Share ( "Polaris Share")로 사업을하는 DECOMPANY Corporation은 귀하의 개인 정보를 보호하기 위해 노력합니다. 본 개인 정보 보호 정책은 Polaris Share가 관리하는 공개 웹 사이트 또는이 개인 정보 보호 정책에 연결된 권한 기반 서비스의 정보 관리 관행을 다루고 있습니다. 여기에는 다음 웹 사이트가 포함됩니다.',
+        'Polaris ShareModal ( "Polaris ShareModal")로 사업을하는 DECOMPANY Corporation은 귀하의 개인 정보를 보호하기 위해 노력합니다. 본 개인 정보 보호 정책은 Polaris Share가 관리하는 공개 웹 사이트 또는이 개인 정보 보호 정책에 연결된 권한 기반 서비스의 정보 관리 관행을 다루고 있습니다. 여기에는 다음 웹 사이트가 포함됩니다.',
       ENG:
-        ' At DECOMPANY Corporation, doing business as Polaris Share ("Polaris Share"), we strive to protect the privacy of your information. This privacy statement covers the information management practices of Polaris Share controlled public web sites or permission-based services that link to this privacy statement. These include the following websites:'
+        ' At DECOMPANY Corporation, doing business as Polaris ShareModal ("Polaris ShareModal"), we strive to protect the privacy of your information. This privacy statement covers the information management practices of Polaris ShareModal controlled public web sites or permission-based services that link to this privacy statement. These include the following websites:'
     }
   ],
   [
@@ -5016,7 +5005,7 @@ const strings = new Map([
       KOR:
         'Polaris Share는 개인 정보를 요청하거나 제어하는 ​​모든 페이지에서이 개인 정보 보호 정책에 대한 링크를 제공합니다\n',
       ENG:
-        'Polaris Share provides a link to this privacy statement on all pages\n' +
+        'Polaris ShareModal provides a link to this privacy statement on all pages\n' +
         '          requesting or controlling personal information'
     }
   ],
@@ -5031,9 +5020,9 @@ const strings = new Map([
     'policy-1-desc-4',
     {
       KOR:
-        '웹 사이트 방문자 또는 고객이 Polaris Share 서비스 또는 Polaris Share 서비스를 사용하기위한 등록에 대한 추가 정보를 얻는 데 관심이있는 경우, Polaris Share는 당사자에게 이름 및 이메일 주소와 같은 연락처 정보를 제공하도록 요구할 수 있습니다.',
+        '웹 사이트 방문자 또는 고객이 Polaris ShareModal 서비스 또는 Polaris ShareModal 서비스를 사용하기위한 등록에 대한 추가 정보를 얻는 데 관심이있는 경우, Polaris Share는 당사자에게 이름 및 이메일 주소와 같은 연락처 정보를 제공하도록 요구할 수 있습니다.',
       ENG:
-        "When a web site visitor or customer expresses interest in obtaining additional information about Polaris Share's services or registers to use a Polaris Share service, Polaris Share may require the party to provide contact information, such as name, and email address."
+        "When a web site visitor or customer expresses interest in obtaining additional information about Polaris ShareModal's services or registers to use a Polaris ShareModal service, Polaris ShareModal may require the party to provide contact information, such as name, and email address."
     }
   ],
   [
@@ -5042,16 +5031,16 @@ const strings = new Map([
       KOR:
         'Polaris Share의 권한 기반 서비스는 서비스에 의존하는 여러 비즈니스 트랜잭션에 참여한 참가자가 반복적으로 사용할 수 있도록 설계되었습니다. 이러한 서비스의 보안과 그 안에 포함 된 비즈니스 데이터의 핵심은 사용자의 가상 신원을 확인하는 것이이 서비스를 사용하는 데 필수적입니다. 서비스를 활용하고 보호하려면 참가자는 프로필 정보 (이름, 이메일 주소)를 제공해야합니다.',
       ENG:
-        "Polaris Share's permission-based services are designed to facilitate repeat use by participants involved in multiple business transactions relying upon the services. Key to the security of these services and the business data contained therein, verification of user’s virtual identity is fundamental to using this service. Participants must provide profile information (name, email address) in order to utilize and secure the services."
+        "Polaris ShareModal's permission-based services are designed to facilitate repeat use by participants involved in multiple business transactions relying upon the services. Key to the security of these services and the business data contained therein, verification of user’s virtual identity is fundamental to using this service. Participants must provide profile information (name, email address) in order to utilize and secure the services."
     }
   ],
   [
     'policy-1-desc-6',
     {
       KOR:
-        '위에서 설명한대로 수집 된 프로필 정보 외에도 Polaris Share는 방문자의 IP 주소, 방문자가 Polaris Share 웹 사이트에 액세스하는 웹 사이트 유형을 포함하되 이에 국한되지 않는 공개 웹 사이트 사용에 대한 익명 정보를 수집합니다. 웹 사이트에 액세스하는 데 사용되는 웹 브라우저, 방문 시간 및 조회 한 페이지 수 이 수집 된 정보는 개인을 개인적으로 식별하지 않으며 보안을 위해 특정 법적 요구 사항 및 웹 사이트 방문 통계 분석을 수행하기 위해 서비스를 운영해야합니다.',
+        '위에서 설명한대로 수집 된 프로필 정보 외에도 Polaris Share는 방문자의 IP 주소, 방문자가 Polaris ShareModal 웹 사이트에 액세스하는 웹 사이트 유형을 포함하되 이에 국한되지 않는 공개 웹 사이트 사용에 대한 익명 정보를 수집합니다. 웹 사이트에 액세스하는 데 사용되는 웹 브라우저, 방문 시간 및 조회 한 페이지 수 이 수집 된 정보는 개인을 개인적으로 식별하지 않으며 보안을 위해 특정 법적 요구 사항 및 웹 사이트 방문 통계 분석을 수행하기 위해 서비스를 운영해야합니다.',
       ENG:
-        "In addition to the profile information collected as described above, Polaris Share also collects anonymous information about the use of our public web site, including but not limited to a visitor's IP address, the websites from which visitors access the Polaris Share web site, the type of web browsers used to access the website, the time of the visit, and the pages viewed. This collected information does not personally identify individuals and is required to operate the service, for security, to fulfill certain legal requirements and statistical analysis of web site visits."
+        "In addition to the profile information collected as described above, Polaris ShareModal also collects anonymous information about the use of our public web site, including but not limited to a visitor's IP address, the websites from which visitors access the Polaris ShareModal web site, the type of web browsers used to access the website, the time of the visit, and the pages viewed. This collected information does not personally identify individuals and is required to operate the service, for security, to fulfill certain legal requirements and statistical analysis of web site visits."
     }
   ],
   [
@@ -5083,7 +5072,7 @@ const strings = new Map([
     'policy-1-desc-10',
     {
       KOR: 'Polaris 공유 서비스 사용',
-      ENG: 'Polaris Share Services Usage'
+      ENG: 'Polaris ShareModal Services Usage'
     }
   ],
   [
@@ -5092,7 +5081,7 @@ const strings = new Map([
       KOR:
         '권한 기반 서비스를 제공함에 따라 Polaris Share는 참여한 서비스 및 작업에 대한 참가자의 액세스 기록을 유지하며, 자세한 사용자 활동보고 / 공유 분석 기능의 일부로 해당 볼트의 소유자가이를 이용할 수 있도록합니다. . Polaris Share는 또한 사용자를 보호하기 위해 사용자가 서비스에 액세스 할 수있는 IP 주소의 로그를 유지할 수 있습니다.',
       ENG:
-        'In the provision of our permission-based services, Polaris Share will maintain a history of participant access to the services and actions taken therein and make this available to the owner of a respective vault accordingly as part of our detailed user activity reporting / sharing analytics capabilities. Polaris Share also may maintain a log of IP addresses from which users access the services to help secure our users.'
+        'In the provision of our permission-based services, Polaris ShareModal will maintain a history of participant access to the services and actions taken therein and make this available to the owner of a respective vault accordingly as part of our detailed user activity reporting / sharing ProfileAnalytics capabilities. Polaris ShareModal also may maintain a log of IP addresses from which users access the services to help secure our users.'
     }
   ],
   [
@@ -5106,9 +5095,9 @@ const strings = new Map([
     'policy-1-desc-13',
     {
       KOR:
-        'Polaris Share는 위의 수집 된 정보를 사용하여 제품 고객과 예비 고객에게 솔루션에 대해 알리고 고객이 요청한 서비스를 제공하며 고객이 서비스를 이용할 때 고객을 지원합니다. 예를 들어, 당사 웹 사이트에서 "연락처"양식을 당사 서비스에 대한 정보와 함께 작성하면 Polaris Share가 귀하에게 응답 할 수 있습니다. Polaris Share는 제품 업그레이드, 사용자 모범 사례, 업계 뉴스, 프로모션 또는 이벤트에 대한 정보를 제공하기 위해 자체 마케팅 목적으로 Polaris Share 고객에 대한 데이터를 사용할 수도 있습니다.',
+        'Polaris Share는 위의 수집 된 정보를 사용하여 제품 고객과 예비 고객에게 솔루션에 대해 알리고 고객이 요청한 서비스를 제공하며 고객이 서비스를 이용할 때 고객을 지원합니다. 예를 들어, 당사 웹 사이트에서 "연락처"양식을 당사 서비스에 대한 정보와 함께 작성하면 Polaris Share가 귀하에게 응답 할 수 있습니다. Polaris Share는 제품 업그레이드, 사용자 모범 사례, 업계 뉴스, 프로모션 또는 이벤트에 대한 정보를 제공하기 위해 자체 마케팅 목적으로 Polaris ShareModal 고객에 대한 데이터를 사용할 수도 있습니다.',
       ENG:
-        'Polaris Share uses the above collected information to inform our product customers and prospective customers about our solutions, to provide services requested by our customers, and to support our customers as they utilize our services. For example, Polaris Share may respond to you, if you fill out a "Contact" form on our website, with information about our services. Polaris Share may also use data about Polaris Share customers for its own marketing purposes, in order to provide information about product upgrades, user best practices, industry news, promotions or events.'
+        'Polaris ShareModal uses the above collected information to inform our product customers and prospective customers about our solutions, to provide services requested by our customers, and to support our customers as they utilize our services. For example, Polaris ShareModal may respond to you, if you fill out a "Contact" form on our website, with information about our services. Polaris ShareModal may also use data about Polaris ShareModal customers for its own marketing purposes, in order to provide information about product upgrades, user best practices, industry news, promotions or events.'
     }
   ],
   [
@@ -5122,9 +5111,9 @@ const strings = new Map([
     'policy-1-desc-15',
     {
       KOR:
-        'Polaris Share는 귀하의 개인 데이터를 관련없는 제 3 자와 공유, 판매 또는 배포하지 않습니다. 모든 개인 데이터는 위에 요약 된 개인 데이터의 사용 사례를 직접 지원하는 제 3 자에게만 공개 될 수 있습니다. 각 볼트의 소유자는 자신의 데이터에 대한 액세스 제어를 유지해야하며 볼트와 관련된 개인 사용자 정보 및 사용자 활동에 액세스 할 수 있습니다. 이 정보는 Polaris Share 서비스에 액세스하고 사용하는 데 필요하지만 각 볼트의 소유자가 관리합니다.',
+        'Polaris Share는 귀하의 개인 데이터를 관련없는 제 3 자와 공유, 판매 또는 배포하지 않습니다. 모든 개인 데이터는 위에 요약 된 개인 데이터의 사용 사례를 직접 지원하는 제 3 자에게만 공개 될 수 있습니다. 각 볼트의 소유자는 자신의 데이터에 대한 액세스 제어를 유지해야하며 볼트와 관련된 개인 사용자 정보 및 사용자 활동에 액세스 할 수 있습니다. 이 정보는 Polaris ShareModal 서비스에 액세스하고 사용하는 데 필요하지만 각 볼트의 소유자가 관리합니다.',
       ENG:
-        'Polaris Share will not share, sell or distribute your personal data to unrelated third parties. All personal data may be disclosed only to third parties who directly support the use cases for personal data as summarized above. Owners of respective vaults are responsible for maintaining the access controls over their data and have access to personal user information and user activity related to their vault. This information is required to access and use the Polaris Share services but is administered by the owner of each respective vault.'
+        'Polaris ShareModal will not share, sell or distribute your personal data to unrelated sectionThird parties. All personal data may be disclosed only to sectionThird parties who directly support the use cases for personal data as summarized above. Owners of respective vaults are responsible for maintaining the access controls over their data and have access to personal user information and user activity related to their vault. This information is required to access and use the Polaris ShareModal services but is administered by the owner of each respective vault.'
     }
   ],
   [
@@ -5138,9 +5127,9 @@ const strings = new Map([
     'policy-1-desc-17',
     {
       KOR:
-        '서비스 사용과 관련된 다양한 데이터는 각 서비스 계약 기간 동안 Polaris Share에 의해 무기한 보유됩니다. Polaris Share 소유자는 자체 관리 관행의 일부로 액세스 데이터 사본을 만들었을 수 있으며이 정책의 범위를 벗어납니다. 금융 거래와 관련된 추가 정보는 7 년 동안 유지됩니다.',
+        '서비스 사용과 관련된 다양한 데이터는 각 서비스 계약 기간 동안 Polaris Share에 의해 무기한 보유됩니다. Polaris ShareModal 소유자는 자체 관리 관행의 일부로 액세스 데이터 사본을 만들었을 수 있으며이 정책의 범위를 벗어납니다. 금융 거래와 관련된 추가 정보는 7 년 동안 유지됩니다.',
       ENG:
-        'Various data related to the use of the service is retained indefinitely by Polaris Share for the duration of each respective service contract. The Polaris Share owner may have made copies of access data as part of their own respective management practices and are outside the purview of this policy. Additional information related to financial transactions is retained for a period of seven years.'
+        'Various data related to the use of the service is retained indefinitely by Polaris ShareModal for the duration of each respective service contract. The Polaris ShareModal owner may have made copies of access data as part of their own respective management practices and are outside the purview of this policy. Additional information related to financial transactions is retained for a period of seven years.'
     }
   ],
   [
@@ -5156,7 +5145,7 @@ const strings = new Map([
       KOR:
         '무단 액세스를 방지하고 데이터 무결성을 유지하며 정보를 올바르게 사용하기 위해 Polaris Share는 온라인으로 수집하거나 처리하는 정보를 보호하고 보호하기위한 광범위한 관리 및 기술 메커니즘을 마련했습니다. Polaris Share는 적용 가능한 모든 글로벌 보안 및 개인 정보 보호 규정을 준수하며 다양한 글로벌 및 산업 보안 및 개인 정보 인증, 프레임 워크 및 레지스트리에 자발적으로 참여합니다. 여기에는 Polaris Share를 지원하는 다양한 소프트웨어 및 서비스를 제공하는 공급 업체가 포함됩니다. 당사는 신중하게 선택하고 본 개인 정보 보호 정책, 보안 정책 및 동일한 높은 보안 및 개인 정보 보호 표준의 조항을 준수 할 계약 상 책임을집니다. 데이터 보안에 대한 추가 세부 사항은 Polaris 공유 보안 정책에 있습니다.',
       ENG:
-        'To prevent unauthorized access, maintain data integrity, and ensure the correct use of information, Polaris Share has instituted a wide array of administrative and technical mechanisms to secure and protect the information we collect or process online. Polaris Share complies with all applicable global security and privacy regulations and voluntarily participates in various global and industry security and privacy certifications, frameworks and registries. This includes the vendors which provide various software and services that support Polaris Share, whom we select carefully and hold them contractually responsible to adhere to the terms within this privacy policy, our security policy, and the same high security and privacy standards. Additional details regarding data security are found in the Polaris Share Security Policy.'
+        'To prevent unauthorized access, maintain data integrity, and ensure the correct use of information, Polaris ShareModal has instituted a wide array of administrative and technical mechanisms to secure and protect the information we collect or process online. Polaris ShareModal complies with all applicable global security and privacy regulations and voluntarily participates in various global and industry security and privacy certifications, frameworks and registries. This includes the vendors which provide various software and services that support Polaris ShareModal, whom we select carefully and hold them contractually responsible to adhere to the terms within this privacy policy, our security policy, and the same high security and privacy standards. Additional details regarding data security are found in the Polaris ShareModal Security Policy.'
     }
   ],
   [
@@ -5170,18 +5159,18 @@ const strings = new Map([
     'policy-1-desc-21',
     {
       KOR:
-        'Polaris Share 권한 기반 서비스 사용자는 서비스에 로그인하여 "기본 설정 : 프로파일"페이지를 선택하고 온라인 인터페이스를 사용하여 정보를 업데이트하여 프로파일 정보를 업데이트하거나 변경할 수 있습니다.  정보 업데이트, Polaris Share 계정 중단, 개인 정보 반환을 원하는 조직은 이메일을 보내거나 질문을하거나 ',
+        'Polaris ShareModal 권한 기반 서비스 사용자는 서비스에 로그인하여 "기본 설정 : 프로파일"페이지를 선택하고 온라인 인터페이스를 사용하여 정보를 업데이트하여 프로파일 정보를 업데이트하거나 변경할 수 있습니다.  정보 업데이트, Polaris ShareModal 계정 중단, 개인 정보 반환을 원하는 조직은 이메일을 보내거나 질문을하거나 ',
       ENG:
-        'Users of Polaris Share permission-based services may update or change their profile information by logging into the service, selecting the "Preferences: Profile" page, and updating information using the online interface. Organizations seeking to update information, to discontinue their Polaris Share account, to have their private information returned to them please email, have questions, or need help should contact Polaris Share by sending an email to'
+        'Users of Polaris ShareModal permission-based services may update or change their profile information by logging into the service, selecting the "Preferences: profile" page, and updating information using the online interface. Organizations seeking to update information, to discontinue their Polaris ShareModal account, to have their private information returned to them please email, have questions, or need help should contact Polaris ShareModal by sending an email to'
     }
   ],
   [
     'policy-1-desc-22',
     {
       KOR:
-        '로 이메일을 보내서 Polaris Share에 연락 해야합니다. Polaris Share 권한 기반 서비스에 대한 액세스 또는 사용과 직접 관련이없는 Polaris Share의 메일 또는 이메일은',
+        '로 이메일을 보내서 Polaris Share에 연락 해야합니다. Polaris ShareModal 권한 기반 서비스에 대한 액세스 또는 사용과 직접 관련이없는 Polaris Share의 메일 또는 이메일은',
       ENG:
-        ', Should you decline to receive mail or email from Polaris Share that does not relate directly to your access to or use of Polaris Share permission-based services, please visit our'
+        ', Should you decline to receive mail or email from Polaris ShareModal that does not relate directly to your access to or use of Polaris ShareModal permission-based services, please visit our'
     }
   ],
   [
@@ -5234,7 +5223,7 @@ const strings = new Map([
       KOR:
         '캘리포니아 주민은 1 년에 한 번 Polaris Share가 제 3 자의 직접 마케팅 목적으로 전년도 동안 특정 정보를 공개 한 모든 제 3 자 목록을 요청하고 입수 할 수 있습니다. 캘리포니아 거주자이고 그러한 목록을 원하는 경우 ',
       ENG:
-        'California residents can request and obtain from us once a year a list of all third parties to which Polaris Share has disclosed certain information during the preceding calendar year for the third parties direct marketing purposes. If you are a California resident and want such a list, please contact us by email to'
+        'California residents can request and obtain from us once a year a list of all sectionThird parties to which Polaris ShareModal has disclosed certain information during the preceding calendar year for the sectionThird parties direct marketing purposes. If you are a California resident and want such a list, please contact us by email to'
     }
   ],
   [
@@ -5248,16 +5237,16 @@ const strings = new Map([
     'policy-1-desc-31',
     {
       KOR: '미국 이외의 사용자에게 고지',
-      ENG: 'Notice to Users Outside the U.S.'
+      ENG: 'notice to Users Outside the U.S.'
     }
   ],
   [
     'policy-1-desc-32',
     {
       KOR:
-        '우리의 서비스는 미국 내에서 통제되고 운영됩니다. 귀하가 미국 이외의 지역에서 당사 서비스에 액세스하는 경우, 당사는 귀하로부터 수집 한 정보를 귀하의 모국 또는 관할 지역 이외의 데이터 센터로 전송할 수 있습니다. 특히, 귀하 또는 귀하의 서비스 제공 업체가 운영하는 미국에서 귀하의 정보가 전송되고 처리 될 것이며, 여기서 데이터 보호 및 기타 법률은 귀하의 관할 지역의 법률과 동일하지 않을 수 있습니다. Polaris Share Services를 사용함으로써 귀하는 귀하의 정보가 미국으로 전송 및 사용되어 본 개인 정보 보호 정책에 명시된대로 처리 될 수 있다는 데 동의합니다.',
+        '우리의 서비스는 미국 내에서 통제되고 운영됩니다. 귀하가 미국 이외의 지역에서 당사 서비스에 액세스하는 경우, 당사는 귀하로부터 수집 한 정보를 귀하의 모국 또는 관할 지역 이외의 데이터 센터로 전송할 수 있습니다. 특히, 귀하 또는 귀하의 서비스 제공 업체가 운영하는 미국에서 귀하의 정보가 전송되고 처리 될 것이며, 여기서 데이터 보호 및 기타 법률은 귀하의 관할 지역의 법률과 동일하지 않을 수 있습니다. Polaris ShareModal Services를 사용함으로써 귀하는 귀하의 정보가 미국으로 전송 및 사용되어 본 개인 정보 보호 정책에 명시된대로 처리 될 수 있다는 데 동의합니다.',
       ENG:
-        'Our Services are controlled and operated within the United States. If you access our Services outside of the United States, we may transfer the information collected from you to data centers outside of your home country or jurisdiction. In particular, your information will be transferred to and processed in the United States where we or our service providers operate, where data protection and other laws may not be equivalent to those in your jurisdiction. By using the Polaris Share Services, you agree that your information can be transferred to and used in the United States and handled as set forth in this Privacy Policy.'
+        'Our Services are controlled and operated within the United States. If you access our Services outside of the United States, we may transfer the information collected from you to data centers outside of your home country or jurisdiction. In particular, your information will be transferred to and processed in the United States where we or our service providers operate, where data protection and other laws may not be equivalent to those in your jurisdiction. By using the Polaris ShareModal Services, you agree that your information can be transferred to and used in the United States and handled as set forth in this Privacy Policy.'
     }
   ],
   [
@@ -5271,9 +5260,9 @@ const strings = new Map([
     'policy-1-desc-34',
     {
       KOR:
-        'EU의 시민 또는 거주자로서 귀하의 개인 정보는 GDPR의 조건에 의해 보호됩니다. Polaris Share 및 Polaris Share의 고객이 GDPR을 준수하려면 Polaris Share에 액세스하고 추가 개인 정보 보호 권한을 행사하기 위해 동의해야합니다. GDPR에 따라 확장 된 대부분의 조항은 아래 설명에 추가 옵션 및 기능과 함께 위의 설명에 설명되어 있습니다.',
+        'EU의 시민 또는 거주자로서 귀하의 개인 정보는 GDPR의 조건에 의해 보호됩니다. Polaris ShareModal 및 Polaris Share의 고객이 GDPR을 준수하려면 Polaris Share에 액세스하고 추가 개인 정보 보호 권한을 행사하기 위해 동의해야합니다. GDPR에 따라 확장 된 대부분의 조항은 아래 설명에 추가 옵션 및 기능과 함께 위의 설명에 설명되어 있습니다.',
       ENG:
-        "As a citizen or resident of the EU, your personal data are protected by the terms of the GDPR. In order for Polaris Share and Polaris Share's customers to comply with the GDPR, you are required to grant consent in order to gain access to Polaris Share and to exercise additional privacy rights. Most provisions extended under the GDPR are described in the statements above with additional options and features described below."
+        "As a citizen or resident of the EU, your personal data are protected by the terms of the GDPR. In order for Polaris ShareModal and Polaris ShareModal's customers to comply with the GDPR, you are required to grant consent in order to gain access to Polaris ShareModal and to exercise additional privacy rights. Most provisions extended under the GDPR are described in the statements above with additional options and features described below."
     }
   ],
   [
@@ -5352,9 +5341,9 @@ const strings = new Map([
     'policy-1-desc-44',
     {
       KOR:
-        '사용자는 언제든지 Polaris Share 서비스에서 자신을 제거하도록 선택할 수 있습니다. 사용자는 먼저 삭제 권한을 행사하기 위해 Polaris Share 소유자 / 관리자에게 문의해야합니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는',
+        '사용자는 언제든지 Polaris ShareModal 서비스에서 자신을 제거하도록 선택할 수 있습니다. 사용자는 먼저 삭제 권한을 행사하기 위해 Polaris ShareModal 소유자 / 관리자에게 문의해야합니다. Polaris ShareModal 소유자 / 관리자에게 연락 할 수없는 경우 사용자는',
       ENG:
-        'Users may at any time chose to remove themselves from the Polaris Share service. Users should first contact the Polaris Share owner / administrator in order to exercise the right to erasure. In the eventthat the Polaris Share owner / administrator cannot be reached, users can send an email to'
+        'Users may at any time chose to remove themselves from the Polaris ShareModal service. Users should sectionFirst contact the Polaris ShareModal owner / administrator in order to exercise the right to erasure. In the eventthat the Polaris ShareModal owner / administrator cannot be reached, users can send an email to'
     }
   ],
   [
@@ -5375,9 +5364,9 @@ const strings = new Map([
     'policy-1-desc-47',
     {
       KOR:
-        '사용자는 Polaris Share 소유자 / 관리자에게 자신의 개인 정보 사본을 요청할 수 있지만 해당 요청은 해당 Polaris Share에 대해 공개 한 개인 정보 보호 정책에 명시된대로 해당 소유자의 각 권리 및 통제 대상이됩니다.',
+        '사용자는 Polaris ShareModal 소유자 / 관리자에게 자신의 개인 정보 사본을 요청할 수 있지만 해당 요청은 해당 Polaris Share에 대해 공개 한 개인 정보 보호 정책에 명시된대로 해당 소유자의 각 권리 및 통제 대상이됩니다.',
       ENG:
-        'Users may request copies of their personal information from a Polaris Share owner / administrator but such requests are subject to the respective rights and control of that owner as may be stated within the privacy policy they have published for that Polaris Share.'
+        'Users may request copies of their personal information from a Polaris ShareModal owner / administrator but such requests are subject to the respective rights and control of that owner as may be stated within the privacy policy they have published for that Polaris ShareModal.'
     }
   ],
   [
@@ -5391,9 +5380,9 @@ const strings = new Map([
     'policy-1-desc-49',
     {
       KOR:
-        '사용자는 먼저 Polaris Share 소유자 / 관리자에게 연락하여 개인 정보 수집 및 사용에 반대 할 수 있습니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는 ',
+        '사용자는 먼저 Polaris ShareModal 소유자 / 관리자에게 연락하여 개인 정보 수집 및 사용에 반대 할 수 있습니다. Polaris ShareModal 소유자 / 관리자에게 연락 할 수없는 경우 사용자는 ',
       ENG:
-        'Users may object to the collection and use of personal information by first contacting the Polaris Share owner / administrator. In the event that the Polaris Share owner / administrator cannot be reached, users can send an email to'
+        'Users may object to the collection and use of personal information by sectionFirst contacting the Polaris ShareModal owner / administrator. In the event that the Polaris ShareModal owner / administrator cannot be reached, users can send an email to'
     }
   ],
   [
@@ -5414,10 +5403,10 @@ const strings = new Map([
     'policy-1-desc-52',
     {
       KOR:
-        '자동 의사 결정 및 프로파일 링은 Polaris Share Services 사용에는 적용되지 않습니다.',
+        '자동 의사 결정 및 프로파일 링은 Polaris ShareModal Services 사용에는 적용되지 않습니다.',
       ENG:
         'Automated decision making and profiling is not applicable to the use\n' +
-        '          of Polaris Share Services.'
+        '          of Polaris ShareModal Services.'
     }
   ],
   [
@@ -5448,7 +5437,7 @@ const strings = new Map([
       KOR:
         '에 연락 하여 구속력있는 중재를 불러와 Polaris Share가 개인에 대한 의무를 위반했는지 여부와 그러한 위반이 완전히 또는 부분적으로 해결되지 않은지 여부를 확인할 수 있습니다.',
       ENG:
-        ' to invoke binding arbitration to determine whether Polaris Share has violated its obligations to an individual and whether any such violation remains fully or partially un-remedied.'
+        ' to invoke binding arbitration to determine whether Polaris ShareModal has violated its obligations to an individual and whether any such violation remains fully or partially un-remedied.'
     }
   ],
   [
@@ -5508,9 +5497,9 @@ const strings = new Map([
     'policy-1-desc-64',
     {
       KOR:
-        '개인 정보의 수집 및 사용에 대한 법적 근거는 위의 진술에 자세히 설명되어 있으며 일반적으로 사용자의 명시적인 동의로 시작하여 Polaris Share 서비스 계약 조건을 지원하고 Polaris Share 서비스의 보안 기능을 지원하기위한 추가 요구 사항이 따릅니다. 법적인 이유로, 특히 GDPR 및 다양한 미국의 법령을 준수하기 위해 필요합니다.',
+        '개인 정보의 수집 및 사용에 대한 법적 근거는 위의 진술에 자세히 설명되어 있으며 일반적으로 사용자의 명시적인 동의로 시작하여 Polaris ShareModal 서비스 계약 조건을 지원하고 Polaris ShareModal 서비스의 보안 기능을 지원하기위한 추가 요구 사항이 따릅니다. 법적인 이유로, 특히 GDPR 및 다양한 미국의 법령을 준수하기 위해 필요합니다.',
       ENG:
-        'Legal basis for the collection and use of personal information is detailed in the above statements and generally starts with explicit consent by a user, followed by additional requirements to support the terms of the Polaris Share service contracts, support the secure function of the Polaris Share service, and as required for legal reasons, specifically to comply with the requirements of the GDPR and various US legal statutes.'
+        'Legal basis for the collection and use of personal information is detailed in the above statements and generally starts with explicit consent by a user, followed by additional requirements to support the terms of the Polaris ShareModal service contracts, support the secure function of the Polaris ShareModal service, and as required for legal reasons, specifically to comply with the requirements of the GDPR and various US legal statutes.'
     }
   ],
   [
@@ -5524,36 +5513,36 @@ const strings = new Map([
     'policy-1-desc-66',
     {
       KOR:
-        'Polaris Share는 이러한 서비스를 사용하는 고객에게 개별 비즈니스 기능을 지원하는 서비스를 제공합니다. 이러한 Polaris Share 소유자 / 관리자는이 서비스에 대한 사용자를 생성하여 해당 볼트와 관련된 특정 유형의 사용자 데이터에 대한 데이터 컨트롤러로 간주됩니다. 따라서 Polaris Share는 해당 데이터의 프로세서입니다. Polaris Share 고객 (소유자 / 관리자)은이 범주의 데이터에 대한 책임을 공유하며 추가 GDPR 개인 정보 보호 자격이있는 사용자에 대한 의무를 이행 할 수있는 도구가 제공됩니다.',
+        'Polaris Share는 이러한 서비스를 사용하는 고객에게 개별 비즈니스 기능을 지원하는 서비스를 제공합니다. 이러한 Polaris ShareModal 소유자 / 관리자는이 서비스에 대한 사용자를 생성하여 해당 볼트와 관련된 특정 유형의 사용자 데이터에 대한 데이터 컨트롤러로 간주됩니다. 따라서 Polaris Share는 해당 데이터의 프로세서입니다. Polaris ShareModal 고객 (소유자 / 관리자)은이 범주의 데이터에 대한 책임을 공유하며 추가 GDPR 개인 정보 보호 자격이있는 사용자에 대한 의무를 이행 할 수있는 도구가 제공됩니다.',
       ENG:
-        'Polaris Share provides services to customers who use these services to in turn support their own individual business functions. These Polaris Share owners / administrators create users for these services are considered data controllers for certain types of user data related to their respective vaults. Polaris Share is thus the processor for that data. Polaris Share customers (owners / administrators) share the responsibility for this category of data and are provided the tools to fulfill that obligation for their users who are eligible for the additional GDPR privacy rights.'
+        'Polaris ShareModal provides services to customers who use these services to in turn support their own individual business functions. These Polaris ShareModal owners / administrators create users for these services are considered data controllers for certain types of user data related to their respective vaults. Polaris ShareModal is thus the processor for that data. Polaris ShareModal customers (owners / administrators) share the responsibility for this Category of data and are provided the tools to fulfill that obligation for their users who are eligible for the additional GDPR privacy rights.'
     }
   ],
   [
     'policy-1-desc-67',
     {
       KOR:
-        'Polaris Share 고객은 서비스를 설정하고 유지하기 위해 Polaris Share와 개인 정보를 공유하며,이 정보를 위해 Polaris Share는 컨트롤러이며 서비스 계약의 일부로 계약 상 구속됩니다.',
+        'Polaris ShareModal 고객은 서비스를 설정하고 유지하기 위해 Polaris Share와 개인 정보를 공유하며,이 정보를 위해 Polaris Share는 컨트롤러이며 서비스 계약의 일부로 계약 상 구속됩니다.',
       ENG:
-        'Polaris Share customers share personal information with Polaris Share to establish and maintain services, and for this information Polaris Share is the Controller and is bound contractually as part of the contract for services.'
+        'Polaris ShareModal customers share personal information with Polaris ShareModal to establish and maintain services, and for this information Polaris ShareModal is the Controller and is bound contractually as part of the contract for services.'
     }
   ],
   [
     'policy-1-desc-68',
     {
       KOR:
-        'Polaris Share 서비스를 지원하는 제 3 자 제공 업체도 비슷한 방식으로 프로세서 및 하위 프로세서로서 책임을 공유합니다.',
+        'Polaris ShareModal 서비스를 지원하는 제 3 자 제공 업체도 비슷한 방식으로 프로세서 및 하위 프로세서로서 책임을 공유합니다.',
       ENG:
-        'Affiliated third party providers who in turn support the Polaris Share service also share responsibility as Processors and Sub-Processors in a similar manner.'
+        'Affiliated sectionThird party providers who in turn support the Polaris ShareModal service also share responsibility as Processors and Sub-Processors in a similar manner.'
     }
   ],
   [
     'policy-1-desc-69',
     {
       KOR:
-        '지원 역할이 있거나 Polaris Share 내에서 적용 가능한 개인 정보에 액세스 할 수있는 모든 당사자는 GDPR 원칙을 준수하도록 계약에 따라 적절하게 구속됩니다.',
+        '지원 역할이 있거나 Polaris ShareModal 내에서 적용 가능한 개인 정보에 액세스 할 수있는 모든 당사자는 GDPR 원칙을 준수하도록 계약에 따라 적절하게 구속됩니다.',
       ENG:
-        'All parties with support roles or access to applicable personal information within Polaris Share, are appropriately bound by contract to be compliant with the GDPR principles.'
+        'All parties with support roles or access to applicable personal information within Polaris ShareModal, are appropriately bound by contract to be compliant with the GDPR principles.'
     }
   ],
   [
@@ -5567,9 +5556,9 @@ const strings = new Map([
     'policy-1-desc-71',
     {
       KOR:
-        'GDPR 규정 준수는 Polaris Share 고객 (소유자 / 관리자)과 Polaris Share 간의 공동 책임입니다. 소유자 / 관리자는 ',
+        'GDPR 규정 준수는 Polaris ShareModal 고객 (소유자 / 관리자)과 Polaris ShareModal 간의 공동 책임입니다. 소유자 / 관리자는 ',
       ENG:
-        'GDPR compliance is a shared responsibility between Polaris Share customers (owners / administrators) and Polaris Share. Owners / administrators can request help from Polaris Share for complying with GDPR compliance, including support for users who wish to exercise any of their rights under the GDPR, by sending an email to'
+        'GDPR compliance is a shared responsibility between Polaris ShareModal customers (owners / administrators) and Polaris ShareModal. Owners / administrators can request help from Polaris ShareModal for complying with GDPR compliance, including support for users who wish to exercise any of their rights under the GDPR, by sending an email to'
     }
   ],
   [
@@ -5593,21 +5582,21 @@ const strings = new Map([
       KOR:
         '당사가 수집 및 유지 관리하는 모든 개인 정보 (해당 정보가 속한 사람을 식별하거나 식별하는 데 사용될 수있는 정보로 정의 됨)는 때때로 개정되는 본 개인 정보 보호 정책의 적용을받습니다. Polaris Share는 단독 재량에 따라 때때로 본 개인 정보 보호 정책을 변경할 수 있으며이 온라인 문서의 모든 변경 사항과이 문서에 대한 링크가있는 웹 페이지 바닥 글을 통해 통지 할 것입니다. 그러한 변경의 결과로 Polaris Share가 귀하의 개인 정보를 사용하도록 허용되는 방식을 변경하려는 경우, 위의 정보 수정 및 업데이트에 설명 된 절차에 따라 변경할 수 있습니다.',
       ENG:
-        'All personal information (defined as any information that identifies or can be used to identify the person to whom such information pertains) that we collect and maintain will be subject to this privacy statement, as amended from time to time. Polaris Share may change this privacy statement from time to time at its sole discretion and will provide notice of all changes in this online document and via the footer of the web pages with authorized links to this document. If as the result of such changes you want to alter the ways in which Polaris Share is allowed to use your personal information, you can do so by following the procedure described under Correcting and updating your information, above.'
+        'All personal information (defined as any information that identifies or can be used to identify the person to whom such information pertains) that we collect and maintain will be subject to this privacy statement, as amended from time to time. Polaris ShareModal may change this privacy statement from time to time at its sole discretion and will provide notice of all changes in this online document and via the footer of the web pages with authorized links to this document. If as the result of such changes you want to alter the ways in which Polaris ShareModal is allowed to use your personal information, you can do so by following the procedure described under Correcting and updating your information, above.'
     }
   ],
   [
-    'policy-1-desc-60',
+    '404-text',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '해당 페이지를 찾을 수 없습니다',
+      ENG: 'This page could not be found'
     }
   ],
   [
-    '',
+    '404-button',
     {
-      KOR: '',
-      ENG: ''
+      KOR: '메인으로 이동',
+      ENG: 'Go to Main'
     }
   ]
 ])

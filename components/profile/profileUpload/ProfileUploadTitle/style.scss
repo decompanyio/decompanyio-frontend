@@ -1,0 +1,19 @@
+
+.puti_title,
+.puti_title > i {
+  @include mb(1);
+  margin-right: 25px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  font: {
+    size: 16px;
+    weight: bold;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}

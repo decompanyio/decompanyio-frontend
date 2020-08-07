@@ -1,0 +1,17 @@
+
+.hlb_totalLoadingBar {
+  height: 4px;
+  width: 0;
+  background: #b3b3b3;
+  transition: top 0.3s;
+  position: fixed;
+  z-index: 2;
+}
+
+.hlb_activeLoadingBar {
+  height: inherit;
+  background: #3581fe;
+  width: 0;
+  -webkit-transition: all ease-in-out;
+  transition: all ease-in-out;
+}

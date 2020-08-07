@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react'
 import Layout from 'components/Layout'
 import commonData from '../common/commonData'
-import { withApollo } from '../components/apollo'
-import ContentsList from '../components/body/list/ContentsList'
+import { withApollo } from '../components/Apollo'
+import ContentsList from '../components/contents/ContentsList'
 
-function Index({ tag, path }, ...rest): ReactElement {
+function PageContentsList({ tag, path }, ...rest): ReactElement {
   return (
     <Layout
       title={(tag || path) + commonData.commonTitle}
@@ -16,7 +16,7 @@ function Index({ tag, path }, ...rest): ReactElement {
   )
 }
 
-Index.getInitialProps = async props => {
+PageContentsList.getInitialProps = async props => {
   let path = props.asPath.split('/')
 
   const getTag = path[1] && path[1] === 'tag' ? path[2] || '' : ''
@@ -28,4 +28,4 @@ Index.getInitialProps = async props => {
   return { tag: decodeURI(getTag), path: getPath }
 }
 
-export default withApollo({ ssr: true })(Index)
+export default withApollo({ ssr: true })(PageContentsList)

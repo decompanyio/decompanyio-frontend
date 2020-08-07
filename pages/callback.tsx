@@ -5,7 +5,7 @@ import LoadingModal from 'components/common/modal/LoadingModal'
 import commonView from '../common/commonView'
 import { useMain } from '../redux/main/hooks'
 
-export default function(): ReactElement {
+export default function PageCallback(): ReactElement {
   const { setAlertCode } = useMain()
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function(): ReactElement {
       let returnUrl = url.searchParams.get('return_url') || ''
 
       if (returnUrl && returnUrl === 'silent') {
-        // console.log('This page is made for Silent Login.')
+        // console.log('This page is made for Silent LoginButton.')
       } else {
         // 스크롤 숨김
         commonView.setBodyStyleLock()

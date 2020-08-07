@@ -2,7 +2,7 @@ import AxiosService from './AxiosService'
 
 let getDocumentUrl = 'document/info'
 let getDocumentListUrl = 'document/list'
-let voteDocumentUrl = 'document/vote'
+let voteDocumentUrl = 'document/VoteModal'
 let documentDownloadUrl = 'document/download'
 let registerDocumentInfoUrl = 'document/regist'
 let updateDocumentUrl = 'document/update'

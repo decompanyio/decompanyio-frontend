@@ -1,492 +1,242 @@
-@import "./_config";
-@import "./common/index";
+@import "config";
+@import "animation";
+@import "mixin";
+@import "font";
+@import "global";
+@import "sprite";
+@import "component";
 
+@import "components/Layout/style";
 
-/*
-========
-HEADER
-========
-*/
+@import "components/common/alert/AlertItem/style";
 
-@import "./component/header";
+@import "components/common/alert/AlertList/style";
 
-// SECTION FIRST
-@import "./component/headerSectionFirst";
+@import "components/common/avatar/MenuAvatar/style";
 
-//SECTION SECOND
-@import "./component/headerSectionSecond";
+@import "components/common/avatar/MyAvatar/style";
 
-// LOADING BAR
-@import "./component/headerLoadingBar";
+@import "components/common/avatar/UserAvatar/style";
 
+@import "components/common/button/AddButton/style";
 
-/*
-========
-FOOTER
-========
-*/
+@import "components/common/button/LoginButton/style";
 
-@import "./component/footer";
+@import "components/common/button/MenuButton/style";
 
-// SNS
-@import "./component/footerSns";
+@import "components/common/button/SearchButton/style";
 
+@import "components/common/button/ToTopButton/style";
 
-/*
-========
-MODAL
-========
-*/
+@import "components/common/card/RewardCard/style";
 
-@import "./component/modal";
+@import "components/common/CustomChart/style";
 
-// LOADING
-@import "./component/loadingModal";
+@import "components/common/DropZone/style";
 
-// FULLSCREEN
-@import "./component/fullscreenModal";
+@import "components/common/input/AutoSuggestInput/style";
 
-// UPLOAD PROGRESS
-@import "./component/uploadProgressModal";
+@import "components/common/mock/ContentsItemMock/style";
 
-// UPLOAD DOCUMENT
-@import "./component/uploadDocumentModal";
+@import "components/common/mock/ContentsListMock/style";
 
-// EDIT DOCUMENT
-@import "./component/editDocumentModal";
+@import "components/common/modal/AwayModal/style";
 
-// AWAY
-@import "./component/awayModal";
+@import "components/common/modal/DeleteDocumentModal/style";
 
-// UPLOAD COMPLETE
-@import "component/uploadCompleteModal";
+@import "components/common/modal/DepositModal/style";
 
-// EMAIL
-@import "component/emailModal";
+@import "components/common/modal/DollarLearnMoreModal/style";
 
-// PRIVATE DOCUMENT COUNT
-@import "component/privateDocumentModal";
+@import "components/common/modal/EditDocumentModal/style";
 
-// SHARE
-@import "component/shareModal";
+@import "components/common/modal/EmailModal/style";
 
-// PUBLISH
-@import "component/publishModal";
+@import "components/common/modal/FullscreenModal/style";
 
-// PUBLISH COMPLETE
-@import "component/publishCompleteModal";
+@import "components/common/modal/ImageCropModal/style";
 
-// IMAGE CROP
-@import "component/imageCropModal";
+@import "components/common/modal/LoadingModal/style";
 
-// VOTE
-@import "component/voteModal";
+@import "components/common/modal/PrivateDocumentCountModal/style";
 
-// DEPOSIT
-@import "component/depositModal";
+@import "components/common/modal/PublishComplete/style";
 
-// WITHDRAW
-@import "component/withdrawModal";
+@import "components/common/modal/PublishModal/style";
 
+@import "components/common/modal/ShareModal/style";
 
-/*
-========
-MENU
-========
-*/
+@import "components/common/modal/UploadCompleteModal/style";
 
-@import "./component/menu";
+@import "components/common/modal/UploadDocumentModal/style";
 
+@import "components/common/modal/UploadProgressModal/style";
 
-/*
-========
-BUTTON
-========
-*/
+@import "components/common/modal/VoteModal/style";
 
-//SEARCH
-@import "./component/searchBtn";
+@import "components/common/modal/WithdrawModal/style";
 
+@import "components/common/modal/style";
 
-/*
-========
-CATEGORY
-========
-*/
+@import "components/common/NoDataIcon/style";
 
-@import "./component/category";
+@import "components/common/notice/CookiePolicyNotice/style";
 
+@import "components/common/notice/DollarPolicyNotice/style";
 
-/*
-========
-LAYOUT
-========
-*/
+@import "components/common/notice/MainNotice/style";
 
-@import "./component/layout";
+@import "components/common/Pagination/style";
 
+@import "components/contents/ContentsBookmark/style";
 
-/*
-========
-MAIN
-========
-*/
+@import "components/contents/ContentsItem/style";
 
-@import "./component/main";
+@import "components/contents/ContentsList/style";
 
-// AVATAR
-@import "./component/mainAvatar";
+@import "components/footer/FooterContainer/style";
 
-// LIST
-@import "./component/mainCardList";
+@import "components/footer/FooterSNS/style";
 
-// LIST MOCK
-@import "./component/mainListMock";
+@import "components/header/HeaderContainer/style";
 
-// CAROUSEL
-@import "./component/mainCarousel";
+@import "components/header/HeaderLoadingBar/style";
 
-// EVENT SECTION
-@import "./component/mainEventSection";
+@import "components/header/HeaderProfileCard/style";
 
-// HEADER SECTION
-@import "./component/mainHeaderSection";
+@import "components/header/HeaderSectionFirst/style";
 
-// FIRST SECTION
-@import "./component/mainFirstSection";
+@import "components/header/HeaderSectionSecond/style";
 
-// VISUAL
-@import "./component/mainVisual";
+@import "components/main/MainEvent/style";
 
-// HEX SLIDER
-@import "component/mainHexSlider";
+@import "components/main/sectionFirst/MainFirstSection/style";
 
-// HEX SLIDER ITEM
-@import "component/mainHexSliderItem";
+@import "components/main/sectionFirst/MainFirstSectionClipPath/style";
 
-// CLOP PATH
-@import "component/mainClopPath";
+@import "components/main/sectionFirst/MainFirstSectionHexItem/style";
 
-// TAG
-@import "component/mainTag";
+@import "components/main/sectionFirst/MainFirstSectionHexSlider/style";
 
-// SECOND SECTION
-@import "component/mainSecondSection";
+@import "components/main/sectionFirst/MainFirstSectionTag/style";
 
-// INSIGHT SLIDER
-@import "component/mainInsightSlider";
+@import "components/main/sectionFirst/MainFirstSectionVisual/style";
 
-// INSIGHT ITEM
-@import "component/mainInsightUploadBtn";
+@import "components/main/sectionSecond/InsihtSlider/style";
 
-// THIRD SECTION
-@import "component/mainThirdSection";
+@import "components/main/sectionSecond/MainSecondSection/style";
 
-// LIBRARY
-@import "component/mainLibrary";
+@import "components/main/sectionSecond/MainSecondSectionInsightUploadBtn/style";
 
-// RECENT
-@import "component/mainRecent";
+@import "components/main/sectionThird/MainThirdSection/style";
 
-// RECENT ITEM
-@import "component/mainRecentItem";
+@import "components/main/sectionThird/MainThirdSectionLibrary/style";
 
-// FOURTH SECTION
-@import "component/mainTop";
+@import "components/main/sectionThird/MainThirdSectionRecent/style";
 
-// TOP LIST ITEM
-@import "component/mainTopListItem";
+@import "components/main/sectionThird/MainThirdSectionRecentItem/style";
 
-// HEADER LOGIN BUTTON
-@import "component/mainHeaderLoginBtn";
+@import "components/main/sectionThird/MainThirdSectionTop/style";
 
-// HEADER UPLOAD BUTTON
-@import "component/mainHeaderUploadBtn";
+@import "components/main/sectionThird/MainThirdSectionTopItem/style";
 
-// HEADER SEARCH
-@import "component/mainHeaderSearch";
+@import "components/main/sectionTop/MainTopLoginBtn/style";
 
+@import "components/main/sectionTop/MainTopSearch/style";
 
-/*
-========
-DOCUMENT CARD
-========
-*/
+@import "components/main/sectionTop/MainTopSection/style";
 
-// CARD
-@import "./component/documentCard";
+@import "components/main/sectionTop/MainTopUploadBtn/style";
 
-// CARD MOCK
-@import "./component/documentCardMock";
+@import "components/Menu/style";
 
+@import "components/Others/style";
 
-/*
-========
-ABOUT US
-========
-*/
+@import "components/page/AboutUs/style";
 
-@import "./component/aboutUs";
+@import "components/page/FAQ/style";
 
+@import "components/page/Guide/style";
 
-/*
-========
-FAQ
-========
-*/
+@import "components/page/NotFoundPage/style";
 
-@import "./component/faq";
+@import "components/page/PrivacyPolicy/style";
 
+@import "components/page/Term/style";
 
-/*
-========
-USER GUIDE
-========
-*/
+@import "components/profile/ProfileAnalytics/style";
 
-@import "./component/userGuide";
+@import "components/profile/ProfileAnalyticsChart/style";
 
+@import "components/profile/ProfileAuthor/style";
 
-/*
-========
-TERMS OF SERVICE
-========
-*/
+@import "components/profile/ProfileAvatarEdit/style";
 
-@import "./component/termsOfService";
+@import "components/profile/ProfileContainer/style";
 
+@import "components/profile/ProfileReward/style";
 
-/*
-========
-PRIVACY POLICY
-========
-*/
+@import "components/profile/ProfileSummary/style";
 
-@import "./component/privacyPolicy";
+@import "components/profile/ProfileTab/style";
 
+@import "components/profile/ProfileUsernameEdit/style";
 
-/*
-========
-CONTENTS
-========
-*/
+@import "components/profile/ProfileAnalytics/style";
 
-// LIST
-@import "./component/contentsList";
+@import "components/profile/profileUpload/ProfileUploadClaim/style";
 
-// LIST ITEM
-@import "./component/contentsListItem";
+@import "components/profile/profileUpload/ProfileUploadDesc/style";
 
-// LIST ITEM MOCK
-@import "./component/contentsListItemMock";
+@import "components/profile/profileUpload/ProfileUploadInfo/style";
 
-// LIST ITEM
-@import "./component/contentsListMock";
+@import "components/profile/profileUpload/ProfileUploadOption/style";
 
-// LIST ITEM MOCK
-@import "./component/contentsListItemMock";
+@import "components/profile/profileUpload/ProfileUploadPublishBtn/style";
 
-// BOOKMARK
-@import "component/contentsBookmark";
+@import "components/profile/profileUpload/ProfileUploadTab/style";
 
+@import "components/profile/profileUpload/ProfileUploadTabItem/style";
 
-/*
-========
-MORE
-========
-*/
+@import "components/profile/profileUpload/ProfileUploadThumb/style";
 
-@import "./component/more";
+@import "components/profile/profileUpload/ProfileUploadTitle/style";
 
+@import "components/profile/profileVote/ProfileVoteClaim/style";
 
-/*
-========
-USER AVATAR
-========
-*/
+@import "components/profile/profileVote/ProfileVoteItem/style";
 
-@import "./component/userAvatar";
+@import "components/profile/profileVote/ProfileVoteTab/style";
 
+@import "components/tracking/TrackingAuthor/style";
 
-/*
-========
-NO DATA ICON
-========
-*/
+@import "components/tracking/TrackingExportBtn/style";
 
-@import "component/noDataIcon";
+@import "components/tracking/TrackingItem/style";
 
+@import "components/tracking/TrackingList/style";
 
-/*
-========
-REWARD CARD
-========
-*/
+@import "components/tracking/TrackingOption/style";
 
-@import "component/rewardCard";
+@import "components/trackingDetail/TrackingDetailItem/style";
 
+@import "components/trackingDetail/TrackingDetailList/style";
 
-/*
-========
-VIEW
-========
-*/
+@import "components/view/ViewBookmark/style";
 
-// LANDSCAPE
-@import "component/viewLandscape";
+@import "components/view/ViewContainer/style";
 
-// PORTRAIT
-@import "component/viewPortrait";
+@import "components/view/ViewDescBox/style";
 
-// PDF VIEWER
-@import "component/viewPDFViewer";
+@import "components/view/ViewFullscreenBtn/style";
 
-// FULLSCREEN BUTTON
-@import "component/viewFullscreenButton";
+@import "components/view/ViewInfoBox/style";
 
-// INFO BOX
-@import "component/viewInfoBox";
+@import "components/view/ViewOption/style";
 
-// TOOL BOX
-@import "component/viewToolBox";
+@import "components/view/ViewPdfViewer/style";
 
-// DESC BOX
-@import "component/viewDescBox";
+@import "components/view/ViewSeeAlso/style";
 
-// SEE ALSO
-@import "component/viewSeeAlso";
+@import "components/view/ViewToolBox/style";
 
-
-/*
-========
-PROFILE
-========
-*/
-
-// SUMMARY
-@import "component/profileSummary";
-
-// USERNAME EDIT
-@import "component/profileUsernameEdit";
-
-// CARD
-@import "component/profileCard";
-
-// UPLOAD TAB
-@import "component/profileUploadTab";
-
-// UPLOAD TAB ITEM
-@import "component/profileUploadTabItem";
-
-// TAB
-@import "component/profileTab";
-
-// VOTE TAB
-@import "component/profileVoteTab";
-
-// ANALYTICS TAB
-@import "component/profileAnalyticsTab";
-
-// CURATOR TAB ITEM
-@import "component/profileCuratorTabItem";
-
-// AVATAR EDIT
-@import "component/profileAvatarEdit";
-
-// CREATOR CLAIM
-@import "component/profileCreatorClaim";
-
-
-/*
-========
-ALERT
-========
-*/
-
-@import "component/alert";
-
-// LIST
-@import "component/alertList";
-
-
-/*
-========
-TRACKING
-========
-*/
-
-// AUTHOR
-@import "component/trackingAuthor";
-
-// EXPORT BUTTON
-@import "component/trackingExportButton";
-
-// LIST
-@import "component/trackingList";
-
-// LIST ITEM
-@import "component/trackingList";
-
-// DETAIL LIST
-@import "component/trackingList";
-
-// DETAIL ITEM
-@import "component/trackingListItem";
-
-
-/*
-========
-AUTO SUGGEST INPUT
-========
-*/
-
-@import "component/trackingList";
-
-
-/*
-========
-CUSTOM CHART
-========
-*/
-
-@import "component/customChart";
-
-
-/*
-========
-DROP ZONE
-========
-*/
-
-@import "component/dropZone";
-
-
-/*
-========
-NOTICE
-========
-*/
-
-// COOKIE POLICY
-@import "component/cookiePolicyNotice";
-
-// DOLLAR POLICY
-@import "component/dollarPolicyNotice";
-
-
-/*
-========
-NOT FOUND PAGE WRAPPER
-========
-*/
-
-@import "component/notFoundPageWrapper";
-
-
-/*
-========
-PAGINATION
-========
-*/
-
-@import "component/pagenation";

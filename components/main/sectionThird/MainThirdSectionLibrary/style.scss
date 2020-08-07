@@ -1,0 +1,120 @@
+
+.ml_title {
+  text-align: center;
+  font-size: 50px;
+  color: #4678b7;
+  line-height: 100%
+}
+
+.ml_point {
+  color: #00459b;
+  font-weight: 600
+}
+
+.ml_text {
+  font-size: 24px;
+  color: #454545;
+  margin-top: 16px;
+  font-weight: 300;
+  text-align: center
+}
+
+.ml_boxTitle {
+  max-width: 1200px;
+  margin: 90px auto 65px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    text-align: center;
+    display: block;
+  }
+}
+
+.ml_titleRecent {
+  font-size: 45px;
+  color: #000;
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.ml_button {
+  vertical-align: middle;
+  margin-left: 8px;
+  display: inline-block;
+  min-width: 90px;
+  background-color: #0032a2;
+  height: 36px;
+  border-radius: 18px;
+  font-size: 18px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  line-height: 36px
+}
+
+
+@media (max-width: 1024px) {
+  .ml_title {
+    font-size: 50px
+  }
+  .ml_point {
+    font-size: 90px;
+    display: block;
+    margin-top: 16px
+  }
+  .ml_text {
+    font-size: 32px;
+    margin-top: 32px
+  }
+  .box-recent {
+    width: 1024px;
+    padding-left: 40px
+  }
+  .ml_titleRecent {
+    display: block;
+    font-size: 60px
+  }
+  .ml_button {
+    min-width: 156px;
+    height: 64px;
+    line-height: 60px;
+    border-radius: 32px;
+    font-size: 32px;
+    margin-top: 16px;
+    margin-left: 0
+  }
+
+}
+
+@media (max-width: 768px) {
+  .ml_title {
+    font-size: 25px
+  }
+  .ml_point {
+    font-size: 45px;;
+    margin-top: 8px
+  }
+  .ml_text {
+    font-size: 16px;
+    margin-top: 16px
+  }
+  .box-title {
+    margin: 50px auto 35px
+  }
+  .ml_titleRecent {
+    font-size: 30px
+  }
+  .ml_button {
+    min-width: 78px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    margin-top: 8px
+  }
+
+}

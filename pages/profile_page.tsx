@@ -1,11 +1,11 @@
 import React, { ReactElement, useState } from 'react'
 import Layout from 'components/Layout'
 import commonData from '../common/commonData'
-import ProfileContainer from '../components/body/profile/ProfileContainer'
-import { withApollo } from '../components/apollo'
+import ProfileContainer from '../components/profile/ProfileContainer'
+import { withApollo } from '../components/Apollo'
 import { AUTH_APIS } from '../utils/auth'
 
-function Index({ identifier }, ...rest): ReactElement {
+function PageProfile({ identifier }, ...rest): ReactElement {
   const [owner] = useState(
     AUTH_APIS.getMyInfo().username === identifier ? 1 : 0
   )
@@ -21,8 +21,8 @@ function Index({ identifier }, ...rest): ReactElement {
   )
 }
 
-Index.getInitialProps = async props => {
+PageProfile.getInitialProps = async props => {
   return { identifier: props.asPath.split('/')[1].split('@')[1] }
 }
 
-export default withApollo()(Index)
+export default withApollo()(PageProfile)

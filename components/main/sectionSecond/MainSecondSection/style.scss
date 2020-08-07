@@ -1,0 +1,63 @@
+
+.mss_container {
+  background: url($image-url +'/main/main-bg.png') no-repeat -10vw 0 / contain;
+  padding-top: 130px;
+  height: 1100px;
+  position: relative;
+  text-align: center;
+}
+
+.mss_title {
+  font-weight: 300;
+  text-align: center;
+  font-size: 50px;
+  color: #4678b7;
+  line-height: 100%
+}
+
+.mss_point {
+  color: #00459b;
+  font-weight: 600
+}
+
+.mss_text {
+  font-size: 24px;
+  color: #454545;
+  margin-top: 16px;
+  font-weight: 300;
+  text-align: center
+}
+
+@media (max-width: 1024px) {
+  .mss_container {
+    background: url($image-url +'/main/main-bg.png') no-repeat -120vw 30vw / 190vw;
+    padding-top: 130px;
+    height: auto
+  }
+  .mss_title {
+    font-size: 50px
+  }
+  .mss_point {
+    font-size: 90px;
+    display: block;
+    margin-top: 16px
+  }
+  .mss_text {
+    font-size: 32px;
+    margin-top: 32px
+  }
+}
+
+@media (max-width: 768px) {
+  .mss_title {
+    font-size: 25px
+  }
+  .mss_point {
+    font-size: 45px;;
+    margin-top: 8px
+  }
+  .mss_text {
+    font-size: 16px;
+    margin-top: 16px
+  }
+}

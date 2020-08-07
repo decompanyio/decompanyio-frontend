@@ -1,0 +1,138 @@
+
+.vib_container {
+  @include inner-container;
+  @include mt(3);
+  @include mt-sm(4);
+  position: relative;
+}
+
+.vib_title {
+  @include mb(2);
+  @include mb-sm(3);
+  width: 100%;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  vertical-align: middle;
+  position: relative;
+  word-break: break-all;
+  word-wrap: break-word;
+  font: {
+    size: 2rem;
+    weight: bold;
+    style: normal;
+    stretch: normal;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 20px;
+  }
+}
+
+.vib_infoContainer {
+  @include mb(4);
+  @include mb-sm(3);
+  position: relative;
+}
+
+.vib_info_1 {
+  @include row;
+}
+
+.vib_info_2 {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 8px;
+
+  @media all and (max-width: $sm-max-width) {
+    position: relative !important;
+    display: block !important;
+  }
+
+  .rc_container {
+    right: 0;
+    top: 25px;
+  }
+}
+
+.vib_infoIdWrapper {
+  @include ml(2);
+  @include ml-sm(3);
+}
+
+.vib_infoId {
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 0.8rem;
+  }
+}
+
+.vib_date {
+  font-size: 14px;
+  color: #b3b3b3;
+  position: relative;
+  display: inline-block;
+
+  @media all and (max-width: $sm-max-width) {
+    margin-left: 0 !important;
+    font-size: 0.8rem;
+  }
+}
+
+.vib_reward {
+  @include mr(3);
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  top: 1px;
+  letter-spacing: -1px;
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.vib_rewardArrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.vib_view {
+  @include mr(3);
+  @include common_view;
+}
+
+.vib_vote {
+  @include common_vote;
+}
+
+.vib_optionBtn {
+  @include common_optionBtn;
+  @include ml(4);
+  display: flex;
+
+  @media all and (max-width: $sm-max-width) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.vib_optionTable {
+  @include common_optionTable;
+}
+
+.vib_optionTableBtn {
+  @include common_optionTableBtn;
+}

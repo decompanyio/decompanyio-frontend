@@ -1,0 +1,13 @@
+
+
+.ug_container {
+  @extend .faq_container;
+}
+
+.ug_subject {
+  @extend .faq_subject;
+}
+
+.ug_content {
+  @extend .faq_content;
+}

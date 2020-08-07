@@ -1,0 +1,43 @@
+
+.puti_publishBtnWrapper {
+  @media all and (max-width: $sm-max-width) {
+    @include mt(2);
+  }
+  @media (min-width: $sm-min-width) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.puti_publishBtn {
+  @include d-flex;
+  @include mb(0);
+  cursor: pointer;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-weight: 300;
+  font-size: 12px;
+  color: #4d4d4d;
+  border: 1px solid #b3b3b3;
+  border-radius: 2px;
+  width: 140px;
+  height: 2rem;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+
+  i {
+    font-size: 13px;
+  }
+
+  &:hover {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    width: 100%;
+  }
+}

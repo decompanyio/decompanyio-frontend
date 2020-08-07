@@ -1,0 +1,22 @@
+
+.puti_container {
+  @include row;
+  padding: 1rem 0;
+  border-bottom: 1px solid #cecece;
+  position: relative;
+}
+
+
+
+.puti_contentsContainer {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 100px - 1rem);
+  margin: 0 0 0 1rem;
+
+  &:hover {
+    .puti_optionBtn > i {
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+
+.cpn_wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  border-bottom: 1px solid #a3d2f9;
+  z-index: 0;
+}
+
+.cpn_container {
+  @include container;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.cpn_text {
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  color: #2173b9;
+  display: inline-block;
+  padding-right: 90px;
+
+  @media all and (max-width: $sm-max-width) {
+    padding-right: 0 !important;
+    text-align: left;
+  }
+}
+
+.cpn_btn {
+  position: absolute;
+  display: inline-block;
+  right: 1rem;
+  width: 84px;
+  height: 26px;
+  border-radius: 2px;
+  border: solid 1px #2173b9;
+  font-size: 13px;
+  letter-spacing: -0.3px;
+  color: #2173b9;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 2px;
+
+  &:hover {
+    color: #3d5afe;
+    border-color: #3d5afe;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    display: block;
+    position: relative;
+    width: 100%;
+    right: 0;
+    max-width: 500px;
+    margin: 8px auto 2px auto;
+  }
+}
+
+.cpn_dummy {
+  background: #d3ebff;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  position: absolute;
+}

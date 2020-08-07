@@ -42,7 +42,7 @@ import {
 
 const repos = {
   init(): Promise<boolean> {
-    // Google Analytics 초기화
+    // Google ProfileAnalytics 초기화
     if (process.env.NODE_ENV_SUB === 'production') {
       ReactGA.initialize('UA-140503497-1', {
         debug: false
