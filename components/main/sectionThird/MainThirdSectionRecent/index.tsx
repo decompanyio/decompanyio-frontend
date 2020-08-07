@@ -3,6 +3,7 @@ import MainRecentItem from '../MainThirdSectionRecentItem'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import LatestDocumentCardHex from '../../../../graphql/queries/LatestDocumentCardHex.graphql'
+import React, { ReactElement } from 'react'
 
 export default function MainThirdSectionRecent(): ReactElement {
   const { loading, error, data } = useQuery(
