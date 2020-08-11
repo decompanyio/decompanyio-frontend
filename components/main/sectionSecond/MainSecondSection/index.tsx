@@ -10,7 +10,9 @@ export default function MainSecondSection(): ReactElement {
       <h3 className={styles.mss_title}>
         POLARIS SHARE <span className={styles.mss_point}>INSIGHT</span>
       </h3>
-      <p className={styles.mss_text}>{psString('main-sectionSecond-section')}</p>
+      <p className={styles.mss_text}>
+        {psString('main-sectionSecond-section')}
+      </p>
 
       <MainInsightSlider />
 

@@ -6,6 +6,7 @@ import MyAvatar from '../../../common/avatar/MyAvatar'
 import HeaderProfileCard from '../../../header/HeaderProfileCard'
 import MainHeaderLoginBtn from '../MainTopLoginBtn'
 import MainHeaderSearch from '../MainTopSearch'
+import common from '../../../../common/common'
 
 export default function MainTopSection(): ReactElement {
   const { myInfo } = useMain()
@@ -19,6 +20,8 @@ export default function MainTopSection(): ReactElement {
 
   return (
     <div>
+      <div className={styles.mhs_version}>{common.getVersion()}</div>
+
       <div className={styles.mhs_wrapper}>
         <Link href="/">
           <a aria-label="Main">
