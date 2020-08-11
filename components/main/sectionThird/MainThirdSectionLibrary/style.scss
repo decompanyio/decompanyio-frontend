@@ -49,11 +49,35 @@
   background-color: #0032a2;
   height: 36px;
   border-radius: 18px;
-  font-size: 18px;
+  font: {
+    weight: 400;
+    size: 18px;
+  }
   border: none;
   color: #fff;
   text-align: center;
-  line-height: 36px
+  line-height: 36px;
+
+  @media (max-width: 1024px) {
+    min-width: 156px;
+    height: 64px;
+    line-height: 60px;
+    border-radius: 32px;
+    font-size: 32px;
+    margin: {
+      top: 16px;
+      left: 0
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-width: 78px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    margin-top: 8px
+  }
 }
 
 
@@ -78,16 +102,6 @@
     display: block;
     font-size: 60px
   }
-  .ml_button {
-    min-width: 156px;
-    height: 64px;
-    line-height: 60px;
-    border-radius: 32px;
-    font-size: 32px;
-    margin-top: 16px;
-    margin-left: 0
-  }
-
 }
 
 @media (max-width: 768px) {
@@ -107,14 +121,6 @@
   }
   .ml_titleRecent {
     font-size: 30px
-  }
-  .ml_button {
-    min-width: 78px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 16px;
-    font-size: 16px;
-    margin-top: 8px
   }
 
 }

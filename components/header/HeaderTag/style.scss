@@ -21,11 +21,12 @@
     @include d-flex;
     position: absolute;
     left: 115px;
-    top: -7;
+    top: 10px;
     width: max-content;
 
     @media all and (max-width: $lg-max-width) {
       left: 1rem;
+      top: 5px;
     }
 
     li:first-child >a > button {

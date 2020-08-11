@@ -327,7 +327,7 @@ pdf 뷰어*/
 
 @media (max-width: 1024px) {
     .react-swipe-container > div {
-        padding-top: 15vh;
+        padding-top: 16vh;
     }
 }
 
