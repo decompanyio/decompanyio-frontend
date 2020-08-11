@@ -1,51 +1,23 @@
 
 .hst_logo {
-  @include mr(2);
+  @include mr(4);
   background: {
-    image: url($image-url +'/logo.png');
+    image: url($image-url +'/logo-multi.png');
     repeat: no-repeat;
-    position-y: -7px;
-    position-x: -30px;
   }
+  background-repeat: no-repeat;
   position: relative;
   color: inherit;
   height: 50px;
   font-size: 1.125rem;
   line-height: 2rem;
   cursor: pointer;
-  width: 250px;
-  height: 50px;
-}
+  width: 450px;
 
-.hst_logoCut {
-  background: {
-    repeat: no-repeat;
-    image: url($image-url +'/logo.png');
-    position-y: -7px;
-    position-x: -30px;
-  }
-  cursor: pointer;
-  height: 50px;
-  width: 40px;
-}
-
-.hst_subTitle {
-  @include ml(2);
-  font-family: $primary-fonts !important;
-  font-size: 17px;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: #585858;
-  letter-spacing: -1px;
-  transition: 0.5s all ease-in-out;
-  position: absolute;
-  left: 2.8rem;
-  top: calc(50% - 12px);
-
-  @media (max-width: $sm-max-width) {
-    font-size: 1rem !important;
-    font-weight: 400 !important;
-    margin-left: 7px !important;
+  @media all and (max-width: $lg-max-width) {
+    background: url($image-url +'/logo-multi-m.png') no-repeat 0 0/contain;
+    width: 85px;
+    height: 36px;
   }
 }
 
@@ -72,9 +44,62 @@
 }
 
 .hst_section_1 {
-  @include col(5);
-  @include col-sm(6);
-  @include mt(1);
   align-items: center !important;
   display: flex !important;
+}
+
+.hss_container {
+  align-items: center !important;
+  display: flex !important;
+  justify-content: flex-start;
+
+  @media all and (max-width: $lg-max-width) {
+    position: absolute;
+    right: 95px;
+  }
+}
+
+.hss_searchInput {
+  @include d-flex;
+  align-items: center;
+  width: 200px;
+
+  &:hover,
+  &:focus-within {
+    border-color: $primary-color;
+  }
+
+  @media all and (max-width: $lg-max-width) {
+    div > input {
+      color: white;
+    }
+  }
+
+  @media all and (max-width: $md-max-width) {
+    width: 150px;
+  }
+
+  @media all and (max-width: $sm-max-width) {
+    width: 120px;
+  }
+}
+
+.hss_searchContainer {
+  @include d-flex;
+  justify-content: flex-end;
+  -webkit-box-pack: end; /* justify-content */
+  -webkit-box-align: end; /* align-items */
+  border: 1px solid #c7e0ff;
+  padding: 5px 0;
+  height: 50px;
+
+  @media all and (max-width: $lg-max-width) {
+    width: 100%;
+    height: 100%;
+    padding: 5px 0 5px 12px;
+    border: 0;
+    border-radius: 10px;
+    background: #242d37;
+    font-size: 17px;
+  }
 }

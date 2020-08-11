@@ -1,15 +1,14 @@
 import React, { ReactElement, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
-import commonView from '../../../../common/commonView'
 import { useMain } from '../../../../redux/main/hooks'
 import MyAvatar from '../../../common/avatar/MyAvatar'
-import Index from '../../../header/HeaderProfileCard'
+import HeaderProfileCard from '../../../header/HeaderProfileCard'
 import MainHeaderLoginBtn from '../MainTopLoginBtn'
 import MainHeaderSearch from '../MainTopSearch'
 
 export default function MainTopSection(): ReactElement {
-  const { isMobile, myInfo } = useMain()
+  const { myInfo } = useMain()
   const [profileCardShow, setProfileCardShow] = useState(false)
 
   const handleProfileCardClick = (): void => {
@@ -34,19 +33,19 @@ export default function MainTopSection(): ReactElement {
         <MainHeaderSearch />
 
         <div className={styles.mhs_avatarWrapper}>
-          {myInfo.email &&
-            ((commonView.getWindowWidth() <= 830 && !isMobile) ||
-              (!isMobile && commonView.getWindowWidth() > 830)) && (
-              <MyAvatar
-                click={handleAvatarClick}
-                size={55}
-                picture={myInfo.picture}
-                croppedArea={myInfo.croppedArea}
-              />
-            )}
+          {myInfo.email && (
+            <MyAvatar
+              click={handleAvatarClick}
+              size={55}
+              picture={myInfo.picture}
+              croppedArea={myInfo.croppedArea}
+            />
+          )}
         </div>
 
-        {profileCardShow && <Index click={handleProfileCardClick} />}
+        {profileCardShow && (
+          <HeaderProfileCard click={handleProfileCardClick} />
+        )}
 
         {!myInfo.email && <MainHeaderLoginBtn />}
       </div>

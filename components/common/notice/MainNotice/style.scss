@@ -2,22 +2,9 @@
   .mn_notifyTop {
     top: 0;
   }
-
-  .mn_dummy {
-    min-height: 50px;
-    @media (max-width: 1024px) {
-      min-height: 70px;
-    }
-  }
-}
-
-.mn_dummy {
-  width: 100%;
-  transition: top 0.2s ease-in-out;
 }
 
 .mn_notifyTop {
-  position: fixed;
   top: -250px;
   left: 0;
   width: 100%;
@@ -41,7 +28,7 @@
   &::before {
     content: '';
     display: inline-block;
-    width: 23px;
+    min-width: 23px;
     height: 23px;
     background: url($image-url + '/main/ico-noti.png') no-repeat 0 0 / cover;
     vertical-align: middle;

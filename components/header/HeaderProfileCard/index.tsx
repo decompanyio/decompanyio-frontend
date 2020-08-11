@@ -37,10 +37,15 @@ function HeaderProfileCard({ click }: ProfileCardProps): ReactElement {
   }
 
   useEffect(() => {
-    window.addEventListener('click', handleClickEvent)
+    let _setTimeout = setTimeout(() => {
+      clearTimeout(_setTimeout)
+      window.addEventListener('click', handleClickEvent)
+    }, 500)
+
     void getBalance() // 잔액 조회
 
     return () => {
+      console.log('end')
       window.removeEventListener('click', handleClickEvent)
     }
   }, [])

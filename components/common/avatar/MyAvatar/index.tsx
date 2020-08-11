@@ -62,7 +62,7 @@ export default function MyAvatar({
     >
       {picture.length > 0 ? (
         <img
-          src="/public/static/image/icon/empty-user.png"
+          src="/static/image/icon/empty-user.png"
           data-src={picture}
           data-srcset={picture + ' 1x'}
           alt="profile"

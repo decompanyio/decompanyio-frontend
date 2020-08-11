@@ -2,17 +2,29 @@
 .sb_wrapper {
   @include ml(1);
   @include d-flex;
-  width: 34px;
-  height: 34px;
   justify-content: center;
-  border-radius: 50%;
-  transition: 0.5s all ease-in-out;
-
-  &:hover {
-    background-color: #d6e6ff;
-  }
+  position: relative;
+  width: 50px;
 }
 
 .sb_searchBtn {
-  @include common_searchBtn;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+
+  @media (min-width: $lg-min-width) {
+    background: url($image-url +'/icon/btn-search.png');
+    top: -9px;
+  }
+
+  @media (max-width: $lg-max-width) {
+    background: url($image-url +'/icon/btn-search-m.png') no-repeat 0 0/ contain !important;
+    width: 40px;
+    height: 36px;
+    top: -6px;
+  }
 }

@@ -1,5 +1,11 @@
 # Release Note
 
+## 2020.08.11-a
+- add new header
+
+Bug fix
+- profile card not showing up
+
 ## 2020.08.07-a
 - add notice bar on main page
 - optimized structure of project for distributing the workspace of developer and designer 

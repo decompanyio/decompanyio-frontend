@@ -6,12 +6,12 @@
   width: 58px;
   height: 58px;
   cursor: pointer;
-  background: url($image-url +'/main/btn-search.png') no-repeat 0 0;
+  background: url($image-url +'/icon/btn-search.png') no-repeat 0 0;
 
   @media (max-width: 1024px) {
     width: 40px;
     height: 36px;
-    background: url($image-url +'/main/btn-search-m.png') no-repeat 0 0/ contain;
+    background: url($image-url +'/icon/btn-search-m.png') no-repeat 0 0/ contain;
   }
 }
 
@@ -53,9 +53,7 @@
       border: 0;
       border-radius: 10px;
       background: #242d37;
-      color: #fff;
       font-size: 17px;
-      letter-spacing: -0.07em;
     }
 
     &:focus {

@@ -64,10 +64,6 @@ export interface DocumentCardListProps {
   path: string
 }
 
-export interface OthersProps {
-  tagList: TagListItem[]
-}
-
 export interface DateSet {
   year: number
   week: number
@@ -343,10 +339,6 @@ export interface MenuProps {
 
 export interface MenuAvatarProps {
   identification: string
-}
-
-export interface HeaderSectionFirstProps {
-  path: string
 }
 
 export interface HeaderProps {

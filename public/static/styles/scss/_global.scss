@@ -31,7 +31,7 @@ section {
 
 body {
   margin: 0;
-  font-family: 'Noto Sans KR', 'Malgun Gothic', AppleGothicNeoSD, 'Apple SD 산돌고딕 Neo', 'Microsoft NeoGothic', 'Droid sans', arial, sans-serif;
+  font-family: 'Noto Sans KR','sans-serif';
   font-size: 1rem;
   line-height: 1.5;
   text-align: left;
@@ -399,12 +399,10 @@ mark {
 }
 
 header > nav {
-  @include d-flex;
   transition: top 0.3s;
   border: 0;
   color: #555;
   background-color: #fff !important;
-  border-bottom: 1px solid #b3b3b3;
   top: 0;
   right: 0;
   left: 0;
@@ -413,10 +411,6 @@ header > nav {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  @media (min-width: $lg-min-width) {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-  }
 }
 
 //SCROLL BAR

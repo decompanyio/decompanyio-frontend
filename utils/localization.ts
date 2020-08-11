@@ -339,7 +339,7 @@ const strings = new Map([
     'main-tag-3',
     {
       KOR: '태그',
-      ENG: 'MainFirstSectionTag'
+      ENG: 'Tag'
     }
   ],
 
@@ -400,126 +400,6 @@ const strings = new Map([
     {
       KOR: '자동 전환 모드로 변경',
       ENG: 'Switch to AutoCompleteInput Slide Mode'
-    }
-  ],
-
-  // About us
-  [
-    'about-main-subj',
-    {
-      KOR: '지식노동자들을 위한 전혀 새로운 일하는 방법',
-      ENG: 'A whole new way to share knowledge'
-    }
-  ],
-  [
-    'about-main-explain',
-    {
-      KOR:
-        '폴라리스 쉐어에서 문서를 공유하여 잠재 고객을 발굴하고, 공유한 문서의 유효 조회수에 따른 보상도 받으세요.',
-      ENG:
-        "'ShareModal your documents on Polaris ShareModal, find new prospects, and get RewardCard based on views."
-    }
-  ],
-  [
-    'about-sectionFirst-section-subj',
-    {
-      KOR: '왜 폴라리스 쉐어를 사용해야 하는가?',
-      ENG: 'Why Polaris ShareModal?'
-    }
-  ],
-  [
-    'about-sectionFirst-section-explain',
-    {
-      KOR:
-        '우리는 수년간 전세계 고객들을 대상으로 Polaris Office 를 서비스하면서 수많은 문서와 지식들이 활용되지 못하고 있음을 발견했습니다. 이 문제를 해결하기 위해서 우리는 Polaris Share를 만들 것입니다. Polaris Share는 지식 생산자와 소비자를 연결하여 탈중앙화된 인센티브 기반의 지식 거래 시스템을 구축합니다. 우리는 회사에서 전문가를 고용하지 않고도 전세계에서 가장 필요한 기술을 가진 사람과 일할 수 있는 환경을 제공하고, 동시에 개인이 특정 회사에 고용되지 않고도 원하는만큼 일하고 정당한 보수를 받을 수 있는 일하는 환경을 만들어 나가고자 합니다. ',
-      ENG:
-        "While providing the Polaris Office solution around the world over the years, we realized that there are so much knowledge and documents that haven't send the light of day. To tap into this potential, we decided to create Polaris ShareModal, a decentralized and incentive-based knowledge trading system, by connecting creators and consumers. The platform is designed to create an environment where not only where corporates can still work with experts all over the world without hiring them but individuals can also be fairly compensated for what they offer without being committed to a particular employer."
-    }
-  ],
-  [
-    'about-service',
-    {
-      KOR: '서비스',
-      ENG: 'Service'
-    }
-  ],
-  [
-    'about-sectionSecond-section-explain',
-    {
-      KOR:
-        '폴라리스 쉐어는 단순한 문서 공유 서비스를 넘어서서 전문가들에 의한 큐레이션과 거래 시스템을 제공합니다. 서비스 내의 다양한 기여 활동에 대해서 적절한 보상을 지급함으로써 자발적인 참여를 유도하여 탈중앙화된 지속 가능한 시스템을 구축했습니다. 이와 같은 지식 거래 생태계에서 지식 생산자는 자유롭게 일하고 적절한 대가를 받을 수 있으며, 지식 소비자는 고품질의 지식을 저렴한 비용으로 소비할 수 있습니다.',
-      ENG:
-        'Beyond a simple document sharing service, Polaris ShareModal offers a specialized curation and trading service. By compensating various types of contributions to the service, we have built a decentralized and sustainable system that promotes user engagement. Based on this knowledge training ecosystem, creators can work freely and get fair compensation for their contributions while consumers can access an extensive knowledge base at a low cost.'
-    }
-  ],
-  [
-    'about-vision',
-    {
-      KOR: '비전',
-      ENG: 'Vision'
-    }
-  ],
-  [
-    'about-sectionThird-section-explain',
-    {
-      KOR: '탈중앙화되고 인센티브가 주어지는 전문가 지식 거래 시스템',
-      ENG:
-        'Decentralized and Incentive-based Professional Knowledge Trading System'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-subj-1',
-    {
-      KOR: '지식의 가치',
-      ENG: 'Value of knowledge'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-explain-1',
-    {
-      KOR:
-        '폴라리스 쉐어는 문서 및 네트워크에 저장된 지식의 가치를 지식의 생산자와 우리 생태계를 유지하는 활동에 기여한 사용자들에게 돌려드립니다.',
-      ENG:
-        'Polaris ShareModal returns value created from sharing knowledge stored in documents and the network with creators and users who contribute to maintaining our ecosystem.'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-subj-2',
-    {
-      KOR: '무료 또는 저렴한 수수료',
-      ENG: 'Free or small fee'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-explain-2',
-    {
-      KOR:
-        '지식 생산자는 폴라리스 쉐어에서 문서를 공유하거나 판매함으로써 무료 또는 매우 적은 수수료만으로 수익을 얻을 수 있습니다. ',
-      ENG:
-        'Knowledge creators generate revenue by sharing their documents for free or with a small fee through Polaris ShareModal.'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-subj-3',
-    {
-      KOR: '고품질의 컨텐츠',
-      ENG: 'High quality content'
-    }
-  ],
-  [
-    'about-sectionThird-section-chap-explain-3',
-    {
-      KOR:
-        '일반 대중들은 지식 생산자들에 의해서 공유된 고품질의 다양한 컨텐츠를 소비하고 활용할 수 있습니다. ',
-      ENG:
-        'People can access and use an extensive amount of high-quality content shared by creators.'
-    }
-  ],
-  [
-    'about-ps-team',
-    {
-      KOR: '폴라리스 쉐어 팀',
-      ENG: 'Polaris ShareModal Team'
     }
   ],
 
@@ -2040,13 +1920,6 @@ const strings = new Map([
     {
       KOR: '인기',
       ENG: 'POPULAR'
-    }
-  ],
-  [
-    'sectionTop-login',
-    {
-      KOR: '로그인',
-      ENG: 'Log in'
     }
   ],
 
@@ -5597,6 +5470,17 @@ const strings = new Map([
     {
       KOR: '메인으로 이동',
       ENG: 'Go to Main'
+    }
+  ],
+
+  // main notice
+  [
+    'main-notice-text',
+    {
+      KOR:
+        '폴라리스쉐어는 사용자가 파일형태로 저장하고 있는 지식이나 노하우를 라이브러리라고 부르며, 라이브러리를 자유롭게 공유하고 보상받는 새로운 개념의 플랫폼입니다.',
+      ENG:
+        "Polaris Share is a new concept platform that calls the knowledge or know-how that users have stored in files 'Library' and freely shares and rewards the Library."
     }
   ]
 ])

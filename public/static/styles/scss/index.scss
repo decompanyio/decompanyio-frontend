@@ -22,8 +22,6 @@
 
 @import "components/common/button/LoginButton/style";
 
-@import "components/common/button/MenuButton/style";
-
 @import "components/common/button/SearchButton/style";
 
 @import "components/common/button/ToTopButton/style";
@@ -39,8 +37,6 @@
 @import "components/common/mock/ContentsItemMock/style";
 
 @import "components/common/mock/ContentsListMock/style";
-
-@import "components/common/modal/AwayModal/style";
 
 @import "components/common/modal/DeleteDocumentModal/style";
 
@@ -106,7 +102,7 @@
 
 @import "components/header/HeaderSectionFirst/style";
 
-@import "components/header/HeaderSectionSecond/style";
+@import "../../../../components/header/HeaderSectionSecond/style";
 
 @import "components/main/MainEvent/style";
 
@@ -148,11 +144,7 @@
 
 @import "components/main/sectionTop/MainTopUploadBtn/style";
 
-@import "components/Menu/style";
-
 @import "components/Others/style";
-
-@import "components/page/AboutUs/style";
 
 @import "components/page/FAQ/style";
 
@@ -239,4 +231,6 @@
 @import "components/view/ViewSeeAlso/style";
 
 @import "components/view/ViewToolBox/style";
+
+@import "components/header/HeaderTag/style";
 

@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import UploadDocumentModal from './UploadDocumentModal'
 import EditDocumentModal from './EditDocumentModal'
-import AwayModal from './AwayModal'
 import UploadCompleteModal from './UploadCompleteModal'
 import EmailModal from './EmailModal'
 import ShareModal from './ShareModal'
@@ -27,9 +26,6 @@ export default function Modal(): ReactElement {
 
       // 문서 수정 모달
       edit: <EditDocumentModal />,
-
-      // 자리 비움 모달
-      away: <AwayModal />,
 
       // 업로드 완료 모달
       uploadComplete: <UploadCompleteModal />,

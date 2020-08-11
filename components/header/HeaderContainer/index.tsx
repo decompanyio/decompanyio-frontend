@@ -5,6 +5,7 @@ import HeaderSectionSecond from '../HeaderSectionSecond'
 import React, { ReactElement } from 'react'
 import HeaderLoadingBar from '../HeaderLoadingBar'
 import { HeaderProps } from '../../../typings/interfaces'
+import HeaderTag from '../HeaderTag'
 
 export default function HeaderContainer({
   title,
@@ -19,10 +20,13 @@ export default function HeaderContainer({
 
       <nav id="headerMainNav" className={path && styles.h_fixed}>
         <div className={styles.h_container}>
-          <HeaderSectionFirst path={path} />
+          <HeaderSectionFirst />
           <HeaderSectionSecond />
         </div>
+
+        <HeaderTag />
       </nav>
+
       {path === 'contents_view' && <HeaderLoadingBar />}
     </header>
   )

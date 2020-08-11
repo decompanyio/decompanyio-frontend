@@ -35,21 +35,21 @@ export default function Layout(props): ReactElement {
       let headerMainNav = document.getElementById('headerMainNav')
       let totalLoadingBar = document.getElementById('totalLoadingBar')
 
-      let isScrollAtTop = currentScrollPos <= 60
+      let isScrollAtTop = currentScrollPos <= (isMobile ? 90 : 170)
       let isScrollUp = _prevScrollPos > currentScrollPos
 
       // main 이외 페이지에서 헤더 숨길/표시 처리
       if (path && headerMainNav) {
         headerMainNav.style.marginBottom = '0px'
         headerMainNav.style.top = `${
-          isScrollUp || isScrollAtTop ? '0' : '-61'
+          isScrollUp || isScrollAtTop ? '0' : `${isMobile ? '-91' : '-171'}`
         }px`
       }
 
       // main 이외 페이지에서 로딩 숨길/표시 처리
       if (path && totalLoadingBar)
         totalLoadingBar.style.top = `${
-          isScrollUp || isScrollAtTop ? `${isMobile ? '55' : '60'}` : '0'
+          isScrollUp || isScrollAtTop ? `${isMobile ? '90' : '170'}` : '0'
         }px`
 
       resolve(currentScrollPos)
@@ -82,28 +82,6 @@ export default function Layout(props): ReactElement {
       )
     )
 
-  // TODO 트랙킹 자리비움 백엔드 로직 배포 시, 기능 추가
-  // 자리비움 시간 SET
-  /*let t = commonData.awayCheckTime // 1 min
-  let awayTime = 0 // 자리비움 시간*/
-
-  const setAwayTime = (): void => {
-    /*   if (awayTime > 0) awayTime = 0
-    if (modalCode === 'away') setModal('')*/
-  }
-
-  /*  // Check AwayModal Time
-  const setIntervalAwayTime = setInterval(() => {
-    awayTime += t
-    console.log('interval awaytime', awayTime, modalCode)
-    if (awayTime >= t * 15 && modalCode !== 'away') {
-      console.log('get in!!')
-      setModal('away')
-    }
-  }, t)
-      clearInterval(interval)
-  */
-
   // 모바일 유무 REDUX SET
   const setIsMobileToRedux = (): void => {
     if (commonView.getIsMobile() !== isMobileChecker) {
@@ -113,8 +91,6 @@ export default function Layout(props): ReactElement {
   }
 
   const handleResize = (): void => setIsMobileToRedux()
-  const handleKeydown = (): void => setAwayTime()
-  const handleMousemove = (): void => setAwayTime()
   const handleScroll = () =>
     manageElement(path).then((currentScrollPos: number) => {
       setScrollToTopValue(currentScrollPos)
@@ -125,8 +101,6 @@ export default function Layout(props): ReactElement {
   const handleEventListener = (): void => {
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
-    window.addEventListener('keydown', handleKeydown)
-    window.addEventListener('mousemove', handleMousemove)
   }
 
   useEffect(() => {
@@ -147,8 +121,6 @@ export default function Layout(props): ReactElement {
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('keydown', handleKeydown)
-      window.removeEventListener('mousemove', handleMousemove)
     }
   }, [])
 

@@ -25,7 +25,7 @@ export default function AddButton(): ReactElement {
       onClick={() => handleAddBtnClick()}
     >
       <p data-tip="Share your contents" data-place="bottom">
-        <i className="material-icons">add</i>
+        Upload
       </p>
     </div>
   )

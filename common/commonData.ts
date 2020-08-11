@@ -90,9 +90,6 @@ export default {
   // 트랙킹 딜레이 시간 : 3초
   trackingDelayTime: 3000,
 
-  // 자리비움 체크 시간: 1분
-  awayCheckTime: 1000, // 60000,
-
   // alert 창 종료 시간: 7초
   alertRemainTime: 7000,
 

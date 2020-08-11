@@ -268,7 +268,7 @@ app.prepare().then(() => {
   })
 
   server.listen(port, err => {
-    console.log('\n\n[Polaris ShareModal]\n')
+    console.log('\n\n[Polaris Share]\n')
 
     console.log('Project Version : ' + version)
     console.log('NODE_ENV : ' + env)

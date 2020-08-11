@@ -1,4 +1,49 @@
 
 .lb_loginBtn {
-  @include common_loginBtn;
+  height: 40px;
+  background: #fff;
+  color: #6e6e6e;
+  font-size: 14px;
+  padding: 0 22px;
+  border: 1px solid #dfdede;
+  width: 125px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @media (max-width: $lg-max-width) {
+    background: transparent;
+    border: none;
+    width: 36px;
+    padding: 0;
+  }
+
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url($image-url +'/main/ico-login.png') no-repeat 0 0;
+    vertical-align: middle;
+    margin-right: 5px;
+
+    @media (max-width: $lg-max-width) {
+      margin-right: 0;
+      width: 36px;
+      height: 36px;
+      background: url($image-url +'/main/ico-login-m.png') no-repeat 0 0 / contain;
+    }
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 400;
+
+    @media (max-width: $lg-max-width) {
+      display: none;
+    }
+  }
 }

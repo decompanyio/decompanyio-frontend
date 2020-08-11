@@ -1,40 +1,46 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
-import { psString } from 'utils/localization'
-import commonView from '../../../common/commonView'
-import commonData from '../../../common/commonData'
 import React, { ReactElement } from 'react'
-import { useMain } from '../../../redux/main/hooks'
-import { HeaderSectionFirstProps } from '../../../typings/interfaces'
+import AutoSuggestInput from '../../common/input/AutoSuggestInput'
+import SearchBtn from '../../common/button/SearchButton'
+import Router from 'next/router'
 
-// GET subtitle
-const getSubTitle = () => {
-  const paths = commonView.getPaths() || []
-  let subTitle = ''
+export default function HeaderSectionFirst(): ReactElement {
+  const handleSearchBtnClick = (): void => {
+    let element = document.getElementById('usernameEditInput')
+    if (element && element.firstChild) {
+      let inputElement = element.firstChild.firstChild as HTMLInputElement
 
-  if (paths.length === 2 && commonData.pathArr.includes(paths[1]))
-    subTitle = psString('main-Category-' + paths[1])
-  else if (paths.length === 2 && !commonData.pathArr.includes(paths[1]))
-    subTitle = ''
-  else if (paths.length > 2 && paths[1] === 'tag') subTitle = paths[2]
+      inputElement.focus()
+    }
+  }
 
-  return decodeURI(subTitle)
-}
-
-export default function HeaderSectionFirst({ path }: HeaderSectionFirstProps): ReactElement {
-  const { isMobile } = useMain()
-  let subTitle = getSubTitle()
+  // 자동 완성 값 선택 시, 해당 태그의 리스트 페이지로 이동합니다.
+  const onSuggestionSelected = tag => {
+    return Router.push(
+      {
+        pathname: '/contents_list'
+      },
+      '/tag/' + tag._id
+    )
+  }
 
   return (
     <div className={styles.hst_section_1}>
       <Link href="/">
         <a aria-label="Main">
-          <div
-            className={styles['hst_logo' + (path || isMobile ? 'Cut' : '')]}
-          />
+          <div className={styles.hst_logo} />
         </a>
       </Link>
-      {!isMobile && <div className={styles.hst_subTitle}>{subTitle}</div>}
+
+      <div className={styles.hss_container}>
+        <div className={styles.hss_searchContainer}>
+          <div className={styles.hss_searchInput} id="headerSearchBar">
+            <AutoSuggestInput search={onSuggestionSelected} type="tag" />
+          </div>
+          <SearchBtn click={handleSearchBtnClick} />
+        </div>
+      </div>
     </div>
   )
 }

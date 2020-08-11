@@ -1,9 +1,11 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
-import { OthersProps } from '../../typings/interfaces'
+import { useMain } from '../../redux/main/hooks'
 
-export default function Others({ tagList }: OthersProps): ReactElement {
+export default function Others(): ReactElement {
+  const { tagList } = useMain()
+
   return (
     <div className={styles.more_container}>
       <div className={styles.more_subject}>Others</div>

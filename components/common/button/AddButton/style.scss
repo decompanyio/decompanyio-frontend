@@ -1,4 +1,54 @@
-
 .ab_addBtn {
-  @include common_addBtn;
+  @include d-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transition: border .4s ease-in;
+  background: #0032a2;
+  color: #fff;
+  border: 0;
+  width: 125px;
+  height: 40px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  margin-left: 0;
+  position: relative;
+  font: {
+    size: 14px;
+    weight: 400;
+  }
+
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.5);
+    margin: -4px -5px 0 -20px;
+    width: 52px;
+    height: 50px;
+    background: url($image-url +'/main/ico-docinfo.png') no-repeat 0 -30px;
+
+    @media (max-width: $lg-max-width) {
+      display: block;
+      transform: scale(0.4);
+      position: absolute;
+      background-position-x: -7px;
+      left: 8px;
+      top: -10px;
+    }
+  }
+
+  @media (max-width: $lg-max-width) {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+
+    p {
+      display: none;
+    }
+  }
 }
