@@ -1,6 +1,6 @@
 import DocumentInfo from '../service/model/DocumentInfo'
 import DocumentList from '../service/model/DocumentList'
-import UserInfo from '../service/model/UserInfo'
+import UserInfo from '../graphql/models/UserInfo'
 import { MainState } from '../redux/main/reducer'
 import { TrackingState } from '../redux/tracking/reducer'
 import TagListItem from '../service/model/TagListItem'
@@ -37,7 +37,6 @@ export interface documentPaginationProps {
 
 export interface ContentsBookmarkProps {
   documentData: DocumentInfo
-  bookmarkFlagData: boolean
   path: string
 }
 
@@ -208,8 +207,6 @@ export interface TrackingDetailListProps {
 
 export interface ViewBookmarkProps {
   documentData
-  mylist
-  click?: any
 }
 
 export interface ViewFullscreenBtnProps {

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import { AUTH_APIS } from '../../../utils/auth'
@@ -12,7 +12,6 @@ export default function ViewOption({
 }: ViewOptionProps): ReactElement {
   const { myInfo, setAlertCode, setModal } = useMain()
   const [optionTable, setOptionTable] = useState(false)
-  const [mylist, setMylist] = useState(null)
 
   const downloadDocument = (documentId: string, documentName: string) => {
     repos.Document.getDocumentDownloadUrl({
@@ -31,11 +30,6 @@ export default function ViewOption({
     })
   }
 
-  const getMyList = () =>
-    repos.Query.getMyListFindMany({
-      userId: myInfo.id
-    }).then(res => setMylist(res))
-
   const setRequiredForDownload = () => {
     if (!documentData) return setAlertCode(2091, {})
 
@@ -47,10 +41,6 @@ export default function ViewOption({
   const handleSettingsBtnClick = () => setModal('edit', { documentData })
 
   const handleDeleteBtnClick = () => setModal('delete', { documentData })
-
-  useEffect(() => {
-    void getMyList()
-  }, [])
 
   return (
     <div className={styles.vib_optionBtn} id="viewer-option-btn">
@@ -70,13 +60,7 @@ export default function ViewOption({
             <i className="material-icons">save_alt</i>
             {psString('download-btn')}
           </div>
-          {mylist && (
-            <ViewBookmark
-              mylist={mylist}
-              documentData={documentData}
-              click={getMyList}
-            />
-          )}
+          <ViewBookmark documentData={documentData} />
           <div
             className={styles.vib_optionTableBtn}
             onClick={() => handleSettingsBtnClick()}

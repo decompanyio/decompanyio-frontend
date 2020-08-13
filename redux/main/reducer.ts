@@ -6,7 +6,7 @@ import {
   SET_MY_INFO,
   SET_TAG_LIST
 } from './types'
-import UserInfo from '../../service/model/UserInfo'
+import UserInfo from '../../graphql/models/UserInfo'
 import { MainInitState } from '../../typings/interfaces'
 import { MainAction } from './actions'
 

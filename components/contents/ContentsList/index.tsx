@@ -21,9 +21,9 @@ import ContentsListMock from '../../common/mock/ContentsListMock'
 import ContentsListItem from '../ContentsItem'
 import { AUTH_APIS } from '../../../utils/auth'
 import commonData from '../../../common/commonData'
-import ContentsListItemInfoFindmany from '../../../graphql/queries/ContentsListItemInfoFindmany.graphql'
+import ContentsListItemInfoFindMany from '../../../graphql/queries/ContentsListItemInfoFindMany.graphql'
 import DocumentInfo from '../../../service/model/DocumentInfo'
-import UserInfo from '../../../service/model/UserInfo'
+import UserInfo from '../../../graphql/models/UserInfo'
 import DocumentPopularModel from '../../../graphql/models/DocumentPopular'
 import DocumentFeaturedModel from '../../../graphql/models/DocumentFeatured'
 
@@ -32,6 +32,7 @@ export default function ContentsList({
   path
 }: ContentsListProps): ReactElement {
   const [documentRoyaltyList, setDocumentRoyaltyList] = useState([])
+
   // 1. 해당 페이지에 표시될 문서들의 ID 리스트를 불러옵니다.
   const { data: documentData, fetchMore } = useQuery(
     gql`
@@ -85,7 +86,7 @@ export default function ContentsList({
   // 3. 위에 셋팅된 ID 리스트를 인자로 각 문서 정보를 불러옵니다.
   const { data: documentItemData } = useQuery(
     gql`
-      ${ContentsListItemInfoFindmany}
+      ${ContentsListItemInfoFindMany}
     `,
     {
       context: {
@@ -112,38 +113,38 @@ export default function ContentsList({
     )
 
     _.forIn(dataObj.Document, (value, index) => {
-      const __DOCUMENT_INFO__ = new DocumentInfo(value)
+      const documentInfo = new DocumentInfo(value)
       const popularIndex = _.findIndex(
         dataObj.DocumentPopular,
-        ({ _id }) => _id === __DOCUMENT_INFO__.id
+        ({ _id }) => _id === documentInfo.id
       )
       const featureIndex = _.findIndex(
         dataObj.DocumentFeatured,
-        ({ _id }) => _id === __DOCUMENT_INFO__.id
+        ({ _id }) => _id === documentInfo.id
       )
       const userIndex = _.findIndex(
         dataObj.User,
-        ({ _id }) => _id === __DOCUMENT_INFO__.accountId
+        ({ _id }) => _id === documentInfo.accountId
       )
 
       if (popularIndex !== -1) {
         const { latestPageview } = new DocumentPopularModel(
           dataObj.DocumentPopular[popularIndex]
         )
-        __DOCUMENT_INFO__.latestPageview = latestPageview
+        documentInfo.latestPageview = latestPageview
       }
 
       if (featureIndex !== -1) {
         const { latestVoteAmount } = new DocumentFeaturedModel(
           dataObj.DocumentFeatured[featureIndex]
         )
-        __DOCUMENT_INFO__.latestVoteAmount = latestVoteAmount
+        documentInfo.latestVoteAmount = latestVoteAmount
       }
 
       if (userIndex !== -1)
-        __DOCUMENT_INFO__.author = new UserInfo(dataObj.User[userIndex])
+        documentInfo.author = new UserInfo(dataObj.User[userIndex])
 
-      documentList[index] = __DOCUMENT_INFO__
+      documentList[index] = documentInfo
     })
   }
 

@@ -1,6 +1,6 @@
 import repos from './repos'
 import { GetTokenProps, GetQueryParams } from './types'
-import UserInfo from '../service/model/UserInfo'
+import UserInfo from '../graphql/models/UserInfo'
 import { APP_CONFIG } from '../app.config'
 import common from '../common/common'
 import Router from 'next/router'

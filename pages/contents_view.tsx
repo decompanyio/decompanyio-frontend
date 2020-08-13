@@ -7,6 +7,7 @@ import DocumentInfo from '../service/model/DocumentInfo'
 import Router from 'next/router'
 import ViewContainer from '../components/view/ViewContainer'
 import Meta from '../graphql/models/Meta'
+import { withApollo } from '../components/Apollo'
 
 function PageContentsView(
   { documentData, text, ratio, readPage, metaData, message },
@@ -62,4 +63,4 @@ PageContentsView.getInitialProps = async props => {
   }
 }
 
-export default PageContentsView
+export default withApollo({ ssr: false })(PageContentsView)

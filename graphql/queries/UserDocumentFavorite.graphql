@@ -1,0 +1,33 @@
+query UserDocumentFavorite(
+  $userId: String!
+) {
+  UserDocumentFavorite {
+    findMany(filter: { userId: $userId }) {
+      documentId
+    }
+  }
+
+  User {
+    findOne(filter: { _id: $userId }) {
+      _id
+      created
+      username
+      email
+      picture
+      local
+      nickname
+      family_name
+      croppedArea {
+        width
+        height
+        x
+        y
+        zoom
+      }
+    }
+  }
+
+  Document {
+    count(filter : {accountId: $userId, isBlocked: false, isDeleted: false, isPublic: false})
+  }
+}

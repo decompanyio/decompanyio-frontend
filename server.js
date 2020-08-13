@@ -263,9 +263,7 @@ app.prepare().then(() => {
     }
   })
 
-  server.all('*', (req, res) => {
-    return handle(req, res)
-  })
+  server.all('*', (req, res) => handle(req, res))
 
   server.listen(port, err => {
     console.log('\n\n[Polaris Share]\n')

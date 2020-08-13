@@ -1,16 +1,4 @@
 export default {
-  getMyListFindMany: data =>
-    `
-    UserDocumentFavorite {
-    findMany(
-    filter: { userId: "${data.userId}" },
-    skip: ${data.skip || 0},
-    limit: 10,
-    sort: USERID__CREATED_ASC
-    ) {
-      documentId
-    }
-  }`,
   getDocumentListByIds: data =>
     `Document {
     findByIds(_ids: [${data}]) {

@@ -17,6 +17,10 @@ import { useMain } from '../../redux/main/hooks'
 import common from '../../common/common'
 import _ from 'lodash'
 import MainNotice from 'components/common/notice/MainNotice'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import UserDocumentFavorite from '../../graphql/queries/UserDocumentFavorite.graphql'
+import UserInfo from '../../graphql/models/UserInfo'
 
 export default function Layout(props): ReactElement {
   const { myInfo, isMobile, setMyInfo, setTagList, setIsMobile } = useMain()
@@ -24,6 +28,45 @@ export default function Layout(props): ReactElement {
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
   const [path] = useState(props.path)
+
+  // 유저 정보 + 북마크 리스트를 GET 하여 REDUX에 저장합니다.
+  useQuery(
+    gql`
+      ${UserDocumentFavorite}
+    `,
+    {
+      context: {
+        clientName: 'query'
+      },
+      variables: {
+        userId: AUTH_APIS.isLogin() ? AUTH_APIS.getMyInfo().id : ''
+      },
+      skip: !AUTH_APIS.isLogin() || myInfo.bookmark.length !== 0,
+      notifyOnNetworkStatusChange: false,
+      onCompleted: data => {
+        const dataList = _.values(data)
+
+        if (!data || !dataList || dataList.length === 0) return setInit(true)
+
+        const privateDocumentCount = dataList[2]
+        const bookmarkList: string[] = []
+        _.forEach(dataList[0].findMany, value =>
+          bookmarkList.push(value.documentId)
+        )
+
+        let res = new UserInfo(dataList[1].findOne)
+
+        if (!res.username || res.username === '') res.username = res.email
+        if (!res.picture) res.picture = myInfo.picture
+
+        res.privateDocumentCount = privateDocumentCount
+        res.bookmark = bookmarkList
+        setMyInfo(res)
+      }
+    }
+  )
+
+  if (AUTH_APIS.isLogin() && myInfo.username && !init) setInit(true)
 
   let _prevScrollPos = 0
   let isMobileChecker = false
@@ -54,22 +97,6 @@ export default function Layout(props): ReactElement {
 
       resolve(currentScrollPos)
     })
-
-  // 내 정보 REDUX SET
-  const setMyInfoToStore = () => {
-    if (AUTH_APIS.isLogin() && myInfo.email.length === 0) {
-      return repos.Account.getAccountInfo().then(result => {
-        let res = result.user
-        if (!res.username || res.username === '') res.username = res.email
-        if (!res.picture) res.picture = myInfo.picture
-
-        res.privateDocumentCount = result.privateDocumentCount
-        setMyInfo(res)
-
-        return Promise.resolve()
-      })
-    } else return Promise.resolve()
-  }
 
   // SET 태그 리스트
   const setTagListToStore = () =>
@@ -113,9 +140,6 @@ export default function Layout(props): ReactElement {
 
       // SET isMobile
       setIsMobileToRedux()
-
-      // SET myInfo
-      setMyInfoToStore().then((): void => setInit(true))
     })
 
     return () => {

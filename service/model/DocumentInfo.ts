@@ -1,5 +1,5 @@
 import common from '../../common/common'
-import UserInfo from './UserInfo'
+import UserInfo from '../../graphql/models/UserInfo'
 
 export default class DocumentInfo {
   public accountId: string

@@ -5,7 +5,7 @@ import ProfileTab from '../ProfileTab'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import UserProfileInfo from '../../../graphql/queries/UserProfileInfo.graphql'
-import UserInfo from '../../../service/model/UserInfo'
+import UserInfo from '../../../graphql/models/UserInfo'
 import NotFoundPage from '../../page/NotFoundPage'
 import * as styles from 'public/static/styles/scss/index.scss'
 

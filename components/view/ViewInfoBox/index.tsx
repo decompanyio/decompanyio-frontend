@@ -17,7 +17,9 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
-export default function ViewInfoBox({ documentData }: ViewInfoBoxProps): ReactElement {
+export default function ViewInfoBox({
+  documentData
+}: ViewInfoBoxProps): ReactElement {
   const { myInfo, isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)

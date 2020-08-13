@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback } from 'react'
-import UserInfo from '../../service/model/UserInfo'
+import UserInfo from '../../graphql/models/UserInfo'
 import { actions } from './actions'
 import { StateProps } from '../../typings/interfaces'
 import TagListItem from '../../service/model/TagListItem'

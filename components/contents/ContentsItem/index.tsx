@@ -10,6 +10,8 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import { ContentsItemProps } from '../../../typings/interfaces'
 import { AUTH_APIS } from '../../../utils/auth'
 import ContentsBookmark from '../ContentsBookmark'
+import { useMain } from '../../../redux/main/hooks'
+import _ from 'lodash'
 
 const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
@@ -36,8 +38,6 @@ export default function ContentsItem({
     documentData.documentName
   )
   let vote = common.deckStr(common.toEther(documentData.latestVoteAmount) || 0)
-
-  let bookmarkFlag = false
 
   useEffect(() => {
     commonView.lazyLoading()
@@ -160,7 +160,6 @@ export default function ContentsItem({
           <span className={styles.cl_vote}>{vote}</span>
           {AUTH_APIS.isLogin() && (
             <ContentsBookmark
-              bookmarkFlagData={bookmarkFlag}
               documentData={documentData}
               path={path}
             />

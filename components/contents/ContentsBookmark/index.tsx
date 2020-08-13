@@ -4,13 +4,13 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import repos from '../../../utils/repos'
 import { ContentsBookmarkProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import _ from 'lodash'
 
 export default function ContentsBookmark({
-  bookmarkFlagData,
   documentData,
   path
 }: ContentsBookmarkProps): ReactElement {
-  const { setAlertCode } = useMain()
+  const { setAlertCode, myInfo } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
 
   const handleBookmarkBtnClick = (): void => {
@@ -33,7 +33,7 @@ export default function ContentsBookmark({
   }
 
   useEffect(() => {
-    setBookmarkFlag(bookmarkFlagData)
+    setBookmarkFlag(!!_.findIndex(myInfo.bookmark, o => o === documentData.id))
   }, [])
 
   if (bookmarkFlag) {

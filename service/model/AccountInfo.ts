@@ -1,4 +1,4 @@
-import UserInfo from './UserInfo'
+import UserInfo from '../../graphql/models/UserInfo'
 
 export default class AccountInfo {
   public user: UserInfo

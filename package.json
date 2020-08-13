@@ -1,7 +1,7 @@
 {
   "name": "decompanyio-frontend",
   "description": "www.polarishare.com",
-  "version": "2020.08.11-b",
+  "version": "2020.08.13-a",
   "private": true,
   "keywords": [],
   "author": "Decompany.io",
@@ -59,7 +59,7 @@
     "lqip-loader": "2.2.0",
     "morgan": "^1.10.0",
     "nanoid": "2.1.11",
-    "next": "^9.5.1",
+    "next": "^9.5.2",
     "next-compose-plugins": "2.2.0",
     "next-offline": "^5.0.2",
     "next-optimized-images": "2.6.0",

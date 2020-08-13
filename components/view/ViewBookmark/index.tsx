@@ -5,35 +5,25 @@ import { psString } from '../../../utils/localization'
 import repos from '../../../utils/repos'
 import { useMain } from '../../../redux/main/hooks'
 import { ViewBookmarkProps } from '../../../typings/interfaces'
+import _ from 'lodash'
 
 export default function ViewBookmark({
-  documentData,
-  mylist,
-  click
+  documentData
 }: ViewBookmarkProps): ReactElement {
-  const { setAlertCode } = useMain()
+  const { setAlertCode, myInfo, setMyInfo } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
-
-  const checkBookmarkAdded = (): void => {
-    let flag
-
-    if (mylist.length > 0) {
-      flag =
-        mylist.filter((v): boolean => v.documentId === documentData.id).length >
-        0
-    } else {
-      flag = false
-    }
-
-    setBookmarkFlag(flag)
-  }
 
   const handleBookmarkBtnClick = (): void => {
     setBookmarkFlag(true)
     repos.Mutation.addMyList(documentData.documentId)
       .then((): void => {
         setAlertCode(2121, {})
-        click()
+
+        let tmpMyInfo = myInfo
+        let tmpBookmark = tmpMyInfo.bookmark
+        tmpBookmark.push(documentData.id)
+        tmpMyInfo.bookmark = tmpBookmark
+        setMyInfo(tmpMyInfo)
       })
       .catch(() => setAlertCode(2122, {}))
   }
@@ -43,13 +33,18 @@ export default function ViewBookmark({
     repos.Mutation.removeMyList(documentData.documentId)
       .then((): void => {
         setAlertCode(2123, {})
-        click()
+
+        let tmpMyInfo = myInfo
+        tmpMyInfo.bookmark = _.chain(tmpMyInfo.bookmark)
+          .pull(documentData.id)
+          .value()
+        setMyInfo(tmpMyInfo)
       })
       .catch(() => setAlertCode(2124, {}))
   }
 
   useEffect(() => {
-    checkBookmarkAdded()
+    setBookmarkFlag(_.includes(myInfo.bookmark, documentData.id))
   }, [])
 
   if (!AUTH_APIS.isLogin()) return <div />

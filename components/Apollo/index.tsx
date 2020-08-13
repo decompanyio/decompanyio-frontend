@@ -83,6 +83,7 @@ export const initOnContext = ctx => {
 export const withApollo = ({ ssr = false } = {}) => PageComponent => {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
     let client
+
     if (apolloClient) {
       // Happens on: getDataFromTree & next.js ssr
       client = apolloClient

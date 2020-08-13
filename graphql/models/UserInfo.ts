@@ -12,6 +12,7 @@ export default class UserInfo {
   public sub: string
   public username: string
   public privateDocumentCount: number
+  public bookmark: string[]
 
   public constructor(data) {
     this.connected = data && data.connected ? data.connected : 0
@@ -27,5 +28,6 @@ export default class UserInfo {
     this.sub = (data && (data.sub || data._id || data.id)) || ''
     this.username = data && data.username ? data.username : ''
     this.privateDocumentCount = 0
+    this.bookmark = []
   }
 }

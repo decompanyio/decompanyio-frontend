@@ -156,7 +156,7 @@ const strings = new Map([
       KOR:
         '* 폴라리스오피스를 사용하시는 유저분은 폴라리스오피스를 통해서도 라이브러리를 업로드 하실 수 있습니다',
       ENG:
-        '* Polaris Office users can profileUpload their MainThirdSectionLibrary through Polaris Office.'
+        '* Polaris Office users can profileUpload their Library through Polaris Office.'
     }
   ],
   [
@@ -177,7 +177,7 @@ const strings = new Map([
     'main-visual-2',
     {
       KOR: '라이브러리',
-      ENG: 'MainThirdSectionLibrary'
+      ENG: 'Library'
     }
   ],
   [
@@ -212,7 +212,7 @@ const strings = new Map([
     'main-visual-7',
     {
       KOR: '라이브러리',
-      ENG: 'MainThirdSectionLibrary'
+      ENG: 'Library'
     }
   ],
   [
@@ -256,7 +256,7 @@ const strings = new Map([
     'main-insight-slider-2',
     {
       KOR: "업로드한 파일을 '라이브러리'라고 불러요.",
-      ENG: 'The uploaded file is called a MainThirdSectionLibrary.'
+      ENG: 'The uploaded file is called a Library.'
     }
   ],
   [
@@ -265,7 +265,7 @@ const strings = new Map([
       KOR:
         "라이브러리를 공개하는게 고민되시면, '비공개'로 업로드 하시고 나중에 공개로 변경하셔도 돼요.",
       ENG:
-        "If you're concerned about releasing your MainThirdSectionLibrary, \n" +
+        "If you're concerned about releasing your Library, \n" +
         'you can profileUpload it as a "private" and change it to a public one later.'
     }
   ],
@@ -273,7 +273,7 @@ const strings = new Map([
     'main-insight-slider-4',
     {
       KOR: '라이브러리를 공개하면 좋은 점!',
-      ENG: 'Open MainThirdSectionLibrary Advantage!'
+      ENG: 'Open Library Advantage!'
     }
   ],
   [
@@ -311,14 +311,14 @@ const strings = new Map([
     'main-insight-slider-8',
     {
       KOR: '"주식보다 뿌듯한 내 문서 보상"',
-      ENG: '"MyAvatar MainThirdSectionLibrary show better profits than stocks"'
+      ENG: '"MyAvatar Library show better profits than stocks"'
     }
   ],
   [
     'main-library-1',
     {
       KOR: '필요한 라이브러리를 사용하시고 평가해 주세요',
-      ENG: 'Use the required MainThirdSectionLibrary and evaluate'
+      ENG: 'Use the required Library and evaluate'
     }
   ],
   [

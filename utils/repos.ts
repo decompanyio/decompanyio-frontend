@@ -18,7 +18,7 @@ import DocumentList from 'service/model/DocumentList'
 import Document from 'service/model/Document'
 import AccountInfo from 'service/model/AccountInfo'
 import DocumentDownload from 'service/model/DocumentDownload'
-import UserInfo from 'service/model/UserInfo'
+import UserInfo from 'graphql/models/UserInfo'
 import TagList from 'service/model/TagList'
 import TrackingList from 'service/model/TrackingList'
 import TrackingExport from 'service/model/TrackingExport'
@@ -340,54 +340,6 @@ const repos = {
         .then((result): CuratorDocuments => new CuratorDocuments(result))
         .catch(err => err)
     },
-    getMyList: async data =>
-      repos.Query.getMyListFindMany(data)
-        .then(res => repos.Common.checkNone(res))
-        .then(res => res.map(v => '"' + v.documentId + '"'))
-        .then(res => repos.Query.getDocumentListByIds(res))
-        .then(res => {
-          let resultData = res
-          resultData.Document.findByIds = res.Document.findByIds.filter(l => {
-            let latestArr = res.DocumentFeatured.findByIds.filter(
-              f => f._id === l._id
-            )[0]
-            return latestArr
-              ? (l.latestVoteAmount = latestArr.latestVoteAmount)
-              : true
-          })
-          return resultData
-        })
-        .then(res => {
-          let resultData = res
-          resultData.Document.findByIds = res.Document.findByIds.filter(l => {
-            let latestArr = res.DocumentPopular.findByIds.filter(
-              (p): boolean => p._id === l._id
-            )[0]
-            return latestArr
-              ? (l.latestPageview = latestArr.latestPageview)
-              : true
-          })
-          return resultData.Document.findByIds
-        })
-        .then(async res => {
-          let ids = res.map(v => '"' + v.accountId + '"')
-          let userData = await repos.Query.getUserByIds(ids)
-          return new DocumentList({
-            resultList: res.filter(v => {
-              let idx = -1
-              userData.map((u, i) =>
-                idx === -1 && u._id === v.accountId ? (idx = i) : -1
-              )
-              return idx !== -1 ? (v.author = userData[idx]) : v
-            })
-          })
-        })
-        .catch(
-          (err): DocumentList => {
-            console.log(err)
-            return new DocumentList(null)
-          }
-        ),
     async getCreatorRewards(documentId: string) {
       return repos.Query.getCreatorRewards({
         documentId
@@ -641,12 +593,6 @@ const repos = {
       graphql({
         query: queries.getDocumentVoteAmount(data)
       }).then((res: { Curator }) => res.Curator),
-    getMyListFindMany: async data =>
-      graphql({
-        query: queries.getMyListFindMany(data)
-      }).then(
-        (res: { UserDocumentFavorite }) => res.UserDocumentFavorite.findMany
-      ),
     getDocumentListByIds: async data =>
       graphql({
         query: queries.getDocumentListByIds(data)

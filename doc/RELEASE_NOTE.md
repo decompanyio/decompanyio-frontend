@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.08.13-a
+- edit GET bookmark API
+
 ## 2020.08.11-a
 - add new header
 
