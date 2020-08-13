@@ -33,7 +33,7 @@ export default function ContentsBookmark({
   }
 
   useEffect(() => {
-    setBookmarkFlag(!!_.findIndex(myInfo.bookmark, o => o === documentData.id))
+    setBookmarkFlag(_.includes(myInfo.bookmark, documentData.id))
   }, [])
 
   if (bookmarkFlag) {
