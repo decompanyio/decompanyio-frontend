@@ -575,7 +575,8 @@ const repos = {
             (res: string) => res
           )
         },
-        mutation: mutations.removeMyList(data)
+        mutation: mutations.removeMyList(data),
+        private: true
       }).then(res => res),
     addHistory: async data =>
       graphql({

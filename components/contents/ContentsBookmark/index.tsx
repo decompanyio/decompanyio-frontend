@@ -18,7 +18,10 @@ export default function ContentsBookmark({
 
     repos.Mutation.addMyList(documentData.documentId)
       .then(() => setAlertCode(2121, {}))
-      .catch(() => setAlertCode(2122, {}))
+      .catch(() => {
+        setAlertCode(2122, {})
+        setBookmarkFlag(false)
+      })
   }
 
   const handleBookmarkRemoveBtnClick = (): void => {
@@ -29,7 +32,10 @@ export default function ContentsBookmark({
       .then((): void | boolean =>
         path === 'mylist' ? window.location.reload() : true
       )
-      .catch(() => setAlertCode(2124, {}))
+      .catch(() => {
+        setAlertCode(2124, {})
+        setBookmarkFlag(true)
+      })
   }
 
   useEffect(() => {
