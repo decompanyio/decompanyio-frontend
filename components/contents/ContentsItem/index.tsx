@@ -10,8 +10,6 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import { ContentsItemProps } from '../../../typings/interfaces'
 import { AUTH_APIS } from '../../../utils/auth'
 import ContentsBookmark from '../ContentsBookmark'
-import { useMain } from '../../../redux/main/hooks'
-import _ from 'lodash'
 
 const UserAvatarWithoutSSR = dynamic(
   () => import('components/common/avatar/UserAvatar'),
@@ -159,10 +157,7 @@ export default function ContentsItem({
           <span className={styles.cl_view}>{documentData.latestPageview}</span>
           <span className={styles.cl_vote}>{vote}</span>
           {AUTH_APIS.isLogin() && (
-            <ContentsBookmark
-              documentData={documentData}
-              path={path}
-            />
+            <ContentsBookmark documentData={documentData} path={path} />
           )}
         </div>
 
