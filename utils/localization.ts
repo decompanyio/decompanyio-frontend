@@ -124,7 +124,7 @@ const strings = new Map([
     'main-event-1',
     {
       KOR: '2020년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
-      ENG: 'As of 2020, Polaris ShareModal is operated during the Beta Season.'
+      ENG: 'As of 2020, Polaris Share is operated during the Beta Season.'
     }
   ],
   [
@@ -240,7 +240,7 @@ const strings = new Map([
     'main-sectionSecond-section',
     {
       KOR: '라이브러리를 손쉽게 공유하는 방법',
-      ENG: 'Easily ShareModal'
+      ENG: 'Easily Share'
     }
   ],
   [
@@ -355,21 +355,21 @@ const strings = new Map([
     'viewer-page-sns-linkedin',
     {
       KOR: '링크드인 공유하기',
-      ENG: 'ShareModal with Linkedin'
+      ENG: 'Share with Linkedin'
     }
   ],
   [
     'viewer-page-sns-fb',
     {
       KOR: '페이스북 공유하기',
-      ENG: 'ShareModal with Facebook'
+      ENG: 'Share with Facebook'
     }
   ],
   [
     'viewer-page-sns-twitter',
     {
       KOR: '트위터 공유하기',
-      ENG: 'ShareModal with Twitter'
+      ENG: 'Share with Twitter'
     }
   ],
   [
@@ -408,7 +408,7 @@ const strings = new Map([
     'faq-question-1',
     {
       KOR: '폴라리스 쉐어란 무엇인가요?',
-      ENG: 'What is Polaris ShareModal?'
+      ENG: 'What is Polaris Share?'
     }
   ],
   [
@@ -417,14 +417,14 @@ const strings = new Map([
       KOR:
         '폴라리스 쉐어는 활용되지 않고 저장되어 있는 수만은 문서와 지식들을 활용하여, 미래의 고객을 발굴하고, 전문가 네트워크를 구축하여 새로운 비즈니스 기회 창출에 기여하는 플랫폼입니다.',
       ENG:
-        'Polaris ShareModal is a platform that creates new business opportunities by sharing idle documents stored in your PC, helping you find new prospects, and establish your own network of experts.'
+        'Polaris Share is a platform that creates new business opportunities by sharing idle documents stored in your PC, helping you find new prospects, and establish your own network of experts.'
     }
   ],
   [
     'faq-question-2',
     {
       KOR: '폴라리스 쉐어는 어떻게 동작하나요?',
-      ENG: 'How does Polaris ShareModal work?'
+      ENG: 'How does Polaris Share work?'
     }
   ],
   [
@@ -456,7 +456,7 @@ const strings = new Map([
     'faq-question-4',
     {
       KOR: '폴라리스 쉐어에서 토큰을 받을 수 있는 방법이 있나요?',
-      ENG: 'Can I get digital tokens from Polaris ShareModal? If so, how?'
+      ENG: 'Can I get digital tokens from Polaris Share? If so, how?'
     }
   ],
   [
@@ -577,7 +577,7 @@ const strings = new Map([
     'faq-question-9',
     {
       KOR: '폴라리스 쉐어에 게시 할 수 있는 항목은 무엇인가요?',
-      ENG: 'What can I post on Polaris ShareModal?'
+      ENG: 'What can I post on Polaris Share?'
     }
   ],
   [
@@ -1345,9 +1345,9 @@ const strings = new Map([
     'approve-explain-1',
     {
       KOR:
-        'POLA를 사용하여 투표하려면, Polaris ShareModal 컨트랙트가 당신을 대신해서 POLA를 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
+        'POLA를 사용하여 투표하려면, Polaris Share 컨트랙트가 당신을 대신해서 POLA를 전송할 수 있도록 최초 한 번 승인해야 합니다. 승인이 완료되기 전까지는 귀하는 문서에 투표할 수 없습니다.',
       ENG:
-        'To VoteModal on a document using your POLA, you must approve the Polaris ShareModal Contract to transfer your POLA on your behalf for the sectionFirst time. You will not be able to VoteModal on documents until approved.'
+        'To VoteModal on a document using your POLA, you must approve the Polaris Share Contract to transfer your POLA on your behalf for the sectionFirst time. You will not be able to VoteModal on documents until approved.'
     }
   ],
   [
@@ -1383,7 +1383,7 @@ const strings = new Map([
     'dollar-learn-Others-explain-1',
     {
       KOR:
-        'Polaris ShareModal 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
+        'Polaris Share 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
       ENG:
         'In the alpha version, POLA tokens are tested to ensure that the application program works as desired.'
     }
@@ -1392,9 +1392,9 @@ const strings = new Map([
     'dollar-learn-Others-explain-2',
     {
       KOR:
-        '무료 POLA 테스트 토큰으로 Polaris ShareModal 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 POLA 테스트 토큰도 만료됩니다.',
+        '무료 POLA 테스트 토큰으로 Polaris Share 서비스를 자유롭게 경험해보십시오. 테스트 기간이 끝나면 POLA 테스트 토큰도 만료됩니다.',
       ENG:
-        'It is recommended to use free POLA test tokens to get a hands-on experience of the Polaris ShareModal service. Test tokens expire at the end of the test.'
+        'It is recommended to use free POLA test tokens to get a hands-on experience of the Polaris Share service. Test tokens expire at the end of the test.'
     }
   ],
   [
@@ -1530,7 +1530,7 @@ const strings = new Map([
       KOR:
         '입력하신 이메일은 폴라리스쉐어의 개인정보 처리 정책에 따라서 수집되고 활용됩니다.',
       ENG:
-        "The email address you provided is collected and used in accordance with the Polaris ShareModal's Privacy Policy."
+        "The email address you provided is collected and used in accordance with the Polaris Share's Privacy Policy."
     }
   ],
   [
@@ -1596,7 +1596,7 @@ const strings = new Map([
     'email-modal-explain-3',
     {
       KOR: ' 폴라리스 쉐어의 개인정보 처리 정책 ',
-      ENG: 'Polaris ShareModal’s privacy policy.'
+      ENG: 'Polaris Share’s privacy policy.'
     }
   ],
   [
@@ -1812,14 +1812,14 @@ const strings = new Map([
     'share-modal-btn',
     {
       KOR: '공유',
-      ENG: 'ShareModal'
+      ENG: 'Share'
     }
   ],
   [
     'share-modal-title',
     {
       KOR: '공유하기',
-      ENG: 'ShareModal'
+      ENG: 'Share'
     }
   ],
   [
@@ -1840,7 +1840,7 @@ const strings = new Map([
     'tooltip-copy',
     {
       KOR: '문서 공유하기',
-      ENG: 'ShareModal this document'
+      ENG: 'Share this document'
     }
   ],
 
@@ -2143,7 +2143,7 @@ const strings = new Map([
     'auto-placeholder-1',
     {
       KOR: '태그 검색',
-      ENG: 'MainFirstSectionTag SearchButton'
+      ENG: 'Tag SearchButton'
     }
   ],
   [
@@ -2406,7 +2406,7 @@ const strings = new Map([
     'guide-subj-13',
     {
       KOR: 'FooterSNS 공유하기',
-      ENG: 'ShareModal on social media'
+      ENG: 'Share on social media'
     }
   ],
   [
@@ -2422,7 +2422,7 @@ const strings = new Map([
     'guide-subj-14',
     {
       KOR: '문서 링크 공유하기',
-      ENG: 'ShareModal document link'
+      ENG: 'Share document link'
     }
   ],
   [
@@ -2431,7 +2431,7 @@ const strings = new Map([
       KOR:
         '문서 뷰어 페이지에서 공유 버튼을 클릭하면 문서 공유창이 표시되며, 여기서 문서의 공유 링크를 복사한 후, 이메일 또는 메신저 등에 공유하시면 됩니다.',
       ENG:
-        'Click on the ShareModal button on the document viewer page to open the window where you can copy the link to share it via email or messenger.'
+        'Click on the Share button on the document viewer page to open the window where you can copy the link to share it via email or messenger.'
     }
   ],
   [
@@ -2447,7 +2447,7 @@ const strings = new Map([
       KOR:
         '문서 뷰어 페이지에서 공유 버튼을 클릭하면 문서 공유창이 표시되며, 여기서 Embed Code를 복사한 후, 공유할 사이트에 붙여넣기를 하시면 됩니다.',
       ENG:
-        'Click on the ShareModal button on the document viewer page to open the window where you can copy the embedded code and paste it on the website to share it.'
+        'Click on the Share button on the document viewer page to open the window where you can copy the embedded code and paste it on the website to share it.'
     }
   ],
 
@@ -2527,7 +2527,7 @@ const strings = new Map([
     'publish-modal-complete-subject',
     {
       KOR: '당신의 문서를 세상에 공유해보세요.',
-      ENG: 'ShareModal your document with the world.'
+      ENG: 'Share your document with the world.'
     }
   ],
   [
@@ -2826,7 +2826,7 @@ const strings = new Map([
         'Polaris Share에 오신 것을 환영합니다! 귀하와 Decompany, Inc. ' +
         '(이하 "우리", "당사") 간의 본 계약 ("계약")은',
       ENG:
-        'Welcome to Polaris ShareModal! This agreement (the “Agreement”) between you and Decompany, ' +
+        'Welcome to Polaris Share! This agreement (the “Agreement”) between you and Decompany, ' +
         'Inc.(“we”, “us”, “our”) sets out your rights to access and use of'
     }
   ],
@@ -2918,24 +2918,24 @@ const strings = new Map([
     {
       KOR:
         '당사는 당사가 제공하는 데이터, 텍스트, 사진, 이미지, 비디오, 오디오, 그래픽, 기사, 주석, 소프트웨어, 코드, 스크립트 및 ' +
-        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris ShareModal 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
-        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris ShareModal Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
+        '기타 컨텐츠 또는 라이센스 제공자를 보유 할 수 있습니다. Polaris Share 콘텐츠는 미국 및 외국의 저작권 및 기타 독점권을 포함한 지적 재산권 법률의 보호를 받습니다. ' +
+        '본 계약서에 명시 적으로 명시된 경우를 제외하고 Polaris Share Content 사용에 대한 명시 적 또는 묵시적 권리를 부여하지 않습니다.',
       ENG:
         'We may retain data, text, photographs, images, video, audio, graphics,' +
         'articles, comments, software, code, scripts, and other content' +
         'supplied by us. Except as explicitly stated in this Agreement, we do' +
-        'not grant any express or implied rights to use Polaris ShareModal Content.'
+        'not grant any express or implied rights to use Polaris Share Content.'
     }
   ],
   [
     'terms-3-desc-2',
     {
       KOR:
-        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris ShareModal 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
+        '귀하는 귀하의 개인적인 사용을 위해 서비스 및 Polaris Share 컨텐츠에 액세스하고 이를 사용하기 위한 제한적, 비 독점적, 양도 불능 및 재사용 불가능한 라이센스를 부여 받습니다.  귀하는 자신이 생성하거나 소유 한 컨텐츠 ("귀하의 컨텐츠")에 대한 소유권 및 책임을 보유합니다. 자신을 만들지 않았거나 권리를 소유하지 않은 내용을 게시하는 경우 게시 한 모든 내용에 대한 책임은 귀하에게 있습니다. 게시 할 권리가있는 콘텐츠 만 제출할 것입니다. 귀하가 게시하는 컨텐츠와 관련된 제 3 자 라이센스를 완전히 준수해야합니다.',
       ENG:
         'You are granted a limited, non-exclusive, non-transferable, and' +
         'non-sublicensable license to access and use the Service and Polaris' +
-        'ShareModal Content for your personal use. You retain ownership of and' +
+        'Share Content for your personal use. You retain ownership of and' +
         'responsibility for Content you create or own ("Your Content"). If' +
         "you're posting anything you did not create yourself or do not own the" +
         'rights to, you agree that you are responsible for any Content you' +
@@ -2955,12 +2955,12 @@ const strings = new Map([
     'terms-4-desc-1',
     {
       KOR:
-        '"Polaris ShareModal", Polaris ShareModal 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
+        '"Polaris Share", Polaris Share 로고 및 서비스 상에 나타날 수 있는 기타 제품 또는 서비스 이름, 로고, ' +
         '슬로건은 당사의 상표이며, ' +
         '전부 또는 일부를 복사, 모방 또는 사용해서는 안됩니다. ' +
         '명시 적으로 허용되지 않거나 처음에 당사로부터 서면 허가를 받지 않은 경우. ',
       ENG:
-        '“Polaris ShareModal,”, the Polaris ShareModal logo and any other product or' +
+        '“Polaris Share,”, the Polaris Share logo and any other product or' +
         'service names, logos, slogans that may appear on the Service are' +
         'trademarks of the company, and, may not be copied, imitated,' +
         'or used, in whole or in part, unless explicitly permitted or without' +
@@ -3190,7 +3190,7 @@ const strings = new Map([
         'field. Advances in code cracking or technical advances such as the' +
         'development of quantum computers may present risks to the Services' +
         'that you use and your Account, which could result in the theft or loss' +
-        'of your property. By using the Service or accessing Polaris ShareModal' +
+        'of your property. By using the Service or accessing Polaris Share' +
         'Content, you acknowledge these inherent risks.'
     }
   ],
@@ -3237,7 +3237,7 @@ const strings = new Map([
         '8.3. 업무. 제안 된 모든 POLA 블록 체인 거래는 POLA 블록 컨센서스 네트워크 (피어 - 투 - 피어 네트워크)를 통해 POLA 블록 체인에 확인 및 기록 되어야 하며, 이는 당사가 소유, 관리 또는 운영하지 않습니다. POLA 블록 체인은 독립적 인 제 3 자의 분산된 네트워크에 의해 운영됩니다. 우리는 POLA 블록 체인에 대한 통제권이 없으므로 귀하가 서비스를 통해 제출하는 거래 내역이 POLA 블록 체인에서 확인되도록 할 수는 없으며 보장 할 수도 없습니다. ',
       ENG:
         '8.3. Transactions. All proposed POLA blockchain transactions must be' +
-        'confirmed and recorded in the POLA blockchain via the Polaris ShareModal' +
+        'confirmed and recorded in the POLA blockchain via the Polaris Share' +
         'distributed consensus network (a peer-to-peer network), which is not' +
         'owned, controlled, or operated by us. The POLA blockchain is operated' +
         'by a decentralized network of independent sectionThird parties. We have no' +
@@ -3592,20 +3592,20 @@ const strings = new Map([
     'terms-14-desc',
     {
       KOR:
-        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris ShareModal 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris ShareModal 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris ShareModal 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
+        '해당 법률에서 허용하는 최대 한도 내에서 서비스 및 Polaris Share 컨텐츠는 상품성에 대한 묵시적 보증을 포함하여 (단, 이에 한하지 않음) 어떠한 종류의 명시 적 또는 묵시적 보증도없이 "있는 그대로"및 "있는 그대로"제공됩니다. 특정 목적에의 적합성, 소유권 및 비 침해에 관한 모든 보증 및 거래의 수행이나 사용 과정에서 암시하는 모든 보증을 포함합니다. 회사는 서비스 및 Polaris Share 콘텐츠가 (a) 언제든지 또는 장소에서 안전하거나 이용 가능할 것임을 진술하거나 보증하지 않습니다. (b) 정확성, 완전성, 신뢰성, 최신 또는 오류가 없거나 결함이나 오류가 시정될 것입니다. (c) 바이러스 또는 기타 유해한 성분이 없다. 귀하가 서비스 및 Polaris Share 컨텐츠를 사용하는 것은 전적으로 귀하의 책임입니다.',
       ENG:
         'To the fullest extent permitted by applicable law, the Service and the' +
-        'Polaris ShareModal Content are provided on an “as is” and “as available”' +
+        'Polaris Share Content are provided on an “as is” and “as available”' +
         'basis, without warranties of any kind, either express or implied,' +
         'including, without limitation, implied warranties of merchantability,' +
         'fitness for a particular purpose, title and non-infringement and any' +
         'warranties implied by any course of performance or usage of trade. The' +
         'company does not represent or warrant that the Service and the Polaris' +
-        'ShareModal Content: (a) will be secure or available at any time or' +
+        'Share Content: (a) will be secure or available at any time or' +
         'location; (b) are accurate, complete, reliable, current, or error-free' +
         'or that any defects or errors will be corrected; and (c) are free of' +
         'viruses or other harmful components. Your use of the Service and' +
-        'Polaris ShareModal Content is solely at your own risk. Some jurisdictions' +
+        'Polaris Share Content is solely at your own risk. Some jurisdictions' +
         'do not allow the disclaimer of implied terms in contracts with' +
         'consumers, so some or all of the disclaimers in this FooterContainer may not' +
         'apply to you.'
@@ -3633,7 +3633,7 @@ const strings = new Map([
         'or loss of data, whether in an action in contract, tort (including,' +
         'but not limited to, negligence) or otherwise, arising out of, or in' +
         'any way connected with, the use of, or inability to use, the Service' +
-        'or the Polaris ShareModal Content. To the fullest extent permitted by' +
+        'or the Polaris Share Content. To the fullest extent permitted by' +
         'applicable law, in no event shall the aggregate liability of DECOMPANY' +
         'GLOBAL, Inc. or any related party, whether in contract, warranty, tort' +
         '(including negligence, whether active, passive or imputed), product' +
@@ -3848,10 +3848,10 @@ const strings = new Map([
     'terms-18-desc',
     {
       KOR:
-        '본 계약 및 서비스 및 Polaris ShareModal 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
+        '본 계약 및 서비스 및 Polaris Share 컨텐츠에 대한 귀하의 액세스 및 사용은 법 조항의 상충에 의거하지 않고 뉴욕 법에 따라 규율 되고 해석됩니다. 제 18 조의 중재 조항이 적용되지 않고 소액 배상 청구 법정에서 분쟁을 청취 할 수 없는 경우 귀하는 이 계약 또는 본 계약과 관련하여 발생하는 법률 또는 형평상의 행위가 주에서만 소송 뉴욕 주 뉴욕 카운티에 소재한 연방 법원 및 귀하는 본 계약에서 발생하는 모든 소송, 소송 또는 소송에 대해 취소 불가능하고 무조건적으로 동의하고 해당 법원의 배타적 관할권에 복종해야 합니다.',
       ENG:
         'This Agreement and your access to and use of the Service and the' +
-        'Polaris ShareModal Content will be governed by, and construed in accordance' +
+        'Polaris Share Content will be governed by, and construed in accordance' +
         'with, the laws of New York, without resort to its conflict of law' +
         'provisions. To the extent the arbitration provision in FooterContainer 20 does' +
         'not apply and the Dispute cannot be heard in small claims court, you' +
@@ -3969,9 +3969,9 @@ const strings = new Map([
     'privacy-desc',
     {
       KOR:
-        'DECOMPANY Inc. (이하 "회사")는 Polaris ShareModal Service (이하 "서비스")에 저장된 개인 정보의 보호가 중요하다고 생각하기 때문에 항상 사용자의 개인 정보를 보호하기 위해 최선의 노력을 다합니다. 이 서비스는 2019 년 5 월 31 일부터 이 서비스가 정보를 수집하는 이유와 사용자 데이터의 수집 및 내용을 처리하기 위해 취해야 할 조치에 대해 설명합니다.',
+        'DECOMPANY Inc. (이하 "회사")는 Polaris Share Service (이하 "서비스")에 저장된 개인 정보의 보호가 중요하다고 생각하기 때문에 항상 사용자의 개인 정보를 보호하기 위해 최선의 노력을 다합니다. 이 서비스는 2019 년 5 월 31 일부터 이 서비스가 정보를 수집하는 이유와 사용자 데이터의 수집 및 내용을 처리하기 위해 취해야 할 조치에 대해 설명합니다.',
       ENG:
-        'DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts to protect the personal information of its users as it considers the protection of personal information saved under Polaris ShareModal Service (hereinafter "Service") is significant. This Privacy Policy, effective from May 31, 2019 explains why this service collects information as well as what measures are taken to handle the collection and contents of user data.'
+        'DECOMPANY Inc. (hereinafter “Company”) always makes its best efforts to protect the personal information of its users as it considers the protection of personal information saved under Polaris Share Service (hereinafter "Service") is significant. This Privacy Policy, effective from May 31, 2019 explains why this service collects information as well as what measures are taken to handle the collection and contents of user data.'
     }
   ],
   [
@@ -4867,9 +4867,9 @@ const strings = new Map([
     'policy-1-desc-1',
     {
       KOR:
-        'Polaris ShareModal ( "Polaris ShareModal")로 사업을하는 DECOMPANY Corporation은 귀하의 개인 정보를 보호하기 위해 노력합니다. 본 개인 정보 보호 정책은 Polaris Share가 관리하는 공개 웹 사이트 또는이 개인 정보 보호 정책에 연결된 권한 기반 서비스의 정보 관리 관행을 다루고 있습니다. 여기에는 다음 웹 사이트가 포함됩니다.',
+        'Polaris Share ( "Polaris Share")로 사업을하는 DECOMPANY Corporation은 귀하의 개인 정보를 보호하기 위해 노력합니다. 본 개인 정보 보호 정책은 Polaris Share가 관리하는 공개 웹 사이트 또는이 개인 정보 보호 정책에 연결된 권한 기반 서비스의 정보 관리 관행을 다루고 있습니다. 여기에는 다음 웹 사이트가 포함됩니다.',
       ENG:
-        ' At DECOMPANY Corporation, doing business as Polaris ShareModal ("Polaris ShareModal"), we strive to protect the privacy of your information. This privacy statement covers the information management practices of Polaris ShareModal controlled public web sites or permission-based services that link to this privacy statement. These include the following websites:'
+        ' At DECOMPANY Corporation, doing business as Polaris Share ("Polaris Share"), we strive to protect the privacy of your information. This privacy statement covers the information management practices of Polaris Share controlled public web sites or permission-based services that link to this privacy statement. These include the following websites:'
     }
   ],
   [
@@ -4878,7 +4878,7 @@ const strings = new Map([
       KOR:
         'Polaris Share는 개인 정보를 요청하거나 제어하는 ​​모든 페이지에서이 개인 정보 보호 정책에 대한 링크를 제공합니다\n',
       ENG:
-        'Polaris ShareModal provides a link to this privacy statement on all pages\n' +
+        'Polaris Share provides a link to this privacy statement on all pages\n' +
         '          requesting or controlling personal information'
     }
   ],
@@ -4893,9 +4893,9 @@ const strings = new Map([
     'policy-1-desc-4',
     {
       KOR:
-        '웹 사이트 방문자 또는 고객이 Polaris ShareModal 서비스 또는 Polaris ShareModal 서비스를 사용하기위한 등록에 대한 추가 정보를 얻는 데 관심이있는 경우, Polaris Share는 당사자에게 이름 및 이메일 주소와 같은 연락처 정보를 제공하도록 요구할 수 있습니다.',
+        '웹 사이트 방문자 또는 고객이 Polaris Share 서비스 또는 Polaris Share 서비스를 사용하기위한 등록에 대한 추가 정보를 얻는 데 관심이있는 경우, Polaris Share는 당사자에게 이름 및 이메일 주소와 같은 연락처 정보를 제공하도록 요구할 수 있습니다.',
       ENG:
-        "When a web site visitor or customer expresses interest in obtaining additional information about Polaris ShareModal's services or registers to use a Polaris ShareModal service, Polaris ShareModal may require the party to provide contact information, such as name, and email address."
+        "When a web site visitor or customer expresses interest in obtaining additional information about Polaris Share's services or registers to use a Polaris Share service, Polaris Share may require the party to provide contact information, such as name, and email address."
     }
   ],
   [
@@ -4904,16 +4904,16 @@ const strings = new Map([
       KOR:
         'Polaris Share의 권한 기반 서비스는 서비스에 의존하는 여러 비즈니스 트랜잭션에 참여한 참가자가 반복적으로 사용할 수 있도록 설계되었습니다. 이러한 서비스의 보안과 그 안에 포함 된 비즈니스 데이터의 핵심은 사용자의 가상 신원을 확인하는 것이이 서비스를 사용하는 데 필수적입니다. 서비스를 활용하고 보호하려면 참가자는 프로필 정보 (이름, 이메일 주소)를 제공해야합니다.',
       ENG:
-        "Polaris ShareModal's permission-based services are designed to facilitate repeat use by participants involved in multiple business transactions relying upon the services. Key to the security of these services and the business data contained therein, verification of user’s virtual identity is fundamental to using this service. Participants must provide profile information (name, email address) in order to utilize and secure the services."
+        "Polaris Share's permission-based services are designed to facilitate repeat use by participants involved in multiple business transactions relying upon the services. Key to the security of these services and the business data contained therein, verification of user’s virtual identity is fundamental to using this service. Participants must provide profile information (name, email address) in order to utilize and secure the services."
     }
   ],
   [
     'policy-1-desc-6',
     {
       KOR:
-        '위에서 설명한대로 수집 된 프로필 정보 외에도 Polaris Share는 방문자의 IP 주소, 방문자가 Polaris ShareModal 웹 사이트에 액세스하는 웹 사이트 유형을 포함하되 이에 국한되지 않는 공개 웹 사이트 사용에 대한 익명 정보를 수집합니다. 웹 사이트에 액세스하는 데 사용되는 웹 브라우저, 방문 시간 및 조회 한 페이지 수 이 수집 된 정보는 개인을 개인적으로 식별하지 않으며 보안을 위해 특정 법적 요구 사항 및 웹 사이트 방문 통계 분석을 수행하기 위해 서비스를 운영해야합니다.',
+        '위에서 설명한대로 수집 된 프로필 정보 외에도 Polaris Share는 방문자의 IP 주소, 방문자가 Polaris Share 웹 사이트에 액세스하는 웹 사이트 유형을 포함하되 이에 국한되지 않는 공개 웹 사이트 사용에 대한 익명 정보를 수집합니다. 웹 사이트에 액세스하는 데 사용되는 웹 브라우저, 방문 시간 및 조회 한 페이지 수 이 수집 된 정보는 개인을 개인적으로 식별하지 않으며 보안을 위해 특정 법적 요구 사항 및 웹 사이트 방문 통계 분석을 수행하기 위해 서비스를 운영해야합니다.',
       ENG:
-        "In addition to the profile information collected as described above, Polaris ShareModal also collects anonymous information about the use of our public web site, including but not limited to a visitor's IP address, the websites from which visitors access the Polaris ShareModal web site, the type of web browsers used to access the website, the time of the visit, and the pages viewed. This collected information does not personally identify individuals and is required to operate the service, for security, to fulfill certain legal requirements and statistical analysis of web site visits."
+        "In addition to the profile information collected as described above, Polaris Share also collects anonymous information about the use of our public web site, including but not limited to a visitor's IP address, the websites from which visitors access the Polaris Share web site, the type of web browsers used to access the website, the time of the visit, and the pages viewed. This collected information does not personally identify individuals and is required to operate the service, for security, to fulfill certain legal requirements and statistical analysis of web site visits."
     }
   ],
   [
@@ -4945,7 +4945,7 @@ const strings = new Map([
     'policy-1-desc-10',
     {
       KOR: 'Polaris 공유 서비스 사용',
-      ENG: 'Polaris ShareModal Services Usage'
+      ENG: 'Polaris Share Services Usage'
     }
   ],
   [
@@ -4954,7 +4954,7 @@ const strings = new Map([
       KOR:
         '권한 기반 서비스를 제공함에 따라 Polaris Share는 참여한 서비스 및 작업에 대한 참가자의 액세스 기록을 유지하며, 자세한 사용자 활동보고 / 공유 분석 기능의 일부로 해당 볼트의 소유자가이를 이용할 수 있도록합니다. . Polaris Share는 또한 사용자를 보호하기 위해 사용자가 서비스에 액세스 할 수있는 IP 주소의 로그를 유지할 수 있습니다.',
       ENG:
-        'In the provision of our permission-based services, Polaris ShareModal will maintain a history of participant access to the services and actions taken therein and make this available to the owner of a respective vault accordingly as part of our detailed user activity reporting / sharing ProfileAnalytics capabilities. Polaris ShareModal also may maintain a log of IP addresses from which users access the services to help secure our users.'
+        'In the provision of our permission-based services, Polaris Share will maintain a history of participant access to the services and actions taken therein and make this available to the owner of a respective vault accordingly as part of our detailed user activity reporting / sharing ProfileAnalytics capabilities. Polaris Share also may maintain a log of IP addresses from which users access the services to help secure our users.'
     }
   ],
   [
@@ -4968,9 +4968,9 @@ const strings = new Map([
     'policy-1-desc-13',
     {
       KOR:
-        'Polaris Share는 위의 수집 된 정보를 사용하여 제품 고객과 예비 고객에게 솔루션에 대해 알리고 고객이 요청한 서비스를 제공하며 고객이 서비스를 이용할 때 고객을 지원합니다. 예를 들어, 당사 웹 사이트에서 "연락처"양식을 당사 서비스에 대한 정보와 함께 작성하면 Polaris Share가 귀하에게 응답 할 수 있습니다. Polaris Share는 제품 업그레이드, 사용자 모범 사례, 업계 뉴스, 프로모션 또는 이벤트에 대한 정보를 제공하기 위해 자체 마케팅 목적으로 Polaris ShareModal 고객에 대한 데이터를 사용할 수도 있습니다.',
+        'Polaris Share는 위의 수집 된 정보를 사용하여 제품 고객과 예비 고객에게 솔루션에 대해 알리고 고객이 요청한 서비스를 제공하며 고객이 서비스를 이용할 때 고객을 지원합니다. 예를 들어, 당사 웹 사이트에서 "연락처"양식을 당사 서비스에 대한 정보와 함께 작성하면 Polaris Share가 귀하에게 응답 할 수 있습니다. Polaris Share는 제품 업그레이드, 사용자 모범 사례, 업계 뉴스, 프로모션 또는 이벤트에 대한 정보를 제공하기 위해 자체 마케팅 목적으로 Polaris Share 고객에 대한 데이터를 사용할 수도 있습니다.',
       ENG:
-        'Polaris ShareModal uses the above collected information to inform our product customers and prospective customers about our solutions, to provide services requested by our customers, and to support our customers as they utilize our services. For example, Polaris ShareModal may respond to you, if you fill out a "Contact" form on our website, with information about our services. Polaris ShareModal may also use data about Polaris ShareModal customers for its own marketing purposes, in order to provide information about product upgrades, user best practices, industry news, promotions or events.'
+        'Polaris Share uses the above collected information to inform our product customers and prospective customers about our solutions, to provide services requested by our customers, and to support our customers as they utilize our services. For example, Polaris Share may respond to you, if you fill out a "Contact" form on our website, with information about our services. Polaris Share may also use data about Polaris Share customers for its own marketing purposes, in order to provide information about product upgrades, user best practices, industry news, promotions or events.'
     }
   ],
   [
@@ -4984,9 +4984,9 @@ const strings = new Map([
     'policy-1-desc-15',
     {
       KOR:
-        'Polaris Share는 귀하의 개인 데이터를 관련없는 제 3 자와 공유, 판매 또는 배포하지 않습니다. 모든 개인 데이터는 위에 요약 된 개인 데이터의 사용 사례를 직접 지원하는 제 3 자에게만 공개 될 수 있습니다. 각 볼트의 소유자는 자신의 데이터에 대한 액세스 제어를 유지해야하며 볼트와 관련된 개인 사용자 정보 및 사용자 활동에 액세스 할 수 있습니다. 이 정보는 Polaris ShareModal 서비스에 액세스하고 사용하는 데 필요하지만 각 볼트의 소유자가 관리합니다.',
+        'Polaris Share는 귀하의 개인 데이터를 관련없는 제 3 자와 공유, 판매 또는 배포하지 않습니다. 모든 개인 데이터는 위에 요약 된 개인 데이터의 사용 사례를 직접 지원하는 제 3 자에게만 공개 될 수 있습니다. 각 볼트의 소유자는 자신의 데이터에 대한 액세스 제어를 유지해야하며 볼트와 관련된 개인 사용자 정보 및 사용자 활동에 액세스 할 수 있습니다. 이 정보는 Polaris Share 서비스에 액세스하고 사용하는 데 필요하지만 각 볼트의 소유자가 관리합니다.',
       ENG:
-        'Polaris ShareModal will not share, sell or distribute your personal data to unrelated sectionThird parties. All personal data may be disclosed only to sectionThird parties who directly support the use cases for personal data as summarized above. Owners of respective vaults are responsible for maintaining the access controls over their data and have access to personal user information and user activity related to their vault. This information is required to access and use the Polaris ShareModal services but is administered by the owner of each respective vault.'
+        'Polaris Share will not share, sell or distribute your personal data to unrelated sectionThird parties. All personal data may be disclosed only to sectionThird parties who directly support the use cases for personal data as summarized above. Owners of respective vaults are responsible for maintaining the access controls over their data and have access to personal user information and user activity related to their vault. This information is required to access and use the Polaris Share services but is administered by the owner of each respective vault.'
     }
   ],
   [
@@ -5000,9 +5000,9 @@ const strings = new Map([
     'policy-1-desc-17',
     {
       KOR:
-        '서비스 사용과 관련된 다양한 데이터는 각 서비스 계약 기간 동안 Polaris Share에 의해 무기한 보유됩니다. Polaris ShareModal 소유자는 자체 관리 관행의 일부로 액세스 데이터 사본을 만들었을 수 있으며이 정책의 범위를 벗어납니다. 금융 거래와 관련된 추가 정보는 7 년 동안 유지됩니다.',
+        '서비스 사용과 관련된 다양한 데이터는 각 서비스 계약 기간 동안 Polaris Share에 의해 무기한 보유됩니다. Polaris Share 소유자는 자체 관리 관행의 일부로 액세스 데이터 사본을 만들었을 수 있으며이 정책의 범위를 벗어납니다. 금융 거래와 관련된 추가 정보는 7 년 동안 유지됩니다.',
       ENG:
-        'Various data related to the use of the service is retained indefinitely by Polaris ShareModal for the duration of each respective service contract. The Polaris ShareModal owner may have made copies of access data as part of their own respective management practices and are outside the purview of this policy. Additional information related to financial transactions is retained for a period of seven years.'
+        'Various data related to the use of the service is retained indefinitely by Polaris Share for the duration of each respective service contract. The Polaris Share owner may have made copies of access data as part of their own respective management practices and are outside the purview of this policy. Additional information related to financial transactions is retained for a period of seven years.'
     }
   ],
   [
@@ -5018,7 +5018,7 @@ const strings = new Map([
       KOR:
         '무단 액세스를 방지하고 데이터 무결성을 유지하며 정보를 올바르게 사용하기 위해 Polaris Share는 온라인으로 수집하거나 처리하는 정보를 보호하고 보호하기위한 광범위한 관리 및 기술 메커니즘을 마련했습니다. Polaris Share는 적용 가능한 모든 글로벌 보안 및 개인 정보 보호 규정을 준수하며 다양한 글로벌 및 산업 보안 및 개인 정보 인증, 프레임 워크 및 레지스트리에 자발적으로 참여합니다. 여기에는 Polaris Share를 지원하는 다양한 소프트웨어 및 서비스를 제공하는 공급 업체가 포함됩니다. 당사는 신중하게 선택하고 본 개인 정보 보호 정책, 보안 정책 및 동일한 높은 보안 및 개인 정보 보호 표준의 조항을 준수 할 계약 상 책임을집니다. 데이터 보안에 대한 추가 세부 사항은 Polaris 공유 보안 정책에 있습니다.',
       ENG:
-        'To prevent unauthorized access, maintain data integrity, and ensure the correct use of information, Polaris ShareModal has instituted a wide array of administrative and technical mechanisms to secure and protect the information we collect or process online. Polaris ShareModal complies with all applicable global security and privacy regulations and voluntarily participates in various global and industry security and privacy certifications, frameworks and registries. This includes the vendors which provide various software and services that support Polaris ShareModal, whom we select carefully and hold them contractually responsible to adhere to the terms within this privacy policy, our security policy, and the same high security and privacy standards. Additional details regarding data security are found in the Polaris ShareModal Security Policy.'
+        'To prevent unauthorized access, maintain data integrity, and ensure the correct use of information, Polaris Share has instituted a wide array of administrative and technical mechanisms to secure and protect the information we collect or process online. Polaris Share complies with all applicable global security and privacy regulations and voluntarily participates in various global and industry security and privacy certifications, frameworks and registries. This includes the vendors which provide various software and services that support Polaris Share, whom we select carefully and hold them contractually responsible to adhere to the terms within this privacy policy, our security policy, and the same high security and privacy standards. Additional details regarding data security are found in the Polaris Share Security Policy.'
     }
   ],
   [
@@ -5032,18 +5032,18 @@ const strings = new Map([
     'policy-1-desc-21',
     {
       KOR:
-        'Polaris ShareModal 권한 기반 서비스 사용자는 서비스에 로그인하여 "기본 설정 : 프로파일"페이지를 선택하고 온라인 인터페이스를 사용하여 정보를 업데이트하여 프로파일 정보를 업데이트하거나 변경할 수 있습니다.  정보 업데이트, Polaris ShareModal 계정 중단, 개인 정보 반환을 원하는 조직은 이메일을 보내거나 질문을하거나 ',
+        'Polaris Share 권한 기반 서비스 사용자는 서비스에 로그인하여 "기본 설정 : 프로파일"페이지를 선택하고 온라인 인터페이스를 사용하여 정보를 업데이트하여 프로파일 정보를 업데이트하거나 변경할 수 있습니다.  정보 업데이트, Polaris Share 계정 중단, 개인 정보 반환을 원하는 조직은 이메일을 보내거나 질문을하거나 ',
       ENG:
-        'Users of Polaris ShareModal permission-based services may update or change their profile information by logging into the service, selecting the "Preferences: profile" page, and updating information using the online interface. Organizations seeking to update information, to discontinue their Polaris ShareModal account, to have their private information returned to them please email, have questions, or need help should contact Polaris ShareModal by sending an email to'
+        'Users of Polaris Share permission-based services may update or change their profile information by logging into the service, selecting the "Preferences: profile" page, and updating information using the online interface. Organizations seeking to update information, to discontinue their Polaris Share account, to have their private information returned to them please email, have questions, or need help should contact Polaris Share by sending an email to'
     }
   ],
   [
     'policy-1-desc-22',
     {
       KOR:
-        '로 이메일을 보내서 Polaris Share에 연락 해야합니다. Polaris ShareModal 권한 기반 서비스에 대한 액세스 또는 사용과 직접 관련이없는 Polaris Share의 메일 또는 이메일은',
+        '로 이메일을 보내서 Polaris Share에 연락 해야합니다. Polaris Share 권한 기반 서비스에 대한 액세스 또는 사용과 직접 관련이없는 Polaris Share의 메일 또는 이메일은',
       ENG:
-        ', Should you decline to receive mail or email from Polaris ShareModal that does not relate directly to your access to or use of Polaris ShareModal permission-based services, please visit our'
+        ', Should you decline to receive mail or email from Polaris Share that does not relate directly to your access to or use of Polaris Share permission-based services, please visit our'
     }
   ],
   [
@@ -5096,7 +5096,7 @@ const strings = new Map([
       KOR:
         '캘리포니아 주민은 1 년에 한 번 Polaris Share가 제 3 자의 직접 마케팅 목적으로 전년도 동안 특정 정보를 공개 한 모든 제 3 자 목록을 요청하고 입수 할 수 있습니다. 캘리포니아 거주자이고 그러한 목록을 원하는 경우 ',
       ENG:
-        'California residents can request and obtain from us once a year a list of all sectionThird parties to which Polaris ShareModal has disclosed certain information during the preceding calendar year for the sectionThird parties direct marketing purposes. If you are a California resident and want such a list, please contact us by email to'
+        'California residents can request and obtain from us once a year a list of all sectionThird parties to which Polaris Share has disclosed certain information during the preceding calendar year for the sectionThird parties direct marketing purposes. If you are a California resident and want such a list, please contact us by email to'
     }
   ],
   [
@@ -5117,9 +5117,9 @@ const strings = new Map([
     'policy-1-desc-32',
     {
       KOR:
-        '우리의 서비스는 미국 내에서 통제되고 운영됩니다. 귀하가 미국 이외의 지역에서 당사 서비스에 액세스하는 경우, 당사는 귀하로부터 수집 한 정보를 귀하의 모국 또는 관할 지역 이외의 데이터 센터로 전송할 수 있습니다. 특히, 귀하 또는 귀하의 서비스 제공 업체가 운영하는 미국에서 귀하의 정보가 전송되고 처리 될 것이며, 여기서 데이터 보호 및 기타 법률은 귀하의 관할 지역의 법률과 동일하지 않을 수 있습니다. Polaris ShareModal Services를 사용함으로써 귀하는 귀하의 정보가 미국으로 전송 및 사용되어 본 개인 정보 보호 정책에 명시된대로 처리 될 수 있다는 데 동의합니다.',
+        '우리의 서비스는 미국 내에서 통제되고 운영됩니다. 귀하가 미국 이외의 지역에서 당사 서비스에 액세스하는 경우, 당사는 귀하로부터 수집 한 정보를 귀하의 모국 또는 관할 지역 이외의 데이터 센터로 전송할 수 있습니다. 특히, 귀하 또는 귀하의 서비스 제공 업체가 운영하는 미국에서 귀하의 정보가 전송되고 처리 될 것이며, 여기서 데이터 보호 및 기타 법률은 귀하의 관할 지역의 법률과 동일하지 않을 수 있습니다. Polaris Share Services를 사용함으로써 귀하는 귀하의 정보가 미국으로 전송 및 사용되어 본 개인 정보 보호 정책에 명시된대로 처리 될 수 있다는 데 동의합니다.',
       ENG:
-        'Our Services are controlled and operated within the United States. If you access our Services outside of the United States, we may transfer the information collected from you to data centers outside of your home country or jurisdiction. In particular, your information will be transferred to and processed in the United States where we or our service providers operate, where data protection and other laws may not be equivalent to those in your jurisdiction. By using the Polaris ShareModal Services, you agree that your information can be transferred to and used in the United States and handled as set forth in this Privacy Policy.'
+        'Our Services are controlled and operated within the United States. If you access our Services outside of the United States, we may transfer the information collected from you to data centers outside of your home country or jurisdiction. In particular, your information will be transferred to and processed in the United States where we or our service providers operate, where data protection and other laws may not be equivalent to those in your jurisdiction. By using the Polaris Share Services, you agree that your information can be transferred to and used in the United States and handled as set forth in this Privacy Policy.'
     }
   ],
   [
@@ -5133,9 +5133,9 @@ const strings = new Map([
     'policy-1-desc-34',
     {
       KOR:
-        'EU의 시민 또는 거주자로서 귀하의 개인 정보는 GDPR의 조건에 의해 보호됩니다. Polaris ShareModal 및 Polaris Share의 고객이 GDPR을 준수하려면 Polaris Share에 액세스하고 추가 개인 정보 보호 권한을 행사하기 위해 동의해야합니다. GDPR에 따라 확장 된 대부분의 조항은 아래 설명에 추가 옵션 및 기능과 함께 위의 설명에 설명되어 있습니다.',
+        'EU의 시민 또는 거주자로서 귀하의 개인 정보는 GDPR의 조건에 의해 보호됩니다. Polaris Share 및 Polaris Share의 고객이 GDPR을 준수하려면 Polaris Share에 액세스하고 추가 개인 정보 보호 권한을 행사하기 위해 동의해야합니다. GDPR에 따라 확장 된 대부분의 조항은 아래 설명에 추가 옵션 및 기능과 함께 위의 설명에 설명되어 있습니다.',
       ENG:
-        "As a citizen or resident of the EU, your personal data are protected by the terms of the GDPR. In order for Polaris ShareModal and Polaris ShareModal's customers to comply with the GDPR, you are required to grant consent in order to gain access to Polaris ShareModal and to exercise additional privacy rights. Most provisions extended under the GDPR are described in the statements above with additional options and features described below."
+        "As a citizen or resident of the EU, your personal data are protected by the terms of the GDPR. In order for Polaris Share and Polaris Share's customers to comply with the GDPR, you are required to grant consent in order to gain access to Polaris Share and to exercise additional privacy rights. Most provisions extended under the GDPR are described in the statements above with additional options and features described below."
     }
   ],
   [
@@ -5214,9 +5214,9 @@ const strings = new Map([
     'policy-1-desc-44',
     {
       KOR:
-        '사용자는 언제든지 Polaris ShareModal 서비스에서 자신을 제거하도록 선택할 수 있습니다. 사용자는 먼저 삭제 권한을 행사하기 위해 Polaris ShareModal 소유자 / 관리자에게 문의해야합니다. Polaris ShareModal 소유자 / 관리자에게 연락 할 수없는 경우 사용자는',
+        '사용자는 언제든지 Polaris Share 서비스에서 자신을 제거하도록 선택할 수 있습니다. 사용자는 먼저 삭제 권한을 행사하기 위해 Polaris Share 소유자 / 관리자에게 문의해야합니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는',
       ENG:
-        'Users may at any time chose to remove themselves from the Polaris ShareModal service. Users should sectionFirst contact the Polaris ShareModal owner / administrator in order to exercise the right to erasure. In the eventthat the Polaris ShareModal owner / administrator cannot be reached, users can send an email to'
+        'Users may at any time chose to remove themselves from the Polaris Share service. Users should sectionFirst contact the Polaris Share owner / administrator in order to exercise the right to erasure. In the eventthat the Polaris Share owner / administrator cannot be reached, users can send an email to'
     }
   ],
   [
@@ -5237,9 +5237,9 @@ const strings = new Map([
     'policy-1-desc-47',
     {
       KOR:
-        '사용자는 Polaris ShareModal 소유자 / 관리자에게 자신의 개인 정보 사본을 요청할 수 있지만 해당 요청은 해당 Polaris Share에 대해 공개 한 개인 정보 보호 정책에 명시된대로 해당 소유자의 각 권리 및 통제 대상이됩니다.',
+        '사용자는 Polaris Share 소유자 / 관리자에게 자신의 개인 정보 사본을 요청할 수 있지만 해당 요청은 해당 Polaris Share에 대해 공개 한 개인 정보 보호 정책에 명시된대로 해당 소유자의 각 권리 및 통제 대상이됩니다.',
       ENG:
-        'Users may request copies of their personal information from a Polaris ShareModal owner / administrator but such requests are subject to the respective rights and control of that owner as may be stated within the privacy policy they have published for that Polaris ShareModal.'
+        'Users may request copies of their personal information from a Polaris Share owner / administrator but such requests are subject to the respective rights and control of that owner as may be stated within the privacy policy they have published for that Polaris Share.'
     }
   ],
   [
@@ -5253,9 +5253,9 @@ const strings = new Map([
     'policy-1-desc-49',
     {
       KOR:
-        '사용자는 먼저 Polaris ShareModal 소유자 / 관리자에게 연락하여 개인 정보 수집 및 사용에 반대 할 수 있습니다. Polaris ShareModal 소유자 / 관리자에게 연락 할 수없는 경우 사용자는 ',
+        '사용자는 먼저 Polaris Share 소유자 / 관리자에게 연락하여 개인 정보 수집 및 사용에 반대 할 수 있습니다. Polaris Share 소유자 / 관리자에게 연락 할 수없는 경우 사용자는 ',
       ENG:
-        'Users may object to the collection and use of personal information by sectionFirst contacting the Polaris ShareModal owner / administrator. In the event that the Polaris ShareModal owner / administrator cannot be reached, users can send an email to'
+        'Users may object to the collection and use of personal information by sectionFirst contacting the Polaris Share owner / administrator. In the event that the Polaris Share owner / administrator cannot be reached, users can send an email to'
     }
   ],
   [
@@ -5276,10 +5276,10 @@ const strings = new Map([
     'policy-1-desc-52',
     {
       KOR:
-        '자동 의사 결정 및 프로파일 링은 Polaris ShareModal Services 사용에는 적용되지 않습니다.',
+        '자동 의사 결정 및 프로파일 링은 Polaris Share Services 사용에는 적용되지 않습니다.',
       ENG:
         'Automated decision making and profiling is not applicable to the use\n' +
-        '          of Polaris ShareModal Services.'
+        '          of Polaris Share Services.'
     }
   ],
   [
@@ -5310,7 +5310,7 @@ const strings = new Map([
       KOR:
         '에 연락 하여 구속력있는 중재를 불러와 Polaris Share가 개인에 대한 의무를 위반했는지 여부와 그러한 위반이 완전히 또는 부분적으로 해결되지 않은지 여부를 확인할 수 있습니다.',
       ENG:
-        ' to invoke binding arbitration to determine whether Polaris ShareModal has violated its obligations to an individual and whether any such violation remains fully or partially un-remedied.'
+        ' to invoke binding arbitration to determine whether Polaris Share has violated its obligations to an individual and whether any such violation remains fully or partially un-remedied.'
     }
   ],
   [
@@ -5370,9 +5370,9 @@ const strings = new Map([
     'policy-1-desc-64',
     {
       KOR:
-        '개인 정보의 수집 및 사용에 대한 법적 근거는 위의 진술에 자세히 설명되어 있으며 일반적으로 사용자의 명시적인 동의로 시작하여 Polaris ShareModal 서비스 계약 조건을 지원하고 Polaris ShareModal 서비스의 보안 기능을 지원하기위한 추가 요구 사항이 따릅니다. 법적인 이유로, 특히 GDPR 및 다양한 미국의 법령을 준수하기 위해 필요합니다.',
+        '개인 정보의 수집 및 사용에 대한 법적 근거는 위의 진술에 자세히 설명되어 있으며 일반적으로 사용자의 명시적인 동의로 시작하여 Polaris Share 서비스 계약 조건을 지원하고 Polaris Share 서비스의 보안 기능을 지원하기위한 추가 요구 사항이 따릅니다. 법적인 이유로, 특히 GDPR 및 다양한 미국의 법령을 준수하기 위해 필요합니다.',
       ENG:
-        'Legal basis for the collection and use of personal information is detailed in the above statements and generally starts with explicit consent by a user, followed by additional requirements to support the terms of the Polaris ShareModal service contracts, support the secure function of the Polaris ShareModal service, and as required for legal reasons, specifically to comply with the requirements of the GDPR and various US legal statutes.'
+        'Legal basis for the collection and use of personal information is detailed in the above statements and generally starts with explicit consent by a user, followed by additional requirements to support the terms of the Polaris Share service contracts, support the secure function of the Polaris Share service, and as required for legal reasons, specifically to comply with the requirements of the GDPR and various US legal statutes.'
     }
   ],
   [
@@ -5386,36 +5386,36 @@ const strings = new Map([
     'policy-1-desc-66',
     {
       KOR:
-        'Polaris Share는 이러한 서비스를 사용하는 고객에게 개별 비즈니스 기능을 지원하는 서비스를 제공합니다. 이러한 Polaris ShareModal 소유자 / 관리자는이 서비스에 대한 사용자를 생성하여 해당 볼트와 관련된 특정 유형의 사용자 데이터에 대한 데이터 컨트롤러로 간주됩니다. 따라서 Polaris Share는 해당 데이터의 프로세서입니다. Polaris ShareModal 고객 (소유자 / 관리자)은이 범주의 데이터에 대한 책임을 공유하며 추가 GDPR 개인 정보 보호 자격이있는 사용자에 대한 의무를 이행 할 수있는 도구가 제공됩니다.',
+        'Polaris Share는 이러한 서비스를 사용하는 고객에게 개별 비즈니스 기능을 지원하는 서비스를 제공합니다. 이러한 Polaris Share 소유자 / 관리자는이 서비스에 대한 사용자를 생성하여 해당 볼트와 관련된 특정 유형의 사용자 데이터에 대한 데이터 컨트롤러로 간주됩니다. 따라서 Polaris Share는 해당 데이터의 프로세서입니다. Polaris Share 고객 (소유자 / 관리자)은이 범주의 데이터에 대한 책임을 공유하며 추가 GDPR 개인 정보 보호 자격이있는 사용자에 대한 의무를 이행 할 수있는 도구가 제공됩니다.',
       ENG:
-        'Polaris ShareModal provides services to customers who use these services to in turn support their own individual business functions. These Polaris ShareModal owners / administrators create users for these services are considered data controllers for certain types of user data related to their respective vaults. Polaris ShareModal is thus the processor for that data. Polaris ShareModal customers (owners / administrators) share the responsibility for this Category of data and are provided the tools to fulfill that obligation for their users who are eligible for the additional GDPR privacy rights.'
+        'Polaris Share provides services to customers who use these services to in turn support their own individual business functions. These Polaris Share owners / administrators create users for these services are considered data controllers for certain types of user data related to their respective vaults. Polaris Share is thus the processor for that data. Polaris Share customers (owners / administrators) share the responsibility for this Category of data and are provided the tools to fulfill that obligation for their users who are eligible for the additional GDPR privacy rights.'
     }
   ],
   [
     'policy-1-desc-67',
     {
       KOR:
-        'Polaris ShareModal 고객은 서비스를 설정하고 유지하기 위해 Polaris Share와 개인 정보를 공유하며,이 정보를 위해 Polaris Share는 컨트롤러이며 서비스 계약의 일부로 계약 상 구속됩니다.',
+        'Polaris Share 고객은 서비스를 설정하고 유지하기 위해 Polaris Share와 개인 정보를 공유하며,이 정보를 위해 Polaris Share는 컨트롤러이며 서비스 계약의 일부로 계약 상 구속됩니다.',
       ENG:
-        'Polaris ShareModal customers share personal information with Polaris ShareModal to establish and maintain services, and for this information Polaris ShareModal is the Controller and is bound contractually as part of the contract for services.'
+        'Polaris Share customers share personal information with Polaris Share to establish and maintain services, and for this information Polaris Share is the Controller and is bound contractually as part of the contract for services.'
     }
   ],
   [
     'policy-1-desc-68',
     {
       KOR:
-        'Polaris ShareModal 서비스를 지원하는 제 3 자 제공 업체도 비슷한 방식으로 프로세서 및 하위 프로세서로서 책임을 공유합니다.',
+        'Polaris Share 서비스를 지원하는 제 3 자 제공 업체도 비슷한 방식으로 프로세서 및 하위 프로세서로서 책임을 공유합니다.',
       ENG:
-        'Affiliated sectionThird party providers who in turn support the Polaris ShareModal service also share responsibility as Processors and Sub-Processors in a similar manner.'
+        'Affiliated sectionThird party providers who in turn support the Polaris Share service also share responsibility as Processors and Sub-Processors in a similar manner.'
     }
   ],
   [
     'policy-1-desc-69',
     {
       KOR:
-        '지원 역할이 있거나 Polaris ShareModal 내에서 적용 가능한 개인 정보에 액세스 할 수있는 모든 당사자는 GDPR 원칙을 준수하도록 계약에 따라 적절하게 구속됩니다.',
+        '지원 역할이 있거나 Polaris Share 내에서 적용 가능한 개인 정보에 액세스 할 수있는 모든 당사자는 GDPR 원칙을 준수하도록 계약에 따라 적절하게 구속됩니다.',
       ENG:
-        'All parties with support roles or access to applicable personal information within Polaris ShareModal, are appropriately bound by contract to be compliant with the GDPR principles.'
+        'All parties with support roles or access to applicable personal information within Polaris Share, are appropriately bound by contract to be compliant with the GDPR principles.'
     }
   ],
   [
@@ -5429,9 +5429,9 @@ const strings = new Map([
     'policy-1-desc-71',
     {
       KOR:
-        'GDPR 규정 준수는 Polaris ShareModal 고객 (소유자 / 관리자)과 Polaris ShareModal 간의 공동 책임입니다. 소유자 / 관리자는 ',
+        'GDPR 규정 준수는 Polaris Share 고객 (소유자 / 관리자)과 Polaris Share 간의 공동 책임입니다. 소유자 / 관리자는 ',
       ENG:
-        'GDPR compliance is a shared responsibility between Polaris ShareModal customers (owners / administrators) and Polaris ShareModal. Owners / administrators can request help from Polaris ShareModal for complying with GDPR compliance, including support for users who wish to exercise any of their rights under the GDPR, by sending an email to'
+        'GDPR compliance is a shared responsibility between Polaris Share customers (owners / administrators) and Polaris Share. Owners / administrators can request help from Polaris Share for complying with GDPR compliance, including support for users who wish to exercise any of their rights under the GDPR, by sending an email to'
     }
   ],
   [
@@ -5455,7 +5455,7 @@ const strings = new Map([
       KOR:
         '당사가 수집 및 유지 관리하는 모든 개인 정보 (해당 정보가 속한 사람을 식별하거나 식별하는 데 사용될 수있는 정보로 정의 됨)는 때때로 개정되는 본 개인 정보 보호 정책의 적용을받습니다. Polaris Share는 단독 재량에 따라 때때로 본 개인 정보 보호 정책을 변경할 수 있으며이 온라인 문서의 모든 변경 사항과이 문서에 대한 링크가있는 웹 페이지 바닥 글을 통해 통지 할 것입니다. 그러한 변경의 결과로 Polaris Share가 귀하의 개인 정보를 사용하도록 허용되는 방식을 변경하려는 경우, 위의 정보 수정 및 업데이트에 설명 된 절차에 따라 변경할 수 있습니다.',
       ENG:
-        'All personal information (defined as any information that identifies or can be used to identify the person to whom such information pertains) that we collect and maintain will be subject to this privacy statement, as amended from time to time. Polaris ShareModal may change this privacy statement from time to time at its sole discretion and will provide notice of all changes in this online document and via the footer of the web pages with authorized links to this document. If as the result of such changes you want to alter the ways in which Polaris ShareModal is allowed to use your personal information, you can do so by following the procedure described under Correcting and updating your information, above.'
+        'All personal information (defined as any information that identifies or can be used to identify the person to whom such information pertains) that we collect and maintain will be subject to this privacy statement, as amended from time to time. Polaris Share may change this privacy statement from time to time at its sole discretion and will provide notice of all changes in this online document and via the footer of the web pages with authorized links to this document. If as the result of such changes you want to alter the ways in which Polaris Share is allowed to use your personal information, you can do so by following the procedure described under Correcting and updating your information, above.'
     }
   ],
   [

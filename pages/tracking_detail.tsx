@@ -6,6 +6,7 @@ import { AUTH_APIS } from '../utils/auth'
 import Router from 'next/router'
 import repos from 'utils/repos'
 import dynamic from 'next/dynamic'
+import { withApollo } from '../components/Apollo'
 
 // DocumentCard - No SSR
 const TrackingDetailListWithoutSSR = dynamic(
@@ -13,7 +14,7 @@ const TrackingDetailListWithoutSSR = dynamic(
   { ssr: false }
 )
 
-export default function PageTrackingDetail(
+function PageTrackingDetail(
   { document, text, cid, user },
   ...rest
 ): ReactElement | Promise<boolean> {
@@ -52,3 +53,5 @@ PageTrackingDetail.getInitialProps = async props => {
     user
   }
 }
+
+export default withApollo({ ssr: false })(PageTrackingDetail)

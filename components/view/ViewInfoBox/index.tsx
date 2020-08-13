@@ -85,13 +85,16 @@ export default function ViewInfoBox({
             onMouseOut={(): void => setRewardInfo(false)}
           >
             $ {reward === 0 ? 'FREE' : common.deckToDollarWithComma(reward)}
-            <img
-              className={styles.vib_rewardArrow}
-              src={
-                APP_CONFIG.domain().static + '/image/icon/i_arrow_down_blue.svg'
-              }
-              alt="arrow button"
-            />
+            {reward !== 0 && (
+              <img
+                className={styles.vib_rewardArrow}
+                src={
+                  APP_CONFIG.domain().static +
+                  '/image/icon/i_arrow_down_blue.svg'
+                }
+                alt="arrow button"
+              />
+            )}
           </span>
           {reward > 0 && rewardInfoOpen && (
             <RewardCard reward={reward} documentData={documentData} />

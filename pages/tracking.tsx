@@ -8,8 +8,9 @@ import { AUTH_APIS } from '../utils/auth'
 import Router from 'next/router'
 import DocumentInfo from '../service/model/DocumentInfo'
 import TrackingOption from '../components/tracking/TrackingOption'
+import { withApollo } from '../components/Apollo';
 
-export default function PageTracking(
+function PageTracking(
   { documentData, ratio },
   ...rest
 ): ReactElement | Promise<boolean> {
@@ -48,3 +49,5 @@ PageTracking.getInitialProps = async props => {
     totalViewCountInfo
   }
 }
+
+export default withApollo({ ssr: false })(PageTracking)

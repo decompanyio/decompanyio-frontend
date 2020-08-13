@@ -2,8 +2,9 @@ import Layout from '../components/Layout'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
 import Guide from 'components/page/Guide'
+import { withApollo } from '../components/Apollo'
 
-export default function PageUserGuide(): ReactElement {
+function PageUserGuide(): ReactElement {
   return (
     <Layout
       title={'UserAvatar Guide' + commonData.commonTitle}
@@ -13,3 +14,5 @@ export default function PageUserGuide(): ReactElement {
     </Layout>
   )
 }
+
+export default withApollo({ ssr: false })(PageUserGuide)

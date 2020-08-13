@@ -2,11 +2,14 @@ import Layout from 'components/Layout'
 import Others from '../components/Others'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
+import { withApollo } from '../components/Apollo'
 
-export default function PageOthers(): ReactElement {
+function PageOthers(): ReactElement {
   return (
     <Layout title={'More' + commonData.commonTitle} path="more">
       <Others />
     </Layout>
   )
 }
+
+export default withApollo({ ssr: false })(PageOthers)

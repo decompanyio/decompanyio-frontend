@@ -3,8 +3,9 @@ import { psString } from '../utils/localization'
 import commonData from '../common/commonData'
 import React, { ReactElement } from 'react'
 import PrivacyPolicy from 'components/page/PrivacyPolicy'
+import { withApollo } from '../components/Apollo'
 
-export default function PagePrivacyPolicy(): ReactElement {
+function PagePrivacyPolicy(): ReactElement {
   return (
     <Layout
       title={psString('helmet-title-privacy') + commonData.commonTitle}
@@ -14,3 +15,5 @@ export default function PagePrivacyPolicy(): ReactElement {
     </Layout>
   )
 }
+
+export default withApollo({ ssr: false })(PagePrivacyPolicy)
