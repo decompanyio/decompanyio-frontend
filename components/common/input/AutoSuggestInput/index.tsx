@@ -8,7 +8,7 @@ import TagListItem from '../../../../service/model/TagListItem'
 
 interface AutoSuggestInputProps {
   search: Function
-  enter: Function
+  enter?: Function
   type: string
   getNameList?: any
 }
@@ -92,7 +92,7 @@ function AutoSuggestInput({
   const onChange = (_event, { newValue }) => setValue(newValue)
 
   const onKeyUp = e => {
-    if (e.keyCode === 13) enter(value)
+    if (e.keyCode === 13 && enter) enter(value)
   }
 
   const onSuggestionSelected = (_event, { suggestion }) => {
