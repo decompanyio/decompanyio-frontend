@@ -20,7 +20,7 @@ function PageTracking(
 
   return (
     <Layout
-      title={'tracking AlertList' + commonData.commonTitle}
+      title={documentData.title + commonData.commonTitle}
       path="tracking"
       {...rest}
     >

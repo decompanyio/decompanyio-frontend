@@ -24,7 +24,7 @@ function PageTrackingDetail(
 
   return (
     <Layout
-      title={'tracking Detail' + commonData.commonTitle}
+      title={document.title + commonData.commonTitle}
       path="tracking_detail"
       {...rest}
     >

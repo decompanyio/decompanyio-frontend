@@ -6,10 +6,7 @@ import { withApollo } from '../components/Apollo'
 
 function PageUserGuide(): ReactElement {
   return (
-    <Layout
-      title={'UserAvatar Guide' + commonData.commonTitle}
-      path="user_guide"
-    >
+    <Layout title={'User Guide' + commonData.commonTitle} path="user_guide">
       <Guide />
     </Layout>
   )

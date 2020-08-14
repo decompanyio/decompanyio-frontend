@@ -4,16 +4,10 @@ import React, { ReactElement } from 'react'
 import AutoSuggestInput from '../../common/input/AutoSuggestInput'
 import SearchBtn from '../../common/button/SearchButton'
 import Router from 'next/router'
+import { useMain } from '../../../redux/main/hooks'
 
 export default function HeaderSectionFirst(): ReactElement {
-  const handleSearchBtnClick = (): void => {
-    let element = document.getElementById('usernameEditInput')
-    if (element && element.firstChild) {
-      let inputElement = element.firstChild.firstChild as HTMLInputElement
-
-      inputElement.focus()
-    }
-  }
+  const { setAlertCode } = useMain()
 
   // 자동 완성 값 선택 시, 해당 태그의 리스트 페이지로 이동합니다.
   const onSuggestionSelected = tag => {
@@ -23,6 +17,19 @@ export default function HeaderSectionFirst(): ReactElement {
       },
       '/tag/' + tag._id
     )
+  }
+
+  const onClickSearchBtn = () => {
+    const el = document.getElementById('usernameEditInput') as HTMLElement
+    const elFirstChild = el.firstChild as HTMLElement
+    const elSecondChild = elFirstChild.firstChild as HTMLInputElement
+    let elValue = elSecondChild.value
+
+    if (elValue) {
+      return onSuggestionSelected({ _id: elValue.trim() })
+    } else {
+      setAlertCode(2151, {})
+    }
   }
 
   return (
@@ -36,9 +43,13 @@ export default function HeaderSectionFirst(): ReactElement {
       <div className={styles.hss_container}>
         <div className={styles.hss_searchContainer}>
           <div className={styles.hss_searchInput} id="headerSearchBar">
-            <AutoSuggestInput search={onSuggestionSelected} type="tag" />
+            <AutoSuggestInput
+              search={onSuggestionSelected}
+              type="tag"
+              enter={onClickSearchBtn}
+            />
           </div>
-          <SearchBtn click={handleSearchBtnClick} />
+          <SearchBtn click={onClickSearchBtn} />
         </div>
       </div>
     </div>
