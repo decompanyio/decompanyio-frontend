@@ -8,7 +8,7 @@ import { AUTH_APIS } from '../utils/auth'
 import Router from 'next/router'
 import DocumentInfo from '../service/model/DocumentInfo'
 import TrackingOption from '../components/tracking/TrackingOption'
-import { withApollo } from '../components/Apollo';
+import { withApollo } from '../components/Apollo'
 
 function PageTracking(
   { documentData, ratio },

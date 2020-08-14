@@ -33,7 +33,11 @@ export default function MainTopSearch(): ReactElement {
 
   return (
     <div className={styles.mhs_search} id="mainHeaderSearchInput">
-      <AutoSuggestInput search={onSuggestionSelected} type="tag" />
+      <AutoSuggestInput
+        search={onSuggestionSelected}
+        type="tag"
+        enter={onClickSearchBtn}
+      />
       <button
         type="button"
         className={styles.mhs_btnSearch}

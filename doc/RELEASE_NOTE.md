@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.08.14-a
+- available key 'enter' in tag inputs
+
 ## 2020.08.13-a
 - edit GET bookmark API
 
