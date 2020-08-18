@@ -10,6 +10,7 @@ export const useMain = () => {
   const myInfo = useSelector(({ main }: StateProps) => main.myInfo)
   const tagList = useSelector(({ main }: StateProps) => main.tagList)
   const isMobile = useSelector(({ main }: StateProps) => main.isMobile)
+  const isTablet = useSelector(({ main }: StateProps) => main.isTablet)
   const alertCode = useSelector(({ main }: StateProps) => main.alertCode)
   const alertData = useSelector(({ main }: StateProps) => main.alertData)
   const modalCode = useSelector(({ main }: StateProps) => main.modalCode)
@@ -29,6 +30,11 @@ export const useMain = () => {
 
   const setIsMobile = useCallback(
     (isMobile: boolean) => dispatch(actions.isMobile(isMobile)),
+    [dispatch]
+  )
+
+  const setIsTablet = useCallback(
+    (isTablet: boolean) => dispatch(actions.isTablet(isTablet)),
     [dispatch]
   )
 
@@ -54,6 +60,7 @@ export const useMain = () => {
     myInfo,
     tagList,
     isMobile,
+    isTablet,
     alertCode,
     alertData,
     modalCode,
@@ -61,6 +68,7 @@ export const useMain = () => {
     setInitComplete,
     setMyInfo,
     setIsMobile,
+    setIsTablet,
     setAlertCode,
     setTagList,
     setModal

@@ -19,7 +19,8 @@ export default function ViewContainer({
   documentData,
   ratio,
   readPage,
-  text
+  text,
+  thumbnailList
 }: ViewContainerProps): ReactElement {
   const { myInfo, setModal } = useMain()
 
@@ -130,6 +131,7 @@ export default function ViewContainer({
         pageChange={handlePageChange}
         ratio={ratio}
         readPage={readPage}
+        thumbnailList={thumbnailList}
       />
       <ViewFullscreenBtn
         documentData={documentData}

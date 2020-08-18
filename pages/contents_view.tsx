@@ -8,9 +8,10 @@ import Router from 'next/router'
 import ViewContainer from '../components/view/ViewContainer'
 import Meta from '../graphql/models/Meta'
 import { withApollo } from '../components/Apollo'
+import common from '../common/common'
 
 function PageContentsView(
-  { documentData, text, ratio, readPage, metaData, message },
+  { documentData, text, ratio, readPage, metaData, message, thumbnailList },
   ...rest
 ): ReactElement {
   useEffect(() => {
@@ -29,6 +30,7 @@ function PageContentsView(
         text={text}
         ratio={ratio}
         readPage={readPage}
+        thumbnailList={thumbnailList}
       />
     </Layout>
   )
@@ -49,6 +51,16 @@ PageContentsView.getInitialProps = async props => {
   const documentData = new DocumentInfo(document)
   const metaData = new Meta(documentData)
   const textData = text || []
+  const thumbnailList = new Array(documentData.totalPages)
+
+  for (let i = 0; i < documentData.totalPages; i++) {
+    thumbnailList[i] = common.getThumbnail(
+      documentData.documentId,
+      1024,
+      i + 1,
+      ''
+    )
+  }
 
   return {
     documentData: documentData,
@@ -59,8 +71,9 @@ PageContentsView.getInitialProps = async props => {
     totalViewCountInfo,
     readPage: 0,
     metaData,
-    message
+    message,
+    thumbnailList
   }
 }
 
-export default withApollo({ ssr: false })(PageContentsView)
+export default withApollo({ ssr: true })(PageContentsView)

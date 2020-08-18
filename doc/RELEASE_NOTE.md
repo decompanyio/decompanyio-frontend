@@ -1,6 +1,13 @@
 # Release Note
 
-## 2020.08.14-a
+## 2020.08.18-a
+- add env valuable for tablet device
+
+Bug fix
+- SNS icon not showing in viewer page
+- document thumbnail not showing in SSR
+
+## 2020.08.14-c
 - available key 'enter' in tag inputs
 
 ## 2020.08.13-a

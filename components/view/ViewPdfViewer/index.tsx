@@ -4,16 +4,8 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 import * as styles from 'public/static/styles/scss/index.scss'
 import repos from '../../../utils/repos'
 import commonData from '../../../common/commonData'
-import common from '../../../common/common'
 import { useMain } from '../../../redux/main/hooks'
-
-interface ViewPdfViewerProps {
-  documentData
-  pageChange
-  ratio: number
-  readPage: number
-  text
-}
+import { ViewPdfViewerProps } from '../../../typings/interfaces'
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
@@ -22,11 +14,11 @@ export default function ViewPdfViewer({
   pageChange,
   ratio,
   readPage,
-  text
+  text,
+  thumbnailList
 }: ViewPdfViewerProps): ReactElement {
   const { isMobile, myInfo } = useMain()
-  const initArr: string[] = []
-  const [thumbArr, setThumbArr] = useState(initArr)
+  const [thumbArr] = useState(thumbnailList)
   const [presentPage, setPresentPage] = useState(readPage)
   let currentScroll = 0
   let totalScroll = 0
@@ -56,14 +48,6 @@ export default function ViewPdfViewer({
     if (windowWidth + widthMargin >= commonData.style.container.width)
       return commonData.style.container.width - widthMargin
     else return windowWidth
-  }
-
-  const setThumbnailUrlAddress = (): void => {
-    let arr = [documentData.totalPages]
-    for (let i = 0; i < documentData.totalPages; i++) {
-      arr[i] = common.getThumbnail(documentData.documentId, 1024, i + 1, '')
-    }
-    setThumbArr(arr)
   }
 
   const setViewerWrapperHeight = (): void => {
@@ -233,8 +217,6 @@ export default function ViewPdfViewer({
       if (canvasContainer && !canvasContainer.hasChildNodes())
         void (await PDFRenderer.render(pdfUrl))
     })()
-
-    setThumbnailUrlAddress()
     setViewerWrapperHeight()
   }, [])
 

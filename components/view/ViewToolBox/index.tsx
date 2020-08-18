@@ -96,7 +96,7 @@ export default function ViewToolBox({
           {psString('share-modal-btn')}
         </span>
       </p>
-      {!myInfo.email && documentData.isDownload && (
+      {documentData.isDownload && (
         <p
           data-tip={psString('tooltip-download')}
           className={

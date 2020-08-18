@@ -2,6 +2,7 @@ import {
   SET_ALERT_CODE,
   SET_INIT_COMPLETE,
   SET_IS_MOBILE,
+  SET_IS_TABLET,
   SET_MODAL,
   SET_MY_INFO,
   SET_TAG_LIST
@@ -19,7 +20,8 @@ const initState: MainInitState = {
   tagList: [],
   modalCode: '',
   modalData: {},
-  isMobile: false
+  isMobile: false,
+  isTablet: false
 }
 
 // 리듀서
@@ -44,6 +46,11 @@ const reducer = (state = initState, action: MainAction) => {
       return {
         ...state,
         isMobile: action.isMobile
+      }
+    case SET_IS_TABLET:
+      return {
+        ...state,
+        isTablet: action.isTablet
       }
     case SET_ALERT_CODE:
       return {

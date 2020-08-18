@@ -23,7 +23,7 @@ import UserDocumentFavorite from '../../graphql/queries/UserDocumentFavorite.gra
 import UserInfo from '../../graphql/models/UserInfo'
 
 export default function Layout(props): ReactElement {
-  const { myInfo, isMobile, setMyInfo, setTagList, setIsMobile } = useMain()
+  const { myInfo, setMyInfo, setTagList, setIsMobile, setIsTablet } = useMain()
 
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
@@ -70,33 +70,38 @@ export default function Layout(props): ReactElement {
 
   let _prevScrollPos = 0
   let isMobileChecker = false
+  let isTabletChecker = false
 
   // 스크롤 이벤트 시 element 관리
-  const manageElement = (path: string) =>
-    new Promise(resolve => {
-      let currentScrollPos = window.pageYOffset
-      let headerMainNav = document.getElementById('headerMainNav')
-      let totalLoadingBar = document.getElementById('totalLoadingBar')
+  const handleScroll = () => {
+    let currentScrollPos = window.pageYOffset
+    let headerMainNav = document.getElementById('headerMainNav')
+    let totalLoadingBar = document.getElementById('totalLoadingBar')
+    let isScrollAtTop =
+      currentScrollPos <= (commonView.getIsTablet() ? 90 : 170)
+    let isScrollUp = _prevScrollPos > currentScrollPos
 
-      let isScrollAtTop = currentScrollPos <= (isMobile ? 90 : 170)
-      let isScrollUp = _prevScrollPos > currentScrollPos
+    // main 이외 페이지에서 헤더 숨길/표시 처리
+    if (path && headerMainNav) {
+      headerMainNav.style.marginBottom = '0px'
+      headerMainNav.style.top = `${
+        isScrollUp || isScrollAtTop
+          ? '0'
+          : `${commonView.getIsTablet() ? '-91' : '-171'}`
+      }px`
+    }
 
-      // main 이외 페이지에서 헤더 숨길/표시 처리
-      if (path && headerMainNav) {
-        headerMainNav.style.marginBottom = '0px'
-        headerMainNav.style.top = `${
-          isScrollUp || isScrollAtTop ? '0' : `${isMobile ? '-91' : '-171'}`
-        }px`
-      }
+    // main 이외 페이지에서 로딩 숨길/표시 처리
+    if (path && totalLoadingBar)
+      totalLoadingBar.style.top = `${
+        isScrollUp || isScrollAtTop
+          ? `${commonView.getIsTablet() ? '90' : '170'}`
+          : '0'
+      }px`
 
-      // main 이외 페이지에서 로딩 숨길/표시 처리
-      if (path && totalLoadingBar)
-        totalLoadingBar.style.top = `${
-          isScrollUp || isScrollAtTop ? `${isMobile ? '90' : '170'}` : '0'
-        }px`
-
-      resolve(currentScrollPos)
-    })
+    setScrollToTopValue(currentScrollPos)
+    _prevScrollPos = currentScrollPos
+  }
 
   // SET 태그 리스트
   const setTagListToStore = () =>
@@ -117,12 +122,18 @@ export default function Layout(props): ReactElement {
     }
   }
 
-  const handleResize = (): void => setIsMobileToRedux()
-  const handleScroll = () =>
-    manageElement(path).then((currentScrollPos: number) => {
-      setScrollToTopValue(currentScrollPos)
-      _prevScrollPos = currentScrollPos
-    })
+  // 타블렛 유무 REDUX SET
+  const setIsTabletToRedux = (): void => {
+    if (commonView.getIsTablet() !== isTabletChecker) {
+      isTabletChecker = !isTabletChecker
+      setIsTablet(commonView.getIsTablet())
+    }
+  }
+
+  const handleResize = (): void => {
+    setIsMobileToRedux()
+    setIsTabletToRedux()
+  }
 
   // SET 이벤트 리스너
   const handleEventListener = (): void => {
@@ -140,6 +151,9 @@ export default function Layout(props): ReactElement {
 
       // SET isMobile
       setIsMobileToRedux()
+
+      // SET isTablet
+      setIsTabletToRedux()
     })
 
     return () => {

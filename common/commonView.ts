@@ -135,6 +135,11 @@ export default {
     return document.documentElement.clientWidth < 576
   },
 
+  getIsTablet(): boolean {
+    if (typeof window === 'undefined') return false
+    return document.documentElement.clientWidth < 1025
+  },
+
   getTag(): string {
     if (typeof window === 'undefined') return ''
 

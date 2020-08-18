@@ -220,6 +220,16 @@ export interface ViewContainerProps {
   ratio: number
   readPage: number
   text
+  thumbnailList: string[]
+}
+
+export interface ViewPdfViewerProps {
+  documentData
+  pageChange
+  ratio: number
+  readPage: number
+  text
+  thumbnailList: string[]
 }
 
 export interface ViewContainerWrapper {
@@ -357,7 +367,8 @@ export interface MainInitState {
   tagList: []
   modalCode: string
   modalData?: {}
-  isMobile: false
+  isMobile: boolean
+  isTablet: boolean
 }
 
 export interface TrackingInitState {
