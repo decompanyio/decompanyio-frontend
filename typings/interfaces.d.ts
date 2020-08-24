@@ -274,6 +274,7 @@ export interface UserAvatarProps {
 
 export interface SearchBtnProps {
   click?: () => void
+  path?: string
 }
 
 export interface ToTopBtnProps {
@@ -428,3 +429,22 @@ export interface contentsListIDList {
   account: string[]
   document: string[]
 }
+
+export interface AutoSuggestInputProps {
+  search: Function
+  enter?: Function
+  type: string
+  getNameList?: any
+  placeholder?: string
+}
+
+export interface headerSectionFirstProps {
+  path?: string
+}
+
+export interface MainThirdSectionTopItemProps {
+  userId: string
+  documentId: string
+}
+
+

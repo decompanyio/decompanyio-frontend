@@ -15,6 +15,7 @@ import common from '../../../../common/common'
 import dynamic from 'next/dynamic'
 //import { useMain } from '../../../../redux/main/hooks'
 import Link from 'next/link'
+import { MainThirdSectionTopItemProps } from '../../../../typings/interfaces'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -22,7 +23,10 @@ const UserAvatarWithoutSSR = dynamic(
   { ssr: false }
 )
 
-export default function MainThirdSectionTopItem({ userId, documentId }): ReactElement {
+export default function MainThirdSectionTopItem({
+  userId,
+  documentId
+}: MainThirdSectionTopItemProps): ReactElement {
   //const { isMobile } = useMain()
   const { loading, error, data } = useQuery(
     gql`
@@ -65,7 +69,6 @@ export default function MainThirdSectionTopItem({ userId, documentId }): ReactEl
   const documentInfo = new DocumentInfo(Document)
   const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
   const documentPopular = new DocumentPopularModel(DocumentPopular)
-
   const creatorRoyalty = new CreatorRoyalty(Creator[0])
   documentInfo.author = new UserInfo(User)
   documentInfo.latestPageview = documentPopular.latestPageview

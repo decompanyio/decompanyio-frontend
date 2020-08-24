@@ -20,7 +20,7 @@ export default function HeaderContainer({
 
       <nav id="headerMainNav" className={path && styles.h_fixed}>
         <div className={styles.h_container}>
-          <HeaderSectionFirst />
+          <HeaderSectionFirst path={path} />
           <HeaderSectionSecond />
         </div>
 

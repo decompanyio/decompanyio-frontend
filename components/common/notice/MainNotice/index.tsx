@@ -4,7 +4,7 @@ import { psString } from '../../../../utils/localization'
 import commonView from '../../../../common/commonView'
 
 export default function MainNotice(): ReactElement {
-  const [cookiePolicyValue, setCookiePolicyValue] = useState(false)
+  const [cookiePolicyValue, setCookiePolicyValue] = useState(true)
 
   const handleCloseBtnClick = (): void => {
     commonView.setCookie('mpv', true, 1000)

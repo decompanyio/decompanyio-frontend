@@ -5,8 +5,11 @@ import AutoSuggestInput from '../../common/input/AutoSuggestInput'
 import SearchBtn from '../../common/button/SearchButton'
 import Router from 'next/router'
 import { useMain } from '../../../redux/main/hooks'
+import { headerSectionFirstProps } from '../../../typings/interfaces'
 
-export default function HeaderSectionFirst(): ReactElement {
+export default function HeaderSectionFirst({
+  path
+}: headerSectionFirstProps): ReactElement {
   const { setAlertCode } = useMain()
 
   // 자동 완성 값 선택 시, 해당 태그의 리스트 페이지로 이동합니다.
@@ -20,7 +23,7 @@ export default function HeaderSectionFirst(): ReactElement {
   }
 
   const onClickSearchBtn = () => {
-    const el = document.getElementById('usernameEditInput') as HTMLElement
+    const el = document.getElementById('headerSearchBar') as HTMLElement
     const elFirstChild = el.firstChild as HTMLElement
     const elSecondChild = elFirstChild.firstChild as HTMLInputElement
     let elValue = elSecondChild.value
@@ -49,7 +52,7 @@ export default function HeaderSectionFirst(): ReactElement {
               enter={onClickSearchBtn}
             />
           </div>
-          <SearchBtn click={onClickSearchBtn} />
+          <SearchBtn click={onClickSearchBtn} path={path} />
         </div>
       </div>
     </div>

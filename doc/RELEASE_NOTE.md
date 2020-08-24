@@ -1,5 +1,11 @@
 # Release Note
 
+## 2020.08.24-a
+- edit top list in main page
+
+Bug fix
+- tag input searching not working
+
 ## 2020.08.18-a
 - add env valuable for tablet device
 

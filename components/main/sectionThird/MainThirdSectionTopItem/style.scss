@@ -1,4 +1,3 @@
-
 .mtli_container {
   overflow: hidden;
   border-radius: 30px;
@@ -7,12 +6,30 @@
   transition: all ease 0.3s;
   position: relative;
   background-color: #fff;
+
+  @media (max-width: $lg-max-width) {
+    height: 694px;
+    border-radius: 72px;
+  }
+
+  @media (max-width: $md-min-width) {
+    height: 347px;
+    border-radius: 36px;
+  }
 }
 
 .mtli_thumb {
   position: relative;
   height: 132px;
   overflow: hidden;
+
+  @media (max-width: $lg-max-width) {
+    height: 308px;
+  }
+
+  @media (max-width: $md-max-width) {
+    height: 154px;
+  }
 
   span {
     text-transform: uppercase;
@@ -30,6 +47,22 @@
     background-color: #0065e4;
     font-weight: 600;
     font-size: 14px;
+
+    @media (max-width: $lg-max-width) {
+      height: 48px;
+      line-height: 46px;
+      border-radius: 12px;
+      font-size: 28px;
+      min-width: 112px;
+    }
+
+    @media (max-width: $md-min-width) {
+      height: 24px;
+      line-height: 23px;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 56px;
+    }
   }
 }
 
@@ -46,6 +79,22 @@
     display: block;
     color: #000;
   }
+
+  @media (max-width: $lg-max-width) {
+    font-size: 40px;
+    line-height: 52px;
+    min-height: 114px;
+    text-align: center;
+    white-space: normal;
+    margin: 30px;
+  }
+
+  @media (max-width: $md-min-width) {
+    font-size: 20px;
+    line-height: 26px;
+    min-height: 57px;
+    margin: 15px;
+  }
 }
 
 .mtli_contentItemWrapper {
@@ -60,6 +109,14 @@
 
     i {
       margin-right: 5px;
+
+      @media (max-width: $lg-max-width) {
+        margin-right: 12px;
+      }
+
+      @media (max-width: $md-min-width) {
+        margin-right: 6px;
+      }
     }
   }
 }
@@ -68,11 +125,27 @@
   font-size: 10px;
   color: #0071ff;
   font-weight: 600;
+
+  @media (max-width: $lg-max-width) {
+    font-size: 23px;
+  }
+
+  @media (max-width: $md-min-width) {
+    font-size: 11px;
+  }
 }
 
 .mtli_number {
   font-size: 10px;
   color: #323232;
+
+  @media (max-width: $lg-max-width) {
+    font-size: 23px;
+  }
+
+  @media (max-width: $md-min-width) {
+    font-size: 11px;
+  }
 }
 
 .mtli_infoContainer {
@@ -85,6 +158,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: $lg-max-width) {
+    padding: 30px;
+  }
+
+  @media (max-width: $md-min-width) {
+    padding: 15px;
+  }
 }
 
 .mtli_info {
@@ -99,6 +180,18 @@
   margin-right: 8px;
   display: flex;
   align-items: center;
+
+  @media (max-width: $lg-max-width) {
+    width: 72px;
+    height: 72px;
+    margin-right: 20px;
+  }
+
+  @media (max-width: $md-min-width) {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
 
   img {
     width: 100%;
@@ -118,232 +211,147 @@
 .mtli_id {
   font-size: 12px;
   color: #2e2e2e;
+
+  @media (max-width: $lg-max-width) {
+    font-size: 29px;
+  }
+
+  @media (max-width: $md-min-width) {
+    font-size: 15px;
+  }
 }
 
 .mtli_time {
   font-size: 10px;
   line-height: 12px;
   color: #818181;
-}
 
-.mtli_container:hover {
-    height: 430px;
-
-  .mtli_thumb {
-    height: 190px;
-  }
-
-  .mtli_thumb span {
-    height: 30px;
-    min-width: 72px;
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .mtli_title {
-    font-size: 21px;
-    line-height: 31px;
-    min-height: 62px;
-    margin: 24px 20px;
-  }
-
-  .mtli_avatar {
-    margin-right: 14px;
-    width: 45px;
-    height: 45px;
-
-    @media (min-width: 1025px) {
-      div {
-        width: 45px !important;
-        height: 45px !important;
-      }
-    }
-  }
-
-  .mtli_id {
-    font-size: 18px;
-  }
-
-  .mtli_time {
-    font-size: 14px;
-    line-height: 16px;
-  }
-
-  .sprite_a {
-    background-position: 0 -20px;
-    width: 30px;
-    height: 30px;
-  }
-
-  .sprite_b {
-    background-position: -30px -20px;
-    width: 30px;
-    height: 30px;
-  }
-
-  .sprite_c {
-    background-position: -60px -20px;
-    width: 30px;
-    height: 30px;
-  }
-
-  .mtli_money {
-    font-size: 14px;
-  }
-
-  .mtli_number {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mfrs_item:hover .mtli_container,
-  .mfrs_item .mtli_container {
-    height: 694px;
-    border-radius: 72px;
-  }
-  .mfrs_item .mtli_thumb,
-  .mfrs_item:hover .mtli_thumb {
-    height: 308px;
-  }
-  .mfrs_item .mtli_thumb span,
-  .mfrs_item:hover .mtli_thumb span {
-    height: 48px;
-    line-height: 46px;
-    border-radius: 12px;
-    font-size: 28px;
-    min-width: 112px;
-  }
-  .mfrs_item .mtli_title,
-  .mfrs_item:hover .mtli_title {
-    font-size: 40px;
-    line-height: 52px;
-    min-height: 114px;
-    text-align: center;
-    white-space: normal;
-    margin: 30px;
-  }
-  .mfrs_item:hover .sprite_a {
-    background-position: 0 0;
-    width: 40px;
-    height: 40px;
-  }
-  .mfrs_item:hover .sprite_b {
-    background-position: -40px 0;
-    width: 40px;
-    height: 40px;
-  }
-  .mfrs_item:hover .sprite_c {
-    background-position: -80px 0;
-    width: 40px;
-    height: 40px;
-  }
-  .mfrs_item:hover .mtli_infoContainer .mtli_info .mtli_avatar,
-  .mtli_avatar {
-    width: 72px;
-    height: 72px;
-    margin-right: 20px;
-  }
-  .mtli_infoContainer {
-    padding: 30px;
-  }
-  .mtli_id,
-  .mfrs_item:hover .mtli_infoContainer .mtli_info .mtli_id {
-    font-size: 29px;
-  }
-  .mtli_time,
-  .mfrs_item:hover .mtli_infoContainer .mtli_time {
+  @media (max-width: $lg-max-width) {
     line-height: 28px;
     font-size: 23px;
   }
-  .mtli_money,
-  .mtli_number,
-  .mfrs_item:hover .mtli_contentItemWrapper .mtli_money,
-  .mfrs_item:hover .mtli_contentItemWrapper .mtli_number {
-    font-size: 23px;
-  }
-  .mfrs_item .mtli_contentItemWrapper > div > i {
-    margin-right: 12px;
-  }
-}
 
-@media (max-width: 768px) {
-  .mfrs_item:hover .mtli_container,
-  .mfrs_item .mtli_container {
-    height: 347px;
-    border-radius: 36px;
-  }
-  .mfrs_item .mtli_thumb,
-  .mfrs_item:hover .mtli_thumb {
-    height: 154px;
-  }
-  .mfrs_item .mtli_thumb span,
-  .mfrs_item:hover .mtli_thumb span {
-    height: 24px;
-    line-height: 23px;
-    border-radius: 6px;
-    font-size: 14px;
-    min-width: 56px;
-  }
-  .mfrs_item .mtli_title,
-  .mfrs_item:hover .mtli_title {
-    font-size: 20px;
-    line-height: 26px;
-    min-height: 57px;
-    margin: 15px;
-  }
-  .mfrs_item:hover .sprite_a {
-    background-position: 0 0;
-    width: 20px;
-    height: 20px;
-  }
-  .mfrs_item:hover .sprite_b {
-    background-position: -20px 0;
-    width: 20px;
-    height: 20px;
-  }
-  .mfrs_item:hover .sprite_c {
-    background-position: -40px 0;
-    width: 20px;
-    height: 20px;
-  }
-  .mfrs_item:hover .mtli_infoContainer .mtli_info .mtli_avatar,
-  .mtli_avatar {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-  }
-  .mtli_infoContainer {
-    padding: 15px;
-  }
-  .mtli_id,
-  .mfrs_item:hover .mtli_infoContainer .mtli_info .mtli_id {
-    font-size: 15px;
-  }
-  .mtli_time,
-  .mfrs_item:hover .mtli_infoContainer .mtli_time {
+  @media (max-width: $md-min-width) {
     line-height: 14px;
     font-size: 11px;
-  }
-  .mtli_money,
-  .mtli_number,
-  .mfrs_item:hover .mtli_contentItemWrapper .mtli_money,
-  .mfrs_item:hover .mtli_contentItemWrapper .mtli_number {
-    font-size: 11px;
-  }
-  .mfrs_item .mtli_contentItemWrapper > div > i {
-    margin-right: 6px;
   }
 }
 
 .sprite_a {
   @include sprite_a;
+
+  @media (max-width: $lg-max-width) {
+    background-position: 0 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: $md-min-width) {
+    background-position: 0 0;
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .sprite_b {
   @include sprite_b;
+
+  @media (max-width: $lg-max-width) {
+    background-position: -40px 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: $md-min-width) {
+    background-position: -20px 0;
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .sprite_c {
   @include sprite_c;
+
+  @media (max-width: $lg-max-width) {
+    background-position: -80px 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: $md-min-width) {
+    background-position: -40px 0;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.mtli_container:hover,
+.mfrs_list:not(:hover) .mfrs_center > .mtli_container {
+  @media (min-width: $lg-min-width) {
+    height: 430px;
+
+    .mtli_thumb {
+      height: 190px;
+
+      span {
+        height: 30px;
+        min-width: 72px;
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+
+    .mtli_title {
+      font-size: 21px;
+      line-height: 31px;
+      min-height: 62px;
+      margin: 24px 20px;
+    }
+
+    .mtli_avatar {
+      margin-right: 14px;
+      width: 45px;
+      height: 45px;
+
+      div {
+        width: 45px !important;
+        height: 45px !important;
+      }
+    }
+
+    .mtli_id {
+      font-size: 18px;
+    }
+
+    .mtli_time {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .sprite_a {
+      background-position: 0 -20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .sprite_b {
+      background-position: -30px -20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .sprite_c {
+      background-position: -60px -20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .mtli_money {
+      font-size: 14px;
+    }
+
+    .mtli_number {
+      font-size: 14px;
+    }
+  }
 }

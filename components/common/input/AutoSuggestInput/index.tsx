@@ -1,22 +1,16 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import common from '../../../../common/common'
 import AutoSuggest from 'react-autosuggest'
-import { psString } from 'utils/localization'
 import React, { ReactElement, useState } from 'react'
 import { useMain } from '../../../../redux/main/hooks'
 import TagListItem from '../../../../service/model/TagListItem'
-
-interface AutoSuggestInputProps {
-  search: Function
-  enter?: Function
-  type: string
-  getNameList?: any
-}
+import { AutoSuggestInputProps } from '../../../../typings/interfaces'
 
 function AutoSuggestInput({
   search,
   enter,
   type,
+  placeholder,
   getNameList
 }: AutoSuggestInputProps): ReactElement {
   const { tagList } = useMain()
@@ -71,24 +65,6 @@ function AutoSuggestInput({
     return arr
   }
 
-  const setPlaceholder = (): string => {
-    let _placeholder: string
-    _placeholder = ''
-
-    switch (type) {
-      case 'tag':
-        return (_placeholder = psString('auto-placeholder-1'))
-
-      case 'name':
-        return (_placeholder = psString('auto-placeholder-2'))
-
-      default:
-        break
-    }
-
-    return _placeholder
-  }
-
   const onChange = (_event, { newValue }) => setValue(newValue)
 
   const onKeyUp = e => {
@@ -124,7 +100,7 @@ function AutoSuggestInput({
   }
 
   const inputProps = {
-    placeholder: setPlaceholder(),
+    placeholder: placeholder || '',
     value,
     onChange,
     onKeyUp

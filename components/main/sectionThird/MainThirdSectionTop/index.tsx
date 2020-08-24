@@ -33,7 +33,16 @@ export default function MainThirdSectionTop(): ReactElement {
         {dataList.map(
           ({ userId, documentId, _id, accountId }, index) =>
             (documentId || _id) && (
-              <div className={styles.mfrs_item} key={index}>
+              <div
+                className={
+                  styles.mfrs_item +
+                  ' ' +
+                  (Math.floor(dataList.length / 2) === index
+                    ? styles.mfrs_center
+                    : '')
+                }
+                key={index}
+              >
                 <MainTopListItem
                   userId={userId || accountId}
                   documentId={documentId || _id}

@@ -1,7 +1,7 @@
 .ht_container {
   @include d-flex;
   width: 100%;
-  height: 70px;
+  height: 53px;
   background: #eef1f5;
   align-items: center;
 
@@ -16,34 +16,15 @@
   width: 100%;
   align-items: center;
   height: inherit;
-
-  ol {
-    @include d-flex;
-    position: absolute;
-    left: 115px;
-    top: 10px;
-    width: max-content;
-
-    @media all and (max-width: $lg-max-width) {
-      left: 1rem;
-      top: 5px;
-    }
-
-    li:first-child >a > button {
-      margin: 0;
-    }
-  }
 }
 
 .ht_subject {
   display: block;
-  width: 130px;
-  height: 40px;
   background: none;
   color: #52565d;
-  font-size: 20px;
+  font-size: 15px;
   padding: 0 0 0 10px;
-  line-height: 37px;
+  line-height: 40px;
   font-weight: normal;
 
   @media all and (max-width: $lg-max-width) {
@@ -51,27 +32,58 @@
   }
 }
 
+.ht_listContainer {
+  position: absolute;
+  left: 70px;
+  top: 10px;
+  max-height: 33px;
+  max-width: calc(100% - 70px);
+  overflow-y: hidden;
+
+  @media all and (max-width: $lg-max-width) {
+    left: 0;
+    max-width: 100%;
+    max-height: 25px;
+    top: 8px;
+  }
+}
+
+.ht_listWrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 2rem;
+
+  @media all and (max-width: $lg-max-width) {
+    margin: 0;
+  }
+
+  ol {
+    @include d-flex;
+  }
+}
+
 .ht_button {
   background: white;
-  padding: 13px 20px;
+  padding: 7px 17px;
   border-radius: 30px;
   margin: 0 5px;
   cursor: pointer;
+  font-size: 0.8rem;
 
   span {
-    &:before {
-      content: "#";
-      margin-right: 3px;
-    }
+    white-space: pre;
 
-    @media all and (max-width: $lg-max-width) {
-      font-size: 1rem;
+    &:before {
+      content: '#';
+      margin-right: 3px;
     }
   }
 
   &:hover {
     background: #859bb8;
-    span, span:before {
+
+    span,
+    span:before {
       color: #fff !important;
     }
   }
@@ -80,5 +92,42 @@
     padding: 2px 10px;
     color: #0056c1 !important;
     border: 1px solid #90b6e6;
+  }
+}
+
+.ht_prevArrowWrapper {
+  position: absolute;
+  z-index: 1;
+  left: 85px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 4rem;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(31, 167, 237, 0) 0%, #eef1f5 58%);
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+
+  @media all and (max-width: $lg-max-width) {
+    left: 0;
+    width: 2rem;
+  }
+}
+
+.ht_nextArrowWrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 4rem;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(31, 167, 237, 0) 0%, #eef1f5 58%);
+
+  @media all and (max-width: $lg-max-width) {
+    width: 2rem;
   }
 }

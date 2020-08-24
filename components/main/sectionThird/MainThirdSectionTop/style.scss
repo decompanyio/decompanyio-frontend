@@ -12,9 +12,9 @@
     text-align: center;
   }
 
-  @media (max-width: 1024px) {
-    width: 1024px;
-    padding: 0 0 200px 40px;
+  @media (max-width: $lg-max-width) {
+    width: auto;
+    margin: 10rem 1rem 3rem 1rem;
 
     h3 {
       font-size: 59px;
@@ -22,9 +22,8 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $md-min-width) {
     width: 100%;
-    padding: 0 15px 100px 15px;
 
     h3 {
       font-size: 30px;
@@ -38,6 +37,42 @@
   align-items: center;
   justify-content: center;
   height: 430px;
+
+  @media (max-width: $lg-max-width) {
+    margin: 64px 0 0;
+    display: block;
+    font-size: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 720px;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #1f82ff;
+      border: 0 solid #fff;
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  @media (max-width: $md-min-width) {
+    margin: 35px 0 0;
+    height: 375px;
+  }
 }
 
 .mfrs_item {
@@ -48,62 +83,33 @@
   min-width: 0;
   max-width: 232px;
   transition: all ease 0.3s;
-}
 
-.mfrs_item ~ .mfrs_item {
-  margin-left: 10px;
-}
-
-.mfrs_item:hover {
-  flex: 0 0 310px;
-  max-width: 310px;
-}
-
-@media (max-width: 1024px) {
-  .mfrs_list {
-    margin: 64px 0 0;
-    display: block;
-    font-size: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 720px;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-  }
-  .mfrs_list::-webkit-scrollbar {
-    width: 5px;
-    height: 2px;
-  }
-  .mfrs_list::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  .mfrs_list::-webkit-scrollbar-thumb {
-    background-color: #1f82ff;
-    border: 0 solid #fff;
-  }
-  .mfrs_list::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-  }
-  .mfrs_item:hover,
-  .mfrs_item {
+  @media (max-width: $lg-max-width) {
     width: 495px;
     max-width: 495px;
-  }
-  .mfrs_item {
     display: inline-block;
   }
-}
 
-@media (max-width: 768px) {
-  .mfrs_list {
-    margin: 35px 0 0;
-    height: 375px;
-  }
-  .mfrs_item:hover,
-  .mfrs_item {
+  @media (max-width: $md-max-width) {
     width: 250px;
     max-width: 250px;
   }
 }
+
+.mfrs_item ~ .mfrs_item {
+  margin-left: 30px;
+
+  @media (max-width: $md-max-width) {
+    margin-left: 10px;
+  }
+}
+
+.mfrs_item:hover,
+.mfrs_list:not(:hover) .mfrs_center {
+  @media (min-width: $lg-min-width) {
+    flex: 0 0 310px;
+    max-width: 310px;
+  }
+}
+
+

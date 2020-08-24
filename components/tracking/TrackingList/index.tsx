@@ -11,7 +11,9 @@ import { useTracking } from '../../../redux/tracking/hooks'
 import useDidMountEffect from '../../hook/useDidMountEffect'
 import TrackingListItem from '../TrackingItem'
 
-export default function TrackingList({ documentData }: TrackingListProps): ReactElement {
+export default function TrackingList({
+  documentData
+}: TrackingListProps): ReactElement {
   const { showAnonymous, showOnePage } = useTracking()
   const [selectedSearch, setSelectedSearch] = useState(false)
   const [filterList, setFilterList] = useState([])
@@ -84,6 +86,7 @@ export default function TrackingList({ documentData }: TrackingListProps): React
               <AutoSuggestInput
                 search={handleSelectedSearch}
                 type={'name'}
+                placeholder={psString('auto-placeholder-2')}
                 getNameList={trackingList}
               />
               <SearchBtn />

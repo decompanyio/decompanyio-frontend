@@ -36,6 +36,7 @@ export default function MainTopSearch(): ReactElement {
       <AutoSuggestInput
         search={onSuggestionSelected}
         type="tag"
+        placeholder={psString('auto-placeholder-1')}
         enter={onClickSearchBtn}
       />
       <button

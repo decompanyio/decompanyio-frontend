@@ -105,6 +105,7 @@ export default {
   // royalty 계산 기준일
   royaltyCalculatedDate: 7,
 
+  // Style 설정
   style: {
     md: {
       max: {

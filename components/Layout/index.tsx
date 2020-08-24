@@ -77,9 +77,25 @@ export default function Layout(props): ReactElement {
     let currentScrollPos = window.pageYOffset
     let headerMainNav = document.getElementById('headerMainNav')
     let totalLoadingBar = document.getElementById('totalLoadingBar')
+    let mainFloatingTag = document.getElementById('mainFloatingTag')
     let isScrollAtTop =
-      currentScrollPos <= (commonView.getIsTablet() ? 90 : 170)
+      currentScrollPos <= (commonView.getIsTablet() ? 90 : 130)
     let isScrollUp = _prevScrollPos > currentScrollPos
+
+    // main 페이지 모바일, 스크롤 특정 비율 넘어갈시 tag 숨김
+    if (!path && mainFloatingTag && commonView.getIsMobile()) {
+      let isScrollHalfOver =
+        Number(document.documentElement.scrollHeight / 1.2) <=
+        Number(
+          document.documentElement.clientHeight +
+            document.documentElement.scrollTop
+        )
+
+      if (mainFloatingTag.style.display !== 'none' && isScrollHalfOver)
+        mainFloatingTag.style.display = 'none'
+      else if (mainFloatingTag.style.display !== 'block' && !isScrollHalfOver)
+        mainFloatingTag.style.display = 'block'
+    }
 
     // main 이외 페이지에서 헤더 숨길/표시 처리
     if (path && headerMainNav) {
@@ -87,7 +103,7 @@ export default function Layout(props): ReactElement {
       headerMainNav.style.top = `${
         isScrollUp || isScrollAtTop
           ? '0'
-          : `${commonView.getIsTablet() ? '-91' : '-171'}`
+          : `${commonView.getIsTablet() ? '-91' : '-131'}`
       }px`
     }
 
@@ -95,7 +111,7 @@ export default function Layout(props): ReactElement {
     if (path && totalLoadingBar)
       totalLoadingBar.style.top = `${
         isScrollUp || isScrollAtTop
-          ? `${commonView.getIsTablet() ? '90' : '170'}`
+          ? `${commonView.getIsTablet() ? '90' : '130'}`
           : '0'
       }px`
 

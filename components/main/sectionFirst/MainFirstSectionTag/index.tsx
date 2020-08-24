@@ -33,7 +33,7 @@ export default function MainFirstSectionTag(): ReactElement {
   }
 
   return (
-    <div className={styles.mt_liveTag}>
+    <div className={styles.mt_liveTag} id="mainFloatingTag">
       <div className={styles.mt_titleContainer}>
         <div>
           <span>{psString('main-tag-1')}</span>
