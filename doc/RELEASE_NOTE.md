@@ -1,7 +1,8 @@
 # Release Note
 
-## 2020.08.24-a
-- edit top list in main page
+## 2020.08.24-b
+- edit document top list in main page
+- edit tag category to display the searched tags 
 
 Bug fix
 - tag input searching not working

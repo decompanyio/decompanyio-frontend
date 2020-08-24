@@ -4,8 +4,12 @@ import { useMain } from '../../../redux/main/hooks'
 import TagListItem from '../../../service/model/TagListItem'
 import Link from 'next/link'
 import { APP_CONFIG } from '../../../app.config'
+import { HeaderTagProps } from '../../../typings/interfaces'
 
-export default function HeaderTag(): ReactElement {
+export default function HeaderTag({
+  path,
+  title
+}: HeaderTagProps): ReactElement {
   const { tagList } = useMain()
   const [isStart, setIsStart] = useState(true)
   const [isEnd, setIsEnd] = useState(false)
@@ -44,6 +48,14 @@ export default function HeaderTag(): ReactElement {
             ref={e => handleScrollArrow(e)}
           >
             <ol>
+              {path === 'contents_list' && (
+                <li>
+                  <button type="button" className={styles.ht_selectedButton}>
+                    <span>{title}</span>
+                  </button>
+                </li>
+              )}
+
               {(tagList as TagListItem[]).slice(0, 10).map(({ _id }, index) => (
                 <li key={index}>
                   <Link

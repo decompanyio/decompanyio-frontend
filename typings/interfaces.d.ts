@@ -448,3 +448,9 @@ export interface MainThirdSectionTopItemProps {
 }
 
 
+export interface HeaderTagProps {
+  path: string
+  title: string
+}
+
+

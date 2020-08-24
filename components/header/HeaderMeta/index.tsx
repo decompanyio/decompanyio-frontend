@@ -2,7 +2,10 @@ import Head from 'next/head'
 import React, { ReactElement } from 'react'
 import { MetaProps } from '../../../typings/interfaces'
 
-export default function HeaderMeta({ title, metaData }: MetaProps): ReactElement {
+export default function HeaderMeta({
+  title,
+  metaData
+}: MetaProps): ReactElement {
   return (
     <Head>
       <title>{title}</title>

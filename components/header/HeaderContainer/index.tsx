@@ -24,7 +24,7 @@ export default function HeaderContainer({
           <HeaderSectionSecond />
         </div>
 
-        <HeaderTag />
+        <HeaderTag path={path} title={title.split('|')[0]} />
       </nav>
 
       {path === 'contents_view' && <HeaderLoadingBar />}
