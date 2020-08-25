@@ -2,18 +2,8 @@ import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { APP_CONFIG } from '../../../../app.config'
 import commonData from '../../../../common/commonData'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import DocumentCardInfo from '../../../../graphql/queries/DocumentCardInfo.graphql'
-import _ from 'lodash'
-import DocumentInfo from '../../../../service/model/DocumentInfo'
-import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../../graphql/models/UserInfo'
 import common from '../../../../common/common'
 import dynamic from 'next/dynamic'
-//import { useMain } from '../../../../redux/main/hooks'
 import Link from 'next/link'
 import { MainThirdSectionTopItemProps } from '../../../../typings/interfaces'
 
@@ -24,74 +14,25 @@ const UserAvatarWithoutSSR = dynamic(
 )
 
 export default function MainThirdSectionTopItem({
-  userId,
-  documentId
+  documentData,
+  documentRoyalty
 }: MainThirdSectionTopItemProps): ReactElement {
-  //const { isMobile } = useMain()
-  const { loading, error, data } = useQuery(
-    gql`
-      ${DocumentCardInfo}
-    `,
-    {
-      context: {
-        clientName: 'query'
-      },
-      variables: {
-        userId: userId || '',
-        documentId_scalar: documentId,
-        documentId: documentId,
-        days: 7
-      },
-      notifyOnNetworkStatusChange: false
-    }
-  )
-
-  if (error || !data) return <div />
-
-  let _data = {
-    Document: {},
-    User: {},
-    Creator: {},
-    DocumentFeatured: {},
-    DocumentPopular: {}
-  }
-
-  if (!loading) {
-    _.chain(data)
-      .forOwn((v, k) => {
-        _data[k] = _.values(v)[0]
-      })
-      .value()
-  }
-
-  const { Document, User, Creator, DocumentFeatured, DocumentPopular } = _data
-
-  const documentInfo = new DocumentInfo(Document)
-  const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
-  const documentPopular = new DocumentPopularModel(DocumentPopular)
-  const creatorRoyalty = new CreatorRoyalty(Creator[0])
-  documentInfo.author = new UserInfo(User)
-  documentInfo.latestPageview = documentPopular.latestPageview
-  documentInfo.latestVoteAmount = documentFeatured.latestVoteAmount
-
   let imgUrl_1 = common.getThumbnail(
-    documentId,
+    documentData.id,
     320,
     1,
-    documentInfo.documentName
+    documentData.documentName
   )
   let imgUrl_2 = common.getThumbnail(
-    documentId,
+    documentData.id,
     640,
     1,
-    documentInfo.documentName
+    documentData.documentName
   )
-  let vote = common.deckStr(
-    common.toEther(documentFeatured.latestVoteAmount) || 0
-  )
+  let vote = common.deckStr(common.toEther(documentData.latestVoteAmount) || 0)
   let ratio = common.getRatio(
-    documentInfo.dimensions.width,
-    documentInfo.dimensions.height
+    documentData.dimensions.width,
+    documentData.dimensions.height
   )
 
   return (
@@ -99,9 +40,9 @@ export default function MainThirdSectionTopItem({
       <Link
         href={{
           pathname: '/contents_view',
-          query: { seoTitle: documentInfo.seoTitle }
+          query: { seoTitle: documentData.seoTitle }
         }}
-        as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+        as={`/@${documentData.author.username}/${documentData.seoTitle}`}
       >
         <a aria-label="viewer page">
           <div className={styles.mtli_thumb}>
@@ -110,7 +51,7 @@ export default function MainThirdSectionTopItem({
               data-src={imgUrl_1}
               data-srcset={imgUrl_1 + ' 320w, ' + imgUrl_2 + ' 640w'}
               sizes="320w"
-              alt={documentInfo.title}
+              alt={documentData.title}
               className={
                 'lazy ' +
                 (ratio >= 1.6 ? styles.mtli_imgLandscape : styles.mtli_img)
@@ -123,7 +64,7 @@ export default function MainThirdSectionTopItem({
                   APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
             />
-            <span>{common.localeToCountry(documentInfo.locale)}</span>
+            <span>{common.localeToCountry(documentData.locale)}</span>
           </div>
         </a>
       </Link>
@@ -132,20 +73,20 @@ export default function MainThirdSectionTopItem({
           <Link
             href={{
               pathname: '/contents_view',
-              query: { seoTitle: documentInfo.seoTitle }
+              query: { seoTitle: documentData.seoTitle }
             }}
-            as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+            as={`/@${documentData.author.username}/${documentData.seoTitle}`}
           >
-            <a aria-label="viewer page">{documentInfo.title}</a>
+            <a aria-label="viewer page">{documentData.title}</a>
           </Link>
         </p>
         <div className={styles.mtli_contentItemWrapper}>
           <div>
             <i className={styles.sprite_a} />
             <span className={styles.mtli_money}>
-              {creatorRoyalty.royalty === 0
+              {documentRoyalty === 0
                 ? 'FREE'
-                : common.deckToDollarWithComma(creatorRoyalty.royalty)}
+                : common.deckToDollarWithComma(documentRoyalty)}
             </span>
           </div>
           <div>
@@ -161,27 +102,27 @@ export default function MainThirdSectionTopItem({
           <Link
             href={{
               pathname: '/profile_page',
-              query: { identification: documentInfo.author.username }
+              query: { identification: documentData.author.username }
             }}
-            as={`/@${documentInfo.author.username}`}
+            as={`/@${documentData.author.username}`}
           >
             <a rel="nofollow" aria-label="profile page">
               <div className={styles.mtli_info}>
                 <span className={styles.mtli_avatar}>
                   <UserAvatarWithoutSSR
-                    picture={documentInfo.author.picture}
-                    croppedArea={documentInfo.author.croppedArea}
+                    picture={documentData.author.picture}
+                    croppedArea={documentData.author.croppedArea}
                     size={30}
                   />
                 </span>
                 <span className={styles.mtli_id}>
-                  {documentInfo.author.username}
+                  {documentData.author.username}
                 </span>
               </div>
             </a>
           </Link>
           {/*<p className={styles.mtli_time}>
-            {commonView.dateTimeAgo(documentInfo.created, isMobile)}
+            {commonView.dateTimeAgo(documentData.created, isMobile)}
             <br />
             (for 4 weeks)
           </p>*/}

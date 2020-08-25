@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.08.25-a
+- improved main page loading speed
+
 ## 2020.08.24-b
 - edit document top list in main page
 - edit tag category to display the searched tags 

@@ -1,15 +1,6 @@
 import React, { ReactElement, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { MainHexSliderItemProps } from '../../../../typings/interfaces'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import DocumentCardInfo from '../../../../graphql/queries/DocumentCardInfo.graphql'
-import _ from 'lodash'
-import DocumentInfo from '../../../../service/model/DocumentInfo'
-import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
-import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
-import CreatorRoyalty from '../../../../graphql/models/CreatorRoyalty'
-import UserInfo from '../../../../graphql/models/UserInfo'
 import common from '../../../../common/common'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -28,64 +19,16 @@ const UserAvatarWithoutSSR = dynamic(
 export default function MainFirstSectionHexItem({
   activeIndex,
   slideIndex,
-  userId,
-  documentId
+  documentData,
+  documentRoyalty
 }: MainHexSliderItemProps): ReactElement {
   const [rewardInfoOpen, setRewardInfo] = useState(false)
-  const { loading, error, data } = useQuery(
-    gql`
-      ${DocumentCardInfo}
-    `,
-    {
-      context: {
-        clientName: 'query'
-      },
-      variables: {
-        userId: userId || '',
-        documentId_scalar: documentId,
-        documentId: documentId,
-        days: 7
-      },
-      notifyOnNetworkStatusChange: false
-    }
-  )
 
-  if (error) return <div />
-
-  let _data = {
-    Document: {},
-    User: {},
-    Creator: {},
-    DocumentFeatured: {},
-    DocumentPopular: {}
-  }
-
-  if (!loading) {
-    _.chain(data)
-      .forOwn((v, k) => {
-        _data[k] = _.values(v)[0]
-      })
-      .value()
-  }
-
-  const { Document, User, Creator, DocumentFeatured, DocumentPopular } = _data
-
-  const documentInfo = new DocumentInfo(Document)
-  const documentFeatured = new DocumentFeaturedModel(DocumentFeatured)
-  const documentPopular = new DocumentPopularModel(DocumentPopular)
-  const creatorRoyalty = new CreatorRoyalty(Creator[0])
-
-  documentInfo.author = new UserInfo(User)
-  documentInfo.latestPageview = documentPopular.latestPageview
-  documentInfo.latestVoteAmount = documentFeatured.latestVoteAmount
-
-  let vote = common.deckStr(
-    common.toEther(documentFeatured.latestVoteAmount) || 0
-  )
+  let vote = common.deckStr(common.toEther(documentData.latestVoteAmount) || 0)
   // @ts-ignore
-  let tag = documentInfo.tags.length > 0 ? documentInfo.tags[0] : ''
-  // let documentName = documentInfo.documentName.split('.')[0]
-  let extension = documentInfo.documentName.split('.').reverse()[0]
+  let tag = documentData.tags.length > 0 ? documentData.tags[0] : ''
+  // let documentName = documentData.documentName.split('.')[0]
+  let extension = documentData.documentName.split('.').reverse()[0]
 
   return (
     <div
@@ -102,7 +45,7 @@ export default function MainFirstSectionHexItem({
       <div className={styles.mhsi_wrapper}>
         <div className={styles.mhsi_tag}>
           <span className={styles.mhsi_badge}>
-            {common.localeToCountry(documentInfo.locale)}
+            {common.localeToCountry(documentData.locale)}
           </span>
           <Link
             href={{ pathname: '/contents_list', query: { tag: tag } }}
@@ -117,24 +60,24 @@ export default function MainFirstSectionHexItem({
           <Link
             href={{
               pathname: '/contents_view',
-              query: { seoTitle: documentInfo.seoTitle }
+              query: { seoTitle: documentData.seoTitle }
             }}
-            as={`/@${documentInfo.author.username}/${documentInfo.seoTitle}`}
+            as={`/@${documentData.author.username}/${documentData.seoTitle}`}
           >
             <a aria-label="viewer page">
               <h3 className={styles.mhsi_title}>
-                {commonView.convertToEllipsis(documentInfo.title, 20)}
+                {commonView.convertToEllipsis(documentData.title, 20)}
               </h3>
             </a>
           </Link>
         </div>
         <div className={styles.mhsi_desc}>
           <Truncate lines={2} ellipsis={<span>...</span>}>
-            {documentInfo.desc}
+            {documentData.desc}
           </Truncate>
         </div>
         <div className={styles.mhsi_date}>
-          {common.timestampToDate(documentInfo.created)}
+          {common.timestampToDate(documentData.created)}
         </div>
 
         <div className={styles.mhsi_fileInfo}>
@@ -142,7 +85,7 @@ export default function MainFirstSectionHexItem({
             {/*documentName*/}
             <span>.{extension}</span>
           </span>
-          <span>{documentInfo.latestPageview} views</span>
+          <span>{documentData.latestPageview} views</span>
         </div>
         <div className={styles.mhsi_infoGroup}>
           <div
@@ -151,21 +94,19 @@ export default function MainFirstSectionHexItem({
           >
             <i className={styles.mhsi_iconMoney} aria-label="sum" />
             <span>
-              {creatorRoyalty.royalty === 0
+              {documentRoyalty === 0
                 ? 'FREE'
-                : common.deckToDollarWithComma(creatorRoyalty.royalty)}
+                : common.deckToDollarWithComma(documentRoyalty)}
             </span>
 
-            {creatorRoyalty.royalty !== 0 && (
+            {documentRoyalty !== 0 && (
               <i className={styles.mhsi_iconDown} aria-label="down" />
             )}
 
-            {creatorRoyalty.royalty > 0 && rewardInfoOpen && (
+            {documentRoyalty > 0 && rewardInfoOpen && (
               <div className={styles.mhsi_rewardInfo}>
                 {psString('profile-payout-txt-1')}
-                <span>
-                  {!creatorRoyalty.royalty ? 0 : creatorRoyalty.royalty} POLA
-                </span>
+                <span>{!documentRoyalty ? 0 : documentRoyalty} POLA</span>
                 {psString('profile-payout-txt-2')}
               </div>
             )}
@@ -185,14 +126,14 @@ export default function MainFirstSectionHexItem({
             <Link
               href={{
                 pathname: '/profile_page',
-                query: { identification: documentInfo.author.username }
+                query: { identification: documentData.author.username }
               }}
-              as={`/@${documentInfo.author.username}`}
+              as={`/@${documentData.author.username}`}
             >
               <a rel="nofollow" aria-label="profile page">
                 <UserAvatarWithoutSSR
-                  picture={documentInfo.author.picture}
-                  croppedArea={documentInfo.author.croppedArea}
+                  picture={documentData.author.picture}
+                  croppedArea={documentData.author.croppedArea}
                   size={70}
                 />
               </a>
@@ -204,13 +145,13 @@ export default function MainFirstSectionHexItem({
           <Link
             href={{
               pathname: '/profile_page',
-              query: { identification: documentInfo.author.username }
+              query: { identification: documentData.author.username }
             }}
-            as={`/@${documentInfo.author.username}`}
+            as={`/@${documentData.author.username}`}
           >
             <a rel="nofollow" aria-label="profile page">
               <div className={styles.mhsi_username}>
-                {documentInfo.author.username}
+                {documentData.author.username}
               </div>
             </a>
           </Link>

@@ -411,13 +411,12 @@ export interface DropdownProps {
 export interface MainHexSliderItemProps {
   activeIndex: number
   slideIndex: number
-  userId: string
-  documentId: string
+  documentData: DocumentInfo
+  documentRoyalty
 }
 
 export interface MainRecentItemProps {
-  userId: string
-  documentId: string
+  documentData: DocumentInfo
 }
 
 export interface MainTopListItemProps {
@@ -426,6 +425,21 @@ export interface MainTopListItemProps {
 }
 
 export interface contentsListIDList {
+  account: string[]
+  document: string[]
+}
+
+export interface mainHexSliderListIDList {
+  account: string[]
+  document: string[]
+}
+
+export interface recentListIDList {
+  account: string[]
+  document: string[]
+}
+
+export interface documentTopIDList {
   account: string[]
   document: string[]
 }
@@ -443,8 +457,8 @@ export interface headerSectionFirstProps {
 }
 
 export interface MainThirdSectionTopItemProps {
-  userId: string
-  documentId: string
+  documentData: DocumentInfo
+  documentRoyalty
 }
 
 
