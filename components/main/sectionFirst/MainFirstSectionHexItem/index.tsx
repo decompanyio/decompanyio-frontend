@@ -30,8 +30,6 @@ export default function MainFirstSectionHexItem({
   // let documentName = documentData.documentName.split('.')[0]
   let extension = documentData.documentName.split('.').reverse()[0]
 
-  console.log(documentData.tags)
-
   return (
     <div
       className={

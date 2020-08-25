@@ -97,7 +97,7 @@ export default function Layout(props): ReactElement {
         mainFloatingTag.style.display = 'block'
     }
 
-    // main 이외 페이지에서 헤더 숨길/표시 처리
+    // main 이외 페이지에서 헤더 숨김/표시 처리
     if (path && headerMainNav) {
       headerMainNav.style.marginBottom = '0px'
       headerMainNav.style.top = `${
@@ -107,7 +107,7 @@ export default function Layout(props): ReactElement {
       }px`
     }
 
-    // main 이외 페이지에서 로딩 숨길/표시 처리
+    // main 이외 페이지에서 로딩 숨김/표시 처리
     if (path && totalLoadingBar)
       totalLoadingBar.style.top = `${
         isScrollUp || isScrollAtTop
