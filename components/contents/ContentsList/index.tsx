@@ -15,8 +15,6 @@ import LatestDocumentPagination from '../../../graphql/queries/LatestDocumentPag
 import TagDocumentPagination from '../../../graphql/queries/TagDocumentPagination.graphql'
 import PopularDocumentPagination from '../../../graphql/queries/PopularDocumentPagination.graphql'
 import FeaturedDocumentPagination from '../../../graphql/queries/FeaturedDocumentPagination.graphql'
-import FavoriteDocumentPagination from '../../../graphql/queries/FavoriteDocumentPagination.graphql'
-import HistoryDocumentPagination from '../../../graphql/queries/HistoryDocumentPagination.graphql'
 import ContentsListMock from '../../common/mock/ContentsListMock'
 import ContentsListItem from '../ContentsItem'
 import { AUTH_APIS } from '../../../utils/auth'
@@ -39,9 +37,7 @@ export default function ContentsList({
       ${{
         latest: tag ? TagDocumentPagination : LatestDocumentPagination,
         popular: PopularDocumentPagination,
-        featured: FeaturedDocumentPagination,
-        mylist: FavoriteDocumentPagination,
-        history: HistoryDocumentPagination
+        featured: FeaturedDocumentPagination
       }[path || 'latest']}
     `,
     {
@@ -270,7 +266,6 @@ export default function ContentsList({
             >
               <ContentsListItem
                 documentData={data}
-                path={path}
                 documentRoyalty={documentRoyaltyList[idx]}
               />
             </div>

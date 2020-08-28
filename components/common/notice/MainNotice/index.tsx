@@ -28,7 +28,7 @@ export default function MainNotice(): ReactElement {
         <div className={styles.mn_notifyTop}>
           <div className={styles.mn_notifyTopWrap}>
             {psString('main-notice-text')}
-            <button type="button" onClick={() => handleCloseBtnClick()}>
+            <button type="button" onClick={() => handleCloseBtnClick()} aria-label="close notice bar">
               <span className={styles.mn_hide}>닫기</span>
             </button>
           </div>

@@ -20,7 +20,7 @@ const UserAvatarWithoutSSR = dynamic(
 export default function ViewInfoBox({
   documentData
 }: ViewInfoBoxProps): ReactElement {
-  const { myInfo, isMobile } = useMain()
+  const { isMobile } = useMain()
   const [rewardInfoOpen, setRewardInfo] = useState(false)
   const [reward, setReward] = useState(0)
 
@@ -96,14 +96,15 @@ export default function ViewInfoBox({
               />
             )}
           </span>
+
           {reward > 0 && rewardInfoOpen && (
             <RewardCard reward={reward} documentData={documentData} />
           )}
+
           <span className={styles.vib_view}>{view}</span>
           <span className={styles.vib_vote}>{common.deckStr(vote)}</span>
-          {AUTH_APIS.isLogin() && documentData.author.sub === myInfo.id && (
-            <ViewOption documentData={documentData} />
-          )}
+
+          {AUTH_APIS.isLogin() && <ViewOption documentData={documentData} />}
         </div>
       </div>
     </div>

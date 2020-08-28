@@ -18,7 +18,6 @@ const UserAvatarWithoutSSR = dynamic(
 
 export default function ContentsItem({
   documentData,
-  path,
   documentRoyalty
 }: ContentsItemProps): ReactElement {
   const [rewardInfoOpen, setRewardInfo] = useState(false)
@@ -157,7 +156,7 @@ export default function ContentsItem({
           <span className={styles.cl_view}>{documentData.latestPageview}</span>
           <span className={styles.cl_vote}>{vote}</span>
           {AUTH_APIS.isLogin() && (
-            <ContentsBookmark documentData={documentData} path={path} />
+            <ContentsBookmark documentData={documentData} />
           )}
         </div>
 

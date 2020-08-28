@@ -1,11 +1,15 @@
 query ContentsListItemInfoFindmany {
     Document {
-        findMany(filter: { _ids: ["d797bf730900431699cc0fa971e4044a"
-        ,"c00c120425ab4af9a1f2d4b7254c62c7"
-        ,"fc620a831aaf47a7b0b2d05e0da97a1e"
-        ,"0a5455b24e7c48aaa76e3d48bbb7cac0"
-        ,"0948457d2ba545ebb00f60c615b79cf8"
-        ,"fb758f45c7054ccf9df48b8b54e4d299"] }, sort: STATE__CREATED_DESC) {
+        findMany(filter: { _ids: ["647a8980f9484ea3a3b1a770bbd34546"
+            ,"8b2adcc4c41e43108b7ba031072c948c"
+            , "c09c102bdb2b47f0846b493aaac666b5"
+            , "3afcdde7236d4a44bf7b1780a64964de"
+            , "8b2adcc4c41e43108b7ba031072c948c"
+            , "5adeb7fa3e7147a797c56914aba4dea9"
+            ,"647a8980f9484ea3a3b1a770bbd34546"
+            , "8b2adcc4c41e43108b7ba031072c948c"
+            , "5fca76c1ce20474dafcc8bbf28201e1a"
+            , "e375b324cdaa44f9a5393440beda555b"], isBlocked: false, isDeleted: false, isPublic: true }, sort: STATE__CREATED_DESC) {
             _id
             created
             state

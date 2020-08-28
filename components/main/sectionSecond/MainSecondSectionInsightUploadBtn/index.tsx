@@ -24,6 +24,7 @@ export default function MainSecondSectionInsightUploadBtn(): ReactElement {
       type="button"
       className={styles.miub_uploadBtn}
       onClick={() => handleAddBtnClick()}
+      aria-label="upload document"
     >
       <b>UPLOAD </b>
       <span>{psString('main-visual-4')}</span>

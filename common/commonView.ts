@@ -21,41 +21,55 @@ export default {
 
     if (y > 0) {
       return (
-        y + (isMobile ? 'y' : ' ' + psString('common-year')) + checkMultiple(y)
+        y +
+        (isMobile
+          ? psString('common-year-sm')
+          : ' ' + psString('common-year')) +
+        checkMultiple(y)
       )
     } else {
       if (m > 0) {
         return (
           m +
-          (isMobile ? 'm' : ' ' + psString('common-month')) +
+          (isMobile
+            ? psString('common-month-sm')
+            : ' ' + psString('common-month')) +
           checkMultiple(m)
         )
       } else {
         if (d > 0) {
           return (
             d +
-            (isMobile ? 'd' : ' ' + psString('common-day')) +
+            (isMobile
+              ? psString('common-day-sm')
+              : ' ' + psString('common-day')) +
             checkMultiple(d)
           )
         } else {
           if (hh > 0) {
             return (
               hh +
-              (isMobile ? 'h' : ' ' + psString('common-hour')) +
+              (isMobile
+                ? psString('common-hour-sm')
+                : ' ' + psString('common-hour')) +
               checkMultiple(hh)
             )
           } else {
             if (mm > 0) {
               return (
                 mm +
-                (isMobile ? 'm' : ' ' + psString('common-minute')) +
+                (isMobile
+                  ? psString('common-minute-sm')
+                  : ' ' + psString('common-minute')) +
                 checkMultiple(mm)
               )
             } else {
               if (ss > 0) {
                 return (
                   ss +
-                  (isMobile ? 's' : ' ' + psString('common-sectionSecond')) +
+                  (isMobile
+                    ? psString('common-sectionSecond-sm')
+                    : ' ' + psString('common-sectionSecond')) +
                   checkMultiple(ss)
                 )
               } else return 'now'

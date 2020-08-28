@@ -1,6 +1,13 @@
 # Release Note
 
-## 2020.08.25-a
+## 2020.08.27-a
+- add aria-label to buttons
+- add mylist and history list on profile page
+
+Bug fix
+- not including meta component in main page
+
+## 2020.08.25-b
 - improved main page loading speed
 
 ## 2020.08.24-b

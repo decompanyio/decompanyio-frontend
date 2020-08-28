@@ -7,8 +7,7 @@ import { useMain } from '../../../redux/main/hooks'
 import _ from 'lodash'
 
 export default function ContentsBookmark({
-  documentData,
-  path
+  documentData
 }: ContentsBookmarkProps): ReactElement {
   const { setAlertCode, myInfo } = useMain()
   const [bookmarkFlag, setBookmarkFlag] = useState(false)
@@ -29,9 +28,6 @@ export default function ContentsBookmark({
 
     repos.Mutation.removeMyList(documentData.documentId)
       .then(() => setAlertCode(2123, {}))
-      .then((): void | boolean =>
-        path === 'mylist' ? window.location.reload() : true
-      )
       .catch(() => {
         setAlertCode(2124, {})
         setBookmarkFlag(true)

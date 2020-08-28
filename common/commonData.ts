@@ -54,27 +54,27 @@ export default {
 
   // 메타 데이터 기본값
   metaData: {
-    title: 'Polaris ShareModal',
+    title: 'Polaris Share',
     extension: '',
     tag: '',
-    seoTitle: 'Polaris ShareModal',
+    seoTitle: 'Polaris Share',
     description: 'Sharing knowledge in new ways',
     twitter: {
       card: 'summary_large_image',
-      site: '@Polaris ShareModal',
-      title: 'Polaris ShareModal',
+      site: '@Polaris Share',
+      title: 'Polaris Share',
       description: 'Sharing knowledge in new ways',
       image: 'https://www.polarishare.com/logo.png',
       url: 'https://www.polarishare.com'
     },
     og: {
       /*eslint-disable @typescript-eslint/camelcase*/
-      site_name: 'Polaris ShareModal',
+      site_name: 'Polaris Share',
       image_width: '720',
       image_height: '498',
       /*eslint-disable @typescript-eslint/camelcase*/
       type: 'website',
-      title: 'Polaris ShareModal',
+      title: 'Polaris Share',
       description: 'Sharing knowledge in new ways',
       url: 'https://www.polarishare.com'
     }

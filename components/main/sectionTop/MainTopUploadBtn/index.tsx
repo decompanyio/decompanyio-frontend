@@ -24,6 +24,7 @@ export default function MainTopUploadBtn(): ReactElement {
       type="button"
       className={styles.mhub_button}
       onClick={() => handleAddBtnClick()}
+      aria-label="Upload Document"
     >
       <b>UPLOAD</b>
       <span>{psString('main-visual-4')}</span>

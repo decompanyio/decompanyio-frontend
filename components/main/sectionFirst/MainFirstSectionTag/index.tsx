@@ -61,6 +61,7 @@ export default function MainFirstSectionTag(): ReactElement {
                   <button
                     type="button"
                     className={styles['mt_tag_' + getTagNum(index)]}
+                    aria-label={'tag ' + _id}
                   >
                     <span>{_id}</span>
                   </button>

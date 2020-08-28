@@ -43,6 +43,7 @@ export default function MainTopSearch(): ReactElement {
         type="button"
         className={styles.mhs_btnSearch}
         onClick={() => onClickSearchBtn()}
+        aria-label="search tag"
       >
         <span className={styles.mhs_hide}>
           {psString('main-sectionTop-search')}

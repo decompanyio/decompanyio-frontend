@@ -186,13 +186,11 @@ export default function Layout(props): ReactElement {
 
       {!path && <MainNotice />}
 
-      {path && (
-        <Header
-          title={props.title}
-          path={path}
-          metaData={new Meta(props.metaData || null)}
-        />
-      )}
+      <Header
+        title={props.title}
+        path={path}
+        metaData={new Meta(props.metaData || null)}
+      />
 
       {path && <CookiePolicyNotice />}
 

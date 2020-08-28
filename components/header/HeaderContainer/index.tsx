@@ -12,6 +12,13 @@ export default function HeaderContainer({
   path,
   metaData
 }: HeaderProps): ReactElement {
+  if (!path)
+    return (
+      <header>
+        <Meta title={title} metaData={metaData} />
+      </header>
+    )
+
   return (
     <header>
       <Meta title={title} metaData={metaData} />

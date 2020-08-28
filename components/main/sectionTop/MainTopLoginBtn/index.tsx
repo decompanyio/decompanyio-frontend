@@ -8,6 +8,7 @@ export default function MainTopLoginBtn(): ReactElement {
       type="button"
       className={styles.mhlb_btnLogin}
       onClick={(): void => AUTH_APIS.login()}
+      aria-label="log in"
     >
       <span>Log in</span>
     </button>

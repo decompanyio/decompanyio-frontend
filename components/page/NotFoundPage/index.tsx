@@ -10,7 +10,7 @@ export default function NotFoundPage(): ReactElement {
         <i className={styles.nfpw_img} />
         <p className={styles.nfpw_txt}>{psString('404-text')}</p>
         <div className={styles.nfpw_container_btn}>
-          <button type="button" onClick={() => Router.push('/')}>
+          <button type="button" onClick={() => Router.push('/')} aria-label="link to main page">
             {psString('404-button')}
           </button>
         </div>

@@ -1,0 +1,22 @@
+
+.puti_descWrapper {
+  height: 44px;
+  overflow: hidden;
+
+  @media all and (max-width: $sm-max-width) {
+    max-height: 58px;
+  }
+}
+
+.puti_desc {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+
+  @media all and (max-width: $sm-max-width) {
+    font-size: 13px;
+  }
+}

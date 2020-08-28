@@ -37,7 +37,6 @@ export interface documentPaginationProps {
 
 export interface ContentsBookmarkProps {
   documentData: DocumentInfo
-  path: string
 }
 
 export interface ContentsListProps {
@@ -56,7 +55,6 @@ export interface ParamsGetDocumentList {
 export interface ContentsItemProps {
   documentData: DocumentInfo
   documentRoyalty
-  path: string
 }
 
 export interface DocumentCardListProps {
@@ -128,6 +126,58 @@ export interface ProfileUploadTabItemProps {
   handleUploadSettings: () => void
   viewerOptionOpenedIdx: number
   owner: boolean | number
+}
+
+export interface ProfileMyListItemProps {
+  documentData: DocumentInfo
+  documentRoyalty
+}
+
+export interface ProfileHistoryItemProps {
+  documentData: DocumentInfo
+  documentRoyalty
+}
+
+export interface ProfileMyListThumbProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileHistoryThumbProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileMyListTitleProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileHistoryTitleProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileMyListDescProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileHistoryDescProps {
+  documentData: DocumentInfo
+}
+
+export interface ProfileMyListInfoProps {
+  documentData: DocumentInfo
+  documentRoyalty
+}
+
+export interface ProfileHistoryInfoProps {
+  documentData: DocumentInfo
+  documentRoyalty
+}
+
+export interface ProfileMyListTabProps {
+  profileInfo
+}
+
+export interface ProfileHistoryTabProps {
+  profileInfo
 }
 
 export interface ProfileUploadOptionProps {

@@ -53,28 +53,37 @@ export default function ViewOption({
       </i>
       {optionTable && (
         <div className={styles.vib_optionTable} id="viewer-option-table">
-          <div
-            className={styles.vib_optionTableBtn}
-            onClick={() => setRequiredForDownload()}
-          >
-            <i className="material-icons">save_alt</i>
-            {psString('download-btn')}
-          </div>
+          {documentData.author.sub === myInfo.id && (
+            <div
+              className={styles.vib_optionTableBtn}
+              onClick={() => setRequiredForDownload()}
+            >
+              <i className="material-icons">save_alt</i>
+              {psString('download-btn')}
+            </div>
+          )}
+
           <ViewBookmark documentData={documentData} />
-          <div
-            className={styles.vib_optionTableBtn}
-            onClick={() => handleSettingsBtnClick()}
-          >
-            <i className="material-icons">settings_applications</i>
-            {psString('common-modal-settings')}
-          </div>
-          <div
-            className={styles.vib_optionTableBtn}
-            onClick={() => handleDeleteBtnClick()}
-          >
-            <i className="material-icons">delete</i>
-            {psString('common-modal-delete')}
-          </div>
+
+          {documentData.author.sub === myInfo.id && (
+            <div
+              className={styles.vib_optionTableBtn}
+              onClick={() => handleSettingsBtnClick()}
+            >
+              <i className="material-icons">settings_applications</i>
+              {psString('common-modal-settings')}
+            </div>
+          )}
+
+          {documentData.author.sub === myInfo.id && (
+            <div
+              className={styles.vib_optionTableBtn}
+              onClick={() => handleDeleteBtnClick()}
+            >
+              <i className="material-icons">delete</i>
+              {psString('common-modal-delete')}
+            </div>
+          )}
         </div>
       )}
     </div>

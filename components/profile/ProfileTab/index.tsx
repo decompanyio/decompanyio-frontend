@@ -6,6 +6,8 @@ import ProfileVoteTab from '../profileVote/ProfileVoteTab'
 import ProfileAnalyticsTab from '../ProfileAnalytics'
 import React, { ReactElement } from 'react'
 import { ProfileTabProps } from '../../../typings/interfaces'
+import ProfileMyListTab from '../profileMyList/ProfileMyListTab'
+import ProfileHistoryTab from '../profileHistory/ProfileHistoryTab'
 
 export default function ProfileTab({
   profileInfo,
@@ -17,7 +19,9 @@ export default function ProfileTab({
         <TabList>
           <Tab>{psString('profile-uploaded')}</Tab>
           <Tab>{psString('profile-voted')}</Tab>
-          {owner && <Tab>{psString('profile-ProfileAnalytics')}</Tab>}
+          {owner && <Tab>{psString('profile-profileAnalytics')}</Tab>}
+          {owner && <Tab>{psString('profile-profileMyList')}</Tab>}
+          {owner && <Tab>{psString('profile-profileHistory')}</Tab>}
         </TabList>
 
         <TabPanel>
@@ -31,6 +35,18 @@ export default function ProfileTab({
         {owner && (
           <TabPanel>
             <ProfileAnalyticsTab profileInfo={profileInfo} />
+          </TabPanel>
+        )}
+
+        {owner && (
+          <TabPanel>
+            <ProfileMyListTab profileInfo={profileInfo} />
+          </TabPanel>
+        )}
+
+        {owner && (
+          <TabPanel>
+            <ProfileHistoryTab profileInfo={profileInfo} />
           </TabPanel>
         )}
       </Tabs>

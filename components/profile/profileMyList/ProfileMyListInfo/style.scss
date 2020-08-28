@@ -1,0 +1,49 @@
+
+.puti_infoWrapper {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.puti_reward {
+  @include mr(3);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  top: 1px;
+  letter-spacing: -1px;
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.puti_arrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.puti_view {
+  @include mr(3);
+  @include common_view;
+}
+
+.puti_vote {
+  @include mr(3);
+  @include common_vote;
+}
+
+.puti_date {
+  @include ml(0);
+  @include ml-sm(3);
+  font-size: 14px;
+  color: #b3b3b3;
+  position: relative;
+  height: 25px;
+  display: inline-block;
+}

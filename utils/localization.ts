@@ -810,10 +810,24 @@ const strings = new Map([
     }
   ],
   [
-    'profile-ProfileAnalytics',
+    'profile-profileAnalytics',
     {
       KOR: '통계분석',
       ENG: 'Analytics'
+    }
+  ],
+  [
+    'profile-profileMyList',
+    {
+      KOR: '찜 목록',
+      ENG: 'My List'
+    }
+  ],
+  [
+    'profile-profileHistory',
+    {
+      KOR: '열람 목록',
+      ENG: 'History'
     }
   ],
   [
@@ -1146,7 +1160,7 @@ const strings = new Map([
     'common-modal-title',
     {
       KOR: '제목',
-      ENG: 'ProfileUploadTitle'
+      ENG: 'ProfileHistoryTitle'
     }
   ],
   [
@@ -1263,10 +1277,24 @@ const strings = new Map([
     }
   ],
   [
+    'common-year-sm',
+    {
+      KOR: '년',
+      ENG: 'y'
+    }
+  ],
+  [
     'common-month',
     {
       KOR: '개월',
       ENG: 'month'
+    }
+  ],
+  [
+    'common-month-sm',
+    {
+      KOR: '개월',
+      ENG: 'm'
     }
   ],
   [
@@ -1277,10 +1305,24 @@ const strings = new Map([
     }
   ],
   [
+    'common-day-sm',
+    {
+      KOR: '일',
+      ENG: 'd'
+    }
+  ],
+  [
     'common-hour',
     {
       KOR: '시간',
       ENG: 'hour'
+    }
+  ],
+  [
+    'common-hour-sm',
+    {
+      KOR: '시간',
+      ENG: 'h'
     }
   ],
   [
@@ -1291,10 +1333,24 @@ const strings = new Map([
     }
   ],
   [
+    'common-minute-sm',
+    {
+      KOR: '분',
+      ENG: 'm'
+    }
+  ],
+  [
     'common-sectionSecond',
     {
       KOR: '초',
       ENG: 'second'
+    }
+  ],
+  [
+    'common-sectionSecond',
+    {
+      KOR: '초',
+      ENG: 's'
     }
   ],
   [
@@ -1315,7 +1371,7 @@ const strings = new Map([
     'title-placeholder',
     {
       KOR: '업로드 문서 제목',
-      ENG: 'ProfileUploadTitle of the uploading document'
+      ENG: 'ProfileHistoryTitle of the uploading document'
     }
   ],
   [
@@ -1419,7 +1475,7 @@ const strings = new Map([
     'edit-doc-error-1',
     {
       KOR: '제목은 한 글자 보다 길어야 합니다.',
-      ENG: 'ProfileUploadTitle must be longer than 1 character.'
+      ENG: 'ProfileHistoryTitle must be longer than 1 character.'
     }
   ],
   [

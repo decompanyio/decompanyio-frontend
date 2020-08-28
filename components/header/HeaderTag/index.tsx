@@ -50,7 +50,7 @@ export default function HeaderTag({
             <ol>
               {path === 'contents_list' && (
                 <li>
-                  <button type="button" className={styles.ht_selectedButton}>
+                  <button type="button" className={styles.ht_selectedButton} >
                     <span>{title}</span>
                   </button>
                 </li>
@@ -63,7 +63,7 @@ export default function HeaderTag({
                     as={'tag/' + _id}
                   >
                     <a aria-label={_id}>
-                      <button type="button" className={styles.ht_button}>
+                      <button type="button" className={styles.ht_button} aria-label={"tag " + _id}>
                         <span>{_id}</span>
                       </button>
                     </a>
