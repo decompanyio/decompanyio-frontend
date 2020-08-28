@@ -17,18 +17,21 @@ export default function Pagination({
   let totalPage = Math.ceil(totalCount / pageCount) // 전체 페이지
 
   // set pageNation data
-  const setData = () => {
-    const pageGroup = Math.ceil(currentPage / pageCount)
+  const setData = (firstPage?: number) => {
+    const pageGroup = Math.ceil(firstPage || currentPage / pageCount)
     const tmpLastNum =
       pageGroup * pageCount > totalPage ? totalPage : pageGroup * pageCount
     const tmpFirstNum =
-      tmpLastNum - (pageCount - 1) <= 0 ? 1 : tmpLastNum - (pageCount - 1)
+      tmpLastNum % pageCount === 0
+        ? tmpLastNum - 9
+        : tmpLastNum + 1 - (tmpLastNum % 10)
 
     setLastNum(tmpLastNum)
     setFirstNum(tmpFirstNum)
 
     let tempArray = Array()
-    for (let i = firstNum; i <= tmpLastNum; ++i) {
+
+    for (let i = tmpFirstNum; i <= tmpLastNum; ++i) {
       tempArray[i - 1] = i
     }
 
@@ -41,6 +44,20 @@ export default function Pagination({
     return click(page)
   }
 
+  const onClickNextBtn = () => {
+    let nextFirstNum = firstNum - (firstNum % 10) + 11
+    setCurrentPage(nextFirstNum)
+    setData(nextFirstNum)
+    return click(nextFirstNum)
+  }
+
+  const onClickPrevBtn = () => {
+    let prevLastNum = firstNum - (firstNum % 10) - 9
+    setCurrentPage(prevLastNum + 9)
+    setData(prevLastNum)
+    return click(prevLastNum + 9)
+  }
+
   useEffect(() => {
     setData()
   }, [])
@@ -51,6 +68,7 @@ export default function Pagination({
         <div
           className={styles.p_arrow}
           title={psString('page-nation-title-prev')}
+          onClick={() => onClickPrevBtn()}
         >
           <i className="material-icons">keyboard_arrow_left</i>
         </div>
@@ -70,6 +88,7 @@ export default function Pagination({
         <div
           className={styles.p_arrow}
           title={psString('page-nation-title-next')}
+          onClick={() => onClickNextBtn()}
         >
           <i className="material-icons">keyboard_arrow_right</i>
         </div>

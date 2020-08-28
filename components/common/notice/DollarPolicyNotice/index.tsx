@@ -7,7 +7,7 @@ import { useMain } from '../../../../redux/main/hooks'
 
 export default function DollarPolicyNotice(): ReactElement {
   const { setModal } = useMain()
-  const [dollarPolicyValue, setDollarPolicyValue] = useState(false)
+  const [dollarPolicyValue, setDollarPolicyValue] = useState(true)
 
   const handleCloseBtnClick = (): void => {
     commonView.setCookie('dpv', true, 1000)

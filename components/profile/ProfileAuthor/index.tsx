@@ -14,7 +14,8 @@ export default function ProfileAuthor({
   profileInfo,
   owner
 }: ProfileSummaryAuthorProps): ReactElement {
-  const { myInfo, setModal } = useMain()
+  // const { myInfo, setModal } = useMain()
+  const { myInfo } = useMain()
   const [userNameEdit, setUserNameEdit] = useState(false)
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
@@ -29,13 +30,13 @@ export default function ProfileAuthor({
     setUsername(value)
   }
 
-  const handleDepositBtnClick = (): void => {
+  /*  const handleDepositBtnClick = (): void => {
     setModal('deposit')
   }
 
   const handleWithdrawBtnClick = (): void => {
     setModal('withdraw')
-  }
+  }*/
 
   return (
     <div className={styles.ps_top}>
@@ -98,7 +99,7 @@ export default function ProfileAuthor({
           </span>
         </div>
 
-        {owner && (
+        {/*{owner && (
           <div className={styles.ps_depositBtnWrapper}>
             <p
               data-tip={psString('deposit-modal-title')}
@@ -115,7 +116,7 @@ export default function ProfileAuthor({
               {psString('common-modal-withdraw')}
             </p>
           </div>
-        )}
+        )}*/}
       </div>
     </div>
   )

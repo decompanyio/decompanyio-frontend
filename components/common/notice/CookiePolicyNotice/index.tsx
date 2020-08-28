@@ -4,7 +4,7 @@ import { psString } from 'utils/localization'
 import * as styles from 'public/static/styles/scss/index.scss'
 
 export default function CookiePolicyNotice(): ReactElement {
-  const [cookiePolicyValue, setCookiePolicyValue] = useState(false)
+  const [cookiePolicyValue, setCookiePolicyValue] = useState(true)
 
   const handleAcceptBtnClick = (): void => {
     commonView.setCookie('cpv', true, 1000)

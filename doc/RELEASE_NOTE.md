@@ -1,5 +1,9 @@
 # Release Note
 
+## 2020.08.28-a
+Bug fix
+- pagination not working
+
 ## 2020.08.27-a
 - add aria-label to buttons
 - add mylist and history list on profile page
