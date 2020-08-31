@@ -18,7 +18,7 @@ export default function Pagination({
 
   // set pageNation data
   const setData = (firstPage?: number) => {
-    const pageGroup = Math.ceil(firstPage || currentPage / pageCount)
+    const pageGroup = Math.ceil((firstPage || currentPage) / pageCount)
     const tmpLastNum =
       pageGroup * pageCount > totalPage ? totalPage : pageGroup * pageCount
     const tmpFirstNum =
@@ -28,10 +28,6 @@ export default function Pagination({
 
     setLastNum(tmpLastNum)
     setFirstNum(tmpFirstNum)
-
-    console.log('pageGroup', pageGroup)
-    console.log('tmpLastNum', tmpLastNum)
-    console.log('tmpFirstNum', tmpFirstNum)
 
     let tempArray = Array()
 
@@ -53,7 +49,6 @@ export default function Pagination({
       firstNum - (firstNum > 10 ? firstNum % 10 : firstNum) + 11
     setCurrentPage(nextFirstNum)
     setData(nextFirstNum)
-    console.log('nextFirstNum', nextFirstNum)
     return click(nextFirstNum)
   }
 
