@@ -29,6 +29,10 @@ export default function Pagination({
     setLastNum(tmpLastNum)
     setFirstNum(tmpFirstNum)
 
+    console.log('pageGroup', pageGroup)
+    console.log('tmpLastNum', tmpLastNum)
+    console.log('tmpFirstNum', tmpFirstNum)
+
     let tempArray = Array()
 
     for (let i = tmpFirstNum; i <= tmpLastNum; ++i) {
@@ -49,6 +53,7 @@ export default function Pagination({
       firstNum - (firstNum > 10 ? firstNum % 10 : firstNum) + 11
     setCurrentPage(nextFirstNum)
     setData(nextFirstNum)
+    console.log('nextFirstNum', nextFirstNum)
     return click(nextFirstNum)
   }
 
