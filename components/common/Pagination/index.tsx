@@ -45,7 +45,8 @@ export default function Pagination({
   }
 
   const onClickNextBtn = () => {
-    let nextFirstNum = firstNum - (firstNum % 10) + 11
+    let nextFirstNum =
+      firstNum - (firstNum > 10 ? firstNum % 10 : firstNum) + 11
     setCurrentPage(nextFirstNum)
     setData(nextFirstNum)
     return click(nextFirstNum)

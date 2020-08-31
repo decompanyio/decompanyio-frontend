@@ -21,7 +21,7 @@ export default function ProfileTab({
           <Tab>{psString('profile-voted')}</Tab>
           {owner && <Tab>{psString('profile-profileAnalytics')}</Tab>}
           {owner && <Tab>{psString('profile-profileMyList')}</Tab>}
-          {owner && <Tab>{psString('profile-profileHistory')}</Tab>}
+          {true && <Tab>{psString('profile-profileHistory')}</Tab>}
         </TabList>
 
         <TabPanel>
@@ -44,7 +44,7 @@ export default function ProfileTab({
           </TabPanel>
         )}
 
-        {owner && (
+        {true && (
           <TabPanel>
             <ProfileHistoryTab profileInfo={profileInfo} />
           </TabPanel>
