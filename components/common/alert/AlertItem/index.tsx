@@ -91,6 +91,10 @@ const getStatus = (
       setStatusData(code, 'success') // 클레임 성공
       break
 
+    case 2034:
+      setStatusData(code, 'error') // 지갑 주소 GET 실패
+      break
+
     // 업로드 메세지 2071~
     case 2071:
       setStatusData(code, 'error') // 업로드 싪패

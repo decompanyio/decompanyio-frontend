@@ -1,14 +1,18 @@
-import { APP_CONFIG } from '../../../../app.config'
 import { psString } from '../../../../utils/localization'
 import React, { ReactElement, useEffect, useState } from 'react'
 import commonView from '../../../../common/commonView'
 import common from '../../../../common/common'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { useMain } from '../../../../redux/main/hooks'
+import QRcodeGenerator from '../../component/QRcodeGenerator'
+import repos from '../../../../utils/repos'
 
 export default function DepositModal(): ReactElement {
   const { setModal, setAlertCode } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
+  const [walletAddress, setWalletAddress] = useState(
+    '0x07Ab267B6F70940f66EAf519b4a7c050496480D3'
+  )
   const [copyBtnText, setCopyBtnText] = useState(psString('common-modal-copy'))
 
   // 모달 숨기기 클래스 추가
@@ -32,8 +36,18 @@ export default function DepositModal(): ReactElement {
       .then(() => setAlertCode(2005, {}))
       .then(() => handleCopyBtnText())
 
+  const getWalletAddress = () => {
+    repos.Wallet.getWalletAddress({})
+      .then(({ address }) => setWalletAddress(address))
+      .catch(err => {
+        console.log(err)
+        setAlertCode(2034)
+      })
+  }
+
   useEffect(() => {
     commonView.setBodyStyleLock()
+    getWalletAddress()
 
     return () => {
       commonView.setBodyStyleUnlock()
@@ -60,22 +74,15 @@ export default function DepositModal(): ReactElement {
 
         <div className={styles.modal_content}>
           <div className={styles.dm_qrWrapper}>
-            <img
-              src={
-                APP_CONFIG.domain().static + '/image/common/qr-foundation.svg'
-              }
-              alt="Foundation Account"
-            />
+            <QRcodeGenerator value={walletAddress} />
           </div>
-          <div className={styles.dm_qr}>
-            0x07Ab267B6F70940f66EAf519b4a7c050496480D3
-          </div>
+          <div className={styles.dm_qr}>{walletAddress}</div>
           <input
             type="text"
             className={styles.dm_copyDummy}
             readOnly
             id="depositModalCompleteCopyDummy"
-            value="0x07Ab267B6F70940f66EAf519b4a7c050496480D3"
+            value={walletAddress}
           />
         </div>
 

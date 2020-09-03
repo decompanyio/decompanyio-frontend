@@ -2,9 +2,9 @@ import { ThreeBounce } from 'better-react-spinkit'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { psString } from 'utils/localization'
 import * as styles from 'public/static/styles/scss/index.scss'
-import NoDataIcon from 'components/common/NoDataIcon'
+import NoDataIcon from 'components/common/component/NoDataIcon'
 import ProfileHistoryItem from '../ProfileHistoryItem'
-import Pagination from '../../../common/Pagination'
+import Pagination from '../../../common/component/Pagination'
 import commonData from '../../../../common/commonData'
 import {
   contentsListIDList,

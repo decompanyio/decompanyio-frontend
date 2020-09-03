@@ -2,7 +2,7 @@ import * as styles from 'public/static/styles/scss/index.scss'
 import _ from 'lodash'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { ThreeBounce } from 'better-react-spinkit'
-import NoDataIcon from '../../common/NoDataIcon'
+import NoDataIcon from '../../common/component/NoDataIcon'
 import React, { ReactElement, useState } from 'react'
 import {
   contentsListIDList,

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
-import { psString } from '../../../utils/localization'
-import { PaginationProps } from '../../../typings/interfaces'
+import { psString } from '../../../../utils/localization'
+import { PaginationProps } from '../../../../typings/interfaces'
 
 export default function Pagination({
   totalCount,

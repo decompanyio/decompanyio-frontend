@@ -1,6 +1,7 @@
 import AxiosService from './AxiosService'
 
 let walletBalance = 'account/balance'
+let walletAddress = 'account/address'
 let walletCreate = 'account/create'
 let walletWithdraw = 'account/withdraw'
 let voteDocument = 'document/VoteModal'
@@ -13,6 +14,16 @@ export default {
       new Promise((resolve, reject) => {
         AxiosService._requestWithBodyForWallet(
           walletBalance,
+          'POST',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      }),
+    walletAddress: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestWithBodyForWallet(
+          walletAddress,
           'POST',
           data,
           data => resolve(data),

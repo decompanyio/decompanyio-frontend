@@ -1,6 +1,6 @@
 import * as styles from 'public/static/styles/scss/index.scss'
-import CustomChart from '../../common/CustomChart'
-import NoDataIcon from '../../common/NoDataIcon'
+import CustomChart from '../../common/component/CustomChart'
+import NoDataIcon from '../../common/component/NoDataIcon'
 import React, { ReactElement } from 'react'
 import { ProfileAnalyticsChartProps } from '../../../typings/interfaces'
 

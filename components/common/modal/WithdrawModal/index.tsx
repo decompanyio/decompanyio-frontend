@@ -15,7 +15,9 @@ export default function WithdrawModal(): ReactElement {
   const [balanceLoading, setBalanceLoading] = useState(true)
   const [balance, setBalance] = useState(new WalletBalance(null))
   const [amount, setAmount] = useState(0)
+  const [address, setAddress] = useState('')
   const [deckError, setDeckError] = useState('')
+  const [walletError, setWalletError] = useState('')
 
   // 잔액 조회
   const getBalance = () =>
@@ -46,10 +48,26 @@ export default function WithdrawModal(): ReactElement {
       resolve(errMsg)
     })
 
+  // 지갑 주소 값 유효성 체크
+  const validateWalletAddress = (value: string) =>
+    new Promise(resolve => {
+      let errMsg = ''
+      if (!value) errMsg = psString('withdraw-modal-err-3')
+
+      setWalletError(errMsg)
+      resolve(errMsg)
+    })
+
   // Deck 출금 값 입력 캐치
   const onChangeAmount = e => {
     setAmount(e.target.value)
     return validateWithdraw(e.target.value)
+  }
+
+  // 지갑 주소 값 입력 캐치
+  const onChangeWalletAddress = e => {
+    setAddress(e.target.value)
+    return validateWalletAddress(e.target.value)
   }
 
   // 종료 버튼 관리
@@ -62,7 +80,7 @@ export default function WithdrawModal(): ReactElement {
   const handleWalletWithdraw = () => {
     repos.Wallet.walletWithdraw({
       amount: Number(amount),
-      toAddress: '0x60D1a46018c84ece3D8fbf39a7aFf9Cde9cA5044'
+      toAddress: address
     })
       .then(() => {
         setLoading(false)
@@ -73,13 +91,17 @@ export default function WithdrawModal(): ReactElement {
       })
   }
 
-  // 확이 버튼 관리
+  // 확인 버튼 관리
   const handleConfirm = async () => {
     if (balance.deck <= 0) return
-    setLoading(true)
-    let v = await validateWithdraw(amount)
 
-    if (v === '') return handleWalletWithdraw()
+    setLoading(true)
+
+    let validAmountValue = await validateWithdraw(amount)
+    let validAddressValue = await validateWalletAddress(address)
+
+    if (validAmountValue === '' && validAddressValue === '')
+      return handleWalletWithdraw()
   }
 
   // 키 다운 관리
@@ -145,6 +167,24 @@ export default function WithdrawModal(): ReactElement {
             onKeyDown={e => handleKeyDown(e)}
           />
           <span>{deckError}</span>
+
+          <div className={styles.modal_subject}>
+            {psString('withdraw-modal-wallet-address')}
+          </div>
+          <input
+            type="text"
+            placeholder="Address"
+            autoComplete="off"
+            id="walletAddress"
+            className={
+              styles.wm_input +
+              ' ' +
+              (walletError.length > 0 ? styles.wm_inputWarning : '')
+            }
+            onChange={e => onChangeWalletAddress(e)}
+            onKeyDown={e => handleKeyDown(e)}
+          />
+          <span>{walletError}</span>
         </div>
 
         <div className={styles.modal_footer}>

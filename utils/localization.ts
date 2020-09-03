@@ -966,6 +966,13 @@ const strings = new Map([
     }
   ],
   [
+    'alert-2034',
+    {
+      KOR: '지갑 주소 요청 실패',
+      ENG: 'Failed to get wallet address.'
+    }
+  ],
+  [
     'alert-2071',
     {
       KOR: '업로드 실패',
@@ -2640,6 +2647,13 @@ const strings = new Map([
     }
   ],
   [
+    'withdraw-modal-wallet-address',
+    {
+      KOR: '지갑 주소',
+      ENG: 'wallet address'
+    }
+  ],
+  [
     'withdraw-modal-err-1',
     {
       KOR: '출금액은 0보다 큰 값이어야 합니다.',
@@ -2651,6 +2665,13 @@ const strings = new Map([
     {
       KOR: '출금액은 잔고보다 작은 값이어야 합니다.',
       ENG: 'The amount for withdrawing must be less than the balance.'
+    }
+  ],
+  [
+    'withdraw-modal-err-3',
+    {
+      KOR: '지갑 주소를 입력해 주십시오.',
+      ENG: 'Please enter your wallet address.'
     }
   ],
 

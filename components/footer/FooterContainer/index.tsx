@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Lang, psGetLang, psSetLang } from 'utils/localization'
 import React, { ReactElement, useEffect, useState } from 'react'
 import FooterSns from '../FooterSNS'
-import Dropdown from '../../common/DropDown'
+import Dropdown from '../../common/component/DropDown'
 import commonData from '../../../common/commonData'
 import { string } from 'prop-types'
 

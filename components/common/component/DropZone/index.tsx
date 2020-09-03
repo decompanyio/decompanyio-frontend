@@ -1,9 +1,9 @@
 import * as styles from 'public/static/styles/scss/index.scss'
 import Dropzone from 'react-dropzone'
-import { psString } from '../../../utils/localization'
+import { psString } from '../../../../utils/localization'
 import React, { ReactElement, useState } from 'react'
-import { DropZoneProps } from '../../../typings/interfaces'
-import { useMain } from '../../../redux/main/hooks'
+import { DropZoneProps } from '../../../../typings/interfaces'
+import { useMain } from '../../../../redux/main/hooks'
 
 export default function DropZone({
   handleFileChange,

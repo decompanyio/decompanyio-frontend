@@ -39,6 +39,7 @@ import {
   getProfileRewardsQuery,
   ParamsGetDocumentList
 } from '../typings/interfaces'
+import WalletAddress from '../service/model/WalletAddress';
 
 const repos = {
   init(): Promise<boolean> {
@@ -486,6 +487,11 @@ const repos = {
     async getWalletBalance(data) {
       return WalletService.POST.walletBalance(data).then(
         (res): WalletBalance => new WalletBalance(res)
+      )
+    },
+    async getWalletAddress(data) {
+      return WalletService.POST.walletAddress(data).then(
+        (res): WalletAddress => new WalletAddress(res)
       )
     },
     async createWallet() {
