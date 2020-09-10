@@ -17,7 +17,7 @@ export default class MyDocument extends Document<{
 
   public render() {
     return (
-      <Html lang={psGetLang().toLowerCase()}>
+      <Html lang={psGetLang().toLowerCase()} prefix="og: http://ogp.me/ns#">
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#3d5afe" />
