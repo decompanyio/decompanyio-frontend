@@ -76,6 +76,7 @@ export default {
       type: 'website',
       title: 'Polaris Share',
       description: 'Sharing knowledge in new ways',
+      image: 'https://www.polarishare.com/logo.png',
       url: 'https://www.polarishare.com'
     }
   },
