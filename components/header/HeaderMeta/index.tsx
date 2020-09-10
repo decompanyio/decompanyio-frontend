@@ -25,6 +25,7 @@ export default function HeaderMeta({
       <meta property="og:type" content={metaData.og.type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaData.og.description} />
+      <meta name="og:image" content={metaData.og.image} />
       <meta property="og:image:width" content={metaData.og.image_width} />
       <meta property="og:image:height" content={metaData.og.image_height} />
     </Head>
