@@ -1,5 +1,12 @@
 # Release Note
 
+## 2020.09.10-a
+
+Bug fix
+
+- over z-index of loading bar
+- static logo image changed
+
 ## 2020.09.03-a
 
 - add deposit, withdraw

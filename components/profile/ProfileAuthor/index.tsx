@@ -98,7 +98,7 @@ export default function ProfileAuthor({
           </span>
         </div>
 
-        {true && (
+        {false && (
           <div className={styles.ps_depositBtnWrapper}>
             <p
               data-tip={psString('deposit-modal-title')}
