@@ -16,7 +16,6 @@ export default function ShareModal(): ReactElement {
       ? tempModalData.documentData
       : null
   )
-  const type = tempModalData && tempModalData.type ? tempModalData.type : ''
 
   const [closeFlag, setCloseFlag] = useState(false)
   const [urlData, setUrlData] = useState({
