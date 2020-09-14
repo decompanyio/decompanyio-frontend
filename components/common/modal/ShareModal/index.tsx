@@ -34,7 +34,7 @@ export default function ShareModal(): ReactElement {
   const setUrl = (): void => {
     let url = documentData.shortUrl
     let embedTag = getEmbed(url)
-    let embedUrl = APP_CONFIG.domain().embed + documentData.seoTitle
+    let embedUrl = encodeURI(APP_CONFIG.domain().embed + documentData.seoTitle)
 
     setUrlData({ url: url, embedUrl: embedUrl, embed: embedTag })
   }
