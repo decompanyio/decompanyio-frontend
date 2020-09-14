@@ -8,12 +8,16 @@ export default class MetaOg {
   public description: string
   public image_width: string
   public image_height: string
+  public image: string
   public url: string
 
   public constructor(data) {
     this.title = data.title ? data.title : commonData.metaData.og.title
     this.site_name = commonData.metaData.og.site_name
     this.type = commonData.metaData.og.type
+    this.image = data.documentId
+      ? APP_CONFIG.domain().image + '/' + data.documentId + '/1024/1'
+      : commonData.metaData.og.image
     this.description = data.desc || commonData.metaData.og.description
     this.image_width = commonData.metaData.og.image_width
     this.image_height = data.dimensions

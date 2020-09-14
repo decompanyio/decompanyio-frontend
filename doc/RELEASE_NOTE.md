@@ -1,12 +1,13 @@
 # Release Note
 
-## 2020.09.14-a
+## 2020.09.14-b
 
 Bug fix
 
 - fix broken image on publish complete modal
 - add korean cc text on publish modal 
 - encode the og url string to URI on viewer page 
+- edit embed url to viewer page url on sharing sns link
 
 ## 2020.09.10-a
 

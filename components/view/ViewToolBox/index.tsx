@@ -79,23 +79,24 @@ export default function ViewToolBox({
           className={styles.vtb_voteBtn}
           onClick={() => handleVoteBtn()}
         >
-          {' '}
           <span>
-            <i className="material-icons">how_to_vote</i>{' '}
+            <i className="material-icons">how_to_vote</i>
             {psString('VoteModal-modal-btn')}
           </span>
         </p>
       )}
-      <p
-        data-tip={psString('tooltip-copy')}
-        className={styles.vtb_shareBtn}
-        onClick={() => handleShareBtnClick()}
-      >
-        <span>
-          <i className="material-icons">share</i>
-          {psString('share-modal-btn')}
-        </span>
-      </p>
+      {documentData.isPublic && (
+        <p
+          data-tip={psString('tooltip-copy')}
+          className={styles.vtb_shareBtn}
+          onClick={() => handleShareBtnClick()}
+        >
+          <span>
+            <i className="material-icons">share</i>
+            {psString('share-modal-btn')}
+          </span>
+        </p>
+      )}
       {documentData.isDownload && (
         <p
           data-tip={psString('tooltip-download')}

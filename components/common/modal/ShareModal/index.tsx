@@ -21,7 +21,7 @@ export default function ShareModal(): ReactElement {
   const [closeFlag, setCloseFlag] = useState(false)
   const [urlData, setUrlData] = useState({
     url: '',
-    currentUrl: '',
+    embedUrl: '',
     embed: ''
   })
 
@@ -33,13 +33,11 @@ export default function ShareModal(): ReactElement {
 
   // URL 셋팅
   const setUrl = (): void => {
-    let url =
-      documentData.shortUrl ||
-      APP_CONFIG.domain().embed +
-        (type && type === 'onlyIcon' ? documentData.seoTitle : '')
-    let embed = getEmbed(url)
+    let url = documentData.shortUrl
+    let embedTag = getEmbed(url)
+    let embedUrl = APP_CONFIG.domain().embed + documentData.seoTitle
 
-    setUrlData({ url: url, currentUrl: window.location.href, embed: embed })
+    setUrlData({ url: url, embedUrl: embedUrl, embed: embedTag })
   }
 
   // 모달 숨기기 클래스 추가
@@ -128,7 +126,7 @@ export default function ShareModal(): ReactElement {
           <div className={styles.sm_inputWrapper}>
             <input
               type="text"
-              value={urlData.currentUrl}
+              value={urlData.embedUrl}
               id="copyEmbedUrlInput"
               readOnly
               className={styles.sm_input}
