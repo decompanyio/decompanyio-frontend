@@ -289,7 +289,7 @@ export default function PublishModal(): ReactElement {
                     <span>
                       <i className="material-icons">done</i>
                     </span>
-                    Attribution
+                    {psString('edit-cc-attribution')}
                   </label>
                 </div>
                 <div>
@@ -304,7 +304,7 @@ export default function PublishModal(): ReactElement {
                     <span>
                       <i className="material-icons">done</i>
                     </span>
-                    Noncommercial
+                    {psString('edit-cc-noncommercial')}
                   </label>
                 </div>
                 <div>
@@ -319,7 +319,7 @@ export default function PublishModal(): ReactElement {
                     <span>
                       <i className="material-icons">done</i>
                     </span>
-                    No Derivative Works
+                    {psString('edit-cc-derivative')}
                   </label>
                 </div>
                 <div>
@@ -334,7 +334,7 @@ export default function PublishModal(): ReactElement {
                     <span>
                       <i className="material-icons">done</i>
                     </span>
-                    Share Alike
+                    {psString('edit-cc-share')}
                   </label>
                 </div>
               </div>

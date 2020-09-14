@@ -19,7 +19,7 @@ export default function ViewDescBox({
   documentData
 }: ViewDescBoxProps): ReactElement {
   const { isMobile } = useMain()
-  const ogUrl = APP_CONFIG.domain().embed + documentData.seoTitle
+  const ogUrl = encodeURI(APP_CONFIG.domain().embed + documentData.seoTitle)
 
   return (
     <div className={styles.vdb_container}>

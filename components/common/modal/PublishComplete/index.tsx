@@ -92,9 +92,9 @@ export default function PublishComplete(): ReactElement {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    '/image/sns/ic-sns-linkedin-color.png'
+                    '/image/sns/color/ic_sns_linkedin_color.png'
                   }
-                  alt="facebook sns icon"
+                  alt="linkedin sns icon"
                 />
                 {psString('viewer-page-sns-linkedin')}
               </div>
@@ -107,7 +107,7 @@ export default function PublishComplete(): ReactElement {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    '/image/sns/ic-sns-facebook-color.png'
+                    '/image/sns/color/ic_sns_facebook_color.png'
                   }
                   alt="facebook sns icon"
                 />
@@ -122,9 +122,9 @@ export default function PublishComplete(): ReactElement {
                 <img
                   src={
                     APP_CONFIG.domain().static +
-                    '/image/sns/ic-sns-twitter-color.png'
+                    '/image/sns/color/ic_sns_twitter_color.png'
                   }
-                  alt="facebook sns icon"
+                  alt="twitter sns icon"
                 />
                 {psString('viewer-page-sns-twitter')}
               </div>

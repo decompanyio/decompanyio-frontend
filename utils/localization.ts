@@ -1529,6 +1529,34 @@ const strings = new Map([
     }
   ],
   [
+    'edit-cc-attribution',
+    {
+      KOR: '저작자 표시',
+      ENG: 'Attribution'
+    }
+  ],
+  [
+    'edit-cc-noncommercial',
+    {
+      KOR: '비영리',
+      ENG: 'Noncommercial'
+    }
+  ],
+  [
+    'edit-cc-derivative',
+    {
+      KOR: '변경금지',
+      ENG: 'No Derivative Works'
+    }
+  ],
+  [
+    'edit-cc-share',
+    {
+      KOR: '동일조건변경허락',
+      ENG: 'Share Alike'
+    }
+  ],
+  [
     'doc-private',
     {
       KOR: '비공개',
