@@ -10,17 +10,16 @@ import {
   TwitterShareButton
 } from 'react-share'
 import { useMain } from '../../../redux/main/hooks'
-
-interface ViewDescBoxProps {
-  documentData
-}
+import { ViewDescBoxProps } from '../../../typings/interfaces'
 
 export default function ViewDescBox({
   documentData
 }: ViewDescBoxProps): ReactElement {
   const { isMobile } = useMain()
   const ogUrl = encodeURI(
-    APP_CONFIG.domain().mainHost + '/' + documentData.seoTitle
+    `${APP_CONFIG.domain().mainHost}/@${documentData.author.username}/${
+      documentData.seoTitle
+    }`
   )
 
   return (

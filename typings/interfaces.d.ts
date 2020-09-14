@@ -282,6 +282,10 @@ export interface ViewPdfViewerProps {
   thumbnailList: string[]
 }
 
+export interface ViewDescBoxProps {
+  documentData
+}
+
 export interface ViewContainerWrapper {
   seoTitle: string
   readPage: number
