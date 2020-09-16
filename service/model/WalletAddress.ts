@@ -1,7 +1,7 @@
 export default class WalletAddress {
-  public address: string
+  public walletAddress: string
 
   public constructor(data) {
-    this.address = data && data.address ? data.address : ''
+    this.walletAddress = data && data.walletAddress ? data.walletAddress : ''
   }
 }

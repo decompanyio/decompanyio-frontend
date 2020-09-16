@@ -43,9 +43,7 @@ export default {
         }
         if (response.data.success && response.data.success === true) {
           success(response.data)
-        }
-        // 성공 alert
-        else failure(response.data.message || response.data)
+        } else failure(response.data.message || response.data)
       })
       .catch(error => {
         if (error.response) {

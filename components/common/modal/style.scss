@@ -121,6 +121,13 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.modal_contentLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
+
 .modal_footer {
   @include d-flex;
   align-items: center;

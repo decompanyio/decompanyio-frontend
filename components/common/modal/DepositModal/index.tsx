@@ -1,5 +1,6 @@
 import { psString } from '../../../../utils/localization'
 import React, { ReactElement, useEffect, useState } from 'react'
+import { FadingCircle } from 'better-react-spinkit'
 import commonView from '../../../../common/commonView'
 import common from '../../../../common/common'
 import * as styles from 'public/static/styles/scss/index.scss'
@@ -10,9 +11,7 @@ import repos from '../../../../utils/repos'
 export default function DepositModal(): ReactElement {
   const { setModal, setAlertCode, myInfo } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
-  const [walletAddress, setWalletAddress] = useState(
-    '0x07Ab267B6F70940f66EAf519b4a7c050496480D3'
-  )
+  const [walletAddress, setWalletAddress] = useState('')
   const [copyBtnText, setCopyBtnText] = useState(psString('common-modal-copy'))
 
   // 모달 숨기기 클래스 추가
@@ -38,10 +37,11 @@ export default function DepositModal(): ReactElement {
 
   const getWalletAddress = () => {
     repos.Wallet.getWalletAddress(myInfo.id)
-      .then(({ address }) => setWalletAddress(address))
+      .then(({ walletAddress }) => setWalletAddress(walletAddress))
       .catch(err => {
         console.log(err)
         setAlertCode(2034)
+        return handleClickClose()
       })
   }
 
@@ -72,19 +72,25 @@ export default function DepositModal(): ReactElement {
           <h3>{psString('deposit-modal-title')}</h3>
         </div>
 
-        <div className={styles.modal_content}>
-          <div className={styles.dm_qrWrapper}>
-            <QRcodeGenerator value={walletAddress} />
+        {walletAddress ? (
+          <div className={styles.modal_content}>
+            <div className={styles.dm_qrWrapper}>
+              <QRcodeGenerator value={walletAddress} />
+            </div>
+            <div className={styles.dm_qr}>{walletAddress}</div>
+            <input
+              type="text"
+              className={styles.dm_copyDummy}
+              readOnly
+              id="depositModalCompleteCopyDummy"
+              value={walletAddress}
+            />
           </div>
-          <div className={styles.dm_qr}>{walletAddress}</div>
-          <input
-            type="text"
-            className={styles.dm_copyDummy}
-            readOnly
-            id="depositModalCompleteCopyDummy"
-            value={walletAddress}
-          />
-        </div>
+        ) : (
+          <div className={styles.modal_contentLoading}>
+            <FadingCircle color="#3681fe" size={30} />
+          </div>
+        )}
 
         <div className={styles.modal_footer}>
           <div
