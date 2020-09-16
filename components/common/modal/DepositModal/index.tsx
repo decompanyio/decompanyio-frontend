@@ -37,7 +37,7 @@ export default function DepositModal(): ReactElement {
       .then(() => handleCopyBtnText())
 
   const getWalletAddress = () => {
-    repos.Wallet.getWalletAddress({})
+    repos.Wallet.getWalletAddress()
       .then(({ address }) => setWalletAddress(address))
       .catch(err => {
         console.log(err)
