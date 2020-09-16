@@ -39,7 +39,7 @@ import {
   getProfileRewardsQuery,
   ParamsGetDocumentList
 } from '../typings/interfaces'
-import WalletAddress from '../service/model/WalletAddress';
+import WalletAddress from '../service/model/WalletAddress'
 
 const repos = {
   init(): Promise<boolean> {
@@ -489,8 +489,16 @@ const repos = {
         (res): WalletBalance => new WalletBalance(res)
       )
     },
-    async getWalletAddress(data) {
-      return WalletService.POST.walletAddress(data).then(
+    async getWalletAddress() {
+      const params = {
+        header: {
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
+        }
+      }
+
+      return WalletService.POST.walletAddress(params).then(
         (res): WalletAddress => new WalletAddress(res)
       )
     },
