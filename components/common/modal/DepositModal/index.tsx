@@ -8,7 +8,7 @@ import QRcodeGenerator from '../../component/QRcodeGenerator'
 import repos from '../../../../utils/repos'
 
 export default function DepositModal(): ReactElement {
-  const { setModal, setAlertCode } = useMain()
+  const { setModal, setAlertCode, myInfo } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [walletAddress, setWalletAddress] = useState(
     '0x07Ab267B6F70940f66EAf519b4a7c050496480D3'
@@ -37,7 +37,7 @@ export default function DepositModal(): ReactElement {
       .then(() => handleCopyBtnText())
 
   const getWalletAddress = () => {
-    repos.Wallet.getWalletAddress()
+    repos.Wallet.getWalletAddress(myInfo.id)
       .then(({ address }) => setWalletAddress(address))
       .catch(err => {
         console.log(err)

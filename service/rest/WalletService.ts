@@ -9,21 +9,23 @@ let claimCreator = 'claim/royalty'
 let claimCurator = 'claim/reward'
 
 export default {
+  GET: {
+    walletAddress: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestGetWithHeader(
+          walletAddress,
+          'GET',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      })
+  },
   POST: {
     walletBalance: data =>
       new Promise((resolve, reject) => {
         AxiosService._requestWithBodyForWallet(
           walletBalance,
-          'POST',
-          data,
-          data => resolve(data),
-          err => reject(err)
-        )
-      }),
-    walletAddress: data =>
-      new Promise((resolve, reject) => {
-        AxiosService._requestWithHeaderBodyForWallet(
-          walletAddress,
           'POST',
           data,
           data => resolve(data),
