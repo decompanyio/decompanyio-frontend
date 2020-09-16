@@ -12,7 +12,7 @@ export default {
   GET: {
     walletAddress: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithUrlParam(
+        AxiosService._requestGetWithHeader(
           walletAddress,
           'GET',
           data,

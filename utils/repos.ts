@@ -489,8 +489,19 @@ const repos = {
         (res): WalletBalance => new WalletBalance(res)
       )
     },
-    async getWalletAddress(data) {
-      return WalletService.GET.walletAddress(data).then(
+    async getWalletAddress(params) {
+      const _params = {
+        header: {
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
+        },
+        params: {
+          userId: params
+        }
+      }
+
+      return WalletService.GET.walletAddress(_params).then(
         (res): WalletAddress => new WalletAddress(res)
       )
     },
