@@ -7,6 +7,7 @@ import ProfileAvatarEdit from '../ProfileAvatarEdit'
 import common from 'common/common'
 import { ProfileSummaryAuthorProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import { APP_CONFIG } from '../../../app.config';
 
 export default function ProfileAuthor({
   balance,
@@ -98,7 +99,7 @@ export default function ProfileAuthor({
           </span>
         </div>
 
-        {owner && (
+        {APP_CONFIG.env === 'development' && owner && (
           <div className={styles.ps_depositBtnWrapper}>
             <p
               data-tip={psString('deposit-modal-title')}

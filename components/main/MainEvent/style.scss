@@ -5,6 +5,7 @@
 
 .mes_inner {
   max-width: 1200px;
+  min-height: 300px;
   padding: 45px 28px;
   margin: 0 auto;
   position: relative;
@@ -35,6 +36,14 @@
 
   @media (max-width: 875px) {
     width: 100%;
+    &:after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 45px 15px;
+
     &:after {
       display: none;
     }
@@ -109,12 +118,6 @@
 }
 
 @media (max-width: 768px) {
-  .mes_inner {
-    padding: 45px 15px;
-  }
-  .mes_inner:after {
-    display: none;
-  }
   .mes_title_small {
     font-size: 18px;
   }

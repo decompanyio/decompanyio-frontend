@@ -1,6 +1,11 @@
-query HistoryDocumentPagination($page: Int, $perPage: Int) {
+query HistoryDocumentPagination($page: Int, $perPage: Int, $accountId: String) {
   UserDocumentHistory {
-    pagination(page: $page, perPage: $perPage, sort: USERID__CREATED_DESC) {
+    pagination(
+      filter: { userId: $accountId }
+      page: $page
+      perPage: $perPage
+      sort: USERID__CREATED_DESC
+    ) {
       count
       items {
         documentId

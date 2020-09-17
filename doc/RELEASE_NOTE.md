@@ -1,5 +1,13 @@
 # Release Note
 
+## 2020.09.17-a
+- add token wallet
+
+Bug fix
+
+- fix wrong history data
+- edit main event component 
+
 ## 2020.09.14-b
 
 Bug fix
