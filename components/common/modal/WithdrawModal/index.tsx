@@ -93,7 +93,7 @@ export default function WithdrawModal(): ReactElement {
 
   // 확인 버튼 관리
   const handleConfirm = async () => {
-    if (balance.deck <= 0) return
+    //if (balance.deck <= 0) return
 
     setLoading(true)
 
