@@ -97,11 +97,12 @@ export default function WithdrawModal(): ReactElement {
 
     setLoading(true)
 
-    let validAmountValue = await validateWithdraw(amount)
+    /*let validAmountValue = await validateWithdraw(amount)
     let validAddressValue = await validateWalletAddress(address)
 
     if (validAmountValue === '' && validAddressValue === '')
-      return handleWalletWithdraw()
+      return handleWalletWithdraw()*/
+    return handleWalletWithdraw()
   }
 
   // 키 다운 관리
