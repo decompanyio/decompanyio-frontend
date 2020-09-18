@@ -1,6 +1,15 @@
 import commonData from '../common/commonData'
 
 const strings = new Map([
+  // system
+  [
+    'system-constructing',
+    {
+      KOR: 'Coming soon',
+      ENG: 'Coming soon'
+    }
+  ],
+
   // main
   [
     'main-banner-subj-1',
@@ -970,6 +979,20 @@ const strings = new Map([
     {
       KOR: '지갑 주소 요청 실패',
       ENG: 'Failed to get wallet address.'
+    }
+  ],
+  [
+    'alert-2035',
+    {
+      KOR: '출금 성공',
+      ENG: 'Successfully withdraw.'
+    }
+  ],
+  [
+    'alert-2036',
+    {
+      KOR: '출금 실패',
+      ENG: 'Failed to withdraw.'
     }
   ],
   [

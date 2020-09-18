@@ -95,6 +95,14 @@ const getStatus = (
       setStatusData(code, 'error') // 지갑 주소 GET 실패
       break
 
+    case 2035:
+      setStatusData(code, 'error') // 지갑 출금 성공
+      break
+
+    case 2036:
+      setStatusData(code, 'error') // 지갑 출금 실패
+      break
+
     // 업로드 메세지 2071~
     case 2071:
       setStatusData(code, 'error') // 업로드 싪패

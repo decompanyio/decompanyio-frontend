@@ -54,7 +54,10 @@ export default function ViewToolBox({
   const handleShareBtnClick = () => setModal('share', { documentData })
 
   // 투표 버튼 클릭 관리
-  const handleVoteBtn = () => setModal('vote', { documentData })
+  const handleVoteBtn = () => {
+    // setModal('vote', { documentData })
+    alert('system-constructing')
+  }
 
   // 출판 버튼 클릭 관리
   const handlePublishBtn = () => setModal('publish', { documentData })

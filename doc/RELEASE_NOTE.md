@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.09.18-a
+- add alert message about wallet process
+
 ## 2020.09.17-a
 - add token wallet
 

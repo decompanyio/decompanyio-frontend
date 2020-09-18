@@ -9,7 +9,7 @@ import WalletBalance from '../../../../service/model/WalletBalance'
 import { useMain } from '../../../../redux/main/hooks'
 
 export default function WithdrawModal(): ReactElement {
-  const { myInfo, setModal } = useMain()
+  const { myInfo, setModal, setAlertCode } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
   const [balanceLoading, setBalanceLoading] = useState(true)
@@ -84,25 +84,26 @@ export default function WithdrawModal(): ReactElement {
     })
       .then(() => {
         setLoading(false)
+        setAlertCode(2035)
         return handleClickClose()
       })
       .catch((err): void => {
+        setAlertCode(2036)
         console.log(err)
       })
   }
 
   // 확인 버튼 관리
   const handleConfirm = async () => {
-    //if (balance.deck <= 0) return
+    if (balance.deck <= 0) return
 
     setLoading(true)
 
-    /*let validAmountValue = await validateWithdraw(amount)
+    let validAmountValue = await validateWithdraw(amount)
     let validAddressValue = await validateWalletAddress(address)
 
     if (validAmountValue === '' && validAddressValue === '')
-      return handleWalletWithdraw()*/
-    return handleWalletWithdraw()
+      return handleWalletWithdraw()
   }
 
   // 키 다운 관리

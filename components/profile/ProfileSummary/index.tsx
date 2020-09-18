@@ -4,7 +4,7 @@ import repos from '../../../utils/repos'
 import WalletBalance from '../../../service/model/WalletBalance'
 import { ProfileSummaryProps } from '../../../typings/interfaces'
 import ProfileSummaryRewards from '../ProfileReward'
-import ProfileSummaryAuthor from '../ProfileAuthor'
+import ProfileAuthor from '../ProfileAuthor'
 
 export default function ProfileSummary({
   profileInfo,
@@ -72,7 +72,7 @@ export default function ProfileSummary({
 
   return (
     <div className={styles.ps_container}>
-      <ProfileSummaryAuthor
+      <ProfileAuthor
         reward={reward}
         balance={balance}
         profileInfo={profileInfo}
