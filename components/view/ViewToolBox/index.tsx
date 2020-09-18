@@ -56,7 +56,7 @@ export default function ViewToolBox({
   // 투표 버튼 클릭 관리
   const handleVoteBtn = () => {
     // setModal('vote', { documentData })
-    alert('system-constructing')
+    alert(psString('system-constructing'))
   }
 
   // 출판 버튼 클릭 관리
