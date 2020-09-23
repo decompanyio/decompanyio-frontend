@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.09.23-a
+- change main logo image in header
+
 ## 2020.09.18-a
 - add alert message about wallet process
 
