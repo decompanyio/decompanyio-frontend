@@ -1,6 +1,7 @@
 import AxiosService from './AxiosService'
 
 let walletBalance = 'account/balance'
+let walletHistory = 'account/history'
 let walletAddress = 'account/address'
 let walletCreate = 'account/create'
 let walletWithdraw = 'account/withdraw'
@@ -35,7 +36,7 @@ export default {
     walletHistory: data =>
       new Promise((resolve, reject) => {
         AxiosService._requestWithBodyForWallet(
-          walletBalance,
+          walletHistory,
           'POST',
           data,
           data => resolve(data),
