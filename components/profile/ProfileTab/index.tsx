@@ -53,7 +53,7 @@ export default function ProfileTab({
 
         {owner && (
           <TabPanel>
-            <ProfileWalletHistoryTab profileInfo={profileInfo} />
+            <ProfileWalletHistoryTab />
           </TabPanel>
         )}
       </Tabs>
