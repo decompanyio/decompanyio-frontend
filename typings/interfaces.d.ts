@@ -1,9 +1,8 @@
 import DocumentInfo from '../service/model/DocumentInfo'
-import DocumentList from '../service/model/DocumentList'
 import UserInfo from '../graphql/models/UserInfo'
 import { MainState } from '../redux/main/reducer'
 import { TrackingState } from '../redux/tracking/reducer'
-import TagListItem from '../service/model/TagListItem'
+import WalletHistoryData from '../service/model/WalletHistoryData'
 
 export interface DocumentId {
   documentId: string
@@ -12,7 +11,6 @@ export interface DocumentId {
 export interface pagination {
   pagination?: documentPaginationProps
 }
-
 
 export interface documentPagination {
   Document?: pagination
@@ -225,6 +223,10 @@ export interface ProfileVoteTabProps {
 export interface ProfileVoteTabItemProps {
   documentData
   owner: boolean | number
+}
+
+export interface ProfileWalletHistoryItemProps {
+  historyData: WalletHistoryData
 }
 
 export interface TrackingAuthorProps {
@@ -515,10 +517,7 @@ export interface MainThirdSectionTopItemProps {
   documentRoyalty
 }
 
-
 export interface HeaderTagProps {
   path: string
   title: string
 }
-
-

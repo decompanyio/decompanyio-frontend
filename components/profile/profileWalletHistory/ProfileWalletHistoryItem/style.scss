@@ -1,0 +1,121 @@
+
+.pcti_container {
+  @include row;
+  padding: 1rem 0;
+  border-bottom: 1px solid #cecece;
+  position: relative;
+}
+
+.pcti_thumbWrapper {
+  @include d-flex;
+  align-items: center;
+  width: 100px;
+  height: 131px;
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #f5f5f5;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.pcti_thumb {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.pcti_cardImg {
+  width: 100%;
+}
+
+.pcti_contentWrapper {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 100px - 1rem);
+  margin: 0 0 0 1rem;
+}
+
+.pcti_title,
+.pcti_title > i {
+  @include mb(1);
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.38;
+  letter-spacing: -0.2px;
+  color: #4d4d4d;
+  font: {
+    size: 16px;
+    weight: bold;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.pcti_descWrapper {
+  height: 44px;
+  overflow: hidden;
+
+  @media all and (max-width: $sm-max-width) {
+    max-height: 58px;
+  }
+}
+
+.pcti_infoWrapper {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.pcti_reward {
+  @include mr(3);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: $second-color;
+  top: 1px;
+  letter-spacing: -1px;
+
+  i {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.pcti_arrow {
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.pcti_view {
+  @include mr(3);
+  @include common_view;
+}
+
+.pcti_vote {
+  @include mr(3);
+  @include common_vote;
+}
+
+.pcti_date {
+  @include ml(0);
+  @include ml-sm(3);
+  font-size: 14px;
+  color: #b3b3b3;
+  position: relative;
+  height: 25px;
+  display: inline-block;
+}
+
+.pcti_claimBtnWrapper {
+  float: right;
+}

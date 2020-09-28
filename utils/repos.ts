@@ -40,6 +40,7 @@ import {
   ParamsGetDocumentList
 } from '../typings/interfaces'
 import WalletAddress from '../service/model/WalletAddress'
+import WalletHistory from '../service/model/WalletHistory'
 
 const repos = {
   init(): Promise<boolean> {
@@ -492,7 +493,7 @@ const repos = {
       }
 
       return WalletService.POST.walletHistory(_params).then(
-        (res): WalletBalance => new WalletBalance(res)
+        data => new WalletHistory(data)
       )
     },
     async getWalletAddress(params) {

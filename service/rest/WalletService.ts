@@ -1,4 +1,5 @@
 import AxiosService from './AxiosService'
+import WalletHistory from '../model/WalletHistory'
 
 let walletBalance = 'account/balance'
 let walletHistory = 'account/history'
@@ -39,7 +40,11 @@ export default {
           walletHistory,
           'POST',
           data,
-          data => resolve(data),
+          data =>
+            resolve({
+              history: new WalletHistory(data.history),
+              totalCount: data.totalCount
+            }),
           err => reject(err)
         )
       }),
