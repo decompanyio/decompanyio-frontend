@@ -8,6 +8,7 @@ import React, { ReactElement } from 'react'
 import { ProfileTabProps } from '../../../typings/interfaces'
 import ProfileMyListTab from '../profileMyList/ProfileMyListTab'
 import ProfileHistoryTab from '../profileHistory/ProfileHistoryTab'
+import ProfileWalletHistoryTab from '../profileWalletHistory/ProfileWalletHistoryTab'
 
 export default function ProfileTab({
   profileInfo,
@@ -47,6 +48,12 @@ export default function ProfileTab({
         {owner && (
           <TabPanel>
             <ProfileHistoryTab profileInfo={profileInfo} />
+          </TabPanel>
+        )}
+
+        {owner && (
+          <TabPanel>
+            <ProfileWalletHistoryTab profileInfo={profileInfo} />
           </TabPanel>
         )}
       </Tabs>

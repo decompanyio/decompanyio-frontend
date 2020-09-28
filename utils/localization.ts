@@ -984,15 +984,15 @@ const strings = new Map([
   [
     'alert-2035',
     {
-      KOR: '출금 성공',
-      ENG: 'Successfully withdraw.'
+      KOR: '출금 요청 성공',
+      ENG: 'Withdrawal request successful'
     }
   ],
   [
     'alert-2036',
     {
-      KOR: '출금 실패',
-      ENG: 'Failed to withdraw.'
+      KOR: '출금 요청 실패',
+      ENG: 'Withdrawal request failed'
     }
   ],
   [

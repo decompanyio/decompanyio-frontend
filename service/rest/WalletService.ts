@@ -32,6 +32,16 @@ export default {
           err => reject(err)
         )
       }),
+    walletHistory: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestWithBodyForWallet(
+          walletBalance,
+          'POST',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      }),
     walletCreate: data =>
       new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(

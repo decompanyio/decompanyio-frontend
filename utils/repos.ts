@@ -101,29 +101,18 @@ const repos = {
       })
     },
     profileImageUpload(params) {
-      return new Promise((resolve, reject) => {
-        if (params.file == null) {
-          return console.error('file object is null', params)
-        }
-
-        axios
-          .put(params.signedUrl, params.file)
-          .then(response => resolve(response))
-          .catch(err => reject(err))
-      })
+      return axios.put(params.signedUrl, params.file)
     },
     async updateProfileImage(data) {
-      return new Promise(async (resolve, reject) => {
-        const _data = {
-          header: {
-            Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
-          },
-          data: data
-        }
-        AuthService.POST.accountUpdate(_data)
-          .then(() => resolve(AUTH_APIS.scheduleRenewal()))
-          .catch(err => reject(err))
-      })
+      const _data = {
+        header: {
+          Authorization: await AUTH_APIS.scheduleRenewal().then(res => res)
+        },
+        data: data
+      }
+      return AuthService.POST.accountUpdate(_data).then(() =>
+        AUTH_APIS.scheduleRenewal()
+      )
     },
     async getProfileImageUploadUrl() {
       const _data = {
@@ -486,6 +475,23 @@ const repos = {
   Wallet: {
     async getWalletBalance(data) {
       return WalletService.POST.walletBalance(data).then(
+        (res): WalletBalance => new WalletBalance(res)
+      )
+    },
+    async getWalletHistory(data) {
+      const _params = {
+        header: {
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
+        },
+        params: {
+          pageNo: data.pageNo,
+          pageSize: data.pageSize
+        }
+      }
+
+      return WalletService.POST.walletHistory(_params).then(
         (res): WalletBalance => new WalletBalance(res)
       )
     },

@@ -1,5 +1,8 @@
 # Release Note
 
+## 2020.09.28-a
+- add wallet history tab on profile page
+
 ## 2020.09.23-a
 - change main logo image in header
 

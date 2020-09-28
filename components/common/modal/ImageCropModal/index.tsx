@@ -66,7 +66,7 @@ export default function ImageCropModal(): ReactElement {
 
   // 자르기 확인
   const handleCropConfirm = () => {
-    if (croppedArea === {}) return false
+    if (croppedArea === {} || !file) return false
 
     setLoading(true)
 
