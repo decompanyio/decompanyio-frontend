@@ -840,6 +840,13 @@ const strings = new Map([
     }
   ],
   [
+    'profile-walletHistory',
+    {
+      KOR: '지갑 기록',
+      ENG: 'Wallet History'
+    }
+  ],
+  [
     'profile-total-documents',
     {
       KOR: '총 문서량 :',

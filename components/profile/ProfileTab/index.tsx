@@ -23,6 +23,7 @@ export default function ProfileTab({
           {owner && <Tab>{psString('profile-profileAnalytics')}</Tab>}
           {owner && <Tab>{psString('profile-profileMyList')}</Tab>}
           {owner && <Tab>{psString('profile-profileHistory')}</Tab>}
+          {owner && <Tab>{psString('profile-walletHistory')}</Tab>}
         </TabList>
 
         <TabPanel>

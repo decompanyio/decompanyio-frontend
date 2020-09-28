@@ -35,7 +35,7 @@ export default {
       }),
     walletHistory: data =>
       new Promise((resolve, reject) => {
-        AxiosService._requestWithBodyForWallet(
+        AxiosService._requestWithHeaderBodyForWallet(
           walletHistory,
           'POST',
           data,
