@@ -1,6 +1,6 @@
 # Release Note
 
-## 2020.09.28-a
+## 2020.09.29-a
 - add wallet history tab on profile page
 
 ## 2020.09.23-a
