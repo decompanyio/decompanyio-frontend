@@ -18,7 +18,7 @@ export default class WalletHistoryData {
     this.from = data && data.from ? data.from : ''
     this.to = data && data.to ? data.to : ''
     this.factor = data && data.factor ? data.factor : -1
-    this.value = data && data.value ? Number(data.value) : 0
+    this.value = data && data.value ? Number(JSON.stringify(data.value)) : 0
     this.transactionHash =
       data && data.transactionHash ? data.transactionHash : ''
     this.created = data && data.created ? data.created : 0
