@@ -21,6 +21,7 @@ export default function ProfileWalletHistoryTab(): ReactElement {
       pageSize: commonData.commonPageListSize
     })
       .then(res => {
+        console.log(res)
         setHistoryList(res.history)
         setPageInfo({
           count: res.totalCount,
