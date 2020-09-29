@@ -1,3 +1,11 @@
+const decimalToNumber = decimal => {
+  console.log(decimal)
+  console.log(decimal['$numberDecimal'])
+  console.log(decimal.toString())
+  console.log(JSON.stringify(decimal))
+  return Number(decimal.toString())
+}
+
 export default class WalletHistoryData {
   public id: string
   public userId: string
@@ -23,12 +31,4 @@ export default class WalletHistoryData {
       data && data.transactionHash ? data.transactionHash : ''
     this.created = data && data.created ? data.created : 0
   }
-}
-
-const decimalToNumber = decimal => {
-  console.log(decimal)
-  console.log(decimal['$numberDecimal'])
-  console.log(decimal.toString())
-  console.log(JSON.stringify(decimal))
-  return decimal.toString()
 }
