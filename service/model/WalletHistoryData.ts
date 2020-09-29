@@ -18,9 +18,17 @@ export default class WalletHistoryData {
     this.from = data && data.from ? data.from : ''
     this.to = data && data.to ? data.to : ''
     this.factor = data && data.factor ? data.factor : -1
-    this.value = data && data.value ? Number(data.value) : 0
+    this.value = data && decimalToNumber(data.value) ? Number(data.value) : 0
     this.transactionHash =
       data && data.transactionHash ? data.transactionHash : ''
     this.created = data && data.created ? data.created : 0
   }
+}
+
+const decimalToNumber = decimal => {
+  console.log(decimal)
+  console.log(decimal['$numberDecimal'])
+  console.log(decimal.toString())
+  console.log(JSON.stringify(decimal))
+  return decimal.toString()
 }
