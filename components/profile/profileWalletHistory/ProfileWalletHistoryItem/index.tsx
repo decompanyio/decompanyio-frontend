@@ -30,6 +30,8 @@ export default function ProfileWalletHistoryItem({
                 '/tx/' +
                 historyData.transactionHash
               }
+              target="_blank"
+              rel="noopener noreferrer nofollow"
             >
               {psString('wallet-history-detail')}
             </a>
