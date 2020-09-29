@@ -136,5 +136,10 @@ export default {
       'https://s3.ap-northeast-2.amazonaws.com/about.polarishare.com/POLARIS+SHARE+1.1_whitepaper_KOR.pdf',
     en:
       'https://s3.ap-northeast-2.amazonaws.com/about.polarishare.com/POLARIS+SHARE+1.1_whitepaper_ENG.pdf'
+  },
+
+  etherscanURL : {
+    mainnet: 'https://etherscan.io/',
+    ropsten: 'https://ropsten.etherscan.io/'
   }
 }

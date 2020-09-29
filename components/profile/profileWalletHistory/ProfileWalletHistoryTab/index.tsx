@@ -5,14 +5,15 @@ import commonData from '../../../../common/commonData'
 import repos from '../../../../utils/repos'
 import NoDataIcon from '../../../common/component/NoDataIcon'
 import ProfileWalletHistoryItem from '../ProfileWalletHistoryItem'
+import WalletHistoryData from '../../../../service/model/WalletHistoryData'
 
 export default function ProfileWalletHistoryTab(): ReactElement {
   const [pageInfo, setPageInfo] = useState({
     count: 0,
-    perPage: commonData.commonPageListSize,
-    currentPage: 1
+    perPage: commonData.commonPageListSize
   })
-  const [historyList, setHistoryList] = useState([])
+  const [page, setPage] = useState(1)
+  const [historyList, setHistoryList] = useState([new WalletHistoryData(null)])
 
   const getWalletHistory = (page?: number) => {
     repos.Wallet.getWalletHistory({
@@ -23,16 +24,16 @@ export default function ProfileWalletHistoryTab(): ReactElement {
         setHistoryList(res.history)
         setPageInfo({
           count: res.totalCount,
-          perPage: commonData.commonPageListSize,
-          currentPage: page || 1
+          perPage: commonData.commonPageListSize
         })
       })
       .catch(err => console.error(err))
   }
 
-  const fetchMoreData = e => {
-    console.log('fetchMoreData', e)
-  }
+  const handlePageBtnClick = (page: number): Promise<void> =>
+    Promise.resolve()
+      .then((): void => setPage(page))
+      .then((): void => void getWalletHistory(page))
 
   useEffect(() => {
     getWalletHistory()
@@ -49,8 +50,8 @@ export default function ProfileWalletHistoryTab(): ReactElement {
       <Pagination
         totalCount={pageInfo.count}
         pageCount={pageInfo.perPage}
-        click={fetchMoreData}
-        selectedPage={pageInfo.currentPage}
+        click={handlePageBtnClick}
+        selectedPage={page}
       />
     </div>
   )

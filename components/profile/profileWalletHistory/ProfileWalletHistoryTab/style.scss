@@ -1,28 +1,41 @@
-
-.put_spinner {
-  @include mb(4);
-  @include d-flex;
-  z-index: 1;
-  margin-top: 25px;
-  justify-content: center;
-  align-items: center;
-}
-
-.put_container {
+.pwhi_container {
   @include col(12);
+  @include row;
 }
 
-.put_totalNum {
-  color: #4d4d4d;
-  font-size: 14px;
+.pwhi_btn {
+  position: relative;
+  top: -2px;
+  cursor: pointer;
 
-  @media all and (max-width: $sm-max-width) {
-    margin-bottom: 0 !important;
+  i {
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    margin-right: 10px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.5;
+
+    img {
+      height: 10px;
+    }
   }
+}
 
-  span {
-    @include ml(1);
-    color: $primary-color;
-    font-weight: bold;
+.pwhi_btnOn {
+  @extend .pwhi_btn;
+
+  i {
+    top: 1rem;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
   }
 }

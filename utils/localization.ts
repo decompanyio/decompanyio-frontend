@@ -5617,6 +5617,29 @@ const strings = new Map([
       ENG:
         "Polaris Share is a new concept platform that calls the knowledge or know-how that users have stored in files 'Library' and freely shares and rewards the Library."
     }
+  ],
+
+  [
+    'wallet-history-detail',
+    {
+      KOR: '자세히',
+      ENG: 'detail'
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
   ]
 ])
 
