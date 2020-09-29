@@ -1,41 +1,4 @@
-.pwhi_container {
+.pwht_container {
   @include col(12);
   @include row;
-}
-
-.pwhi_btn {
-  position: relative;
-  top: -2px;
-  cursor: pointer;
-
-  i {
-    position: absolute;
-    left: 20px;
-    top: 12px;
-    margin-right: 10px;
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    box-sizing: border-box;
-    text-align: center;
-    line-height: 1.5;
-
-    img {
-      height: 10px;
-    }
-  }
-}
-
-.pwhi_btnOn {
-  @extend .pwhi_btn;
-
-  i {
-    top: 1rem;
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-  }
 }

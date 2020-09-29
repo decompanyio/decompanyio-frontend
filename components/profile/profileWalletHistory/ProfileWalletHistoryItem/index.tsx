@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { FadingCircle } from 'better-react-spinkit'
-import * as styles from './style.scss'
+import * as styles from 'public/static/styles/scss/index.scss'
 import { ProfileWalletHistoryItemProps } from '../../../../typings/interfaces'
 import { psString } from '../../../../utils/localization'
 import { APP_CONFIG } from '../../../../app.config'

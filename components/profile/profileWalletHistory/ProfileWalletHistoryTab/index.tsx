@@ -42,7 +42,7 @@ export default function ProfileWalletHistoryTab(): ReactElement {
   if (pageInfo.count === 0) return <NoDataIcon />
 
   return (
-    <div className={styles.put_container}>
+    <div className={styles.pwht_container}>
       {historyList.map((data, idx) => (
         <ProfileWalletHistoryItem historyData={data} key={idx} />
       ))}

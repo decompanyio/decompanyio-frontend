@@ -1,5 +1,5 @@
 .pwhi_container {
-  @include row;
+  @include d-flex;
   @include col(12);
   border-bottom: 1px solid #cecece;
   padding: 10px 0;
