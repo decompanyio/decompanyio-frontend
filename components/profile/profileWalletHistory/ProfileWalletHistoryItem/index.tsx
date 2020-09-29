@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { ProfileWalletHistoryItemProps } from '../../../../typings/interfaces'
 import { psString } from '../../../../utils/localization'
@@ -8,18 +8,12 @@ import commonData from '../../../../common/commonData'
 export default function ProfileWalletHistoryItem({
   historyData
 }: ProfileWalletHistoryItemProps): ReactElement {
-  useEffect(() => {
-    console.log(historyData.value)
-    console.log(historyData.value['$numberDecimal'])
-    console.log(historyData.value.toString())
-    console.log(JSON.stringify(historyData.value))
-  }, [])
 
   return (
     <div className={styles.pwhi_container}>
       <div>{historyData.created}</div>
       <div>{historyData.type}</div>
-      <div>{0}</div>
+      <div>{Number(historyData.value['$numberDecimal'])}</div>
       <div>
         {historyData.factor ? (
           <div>{historyData.factor}</div>

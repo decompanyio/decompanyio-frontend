@@ -96,7 +96,7 @@ const getStatus = (
       break
 
     case 2035:
-      setStatusData(code, 'error') // 지갑 출금 성공
+      setStatusData(code, 'success') // 지갑 출금 성공
       break
 
     case 2036:
