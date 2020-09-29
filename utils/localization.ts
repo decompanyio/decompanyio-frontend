@@ -5619,11 +5619,47 @@ const strings = new Map([
     }
   ],
 
+  // profile wallet
   [
     'wallet-history-detail',
     {
       KOR: '자세히',
       ENG: 'detail'
+    }
+  ],
+  [
+    'wallet-history-deposit',
+    {
+      KOR: '입금',
+      ENG: 'Deposit'
+    }
+  ],
+  [
+    'wallet-history-withdraw',
+    {
+      KOR: '출금',
+      ENG: 'Withdraw'
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
+    }
+  ],
+  [
+    '',
+    {
+      KOR: '',
+      ENG: ''
     }
   ],
   [

@@ -264,7 +264,7 @@ export default {
   withComma(data: number): string {
     return data ? data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0'
   },
-  toDeck(smallDeck: number | string): number {
+  toPola(smallDeck: number | string): number {
     if (isNaN(smallDeck as number) || !smallDeck) return 0
     let d = new BigNumber('1e+18')
     let bn = new BigNumber(smallDeck)

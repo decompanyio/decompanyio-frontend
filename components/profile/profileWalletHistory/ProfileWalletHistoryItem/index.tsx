@@ -1,22 +1,25 @@
 import React, { ReactElement } from 'react'
-import * as styles from 'public/static/styles/scss/index.scss'
+import { FadingCircle } from 'better-react-spinkit'
+import * as styles from './style.scss'
 import { ProfileWalletHistoryItemProps } from '../../../../typings/interfaces'
 import { psString } from '../../../../utils/localization'
 import { APP_CONFIG } from '../../../../app.config'
 import commonData from '../../../../common/commonData'
+import common from '../../../../common/common'
 
 export default function ProfileWalletHistoryItem({
   historyData
 }: ProfileWalletHistoryItemProps): ReactElement {
-
   return (
     <div className={styles.pwhi_container}>
-      <div>{historyData.created}</div>
-      <div>{historyData.type}</div>
-      <div>{Number(historyData.value['$numberDecimal'])}</div>
+      <div>{common.timestampToDate(historyData.created)}</div>
+      <div>{psString(`wallet-history-${historyData.type.toLowerCase()}`)}</div>
+      <div>
+        {common.toPola(Number(historyData.value['$numberDecimal']))} POLA
+      </div>
       <div>
         {historyData.factor ? (
-          <div>{historyData.factor}</div>
+          <FadingCircle color="#3681fe" size={17} />
         ) : (
           <div>
             <a

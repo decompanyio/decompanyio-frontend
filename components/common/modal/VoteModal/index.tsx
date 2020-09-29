@@ -33,7 +33,7 @@ export default function VoteModal(): ReactElement {
     new Promise(resolve => {
       let errMsg = ''
       if (value <= 0) errMsg = psString('VoteModal-modal-err-1')
-      else if (value > Number(common.toDeck(balance).toFixed(2))) {
+      else if (value > Number(common.toPola(balance).toFixed(2))) {
         errMsg = psString('VoteModal-modal-err-2')
       }
       setDeckError(errMsg)
@@ -80,8 +80,8 @@ export default function VoteModal(): ReactElement {
       documentId: documentData.documentId
     }).then(res =>
       setVoteAmount({
-        myVoteAmount: common.toDeck(res.myVoteAmount),
-        totalVoteAmount: common.toDeck(res.totalVoteAmount)
+        myVoteAmount: common.toPola(res.myVoteAmount),
+        totalVoteAmount: common.toPola(res.totalVoteAmount)
       })
     )
   }
@@ -160,7 +160,7 @@ export default function VoteModal(): ReactElement {
           <ul className={styles.vm_list}>
             <li>
               <span className={styles.vm_deckAmount}>
-                {common.toDeck(balance).toFixed(2)}
+                {common.toPola(balance).toFixed(2)}
               </span>
               POLA ($
               <span className={styles.vm_dollarAmount}>
