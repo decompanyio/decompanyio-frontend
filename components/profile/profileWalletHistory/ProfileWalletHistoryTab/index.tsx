@@ -37,7 +37,7 @@ export default function ProfileWalletHistoryTab(): ReactElement {
 
   useEffect(() => {
     getWalletHistory()
-  })
+  }, [])
 
   if (pageInfo.count === 0) return <NoDataIcon />
 
