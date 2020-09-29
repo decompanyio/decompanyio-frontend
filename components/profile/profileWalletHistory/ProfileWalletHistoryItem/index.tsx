@@ -9,7 +9,10 @@ export default function ProfileWalletHistoryItem({
   historyData
 }: ProfileWalletHistoryItemProps): ReactElement {
   useEffect(() => {
-    console.log(historyData)
+    console.log(historyData.value)
+    console.log(historyData.value['$numberDecimal'])
+    console.log(historyData.value.toString())
+    console.log(JSON.stringify(historyData.value))
   }, [])
 
   return (
