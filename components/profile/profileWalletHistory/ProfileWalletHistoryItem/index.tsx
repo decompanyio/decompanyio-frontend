@@ -16,7 +16,7 @@ export default function ProfileWalletHistoryItem({
     <div className={styles.pwhi_container}>
       <div>{historyData.created}</div>
       <div>{historyData.type}</div>
-      <div>{historyData.value}</div>
+      <div>{0}</div>
       <div>
         {historyData.factor ? (
           <div>{historyData.factor}</div>
