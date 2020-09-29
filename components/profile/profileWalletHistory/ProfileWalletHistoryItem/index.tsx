@@ -18,7 +18,7 @@ export default function ProfileWalletHistoryItem({
         {common.toPola(Number(historyData.value['$numberDecimal']))} POLA
       </div>
       <div>
-        {historyData.factor ? (
+        {historyData.factor !== 1 ? (
           <FadingCircle color="#3681fe" size={17} />
         ) : (
           <div>
