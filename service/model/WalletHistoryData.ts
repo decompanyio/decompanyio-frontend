@@ -14,7 +14,7 @@ export default class WalletHistoryData {
   public from: string
   public to: string
   public factor: number
-  public value: number
+  public value: any
   public transactionHash: string
   public created: number
 
