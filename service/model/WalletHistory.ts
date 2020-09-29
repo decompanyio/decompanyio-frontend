@@ -1,7 +1,7 @@
 import WalletHistoryData from './WalletHistoryData'
 
 export default class WalletHistory {
-  public history: WalletHistoryData[]
+  public history: any[]
   public totalCount: number
 
   public constructor(data) {
