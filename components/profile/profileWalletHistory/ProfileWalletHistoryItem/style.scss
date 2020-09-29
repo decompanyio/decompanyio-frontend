@@ -3,4 +3,11 @@
   @include col(12);
   border-bottom: 1px solid #cecece;
   padding: 10px 0;
+
+  div {
+    @include col(3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
