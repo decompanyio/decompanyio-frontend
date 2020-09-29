@@ -493,7 +493,11 @@ const repos = {
       }
 
       return WalletService.POST.walletHistory(_params).then(
-        data => new WalletHistory(data)
+        data => {
+          console.log(data)
+          console.log(new WalletHistory(data))
+          return new WalletHistory(data)
+        }
       )
     },
     async getWalletAddress(params) {
