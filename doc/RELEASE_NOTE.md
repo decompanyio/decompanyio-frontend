@@ -1,5 +1,11 @@
 # Release Note
 
+## 2020.10.05-a
+
+Bug fix
+
+- wallet history not working
+
 ## 2020.09.29-a
 - add wallet history tab on profile page
 

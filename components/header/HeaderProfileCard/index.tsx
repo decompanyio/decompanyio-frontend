@@ -45,7 +45,6 @@ function HeaderProfileCard({ click }: ProfileCardProps): ReactElement {
     void getBalance() // 잔액 조회
 
     return () => {
-      console.log('end')
       window.removeEventListener('click', handleClickEvent)
     }
   }, [])

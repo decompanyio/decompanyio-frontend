@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
+import { ThreeBounce } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/scss/index.scss'
 import Pagination from '../../../common/component/Pagination'
 import commonData from '../../../../common/commonData'
@@ -9,7 +10,7 @@ import WalletHistoryData from '../../../../service/model/WalletHistoryData'
 
 export default function ProfileWalletHistoryTab(): ReactElement {
   const [pageInfo, setPageInfo] = useState({
-    count: 0,
+    count: -1,
     perPage: commonData.commonPageListSize
   })
   const [page, setPage] = useState(1)
@@ -39,7 +40,18 @@ export default function ProfileWalletHistoryTab(): ReactElement {
     getWalletHistory()
   }, [])
 
-  if (pageInfo.count === 0) return <NoDataIcon />
+  if (pageInfo.count === 0)
+    return (
+      <div className={styles.pwht_spinner}>
+        <NoDataIcon />
+      </div>
+    )
+  else if (pageInfo.count === -1)
+    return (
+      <div className={styles.pwht_spinner}>
+        <ThreeBounce color="#3681fe" name="ball-pulse-sync" />
+      </div>
+    )
 
   return (
     <div className={styles.pwht_container}>

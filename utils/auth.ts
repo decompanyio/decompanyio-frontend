@@ -68,8 +68,8 @@ export const AUTH_APIS = {
   getMyInfo(): UserInfo {
     if (!AUTH_APIS.isLogin() && common.isServer()) return new UserInfo(null)
 
-    let userInfo = localStorage.getItem('ps_ui')
-    let userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
+    const userInfo = localStorage.getItem('ps_ui')
+    const userInfoWithJson = userInfo ? JSON.parse(userInfo) : ''
     if (!userInfoWithJson && AUTH_APIS.isLogin()) {
       AUTH_APIS.scheduleRenewal()
       return new UserInfo(null)
@@ -168,7 +168,7 @@ export const AUTH_APIS = {
     }),
   scheduleRenewal: () =>
     new Promise((resolve, reject) => {
-      let timeout =
+      const timeout =
         JSON.parse(localStorage.getItem('ps_ea') || '{}') - Date.now() // mms
 
       return timeout > 0
@@ -185,29 +185,23 @@ export const AUTH_APIS = {
 
       if (!callbackIframeContainer) reject()
 
-      let src = `${
+      const iframeEle = document.createElement('iframe')
+      iframeEle.id = 'authIframe' + Math.random()
+      iframeEle.style.display = 'none'
+      iframeEle.src = `${
         APP_CONFIG.domain().auth
       }/authentication?prompt=none&redirectUrl=${
         APP_CONFIG.domain().mainHost
       }/callback&returnUrl=silent`
 
-      let randomNumber = Math.random()
-
-      const iframeEle = document.createElement('iframe')
-      iframeEle.id = 'authIframe' + randomNumber
-      iframeEle.style.display = 'none'
-      iframeEle.src = src
-
       callbackIframeContainer.appendChild(iframeEle)
 
       // TODO IE, 표준 방법도 추가
       // iframeEle.onload = AUTH_APIS.iframeEventListener(iframeEle.id)
-      iframeEle.addEventListener(
-        'load',
-        async _e =>
-          await AUTH_APIS.iframeEventListener(iframeEle.id)
-            .then(at => resolve(at))
-            .catch(err => reject(err))
+      iframeEle.addEventListener('load', _e =>
+        AUTH_APIS.iframeEventListener(iframeEle.id)
+          .then(at => resolve(at))
+          .catch(err => reject(err))
       )
     }),
   iframeEventListener: (id: string) =>
@@ -224,9 +218,9 @@ export const AUTH_APIS = {
         deleteEle()
 
         if (urlFromIframe && urlFromIframe !== 'about:blank') {
-          let url = new URL(urlFromIframe)
-          let at = url.searchParams.get('authorization_token') || ''
-          let ea = Number(url.searchParams.get('expired'))
+          const url = new URL(urlFromIframe)
+          const at = url.searchParams.get('authorization_token') || ''
+          const ea = Number(url.searchParams.get('expired'))
 
           AUTH_APIS.setTokens(at, ea, '')
 

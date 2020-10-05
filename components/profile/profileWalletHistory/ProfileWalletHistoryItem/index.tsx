@@ -32,6 +32,7 @@ export default function ProfileWalletHistoryItem({
               }
               target="_blank"
               rel="noopener noreferrer nofollow"
+              className={styles.pwhi_anchor}
             >
               {psString('wallet-history-detail')}
             </a>
