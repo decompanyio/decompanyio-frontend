@@ -67,7 +67,7 @@ export default function ProfileSummary({
 
   useEffect(() => {
     void getBalance()
-    getRewards()
+    void getRewards()
   }, [])
 
   return (

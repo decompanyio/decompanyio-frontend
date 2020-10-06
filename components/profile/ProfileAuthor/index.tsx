@@ -41,13 +41,12 @@ export default function ProfileAuthor({
   }
 
   const getWalletWithdrawRequest = () =>
-    repos.Wallet.getWalletWithdrawRequest().then(res => {
+    repos.Wallet.getWalletWithdrawRequest().then(res =>
       setIsPending(res.length > 0)
-      console.log(res)
-    })
+    )
 
   useEffect(() => {
-    if (owner) getWalletWithdrawRequest()
+    if (owner) void getWalletWithdrawRequest()
   }, [])
 
   return (
@@ -125,7 +124,7 @@ export default function ProfileAuthor({
               className={styles.ps_withdrawBtn}
               onClick={(): void => handleWithdrawBtnClick()}
             >
-              {isPending ? (
+              {!isPending ? (
                 psString('common-modal-withdraw')
               ) : (
                 <FadingCircle color="#3681fe" size={17} />

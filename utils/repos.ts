@@ -41,6 +41,7 @@ import {
 } from '../typings/interfaces'
 import WalletAddress from '../service/model/WalletAddress'
 import WalletHistory from '../service/model/WalletHistory'
+import WalletWithdrawRequest from '../service/model/WalletWithdrawRequest'
 
 const repos = {
   init(): Promise<boolean> {
@@ -549,9 +550,14 @@ const repos = {
       }
 
       return WalletService.POST.walletWithdrawRequest(params).then(
-        (res): any => {
-          console.log(res)
-          return res
+        ({ data }) => {
+          const tmpArr: WalletWithdrawRequest[] = []
+          if (data.legnth > 0) {
+            for (let item of data) {
+              tmpArr.push(new WalletWithdrawRequest(item))
+            }
+          }
+          return tmpArr
         }
       )
     },
