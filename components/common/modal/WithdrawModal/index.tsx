@@ -7,9 +7,11 @@ import common from '../../../../common/common'
 import * as styles from 'public/static/styles/scss/index.scss'
 import WalletBalance from '../../../../service/model/WalletBalance'
 import { useMain } from '../../../../redux/main/hooks'
+import { useProfile } from '../../../../redux/profile/hooks'
 
 export default function WithdrawModal(): ReactElement {
   const { myInfo, setModal, setAlertCode } = useMain()
+  const { setWithdrawPending } = useProfile()
   const [closeFlag, setCloseFlag] = useState(false)
   const [loading, setLoading] = useState(false)
   const [balanceLoading, setBalanceLoading] = useState(true)
@@ -30,6 +32,12 @@ export default function WithdrawModal(): ReactElement {
         setLoading(false)
         setBalance(new WalletBalance(null))
       })
+
+  // 출금 pending 상태 체크
+  const getWalletWithdrawRequest = () =>
+    repos.Wallet.getWalletWithdrawRequest().then(res => {
+      setWithdrawPending(res.length > 0)
+    })
 
   // 모달 숨기기 클래스 추가
   const handleClickCloseFlag = () =>
@@ -82,7 +90,8 @@ export default function WithdrawModal(): ReactElement {
       amount: Number(amount),
       toAddress: address
     })
-      .then(() => {
+      .then(async () => {
+        await getWalletWithdrawRequest()
         setLoading(false)
         setAlertCode(2035)
         return handleClickClose()

@@ -2,6 +2,7 @@ import DocumentInfo from '../service/model/DocumentInfo'
 import UserInfo from '../graphql/models/UserInfo'
 import { MainState } from '../redux/main/reducer'
 import { TrackingState } from '../redux/tracking/reducer'
+import { ProfileState } from '../redux/profile/reducer'
 import WalletHistoryData from '../service/model/WalletHistoryData'
 
 export interface DocumentId {
@@ -433,9 +434,14 @@ export interface TrackingInitState {
   showOnePage: boolean
 }
 
+export interface ProfileInitState {
+  withdrawPending: boolean
+}
+
 // redux 도메인 추가 시, interface 도 함께 추가해 주어야 합니다.
 export interface StateProps {
   tracking: TrackingState
+  profile: ProfileState
   main: MainState
 }
 

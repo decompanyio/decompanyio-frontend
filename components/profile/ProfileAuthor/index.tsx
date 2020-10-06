@@ -8,6 +8,7 @@ import ProfileAvatarEdit from '../ProfileAvatarEdit'
 import common from 'common/common'
 import { ProfileSummaryAuthorProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import { useProfile } from '../../../redux/profile/hooks'
 import repos from '../../../utils/repos'
 
 export default function ProfileAuthor({
@@ -17,8 +18,8 @@ export default function ProfileAuthor({
   owner
 }: ProfileSummaryAuthorProps): ReactElement {
   const { myInfo, setModal } = useMain()
+  const { withdrawPending, setWithdrawPending } = useProfile()
   const [userNameEdit, setUserNameEdit] = useState(false)
-  const [isPending, setIsPending] = useState(false)
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
   )
@@ -41,13 +42,21 @@ export default function ProfileAuthor({
   }
 
   const getWalletWithdrawRequest = () =>
-    repos.Wallet.getWalletWithdrawRequest().then(res =>
-      setIsPending(res.length > 0)
-    )
+    repos.Wallet.getWalletWithdrawRequest().then(res => {
+      setWithdrawPending(res.length > 0)
+    })
 
   useEffect(() => {
     if (owner) void getWalletWithdrawRequest()
   }, [])
+
+  // pending 상태를 지속 체크합니다.
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (withdrawPending) void getWalletWithdrawRequest()
+      else clearInterval(interval)
+    }, 10000)
+  }, [withdrawPending])
 
   return (
     <div className={styles.ps_top}>
@@ -124,7 +133,7 @@ export default function ProfileAuthor({
               className={styles.ps_withdrawBtn}
               onClick={(): void => handleWithdrawBtnClick()}
             >
-              {!isPending ? (
+              {!withdrawPending ? (
                 psString('common-modal-withdraw')
               ) : (
                 <FadingCircle color="#3681fe" size={17} />
