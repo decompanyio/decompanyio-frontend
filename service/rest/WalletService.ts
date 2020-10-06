@@ -5,6 +5,7 @@ let walletHistory = 'account/history'
 let walletAddress = 'account/address'
 let walletCreate = 'account/create'
 let walletWithdraw = 'account/withdraw'
+let walletWithdrawRequest = 'account/withdrawRequest'
 let voteDocument = 'document/VoteModal'
 let claimCreator = 'claim/royalty'
 let claimCurator = 'claim/reward'
@@ -57,6 +58,16 @@ export default {
       new Promise((resolve, reject) => {
         AxiosService._requestWithHeaderBodyForWallet(
           walletWithdraw,
+          'POST',
+          data,
+          data => resolve(data),
+          err => reject(err)
+        )
+      }),
+    walletWithdrawRequest: data =>
+      new Promise((resolve, reject) => {
+        AxiosService._requestWithHeaderBodyForWallet(
+          walletWithdrawRequest,
           'POST',
           data,
           data => resolve(data),

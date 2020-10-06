@@ -1,4 +1,5 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { FadingCircle } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import MyAvatar from '../../common/avatar/MyAvatar'
@@ -7,6 +8,7 @@ import ProfileAvatarEdit from '../ProfileAvatarEdit'
 import common from 'common/common'
 import { ProfileSummaryAuthorProps } from '../../../typings/interfaces'
 import { useMain } from '../../../redux/main/hooks'
+import repos from '../../../utils/repos'
 
 export default function ProfileAuthor({
   balance,
@@ -16,6 +18,7 @@ export default function ProfileAuthor({
 }: ProfileSummaryAuthorProps): ReactElement {
   const { myInfo, setModal } = useMain()
   const [userNameEdit, setUserNameEdit] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   const [username, setUsername] = useState(
     profileInfo.username || profileInfo.email
   )
@@ -36,6 +39,16 @@ export default function ProfileAuthor({
   const handleWithdrawBtnClick = (): void => {
     setModal('withdraw')
   }
+
+  const getWalletWithdrawRequest = () =>
+    repos.Wallet.getWalletWithdrawRequest().then(res => {
+      setIsPending(res.length > 0)
+      console.log(res)
+    })
+
+  useEffect(() => {
+    if (owner) getWalletWithdrawRequest()
+  }, [])
 
   return (
     <div className={styles.ps_top}>
@@ -112,7 +125,11 @@ export default function ProfileAuthor({
               className={styles.ps_withdrawBtn}
               onClick={(): void => handleWithdrawBtnClick()}
             >
-              {psString('common-modal-withdraw')}
+              {isPending ? (
+                psString('common-modal-withdraw')
+              ) : (
+                <FadingCircle color="#3681fe" size={17} />
+              )}
             </p>
           </div>
         )}

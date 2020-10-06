@@ -536,8 +536,22 @@ const repos = {
       }
 
       return WalletService.POST.walletWithdraw(params).then(
-        (res): WalletCreate => {
-          return new WalletCreate(res)
+        (res): WalletCreate => new WalletCreate(res)
+      )
+    },
+    async getWalletWithdrawRequest() {
+      const params = {
+        header: {
+          Authorization: await AUTH_APIS.scheduleRenewal().then(
+            (res: string) => res
+          )
+        }
+      }
+
+      return WalletService.POST.walletWithdrawRequest(params).then(
+        (res): any => {
+          console.log(res)
+          return res
         }
       )
     },
@@ -575,7 +589,7 @@ const repos = {
         .then(result => result)
         .catch(err => err)
     },
-    async getProfileRewards(data) {
+    getProfileRewards(data) {
       return repos.Query.getProfileRewards(data).then(
         res => new ProfileRewards(res.ProfileSummary)
       )

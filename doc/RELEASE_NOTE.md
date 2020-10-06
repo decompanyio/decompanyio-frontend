@@ -1,6 +1,7 @@
 # Release Note
 
-## 2020.10.05-a
+## 2020.10.06-a
+- add get wallet withdraw request API 
 
 Bug fix
 
