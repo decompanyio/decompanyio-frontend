@@ -63,7 +63,7 @@ export default function FooterSNS(): ReactElement {
       <li>
         <a
           target="_blank"
-          href={'https://medium.com/polaris-share'}
+          href={'https://medium.com/@polarishare'}
           rel="noopener noreferrer nofollow"
           aria-label="Medium"
         >
