@@ -1,6 +1,9 @@
 # Release Note
 
-## 2020.10.06-a
+## 2020.10.12-a
+- change Medium profile url
+
+## 2020.10.06-b
 - add get wallet withdraw request API 
 
 Bug fix
