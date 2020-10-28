@@ -141,7 +141,6 @@ export default function UploadDocumentModal(): ReactElement {
       setAlertCode(2079, {})
       return false
     }
-    console.log(1)
 
     let filename = file.name
     let fileSize = file.size
@@ -189,7 +188,6 @@ export default function UploadDocumentModal(): ReactElement {
 
   return (
     <div className={styles.modal_container}>
-      <div className={styles.modal_wrapper} />
       <div
         className={
           styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')

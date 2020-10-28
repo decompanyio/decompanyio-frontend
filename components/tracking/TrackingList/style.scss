@@ -77,8 +77,18 @@
 
   .sb_wrapper {
     position: absolute;
-    right: -8px;
-    top: -11px;
+    right: 0;
+    top: 0;
+  }
+
+  #commonSearchBtn {
+    top: 0;
+
+    @media (max-width: $lg-max-width) {
+      right: 0;
+      width: 23px;
+      height: 23px;
+    }
   }
 }
 

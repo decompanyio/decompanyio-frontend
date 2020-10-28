@@ -62,7 +62,6 @@ export default function PublishComplete(): ReactElement {
 
   return (
     <div className={styles.modal_container}>
-      <div className={styles.modal_wrapper} />
       <div
         className={
           styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')

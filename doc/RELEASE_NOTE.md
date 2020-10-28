@@ -1,5 +1,14 @@
 # Release Note
 
+## 2020.10.28-a
+
+Bug fix
+
+- tracking/tracking detail page not working
+- modal position fix
+- fullscreen component wrong position
+- edit size of search icon in tracking page
+
 ## 2020.10.12-a
 - change Medium profile url
 

@@ -138,32 +138,38 @@ app.prepare().then(() => {
   })
 
   // tracking page
-  server.get('/t/:identifier/:seoTitle', (req, res) => {
-    res.header('X-Robots-MainFirstSectionTag', 'noindex')
+  server.get(
+    /\/t\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/,
+    (req, res) => {
+      res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
-    let pathname = req.url.split('/')
+      let pathname = req.url.split('/')
 
-    if (!pathname[2] || !pathname[3]) {
-      return app.render(req, res, '/not_found_page', req.query)
+      if (!pathname[2] || !pathname[3]) {
+        return app.render(req, res, '/not_found_page', req.query)
+      }
+
+      const params = { identifier: pathname, seoTitle: pathname }
+      return app.render(req, res, '/tracking', params)
     }
-
-    const params = { identifier: pathname, seoTitle: pathname }
-    return app.render(req, res, '/tracking', params)
-  })
+  )
 
   // tracking detail page
-  server.get('/td/:identifier/:seoTitle', (req, res) => {
-    res.header('X-Robots-MainFirstSectionTag', 'noindex')
+  server.get(
+    /\/td\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/,
+    (req, res) => {
+      res.header('X-Robots-MainFirstSectionTag', 'noindex')
 
-    let pathname = req.url.split('/')
+      let pathname = req.url.split('/')
 
-    if (!pathname[2] || !pathname[3]) {
-      return app.render(req, res, '/not_found_page', req.query)
+      if (!pathname[2] || !pathname[3]) {
+        return app.render(req, res, '/not_found_page', req.query)
+      }
+
+      const params = { identifier: pathname, seoTitle: pathname }
+      return app.render(req, res, '/tracking_detail', params)
     }
-
-    const params = { identifier: pathname, seoTitle: pathname }
-    return app.render(req, res, '/tracking_detail', params)
-  })
+  )
 
   // document list searched by tags page
   server.get('/tag/:tag', (req, res) => {
