@@ -115,28 +115,6 @@ app.prepare().then(() => {
     }
   )
 
-  // viewer page
-  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/, (req, res) => {
-    const params = {
-      identifier: req.url.split('/')[1],
-      seoTitle: req.url.split('/')[2]
-    }
-    return app.render(
-      req,
-      makeTrackingCookieResponse(req, res),
-      '/contents_view',
-      params
-    )
-  })
-
-  // profile page
-  server.get(/\/@[a-zA-Z0-9-]+\/?/, (req, res) => {
-    res.header('X-Robots-MainFirstSectionTag', 'noindex')
-
-    const params = { identifier: req.url.split('/')[1] }
-    return app.render(req, res, '/profile_page', params)
-  })
-
   // tracking page
   server.get(
     /\/t\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/,
@@ -170,6 +148,29 @@ app.prepare().then(() => {
       return app.render(req, res, '/tracking_detail', params)
     }
   )
+
+  // viewer page
+  server.get(/\/@[a-zA-Z0-9-]+\/[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣-%]+/, (req, res) => {
+    const params = {
+      identifier: req.url.split('/')[1],
+      seoTitle: req.url.split('/')[2]
+    }
+
+    return app.render(
+      req,
+      makeTrackingCookieResponse(req, res),
+      '/contents_view',
+      params
+    )
+  })
+
+  // profile page
+  server.get(/\/@[a-zA-Z0-9-]+\/?/, (req, res) => {
+    res.header('X-Robots-MainFirstSectionTag', 'noindex')
+
+    const params = { identifier: req.url.split('/')[1] }
+    return app.render(req, res, '/profile_page', params)
+  })
 
   // document list searched by tags page
   server.get('/tag/:tag', (req, res) => {

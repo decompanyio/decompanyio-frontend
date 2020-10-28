@@ -332,6 +332,7 @@ export interface UserAvatarProps {
 export interface SearchBtnProps {
   click?: () => void
   path?: string
+  size?: string
 }
 
 export interface ToTopBtnProps {

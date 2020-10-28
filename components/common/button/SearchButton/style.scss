@@ -29,6 +29,17 @@
   }
 }
 
+.sb_searchBtnMain_small {
+  @extend .sb_searchBtnMain;
+  width: 23px;
+  height: 23px;
+
+  @media (min-width: $lg-min-width) {
+    background: url(https://res.polarishare.com/static/image/icon/btn-search-small.png) no-repeat 0 0/contain !important;
+    top: 0;
+  }
+}
+
 .sb_searchBtnHeader {
   cursor: pointer;
   width: 23px;

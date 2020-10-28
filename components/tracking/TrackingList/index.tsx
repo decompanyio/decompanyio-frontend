@@ -89,7 +89,7 @@ export default function TrackingList({
                 placeholder={psString('auto-placeholder-2')}
                 getNameList={trackingList}
               />
-              <SearchBtn />
+              <SearchBtn size={'small'} />
             </div>
           ) : (
             <div className={styles.tl_searchSelectedWrapper}>

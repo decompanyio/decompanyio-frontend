@@ -8,6 +8,7 @@ Bug fix
 - modal position fix
 - fullscreen component wrong position
 - edit size of search icon in tracking page
+- add condition on document edit modal 
 
 ## 2020.10.12-a
 - change Medium profile url

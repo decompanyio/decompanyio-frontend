@@ -4,7 +4,8 @@ import { SearchBtnProps } from '../../../../typings/interfaces'
 
 export default function SearchButton({
   click,
-  path
+  path,
+  size
 }: SearchBtnProps): ReactElement {
   const handleSearchBtnClick = () => {
     click && click()
@@ -14,7 +15,13 @@ export default function SearchButton({
     <div className={styles.sb_wrapper}>
       <div
         id="commonSearchBtn"
-        className={styles[`sb_searchBtn${path ? 'Header' : 'Main'}`]}
+        className={
+          styles[
+            `sb_searchBtn${path ? 'Header' : 'Main'}${
+              size ? '_' + size.toLowerCase() : ''
+            }`
+          ]
+        }
         onClick={() => handleSearchBtnClick()}
       />
     </div>
