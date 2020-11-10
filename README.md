@@ -1,6 +1,5 @@
 <img src="https://github.com/decompanyio/decompanyio-frontend/blob/master/public/logo.png" alt="react boilerplate banner" align="center" />
 
-
 # Polaris Share Front-End
 > Development URL : https://share.decompany.io
 
