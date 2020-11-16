@@ -1476,9 +1476,9 @@ const strings = new Map([
     'dollar-learn-Others-explain-1',
     {
       KOR:
-        'Polaris Share 알파 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
+        'Polaris Share 베타 버전에서는 POLA 토큰을 테스트하여 응용 프로그램에서 올바르게 작동하는지 확인합니다.',
       ENG:
-        'In the alpha version, POLA tokens are tested to ensure that the application program works as desired.'
+        'In the beta version, POLA tokens are tested to ensure that the application program works as desired.'
     }
   ],
   [

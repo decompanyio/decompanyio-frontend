@@ -23,7 +23,14 @@ import UserDocumentFavorite from '../../graphql/queries/UserDocumentFavorite.gra
 import UserInfo from '../../graphql/models/UserInfo'
 
 export default function Layout(props): ReactElement {
-  const { myInfo, setMyInfo, setTagList, setIsMobile, setIsTablet } = useMain()
+  const {
+    myInfo,
+    setMyInfo,
+    setTagList,
+    setIsMobile,
+    setIsTablet,
+    setModal
+  } = useMain()
 
   const [init, setInit] = useState(false)
   const [scrollToTopValue, setScrollToTopValue] = useState(0)
@@ -170,6 +177,8 @@ export default function Layout(props): ReactElement {
 
       // SET isTablet
       setIsTabletToRedux()
+
+      setModal('dollarLearnMore')
     })
 
     return () => {
