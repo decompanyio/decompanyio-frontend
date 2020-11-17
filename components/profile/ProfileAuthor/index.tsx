@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { FadingCircle } from 'better-react-spinkit'
+//import { FadingCircle } from 'better-react-spinkit'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../utils/localization'
 import MyAvatar from '../../common/avatar/MyAvatar'
@@ -37,9 +37,9 @@ export default function ProfileAuthor({
     setModal('deposit')
   }
 
-  const handleWithdrawBtnClick = (): void => {
+/*  const handleWithdrawBtnClick = (): void => {
     setModal('withdraw')
-  }
+  }*/
 
   const getWalletWithdrawRequest = () =>
     repos.Wallet.getWalletWithdrawRequest().then(res => {
@@ -128,7 +128,7 @@ export default function ProfileAuthor({
             >
               {psString('common-modal-deposit')}
             </p>
-            <p
+            {/*<p
               data-tip={psString('withdraw-modal-title')}
               className={styles.ps_withdrawBtn}
               onClick={(): void => handleWithdrawBtnClick()}
@@ -138,7 +138,7 @@ export default function ProfileAuthor({
               ) : (
                 <FadingCircle color="#3681fe" size={17} />
               )}
-            </p>
+            </p>*/}
           </div>
         )}
       </div>

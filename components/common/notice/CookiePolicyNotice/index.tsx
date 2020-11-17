@@ -13,7 +13,7 @@ export default function CookiePolicyNotice(): ReactElement {
 
   useEffect(() => {
     let _cookiePolicyValue = commonView.getCookie('cpv')
-    
+
     if (!_cookiePolicyValue) {
       commonView.setCookie('cpv', false, 1000)
       setCookiePolicyValue(false)
