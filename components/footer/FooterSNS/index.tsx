@@ -74,7 +74,7 @@ export default function FooterSNS(): ReactElement {
       <li>
         <a
           target="_blank"
-          href={'https://t.me/polarishare'}
+          href={'https://t.me'}
           rel="noopener noreferrer nofollow"
           aria-label="Telegram"
         >
