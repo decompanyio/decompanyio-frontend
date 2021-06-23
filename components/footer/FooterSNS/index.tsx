@@ -8,7 +8,7 @@ export default function FooterSNS(): ReactElement {
         <a
           aria-label="Facebook"
           target="_blank"
-          href={'https://www.facebook.com/polarishare/'}
+          href={'https://www.facebook.com/OfficalPolarisShare'}
           rel="noopener noreferrer nofollow"
         >
           <i className={styles.sprite_sns_1} />
@@ -49,7 +49,7 @@ export default function FooterSNS(): ReactElement {
           <span className={styles.fs_forA11y + ' for-a11y'}>blog</span>
         </a>
       </li>
-      <li>
+      {/*<li>
         <a
           target="_blank"
           href={'https://open.kakao.com/tm/sent/g8JceZec'}
@@ -59,7 +59,7 @@ export default function FooterSNS(): ReactElement {
           <i className={styles.sprite_sns_6} />
           <span className={styles.fs_forA11y + ' for-a11y'}>kakaotalk</span>
         </a>
-      </li>
+      </li>*/}
       <li>
         <a
           target="_blank"
@@ -74,7 +74,7 @@ export default function FooterSNS(): ReactElement {
       <li>
         <a
           target="_blank"
-          href={'https://t.me'}
+          href={'https://t.me/polarishare'}
           rel="noopener noreferrer nofollow"
           aria-label="Telegram"
         >
