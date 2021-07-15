@@ -52,7 +52,7 @@
     "lodash": "^4.17.19",
     "morgan": "^1.10.0",
     "nanoid": "2.1.11",
-    "next": "^9.5.2",
+    "next": "9.3.0",
     "next-compose-plugins": "2.2.0",
     "next-offline": "^5.0.2",
     "next-optimized-images": "2.6.0",
@@ -109,6 +109,7 @@
     "eslint-plugin-react-hooks": "1.6.1",
     "jest": "25.2.4",
     "prettier": "1.18.2",
+    "sass-loader": "^7.1.0",
     "ts-jest": "25.3.0"
   }
 }
