@@ -27,6 +27,8 @@ const morganFunction = morgan('combined', {
   }
 })
 
+console.log("Hello");
+
 const makeTrackingCookieResponse = (req, res) => {
   /*
     console.log("headers", req.headers);
