@@ -10,6 +10,7 @@ import PublishModal from './PublishModal'
 import PublishCompleteModal from './PublishComplete'
 import ImageCropModal from './ImageCropModal'
 import DollarLearnMoreModal from './DollarLearnMoreModal'
+import EventModal from './EventModal'
 import VoteModal from './VoteModal'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
@@ -64,7 +65,10 @@ export default function Modal(): ReactElement {
       withdraw: <WithdrawModal />,
 
       // 전체화면 모달
-      fullscreen: <FullscreenModal />
+      fullscreen: <FullscreenModal />,
+
+      // 이벤트 모달
+      event: <EventModal />
     }[modalCode] || <div />
   )
 }
