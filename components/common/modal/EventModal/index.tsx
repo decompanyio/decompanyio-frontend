@@ -80,7 +80,7 @@ const InquiryDataSubmit = async () => {
             await axios({
                 method:"POST",
                 // url:temp_url + '/api/airdrop',
-                url:"http://mck190211.dothome.co.kr/test.php",
+                url:"https://kiwoom-tdf.co.kr/test.php",
                 data:frm,
                 headers : _header
             })
