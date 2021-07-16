@@ -4,16 +4,20 @@ import { psString } from 'utils/localization'
 import * as styles from 'public/static/styles/scss/index.scss'
 import commonView from '../../../../common/commonView'
 import { useMain } from '../../../../redux/main/hooks'
+import axios from 'axios';
 
 export default function EventModal(): ReactElement {
   const { setModal } = useMain()
   const [closeFlag, setCloseFlag] = useState(false)
   const [closeStep2, setCloseStep2] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [contactError, setContactError] = useState('');
 
   const [inquiryData, setInquiryData ] = useState({
     name : "",
     email : "",
-    tel : "" 
+    contact : "" 
   });
 
   // 모달 숨기기 클래스 추가
@@ -30,12 +34,59 @@ const handleNextStep = () => {
     setCloseStep2(true);
 }
 
+//전송 데이터 등록
 const handleInquiryData = (e) => {
     const {value, name} = e.target;
     setInquiryData({
         ...inquiryData,
         [name] : value
     })
+}
+
+// 이메일 유효성 체크
+const validateEmail = (value: string) => {
+    let checkEmail = common.checkEmailForm(value)
+    setEmailError(checkEmail ? '' : psString('email-modal-error-1'))
+    return checkEmail
+}
+
+const checkContactForm = (contact: string): boolean => {
+    return /^[0-9]{9,12}$/.test(contact)
+}
+// 전화번호 유효성 체크
+const validateContact = (value: string) => {
+    let checkContact = checkContactForm(value)
+    setContactError(checkContact ? '' : psString('contact-modal-error-1'))
+    return checkContact
+}
+
+//데이터 전송
+const InquiryDataSubmit = async () => {
+    if (validateEmail(inquiryData.email) && validateContact(inquiryData.contact)){
+        try{
+            setLoading(true);
+
+            const frm = new FormData();
+            frm.append("name",inquiryData.name);
+            frm.append("email",inquiryData.email);
+            frm.append("contact",inquiryData.contact);
+            
+            let temp_url = "https://polarishare.com";
+            
+            await axios({
+                method:"POST",
+                url:temp_url + '/airdrop',
+                data:frm
+            })
+            
+            setLoading(false);
+            
+        }catch(e){
+            console.log("error is >> ",e);
+        }
+        
+        if(!loading) handleClickClose();
+    }
 }
 
   useEffect(() => {
@@ -53,6 +104,10 @@ const handleInquiryData = (e) => {
             styles.modal_body + ' ' + (closeFlag ? styles.modal_hide : '')
           }
         >
+            <div
+                className={styles.closeModalBtn}
+                onClick={() => handleClickClose()}
+            >&#10005;</div>
             {!closeStep2 ? (
                 <div className={styles.step1}>
                     <div className={styles.event_modal_title}>
@@ -72,7 +127,7 @@ const handleInquiryData = (e) => {
                             <li>{psString('event-step1-ul-list3')}</li>
                         </ul>
 
-                        <span>{psString('event-step1-ul2-point')}</span>
+                        <span className={styles.sub_point}>{psString('event-step1-ul2-point')}</span>
                         <ul>
                             <li>{psString('event-step1-ul2-list1')}</li>
                             <li>{psString('event-step1-ul2-list2')}</li>
@@ -113,16 +168,26 @@ const handleInquiryData = (e) => {
                         <div className={styles.input_wrap}>
                             <label htmlFor="email">{psString('event-step2-email')}</label>
                             <input type="text" name="email" onChange={handleInquiryData} value={inquiryData.email} />
+                            <span className={
+                                styles.em_input +
+                                ' ' +
+                                (emailError.length > 0 ? styles.em_inputWarning : '')
+                            }>{emailError}</span>
                         </div>
                         <div className={styles.input_wrap}>
-                            <label htmlFor="tel">{psString('event-step2-tel')}</label>
-                            <input type="text" name="tel" onChange={handleInquiryData} value={inquiryData.tel} />
+                            <label htmlFor="contact">{psString('event-step2-tel')}</label>
+                            <input type="text" name="contact" onChange={handleInquiryData} value={inquiryData.contact} />
+                            <span className={
+                                styles.em_input +
+                                ' ' +
+                                (contactError.length > 0 ? styles.em_inputWarning : '')
+                            }>{contactError}</span>
                         </div>
                     </div>
 
                     <div className={styles.event_modal_footer}>
                         <div
-                        onClick={() => handleClickClose()}
+                        onClick={() => InquiryDataSubmit()}
                         className={styles.modal_okBtn}
                         >
                         {psString('event-btn')}

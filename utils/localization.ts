@@ -1911,6 +1911,13 @@ const strings = new Map([
     }
   ],
   [
+    'contact-modal-error-1',
+    {
+      KOR: '전화번호는 9~12자리 숫자로만 입력해주세요.',
+      ENG: '전화번호는 9~12자리 숫자로만 입력해주세요.'
+    }
+  ],
+  [
     'email-modal-btn-ok',
     {
       KOR: '제출',

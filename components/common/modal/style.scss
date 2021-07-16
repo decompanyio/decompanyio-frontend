@@ -278,7 +278,7 @@
       margin: 0 0 48px;
     }
 
-    span{
+    span.sub_point{
       display:inline-block;
       margin: 20px 0;
       font-size:20px;
@@ -378,4 +378,13 @@
     margin-top: 1rem !important;
     margin-bottom: 0.5rem !important;
   }
+}
+
+.closeModalBtn{
+  position: absolute;
+  top:10px;
+  right:10px;
+  font-size:32px;
+  color:#111;
+  cursor: pointer;
 }
