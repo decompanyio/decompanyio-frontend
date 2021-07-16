@@ -75,11 +75,12 @@ const InquiryDataSubmit = async () => {
             
             let _header = { 'Content-Type': 'application/json' }
             
-            let temp_url = "https://api.polarishare.com";
+            // let temp_url = "https://api.polarishare.com";
             
             await axios({
                 method:"POST",
-                url:temp_url + '/api/airdrop',
+                // url:temp_url + '/api/airdrop',
+                url:"http://mck190211.dothome.co.kr/test.php",
                 data:frm,
                 headers : _header
             })
