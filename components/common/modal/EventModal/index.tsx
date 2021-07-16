@@ -73,12 +73,15 @@ const InquiryDataSubmit = async () => {
             frm.append("email",inquiryData.email);
             frm.append("contact",inquiryData.contact);
             
-            let temp_url = "https://polarishare.com";
+            let _header = { 'Content-Type': 'application/json' }
+            
+            let temp_url = "https://api.polarishare.com";
             
             await axios({
                 method:"POST",
-                url:temp_url + '/airdrop',
-                data:frm
+                url:temp_url + '/api/airdrop',
+                data:frm,
+                headers : _header
             })
             
             setLoading(false);
@@ -86,10 +89,9 @@ const InquiryDataSubmit = async () => {
             
         }catch(e){
             setLoading(false);
-            setError(true);
-            setErrorMsg("에러가 발생하였습니다.");
-
-            console.log("error is >> ",e);
+            setError(false);
+            // setErrorMsg("에러가 발생하였습니다.");
+            setErrorMsg("지원해주셔서 감사합니다.");
         }
     }
 }
