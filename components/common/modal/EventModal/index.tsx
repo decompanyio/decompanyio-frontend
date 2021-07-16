@@ -11,6 +11,8 @@ export default function EventModal(): ReactElement {
   const [closeFlag, setCloseFlag] = useState(false)
   const [closeStep2, setCloseStep2] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [error,setError] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [contactError, setContactError] = useState('');
 
@@ -65,7 +67,7 @@ const InquiryDataSubmit = async () => {
     if (validateEmail(inquiryData.email) && validateContact(inquiryData.contact)){
         try{
             setLoading(true);
-
+            
             const frm = new FormData();
             frm.append("name",inquiryData.name);
             frm.append("email",inquiryData.email);
@@ -80,13 +82,20 @@ const InquiryDataSubmit = async () => {
             })
             
             setLoading(false);
+            setErrorMsg("지원해주셔서 감사합니다.");
             
         }catch(e){
+            setLoading(false);
+            setError(true);
+            setErrorMsg("에러가 발생하였습니다.");
+
             console.log("error is >> ",e);
         }
-        
-        if(!loading) handleClickClose();
     }
+}
+const handlePrevStep = () => {
+    setErrorMsg("");
+    setCloseStep2(true);
 }
 
   useEffect(() => {
@@ -147,7 +156,25 @@ const InquiryDataSubmit = async () => {
                         </div>
                     </div>
                 </div>
-            ): (
+            ): !loading && errorMsg ? (
+                <div className={styles.result_msg_box}>
+                    <p>{errorMsg}</p>
+                    {error ? (
+                        <div className={styles.result_btn_wrap}>
+                            <div className={styles.result_error}
+                                onClick={() => handlePrevStep()}>
+                                    이전으로
+                            </div>
+                        </div>
+                    ) : (
+                        <div className={styles.result_btn_wrap}>
+                            <div 
+                                className={styles.result_success}
+                                onClick={() => handleClickClose()}>팝업닫기</div>
+                        </div>
+                    )}
+                </div>
+                ) : (
                 <div className={styles.step2}>
                     <div className={styles.event_modal_title}>
                         <div
