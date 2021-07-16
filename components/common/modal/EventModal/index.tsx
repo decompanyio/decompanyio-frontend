@@ -122,31 +122,50 @@ const handlePrevStep = () => {
             {!closeStep2 ? (
                 <div className={styles.step1}>
                     <div className={styles.event_modal_title}>
-                        <span>{psString('event-step1-subj-sub')}</span>
-                        <h3>{psString('event-step1-subj')}</h3>
+                        <span className={styles.event_top}>{psString('event-step1-subj-sub')}</span>
+                        <h3>{psString('event-step1-subj1')}</h3>
+                        <h2>{psString('event-step1-subj2')}</h2>
+
+                        <div className={styles.point}>
+                            <p>
+                                {psString('event-step1-point1')}
+                            </p>
+                            <p>
+                                {psString('event-step1-point2')}
+                                <span  className={styles.point2}>
+                                    {psString('event-step1-point3')}
+                                </span>!
+                            </p>
+                        </div>
+
+                        <div className={styles.description}>
+                            <p>{psString('event-step1-description1')}</p>
+                            <p>{psString('event-step1-description2')}</p>
+                            <p>{psString('event-step1-description3')}</p>
+                        </div>
                     </div>
 
                     <div className={styles.event_modal_content}>
-                        <p className={styles.point}>{psString('event-step1-point')}</p>
+                        <ul>
+                            <li>
+                                <div>{psString('event-step1-label1')}</div>
+                                <p>{psString('event-step1-date1')}</p>
+                            </li>
+                            <li>
+                                <div>{psString('event-step1-label2')}</div>
+                                <p>{psString('event-step1-date2')}</p>
+                            </li>
+                        </ul>
 
-                        <div className={styles.description}>
-                            {psString('event-step1-description')}
+                        <div className={styles.event_sub_title}>
+                            <span>{psString('event-step1-subtitle')}</span>
                         </div>
-                        <ul>
-                            <li>{psString('event-step1-ul-list1')}</li>
-                            <li>{psString('event-step1-ul-list2')}</li>
-                            <li>{psString('event-step1-ul-list3')}</li>
-                        </ul>
 
-                        <span className={styles.sub_point}>{psString('event-step1-ul2-point')}</span>
-                        <ul>
-                            <li>{psString('event-step1-ul2-list1')}</li>
-                            <li>{psString('event-step1-ul2-list2')}</li>
-                            <li>{psString('event-step1-ul2-list3')}</li>
-                        </ul>
-
-                        <p className={styles.alert}>{psString('event-step1-alert1')}</p>
-                        <p className={styles.alert}>{psString('event-step1-alert2')}</p>
+                        <h3>
+                            <span>{psString('event-step1-item1')}</span>
+                            <span>{psString('event-step1-item2')}</span>
+                        </h3>
+                        <p className={styles.event_alert}>{psString('event-step1-alert1')}</p>
                     </div>
 
                     <div className={styles.event_modal_footer}>
@@ -156,6 +175,8 @@ const handlePrevStep = () => {
                         >
                         {psString('event-next-btn')}
                         </div>
+
+                        <p className={styles.event_alert}>{psString('event-step1-alert2')}</p>
                     </div>
                 </div>
             ): !loading && errorMsg ? (
@@ -179,17 +200,29 @@ const handlePrevStep = () => {
                 ) : (
                 <div className={styles.step2}>
                     <div className={styles.event_modal_title}>
-                        <div
-                            className={styles.event_modal_prev}
-                        >
+                        <div className={styles.event_modal_prev}>
                             {psString('event-next-btn')}
+                        </div>
+
+                        <h3>
+                            <span>{psString('event-step2-subj1')}</span>
+                            <b>{psString('event-step2-subj2')}</b>
+                        </h3>
+
+                        <div className={styles.description}>
+                            <p>{psString('event-step2-description1')}</p>
+                            <p>
+                                {psString('event-step2-description2')}
+                                <span>{psString('event-step2-description2-point')}</span>
+                            </p>
+                            <p>
+                                <span>{psString('event-step2-description3-point')}</span>
+                                {psString('event-step2-description3')}
+                            </p>
                         </div>
                     </div>
 
                     <div className={styles.event_modal_content}>
-                        <p className={styles.point}>{psString('event-step2-point')}</p>
-                        <div className={styles.description}>{psString('event-step2-description')}</div>
-
                         <div className={styles.input_wrap}>
                             <label htmlFor="name">{psString('event-step2-name')}</label>
                             <input type="text" name="name" onChange={handleInquiryData} value={inquiryData.name} />
@@ -198,18 +231,14 @@ const handlePrevStep = () => {
                             <label htmlFor="email">{psString('event-step2-email')}</label>
                             <input type="text" name="email" onChange={handleInquiryData} value={inquiryData.email} />
                             <span className={
-                                styles.em_input +
-                                ' ' +
-                                (emailError.length > 0 ? styles.em_inputWarning : '')
+                                (emailError.length > 0 ? styles.inputWarning : '')
                             }>{emailError}</span>
                         </div>
                         <div className={styles.input_wrap}>
                             <label htmlFor="contact">{psString('event-step2-tel')}</label>
                             <input type="text" name="contact" onChange={handleInquiryData} value={inquiryData.contact} />
                             <span className={
-                                styles.em_input +
-                                ' ' +
-                                (contactError.length > 0 ? styles.em_inputWarning : '')
+                                (contactError.length > 0 ? styles.inputWarning : '')
                             }>{contactError}</span>
                         </div>
                     </div>
@@ -221,6 +250,7 @@ const handlePrevStep = () => {
                         >
                         {psString('event-btn')}
                         </div>
+                        <p className={styles.event_alert}>{psString('event-step1-alert2')}</p>
                     </div>
                 </div>
             )}
