@@ -6,10 +6,10 @@ import MyAvatar from '../../../common/avatar/MyAvatar'
 import HeaderProfileCard from '../../../header/HeaderProfileCard'
 import MainHeaderLoginBtn from '../MainTopLoginBtn'
 import MainHeaderSearch from '../MainTopSearch'
-import common from '../../../../common/common'
+// import common from '../../../../common/common'
 
 export default function MainTopSection(): ReactElement {
-  const { myInfo } = useMain()
+  const { myInfo, isMobile } = useMain()
   const [profileCardShow, setProfileCardShow] = useState(false)
 
   const handleProfileCardClick = (): void => {
@@ -19,8 +19,8 @@ export default function MainTopSection(): ReactElement {
   const handleAvatarClick = (): void => setProfileCardShow(true)
 
   return (
-    <div>
-      <div className={styles.mhs_version}>{common.getVersion()}</div>
+    <div className={styles.header}>
+      {/*<div className={styles.mhs_version}>{common.getVersion()}</div>*/}
 
       <div className={styles.mhs_wrapper}>
         <Link href="/">
@@ -33,7 +33,7 @@ export default function MainTopSection(): ReactElement {
           </a>
         </Link>
 
-        <MainHeaderSearch />
+        {isMobile && <MainHeaderSearch />}
 
         <div className={styles.mhs_avatarWrapper}>
           {myInfo.email && (

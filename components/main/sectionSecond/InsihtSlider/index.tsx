@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import ReactSwipe from 'react-swipe'
-import { psGetLang, psString } from '../../../../utils/localization'
-import { APP_CONFIG } from '../../../../app.config'
+import { /*psGetLang,*/ psString } from '../../../../utils/localization'
+// import { APP_CONFIG } from '../../../../app.config'
 
 export default function InsihtSlider(): ReactElement {
   return (
@@ -12,12 +12,14 @@ export default function InsihtSlider(): ReactElement {
           <div className={styles.mis_cardWrapper}>
             <div className={styles.mis_cardVertical}>
               <div className={styles.mis_rewardContents}>
-                <div>Reward</div>
-                <div>{psString('main-insight-slider-8')}</div>
+                <div className={styles.mis_subTitle}>
+                  <span>REWARD</span>
+                  <span>{psString('main-insight-slider-8')}</span>
+                </div>
                 <img
                   src={
-                    APP_CONFIG.domain().static +
-                    '/image/main/insight_reward.png'
+                    //APP_CONFIG.domain().static + '/image/main/insight_reward.png'
+                    '/static/image/insight_reward.png'
                   }
                   alt="reward kakaotalk"
                 />
@@ -27,13 +29,13 @@ export default function InsihtSlider(): ReactElement {
           <div className={styles.mis_cardWrapper}>
             <div className={styles.mis_card}>
               <div className={styles.mis_uploadContents}>
-                <div>upload</div>
+                <div className={styles.mis_subTitle}>
+                  <span>UPLOAD</span>
+                </div>
                 <div>
                   {psString('main-insight-slider-1')}
                   <br />
-                  <br />
                   {psString('main-insight-slider-2')}
-                  <br />
                   <br />
                   {psString('main-insight-slider-3')}
                 </div>
@@ -46,7 +48,9 @@ export default function InsihtSlider(): ReactElement {
           <div className={styles.mis_cardWrapper}>
             <div className={styles.mis_card}>
               <div className={styles.mis_openLibraryContents}>
-                <div>open library</div>
+                <div className={styles.mis_subTitle}>
+                  <span>OPEN LIBRARY</span>
+                </div>
                 <div>
                   {psString('main-insight-slider-4')}
                   <div>
@@ -54,9 +58,7 @@ export default function InsihtSlider(): ReactElement {
                     <br />
                     {psString('main-insight-slider-5-b')}
                     <br />
-                    <br />
                     {psString('main-insight-slider-6')}
-                    <br />
                     <br />
                     {psString('main-insight-slider-7')}
                   </div>
@@ -76,13 +78,13 @@ export default function InsihtSlider(): ReactElement {
               <div className={styles.mis_uploadImage} />
             </div>
             <div className={styles.mis_uploadContents}>
-              <div>upload</div>
+              <div className={styles.mis_subTitle}>
+                <span>UPLOAD</span>
+              </div>
               <div>
                 {psString('main-insight-slider-1')}
                 <br />
-                <br />
                 {psString('main-insight-slider-2')}
-                <br />
                 <br />
                 {psString('main-insight-slider-3')}
               </div>
@@ -93,16 +95,16 @@ export default function InsihtSlider(): ReactElement {
               <div className={styles.mis_openLibraryImage} />
             </div>
             <div className={styles.mis_openLibraryContents}>
-              <div>open library</div>
+              <div className={styles.mis_subTitle}>
+                <span>OPEN LIBRARY</span>
+              </div>
               <div>
                 {psString('main-insight-slider-4')}
                 <div>
                   {psString('main-insight-slider-5')}
                   {psString('main-insight-slider-5-b')}
                   <br />
-                  <br />
                   {psString('main-insight-slider-6')}
-                  <br />
                   <br />
                   {psString('main-insight-slider-7')}
                 </div>
@@ -113,12 +115,15 @@ export default function InsihtSlider(): ReactElement {
         <div className={styles.mis_cardWrapper}>
           <div className={styles.mis_cardVertical}>
             <div className={styles.mis_rewardContents}>
-              <div>Reward</div>
-              <div>{psString('main-insight-slider-8')}</div>
+              <div className={styles.mis_subTitle}>
+                <span>REWARD</span>
+                <span>{psString('main-insight-slider-8')}</span>
+              </div>
               <img
-                src={`${APP_CONFIG.domain().static}/image/main/insight_reward${
-                  psGetLang() === 'EN' ? '_en' : ''
-                }.png`}
+                src={
+                  //`${APP_CONFIG.domain().static}/image/main/insight_reward${psGetLang() === 'EN' ? '_en' : ''}.png`
+                  '/static/image/insight_reward.png'
+                }
                 alt="reward kakaotalk"
               />
             </div>

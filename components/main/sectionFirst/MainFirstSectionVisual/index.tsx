@@ -36,28 +36,41 @@ export default function MainFirstSectionVisual(): ReactElement {
       <div className={styles.mv_wrapper}>
         <div className={styles.mv_img1} id="mainVisualBG_1" />
         <div className={styles.mv_img2} id="mainVisualBG_2" />
+        <div className={styles.mv_darker} />
 
-        <div className={styles.mv_img}>
+        <div className={styles.mv_subject_wrapper}>
           <div className={styles.mv_subject}>
             <div className={styles.mv_text1} id="mainVisualText_1">
               {psString('main-visual-1')}
-              {!isMobile && <br />}
+              <br />
               {psString('main-visual-5')}
               <strong>{psString('main-visual-2')}</strong>
               {psString('main-visual-3')}
+              <br />
+              <div className={styles.mv_subtext}>
+                If you don't find a way to make money while you sleep,
+                {!isMobile && <br />}
+                You will work until die!
+              </div>
             </div>
             <div className={styles.mv_text2} id="mainVisualText_2">
               {psString('main-visual-6')}
-              {!isMobile && <br />}
+              <br />
               {psString('main-visual-10')}
               <strong>{psString('main-visual-7')}</strong>
               {psString('main-visual-8')}
               {psString('main-visual-9')}
+              <br />
+              <div className={styles.mv_subtext}>
+                If you don't find a way to make money while you sleep,
+                {!isMobile && <br />}
+                You will work until die!
+              </div>
             </div>
+
+            <MainHeaderUploadBtn />
           </div>
         </div>
-
-        <MainHeaderUploadBtn />
 
         <MainHexSlider />
       </div>

@@ -1,18 +1,17 @@
-
 .mis_swipe {
   max-width: 1200px;
   width: 100%;
   margin: 60px auto 0;
 
-  @media (max-width: 1024px) {
-    margin: 10vw auto 0;
+  @media (max-width: 576px) {
+    margin: 40px auto 0;
   }
 }
 
 .mis_container_mobile {
   display: none;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     padding: 0;
     display: block;
   }
@@ -25,18 +24,18 @@
 .mis_container {
   display: flex;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     display: none;
   }
 }
 
 .mis_cardWrapper {
   &:first-child {
+    display: flex;
     width: 60%;
-    padding-right: 2rem;
     height: inherit;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       padding-right: 0;
     }
   }
@@ -44,38 +43,19 @@
   &:last-child {
     width: 40%;
   }
-
 }
 
 .mis_card {
   position: relative;
-  background: #25aef4;
   height: calc(50% - 1rem);
-  border-radius: 35px;
-  padding: 2rem;
   color: #fff;
   text-align: center;
   font-size: 15px;
   font-weight: 400;
-  margin: 0;
-  display: flex;
   width: 100%;
 
-  &:first-child {
-    margin-bottom: 2rem;
-
-    @media (max-width: 1024px) {
-      margin-bottom: 0;
-    }
-  }
-
-
-  @media (max-width: 1024px) {
-    padding: 1rem;
-    margin: 0 1rem;
-    width: calc(100% - 2rem);
+  @media (max-width: 768px) {
     display: block;
-    min-height: 514.16px;
   }
 }
 
@@ -89,33 +69,35 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     margin-top: 2rem;
   }
 }
 
 .mis_uploadImage {
-  content: "";
+  content: '';
   display: block;
-  width: 250px;
+  min-width: 180px;
+  width: 100%;
   height: 145px;
-  background: url($image-url +'/main/insight-bg1.png') no-repeat 0 0 / contain;
+  background: url('/static/image/insight-bg1.png') no-repeat 0 0 / contain; //url($image-url +'/main/insight-bg1.png') no-repeat 0 0 / contain;
   margin: 0 auto;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     width: 210px;
   }
 }
 
 .mis_openLibraryImage {
-  content: "";
+  content: '';
   display: block;
-  width: 250px;
+  min-width: 180px;
+  width: 100%;
   height: 145px;
-  background: url($image-url +'/main/insight-bg2.png') no-repeat 0 0 / contain;
+  background: url('/static/image/insight-bg2.png') no-repeat 0 0 / contain; // url($image-url +'/main/insight-bg2.png') no-repeat 0 0 / contain;
   margin: 0 auto;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     width: 210px;
   }
 }
@@ -123,40 +105,35 @@
 .mis_uploadContents,
 .mis_openLibraryContents {
   text-align: left;
-  margin-left: 1rem;
-  width: 80%;
+  margin-right: 24px;
 
   > div:first-child {
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     font-size: 1.3rem;
     font-weight: 600;
     color: #224390;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       text-align: center;
     }
   }
 
   div:last-child {
-    color: white;
-    font-weight: 500;
+    color: #aaa;
 
-    @media (max-width: 1024px) {
-      margin-top: 2rem;
+    @media (max-width: 920px) {
+      font-size: 14px;
     }
 
     div {
-      margin-top: 1rem;
-      font-size: .9rem;
-
-      @media (max-width: 1024px) {
+      @media (max-width: 768px) {
         text-align: left;
       }
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin-left: 0;
   }
@@ -168,9 +145,43 @@
   text-align: center;
   width: 100%;
 
-  @media (max-width: 1024px) {
-    img {
-      width: 100%;
+  img {
+    width: 95%;
+  }
+}
+
+.mis_subTitle {
+  display: flex;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid black;
+
+  > span:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+
+    @media (max-width: 920px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 14px;
+    }
+  }
+
+  > span:nth-child(2) {
+    font-size: 16px;
+    font-weight: normal;
+    color: #aaa;
+
+    @media (max-width: 920px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 12px;
     }
   }
 }

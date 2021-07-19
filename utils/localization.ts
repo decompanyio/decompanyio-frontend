@@ -2263,8 +2263,8 @@ const strings = new Map([
   [
     'auto-placeholder-1',
     {
-      KOR: '태그 검색',
-      ENG: 'Tag SearchButton'
+      KOR: '태그를 검색하세요',
+      ENG: 'Search by Tag'
     }
   ],
   [

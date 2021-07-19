@@ -26,6 +26,8 @@ export default function MainThirdSectionRecent(): ReactElement {
     }
   )
 
+  console.log('documentData', documentData)
+
   const idList: recentListIDList = {
     account: [],
     document: []
