@@ -1507,6 +1507,265 @@ const strings = new Map([
     }
   ],
 
+  // Event Modal
+  [
+    'event-step1-subj1',
+    {
+      KOR: '폴라리스 쉐어',
+      ENG: '폴라리스 쉐어'
+    }
+  ],
+  [
+    'event-step1-subj2',
+    {
+      KOR: '오픈 베타 테스터 모집',
+      ENG: '오픈 베타 테스터 모집'
+    }
+  ],
+  [
+    'event-step1-subj-sub',
+    {
+      KOR: '지식 공유 플랫폼',
+      ENG: '지식 공유 플랫폼'
+    }
+  ],
+  [
+    'event-step1-point1',
+    {
+      KOR: '하드디스크 속 잠자고 있는',
+      ENG: '하드디스크 속 잠자고 있는'
+    }
+  ],
+  [
+    'event-step1-point2',
+    {
+      KOR: '나만의 ',
+      ENG: '나만의 '
+    }
+  ],
+  [
+    'event-step1-point3',
+    {
+      KOR: '지식을 공유하고 리워드 받자',
+      ENG: '지식을 공유하고 리워드 받자'
+    }
+  ],
+  [
+    'event-step1-description1',
+    {
+      KOR:
+        '폴라리스 쉐어에 여러분의 지식을 공유하고,',
+      ENG:
+        '폴라리스 쉐어에 여러분의 지식을 공유하고,'
+    }
+  ],
+  [
+    'event-step1-description2',
+    {
+      KOR:
+        '추천을 받으신 분들에게 리워드를 드립니다.',
+      ENG:
+        '추천을 받으신 분들에게 리워드를 드립니다.'
+    }
+  ],
+  [
+    'event-step1-description3',
+    {
+      KOR:
+        '폴라리스 쉐어가 꿈꾸는 세상의 모든지식을 공유하는 첫 발걸음을 함께해주세요',
+      ENG:
+        '폴라리스 쉐어가 꿈꾸는 세상의 모든지식을 공유하는 첫 발걸음을 함께해주세요'
+    }
+  ],
+  [
+    'event-step1-label1',
+    {
+      KOR:
+        '모집 기간',
+      ENG:
+        '모집 기간'
+    }
+  ],
+  [
+    'event-step1-date1',
+    {
+      KOR:
+        '2021년 7월 15일(목) ~ 24일(일)',
+      ENG:
+        '2021년 7월 15일(목) ~ 24일(일)'
+    }
+  ],
+  [
+    'event-step1-label2',
+    {
+      KOR:
+        '테스트 기간',
+      ENG:
+        '테스트 기간'
+    }
+  ],
+  [
+    'event-step1-date2',
+    {
+      KOR:
+        '2021년 7월 26일(월) ~ 8월 25일(수)',
+      ENG:
+        '2021년 7월 26일(월) ~ 8월 25일(수)'
+    }
+  ],
+  [
+    'event-step1-subtitle',
+    {
+      KOR:
+        '테스터 리워드',
+      ENG:
+        '테스터 리워드'
+    }
+  ],
+  [
+    'event-step1-item1',
+    {
+      KOR:
+        '$POLA 에어드랍 / 스타벅스 상품권',
+      ENG:
+        '$POLA 에어드랍 / 스타벅스 상품권'
+    }
+  ],
+  [
+    'event-step1-item2',
+    {
+      KOR:
+        '/폴라 인사이더 프로그램',
+      ENG:
+        '/폴라 인사이더 프로그램'
+    }
+  ],
+  [
+    'event-step1-alert1',
+    {
+      KOR:
+        '*폴라 인사이더: 향후 폴라리스쉐어의 다양한 서비스를 우선 체험 가능한 프리 패스',
+      ENG:
+        '*폴라 인사이더: 향후 폴라리스쉐어의 다양한 서비스를 우선 체험 가능한 프리 패스'
+    }
+  ],
+  [
+    'event-step1-alert2',
+    {
+      KOR:
+        '베타 테스터 모집 기간 내 등록 유저에 한해 리워드 지급하며 자세한 리워드 및 정산 프로그램은 추후 홈페이지를 통해 공지할 예정입니다. 감사합니다.',
+      ENG:
+        '베타 테스터 모집 기간 내 등록 유저에 한해 리워드 지급하며 자세한 리워드 및 정산 프로그램은 추후 홈페이지를 통해 공지할 예정입니다. 감사합니다.'
+    }
+  ],
+
+  [
+    'event-next-btn',
+    {
+      KOR: '베타 테스터 지원하기',
+      ENG: '베타 테스터 지원하기'
+    }
+  ],
+  [
+    'event-step2-subj1',
+    {
+      KOR:
+        '베타 테스터',
+      ENG:
+        '베타 테스터'
+    }
+  ],
+  [
+    'event-step2-subj2',
+    {
+      KOR:
+        '지원자 정보 입력',
+      ENG:
+        '지원자 정보 입력'
+    }
+  ],
+  [
+    'event-step2-description1',
+    {
+      KOR:
+        '하기 지원해주신 이메일/연락처를 통해',
+      ENG:
+        '하기 지원해주신 이메일/연락처를 통해'
+    }
+  ],
+  [
+    'event-step2-description2',
+    {
+      KOR:
+        '자세한',
+      ENG:
+        '자세한'
+    }
+  ],
+  [
+    'event-step2-description2-point',
+    {
+      KOR:
+        '베타 테스터 안내 및 미션,',
+      ENG:
+        '베타 테스터 안내 및 미션,'
+    }
+  ],
+  [
+    'event-step2-description3',
+    {
+      KOR:
+        '를 전해드릴 계획입니다.',
+      ENG:
+        '를 전해드릴 계획입니다.'
+    }
+  ],
+  [
+    'event-step2-description3-point',
+    {
+      KOR:
+        '리워드 프로그램에 대한 안내',
+      ENG:
+        '리워드 프로그램에 대한 안내'
+    }
+  ],
+  [
+    'event-step2-name',
+    {
+      KOR:
+        '*Name',
+      ENG:
+        '*Name'
+    }
+  ],
+  [
+    'event-step2-email',
+    {
+      KOR:
+        '*E-mail',
+      ENG:
+        '*E-mail'
+    }
+  ],
+  [
+    'event-step2-tel',
+    {
+      KOR:
+        '*Tel',
+      ENG:
+        '*Tel'
+    }
+  ],
+  [
+    'event-btn',
+    {
+      KOR:
+        '베타 테스터 등록',
+      ENG:
+        '베타 테스터 등록'
+    }
+  ],
+
   // Edit Document modal
   [
     'edit-doc-error-1',
@@ -1734,6 +1993,13 @@ const strings = new Map([
     {
       KOR: '이메일 양식에 맞지 않습니다.',
       ENG: 'Your email address is invalid.'
+    }
+  ],
+  [
+    'contact-modal-error-1',
+    {
+      KOR: '*정확한 정보를 입력해주세요',
+      ENG: '*정확한 정보를 입력해주세요'
     }
   ],
   [

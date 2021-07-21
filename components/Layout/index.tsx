@@ -178,7 +178,7 @@ export default function Layout(props): ReactElement {
       // SET isTablet
       setIsTabletToRedux()
 
-      setModal('dollarLearnMore')
+      setModal('event')
     })
 
     return () => {
