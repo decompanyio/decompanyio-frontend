@@ -1,76 +1,30 @@
-
 .mfrs_container {
-  width: 1200px;
-  margin: 155px auto 0 auto;
-  padding-bottom: 155px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 80px 40px;
+  margin: 0 auto;
 
-  h3 {
-    font-size: 45px;
-    color: #000;
-    letter-spacing: 3px;
-    font-weight: 600;
-    text-align: center;
-  }
+  .mfrs_title {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    color: #333;
+    line-height: 100%;
+    width: 100%;
+    max-width: 1200px;
 
-  @media (max-width: $lg-max-width) {
-    width: auto;
-    margin: 10rem 1rem 3rem 1rem;
-
-    h3 {
-      font-size: 59px;
-      line-height: 100%;
-    }
-  }
-
-  @media (max-width: $md-min-width) {
-    h3 {
-      font-size: 30px;
+    & > b {
+      margin-left: 8px;
     }
   }
 }
 
 .mfrs_list {
-  margin: 65px 0 0;
+  margin-top: 40px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  height: 430px;
-
-  @media (max-width: $lg-max-width) {
-    margin: 64px 0 0;
-    display: block;
-    font-size: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 720px;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 2px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #1f82ff;
-      border: 0 solid #fff;
-    }
-
-    &::-webkit-scrollbar-button {
-      width: 0;
-      height: 0;
-    }
-  }
-
-  @media (max-width: $md-min-width) {
-    margin: 35px 0 0;
-    height: 375px;
-  }
 }
 
 .mfrs_item {
@@ -79,35 +33,8 @@
   -ms-flex-positive: 1;
   flex-grow: 1;
   min-width: 0;
-  max-width: 232px;
+  max-width: 384px;
+  margin-right: 16px;
+  margin-bottom: 16px;
   transition: all ease 0.3s;
-
-  @media (max-width: $lg-max-width) {
-    width: 495px;
-    max-width: 495px;
-    display: inline-block;
-  }
-
-  @media (max-width: $md-max-width) {
-    width: 250px;
-    max-width: 250px;
-  }
 }
-
-.mfrs_item ~ .mfrs_item {
-  margin-left: 30px;
-
-  @media (max-width: $md-max-width) {
-    margin-left: 10px;
-  }
-}
-
-.mfrs_item:hover,
-.mfrs_list:not(:hover) .mfrs_center {
-  @media (min-width: $lg-min-width) {
-    flex: 0 0 310px;
-    max-width: 310px;
-  }
-}
-
-

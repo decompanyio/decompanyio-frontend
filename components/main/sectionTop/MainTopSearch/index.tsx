@@ -5,9 +5,11 @@ import AutoSuggestInput from '../../../common/input/AutoSuggestInput'
 import Router from 'next/router'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useMain } from '../../../../redux/main/hooks'
+import TagListItem from '../../../../service/model/TagListItem'
+import Link from 'next/link'
 
 export default function MainTopSearch(): ReactElement {
-  const { setAlertCode } = useMain()
+  const { setAlertCode, tagList, isMobile } = useMain()
 
   // 자동 완성 값 선택 시, 해당 태그의 리스트 페이지로 이동합니다.
   const onSuggestionSelected = tag => {
@@ -44,7 +46,7 @@ export default function MainTopSearch(): ReactElement {
         />
         <HiOutlineSearch
           color="white"
-          size={30}
+          size={isMobile ? 20 : 36}
           onClick={() => onClickSearchBtn()}
         />
         {/*<button
@@ -56,6 +58,22 @@ export default function MainTopSearch(): ReactElement {
             {psString('main-sectionTop-search')}
           </span>
         </button>*/}
+      </div>
+
+      <div className={styles.mhs_tags}>
+        {(tagList as TagListItem[]).slice(0, 10).map(({ _id }, index) => (
+          <Link
+            key={index}
+            href={{ pathname: '/contents_list', query: { tag: _id } }}
+            as={'tag/' + _id}
+          >
+            <a aria-label={_id} className={styles.mhs_tag}>
+              <button type="button" aria-label={'tag ' + _id}>
+                <span>#{_id}</span>
+              </button>
+            </a>
+          </Link>
+        ))}
       </div>
     </div>
   )

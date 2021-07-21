@@ -6,7 +6,6 @@ import _ from 'lodash'
 import common from '../../../../common/common'
 import commonData from '../../../../common/commonData'
 import Link from 'next/link'
-import Truncate from 'react-truncate'
 import commonView from '../../../../common/commonView'
 
 export default function MainThirdSectionRecentItem({
@@ -24,8 +23,6 @@ export default function MainThirdSectionRecentItem({
     1,
     documentData.documentName
   )
-  let splitedNameArray = documentData.documentName.split('.')
-  let extension = _.reverse(splitedNameArray)[0]
   let ratio = common.getRatio(
     documentData.dimensions.width,
     documentData.dimensions.height
@@ -65,28 +62,19 @@ export default function MainThirdSectionRecentItem({
             />
           </div>
           <div className={styles.mri_content}>
-            <p className={styles.mri_tag}>
-              <span>{common.localeToCountry(documentData.locale)}</span>
-            </p>
-            <p className={styles.mri_title}>
-              <Truncate lines={1} ellipsis={<span>...</span>}>
-                {documentData.title}
-              </Truncate>
-            </p>
-            <p className={styles.mri_money}>
-              <i className={styles.sprite_d} />
-              <span>free</span>
+            <p className={styles.mri_title}>{documentData.title}</p>
+            <p className={styles.mri_desc}>{documentData.desc}</p>
+            <p className={styles.mri_day}>
+              {common
+                .dateString(new Date(documentData.created))
+                .replace('-', '.')
+                .replace('-', '.')}
             </p>
             <div className={styles.mri_group}>
-              <p className={styles.mri_fileNameWrapper}>
-                <span className={styles.mri_fileType}>.{extension}</span>
-              </p>
-              <p className={styles.mri_day}>
-                {common
-                  .dateString(new Date(documentData.created))
-                  .replace('-', '.')
-                  .replace('-', '.')}
-              </p>
+              <div className={styles.mri_author}>
+                {documentData.author.username}
+              </div>
+              <div className={styles.mri_money}>$ FREE</div>
             </div>
           </div>
         </a>

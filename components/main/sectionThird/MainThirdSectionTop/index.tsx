@@ -175,20 +175,13 @@ export default function MainThirdSectionTop(): ReactElement {
 
   return (
     <div className={styles.mfrs_container}>
-      <h3>TOP 5</h3>
+      <h3 className={styles.mfrs_title}>
+        POLARIS SHARE <b>TOP6</b>
+      </h3>
 
       <div className={styles.mfrs_list}>
         {documentList.map((data, index) => (
-          <div
-            className={
-              styles.mfrs_item +
-              ' ' +
-              (Math.floor(documentList.length / 2) === index
-                ? styles.mfrs_center
-                : '')
-            }
-            key={index}
-          >
+          <div className={styles.mfrs_item} key={index}>
             <MainTopListItem
               documentData={data}
               documentRoyalty={documentRoyaltyList[index]}

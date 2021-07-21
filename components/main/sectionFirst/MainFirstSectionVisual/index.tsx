@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../../utils/localization'
-import MainHexSlider from '../MainFirstSectionHexSlider'
+//import MainHexSlider from '../MainFirstSectionHexSlider'
 import MainHeaderUploadBtn from '../../sectionTop/MainTopUploadBtn'
 import { useMain } from '../../../../redux/main/hooks'
 
@@ -72,7 +72,7 @@ export default function MainFirstSectionVisual(): ReactElement {
           </div>
         </div>
 
-        <MainHexSlider />
+        {/*<MainHexSlider />*/}
       </div>
     </div>
   )

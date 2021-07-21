@@ -14,14 +14,14 @@ export const APP_CONFIG = {
   local: {
     domain: {
       mainHost: 'http://127.0.0.1:3000',
-      image: 'https://res.share.decompany.io/thumb',
-      profile: 'https://res.share.decompany.io/profile/',
-      static: 'https://res.share.decompany.io/static',
-      api: 'https://api.share.decompany.io/rest',
-      wallet: 'https://api.share.decompany.io/wallet',
-      embed: 'https://embed.share.decompany.io/',
-      graphql: 'https://api.share.decompany.io/graphql/',
-      auth: 'https://auth.share.decompany.io/dev'
+      image: 'https://res.polarishare.com/thumb',
+      profile: 'https://res.polarishare.com/profile/',
+      static: 'https://res.polarishare.com/static',
+      api: 'https://api.polarishare.com/rest',
+      wallet: 'https://api.polarishare.com/wallet',
+      embed: 'https://embed.polarishare.com/',
+      graphql: 'https://api.polarishare.com/graphql/',
+      auth: 'https://auth.polarishare.com/asem'
     }
   },
   dev: {

@@ -1,22 +1,105 @@
+.ml {
+  background: #d4ecfc;
+  padding: 80px 0;
+  height: 700px;
+  position: relative;
+}
+
+.ml_wrapper {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
 
 .ml_title {
-  text-align: center;
-  font-size: 50px;
-  color: #4678b7;
-  line-height: 100%
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  color: #333;
+  line-height: 100%;
+  width: 100%;
+  max-width: 1200px;
+
+  & > b {
+    margin-left: 8px;
+  }
+}
+
+.ml_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+  padding: 2px 4px;
+  height: 20px;
+  color: white;
+  font-size: 14px;
+  background-color: #005ac9;
+
+  &:hover {
+    background: white;
+    color: #005ac9;
+  }
 }
 
 .ml_point {
-  color: #00459b;
-  font-weight: 600
+  font-weight: bold;
 }
 
 .ml_text {
-  font-size: 24px;
-  color: #454545;
-  margin-top: 16px;
-  font-weight: 300;
-  text-align: center
+  font-size: 20px;
+  color: #888;
+  margin-top: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.ml_indicators {
+  position: absolute;
+  top: 140px;
+  right: calc((100vw - 1280px) / 2 + 60px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  @media (max-width: 1200px) {
+    right: 40px;
+  }
+}
+
+.ml_indicator {
+  font-size: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ml_libraries {
+  margin-top: 44px;
+  display: flex;
+  overflow-x: hidden;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  padding-left: calc((100vw - 1280px) / 2 + 80px);
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.ml_library {
+  margin-right: 16px;
+  opacity: 0.3;
+
+  &.ml_library_active {
+    opacity: 1;
+  }
 }
 
 .ml_boxTitle {
@@ -38,89 +121,48 @@
   letter-spacing: 3px;
   font-weight: 600;
   display: inline-block;
-  vertical-align: middle
-}
-
-.ml_button {
   vertical-align: middle;
-  margin-left: 8px;
-  display: inline-block;
-  min-width: 90px;
-  background-color: #0032a2;
-  height: 36px;
-  border-radius: 18px;
-  font: {
-    weight: 400;
-    size: 18px;
-  }
-  border: none;
-  color: #fff;
-  text-align: center;
-  line-height: 36px;
-
-  @media (max-width: 1024px) {
-    min-width: 156px;
-    height: 64px;
-    line-height: 60px;
-    border-radius: 32px;
-    font-size: 32px;
-    margin: {
-      top: 16px;
-      left: 0
-    }
-  }
-
-  @media (max-width: 768px) {
-    min-width: 78px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 16px;
-    font-size: 16px;
-    margin-top: 8px
-  }
 }
-
 
 @media (max-width: 1024px) {
   .ml_title {
-    font-size: 50px
+    font-size: 50px;
   }
   .ml_point {
     font-size: 90px;
     display: block;
-    margin-top: 16px
+    margin-top: 16px;
   }
   .ml_text {
     font-size: 32px;
-    margin-top: 32px
+    margin-top: 32px;
   }
   .box-recent {
     width: 1024px;
-    padding-left: 40px
+    padding-left: 40px;
   }
   .ml_titleRecent {
     display: block;
-    font-size: 60px
+    font-size: 60px;
   }
 }
 
 @media (max-width: 768px) {
   .ml_title {
-    font-size: 25px
+    font-size: 25px;
   }
   .ml_point {
-    font-size: 45px;;
-    margin-top: 8px
+    font-size: 45px;
+    margin-top: 8px;
   }
   .ml_text {
     font-size: 16px;
-    margin-top: 16px
+    margin-top: 16px;
   }
   .box-title {
-    margin: 50px auto 35px
+    margin: 50px auto 35px;
   }
   .ml_titleRecent {
-    font-size: 30px
+    font-size: 30px;
   }
-
 }
