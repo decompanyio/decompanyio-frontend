@@ -480,7 +480,6 @@ export interface MainHexSliderItemProps {
 
 export interface MainRecentItemProps {
   documentData: DocumentInfo
-  isDisabled: Boolean
 }
 
 export interface MainTopListItemProps {

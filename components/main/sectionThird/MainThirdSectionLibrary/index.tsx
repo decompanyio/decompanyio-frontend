@@ -205,10 +205,6 @@ export default function MainThirdSection(): ReactElement {
               >
                 <MainRecentItem
                   documentData={data}
-                  isDisabled={
-                    index < currentFirstListItemIndex ||
-                    index > currentFirstListItemIndex + 3
-                  }
                 />
               </div>
             )) :
@@ -224,10 +220,6 @@ export default function MainThirdSection(): ReactElement {
               >
                 <MainRecentItem
                   documentData={data}
-                  isDisabled={
-                    index < currentFirstListItemIndex ||
-                    index > currentFirstListItemIndex + 3
-                  }
                 />
               </div>
             ))}
