@@ -9,7 +9,8 @@ import Link from 'next/link'
 import commonView from '../../../../common/commonView'
 
 export default function MainThirdSectionRecentItem({
-  documentData
+  documentData,
+  isDisabled
 }: MainRecentItemProps): ReactElement {
   let imgUrl_1 = common.getThumbnail(
     documentData.id,
@@ -35,10 +36,14 @@ export default function MainThirdSectionRecentItem({
   return (
     <div className={styles.mri_container}>
       <Link
-        href={{
-          pathname: '/contents_view',
-          query: { seoTitle: documentData.seoTitle }
-        }}
+        href={
+          isDisabled
+            ? ''
+            : {
+                pathname: '/contents_view',
+                query: { seoTitle: documentData.seoTitle }
+              }
+        }
         as={`/@${documentData.author.username}/${documentData.seoTitle}`}
       >
         <a aria-label="viewer page">

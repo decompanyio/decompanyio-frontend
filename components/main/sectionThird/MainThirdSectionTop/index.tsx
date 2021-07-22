@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useState, useRef, useEffect } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import MainTopListItem from '../MainThirdSectionTopItem'
 import { useQuery } from '@apollo/react-hooks'
@@ -14,7 +14,20 @@ import UserInfo from '../../../../graphql/models/UserInfo'
 import commonData from '../../../../common/commonData'
 
 export default function MainThirdSectionTop(): ReactElement {
-  const [documentRoyaltyList, setDocumentRoyaltyList] = useState([])
+  const [documentRoyaltyList, setDocumentRoyaltyList] = useState([]) 
+  const [activeIndicatorIndex, setActiveIndicatorIndex] = useState<number>(0);
+const listRef = useRef<HTMLDivElement>(null)
+
+useEffect(() => {
+  if (listRef && listRef.current) {
+    const onScroll = (e) => {
+      setActiveIndicatorIndex(Math.floor(e.target.scrollLeft / (document.body.offsetWidth - 40)))
+    }
+    listRef.current.addEventListener('scroll', onScroll)
+
+    return () => listRef.current?.removeEventListener('scroll', onScroll)
+  }
+}, [listRef, listRef.current])
 
   // 1. 해당 페이지에 표시될 문서들의 ID 리스트를 불러옵니다.
   const { data: documentData } = useQuery(
@@ -175,18 +188,23 @@ export default function MainThirdSectionTop(): ReactElement {
 
   return (
     <div className={styles.mfrs_container}>
-      <h3 className={styles.mfrs_title}>
-        POLARIS SHARE <b>TOP6</b>
-      </h3>
-
-      <div className={styles.mfrs_list}>
-        {documentList.map((data, index) => (
-          <div className={styles.mfrs_item} key={index}>
+      <div className={styles.mfrs_wrapper}>
+        <h3 className={styles.mfrs_title}>
+          POLARIS SHARE <b>TOP6</b>
+        </h3>
+        <div className={styles.mfrs_list} ref={listRef}>
+          {documentList.map((data, index) => (
             <MainTopListItem
+              key={index}
               documentData={data}
               documentRoyalty={documentRoyaltyList[index]}
             />
-          </div>
+          ))}
+        </div>
+      </div>
+      <div className={styles.ml_indicators_mobile}>
+        {[0, 1, 2].map((index) => (
+          <div key={index} className={`${styles.ml_indicator_mobile} ${activeIndicatorIndex === index ? styles.active : ''}`} />
         ))}
       </div>
     </div>

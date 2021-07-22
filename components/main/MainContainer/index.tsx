@@ -4,6 +4,7 @@ import MainHeaderSection from '../sectionTop/MainTopSection'
 import MainFirstSection from '../sectionFirst/MainFirstSection'
 import MainSecondSection from '../sectionSecond/MainSecondSection'
 import MainThirdSection from '../sectionThird/MainThirdSection'
+import MainBottomSection from '../sectionBottom'
 
 export default function MainContainer(): ReactElement {
   return (
@@ -15,6 +16,8 @@ export default function MainContainer(): ReactElement {
       <MainSecondSection />
 
       <MainThirdSection />
+
+      <MainBottomSection />
 
       <MainEventSection />
     </div>

@@ -1,0 +1,31 @@
+.sb_container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+
+  > a {
+    width: 50%;
+
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
+    .sb_aboutUs {
+      height: 120px;
+      background-image: url('/static/image/about-us.jpg');
+      background-position: center;
+      background-size: cover;
+    }
+
+    .sb_office {
+      height: 120px;
+      background-image: url('/static/image/office.jpg');
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}

@@ -31,7 +31,7 @@ export default function FooterContainer(): ReactElement {
     <footer>
       <div className={styles.f_menu}>
         <ul>
-          <li>
+          {/*<li>
             <a
               aria-label="About Us"
               href="https://www.polarishare.io"
@@ -41,7 +41,7 @@ export default function FooterContainer(): ReactElement {
             >
               About us
             </a>
-          </li>
+          </li>*/}
           <li>
             <Link href="/user_guide" as="/ug">
               <a rel="nofollow" aria-label="User Guide">

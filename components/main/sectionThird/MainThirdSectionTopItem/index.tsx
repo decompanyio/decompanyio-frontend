@@ -6,6 +6,7 @@ import common from '../../../../common/common'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { MainThirdSectionTopItemProps } from '../../../../typings/interfaces'
+import { useMain } from '../../../../redux/main/hooks'
 
 // UserAvatar - No SSR
 const UserAvatarWithoutSSR = dynamic(
@@ -17,6 +18,7 @@ export default function MainThirdSectionTopItem({
   documentData,
   documentRoyalty
 }: MainThirdSectionTopItemProps): ReactElement {
+  const { isMobile } = useMain()
   let imgUrl_1 = common.getThumbnail(
     documentData.id,
     320,
@@ -64,70 +66,61 @@ export default function MainThirdSectionTopItem({
                   APP_CONFIG.domain().static + '/image/logo-cut.png'
               }}
             />
-            <span>{common.localeToCountry(documentData.locale)}</span>
+          </div>
+          <div className={styles.mtli_content}>
+            <p className={styles.mtli_title}>{documentData.title}</p>
+            <p className={styles.mtli_desc}>{documentData.desc}</p>
+
+            <div className={styles.mtli_contentItemWrapper}>
+              <div>
+                <i className={styles.sprite_a} />
+                <span className={styles.mtli_money}>
+                  {documentRoyalty === 0
+                    ? 'FREE'
+                    : common.deckToDollarWithComma(documentRoyalty)}
+                </span>
+              </div>
+              <div>
+                <i className={styles.sprite_b} />
+                <span className={styles.mtli_number}>0</span>
+              </div>
+              <div>
+                <i className={styles.sprite_c} />
+                <span className={styles.mtli_number}>{vote}</span>
+              </div>
+            </div>
+            <div className={styles.mtli_infoContainer}>
+              <Link
+                href={{
+                  pathname: '/profile_page',
+                  query: { identification: documentData.author.username }
+                }}
+                as={`/@${documentData.author.username}`}
+              >
+                <a rel="nofollow" aria-label="profile page">
+                  <div className={styles.mtli_info}>
+                    <span className={styles.mtli_avatar}>
+                      <UserAvatarWithoutSSR
+                        picture={documentData.author.picture}
+                        croppedArea={documentData.author.croppedArea}
+                        size={isMobile ? 16 : 30}
+                      />
+                    </span>
+                    <span className={styles.mtli_id}>
+                      {documentData.author.username}
+                    </span>
+                  </div>
+                </a>
+              </Link>
+              {/*<p className={styles.mtli_time}>
+              {commonView.dateTimeAgo(documentData.created, isMobile)}
+              <br />
+              (for 4 weeks)
+            </p>*/}
+            </div>
           </div>
         </a>
       </Link>
-      <div className={styles.mtli_content}>
-        <p className={styles.mtli_title}>
-          <Link
-            href={{
-              pathname: '/contents_view',
-              query: { seoTitle: documentData.seoTitle }
-            }}
-            as={`/@${documentData.author.username}/${documentData.seoTitle}`}
-          >
-            <a aria-label="viewer page">{documentData.title}</a>
-          </Link>
-        </p>
-        <div className={styles.mtli_contentItemWrapper}>
-          <div>
-            <i className={styles.sprite_a} />
-            <span className={styles.mtli_money}>
-              {documentRoyalty === 0
-                ? 'FREE'
-                : common.deckToDollarWithComma(documentRoyalty)}
-            </span>
-          </div>
-          <div>
-            <i className={styles.sprite_b} />
-            <span className={styles.mtli_number}>0</span>
-          </div>
-          <div>
-            <i className={styles.sprite_c} />
-            <span className={styles.mtli_number}>{vote}</span>
-          </div>
-        </div>
-        <div className={styles.mtli_infoContainer}>
-          <Link
-            href={{
-              pathname: '/profile_page',
-              query: { identification: documentData.author.username }
-            }}
-            as={`/@${documentData.author.username}`}
-          >
-            <a rel="nofollow" aria-label="profile page">
-              <div className={styles.mtli_info}>
-                <span className={styles.mtli_avatar}>
-                  <UserAvatarWithoutSSR
-                    picture={documentData.author.picture}
-                    croppedArea={documentData.author.croppedArea}
-                    size={30}
-                  />
-                </span>
-                <span className={styles.mtli_id}>
-                  {documentData.author.username}
-                </span>
-              </div>
-            </a>
-          </Link>
-          {/*<p className={styles.mtli_time}>
-            {commonView.dateTimeAgo(documentData.created, isMobile)}
-            <br />
-            (for 4 weeks)
-          </p>*/}
-        </div>
-      </div>
     </div>
   )
 }

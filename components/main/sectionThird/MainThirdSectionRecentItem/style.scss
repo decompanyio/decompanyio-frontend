@@ -1,7 +1,7 @@
 .mri_container {
   position: relative;
   width: 270px;
-  height: 330px;
+  height: 340px;
   background-color: transparent;
   background-size: cover;
   -webkit-clip-path: url(#my-clip-path);
@@ -12,6 +12,11 @@
     color: white;
     bottom: 10px;
   }
+
+  @media (max-width: 576px) {
+    width: calc((100vw - 50px) / 2);
+    height: calc((100vw - 50px) / 2 + 70px);
+  }
 }
 
 .mri_thumb {
@@ -20,17 +25,29 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 2px 6px 0 #aaa;
+
+  @media (max-width: 576px) {
+    width: calc((100vw - 50px) / 2);
+  }
 }
 
 .mri_img {
   width: 100%;
   height: 270px;
+
+  @media (max-width: 576px) {
+    height: calc((100vw - 50px) / 2);
+  }
 }
 
 .mri_imgLandscape {
   height: 270px;
   left: 0;
   position: absolute;
+
+  @media (max-width: 576px) {
+    height: calc((100vw - 50px) / 2);
+  }
 }
 
 .mri_content {
@@ -45,6 +62,11 @@
   padding: 20px 20px 16px;
   -webkit-transition: bottom 0.5s;
   transition: bottom 0.5s;
+
+  @media (max-width: 576px) {
+    width: calc((100vw - 50px) / 2 - 20px);
+    padding: 16px 14px 14px;
+  }
 }
 
 .mri_title {
@@ -54,6 +76,11 @@
   white-space: nowrap;
   font-size: 20px;
   font-weight: 500;
+
+  @media (max-width: 576px) {
+    width: calc((100vw - 50px) / 2 - 50px);
+    font-size: 16px;
+  }
 }
 
 .mri_desc {
@@ -68,12 +95,25 @@
   line-height: 18px;
   height: 36px;
   margin-top: 12px;
+  color: #888;
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+    line-height: 16px;
+    height: 32px;
+    margin-top: 10px;
+  }
 }
 
 .mri_day {
   text-align: right;
   font-size: 12px;
   margin-top: 20px;
+
+  @media (max-width: 576px) {
+    font-size: 11px;
+    margin-top: 16px;
+  }
 }
 
 .mri_group {
@@ -81,101 +121,14 @@
   display: flex;
   font-size: 12px;
   justify-content: space-between;
+
+  @media (max-width: 576px) {
+    font-size: 11px;
+  }
 }
 
 .mri_author {
   font-weight: bold;
-}
-
-@media (max-width: 1024px) {
-  .title-recent {
-    display: block;
-    font-size: 60px;
-  }
-
-  .recent-list {
-    width: 100%;
-    white-space: nowrap;
-    font-size: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 720px;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-  }
-  .recent-list .recent-item {
-    float: none;
-    display: inline-block;
-    margin: 0 !important;
-  }
-  .recent-list .recent-item ~ .recent-item {
-    margin-left: 30px !important;
-  }
-  .recent-list::-webkit-scrollbar {
-    width: 5px;
-  }
-  .recent-list::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  .recent-list::-webkit-scrollbar-thumb {
-    border-radius: 30px;
-    background-color: #1f82ff;
-    border: 0 solid #fff;
-  }
-  .recent-list::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-  }
-  .mri_content {
-    opacity: 1;
-    position: relative;
-    background-image: none;
-    height: calc(100% - 308px);
-    display: block;
-  }
-  .mri_title {
-    font-size: 40px;
-    line-height: 52px;
-    min-height: 114px;
-    text-align: center;
-    white-space: normal;
-    padding: 30px;
-    color: #000;
-  }
-  .mri_group {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background-color: #f6f6f6;
-  }
-}
-
-@media (max-width: 768px) {
-  .title-recent {
-    font-size: 30px;
-  }
-
-  .recent-list {
-    height: 375px;
-  }
-  .recent-list .recent-item ~ .recent-item {
-    margin-left: 10px !important;
-  }
-  .mri_content {
-    height: calc(100% - 154px);
-  }
-  .mri_title {
-    font-size: 20px;
-    line-height: 26px;
-    min-height: 57px;
-    padding: 15px;
-  }
-  .mri_group {
-    padding: 10px;
-  }
 }
 
 .sprite_d {

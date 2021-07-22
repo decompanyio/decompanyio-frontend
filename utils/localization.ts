@@ -132,8 +132,8 @@ const strings = new Map([
   [
     'main-event-1',
     {
-      KOR: '2020년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
-      ENG: 'As of 2020, Polaris Share is operated during the Beta Season.'
+      KOR: '2021년 현재 폴라리스쉐어 서비스는 베타시즌으로 운영되고 있습니다.',
+      ENG: 'As of 2021, Polaris Share is operated during the Beta Season.'
     }
   ],
   [
@@ -1553,19 +1553,15 @@ const strings = new Map([
   [
     'event-step1-description1',
     {
-      KOR:
-        '폴라리스 쉐어에 여러분의 지식을 공유하고,',
-      ENG:
-        '폴라리스 쉐어에 여러분의 지식을 공유하고,'
+      KOR: '폴라리스 쉐어에 여러분의 지식을 공유하고,',
+      ENG: '폴라리스 쉐어에 여러분의 지식을 공유하고,'
     }
   ],
   [
     'event-step1-description2',
     {
-      KOR:
-        '추천을 받으신 분들에게 리워드를 드립니다.',
-      ENG:
-        '추천을 받으신 분들에게 리워드를 드립니다.'
+      KOR: '추천을 받으신 분들에게 리워드를 드립니다.',
+      ENG: '추천을 받으신 분들에게 리워드를 드립니다.'
     }
   ],
   [
@@ -1580,64 +1576,50 @@ const strings = new Map([
   [
     'event-step1-label1',
     {
-      KOR:
-        '모집 기간',
-      ENG:
-        '모집 기간'
+      KOR: '모집 기간',
+      ENG: '모집 기간'
     }
   ],
   [
     'event-step1-date1',
     {
-      KOR:
-        '2021년 7월 15일(목) ~ 24일(일)',
-      ENG:
-        '2021년 7월 15일(목) ~ 24일(일)'
+      KOR: '2021년 7월 15일(목) ~ 24일(일)',
+      ENG: '2021년 7월 15일(목) ~ 24일(일)'
     }
   ],
   [
     'event-step1-label2',
     {
-      KOR:
-        '테스트 기간',
-      ENG:
-        '테스트 기간'
+      KOR: '테스트 기간',
+      ENG: '테스트 기간'
     }
   ],
   [
     'event-step1-date2',
     {
-      KOR:
-        '2021년 7월 26일(월) ~ 8월 25일(수)',
-      ENG:
-        '2021년 7월 26일(월) ~ 8월 25일(수)'
+      KOR: '2021년 7월 26일(월) ~ 8월 25일(수)',
+      ENG: '2021년 7월 26일(월) ~ 8월 25일(수)'
     }
   ],
   [
     'event-step1-subtitle',
     {
-      KOR:
-        '테스터 리워드',
-      ENG:
-        '테스터 리워드'
+      KOR: '테스터 리워드',
+      ENG: '테스터 리워드'
     }
   ],
   [
     'event-step1-item1',
     {
-      KOR:
-        '$POLA 에어드랍 / 스타벅스 상품권',
-      ENG:
-        '$POLA 에어드랍 / 스타벅스 상품권'
+      KOR: '$POLA 에어드랍 / 스타벅스 상품권',
+      ENG: '$POLA 에어드랍 / 스타벅스 상품권'
     }
   ],
   [
     'event-step1-item2',
     {
-      KOR:
-        '/폴라 인사이더 프로그램',
-      ENG:
-        '/폴라 인사이더 프로그램'
+      KOR: '/폴라 인사이더 프로그램',
+      ENG: '/폴라 인사이더 프로그램'
     }
   ],
   [
@@ -1669,100 +1651,78 @@ const strings = new Map([
   [
     'event-step2-subj1',
     {
-      KOR:
-        '베타 테스터',
-      ENG:
-        '베타 테스터'
+      KOR: '베타 테스터',
+      ENG: '베타 테스터'
     }
   ],
   [
     'event-step2-subj2',
     {
-      KOR:
-        '지원자 정보 입력',
-      ENG:
-        '지원자 정보 입력'
+      KOR: '지원자 정보 입력',
+      ENG: '지원자 정보 입력'
     }
   ],
   [
     'event-step2-description1',
     {
-      KOR:
-        '하기 지원해주신 이메일/연락처를 통해',
-      ENG:
-        '하기 지원해주신 이메일/연락처를 통해'
+      KOR: '하기 지원해주신 이메일/연락처를 통해',
+      ENG: '하기 지원해주신 이메일/연락처를 통해'
     }
   ],
   [
     'event-step2-description2',
     {
-      KOR:
-        '자세한',
-      ENG:
-        '자세한'
+      KOR: '자세한',
+      ENG: '자세한'
     }
   ],
   [
     'event-step2-description2-point',
     {
-      KOR:
-        '베타 테스터 안내 및 미션,',
-      ENG:
-        '베타 테스터 안내 및 미션,'
+      KOR: '베타 테스터 안내 및 미션,',
+      ENG: '베타 테스터 안내 및 미션,'
     }
   ],
   [
     'event-step2-description3',
     {
-      KOR:
-        '를 전해드릴 계획입니다.',
-      ENG:
-        '를 전해드릴 계획입니다.'
+      KOR: '를 전해드릴 계획입니다.',
+      ENG: '를 전해드릴 계획입니다.'
     }
   ],
   [
     'event-step2-description3-point',
     {
-      KOR:
-        '리워드 프로그램에 대한 안내',
-      ENG:
-        '리워드 프로그램에 대한 안내'
+      KOR: '리워드 프로그램에 대한 안내',
+      ENG: '리워드 프로그램에 대한 안내'
     }
   ],
   [
     'event-step2-name',
     {
-      KOR:
-        '*Name',
-      ENG:
-        '*Name'
+      KOR: '*Name',
+      ENG: '*Name'
     }
   ],
   [
     'event-step2-email',
     {
-      KOR:
-        '*E-mail',
-      ENG:
-        '*E-mail'
+      KOR: '*E-mail',
+      ENG: '*E-mail'
     }
   ],
   [
     'event-step2-tel',
     {
-      KOR:
-        '*Tel',
-      ENG:
-        '*Tel'
+      KOR: '*Tel',
+      ENG: '*Tel'
     }
   ],
   [
     'event-btn',
     {
-      KOR:
-        '베타 테스터 등록',
-      ENG:
-        '베타 테스터 등록'
+      KOR: '베타 테스터 등록',
+      ENG: '베타 테스터 등록'
     }
   ],
 

@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, useState } from 'react'
+import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import * as styles from 'public/static/styles/scss/index.scss'
 import { psString } from '../../../../utils/localization'
 import Link from 'next/link'
@@ -14,12 +14,15 @@ import DocumentPopularModel from '../../../../graphql/models/DocumentPopular'
 import DocumentFeaturedModel from '../../../../graphql/models/DocumentFeatured'
 import UserInfo from '../../../../graphql/models/UserInfo'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { useMain } from '../../../../redux/main/hooks'
 
 export default function MainThirdSection(): ReactElement {
   const listRef = useRef<HTMLDivElement>(null)
+  const { isMobile } = useMain();
   const [currentFirstListItemIndex, setCurrentFirstListItemIndex] = useState<
     number
   >(0)
+  const [activeIndicatorIndex, setActiveIndicatorIndex] = useState<number>(0);
   const [curScrollLeft, setCurScrollLeft] = useState<number>(0)
   const { data: documentData } = useQuery(
     gql`
@@ -150,6 +153,17 @@ export default function MainThirdSection(): ReactElement {
     setCurrentFirstListItemIndex(newCurrentFirstListItemIndex)
   }
 
+  useEffect(() => {
+    if (listRef && listRef.current) {
+      const onScroll = (e) => {
+        setActiveIndicatorIndex(Math.floor(e.target.scrollLeft / (document.body.offsetWidth - 40)))
+      }
+      listRef.current.addEventListener('scroll', onScroll)
+
+      return () => listRef.current?.removeEventListener('scroll', onScroll)
+    }
+  }, [listRef, listRef.current])
+
   return (
     <div className={styles.ml}>
       <div className={styles.ml_wrapper}>
@@ -179,7 +193,25 @@ export default function MainThirdSection(): ReactElement {
           />
         </div>
         <div className={styles.ml_libraries} ref={listRef}>
-          {documentData &&
+          {documentData && isMobile ? documentList.slice(0, 10).map((data, index) => (
+              <div
+                className={`${styles.ml_library} ${
+                  index >= currentFirstListItemIndex &&
+                  index <= currentFirstListItemIndex + 3
+                    ? styles.ml_library_active
+                    : ''
+                }`}
+                key={index}
+              >
+                <MainRecentItem
+                  documentData={data}
+                  isDisabled={
+                    index < currentFirstListItemIndex ||
+                    index > currentFirstListItemIndex + 3
+                  }
+                />
+              </div>
+            )) :
             documentList.map((data, index) => (
               <div
                 className={`${styles.ml_library} ${
@@ -190,10 +222,21 @@ export default function MainThirdSection(): ReactElement {
                 }`}
                 key={index}
               >
-                <MainRecentItem documentData={data} />
+                <MainRecentItem
+                  documentData={data}
+                  isDisabled={
+                    index < currentFirstListItemIndex ||
+                    index > currentFirstListItemIndex + 3
+                  }
+                />
               </div>
             ))}
         </div>
+      </div>
+      <div className={styles.ml_indicators_mobile}>
+        {[0, 1, 2, 3, 4].map((index) => (
+          <div key={index} className={`${styles.ml_indicator_mobile} ${activeIndicatorIndex === index ? styles.active : ''}`} />
+        ))}
       </div>
     </div>
   )
