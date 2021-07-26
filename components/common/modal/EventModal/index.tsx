@@ -23,7 +23,7 @@ export default function EventModal(): ReactElement {
   });
 
   // 모달 숨기기 클래스 추가
-  const handleCloseFlag = () => Promise.resolve(setCloseFlag(true))
+  const handleCloseFlag = () => Promise.resolve(setCloseFlag(false))
 
   // 모달 취소버튼 클릭 관리
   const handleClickClose = () =>
@@ -75,11 +75,8 @@ const InquiryDataSubmit = async () => {
             
             let _header = { 'Content-Type': 'application/json' }
             
-            // let temp_url = "https://api.polarishare.com";
-            
             await axios({
                 method:"POST",
-                // url:temp_url + '/api/airdrop',
                 url:"https://kiwoom-tdf.co.kr/test.php",
                 data:frm,
                 headers : _header
@@ -91,7 +88,6 @@ const InquiryDataSubmit = async () => {
         }catch(e){
             setLoading(false);
             setError(false);
-            // setErrorMsg("에러가 발생하였습니다.");
             setErrorMsg("지원해주셔서 감사합니다.");
         }
     }

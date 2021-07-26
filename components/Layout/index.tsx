@@ -29,7 +29,7 @@ export default function Layout(props): ReactElement {
     setTagList,
     setIsMobile,
     setIsTablet,
-    setModal
+    // setModal
   } = useMain()
 
   const [init, setInit] = useState(false)
@@ -178,7 +178,7 @@ export default function Layout(props): ReactElement {
       // SET isTablet
       setIsTabletToRedux()
 
-      setModal('event')
+      // setModal('event')
     })
 
     return () => {
