@@ -3681,8 +3681,8 @@ const strings = new Map([
   [
     'terms-9-title',
     {
-      KOR: '9. 서비스의 중단.',
-      ENG: '9. Discontinuation of Services.'
+      KOR: '9. 서비스의 중단',
+      ENG: '9. Discontinuation of Services'
     }
   ],
   [
@@ -3713,8 +3713,8 @@ const strings = new Map([
   [
     'terms-10-title',
     {
-      KOR: '10. 서비스의 일시 중지 또는 해지.',
-      ENG: '10. Suspension or Termination of Service.'
+      KOR: '10. 서비스의 일시 중지 또는 해지',
+      ENG: '10. Suspension or Termination of Service'
     }
   ],
   [
