@@ -4354,8 +4354,8 @@ const strings = new Map([
   [
     'privacy-1-desc-2',
     {
-      KOR: 'A. 사용자가 제공 한 정보.',
-      ENG: 'A. Information provided by users.'
+      KOR: 'A. 사용자가 제공 한 정보',
+      ENG: 'A. Information provided by users'
     }
   ],
   [
@@ -4384,8 +4384,8 @@ const strings = new Map([
   [
     'privacy-1-desc-6',
     {
-      KOR: 'B. 서비스 이용 중 수집 된 정보.',
-      ENG: 'B. Information collected during use of service.'
+      KOR: 'B. 서비스 이용 중 수집 된 정보',
+      ENG: 'B. Information collected during use of service'
     }
   ],
   [
