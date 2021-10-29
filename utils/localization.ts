@@ -5153,7 +5153,7 @@ const strings = new Map([
   [
     'privacy-11-desc-3',
     {
-      KOR: '- 이메일 주소',
+      KOR: '- 이메일 주소:',
       ENG: '- EmailModal address:'
     }
   ],
