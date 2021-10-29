@@ -3247,7 +3247,7 @@ const strings = new Map([
   [
     'terms-2-title',
     {
-      KOR: '1. 자격',
+      KOR: '2. 자격',
       ENG: '2. Eligibility'
     }
   ],
