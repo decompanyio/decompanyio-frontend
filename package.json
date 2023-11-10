@@ -35,7 +35,7 @@
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "1.5.17",
     "auth0-js": "9.12.2",
-    "axios": "0.19.2",
+    "axios": "1.6.0",
     "babel-jest": "25.2.6",
     "babel-plugin-graphql-tag": "2.5.0",
     "babel-polyfill": "6.26.0",
